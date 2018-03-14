@@ -1,0 +1,9 @@
+@mixin respond-to($breakpoint) {
+  // Get the query map for $breakpoints map
+  $bp: map-get($breakpoints, $breakpoint);
+  // If there is no query called $breakpoint in map, throw an error
+  // Include the media mixin with $queries
+  @media #{$bp} {
+    @content;
+  }
+}

@@ -1,0 +1,13 @@
+$yellow: #FFD81D;
+$pink: #F29A90;
+
+$font: 'ZeitungMonoPro-Reg';
+$font--bold: 'ZeitungMonoPro-Bold';
+
+$breakpoints: (
+  'small': '(min-width: 520px)',
+  'medium': '(min-width: 900px)',
+  'large': '(min-width: 1440px)',
+  'xlarge': '(min-width: 1600px)',
+  'xxlarge': '(min-width: 1920px)',
+);

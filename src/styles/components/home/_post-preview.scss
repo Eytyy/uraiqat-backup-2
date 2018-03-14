@@ -1,0 +1,26 @@
+.post-preview__meta {
+	font-family: $font--bold;
+}
+
+.post-preview--default {
+	.post-preview__meta {
+		margin-bottom: 16px;
+	}
+	.post-preview__title {
+		margin: 16px 0 0;
+		font-size: 20px;
+		line-height: 32px;
+		color: blue;
+	}
+}
+
+.post-preview--featured {
+	.post-preview__title {
+		margin: 0;
+		font-size: 48px;
+		line-height: 64px;
+		color: red;
+	}
+}
+
+

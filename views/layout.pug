@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset="utf-8")
+    != ogURL
+    != ogTitle
+    != ogDesc
+    != ogImg
+    link(rel="stylesheet", href="/styles/main.css")
+  body
+    block content
+    script(type='text/javascript', src='/app.js')
