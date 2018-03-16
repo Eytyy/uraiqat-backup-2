@@ -1,0 +1,21 @@
+.ws { 
+	opacity: 0;
+}
+
+nav {
+	font-family: $font--bold;
+	a {
+		text-decoration: none;
+	}
+	.ind {
+		opacity: 0;;
+	}
+}
+
+.menu-link {
+	&:hover {
+		.ind {
+			opacity: 1;
+		}
+	}
+}

@@ -51,6 +51,130 @@ router.get('/', (req, res) => {
 	});
 });
 
+router.get('/practice', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route}) => {
+		let fetchData = route.component.fetchData;
+		let data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		let payload = store.getState();
+		res.render('index', {
+			title: 'Practice',
+			data: payload,
+			content
+		});
+	});
+});
+
+router.get('/work', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route}) => {
+		let fetchData = route.component.fetchData;
+		let data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		let payload = store.getState();
+		res.render('index', {
+			title: 'Work',
+			data: payload,
+			content
+		});
+	});
+});
+
+router.get('/atelier', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route}) => {
+		let fetchData = route.component.fetchData;
+		let data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		let payload = store.getState();
+		res.render('index', {
+			title: 'Atelier',
+			data: payload,
+			content
+		});
+	});
+});
+
+router.get('/contact', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route}) => {
+		let fetchData = route.component.fetchData;
+		let data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		let payload = store.getState();
+		res.render('index', {
+			title: 'Contact',
+			data: payload,
+			content
+		});
+	});
+});
+
 router.get('/journal/:id', (req, res) => {
 	const branch = matchRoutes(routes, req.url);
 	const promises = branch.map(({route, match}) => {

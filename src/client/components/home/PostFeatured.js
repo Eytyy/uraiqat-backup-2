@@ -1,15 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import ImageComponent from '../ImageComponent';
+import PostFeaturedText from './PostFeaturedText';
+import Preview from '../Preview';
+
 
 const PostFeatured = (content) => {
-	const { title, category, date, previewImagevideo, previewText } = content;
-	return (
-		<article className="post-preview post-preview--featured">
-			<img src={previewImagevideo.fields.file.url} alt={previewImagevideo.fields.title} />
-			<div className="post-preview__meta">{category.fields.title}{'->'}{date}</div>
-			<h2 className="post-preview__title">{title}</h2>
-			{previewText && <p>{previewText}</p>}
-		</article>
-	);
+	const { previewImagevideo, id } = content;
+	if (previewImagevideo) {
+		const imgSize = previewImagevideo.fields.file.details.image;
+		const orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
+		return (
+			<Preview classList={`post-preview post-preview--featured post-preview--${orientation}`}>
+				<Link className="post-preview__link" to={`/journal/${id}`}>
+					<ImageComponent src={previewImagevideo.fields.file.url} title={previewImagevideo.fields.title} />
+					<PostFeaturedText {...content} />
+				</Link>
+			</Preview>
+		);
+	} else {
+		return (
+			<Preview classList="post-preview post-preview--featured">
+				<Link className="post-preview__link" to={`/journal/${id}`}>
+					<PostFeaturedText {...content} />
+				</Link>
+			</Preview>
+		);
+	}
 };
 
 export default PostFeatured;

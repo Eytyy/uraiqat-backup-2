@@ -2,6 +2,10 @@
 @import "fonts";
 @import "typography";
 
+* {
+  box-sizing: border-box;
+}
+
 p {
   margin: 0;
 }

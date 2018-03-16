@@ -79,11 +79,151 @@ router.get('/', function (req, res) {
 	});
 });
 
-router.get('/journal/:id', function (req, res) {
+router.get('/practice', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
 	var promises = branch.map(function (_ref2) {
-		var route = _ref2.route,
-		    match = _ref2.match;
+		var route = _ref2.route;
+
+		var fetchData = route.component.fetchData;
+		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(function () {
+		var context = {};
+		var content = (0, _server.renderToString)(_react2.default.createElement(
+			_reactRedux.Provider,
+			{ store: store },
+			_react2.default.createElement(
+				_StaticRouter2.default,
+				{ location: req.url, context: context },
+				(0, _reactRouterConfig.renderRoutes)(_routes2.default)
+			)
+		));
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		var payload = store.getState();
+		res.render('index', {
+			title: 'Practice',
+			data: payload,
+			content: content
+		});
+	});
+});
+
+router.get('/work', function (req, res) {
+	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
+	var promises = branch.map(function (_ref3) {
+		var route = _ref3.route;
+
+		var fetchData = route.component.fetchData;
+		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(function () {
+		var context = {};
+		var content = (0, _server.renderToString)(_react2.default.createElement(
+			_reactRedux.Provider,
+			{ store: store },
+			_react2.default.createElement(
+				_StaticRouter2.default,
+				{ location: req.url, context: context },
+				(0, _reactRouterConfig.renderRoutes)(_routes2.default)
+			)
+		));
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		var payload = store.getState();
+		res.render('index', {
+			title: 'Work',
+			data: payload,
+			content: content
+		});
+	});
+});
+
+router.get('/atelier', function (req, res) {
+	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
+	var promises = branch.map(function (_ref4) {
+		var route = _ref4.route;
+
+		var fetchData = route.component.fetchData;
+		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(function () {
+		var context = {};
+		var content = (0, _server.renderToString)(_react2.default.createElement(
+			_reactRedux.Provider,
+			{ store: store },
+			_react2.default.createElement(
+				_StaticRouter2.default,
+				{ location: req.url, context: context },
+				(0, _reactRouterConfig.renderRoutes)(_routes2.default)
+			)
+		));
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		var payload = store.getState();
+		res.render('index', {
+			title: 'Atelier',
+			data: payload,
+			content: content
+		});
+	});
+});
+
+router.get('/contact', function (req, res) {
+	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
+	var promises = branch.map(function (_ref5) {
+		var route = _ref5.route;
+
+		var fetchData = route.component.fetchData;
+		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(function () {
+		var context = {};
+		var content = (0, _server.renderToString)(_react2.default.createElement(
+			_reactRedux.Provider,
+			{ store: store },
+			_react2.default.createElement(
+				_StaticRouter2.default,
+				{ location: req.url, context: context },
+				(0, _reactRouterConfig.renderRoutes)(_routes2.default)
+			)
+		));
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		var payload = store.getState();
+		res.render('index', {
+			title: 'Contact',
+			data: payload,
+			content: content
+		});
+	});
+});
+
+router.get('/journal/:id', function (req, res) {
+	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
+	var promises = branch.map(function (_ref6) {
+		var route = _ref6.route,
+		    match = _ref6.match;
 
 		var fetchData = route.component.fetchData;
 		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);

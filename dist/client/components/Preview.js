@@ -10,14 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
-
-var _reactRouterConfig = require('react-router-config');
-
-var _menu = require('./navigation/menu');
-
-var _menu2 = _interopRequireDefault(_menu);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26,42 +18,43 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_Component) {
-	_inherits(App, _Component);
+var Preview = function (_Component) {
+	_inherits(Preview, _Component);
 
-	function App() {
-		_classCallCheck(this, App);
+	function Preview() {
+		_classCallCheck(this, Preview);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).apply(this, arguments));
 	}
 
-	_createClass(App, [{
+	_createClass(Preview, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var previewHeight = this.previewBlock.offsetHeight;
+			var heightRelativeToCharacterHeight = previewHeight % 32;
+			var padding = heightRelativeToCharacterHeight === 0 ? 0 : (1 - heightRelativeToCharacterHeight / 32) * 32;
+			this.previewBlock.style.paddingBottom = padding + 'px';
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var route = this.props.route;
+			var _this2 = this;
+
+			var _props = this.props,
+			    classList = _props.classList,
+			    children = _props.children;
 
 			return _react2.default.createElement(
-				'div',
-				{ className: 'container__inner' },
-				_react2.default.createElement(
-					'header',
-					{ className: 'website-header' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'website-header__inner wrapper' },
-						_react2.default.createElement(_menu2.default, null)
-					)
-				),
-				_react2.default.createElement(
-					'main',
-					{ role: 'main', className: 'main-content' },
-					(0, _reactRouterConfig.renderRoutes)(route.routes)
-				)
+				'article',
+				{ ref: function ref(el) {
+						_this2.previewBlock = el;
+					}, className: classList },
+				children
 			);
 		}
 	}]);
 
-	return App;
+	return Preview;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)()(App);
+exports.default = Preview;
