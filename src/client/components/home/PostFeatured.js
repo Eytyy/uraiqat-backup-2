@@ -8,13 +8,14 @@ import Preview from '../Preview';
 
 const PostFeatured = (content) => {
 	const { previewImagevideo, id } = content;
+	const imageClass = 'post-preview__image';
 	if (previewImagevideo) {
 		const imgSize = previewImagevideo.fields.file.details.image;
 		const orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
 		return (
 			<Preview classList={`post-preview post-preview--featured post-preview--${orientation}`}>
 				<Link className="post-preview__link" to={`/journal/${id}`}>
-					<ImageComponent src={previewImagevideo.fields.file.url} title={previewImagevideo.fields.title} />
+					<ImageComponent classList={imageClass} src={previewImagevideo.fields.file.url} />
 					<PostFeaturedText {...content} />
 				</Link>
 			</Preview>

@@ -7,8 +7,8 @@ const Landing = ({ page, content }) => {
 	const { mainContent, featuredContent } = content[0];
 	return (
 		<section className={classList}>
-			<LandingFeatured content={featuredContent}></LandingFeatured>
-			<LandingChrono content={mainContent}></LandingChrono>
+			<LandingFeatured page={page} content={featuredContent}></LandingFeatured>
+			<LandingChrono page={page} content={mainContent}></LandingChrono>
 		</section>
 	);
 };

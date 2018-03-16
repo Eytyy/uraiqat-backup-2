@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -12,12 +12,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ImageComponent = function ImageComponent(_ref) {
 	var src = _ref.src,
-	    title = _ref.title;
+	    classList = _ref.classList,
+	    imagesQuery = _ref.imagesQuery;
 
+	var url = typeof imagesQuery !== 'undefined' ? '' + src + imagesQuery : src;
 	var style = {
-		backgroundImage: "url('" + src + "')"
+		backgroundImage: 'url(\'' + url + '\')'
 	};
-	return _react2.default.createElement("div", { className: "post-preview__image", style: style });
+	var classes = typeof classList !== 'undefined' ? classList : '';
+	return _react2.default.createElement('div', { className: 'preview-image ' + classes, style: style });
 };
 
 exports.default = ImageComponent;

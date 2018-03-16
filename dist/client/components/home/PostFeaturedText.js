@@ -33,7 +33,7 @@ var PostFeaturedText = function PostFeaturedText(content) {
 			),
 			title && _react2.default.createElement(
 				'h2',
-				{ className: 'post-preview__title' },
+				{ className: 'post-preview__title title' },
 				title
 			),
 			previewText && _react2.default.createElement(

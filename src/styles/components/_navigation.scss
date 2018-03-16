@@ -13,7 +13,8 @@ nav {
 }
 
 .menu-link {
-	&:hover {
+	&:hover,
+	&.active {
 		.ind {
 			opacity: 1;
 		}

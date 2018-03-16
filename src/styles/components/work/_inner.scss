@@ -1,0 +1,35 @@
+
+.project__top,
+.project__bottom {
+	@extend %clearfix;
+}
+
+.project__top {
+	margin-bottom: 64px;
+}
+
+.project__media {
+	float: left;
+	margin-left: 42px;
+}
+
+.project__meta {
+	float: right;
+	width: 252px;
+	.label {
+		font-family: $font--bold;
+	}
+}
+
+.project__about {
+	width: 686px;
+	float: left;
+}
+
+.project__drawings {
+	width: 392px;
+	float: right;
+	.preview-image {
+		@extend %blue-filter;
+	}
+}

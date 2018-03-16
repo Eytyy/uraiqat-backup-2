@@ -1,3 +1,72 @@
+.project__top:after,
+.project__bottom:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.post-preview__image, .project-preview__image--main, .project-preview__image--craft {
+  position: relative; }
+  .post-preview__image:before, .project-preview__image--main:before, .project-preview__image--craft:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    mix-blend-mode: color; }
+  .post-preview__image:after, .project-preview__image--main:after, .project-preview__image--craft:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    mix-blend-mode: screen; }
+
+.project-preview__image--drawing, .project__drawings .preview-image {
+  position: relative; }
+  .project-preview__image--drawing:before, .project__drawings .preview-image:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    mix-blend-mode: color; }
+  .project-preview__image--drawing:after, .project__drawings .preview-image:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    mix-blend-mode: screen; }
+
+.project-preview__image--diagram {
+  position: relative; }
+  .project-preview__image--diagram:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    mix-blend-mode: lighten; }
+  .project-preview__image--diagram:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    mix-blend-mode: difference; }
+
 body {
   margin: 0; }
 
@@ -15,14 +84,19 @@ body {
   line-height: 32px; }
 
 a {
-  font-family: "ZeitungMonoPro-Bold";
-  color: blue; }
+  font-family: "ZeitungMonoPro-Bold"; }
 
 p {
   font-family: "ZeitungMonoPro-Reg"; }
 
 h1, h2, h3, h4, h5 {
-  font-family: "ZeitungMonoPro-Bold"; }
+  font-family: "ZeitungMonoPro-Bold";
+  font-size: 20px;
+  line-height: 32px;
+  margin: 0; }
+
+.main-title {
+  margin-bottom: 64px; }
 
 * {
   -webkit-box-sizing: border-box;
@@ -36,13 +110,28 @@ img {
   height: auto;
   display: block; }
 
+a {
+  color: #000;
+  text-decoration: none; }
+
+.link,
+a .title {
+  color: blue; }
+
+a .title {
+  text-decoration: underline; }
+
+a:hover .title {
+  text-decoration: none; }
+
 body {
   padding-top: 32px; }
 
 .container,
 .wrapper {
   padding: 0 48px 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 1440px; }
 
 .website-header {
   position: fixed;
@@ -54,15 +143,15 @@ body {
   background: #FFF; }
 
 .main-content {
-  padding-top: 128px; }
+  padding-top: 160px; }
 
-.landing-section {
-  margin-left: -84px;
+.landing-page--journal .landing-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+  margin-left: -84px; }
 
 .post-preview {
   padding-left: 84px; }
@@ -97,8 +186,28 @@ nav {
   nav .ind {
     opacity: 0; }
 
-.menu-link:hover .ind {
+.menu-link:hover .ind, .menu-link.active .ind {
   opacity: 1; }
+
+.slider {
+  position: relative; }
+  .slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .slider--main {
+    width: 826px;
+    height: 512px; }
+  .slider--small {
+    width: 334px;
+    height: 256px; }
+
+.preview-image {
+  position: relative;
+  background-size: cover;
+  background-position: center; }
 
 .post-preview {
   margin-bottom: 64px; }
@@ -107,21 +216,6 @@ nav {
     color: #000;
     display: block;
     position: relative; }
-    .post-preview a .post-preview__title {
-      text-decoration: underline; }
-  .post-preview__image {
-    position: relative;
-    background-size: cover;
-    background-position: center; }
-    .post-preview__image:after {
-      content: '';
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-      background-color: #FFF;
-      mix-blend-mode: color; }
   .post-preview__content {
     position: relative; }
   .post-preview__meta {
@@ -129,11 +223,9 @@ nav {
   .post-preview__desc {
     color: #4A4A4A; }
 
-.post-preview__link:hover .post-preview__image:after {
+.post-preview__link:hover .post-preview__image:after,
+.post-preview__link:hover .post-preview__image:before {
   background-color: transparent; }
-
-.post-preview__link:hover .post-preview__title {
-  color: #000; }
 
 .post-preview--default .post-preview__title {
   margin: 16px 0 0;
@@ -196,3 +288,61 @@ nav {
 
 .post-preview--landscape .post-preview__image {
   height: 256px; }
+
+.project-preview {
+  margin-bottom: 64px; }
+
+.project-preview__thumbs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 32px; }
+  .project-preview__thumbs__left-col {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 1022px;
+            flex: 0 0 1022px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .project-preview__thumbs__left-col .project-preview__image--main {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 700px;
+              flex: 0 0 700px; }
+    .project-preview__thumbs__left-col .project-preview__image--drawing {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 322px;
+              flex: 0 0 322px; }
+  .project-preview__thumbs__right-col {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 322px;
+            flex: 0 0 322px; }
+
+.project-preview__image--main, .project-preview__image--drawing {
+  height: 416px; }
+
+.project-preview__image--craft, .project-preview__image--diagram {
+  height: 208px; }
+
+.project-preview__image--craft {
+  opacity: 0.5; }
+
+.project__top {
+  margin-bottom: 64px; }
+
+.project__media {
+  float: left;
+  margin-left: 42px; }
+
+.project__meta {
+  float: right;
+  width: 252px; }
+  .project__meta .label {
+    font-family: "ZeitungMonoPro-Bold"; }
+
+.project__about {
+  width: 686px;
+  float: left; }
+
+.project__drawings {
+  width: 392px;
+  float: right; }

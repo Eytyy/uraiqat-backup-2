@@ -30,6 +30,7 @@ var PostDefault = function PostDefault(content) {
 	    previewText = content.previewText,
 	    id = content.id;
 
+	var imageClass = 'post-preview__image';
 	if (previewImagevideo) {
 		var imgSize = previewImagevideo.fields.file.details.image;
 		var orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
@@ -40,7 +41,7 @@ var PostDefault = function PostDefault(content) {
 				_react2.default.createElement(
 					_reactRouterDom.Link,
 					{ className: 'post-preview__link', to: '/journal/' + id },
-					_react2.default.createElement(_ImageComponent2.default, { src: previewImagevideo.fields.file.url, title: previewImagevideo.fields.title }),
+					_react2.default.createElement(_ImageComponent2.default, { classList: imageClass, src: previewImagevideo.fields.file.url }),
 					_react2.default.createElement(
 						'div',
 						{ className: 'post-preview__content' },
@@ -53,7 +54,7 @@ var PostDefault = function PostDefault(content) {
 						),
 						title && _react2.default.createElement(
 							'h2',
-							{ className: 'post-preview__title' },
+							{ className: 'post-preview__title title' },
 							title
 						),
 						previewText && _react2.default.createElement(
@@ -82,10 +83,10 @@ var PostDefault = function PostDefault(content) {
 						' -> ',
 						category.fields.title
 					),
-					_react2.default.createElement(_ImageComponent2.default, { src: previewImagevideo.fields.file.url, title: previewImagevideo.fields.title }),
+					_react2.default.createElement(_ImageComponent2.default, { classList: imageClass, src: previewImagevideo.fields.file.url }),
 					title && _react2.default.createElement(
 						'h2',
-						{ className: 'post-preview__title' },
+						{ className: 'post-preview__title title' },
 						title
 					),
 					previewText && _react2.default.createElement(
@@ -116,7 +117,7 @@ var PostDefault = function PostDefault(content) {
 				),
 				title && _react2.default.createElement(
 					'h2',
-					{ className: 'post-preview__title' },
+					{ className: 'post-preview__title title' },
 					title
 				),
 				previewText && _react2.default.createElement(

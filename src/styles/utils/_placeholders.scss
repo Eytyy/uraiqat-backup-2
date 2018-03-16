@@ -5,3 +5,76 @@
     clear: both;
   }
 }
+
+
+%bw-filter {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    mix-blend-mode: color;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    mix-blend-mode: screen;
+  }
+}
+
+%blue-filter {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    mix-blend-mode: color;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    mix-blend-mode: screen;
+  }
+}
+
+%red-filter {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    mix-blend-mode: lighten;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    mix-blend-mode: difference;
+  }
+}

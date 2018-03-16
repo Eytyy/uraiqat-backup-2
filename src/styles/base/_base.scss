@@ -15,3 +15,21 @@ img {
   height: auto;
   display: block;
 }
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.link,
+a .title {
+  color: blue;
+}
+a {
+  .title {
+    text-decoration: underline;
+  }
+  &:hover .title {
+    text-decoration: none;
+  }
+}

@@ -20,8 +20,8 @@ var menu = function menu() {
 			'div',
 			null,
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ to: '/' },
+				_reactRouterDom.NavLink,
+				{ className: 'link', to: '/' },
 				'U'
 			),
 			'----/-/|<',
@@ -31,8 +31,8 @@ var menu = function menu() {
 				'-'
 			),
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ className: 'menu-link', to: '/practice' },
+				_reactRouterDom.NavLink,
+				{ activeClassName: 'active', className: 'link menu-link', to: '/practice' },
 				_react2.default.createElement(
 					'span',
 					{ className: 'ind' },
@@ -62,8 +62,8 @@ var menu = function menu() {
 				'-'
 			),
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ className: 'menu-link', to: '/work' },
+				_reactRouterDom.NavLink,
+				{ activeClassName: 'active', className: 'link menu-link', to: '/work' },
 				_react2.default.createElement(
 					'span',
 					{ className: 'ind' },
@@ -93,8 +93,8 @@ var menu = function menu() {
 				'-'
 			),
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ className: 'menu-link', to: '/atelier' },
+				_reactRouterDom.NavLink,
+				{ activeClassName: 'active', className: 'link menu-link', to: '/atelier' },
 				_react2.default.createElement(
 					'span',
 					{ className: 'ind' },
@@ -124,8 +124,8 @@ var menu = function menu() {
 				'-'
 			),
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ className: 'menu-link', to: '/contact' },
+				_reactRouterDom.NavLink,
+				{ activeClassName: 'active', className: 'link menu-link', to: '/contact' },
 				_react2.default.createElement(
 					'span',
 					{ className: 'ind' },
@@ -150,8 +150,8 @@ var menu = function menu() {
 			),
 			'-/|<//-////-\\-----/-',
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ to: '/' },
+				_reactRouterDom.NavLink,
+				{ className: 'link', activeClassName: 'active', to: '/' },
 				'URAIQAT'
 			),
 			'///-\\-'
@@ -161,8 +161,8 @@ var menu = function menu() {
 			null,
 			'----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/',
 			_react2.default.createElement(
-				_reactRouterDom.Link,
-				{ to: '/' },
+				_reactRouterDom.NavLink,
+				{ className: 'link', to: '/' },
 				'ARCHITECTS'
 			),
 			'\\--'
@@ -183,7 +183,7 @@ var menu = function menu() {
 			),
 			_react2.default.createElement(
 				'a',
-				{ href: '#' },
+				{ className: 'link', href: '#' },
 				'+Filter'
 			),
 			_react2.default.createElement(
@@ -209,7 +209,7 @@ var menu = function menu() {
 			),
 			_react2.default.createElement(
 				'a',
-				{ href: '#' },
+				{ className: 'link', href: '#' },
 				'Search'
 			),
 			_react2.default.createElement(

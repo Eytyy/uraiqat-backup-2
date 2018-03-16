@@ -28,6 +28,7 @@ var PostFeatured = function PostFeatured(content) {
 	var previewImagevideo = content.previewImagevideo,
 	    id = content.id;
 
+	var imageClass = 'post-preview__image';
 	if (previewImagevideo) {
 		var imgSize = previewImagevideo.fields.file.details.image;
 		var orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
@@ -37,7 +38,7 @@ var PostFeatured = function PostFeatured(content) {
 			_react2.default.createElement(
 				_reactRouterDom.Link,
 				{ className: 'post-preview__link', to: '/journal/' + id },
-				_react2.default.createElement(_ImageComponent2.default, { src: previewImagevideo.fields.file.url, title: previewImagevideo.fields.title }),
+				_react2.default.createElement(_ImageComponent2.default, { classList: imageClass, src: previewImagevideo.fields.file.url }),
 				_react2.default.createElement(_PostFeaturedText2.default, content)
 			)
 		);

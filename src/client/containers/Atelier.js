@@ -3,7 +3,7 @@ import React from 'react';
 const Atelier = () => {
 	return (
 		<div>
-			<h1>Atelier</h1>
+			<h1>Atelier: WIP</h1>
 		</div>
 	);
 };

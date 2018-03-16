@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchPosts = fetchPosts;
 exports.fetchPost = fetchPost;
+exports.fetchProjects = fetchProjects;
+exports.fetchProject = fetchProject;
 
 var _contentful = require('contentful');
 
@@ -29,6 +31,25 @@ function fetchPosts() {
 }
 
 function fetchPost(id) {
+	return client.getEntries({ 'sys.id': id }).then(function (payload) {
+		if (!payload.items.length) {
+			throw new Error('Entry not found');
+		}
+		return payload.items[0];
+	});
+}
+
+function fetchProjects() {
+	return client.getEntries({
+		content_type: 'landingPage',
+		'fields.pageTitle': 'Work',
+		include: 3
+	}).then(function (payload) {
+		return payload.items;
+	});
+}
+
+function fetchProject(id) {
 	return client.getEntries({ 'sys.id': id }).then(function (payload) {
 		if (!payload.items.length) {
 			throw new Error('Entry not found');

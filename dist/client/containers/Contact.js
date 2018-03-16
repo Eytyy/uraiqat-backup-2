@@ -17,7 +17,7 @@ var Contact = function Contact() {
 		_react2.default.createElement(
 			'h1',
 			null,
-			'Contact'
+			'Contact: WIP'
 		)
 	);
 };

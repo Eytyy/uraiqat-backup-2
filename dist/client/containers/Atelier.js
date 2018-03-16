@@ -17,7 +17,7 @@ var Atelier = function Atelier() {
 		_react2.default.createElement(
 			'h1',
 			null,
-			'Atelier'
+			'Atelier: WIP'
 		)
 	);
 };

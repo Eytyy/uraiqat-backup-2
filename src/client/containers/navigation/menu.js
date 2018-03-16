@@ -1,36 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const menu = () => {
 	return (
 		<nav>
 			<div>
-				<Link to="/">U</Link>
+				<NavLink className="link" to="/">U</NavLink>
 				{'----/-/|<'}<span className="ws">-</span>
-				<Link className="menu-link" to="/practice"><span className="ind">{'->'}</span>Practice</Link>
+				<NavLink activeClassName="active" className="link menu-link" to="/practice"><span className="ind">{'->'}</span>Practice</NavLink>
 				<span className="ws">-</span><span className="ws">-</span><span className="ws">-</span>{'/'}
 				<span className="ws">-</span>
-				<Link className="menu-link" to="/work"><span className="ind">{'->'}</span>Work</Link>
+				<NavLink activeClassName="active" className="link menu-link" to="/work"><span className="ind">{'->'}</span>Work</NavLink>
 				<span className="ws">-</span><span className="ws">-</span><span className="ws">-</span>{'/'}
 				<span className="ws">-</span>
-				<Link className="menu-link" to="/atelier"><span className="ind">{'->'}</span>Atelier</Link>
+				<NavLink activeClassName="active" className="link menu-link" to="/atelier"><span className="ind">{'->'}</span>Atelier</NavLink>
 				<span className="ws">-</span><span className="ws">-</span><span className="ws">-</span>{'/'}
 				<span className="ws">-</span>
-				<Link className="menu-link"to="/contact"><span className="ind">{'->'}</span>Contact</Link>
+				<NavLink activeClassName="active" className="link menu-link"to="/contact"><span className="ind">{'->'}</span>Contact</NavLink>
 				<span className="ws">-</span><span className="ws">-</span><span className="ws">-</span>{'-/|<//-////-\\-----/-'}
-				<Link to="/">URAIQAT</Link>
+				<NavLink className="link" activeClassName="active" to="/">URAIQAT</NavLink>
 				{'///-\\-'}
 			</div>
 			<div>
 				{'----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/'}
-				<Link to="/">ARCHITECTS</Link>
+				<NavLink className="link" to="/">ARCHITECTS</NavLink>
 				{'\\--'}
 			</div>
 			<div>
 				{'---/-/|<//'}<span className="ws">-</span><span className="ws">-</span>
-				<a href="#">+Filter</a>
+				<a className="link" href="#">+Filter</a>
 				<span className="ws">-</span><span className="ws">-</span>{'/'}<span className="ws">-</span><span className="ws">-</span>
-				<a href="#">Search</a><span className="ws">-</span><span className="ws">-</span>
+				<a className="link" href="#">Search</a><span className="ws">-</span><span className="ws">-</span>
 				{'//-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\---'}
 			</div>
 			

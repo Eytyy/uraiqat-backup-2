@@ -30,8 +30,8 @@ var Landing = function Landing(_ref) {
 	return _react2.default.createElement(
 		'section',
 		{ className: classList },
-		_react2.default.createElement(_LandingFeatured2.default, { content: featuredContent }),
-		_react2.default.createElement(_LandingChrono2.default, { content: mainContent })
+		_react2.default.createElement(_LandingFeatured2.default, { page: page, content: featuredContent }),
+		_react2.default.createElement(_LandingChrono2.default, { page: page, content: mainContent })
 	);
 };
 

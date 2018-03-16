@@ -14,10 +14,31 @@ var _Post = require('../home/Post');
 
 var _Post2 = _interopRequireDefault(_Post);
 
+var _ProjectPreview = require('../work/ProjectPreview');
+
+var _ProjectPreview2 = _interopRequireDefault(_ProjectPreview);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var LandingChrono = function LandingChrono(_ref) {
-	var content = _ref.content;
+var Content = function Content(_ref) {
+	var content = _ref.content,
+	    page = _ref.page;
+
+	switch (page) {
+		case 'work':
+			return content.map(function (post) {
+				return _react2.default.createElement(_ProjectPreview2.default, _extends({}, post.fields, { id: post.sys.id, key: post.sys.id }));
+			});
+		default:
+			return content.map(function (post) {
+				return _react2.default.createElement(_Post2.default, _extends({}, post.fields, { id: post.sys.id, key: post.sys.id }));
+			});
+	}
+};
+
+var LandingChrono = function LandingChrono(_ref2) {
+	var content = _ref2.content,
+	    page = _ref2.page;
 
 	if (typeof content === 'undefined') {
 		return null;
@@ -28,9 +49,7 @@ var LandingChrono = function LandingChrono(_ref) {
 	return _react2.default.createElement(
 		'section',
 		{ className: 'landing-section landing-section--main' },
-		sorted.map(function (post) {
-			return _react2.default.createElement(_Post2.default, _extends({}, post.fields, { id: post.sys.id, key: post.sys.id }));
-		})
+		_react2.default.createElement(Content, { content: sorted, page: page })
 	);
 };
 

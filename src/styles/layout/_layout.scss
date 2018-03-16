@@ -8,6 +8,7 @@ body {
 .wrapper {
 	padding: 0 48px 0;
 	margin: 0 auto;
+	max-width: 1440px;
 }
 
 .website-header {
@@ -21,13 +22,15 @@ body {
 }
 
 .main-content {
-	padding-top: 128px;
+	padding-top: 160px;
 }
 
 .landing-section {
-	margin-left: -84px;
-	display: flex;
-	flex-wrap: wrap;
+	.landing-page--journal & {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -84px;
+	}
 }
 
 .post-preview {

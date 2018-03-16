@@ -1,0 +1,49 @@
+.project-preview {
+	margin-bottom: 64px;
+}
+
+.project-preview__thumbs {
+	display: flex;
+	margin-top: 32px;
+	&__left-col {
+		flex: 0 0 1022px;
+		display: flex;
+		.project-preview__image--main {
+			flex: 0 0 700px;
+		}
+		.project-preview__image--drawing {
+			flex: 0 0 322px;
+		}
+	}
+	&__right-col {
+		flex: 0 0 322px;
+	}
+}
+
+.project-preview__image {
+	&--main,
+	&--drawing {
+		height: 416px;
+	}
+	&--craft,
+	&--diagram {
+		height: 208px;
+	}
+}
+
+.project-preview__image--main {
+	@extend %bw-filter;
+}
+
+.project-preview__image--drawing {
+	@extend %blue-filter;
+}
+
+.project-preview__image--craft {
+	@extend %bw-filter;
+	opacity: 0.5;
+}
+
+.project-preview__image--diagram {
+	@extend %red-filter;
+}

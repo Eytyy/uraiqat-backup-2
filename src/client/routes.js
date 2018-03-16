@@ -1,7 +1,10 @@
 import App from './containers/App';
 import Home from './containers/Home';
 import Post from './containers/Post';
+
 import Work from './containers/Work';
+import Project from './containers/Project';
+
 import Atelier from './containers/Atelier';
 import Practice from './containers/Practice';
 import Contact from './containers/Contact';
@@ -17,6 +20,10 @@ const routes = [
 			{ path: '/work',
 				exact: true,
 				component: Work,
+			},
+			{ path: '/work/:id',
+				exact: true,
+				component: Project,
 			},
 			{ path: '/atelier',
 				exact: true,

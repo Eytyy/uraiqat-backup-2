@@ -29,3 +29,22 @@ export function fetchPost(id) {
 		return payload.items[0];
 	});
 }
+
+export function fetchProjects() {
+	return client.getEntries({
+		content_type: 'landingPage',
+		'fields.pageTitle': 'Work',
+		include: 3
+	}).then((payload) => {
+		return payload.items;
+	});
+}
+
+export function fetchProject(id) {
+	return client.getEntries({ 'sys.id': id }).then((payload) => {
+		if (!payload.items.length) {
+			throw new Error('Entry not found');
+		}
+		return payload.items[0];
+	});
+}

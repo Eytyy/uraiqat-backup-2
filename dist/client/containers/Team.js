@@ -17,7 +17,7 @@ var Team = function Team() {
 		_react2.default.createElement(
 			'h1',
 			null,
-			'Team'
+			'Team: WIP'
 		)
 	);
 };

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -13,6 +13,7 @@ var api = _interopRequireWildcard(_api);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+// App Action Creators
 var requestClient = function requestClient() {
 	return {
 		type: 'INIT_CLIENT'
@@ -41,6 +42,7 @@ var initClient = exports.initClient = function initClient() {
 	};
 };
 
+// Journal Action Creators
 var requestPosts = function requestPosts() {
 	return {
 		type: 'REQUEST_POSTS'
@@ -91,6 +93,61 @@ var fetchPost = exports.fetchPost = function fetchPost(id) {
 		}
 		return api.fetchPost(id).then(function (response) {
 			dispatch(recievePost(response));
+		});
+	};
+};
+
+// Work Action Creators
+var requestProjects = function requestProjects() {
+	return {
+		type: 'REQUEST_PROJECTS'
+	};
+};
+
+var recieveProjects = function recieveProjects(payload) {
+	return {
+		type: 'RECIEVE_PROJECTS',
+		response: payload
+	};
+};
+
+var requestProject = function requestProject() {
+	return {
+		type: 'REQUEST_PROJECT'
+	};
+};
+
+var recieveProject = function recieveProject(payload) {
+	return {
+		type: 'RECIEVE_PROJECT',
+		response: payload
+	};
+};
+
+var fetchProjects = exports.fetchProjects = function fetchProjects() {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestProjects());
+		if ((0, _reducers.isProjectsFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchProjects().then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveProjects(response));
+		});
+	};
+};
+
+var fetchProject = exports.fetchProject = function fetchProject(id) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestProject());
+		if ((0, _reducers.isProjectFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchProject(id).then(function (response) {
+			dispatch(recieveProject(response));
 		});
 	};
 };
