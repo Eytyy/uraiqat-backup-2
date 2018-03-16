@@ -9,9 +9,18 @@ import { fetchProject } from '../actions';
 import { getProject, isProjectFetching } from '../reducers';
 
 import CommaSeparatedList from '../components/CommaSpearatedList';
+import BodyText from '../components/BodyText';
+
 import Slider from './Slider';
 
 class Project extends Component { //eslint-disable-line
+	constructor() {
+		super();
+		this.state = {
+			isAboutVisible: false,
+		};
+		this.toggleAbout = this.toggleAbout.bind(this);
+	}
 	static fetchData(store, id) {
 		return store.dispatch(fetchProject(id));
 	}
@@ -20,6 +29,11 @@ class Project extends Component { //eslint-disable-line
 		if (!isFetching && typeof content.id === 'undefined') {
 			this.fetchData();
 		}
+	}
+	toggleAbout() {
+		this.setState({
+			isAboutVisible: !this.state.isAboutVisible
+		});
 	}
 
 	fetchData() {
@@ -64,9 +78,14 @@ class Project extends Component { //eslint-disable-line
 					</div>
 				</div>
 				<div className="project__bottom">
-					<div className="project__about">{aboutTheProject}</div>
+					<div className={`project__about ${this.state.isAboutVisible ? 'js-isExpanded' : ''}`}>
+						<BodyText content={aboutTheProject} />
+						<span className="toggle-project-about" onClick={this.toggleAbout}>
+							{ this.state.isAboutVisible ? '- read less' : '+ read more' }
+						</span>
+					</div>
 					<div className="project__drawings">
-						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=334&h=256'} content={drawings} />
+						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=668&h=512'} content={drawings} />
 					</div>
 				</div>
 			</article>

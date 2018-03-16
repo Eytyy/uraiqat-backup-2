@@ -24,6 +24,23 @@
 .project__about {
 	width: 686px;
 	float: left;
+	p:first-child {
+		height: 100%;
+	}
+	p {
+		height: 0;
+		overflow: hidden;
+		margin: 0;
+	}
+	&.js-isExpanded {
+		p {
+			height: 100%;
+			margin-bottom: 32px;
+		}
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .project__drawings {
@@ -32,4 +49,11 @@
 	.preview-image {
 		@extend %blue-filter;
 	}
+}
+
+.toggle-project-about {
+	font-family: $font--bold;
+	margin-top: 16px;
+	display: inline-block;
+	cursor: pointer;
 }

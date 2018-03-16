@@ -28,7 +28,12 @@ var Slider = function (_Component) {
 	function Slider() {
 		_classCallCheck(this, Slider);
 
-		return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this));
+
+		_this.state = {
+			activeSlide: 0
+		};
+		return _this;
 	}
 
 	_createClass(Slider, [{
@@ -46,17 +51,46 @@ var Slider = function (_Component) {
 				return _react2.default.createElement(
 					'div',
 					{ className: 'slider ' + classList },
-					_react2.default.createElement(_ImageComponent2.default, { classList: 'slide', imagesQuery: imagesQuery, src: content[0].fields.file.url })
+					_react2.default.createElement(
+						'div',
+						{ className: 'slider__slides' },
+						_react2.default.createElement(_ImageComponent2.default, { classList: 'slide', imagesQuery: imagesQuery, src: content[0].fields.file.url })
+					)
 				);
 			}
 			return _react2.default.createElement(
 				'div',
 				{ className: 'slider slider--singleSlide ' + classList },
-				content.map(function (_ref) {
-					var fields = _ref.fields,
-					    sys = _ref.sys;
-					return _react2.default.createElement(_ImageComponent2.default, { classList: 'slide', imagesQuery: imagesQuery, key: sys.id, src: fields.file.url });
-				})
+				_react2.default.createElement(
+					'div',
+					{ className: 'slider__slides' },
+					content.map(function (_ref) {
+						var fields = _ref.fields,
+						    sys = _ref.sys;
+						return _react2.default.createElement(_ImageComponent2.default, { classList: 'slide', imagesQuery: imagesQuery, key: sys.id, src: fields.file.url });
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'slider__controls' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'slider__controls__item slider-btn slider-btn--prev' },
+						'<'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'slider__controls__item slider__counter' },
+						this.state.activeSlide,
+						'/',
+						content.length
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'slider__controls__item slider-btn slider-btn--next' },
+						'>'
+					)
+				)
 			);
 		}
 	}]);

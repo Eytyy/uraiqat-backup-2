@@ -8,11 +8,37 @@
 		height: 100%;
 	}
 	&--main {
-		width: 826px;
-		height: 512px;
+		width: 903px;
+		@extend %clearfix;
+		.slider__slides {
+			width: 826px;
+			height: 512px;
+		}
 	}
 	&--small {
-		width: 334px;
-		height: 256px;
+		width: 392px;
+		.slider__slides {
+			width: 334px;
+			height: 256px;
+		}
 	}
+}
+.slider__slides {
+	float: left;
+	position: relative;
+}	
+.slider__controls {
+	float: right;
+	color: blue;
+	font-family: $font--bold;
+	text-align: center;
+}
+
+.slider__counter {
+	font-size: 14px;
+	margin: 16px 0px;
+}
+
+.slider-btn {
+	cursor: pointer;
 }

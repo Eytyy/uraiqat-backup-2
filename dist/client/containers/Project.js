@@ -28,6 +28,10 @@ var _CommaSpearatedList = require('../components/CommaSpearatedList');
 
 var _CommaSpearatedList2 = _interopRequireDefault(_CommaSpearatedList);
 
+var _BodyText = require('../components/BodyText');
+
+var _BodyText2 = _interopRequireDefault(_BodyText);
+
 var _Slider = require('./Slider');
 
 var _Slider2 = _interopRequireDefault(_Slider);
@@ -43,10 +47,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Project = function (_Component) {
 	_inherits(Project, _Component);
 
+	//eslint-disable-line
 	function Project() {
 		_classCallCheck(this, Project);
 
-		return _possibleConstructorReturn(this, (Project.__proto__ || Object.getPrototypeOf(Project)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Project.__proto__ || Object.getPrototypeOf(Project)).call(this));
+
+		_this.state = {
+			isAboutVisible: false
+		};
+		_this.toggleAbout = _this.toggleAbout.bind(_this);
+		return _this;
 	}
 
 	_createClass(Project, [{
@@ -59,6 +70,13 @@ var Project = function (_Component) {
 			if (!isFetching && typeof content.id === 'undefined') {
 				this.fetchData();
 			}
+		}
+	}, {
+		key: 'toggleAbout',
+		value: function toggleAbout() {
+			this.setState({
+				isAboutVisible: !this.state.isAboutVisible
+			});
 		}
 	}, {
 		key: 'fetchData',
@@ -180,20 +198,24 @@ var Project = function (_Component) {
 					{ className: 'project__bottom' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'project__about' },
-						aboutTheProject
+						{ className: 'project__about ' + (this.state.isAboutVisible ? 'js-isExpanded' : '') },
+						_react2.default.createElement(_BodyText2.default, { content: aboutTheProject }),
+						_react2.default.createElement(
+							'span',
+							{ className: 'toggle-project-about', onClick: this.toggleAbout },
+							this.state.isAboutVisible ? '- read less' : '+ read more'
+						)
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__drawings' },
-						_react2.default.createElement(_Slider2.default, { classList: 'slider--small', imagesQuery: '?fl=progressive&w=334&h=256', content: drawings })
+						_react2.default.createElement(_Slider2.default, { classList: 'slider--small', imagesQuery: '?fl=progressive&w=668&h=512', content: drawings })
 					)
 				)
 			);
 		}
 	}], [{
 		key: 'fetchData',
-		//eslint-disable-line
 		value: function fetchData(store, id) {
 			return store.dispatch((0, _actions.fetchProject)(id));
 		}
