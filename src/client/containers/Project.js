@@ -46,7 +46,8 @@ class Project extends Component { //eslint-disable-line
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div>Loading post...</div>;
 		}
-		const { projectName, aboutTheProject, drawings, mainImagevideo, location, year, budget, area, status, typology } = content;
+		const { projectName, aboutTheProject, drawings, mainSlider, location, year, budget, area, status, typology } = content;
+		console.log(mainSlider);
 		return (
 			<article className="project">
 				<header>
@@ -54,7 +55,7 @@ class Project extends Component { //eslint-disable-line
 				</header>
 				<div className="project__top">
 					<div className="project__media">
-						<Slider classList="slider--main" imagesQuery={'?fl=progressive&w=826&h=512'} content={mainImagevideo} />
+						<Slider classList="slider--main" imagesQuery={'?fl=progressive&w=826&h=512'} content={mainSlider} />
 					</div> 
 					<div className="project__meta">
 						<div className="project__meta__item">

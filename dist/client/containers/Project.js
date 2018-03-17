@@ -105,7 +105,7 @@ var Project = function (_Component) {
 			var projectName = content.projectName,
 			    aboutTheProject = content.aboutTheProject,
 			    drawings = content.drawings,
-			    mainImagevideo = content.mainImagevideo,
+			    mainSlider = content.mainSlider,
 			    location = content.location,
 			    year = content.year,
 			    budget = content.budget,
@@ -113,6 +113,7 @@ var Project = function (_Component) {
 			    status = content.status,
 			    typology = content.typology;
 
+			console.log(mainSlider);
 			return _react2.default.createElement(
 				'article',
 				{ className: 'project' },
@@ -131,7 +132,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__media' },
-						_react2.default.createElement(_Slider2.default, { classList: 'slider--main', imagesQuery: '?fl=progressive&w=826&h=512', content: mainImagevideo })
+						_react2.default.createElement(_Slider2.default, { classList: 'slider--main', imagesQuery: '?fl=progressive&w=826&h=512', content: mainSlider })
 					),
 					_react2.default.createElement(
 						'div',

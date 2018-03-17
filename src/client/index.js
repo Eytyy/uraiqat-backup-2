@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
@@ -15,7 +15,7 @@ import Styles from '../styles/main.scss'; //eslint-disable-line
 
 const store = createStore(RootReducer, window.__INITIAL_STATE__, applyMiddleware(thunk));
 
-render(
+hydrate(
 	<Provider store={store}>
 		<BrowserRouter>
 			{ renderRoutes(routes) }

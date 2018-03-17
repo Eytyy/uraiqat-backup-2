@@ -10,6 +10,7 @@
 		@extend %bw-filter;
 		position: relative;
 		overflow: hidden;
+		margin: 0 auto;
 		video {
 			display: block;
 			width: auto;

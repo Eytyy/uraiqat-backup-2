@@ -50,10 +50,10 @@ var ProjectPreview = function ProjectPreview(content) {
 	    projectName = content.projectName,
 	    year = content.year,
 	    typology = content.typology,
-	    previewImagevideo = content.previewImagevideo,
-	    previewDrawingImage = content.previewDrawingImage,
-	    previewDiagramImage = content.previewDiagramImage,
-	    previewCrafttechpeopleImage = content.previewCrafttechpeopleImage;
+	    previewMainThumbnail = content.previewMainThumbnail,
+	    previewDrawingThumbnail = content.previewDrawingThumbnail,
+	    previewDiagramThumbnail = content.previewDiagramThumbnail,
+	    previewCraftThumbnail = content.previewCraftThumbnail;
 
 	return _react2.default.createElement(
 		'article',
@@ -81,7 +81,7 @@ var ProjectPreview = function ProjectPreview(content) {
 					typology.length !== 0 ? _react2.default.createElement(Typology, { content: typology }) : null
 				)
 			),
-			_react2.default.createElement(_ProjectPreviewThumbnails2.default, { main: previewImagevideo, drawing: previewDrawingImage, diagram: previewDiagramImage, craft: previewCrafttechpeopleImage })
+			_react2.default.createElement(_ProjectPreviewThumbnails2.default, { main: previewMainThumbnail, drawing: previewDrawingThumbnail, diagram: previewDiagramThumbnail, craft: previewCraftThumbnail })
 		)
 	);
 };

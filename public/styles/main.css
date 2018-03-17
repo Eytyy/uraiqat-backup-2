@@ -248,7 +248,8 @@ nav {
     position: relative; }
   .post-preview__video {
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    margin: 0 auto; }
     .post-preview__video video {
       display: block;
       width: auto;
