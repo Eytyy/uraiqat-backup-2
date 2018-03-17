@@ -1,12 +1,12 @@
 import React from 'react';
-import PostDefault from './PostDefault';
-import PostFeatured from './PostFeatured';
+import PostDefault from './default/PostDefault';
+import PostFeatured from './featured/PostFeatured';
 
 const Post = (content) => {
-	const { previewDisplaySize, ...rest } = content;
+	const { previewDisplaySize } = content;
 	return previewDisplaySize === 'Featured' ?
-		<PostFeatured {...rest } /> :
-		<PostDefault {...rest } />;
+		<PostFeatured content={ content } /> :
+		<PostDefault content={ content } />;
 };
 
 export default Post;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ImageComponent from '../components/ImageComponent';
+import ImageComponent from '../components/media/ImageComponent';
 
 class Slider extends Component {
 	constructor() {

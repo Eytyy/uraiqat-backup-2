@@ -4,9 +4,9 @@
   display: block;
   clear: both; }
 
-.post-preview__image, .project-preview__image--main, .project-preview__image--craft {
+.post-preview__video, .post-preview__image, .project-preview__image--main, .project-preview__image--craft {
   position: relative; }
-  .post-preview__image:before, .project-preview__image--main:before, .project-preview__image--craft:before {
+  .post-preview__video:before, .post-preview__image:before, .project-preview__image--main:before, .project-preview__image--craft:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -15,7 +15,7 @@
     height: 100%;
     background-color: #FFF;
     mix-blend-mode: color; }
-  .post-preview__image:after, .project-preview__image--main:after, .project-preview__image--craft:after {
+  .post-preview__video:after, .post-preview__image:after, .project-preview__image--main:after, .project-preview__image--craft:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -104,7 +104,8 @@ h1, h2, h3, h4, h5 {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  font-weight: normal; }
 
 p {
   margin: 0; }
@@ -143,7 +144,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 100;
   background: #FFF; }
 
 .main-content {
@@ -166,6 +167,10 @@ body {
           flex: 0 0 1162px;
   margin: 0 auto 64px;
   clear: both; }
+  .post-preview--featured.post-preview--landscape {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 1067px;
+            flex: 0 0 1067px; }
 
 .post-preview--default {
   -webkit-box-flex: 0;
@@ -241,6 +246,23 @@ nav {
     color: #000;
     display: block;
     position: relative; }
+  .post-preview__video {
+    position: relative;
+    overflow: hidden; }
+    .post-preview__video video {
+      display: block;
+      width: auto;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      border: none;
+      -webkit-box-shadow: 0 0 0;
+              box-shadow: 0 0 0; }
+    .post-preview__video:before, .post-preview__video:after {
+      z-index: 2; }
   .post-preview__content {
     position: relative; }
   .post-preview__meta {
@@ -248,9 +270,39 @@ nav {
   .post-preview__desc {
     color: #4A4A4A; }
 
+.post-preview__video {
+  position: relative;
+  cursor: pointer; }
+  .post-preview__video .video-controls {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 2;
+    color: blue;
+    font-family: "ZeitungMonoPro-Bold";
+    font-size: 32px; }
+  .post-preview__video .video-state {
+    border: 25px solid transparent;
+    border-left: 40px solid red;
+    display: block; }
+  .post-preview__video.js-videoIsActive:before, .post-preview__video.js-videoIsActive:after {
+    background-color: transparent; }
+  .post-preview__video.js-videoIsActive .video-controls {
+    opacity: 0; }
+  .post-preview__video.js-videoIsActive .video-state {
+    border: 20px solid red; }
+  .post-preview__video.js-videoIsActive:hover .video-controls {
+    opacity: 1; }
+
 .post-preview__link:hover .post-preview__image:after,
 .post-preview__link:hover .post-preview__image:before {
   background-color: transparent; }
+
+.post-preview--default.post-preview--video {
+  width: 630px;
+  height: 352px; }
 
 .post-preview--default .post-preview__title {
   margin: 16px 0 0;
@@ -271,6 +323,10 @@ nav {
 .post-preview--featured .post-preview__content__inner {
   background: #FFF;
   padding: 32px 28px 32px 28px; }
+
+.post-preview--featured .post-preview__video {
+  width: 868px;
+  height: 544px; }
 
 .post-preview--portrait .post-preview__link {
   display: -webkit-box;
@@ -313,6 +369,12 @@ nav {
 
 .post-preview--landscape .post-preview__image {
   height: 256px; }
+
+.post-preview--landscape.post-preview--featured .post-preview__content {
+  width: 826px;
+  margin: -96px 0 0 auto;
+  position: relative;
+  z-index: 2; }
 
 .project-preview {
   margin-bottom: 64px; }

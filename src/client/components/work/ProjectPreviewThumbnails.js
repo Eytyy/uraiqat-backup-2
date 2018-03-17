@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageComponent from '../ImageComponent';
+import ImageComponent from '../media/ImageComponent';
 
 const ProjectPreviewThumbnails = ({ main, craft, diagram, drawing}) => {
 	return (

@@ -8,7 +8,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ImageComponent = require('../ImageComponent');
+var _ImageComponent = require('../media/ImageComponent');
 
 var _ImageComponent2 = _interopRequireDefault(_ImageComponent);
 
