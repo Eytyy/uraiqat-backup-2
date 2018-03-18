@@ -61,7 +61,7 @@ var Work = function (_Component) {
 				return _react2.default.createElement(
 					'div',
 					null,
-					'Loading Projects..'
+					'Loading Projects.. this will be replaced with the patterns transition'
 				);
 			}
 			return _react2.default.createElement(_Landing2.default, { content: content, page: 'work' });

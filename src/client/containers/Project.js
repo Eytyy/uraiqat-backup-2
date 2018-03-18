@@ -44,10 +44,9 @@ class Project extends Component { //eslint-disable-line
 	render() {
 		const { content, isFetching } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {
-			return <div>Loading post...</div>;
+			return <div>Loading project ... this will be replaced with the pattern transition</div>;
 		}
 		const { projectName, aboutTheProject, drawings, mainSlider, location, year, budget, area, status, typology } = content;
-		console.log(mainSlider);
 		return (
 			<article className="project">
 				<header>

@@ -19,7 +19,7 @@ class Work extends Component {
 	render() {
 		const { isFetching, content } = this.props;
 		if (isFetching && content.length === 0 || content.length === 0 ) {
-			return <div>Loading Projects..</div>;
+			return <div>Loading Projects.. this will be replaced with the patterns transition</div>;
 		}
 		return <Landing content={content} page='work'></Landing>;
 	}

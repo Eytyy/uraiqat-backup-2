@@ -99,7 +99,7 @@ var Project = function (_Component) {
 				return _react2.default.createElement(
 					'div',
 					null,
-					'Loading post...'
+					'Loading project ... this will be replaced with the pattern transition'
 				);
 			}
 			var projectName = content.projectName,
@@ -113,7 +113,6 @@ var Project = function (_Component) {
 			    status = content.status,
 			    typology = content.typology;
 
-			console.log(mainSlider);
 			return _react2.default.createElement(
 				'article',
 				{ className: 'project' },

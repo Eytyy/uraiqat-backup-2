@@ -1,9 +1,10 @@
 import React from 'react';
 
-const CommaSpearatedList = () => {
+const CommaSpearatedList = ({ content, listClass, itemClass }) => {
 	return (
-		<div>
-			
+		<div className={listClass}>
+			{
+			}
 		</div>
 	);
 };

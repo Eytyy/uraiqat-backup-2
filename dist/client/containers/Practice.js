@@ -17,7 +17,7 @@ var Practice = function Practice() {
 		_react2.default.createElement(
 			'h1',
 			null,
-			'Practice: WIP'
+			'Practice: Work In Progress'
 		)
 	);
 };

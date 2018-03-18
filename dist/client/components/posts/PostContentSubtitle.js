@@ -1,25 +1,23 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Team = function Team() {
+var PostContentSubtitle = function PostContentSubtitle(_ref) {
+	var content = _ref.content;
+
 	return _react2.default.createElement(
-		'div',
-		null,
-		_react2.default.createElement(
-			'h1',
-			null,
-			'Team: Work In Progress'
-		)
+		"h2",
+		{ className: "subtitle" },
+		content.content
 	);
 };
 
-exports.default = Team;
+exports.default = PostContentSubtitle;

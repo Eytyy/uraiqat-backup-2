@@ -24,6 +24,18 @@ var _actions = require('../actions');
 
 var _reducers = require('../reducers');
 
+var _PostTags = require('../components/posts/PostTags');
+
+var _PostTags2 = _interopRequireDefault(_PostTags);
+
+var _PostAuthors = require('../components/posts/PostAuthors');
+
+var _PostAuthors2 = _interopRequireDefault(_PostAuthors);
+
+var _PostContent = require('../components/posts/PostContent');
+
+var _PostContent2 = _interopRequireDefault(_PostContent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -68,22 +80,51 @@ var Post = function (_Component) {
 			var _props3 = this.props,
 			    content = _props3.content,
 			    isFetching = _props3.isFetching;
+			var tags = content.tags,
+			    date = content.date,
+			    author = content.author,
+			    mainContent = content.mainContent;
 
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
 					'div',
 					null,
-					'Loading post...'
+					'Loading post this will be repalced with the pattern transition'
 				);
 			}
 			return _react2.default.createElement(
 				'article',
 				{ className: 'post' },
 				_react2.default.createElement(
-					'h1',
-					{ className: 'press-entry__title main-title' },
-					content.title
-				)
+					'header',
+					{ className: 'post__header' },
+					_react2.default.createElement(
+						'h1',
+						{ className: 'post__title main-title' },
+						content.title
+					),
+					tags && _react2.default.createElement(_PostTags2.default, { content: tags }),
+					' ',
+					' ',
+					date && _react2.default.createElement(
+						'div',
+						{ className: 'post__meta post__date' },
+						_react2.default.createElement(
+							'span',
+							{ className: 'label' },
+							'On '
+						),
+						_react2.default.createElement(
+							'span',
+							{ className: 'post__meta__item' },
+							date
+						)
+					),
+					' ',
+					author && _react2.default.createElement(_PostAuthors2.default, { content: author }),
+					' '
+				),
+				mainContent && _react2.default.createElement(_PostContent2.default, { content: mainContent })
 			);
 		}
 	}], [{

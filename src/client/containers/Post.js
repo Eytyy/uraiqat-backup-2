@@ -8,6 +8,10 @@ import PropTypes from 'prop-types';
 import { fetchPost } from '../actions';
 import { getPost, isPostFetching } from '../reducers';
 
+import PostTags from '../components/posts/PostTags';
+import PostAuthors from '../components/posts/PostAuthors';
+import PostContent from '../components/posts/PostContent';
+
 class Post extends Component { //eslint-disable-line
 	static fetchData(store, id) {
 		return store.dispatch(fetchPost(id));
@@ -26,12 +30,22 @@ class Post extends Component { //eslint-disable-line
 	}
 	render() {
 		const { content, isFetching } = this.props;
+		const { tags, date, author, mainContent } = content;
 		if (isFetching || typeof content.id === 'undefined') {
-			return <div>Loading post...</div>;
+			return <div>Loading post this will be repalced with the pattern transition</div>;
 		}
 		return (
 			<article className="post">
-				<h1 className="press-entry__title main-title">{content.title}</h1>
+				<header className="post__header">
+					<h1 className="post__title main-title">{content.title}</h1>
+					{ tags && <PostTags content={tags} />} {' '}
+					{date && <div className="post__meta post__date">
+						<span className="label">On </span>
+						<span className="post__meta__item">{date}</span>
+					</div>}{' '}
+					{ author && <PostAuthors content={author} />}{' '}
+				</header>
+				{mainContent && <PostContent content={mainContent} />}
 			</article>
 		);
 	}

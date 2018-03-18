@@ -20,7 +20,7 @@ class Home extends Component {
 	render() {
 		const { isFetching, content } = this.props;
 		if (isFetching && content.length === 0 || content.length === 0 ) {
-			return <div>Loading Posts..</div>;
+			return <div>Loading Posts.. this will be replaced with the pattern transition</div>;
 		}
 		return <Landing content={content} page='journal'></Landing>;
 	}

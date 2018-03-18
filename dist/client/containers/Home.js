@@ -63,7 +63,7 @@ var Home = function (_Component) {
 				return _react2.default.createElement(
 					'div',
 					null,
-					'Loading Posts..'
+					'Loading Posts.. this will be replaced with the pattern transition'
 				);
 			}
 			return _react2.default.createElement(_Landing2.default, { content: content, page: 'journal' });
