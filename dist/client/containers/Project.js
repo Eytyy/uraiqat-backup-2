@@ -54,7 +54,8 @@ var Project = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Project.__proto__ || Object.getPrototypeOf(Project)).call(this));
 
 		_this.state = {
-			isAboutVisible: false
+			isAboutVisible: false,
+			shouldAboutRetract: true
 		};
 		_this.toggleAbout = _this.toggleAbout.bind(_this);
 		return _this;
@@ -70,6 +71,10 @@ var Project = function (_Component) {
 			if (!isFetching && typeof content.id === 'undefined') {
 				this.fetchData();
 			}
+			var shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
+			this.setState({
+				shouldAboutRetract: shouldAboutRetract
+			});
 		}
 	}, {
 		key: 'toggleAbout',
@@ -200,7 +205,7 @@ var Project = function (_Component) {
 						'div',
 						{ className: 'project__about ' + (this.state.isAboutVisible ? 'js-isExpanded' : '') },
 						_react2.default.createElement(_BodyText2.default, { content: aboutTheProject }),
-						_react2.default.createElement(
+						this.state.shouldAboutRetract && _react2.default.createElement(
 							'span',
 							{ className: 'toggle-project-about', onClick: this.toggleAbout },
 							this.state.isAboutVisible ? '- read less' : '+ read more'
@@ -209,7 +214,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__drawings' },
-						_react2.default.createElement(_Slider2.default, { classList: 'slider--small', imagesQuery: '?fl=progressive&w=668&h=512', content: drawings })
+						_react2.default.createElement(_Slider2.default, { classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
 					)
 				),
 				_react2.default.createElement(

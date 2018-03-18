@@ -18,6 +18,7 @@ class Project extends Component { //eslint-disable-line
 		super();
 		this.state = {
 			isAboutVisible: false,
+			shouldAboutRetract: true,
 		};
 		this.toggleAbout = this.toggleAbout.bind(this);
 	}
@@ -29,6 +30,10 @@ class Project extends Component { //eslint-disable-line
 		if (!isFetching && typeof content.id === 'undefined') {
 			this.fetchData();
 		}
+		const shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
+		this.setState({
+			shouldAboutRetract
+		});
 	}
 	toggleAbout() {
 		this.setState({
@@ -80,12 +85,12 @@ class Project extends Component { //eslint-disable-line
 				<div className="project__bottom">
 					<div className={`project__about ${this.state.isAboutVisible ? 'js-isExpanded' : ''}`}>
 						<BodyText content={aboutTheProject} />
-						<span className="toggle-project-about" onClick={this.toggleAbout}>
+						{this.state.shouldAboutRetract && <span className="toggle-project-about" onClick={this.toggleAbout}>
 							{ this.state.isAboutVisible ? '- read less' : '+ read more' }
-						</span>
+						</span>}
 					</div>
 					<div className="project__drawings">
-						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=668&h=512'} content={drawings} />
+						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
 				<aside className="related-content project__related">

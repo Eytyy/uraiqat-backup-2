@@ -102,6 +102,9 @@ h1, h2, h3, h4, h5 {
 .main-title {
   margin-bottom: 64px; }
 
+.website-footer {
+  font-family: "ZeitungMonoPro-Bold"; }
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -188,6 +191,9 @@ img {
 .related-content {
   margin-top: 96px;
   height: 128px; }
+
+.website-footer {
+  margin-top: 96px; }
 
 .ws {
   opacity: 0; }
@@ -397,7 +403,7 @@ nav {
   color: blue; }
 
 .project-preview {
-  margin-bottom: 64px; }
+  margin-bottom: 96px; }
 
 .project-preview__thumbs {
   display: -webkit-box;
@@ -464,7 +470,7 @@ nav {
 
 .project__media {
   float: left;
-  margin-left: 42px; }
+  margin-left: 48px; }
 
 .project__meta {
   float: right;

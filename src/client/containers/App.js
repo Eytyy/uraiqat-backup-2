@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 
 import Menu from './navigation/menu';
+import Footer from '../components/Footer';
 
 class App extends Component {
 	render() {
@@ -18,6 +19,7 @@ class App extends Component {
 				<main role="main" className="main-content">
 					{ renderRoutes(route.routes) }
 				</main>
+				<Footer />
 			</div>
 		);
 	}

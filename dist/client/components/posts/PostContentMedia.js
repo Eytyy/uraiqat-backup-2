@@ -20,7 +20,7 @@ var PostContentMedia = function PostContentMedia(_ref) {
 	if (typeof content === 'undefined') {
 		return null;
 	}
-	return _react2.default.createElement(_Slider2.default, { classList: 'post__media', imagesQuery: '?fl=progressive&w=882&h=575', content: content.files });
+	return _react2.default.createElement(_Slider2.default, { classList: 'post__media', imagesQuery: '?fl=progressive&w=882', content: content.files });
 };
 
 exports.default = PostContentMedia;
