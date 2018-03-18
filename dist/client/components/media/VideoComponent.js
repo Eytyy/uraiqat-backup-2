@@ -66,8 +66,8 @@ var VideoComponent = function (_Component) {
 			    content = _props.content,
 			    classList = _props.classList;
 
-			var url = content.fields.file.url;
-			var allClasses = classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
+			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
+			var allClasses = 'video ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
 			return _react2.default.createElement(
 				'div',
 				{ onClick: this.toggleVideo, className: allClasses },

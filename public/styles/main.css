@@ -4,9 +4,9 @@
   display: block;
   clear: both; }
 
-.post-preview__video, .post-preview__image, .project-preview__image--main, .project-preview__image--craft {
+.video.post-preview__video, .post-preview__image, .project-preview__image--main, .project-preview__image--craft {
   position: relative; }
-  .post-preview__video:before, .post-preview__image:before, .project-preview__image--main:before, .project-preview__image--craft:before {
+  .video.post-preview__video:before, .post-preview__image:before, .project-preview__image--main:before, .project-preview__image--craft:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -15,7 +15,7 @@
     height: 100%;
     background-color: #FFF;
     mix-blend-mode: color; }
-  .post-preview__video:after, .post-preview__image:after, .project-preview__image--main:after, .project-preview__image--craft:after {
+  .video.post-preview__video:after, .post-preview__image:after, .project-preview__image--main:after, .project-preview__image--craft:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -243,44 +243,22 @@ nav {
   background-size: cover;
   background-position: center; }
 
-.post-preview {
-  margin-bottom: 64px; }
-  .post-preview a {
-    text-decoration: none;
-    color: #000;
-    display: block;
-    position: relative; }
-  .post-preview__video {
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto; }
-    .post-preview__video video {
-      display: block;
-      width: auto;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-              transform: translateX(-50%);
-      border: none;
-      -webkit-box-shadow: 0 0 0;
-              box-shadow: 0 0 0; }
-    .post-preview__video:before, .post-preview__video:after {
-      z-index: 2; }
-  .post-preview__content {
-    position: relative; }
-  .post-preview__meta {
-    font-family: "ZeitungMonoPro-Bold"; }
-  .post-preview__desc {
-    color: #4A4A4A; }
-
-.post-preview__video {
+.video {
+  overflow: hidden;
   position: relative;
   cursor: pointer; }
-  .post-preview__video .video-controls {
+  .video video {
+    display: block;
+    width: auto;
+    height: 100%;
     position: absolute;
-    top: 45%;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  .video .video-controls {
+    position: absolute;
+    top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
@@ -288,17 +266,25 @@ nav {
     color: blue;
     font-family: "ZeitungMonoPro-Bold";
     font-size: 32px; }
-  .post-preview__video .video-state {
+  .video .video-state {
     border: 25px solid transparent;
+    border-left: 40px solid blue;
     display: block; }
-  .post-preview__video.js-videoIsActive:before, .post-preview__video.js-videoIsActive:after {
+  .video.js-videoIsActive:before, .video.js-videoIsActive:after {
     background-color: transparent; }
-  .post-preview__video.js-videoIsActive .video-controls {
+  .video.js-videoIsActive .video-controls {
     opacity: 0; }
-  .post-preview__video.js-videoIsActive .video-state {
-    border: 20px solid red; }
-  .post-preview__video.js-videoIsActive:hover .video-controls {
+  .video.js-videoIsActive .video-state {
+    border: 20px solid blue; }
+  .video.js-videoIsActive:hover .video-controls {
     opacity: 1; }
+  .video.post-preview__video {
+    margin: 0 auto; }
+    .video.post-preview__video:before, .video.post-preview__video:after {
+      z-index: 2; }
+    .video.post-preview__video video-controls {
+      position: absolute;
+      top: 45%; }
 
 .post-preview--featured .post-preview__video .video-state {
   border-left: 40px solid red; }
@@ -306,11 +292,19 @@ nav {
 .post-preview--featured .post-preview__video.js-videoIsActive .video-state {
   border: 20px solid red; }
 
-.post-preview--default .post-preview__video .video-state {
-  border-left: 40px solid blue; }
-
-.post-preview--default .post-preview__video.js-videoIsActive .video-state {
-  border: 20px solid blue; }
+.post-preview {
+  margin-bottom: 64px; }
+  .post-preview a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    position: relative; }
+  .post-preview__content {
+    position: relative; }
+  .post-preview__meta {
+    font-family: "ZeitungMonoPro-Bold"; }
+  .post-preview__desc {
+    color: #4A4A4A; }
 
 .post-preview__link:hover .post-preview__image:after,
 .post-preview__link:hover .post-preview__image:before {

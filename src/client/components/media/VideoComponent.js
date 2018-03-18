@@ -28,8 +28,8 @@ class VideoComponent extends Component {
 	}
 	render() {
 		const { content, classList } = this.props;
-		const url = content.fields.file.url;
-		const allClasses = `${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
+		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
+		const allClasses = `video ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
 			<div onClick={this.toggleVideo} className={allClasses}>
 				<div className="video-controls">

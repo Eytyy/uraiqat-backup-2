@@ -6,27 +6,6 @@
 		display: block;
 		position: relative;
 	}
-	&__video {
-		@extend %bw-filter;
-		position: relative;
-		overflow: hidden;
-		margin: 0 auto;
-		video {
-			display: block;
-			width: auto;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			border: none;
-			box-shadow: 0 0 0;
-		}
-		&:before,
-		&:after {
-			z-index: 2;
-		}
-	}
 	&__image {
 		@extend %bw-filter;
 	}
@@ -39,67 +18,6 @@
 	&__desc {
 		color: $secondaryTextColor;
 	}
-}
-
-
-.post-preview__video {
-	position: relative;
-	cursor: pointer;
-	.video-controls {
-		position: absolute;
-		top: 45%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 2;
-		color: blue;
-		font-family: $font--bold;
-		font-size: 32px;
-	}
-	.video-state {
-    border: 25px solid transparent;
-		display: block;
-	}
-	&.js-videoIsActive {
-		&:before,
-		&:after {
-			background-color: transparent;
-		}
-		.video-controls {
-			opacity: 0;
-		}
-	}
-	&.js-videoIsActive {
-		.video-state {
-			border: 20px solid red;
-		}
-		&:hover {
-			.video-controls {
-				opacity: 1;
-			}
-		}
-	}	
-}
-
-.post-preview--featured .post-preview__video {
-	.video-state {
-    border-left: 40px solid red;
-	}
-	&.js-videoIsActive {
-		.video-state {
-			border: 20px solid red;
-		}
-	}	
-}
-
-.post-preview--default .post-preview__video {
-	.video-state {
-    border-left: 40px solid blue;
-	}
-	&.js-videoIsActive {
-		.video-state {
-			border: 20px solid blue;
-		}
-	}	
 }
 
 .post-preview__link {

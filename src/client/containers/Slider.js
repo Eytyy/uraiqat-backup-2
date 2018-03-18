@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import ImageComponent from '../components/media/ImageComponent';
+import VideoComponent from '../components/media/VideoComponent';
+
+const Slide = ({ imagesQuery, content }) => {
+	const isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
+	return isMediaOfTypeImage ?
+		<ImageComponent classList="slide slide--image" imagesQuery={imagesQuery}  src={content.fields.file.url} /> :
+		<VideoComponent classList="slide slide--video" content={content} /> ;
+};
 
 class Slider extends Component {
 	constructor() {
@@ -13,26 +21,21 @@ class Slider extends Component {
 		if (content.length === 0) {
 			return null;
 		}
-		if (content.length === 1) {
-			return ( 
-				<div className={`slider ${classList}`}>
-					<div className="slider__slides">
-						<ImageComponent classList="slide" imagesQuery={imagesQuery} src={content[0].fields.file.url} />
-					</div>
-				</div>);
-		}
-		return (
-			<div className={`slider slider--singleSlide ${classList}`}>
+		return ( 
+			<div className={`slider ${classList} ${content.length === 1 ? '' : 'slider--interactive'}`}>
 				<div className="slider__slides">
-					{ content.map(({ fields, sys }) =><ImageComponent classList="slide" imagesQuery={imagesQuery} key={sys.id} src={fields.file.url} />)}
+					{ content.map(({ fields, sys }) => <Slide key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
 				</div>
-				<div className="slider__controls">
-					<div className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
-					<div className="slider__controls__item slider__counter">{this.state.activeSlide}{'/'}{content.length}</div>
-					<div className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>
-				</div>
-			</div>
-		);
+				{
+					content.length === 1 ?
+						null:
+						<div className="slider__controls">
+							<div className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
+							<div className="slider__controls__item slider__counter">{this.state.activeSlide}{'/'}{content.length}</div>
+							<div className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>
+						</div>
+				}
+			</div>);
 	}
 }
 
