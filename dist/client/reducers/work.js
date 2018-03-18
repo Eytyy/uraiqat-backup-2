@@ -11,6 +11,39 @@ var _redux = require('redux');
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var BySection = function BySection() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+		main: [],
+		featured: [],
+		isFetching: false
+	};
+	var action = arguments[1];
+
+	switch (action.type) {
+		case 'REQUEST_PROJECTS':
+			return _extends({}, state, {
+				isFetching: true
+			});
+		case 'RECIEVE_PROJECTS':
+			//eslint-disable-line
+			var main = action.response[0].fields.mainContent.map(function (_ref) {
+				var sys = _ref.sys;
+				return sys.id;
+			});
+			var featured = action.response[0].fields.featuredContent.map(function (_ref2) {
+				var sys = _ref2.sys;
+				return sys.id;
+			});
+			return _extends({}, state, {
+				isFetching: false,
+				main: main,
+				featured: featured
+			});
+		default:
+			return state;
+	}
+};
+
 var All = function All() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 		content: [],
@@ -26,10 +59,13 @@ var All = function All() {
 			});
 		case 'RECIEVE_PROJECTS':
 			//eslint-disable-line
-			var ids = action.response.map(function (_ref) {
-				var sys = _ref.sys;
+			var ids = action.response[0].fields.mainContent.map(function (_ref3) {
+				var sys = _ref3.sys;
 				return sys.id;
-			});
+			}).concat(action.response[0].fields.featuredContent.map(function (_ref4) {
+				var sys = _ref4.sys;
+				return sys.id;
+			}));
 			return _extends({}, state, {
 				content: ids,
 				isFetching: false,
@@ -66,9 +102,17 @@ var ById = function ById() {
 		case 'RECIEVE_PROJECTS':
 			//eslint-disable-line
 			var ids = {};
-			action.response.forEach(function (_ref2) {
-				var fields = _ref2.fields,
-				    sys = _ref2.sys;
+			action.response[0].fields.mainContent.forEach(function (_ref5) {
+				var fields = _ref5.fields,
+				    sys = _ref5.sys;
+
+				ids[sys.id] = _extends({
+					id: sys.id
+				}, fields);
+			});
+			action.response[0].fields.featuredContent.forEach(function (_ref6) {
+				var fields = _ref6.fields,
+				    sys = _ref6.sys;
 
 				ids[sys.id] = _extends({
 					id: sys.id
@@ -98,7 +142,8 @@ var ById = function ById() {
 
 var work = (0, _redux.combineReducers)({
 	All: All,
-	ById: ById
+	ById: ById,
+	BySection: BySection
 });
 
 var getIsFetching = exports.getIsFetching = function getIsFetching(state) {
@@ -106,7 +151,10 @@ var getIsFetching = exports.getIsFetching = function getIsFetching(state) {
 };
 
 var getAll = exports.getAll = function getAll(state) {
-	return state.All.content;
+	return {
+		mainContent: state.BySection.main,
+		featuredContent: state.BySection.featured
+	};
 };
 
 var getProject = exports.getProject = function getProject(state, id) {

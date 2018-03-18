@@ -132,6 +132,9 @@ a .title {
 a:hover .title {
   text-decoration: none; }
 
+.main-title {
+  max-width: 392px; }
+
 body {
   padding-top: 32px; }
 

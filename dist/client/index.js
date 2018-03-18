@@ -18,6 +18,8 @@ var _reduxThunk = require('redux-thunk');
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
+var _reduxLogger = require('redux-logger');
+
 var _reducers = require('./reducers');
 
 var _reducers2 = _interopRequireDefault(_reducers);
@@ -34,7 +36,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //eslint-disable-line
 
-var store = (0, _redux.createStore)(_reducers2.default, window.__INITIAL_STATE__, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+var configureStore = function configureStore(initialState) {
+	var middlewares = [_reduxThunk2.default];
+	if (process.env.NODE_ENV !== 'production') {
+		middlewares.push((0, _reduxLogger.createLogger)());
+	}
+
+	return (0, _redux.createStore)(_reducers2.default, initialState, _redux.applyMiddleware.apply(undefined, middlewares));
+};
+var store = configureStore(window.__INITIAL_STATE__);
 
 (0, _reactDom.hydrate)(_react2.default.createElement(
 	_reactRedux.Provider,

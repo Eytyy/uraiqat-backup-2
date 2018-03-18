@@ -4,7 +4,7 @@ import LandingChrono from './LandingChrono';
 
 const Landing = ({ page, content }) => {
 	const classList = `landing-page landing-page--${page}`;
-	const { mainContent, featuredContent } = content[0];
+	const { mainContent, featuredContent } = content;
 	return (
 		<section className={classList}>
 			<LandingFeatured page={page} content={featuredContent}></LandingFeatured>

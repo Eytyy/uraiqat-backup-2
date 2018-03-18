@@ -5,9 +5,9 @@ import ProjectPreview from '../work/ProjectPreview';
 const Content = ({ content, page }) => {
 	switch(page) {
 	case 'work':
-		return content.map((post) => <ProjectPreview {...post.fields} id={post.sys.id} key={post.sys.id} />);
+		return content.map((post) => <ProjectPreview {...post} id={post.id} key={post.id} />);
 	default:
-		return content.map((post) => <Post {...post.fields} id={post.sys.id} key={post.sys.id} />);
+		return content.map((post) => <Post {...post} id={post.id} key={post.id} />);
 	}
 };
 

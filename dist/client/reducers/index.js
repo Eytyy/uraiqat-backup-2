@@ -28,9 +28,16 @@ var isPostsFetching = exports.isPostsFetching = function isPostsFetching(state) 
 };
 
 var getPosts = exports.getPosts = function getPosts(state) {
-	return fromHome.getAll(state.posts).map(function (id) {
+	var featuredContent = fromHome.getAll(state.posts).featuredContent.map(function (id) {
 		return fromHome.getPost(state.posts, id);
 	});
+	var mainContent = fromHome.getAll(state.posts).mainContent.map(function (id) {
+		return fromHome.getPost(state.posts, id);
+	});
+	return {
+		featuredContent: featuredContent,
+		mainContent: mainContent
+	};
 };
 
 var isPostFetching = exports.isPostFetching = function isPostFetching(state) {
@@ -47,9 +54,16 @@ var isProjectsFetching = exports.isProjectsFetching = function isProjectsFetchin
 };
 
 var getProjects = exports.getProjects = function getProjects(state) {
-	return fromWork.getAll(state.projects).map(function (id) {
+	var featuredContent = fromWork.getAll(state.projects).featuredContent.map(function (id) {
 		return fromWork.getProject(state.projects, id);
 	});
+	var mainContent = fromWork.getAll(state.projects).mainContent.map(function (id) {
+		return fromWork.getProject(state.projects, id);
+	});
+	return {
+		featuredContent: featuredContent,
+		mainContent: mainContent
+	};
 };
 
 var isProjectFetching = exports.isProjectFetching = function isProjectFetching(state) {

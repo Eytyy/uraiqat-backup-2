@@ -23,9 +23,8 @@ var Landing = function Landing(_ref) {
 	    content = _ref.content;
 
 	var classList = 'landing-page landing-page--' + page;
-	var _content$ = content[0],
-	    mainContent = _content$.mainContent,
-	    featuredContent = _content$.featuredContent;
+	var mainContent = content.mainContent,
+	    featuredContent = content.featuredContent;
 
 	return _react2.default.createElement(
 		'section',

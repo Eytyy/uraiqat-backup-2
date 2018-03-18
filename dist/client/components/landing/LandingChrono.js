@@ -27,11 +27,11 @@ var Content = function Content(_ref) {
 	switch (page) {
 		case 'work':
 			return content.map(function (post) {
-				return _react2.default.createElement(_ProjectPreview2.default, _extends({}, post.fields, { id: post.sys.id, key: post.sys.id }));
+				return _react2.default.createElement(_ProjectPreview2.default, _extends({}, post, { id: post.id, key: post.id }));
 			});
 		default:
 			return content.map(function (post) {
-				return _react2.default.createElement(_Post2.default, _extends({}, post.fields, { id: post.sys.id, key: post.sys.id }));
+				return _react2.default.createElement(_Post2.default, _extends({}, post, { id: post.id, key: post.id }));
 			});
 	}
 };
@@ -44,9 +44,9 @@ var LandingChrono = function LandingChrono(_ref2) {
 		return null;
 	}
 	var sorted = page === 'journal' ? content.sort(function (a, b) {
-		return parseInt(b.fields.date, 10) - parseInt(a.fields.date, 10);
+		return parseInt(b.date, 10) - parseInt(a.date, 10);
 	}) : content.sort(function (a, b) {
-		return parseInt(b.fields.year, 10) - parseInt(a.fields.year, 10);
+		return parseInt(b.year, 10) - parseInt(a.year, 10);
 	});
 	return _react2.default.createElement(
 		'section',
