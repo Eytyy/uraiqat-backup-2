@@ -497,6 +497,8 @@ nav {
 .project__drawings {
   width: 392px;
   float: right; }
+  .project__drawings .preview-image {
+    background-size: 200%; }
 
 .toggle-project-about {
   font-family: "ZeitungMonoPro-Bold";

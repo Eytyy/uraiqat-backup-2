@@ -48,6 +48,7 @@
 	float: right;
 	.preview-image {
 		@extend %blue-filter;
+		background-size: 200%;
 	}
 }
 
