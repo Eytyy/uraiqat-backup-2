@@ -211,6 +211,15 @@ var Project = function (_Component) {
 						{ className: 'project__drawings' },
 						_react2.default.createElement(_Slider2.default, { classList: 'slider--small', imagesQuery: '?fl=progressive&w=668&h=512', content: drawings })
 					)
+				),
+				_react2.default.createElement(
+					'aside',
+					{ className: 'related-content project__related' },
+					_react2.default.createElement(
+						'h3',
+						null,
+						'Related content: work in progress'
+					)
 				)
 			);
 		}

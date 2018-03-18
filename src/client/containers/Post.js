@@ -46,6 +46,9 @@ class Post extends Component { //eslint-disable-line
 					{ author && <PostAuthors content={author} />}{' '}
 				</header>
 				{mainContent && <PostContent content={mainContent} />}
+				<aside className="related-content project__related">
+					<h3>Related content: work in progress</h3>
+				</aside>
 			</article>
 		);
 	}

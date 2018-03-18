@@ -88,6 +88,9 @@ class Project extends Component { //eslint-disable-line
 						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=668&h=512'} content={drawings} />
 					</div>
 				</div>
+				<aside className="related-content project__related">
+					<h3>Related content: work in progress</h3>
+				</aside>
 			</article>
 		);
 	}

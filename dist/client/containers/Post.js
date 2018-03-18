@@ -124,7 +124,16 @@ var Post = function (_Component) {
 					author && _react2.default.createElement(_PostAuthors2.default, { content: author }),
 					' '
 				),
-				mainContent && _react2.default.createElement(_PostContent2.default, { content: mainContent })
+				mainContent && _react2.default.createElement(_PostContent2.default, { content: mainContent }),
+				_react2.default.createElement(
+					'aside',
+					{ className: 'related-content project__related' },
+					_react2.default.createElement(
+						'h3',
+						null,
+						'Related content: work in progress'
+					)
+				)
 			);
 		}
 	}], [{
