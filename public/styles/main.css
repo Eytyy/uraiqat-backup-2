@@ -193,7 +193,8 @@ img {
   height: 128px; }
 
 .website-footer {
-  margin-top: 96px; }
+  margin-top: 96px;
+  padding-bottom: 32px; }
 
 .ws {
   opacity: 0; }
