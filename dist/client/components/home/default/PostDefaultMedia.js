@@ -73,21 +73,25 @@ var PostDefaultMedia = function (_Component) {
 			if (!isMediaOfTypeImage) {
 				return _react2.default.createElement(
 					_Preview2.default,
-					{ classList: 'post-preview post-preview--video post-preview--default post-preview--portrait' },
+					{ classList: 'post-preview post-preview--video post-preview--default post-preview--landscape' },
 					_react2.default.createElement(
 						_reactRouterDom.Link,
 						{ className: 'post-preview__link', to: '/journal/' + id },
-						_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail }),
+						(category || date) && _react2.default.createElement(
+							'div',
+							{ className: 'post-preview__meta' },
+							(0, _helpers.formatDate)(date),
+							' -> ',
+							category.fields.title
+						)
+					),
+					_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail }),
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ className: 'post-preview__link', to: '/journal/' + id },
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-preview__content' },
-							(category || date) && _react2.default.createElement(
-								'div',
-								{ className: 'post-preview__meta' },
-								(0, _helpers.formatDate)(date),
-								' -> ',
-								category.fields.title
-							),
 							title && _react2.default.createElement(
 								'h2',
 								{ className: 'post-preview__title title' },

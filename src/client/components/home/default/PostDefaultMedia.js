@@ -28,11 +28,13 @@ class PostDefaultMedia extends Component {
 
 		if (!isMediaOfTypeImage) {
 			return (
-				<Preview classList="post-preview post-preview--video post-preview--default post-preview--portrait">
+				<Preview classList="post-preview post-preview--video post-preview--default post-preview--landscape">
 					<Link className="post-preview__link" to={`/journal/${id}`}>
-						<PostMediaVideo content={previewThumbnail} />
+						{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+					</Link>
+					<PostMediaVideo content={previewThumbnail} />
+					<Link className="post-preview__link" to={`/journal/${id}`}>
 						<div className="post-preview__content">
-							{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
 							{ title && <h2 className="post-preview__title title">{title}</h2> }
 							{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
 						</div>

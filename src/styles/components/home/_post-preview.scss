@@ -92,8 +92,11 @@
 
 .post-preview--default {
 	&.post-preview--video {
-		width: 630px;
-		height: 352px;
+		flex: 0 0 630px;
+		.post-preview__video {
+			width: 100%;
+			height: 352px;
+		}
 	}
 	.post-preview__title {
 		margin: 16px 0 0;
