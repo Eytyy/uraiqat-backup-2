@@ -26,14 +26,14 @@ var ProjectPreviewThumbnails = function ProjectPreviewThumbnails(_ref) {
 		_react2.default.createElement(
 			'div',
 			{ className: 'project-preview__thumbs__left-col' },
-			main && _react2.default.createElement(_ImageComponent2.default, { classList: 'project-preview__image project-preview__image--main', src: main.fields.file.url }),
-			drawing && _react2.default.createElement(_ImageComponent2.default, { classList: 'project-preview__image project-preview__image--drawing', src: drawing.fields.file.url })
+			main && _react2.default.createElement(_ImageComponent2.default, { imagesQuery: '?fl=progressive&w=700&h=416', classList: 'project-preview__image project-preview__image--main', src: main.fields.file.url }),
+			drawing && _react2.default.createElement(_ImageComponent2.default, { imagesQuery: '?fl=progressive&w=322&h=416', classList: 'project-preview__image project-preview__image--drawing', src: drawing.fields.file.url })
 		),
 		_react2.default.createElement(
 			'div',
 			{ className: 'project-preview__thumbs__right-col' },
-			diagram && _react2.default.createElement(_ImageComponent2.default, { classList: 'project-preview__image project-preview__image--diagram', src: diagram.fields.file.url }),
-			craft && _react2.default.createElement(_ImageComponent2.default, { classList: 'project-preview__image project-preview__image--craft', src: craft.fields.file.url })
+			diagram && _react2.default.createElement(_ImageComponent2.default, { imagesQuery: '?fl=progressive&w=322&h=208', classList: 'project-preview__image project-preview__image--diagram', src: diagram.fields.file.url }),
+			craft && _react2.default.createElement(_ImageComponent2.default, { imagesQuery: '?fl=progressive&w=322&h=208', classList: 'project-preview__image project-preview__image--craft', src: craft.fields.file.url })
 		)
 	);
 };
