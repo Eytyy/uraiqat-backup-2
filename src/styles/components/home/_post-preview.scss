@@ -41,6 +41,7 @@
 	}
 }
 
+
 .post-preview__video {
 	position: relative;
 	cursor: pointer;
@@ -56,7 +57,6 @@
 	}
 	.video-state {
     border: 25px solid transparent;
-    border-left: 40px solid red;
 		display: block;
 	}
 	&.js-videoIsActive {
@@ -78,7 +78,28 @@
 			}
 		}
 	}	
+}
 
+.post-preview--featured .post-preview__video {
+	.video-state {
+    border-left: 40px solid red;
+	}
+	&.js-videoIsActive {
+		.video-state {
+			border: 20px solid red;
+		}
+	}	
+}
+
+.post-preview--default .post-preview__video {
+	.video-state {
+    border-left: 40px solid blue;
+	}
+	&.js-videoIsActive {
+		.video-state {
+			border: 20px solid blue;
+		}
+	}	
 }
 
 .post-preview__link {

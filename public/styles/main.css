@@ -290,7 +290,6 @@ nav {
     font-size: 32px; }
   .post-preview__video .video-state {
     border: 25px solid transparent;
-    border-left: 40px solid red;
     display: block; }
   .post-preview__video.js-videoIsActive:before, .post-preview__video.js-videoIsActive:after {
     background-color: transparent; }
@@ -300,6 +299,18 @@ nav {
     border: 20px solid red; }
   .post-preview__video.js-videoIsActive:hover .video-controls {
     opacity: 1; }
+
+.post-preview--featured .post-preview__video .video-state {
+  border-left: 40px solid red; }
+
+.post-preview--featured .post-preview__video.js-videoIsActive .video-state {
+  border: 20px solid red; }
+
+.post-preview--default .post-preview__video .video-state {
+  border-left: 40px solid blue; }
+
+.post-preview--default .post-preview__video.js-videoIsActive .video-state {
+  border: 20px solid blue; }
 
 .post-preview__link:hover .post-preview__image:after,
 .post-preview__link:hover .post-preview__image:before {
