@@ -15,7 +15,9 @@ const LandingChrono = ({ content, page }) => {
 	if (typeof content === 'undefined') {
 		return null;
 	}
-	const sorted = content.sort((a, b) => parseInt(b.fields.date, 10) - parseInt(a.fields.date, 10));
+	const sorted = page === 'journal' ? 
+		content.sort((a, b) => parseInt(b.fields.date, 10) - parseInt(a.fields.date, 10)):
+		content.sort((a, b) => parseInt(b.fields.year, 10) - parseInt(a.fields.year, 10));
 	return (
 		<section className="landing-section landing-section--main">
 			<Content content={sorted} page={page} />

@@ -43,8 +43,10 @@ var LandingChrono = function LandingChrono(_ref2) {
 	if (typeof content === 'undefined') {
 		return null;
 	}
-	var sorted = content.sort(function (a, b) {
+	var sorted = page === 'journal' ? content.sort(function (a, b) {
 		return parseInt(b.fields.date, 10) - parseInt(a.fields.date, 10);
+	}) : content.sort(function (a, b) {
+		return parseInt(b.fields.year, 10) - parseInt(a.fields.year, 10);
 	});
 	return _react2.default.createElement(
 		'section',
