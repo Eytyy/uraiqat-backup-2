@@ -5,7 +5,7 @@ import VideoComponent from '../components/media/VideoComponent';
 const Slide = ({ imagesQuery, content }) => {
 	const isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
 	return isMediaOfTypeImage ?
-		<ImageComponent classList="slide slide--image" imagesQuery={imagesQuery}  src={content.fields.file.url} /> :
+		<ImageComponent classList="slide slide--image" imagesQuery={imagesQuery}  src={typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url} /> :
 		<VideoComponent classList="slide slide--video" content={content} /> ;
 };
 

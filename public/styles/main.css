@@ -282,7 +282,7 @@ nav {
     margin: 0 auto; }
     .video.post-preview__video:before, .video.post-preview__video:after {
       z-index: 2; }
-    .video.post-preview__video video-controls {
+    .video.post-preview__video .video-controls {
       position: absolute;
       top: 45%; }
 

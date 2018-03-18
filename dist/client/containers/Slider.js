@@ -31,7 +31,7 @@ var Slide = function Slide(_ref) {
 	    content = _ref.content;
 
 	var isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
-	return isMediaOfTypeImage ? _react2.default.createElement(_ImageComponent2.default, { classList: 'slide slide--image', imagesQuery: imagesQuery, src: content.fields.file.url }) : _react2.default.createElement(_VideoComponent2.default, { classList: 'slide slide--video', content: content });
+	return isMediaOfTypeImage ? _react2.default.createElement(_ImageComponent2.default, { classList: 'slide slide--image', imagesQuery: imagesQuery, src: typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url }) : _react2.default.createElement(_VideoComponent2.default, { classList: 'slide slide--video', content: content });
 };
 
 var Slider = function (_Component) {
