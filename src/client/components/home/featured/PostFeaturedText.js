@@ -6,9 +6,9 @@ import Preview from '../../Preview';
 import { formatDate } from '../../../helpers';
 
 const PostFeaturedText = ({ content }) => {
-	const { id, category, date, title, previewText } = content;
+	const { id, category, date, title, previewText, externalPostUrl, externalPostSource } = content;
 	return (
-		<Preview classList="post-preview post-preview--featured">
+		<Preview classList="post-preview post-preview--featured post-preview--text">
 			<Link className="post-preview__link" to={`/journal/${id}`}>
 				<div className="post-preview__content">
 					<div className="post-preview__content__inner">
@@ -18,6 +18,7 @@ const PostFeaturedText = ({ content }) => {
 					</div>
 				</div>
 			</Link>
+			{ externalPostUrl && <div className="post-preview__external-link"><a href={externalPostUrl} rel="noopener noreferrer" target="_blank">{'->'}{externalPostSource}</a></div>}
 		</Preview>
 	);
 };

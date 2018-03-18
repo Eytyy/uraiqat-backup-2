@@ -334,6 +334,9 @@ nav {
   font-size: 14px;
   line-height: 22px; }
 
+.post-preview--text .post-preview__title {
+  margin-top: 0; }
+
 .post-preview--featured .post-preview__title {
   margin: 0;
   font-size: 48px;
@@ -395,6 +398,9 @@ nav {
   margin: -96px 0 0 auto;
   position: relative;
   z-index: 2; }
+
+.post-preview__external-link a {
+  color: blue; }
 
 .project-preview {
   margin-bottom: 64px; }
@@ -517,3 +523,9 @@ nav {
   margin-bottom: 64px;
   margin-left: -128px;
   max-width: 392px; }
+
+.post__external-link {
+  width: 882px;
+  margin: 68px 0 0 128px; }
+  .post__external-link a {
+    color: blue; }

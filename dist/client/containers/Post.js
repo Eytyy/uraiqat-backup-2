@@ -83,7 +83,9 @@ var Post = function (_Component) {
 			var tags = content.tags,
 			    date = content.date,
 			    author = content.author,
-			    mainContent = content.mainContent;
+			    mainContent = content.mainContent,
+			    externalPostUrl = content.externalPostUrl,
+			    externalPostSource = content.externalPostSource;
 
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
@@ -125,6 +127,17 @@ var Post = function (_Component) {
 					' '
 				),
 				mainContent && _react2.default.createElement(_PostContent2.default, { content: mainContent }),
+				externalPostUrl && _react2.default.createElement(
+					'div',
+					{ className: 'post__external-link' },
+					'Read full article on ',
+					_react2.default.createElement(
+						'a',
+						{ href: externalPostUrl, target: '_blank' },
+						' ->',
+						externalPostSource
+					)
+				),
 				_react2.default.createElement(
 					'aside',
 					{ className: 'related-content project__related' },

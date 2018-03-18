@@ -24,11 +24,13 @@ var PostDefaultText = function PostDefaultText(_ref) {
 	    category = content.category,
 	    date = content.date,
 	    title = content.title,
-	    previewText = content.previewText;
+	    previewText = content.previewText,
+	    externalPostUrl = content.externalPostUrl,
+	    externalPostSource = content.externalPostSource;
 
 	return _react2.default.createElement(
 		_Preview2.default,
-		{ classList: 'post-preview post-preview--default' },
+		{ classList: 'post-preview post-preview--default post-preview--text' },
 		_react2.default.createElement(
 			_reactRouterDom.Link,
 			{ className: 'post-preview__link', to: '/journal/' + id },
@@ -52,6 +54,16 @@ var PostDefaultText = function PostDefaultText(_ref) {
 					null,
 					previewText
 				)
+			)
+		),
+		externalPostUrl && _react2.default.createElement(
+			'div',
+			{ className: 'post-preview__external-link' },
+			_react2.default.createElement(
+				'a',
+				{ href: externalPostUrl, target: '_blank', rel: 'noopener noreferrer' },
+				'->',
+				externalPostSource
 			)
 		)
 	);

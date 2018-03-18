@@ -22,7 +22,7 @@ class PostDefaultMedia extends Component {
 	}
 	render() {
 		const { content } = this.props;
-		const { previewThumbnail, id, category, date, title, previewText } = content;
+		const { previewThumbnail, id, category, date, title, previewText} = content;
 		// determine whether the media content is a video or an image
 		const isMediaOfTypeImage = RegExp('image').test(previewThumbnail.fields.file.contentType);
 

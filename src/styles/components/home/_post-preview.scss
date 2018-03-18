@@ -131,6 +131,12 @@
 	}
 }
 
+.post-preview--text {
+	.post-preview__title {
+		margin-top: 0;
+	}
+}
+
 .post-preview--featured {
 	.post-preview__title {
 		margin: 0;
@@ -197,4 +203,8 @@
 			z-index: 2;
 		}
 	}
+}
+
+.post-preview__external-link a {
+	color: blue;
 }
