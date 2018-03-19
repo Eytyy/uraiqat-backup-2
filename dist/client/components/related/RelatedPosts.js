@@ -73,16 +73,14 @@ var RelatedPosts = function (_Component) {
 			    isFetching = _props3.isFetching;
 
 			if (isFetching || content.length === 0) {
-				return _react2.default.createElement(
-					'div',
-					null,
-					'Loading RelatedPosts this will be repalced with the pattern transition'
-				);
+				return null;
 			}
 			return content.map(function (_ref) {
 				var fields = _ref.fields,
 				    sys = _ref.sys;
-				return _react2.default.createElement(_PostDefault2.default, { content: fields, key: sys.id });
+
+				var withid = Object.assign({}, { id: sys.id }, fields);
+				return _react2.default.createElement(_PostDefault2.default, { content: withid, key: sys.id });
 			});
 		}
 	}], [{

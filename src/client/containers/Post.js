@@ -12,7 +12,8 @@ import PostTags from '../components/posts/PostTags';
 import PostAuthors from '../components/posts/PostAuthors';
 import PostContent from '../components/posts/PostContent';
 
-import PostRelated from '../containers/related/PostRelated';
+import RelatedProject from '../components/related/RelatedProject';
+import RelatedPosts from '../components/related/RelatedPosts';
 
 class Post extends Component { //eslint-disable-line
 	static fetchData(store, id) {
@@ -50,7 +51,10 @@ class Post extends Component { //eslint-disable-line
 				</header>
 				{mainContent && <PostContent content={mainContent} />}
 				{ externalPostUrl && <div className="post__external-link">Read full article on <a href={externalPostUrl} target="_blank">{' ->'}{externalPostSource}</a></div>}
-				<PostRelated relatedProject={relatedProject} postID={id} />
+				<aside className="related-content post__related">
+					{relatedProject && <RelatedProject id={relatedProject[0].sys.id} content={relatedProject[0].fields} />}
+					<RelatedPosts id={relatedProject[0].sys.id} postID={id} />
+				</aside>
 			</article>
 		);
 	}

@@ -36,9 +36,13 @@ var _PostContent = require('../components/posts/PostContent');
 
 var _PostContent2 = _interopRequireDefault(_PostContent);
 
-var _PostRelated = require('../containers/related/PostRelated');
+var _RelatedProject = require('../components/related/RelatedProject');
 
-var _PostRelated2 = _interopRequireDefault(_PostRelated);
+var _RelatedProject2 = _interopRequireDefault(_RelatedProject);
+
+var _RelatedPosts = require('../components/related/RelatedPosts');
+
+var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -145,7 +149,12 @@ var Post = function (_Component) {
 						externalPostSource
 					)
 				),
-				_react2.default.createElement(_PostRelated2.default, { relatedProject: relatedProject, postID: id })
+				_react2.default.createElement(
+					'aside',
+					{ className: 'related-content post__related' },
+					relatedProject && _react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields }),
+					_react2.default.createElement(_RelatedPosts2.default, { id: relatedProject[0].sys.id, postID: id })
+				)
 			);
 		}
 	}], [{

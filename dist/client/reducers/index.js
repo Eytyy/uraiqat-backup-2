@@ -86,7 +86,6 @@ var isRelatedFetching = exports.isRelatedFetching = function isRelatedFetching(s
 };
 
 var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, id, postID) {
-	console.log(postID);
 	var content = fromRelated.getPost(state.related, id);
 	return typeof content === 'undefined' ? [] : content.filter(function (_ref) {
 		var sys = _ref.sys;

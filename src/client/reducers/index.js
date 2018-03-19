@@ -54,7 +54,6 @@ export const getProject = (state, id) => {
 export const isRelatedFetching = state => fromRelated.getIsFetching(state.related);
 
 export const getRelatedPosts = (state, id, postID) => {
-	console.log(postID);
 	const content = fromRelated.getPost(state.related, id);
 	return typeof content === 'undefined' ? [] : content.filter(({sys}) => sys.id !== postID);
 };

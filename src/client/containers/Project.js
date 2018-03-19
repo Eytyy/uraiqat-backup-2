@@ -12,6 +12,7 @@ import CommaSeparatedList from '../components/CommaSpearatedList';
 import BodyText from '../components/BodyText';
 
 import Slider from './Slider';
+import RelatedPosts from '../components/related/RelatedPosts';
 
 class Project extends Component { //eslint-disable-line
 	constructor() {
@@ -47,7 +48,7 @@ class Project extends Component { //eslint-disable-line
 		fetchProject(id);
 	}
 	render() {
-		const { content, isFetching } = this.props;
+		const { content, isFetching, match } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div>Loading project ... this will be replaced with the pattern transition</div>;
 		}
@@ -93,8 +94,8 @@ class Project extends Component { //eslint-disable-line
 						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
-				<aside className="related-content project__related">
-					<h3>Related content: work in progress</h3>
+				<aside className="related-content post__related">
+					<RelatedPosts id={match.params.id} />
 				</aside>
 			</article>
 		);

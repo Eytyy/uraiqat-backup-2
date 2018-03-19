@@ -36,6 +36,10 @@ var _Slider = require('./Slider');
 
 var _Slider2 = _interopRequireDefault(_Slider);
 
+var _RelatedPosts = require('../components/related/RelatedPosts');
+
+var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -98,7 +102,8 @@ var Project = function (_Component) {
 		value: function render() {
 			var _props3 = this.props,
 			    content = _props3.content,
-			    isFetching = _props3.isFetching;
+			    isFetching = _props3.isFetching,
+			    match = _props3.match;
 
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
@@ -219,12 +224,8 @@ var Project = function (_Component) {
 				),
 				_react2.default.createElement(
 					'aside',
-					{ className: 'related-content project__related' },
-					_react2.default.createElement(
-						'h3',
-						null,
-						'Related content: work in progress'
-					)
+					{ className: 'related-content post__related' },
+					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
 				)
 			);
 		}

@@ -26,9 +26,12 @@ class RelatedPosts extends Component { //eslint-disable-line
 	render() {
 		const { content, isFetching } = this.props;
 		if (isFetching || content.length === 0) {
-			return <div>Loading RelatedPosts this will be repalced with the pattern transition</div>;
+			return null;
 		}
-		return content.map(({fields, sys})=>  <PostDefault content={fields} key={sys.id} />);
+		return content.map(({fields, sys}) => {
+			const withid = Object.assign({}, {id: sys.id}, fields);
+			return <PostDefault content={withid} key={sys.id} />;
+		});
 	}
 }
 
