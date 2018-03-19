@@ -36,6 +36,10 @@ var _PostContent = require('../components/posts/PostContent');
 
 var _PostContent2 = _interopRequireDefault(_PostContent);
 
+var _PostRelated = require('../containers/related/PostRelated');
+
+var _PostRelated2 = _interopRequireDefault(_PostRelated);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85,8 +89,10 @@ var Post = function (_Component) {
 			    author = content.author,
 			    mainContent = content.mainContent,
 			    externalPostUrl = content.externalPostUrl,
-			    externalPostSource = content.externalPostSource;
+			    externalPostSource = content.externalPostSource,
+			    relatedProject = content.relatedProject;
 
+			var relatedPosts = [];
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
 					'div',
@@ -138,15 +144,7 @@ var Post = function (_Component) {
 						externalPostSource
 					)
 				),
-				_react2.default.createElement(
-					'aside',
-					{ className: 'related-content project__related' },
-					_react2.default.createElement(
-						'h3',
-						null,
-						'Related content: work in progress'
-					)
-				)
+				_react2.default.createElement(_PostRelated2.default, { relatedProject: relatedProject, relatedPosts: relatedPosts })
 			);
 		}
 	}], [{

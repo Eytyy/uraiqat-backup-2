@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
 import posts, * as fromHome from './home';
 import projects, * as fromWork from './work';
+import related, * as fromRelated from './related';
+
 
 
 const RootReducer = combineReducers({
 	posts,
-	projects
+	projects,
+	related
 });
 
 // Home Selectors
@@ -47,5 +50,7 @@ export const isProjectFetching = state => fromWork.getIsFetching(state.projects)
 export const getProject = (state, id) => {
 	return fromWork.getProject(state.projects, id);
 };
+
+// Related Selectors
 
 export default RootReducer;

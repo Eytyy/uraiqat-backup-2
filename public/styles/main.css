@@ -191,10 +191,6 @@ img {
   width: 100%;
   height: auto; }
 
-.related-content {
-  margin-top: 96px;
-  height: 128px; }
-
 .website-footer {
   margin-top: 96px;
   padding-bottom: 32px; }
@@ -301,6 +297,19 @@ nav {
 
 .post-preview--featured .post-preview__video.js-videoIsActive .video-state {
   border: 20px solid red; }
+
+.related-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -84px;
+  margin-top: 96px; }
+  .related-content .related-item--project {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 714px;
+            flex: 0 0 714px; }
+    .related-content .related-item--project .post-preview__image {
+      height: 416px; }
 
 .post-preview {
   margin-bottom: 64px; }

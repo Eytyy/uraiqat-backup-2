@@ -15,11 +15,16 @@ var _work = require('./work');
 
 var fromWork = _interopRequireWildcard(_work);
 
+var _related = require('./related');
+
+var fromRelated = _interopRequireWildcard(_related);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
 	posts: fromHome.default,
-	projects: fromWork.default
+	projects: fromWork.default,
+	related: fromRelated.default
 });
 
 // Home Selectors
@@ -73,5 +78,7 @@ var isProjectFetching = exports.isProjectFetching = function isProjectFetching(s
 var getProject = exports.getProject = function getProject(state, id) {
 	return fromWork.getProject(state.projects, id);
 };
+
+// Related Selectors
 
 exports.default = RootReducer;

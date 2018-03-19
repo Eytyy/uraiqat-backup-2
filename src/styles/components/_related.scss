@@ -1,0 +1,16 @@
+.related-content {
+	display: flex;
+	margin-left: -84px;
+	margin-top: 96px;
+	.related-item {
+		.post-preview__image {
+		}
+		&--project {
+			flex: 0 0 714px;
+			.post-preview__image {
+				height: 416px;
+			}
+		}
+	}
+}
+
