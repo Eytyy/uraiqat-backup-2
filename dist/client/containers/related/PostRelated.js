@@ -42,11 +42,10 @@ var PostRelated = function (_Component) {
 			    relatedProject = _props.relatedProject,
 			    relatedPosts = _props.relatedPosts;
 
-
 			return _react2.default.createElement(
 				'aside',
 				{ className: 'related-content post__related' },
-				_react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields }),
+				relatedProject && _react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields }),
 				_react2.default.createElement(_RelatedPost2.default, { content: relatedPosts })
 			);
 		}
