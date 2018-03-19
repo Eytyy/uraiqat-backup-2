@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -148,6 +148,37 @@ var fetchProject = exports.fetchProject = function fetchProject(id) {
 		}
 		return api.fetchProject(id).then(function (response) {
 			dispatch(recieveProject(response));
+		});
+	};
+};
+
+// Related Action Creators
+
+var requestRelated = function requestRelated() {
+	return {
+		type: 'REQUEST_RELATED'
+	};
+};
+
+var recieveRelated = function recieveRelated(payload, id) {
+	return {
+		type: 'RECIEVE_RELATED',
+		response: payload,
+		projectID: id
+	};
+};
+
+var fetchRelated = exports.fetchRelated = function fetchRelated(id) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestRelated());
+		if ((0, _reducers.isRelatedFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchRelatedPosts(id).then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveRelated(response, id));
 		});
 	};
 };

@@ -3,8 +3,6 @@ import posts, * as fromHome from './home';
 import projects, * as fromWork from './work';
 import related, * as fromRelated from './related';
 
-
-
 const RootReducer = combineReducers({
 	posts,
 	projects,
@@ -52,5 +50,13 @@ export const getProject = (state, id) => {
 };
 
 // Related Selectors
+
+export const isRelatedFetching = state => fromRelated.getIsFetching(state.related);
+
+export const getRelatedPosts = (state, id, postID) => {
+	console.log(postID);
+	const content = fromRelated.getPost(state.related, id);
+	return typeof content === 'undefined' ? [] : content.filter(({sys}) => sys.id !== postID);
+};
 
 export default RootReducer;

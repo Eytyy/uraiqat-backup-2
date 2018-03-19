@@ -11,12 +11,11 @@ const All = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_RELATED': //eslint-disable-line
-		const ids = action.response.map(({ sys }) => sys.id);
+		const content = [...state.content, action.projectID];
 		return {
 			...state,
-			content: ids,
-			isFetching: false,
-			fetchedAll: true,
+			content,
+			isFetching: false
 		};
 	default:
 		return state;
@@ -34,13 +33,8 @@ const ById = (state = {
 		};
 
 	case 'RECIEVE_RELATED': //eslint-disable-line
-		const ids = action.response.map(({ sys }) => sys.id);
-		action.response.forEach(({ fields, sys }) => {
-			ids[sys.id] = {
-				id: sys.id,
-				...fields,
-			};
-		});
+		const ids = {};
+		ids[action.projectID] = action.response;
 		return {
 			...state,
 			...ids,

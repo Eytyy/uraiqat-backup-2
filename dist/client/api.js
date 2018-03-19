@@ -7,6 +7,7 @@ exports.fetchPosts = fetchPosts;
 exports.fetchPost = fetchPost;
 exports.fetchProjects = fetchProjects;
 exports.fetchProject = fetchProject;
+exports.fetchRelatedPosts = fetchRelatedPosts;
 
 var _contentful = require('contentful');
 
@@ -55,5 +56,14 @@ function fetchProject(id) {
 			throw new Error('Entry not found');
 		}
 		return payload.items[0];
+	});
+}
+
+function fetchRelatedPosts(id) {
+	return client.getEntries({
+		content_type: 'post',
+		'fields.relatedProject.sys.id': id
+	}).then(function (payload) {
+		return payload.items;
 	});
 }

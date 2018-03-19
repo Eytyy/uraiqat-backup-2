@@ -1,4 +1,4 @@
-import { getIsClientLoading, isPostsFetching, isPostFetching, isProjectsFetching, isProjectFetching } from './reducers';
+import { getIsClientLoading, isPostsFetching, isPostFetching, isProjectsFetching, isProjectFetching, isRelatedFetching } from './reducers';
 import * as api from './api';
 
 // App Action Creators
@@ -71,7 +71,6 @@ export const fetchPost = (id) => (dispatch, getState) => {
 	});
 };
 
-
 // Work Action Creators
 const requestProjects = () => ({
 	type: 'REQUEST_PROJECTS'
@@ -112,6 +111,31 @@ export const fetchProject = (id) => (dispatch, getState) => {
 	}
 	return api.fetchProject(id).then((response) => {
 		dispatch(recieveProject(response));
+	});
+};
+
+// Related Action Creators
+
+const requestRelated = () => ({
+	type: 'REQUEST_RELATED'
+});
+
+const recieveRelated = (payload, id) => ({
+	type: 'RECIEVE_RELATED',
+	response: payload,
+	projectID: id,
+});
+
+export const fetchRelated = (id) => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestRelated());
+	if (isRelatedFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchRelatedPosts(id).then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recieveRelated(response, id));
 	});
 };
 

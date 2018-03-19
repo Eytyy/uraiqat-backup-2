@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -80,5 +80,18 @@ var getProject = exports.getProject = function getProject(state, id) {
 };
 
 // Related Selectors
+
+var isRelatedFetching = exports.isRelatedFetching = function isRelatedFetching(state) {
+	return fromRelated.getIsFetching(state.related);
+};
+
+var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, id, postID) {
+	console.log(postID);
+	var content = fromRelated.getPost(state.related, id);
+	return typeof content === 'undefined' ? [] : content.filter(function (_ref) {
+		var sys = _ref.sys;
+		return sys.id !== postID;
+	});
+};
 
 exports.default = RootReducer;

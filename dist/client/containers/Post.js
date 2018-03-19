@@ -83,7 +83,8 @@ var Post = function (_Component) {
 		value: function render() {
 			var _props3 = this.props,
 			    content = _props3.content,
-			    isFetching = _props3.isFetching;
+			    isFetching = _props3.isFetching,
+			    match = _props3.match;
 			var tags = content.tags,
 			    date = content.date,
 			    author = content.author,
@@ -92,7 +93,7 @@ var Post = function (_Component) {
 			    externalPostSource = content.externalPostSource,
 			    relatedProject = content.relatedProject;
 
-			var relatedPosts = [];
+			var id = match.params.id;
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
 					'div',
@@ -144,7 +145,7 @@ var Post = function (_Component) {
 						externalPostSource
 					)
 				),
-				_react2.default.createElement(_PostRelated2.default, { relatedProject: relatedProject, relatedPosts: relatedPosts })
+				_react2.default.createElement(_PostRelated2.default, { relatedProject: relatedProject, postID: id })
 			);
 		}
 	}], [{

@@ -14,9 +14,9 @@ var _RelatedProject = require('../../components/related/RelatedProject');
 
 var _RelatedProject2 = _interopRequireDefault(_RelatedProject);
 
-var _RelatedPost = require('../../components/related/RelatedPost');
+var _RelatedPosts = require('../../components/related/RelatedPosts');
 
-var _RelatedPost2 = _interopRequireDefault(_RelatedPost);
+var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,13 +40,13 @@ var PostRelated = function (_Component) {
 		value: function render() {
 			var _props = this.props,
 			    relatedProject = _props.relatedProject,
-			    relatedPosts = _props.relatedPosts;
+			    postID = _props.postID;
 
 			return _react2.default.createElement(
 				'aside',
 				{ className: 'related-content post__related' },
 				relatedProject && _react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields }),
-				_react2.default.createElement(_RelatedPost2.default, { content: relatedPosts })
+				_react2.default.createElement(_RelatedPosts2.default, { id: relatedProject[0].sys.id, postID: postID })
 			);
 		}
 	}]);

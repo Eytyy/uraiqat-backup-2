@@ -31,9 +31,9 @@ class Post extends Component { //eslint-disable-line
 		fetchPost(id);
 	}
 	render() {
-		const { content, isFetching } = this.props;
+		const { content, isFetching, match } = this.props;
 		const { tags, date, author, mainContent, externalPostUrl, externalPostSource, relatedProject } = content;
-		const relatedPosts = [];
+		const id = match.params.id;
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div>Loading post this will be repalced with the pattern transition</div>;
 		}
@@ -50,7 +50,7 @@ class Post extends Component { //eslint-disable-line
 				</header>
 				{mainContent && <PostContent content={mainContent} />}
 				{ externalPostUrl && <div className="post__external-link">Read full article on <a href={externalPostUrl} target="_blank">{' ->'}{externalPostSource}</a></div>}
-				<PostRelated relatedProject={relatedProject} relatedPosts={relatedPosts} />
+				<PostRelated relatedProject={relatedProject} postID={id} />
 			</article>
 		);
 	}

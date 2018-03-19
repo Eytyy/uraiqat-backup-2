@@ -48,3 +48,12 @@ export function fetchProject(id) {
 		return payload.items[0];
 	});
 }
+
+export function fetchRelatedPosts(id) {
+	return client.getEntries({
+		content_type: 'post',
+		'fields.relatedProject.sys.id': id
+	}).then((payload) => {
+		return payload.items;
+	});
+}

@@ -10,8 +10,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var RelatedPost = function RelatedPost() {
+var RelatedPosts = function RelatedPosts() {
 	return _react2.default.createElement('div', null);
 };
 
-exports.default = RelatedPost;
+exports.default = RelatedPosts;

@@ -9,6 +9,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _redux = require('redux');
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var All = function All() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 		content: [],
@@ -23,14 +25,10 @@ var All = function All() {
 			});
 		case 'RECIEVE_RELATED':
 			//eslint-disable-line
-			var ids = action.response.map(function (_ref) {
-				var sys = _ref.sys;
-				return sys.id;
-			});
+			var content = [].concat(_toConsumableArray(state.content), [action.projectID]);
 			return _extends({}, state, {
-				content: ids,
-				isFetching: false,
-				fetchedAll: true
+				content: content,
+				isFetching: false
 			});
 		default:
 			return state;
@@ -51,18 +49,8 @@ var ById = function ById() {
 
 		case 'RECIEVE_RELATED':
 			//eslint-disable-line
-			var ids = action.response.map(function (_ref2) {
-				var sys = _ref2.sys;
-				return sys.id;
-			});
-			action.response.forEach(function (_ref3) {
-				var fields = _ref3.fields,
-				    sys = _ref3.sys;
-
-				ids[sys.id] = _extends({
-					id: sys.id
-				}, fields);
-			});
+			var ids = {};
+			ids[action.projectID] = action.response;
 			return _extends({}, state, ids, {
 				isFetching: false
 			});
