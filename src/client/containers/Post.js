@@ -51,10 +51,13 @@ class Post extends Component { //eslint-disable-line
 				</header>
 				{mainContent && <PostContent content={mainContent} />}
 				{ externalPostUrl && <div className="post__external-link">Read full article on <a href={externalPostUrl} target="_blank">{' ->'}{externalPostSource}</a></div>}
-				<aside className="related-content post__related">
-					{relatedProject && <RelatedProject id={relatedProject[0].sys.id} content={relatedProject[0].fields} />}
-					<RelatedPosts id={relatedProject[0].sys.id} postID={id} />
-				</aside>
+				{
+					!relatedProject ? null:
+						<aside className="related-content post__related">
+							{relatedProject && <RelatedProject id={relatedProject[0].sys.id} content={relatedProject[0].fields} />}
+							<RelatedPosts id={relatedProject[0].sys.id} postID={id} />
+						</aside>
+				}
 			</article>
 		);
 	}

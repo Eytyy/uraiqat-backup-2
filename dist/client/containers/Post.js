@@ -149,7 +149,7 @@ var Post = function (_Component) {
 						externalPostSource
 					)
 				),
-				_react2.default.createElement(
+				!relatedProject ? null : _react2.default.createElement(
 					'aside',
 					{ className: 'related-content post__related' },
 					relatedProject && _react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields }),
