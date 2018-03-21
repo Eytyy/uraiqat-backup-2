@@ -1,25 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FlexibleImageComponent extends Component {
-	componentDidMount() {
-		const { content, setSliderHeight } = this.props;
-		const {width, height} = content.file.details.image;
-		const imageHeight = Math.ceil(882 * ((height/width) / 32)) * 32;
-		setSliderHeight(imageHeight);
-	}
-	
-	render() {
-		const { content, classList } = this.props;
-		const { url } = content.file;
-		const style = {
-			backgroundImage: `url('${url}')`,
-		};
-		const classes = typeof classList !== 'undefined' ? classList : '';
-		return (
-			<div className={`preview-image ${classes}`} style={style}></div>
-
-		);
-	}
-}
+const FlexibleImageComponent = ({ content }) => {
+	const { title, file } = content.fields;
+	return <img src={file.url} />;
+};
 
 export default FlexibleImageComponent;

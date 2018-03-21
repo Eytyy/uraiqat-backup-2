@@ -86,6 +86,7 @@ var fetchPosts = exports.fetchPosts = function fetchPosts() {
 
 var fetchPost = exports.fetchPost = function fetchPost(id) {
 	return function (dispatch, getState) {
+		console.log('fetch', id);
 		var state = getState();
 		dispatch(requestPost());
 		if ((0, _reducers.isPostFetching)(state)) {

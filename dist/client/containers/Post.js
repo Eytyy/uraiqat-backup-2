@@ -73,6 +73,16 @@ var Post = function (_Component) {
 			}
 		}
 	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			var content = nextProps.content,
+			    isFetching = nextProps.isFetching;
+
+			if (!isFetching && typeof content.id === 'undefined') {
+				this.fetchData();
+			}
+		}
+	}, {
 		key: 'fetchData',
 		value: function fetchData() {
 			var _props2 = this.props,

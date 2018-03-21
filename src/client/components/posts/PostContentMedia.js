@@ -1,11 +1,15 @@
 import React from 'react';
 import Slider from '../../containers/Slider';
+import FlexibleImageComponent from '../media/FlexibleImageComponent';
 
 const PostContentMedia = ({ content }) => {
 	if (typeof content === 'undefined') {
 		return null;
 	}
-	return <Slider isFlexible={true} classList="post__media" imagesQuery={'?fl=progressive&w=882'} content={content.files} />;
+	
+	return content.files.length > 1 ?
+		<Slider classList="post__media" imagesQuery={'?fl=progressive&w=882'} content={content.files} />:
+		<div className="post__media"><FlexibleImageComponent content={content.files[0]} /></div>;
 };
 
 export default PostContentMedia;

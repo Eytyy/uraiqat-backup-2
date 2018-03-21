@@ -61,6 +61,7 @@ export const fetchPosts = () => (dispatch, getState) => {
 };
 
 export const fetchPost = (id) => (dispatch, getState) => {
+	console.log('fetch', id);
 	const state = getState();
 	dispatch(requestPost());
 	if (isPostFetching(state)) {

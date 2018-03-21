@@ -547,17 +547,13 @@ nav {
   position: relative; }
   .post__media .slider__slides {
     float: none;
-    height: 100%; }
-  .post__media .profile-image {
-    height: 100%; }
+    height: 612px; }
   .post__media .slider__controls {
     position: absolute;
     right: -28px;
     top: 0;
     -webkit-transform: translateX(100%);
             transform: translateX(100%); }
-  .post__media.slider--interactive .slider__slides {
-    height: 612px; }
 
 .field-body p:last-child {
   margin-bottom: 0; }

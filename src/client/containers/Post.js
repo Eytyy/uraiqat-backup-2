@@ -25,6 +25,12 @@ class Post extends Component { //eslint-disable-line
 			this.fetchData();
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+		const { content, isFetching } = nextProps;
+		if (!isFetching && typeof content.id === 'undefined') {
+			this.fetchData();
+		}
+	}
 
 	fetchData() {
 		const { fetchPost, match } = this.props;

@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import ImageComponent from '../components/media/ImageComponent';
-import FlexibleImageComponent from '../components/media/FlexibleImageComponent';
 import VideoComponent from '../components/media/VideoComponent';
 
-const Slide = ({ imagesQuery, content, isFlexible, setSliderHeight }) => {
+const Slide = ({ imagesQuery, content }) => {
 	const isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
-	if (isFlexible) {
-		return isMediaOfTypeImage ?
-			<FlexibleImageComponent classList="slide slide--image" setSliderHeight={setSliderHeight} imagesQuery={imagesQuery}  content={content} /> :
-			<VideoComponent classList="slide slide--video" content={content} /> ;
-	}
 	return isMediaOfTypeImage ?
 		<ImageComponent classList="slide slide--image" imagesQuery={imagesQuery}  src={typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url} /> :
 		<VideoComponent classList="slide slide--video" content={content} /> ;
@@ -20,33 +14,18 @@ class Slider extends Component {
 		super();
 		this.state = {
 			activeSlide: 0,
-			sliderHeight: 'auto',
 		};
-		this.setSliderHeight = this.setSliderHeight.bind(this);
-	}
-	
-	setSliderHeight(height) {
-		const { content } = this.props;
-		if (content.length > 1) {
-			return;
-		}
-		this.setState({
-			sliderHeight: `${height}px`
-		});
 	}
 
 	render() {
-		const { content, classList, imagesQuery, isFlexible } = this.props;
-		const style = {
-			height: this.state.sliderHeight
-		};
+		const { content, classList, imagesQuery } = this.props;
 		if (content.length === 0) {
 			return null;
 		}
 		return ( 
-			<div style={style} className={`slider ${classList} ${content.length === 1 ? '' : 'slider--interactive'}`}>
+			<div  className={`slider ${classList} ${content.length === 1 ? '' : 'slider--interactive'}`}>
 				<div className="slider__slides">
-					{ content.map(({ fields, sys }) => <Slide setSliderHeight={this.setSliderHeight} isFlexible={isFlexible} key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
+					{ content.map(({ fields, sys }) => <Slide key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
 				</div>
 				{
 					content.length === 1 ?

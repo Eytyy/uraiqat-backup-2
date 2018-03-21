@@ -29,7 +29,10 @@ class RelatedPosts extends Component { //eslint-disable-line
 			return null;
 		}
 		return content.map(({fields, sys}) => {
-			const withid = Object.assign({}, {id: sys.id}, fields);
+			const withid = {
+				...fields,
+				id: sys.id,
+			};
 			return <PostDefault content={withid} key={sys.id} />;
 		});
 	}
