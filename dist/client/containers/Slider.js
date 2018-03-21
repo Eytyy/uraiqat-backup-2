@@ -14,6 +14,10 @@ var _ImageComponent = require('../components/media/ImageComponent');
 
 var _ImageComponent2 = _interopRequireDefault(_ImageComponent);
 
+var _FlexibleImageComponent = require('../components/media/FlexibleImageComponent');
+
+var _FlexibleImageComponent2 = _interopRequireDefault(_FlexibleImageComponent);
+
 var _VideoComponent = require('../components/media/VideoComponent');
 
 var _VideoComponent2 = _interopRequireDefault(_VideoComponent);
@@ -28,9 +32,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Slide = function Slide(_ref) {
 	var imagesQuery = _ref.imagesQuery,
-	    content = _ref.content;
+	    content = _ref.content,
+	    isFlexible = _ref.isFlexible,
+	    setSliderHeight = _ref.setSliderHeight;
 
 	var isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
+	if (isFlexible) {
+		return isMediaOfTypeImage ? _react2.default.createElement(_FlexibleImageComponent2.default, { classList: 'slide slide--image', setSliderHeight: setSliderHeight, imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_VideoComponent2.default, { classList: 'slide slide--video', content: content });
+	}
 	return isMediaOfTypeImage ? _react2.default.createElement(_ImageComponent2.default, { classList: 'slide slide--image', imagesQuery: imagesQuery, src: typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url }) : _react2.default.createElement(_VideoComponent2.default, { classList: 'slide slide--video', content: content });
 };
 
@@ -43,32 +52,52 @@ var Slider = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this));
 
 		_this.state = {
-			activeSlide: 0
+			activeSlide: 0,
+			sliderHeight: 'auto'
 		};
+		_this.setSliderHeight = _this.setSliderHeight.bind(_this);
 		return _this;
 	}
 
 	_createClass(Slider, [{
+		key: 'setSliderHeight',
+		value: function setSliderHeight(height) {
+			var content = this.props.content;
+
+			if (content.length > 1) {
+				return;
+			}
+			this.setState({
+				sliderHeight: height + 'px'
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			var _props = this.props,
 			    content = _props.content,
 			    classList = _props.classList,
-			    imagesQuery = _props.imagesQuery;
+			    imagesQuery = _props.imagesQuery,
+			    isFlexible = _props.isFlexible;
 
+			var style = {
+				height: this.state.sliderHeight
+			};
 			if (content.length === 0) {
 				return null;
 			}
 			return _react2.default.createElement(
 				'div',
-				{ className: 'slider ' + classList + ' ' + (content.length === 1 ? '' : 'slider--interactive') },
+				{ style: style, className: 'slider ' + classList + ' ' + (content.length === 1 ? '' : 'slider--interactive') },
 				_react2.default.createElement(
 					'div',
 					{ className: 'slider__slides' },
 					content.map(function (_ref2) {
 						var fields = _ref2.fields,
 						    sys = _ref2.sys;
-						return _react2.default.createElement(Slide, { key: sys.id, imagesQuery: imagesQuery, content: fields });
+						return _react2.default.createElement(Slide, { setSliderHeight: _this2.setSliderHeight, isFlexible: isFlexible, key: sys.id, imagesQuery: imagesQuery, content: fields });
 					})
 				),
 				content.length === 1 ? null : _react2.default.createElement(
@@ -98,5 +127,9 @@ var Slider = function (_Component) {
 
 	return Slider;
 }(_react.Component);
+
+Slider.defaultProps = {
+	isFlexible: false
+};
 
 exports.default = Slider;

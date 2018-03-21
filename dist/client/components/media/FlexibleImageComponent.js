@@ -10,14 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _RelatedProject = require('../../components/related/RelatedProject');
-
-var _RelatedProject2 = _interopRequireDefault(_RelatedProject);
-
-var _RelatedPosts = require('../../components/related/RelatedPosts');
-
-var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26,32 +18,45 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PostRelated = function (_Component) {
-	_inherits(PostRelated, _Component);
+var FlexibleImageComponent = function (_Component) {
+	_inherits(FlexibleImageComponent, _Component);
 
-	function PostRelated() {
-		_classCallCheck(this, PostRelated);
+	function FlexibleImageComponent() {
+		_classCallCheck(this, FlexibleImageComponent);
 
-		return _possibleConstructorReturn(this, (PostRelated.__proto__ || Object.getPrototypeOf(PostRelated)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (FlexibleImageComponent.__proto__ || Object.getPrototypeOf(FlexibleImageComponent)).apply(this, arguments));
 	}
 
-	_createClass(PostRelated, [{
+	_createClass(FlexibleImageComponent, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _props = this.props,
+			    content = _props.content,
+			    setSliderHeight = _props.setSliderHeight;
+			var _content$file$details = content.file.details.image,
+			    width = _content$file$details.width,
+			    height = _content$file$details.height;
+
+			var imageHeight = Math.ceil(882 * (height / width / 32)) * 32;
+			setSliderHeight(imageHeight);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _props = this.props,
-			    relatedProject = _props.relatedProject,
-			    postID = _props.postID;
+			var _props2 = this.props,
+			    content = _props2.content,
+			    classList = _props2.classList;
+			var url = content.file.url;
 
-			return _react2.default.createElement(
-				'aside',
-				{ className: 'related-content post__related' },
-				relatedProject && _react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields }),
-				_react2.default.createElement(_RelatedPosts2.default, { id: relatedProject[0].sys.id, postID: postID })
-			);
+			var style = {
+				backgroundImage: 'url(\'' + url + '\')'
+			};
+			var classes = typeof classList !== 'undefined' ? classList : '';
+			return _react2.default.createElement('div', { className: 'preview-image ' + classes, style: style });
 		}
 	}]);
 
-	return PostRelated;
+	return FlexibleImageComponent;
 }(_react.Component);
 
-exports.default = PostRelated;
+exports.default = FlexibleImageComponent;

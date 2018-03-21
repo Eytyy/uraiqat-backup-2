@@ -31,13 +31,21 @@
 	position: relative;
 	.slider__slides {
 		float: none;
-		height: 612px;
+		height: 100%;
+	}
+	.profile-image {
+		height: 100%;
 	}
 	.slider__controls {
 		position: absolute;
 		right: -28px;
 		top: 0;
 		transform: translateX(100%);
+	}
+	&.slider--interactive {
+		.slider__slides {
+			height: 612px;
+		}
 	}
 }
 
