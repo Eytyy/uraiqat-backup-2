@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { renderRoutes } from 'react-router-config';
 
+import ScrollToTop from './ScrollToTop';
 import Menu from './navigation/menu';
 import Footer from '../components/Footer';
 
@@ -11,15 +12,18 @@ class App extends Component {
 		const { route } = this.props;
 		return (
 			<div className="container__inner">
-				<header className="website-header">
-					<div className="website-header__inner wrapper">
-						<Menu />
-					</div>
-				</header>
-				<main role="main" className="main-content">
-					{ renderRoutes(route.routes) }
-				</main>
-				<Footer />
+				<ScrollToTop>
+					<header className="website-header">
+						<div className="website-header__inner wrapper">
+							<Menu />
+						</div>
+					</header>
+					<main role="main" className="main-content">
+						{ renderRoutes(route.routes) }
+					</main>
+					<Footer />
+				</ScrollToTop>
+			
 			</div>
 		);
 	}

@@ -10,21 +10,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
-
-var _reactRouterConfig = require('react-router-config');
-
-var _ScrollToTop = require('./ScrollToTop');
-
-var _ScrollToTop2 = _interopRequireDefault(_ScrollToTop);
-
-var _menu = require('./navigation/menu');
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _Footer = require('../components/Footer');
-
-var _Footer2 = _interopRequireDefault(_Footer);
+var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,47 +20,30 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_Component) {
-	_inherits(App, _Component);
+var ScrollToTop = function (_Component) {
+	_inherits(ScrollToTop, _Component);
 
-	function App() {
-		_classCallCheck(this, App);
+	function ScrollToTop() {
+		_classCallCheck(this, ScrollToTop);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (ScrollToTop.__proto__ || Object.getPrototypeOf(ScrollToTop)).apply(this, arguments));
 	}
 
-	_createClass(App, [{
+	_createClass(ScrollToTop, [{
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate(prevProps) {
+			if (this.props.location !== prevProps.location) {
+				window.scrollTo(0, 0);
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var route = this.props.route;
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'container__inner' },
-				_react2.default.createElement(
-					_ScrollToTop2.default,
-					null,
-					_react2.default.createElement(
-						'header',
-						{ className: 'website-header' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'website-header__inner wrapper' },
-							_react2.default.createElement(_menu2.default, null)
-						)
-					),
-					_react2.default.createElement(
-						'main',
-						{ role: 'main', className: 'main-content' },
-						(0, _reactRouterConfig.renderRoutes)(route.routes)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				)
-			);
+			return this.props.children;
 		}
 	}]);
 
-	return App;
+	return ScrollToTop;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)()(App);
+exports.default = (0, _reactRouterDom.withRouter)(ScrollToTop);
