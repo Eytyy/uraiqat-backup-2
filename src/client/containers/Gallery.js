@@ -46,8 +46,8 @@ class Gallery extends Component {
 					content.length === 1 ?
 						null:
 						<div className="slider__controls">
-							<div className="slider__controls__inner">
-								<div onClick={this.closeGallery} className="slider__controls__item slider-btn slider-btn--close">x</div>
+							<div onClick={this.closeGallery} className="slider__controls__item slider-btn slider-btn--close">x</div>
+							<div className="slider__controls__bottom">
 								<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
 								<div className="slider__controls__item slider__counter">{activeSlide + 1}{'/'}{slides.length}</div>
 								<div onClick={() => this.updateSlide('next')} className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>

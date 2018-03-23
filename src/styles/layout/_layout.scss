@@ -66,4 +66,7 @@ img {
 .js-gallery-isActive {
 	height: 100%;
 	overflow: hidden;
+	main {
+		opacity: 0;
+	}
 }

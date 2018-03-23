@@ -99,12 +99,12 @@ var Gallery = function (_Component) {
 					{ className: 'slider__controls' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'slider__controls__inner' },
-						_react2.default.createElement(
-							'div',
-							{ onClick: this.closeGallery, className: 'slider__controls__item slider-btn slider-btn--close' },
-							'x'
-						),
+						{ onClick: this.closeGallery, className: 'slider__controls__item slider-btn slider-btn--close' },
+						'x'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'slider__controls__bottom' },
 						_react2.default.createElement(
 							'div',
 							{ onClick: function onClick() {

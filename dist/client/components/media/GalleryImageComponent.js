@@ -36,21 +36,25 @@ var GalleryImageComponent = function (_Component) {
 			var file = content.file,
 			    description = content.description;
 
-			var isImageLandscape = file.details.image.width > file.details.image.height;
+			var isImageLandscape = file.details.image.width > file.details.image.height + 100;
+			var style = {
+				height: isImageLandscape ? 'auto' : window.innerHeight - 64 - 64 + 'px',
+				width: isImageLandscape ? '100%' : 'auto'
+			};
 			return _react2.default.createElement(
 				'div',
 				{ className: 'slide gallery__slide gallery__slide--' + (isImageLandscape ? 'landscape' : 'portrait') },
 				_react2.default.createElement(
 					'div',
 					{ className: 'gallery__slide__media' },
+					_react2.default.createElement('img', { style: style, src: file.url }),
 					_react2.default.createElement(
 						'div',
 						{ className: 'caption' },
 						active + 1,
 						': ',
 						description
-					),
-					_react2.default.createElement('img', { src: file.url })
+					)
 				)
 			);
 		}
