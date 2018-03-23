@@ -28,6 +28,7 @@ export const initClient = () => (dispatch, getState) => {
 	});
 };
 
+
 // Journal Action Creators
 const requestPosts = () => ({
 	type: 'REQUEST_POSTS'
@@ -61,7 +62,6 @@ export const fetchPosts = () => (dispatch, getState) => {
 };
 
 export const fetchPost = (id) => (dispatch, getState) => {
-	console.log('fetch', id);
 	const state = getState();
 	dispatch(requestPost());
 	if (isPostFetching(state)) {
@@ -71,6 +71,7 @@ export const fetchPost = (id) => (dispatch, getState) => {
 		dispatch(recievePost(response));
 	});
 };
+
 
 // Work Action Creators
 const requestProjects = () => ({
@@ -116,7 +117,6 @@ export const fetchProject = (id) => (dispatch, getState) => {
 };
 
 // Related Action Creators
-
 const requestRelated = () => ({
 	type: 'REQUEST_RELATED'
 });
@@ -140,3 +140,27 @@ export const fetchRelated = (id) => (dispatch, getState) => {
 	});
 };
 
+
+// Gallery Action Creators
+const recieveGalleryContent = (content) => ({
+	type: 'RECIEVE_GALLERY_CONTENT',
+	response: {
+		content,
+	}
+});
+export const updateGallery = (content) => (dispatch) =>
+	dispatch(recieveGalleryContent(content));
+
+
+const updateSlide = (direction) => ({
+	type: 'UPDATE_ACTIVE_SLIDE',
+	response: direction,
+});
+export const updateActiveSlide = (direction) => (dispatch) => dispatch(updateSlide(direction));
+
+
+const updateGalleryVisibility = visible => ({
+	type: 'UPDATE_GALLERY_VISIBILITY',
+	response: visible
+});
+export const toggleGallery = visible => dispatch => dispatch(updateGalleryVisibility(visible));

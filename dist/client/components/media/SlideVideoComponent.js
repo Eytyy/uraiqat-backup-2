@@ -10,26 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
-
-var _reactRouterConfig = require('react-router-config');
-
-var _ScrollToTop = require('./ScrollToTop');
-
-var _ScrollToTop2 = _interopRequireDefault(_ScrollToTop);
-
-var _Gallery = require('./Gallery');
-
-var _Gallery2 = _interopRequireDefault(_Gallery);
-
-var _menu = require('./navigation/menu');
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _Footer = require('../components/Footer');
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38,48 +18,72 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_Component) {
-	_inherits(App, _Component);
+var SlideVideoComponent = function (_Component) {
+	_inherits(SlideVideoComponent, _Component);
 
-	function App() {
-		_classCallCheck(this, App);
+	function SlideVideoComponent() {
+		_classCallCheck(this, SlideVideoComponent);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (SlideVideoComponent.__proto__ || Object.getPrototypeOf(SlideVideoComponent)).call(this));
+
+		_this.state = {
+			playing: false
+		};
+		_this.playVideo = _this.playVideo.bind(_this);
+		_this.stopVideo = _this.stopVideo.bind(_this);
+		_this.toggleVideo = _this.toggleVideo.bind(_this);
+		return _this;
 	}
 
-	_createClass(App, [{
+	_createClass(SlideVideoComponent, [{
+		key: 'toggleVideo',
+		value: function toggleVideo() {
+			if (this.state.playing) {
+				this.stopVideo();
+			} else {
+				this.playVideo();
+			}
+			this.setState({
+				playing: !this.state.playing
+			});
+		}
+	}, {
+		key: 'playVideo',
+		value: function playVideo() {
+			this.video.play();
+		}
+	}, {
+		key: 'stopVideo',
+		value: function stopVideo() {
+			this.video.pause();
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var route = this.props.route;
+			var _this2 = this;
 
+			var _props = this.props,
+			    content = _props.content,
+			    classList = _props.classList;
+
+			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
+			var allClasses = 'video ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
 			return _react2.default.createElement(
 				'div',
-				{ className: 'container__inner' },
-				_react2.default.createElement(_Gallery2.default, null),
+				{ onClick: this.toggleVideo, className: allClasses },
 				_react2.default.createElement(
-					_ScrollToTop2.default,
-					null,
-					_react2.default.createElement(
-						'header',
-						{ className: 'website-header' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'website-header__inner wrapper' },
-							_react2.default.createElement(_menu2.default, null)
-						)
-					),
-					_react2.default.createElement(
-						'main',
-						{ role: 'main', className: 'main-content' },
-						(0, _reactRouterConfig.renderRoutes)(route.routes)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				)
+					'div',
+					{ className: 'video-controls' },
+					_react2.default.createElement('span', { className: 'video-controls__item video-state' })
+				),
+				_react2.default.createElement('video', { ref: function ref(el) {
+						_this2.video = el;
+					}, src: url })
 			);
 		}
 	}]);
 
-	return App;
+	return SlideVideoComponent;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)()(App);
+exports.default = SlideVideoComponent;

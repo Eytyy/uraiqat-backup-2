@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import posts, * as fromHome from './home';
 import projects, * as fromWork from './work';
 import related, * as fromRelated from './related';
+import gallery, * as fromGallery from './gallery'
 
 const RootReducer = combineReducers({
 	posts,
 	projects,
-	related
+	related,
+	gallery
 });
 
 // Home Selectors
@@ -50,7 +52,6 @@ export const getProject = (state, id) => {
 };
 
 // Related Selectors
-
 export const isRelatedFetching = state => fromRelated.getIsFetching(state.related);
 
 export const getRelatedPosts = (state, id, postID) => {
@@ -58,4 +59,8 @@ export const getRelatedPosts = (state, id, postID) => {
 	return typeof content === 'undefined' ? [] : content.filter(({sys}) => sys.id !== postID);
 };
 
+// Gallery Selectors
+export const getGalleryContent = state => fromGallery.getGalleryContent(state.gallery);
+
+export const getActiveSlide = state => fromGallery.getActiveSlide(state.gallery);
 export default RootReducer;

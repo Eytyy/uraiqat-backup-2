@@ -31,6 +31,8 @@
 	position: relative;
 	.slider__slides {
 		float: none;
+	}
+	.slide__image {
 		height: 612px;
 	}
 	.slider__controls {
@@ -39,6 +41,14 @@
 		top: 0;
 		transform: translateX(100%);
 	}
+}
+
+.post__media__caption {
+	margin-top: 8px;
+	color: #4A4A4A;
+	font-family: $font--bold;
+	font-size: 14px;
+	line-height: 32px;
 }
 
 .field-body {

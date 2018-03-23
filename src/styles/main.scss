@@ -7,10 +7,7 @@
 @import "layout/layout";
 
 @import "components/navigation";
-@import "components/slider";
-@import "components/image-preview";
-@import "components/video";
-@import "components/related";
+
 
 @import "components/home/post-preview";
 
@@ -19,4 +16,9 @@
 
 @import "components/posts/inner";
 
+@import "components/related";
 
+@import "components/media/slider";
+@import "components/media/gallery";
+@import "components/media/image-preview";
+@import "components/media/video";

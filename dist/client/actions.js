@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -86,7 +86,6 @@ var fetchPosts = exports.fetchPosts = function fetchPosts() {
 
 var fetchPost = exports.fetchPost = function fetchPost(id) {
 	return function (dispatch, getState) {
-		console.log('fetch', id);
 		var state = getState();
 		dispatch(requestPost());
 		if ((0, _reducers.isPostFetching)(state)) {
@@ -154,7 +153,6 @@ var fetchProject = exports.fetchProject = function fetchProject(id) {
 };
 
 // Related Action Creators
-
 var requestRelated = function requestRelated() {
 	return {
 		type: 'REQUEST_RELATED'
@@ -181,5 +179,44 @@ var fetchRelated = exports.fetchRelated = function fetchRelated(id) {
 		}).then(function (response) {
 			dispatch(recieveRelated(response, id));
 		});
+	};
+};
+
+// Gallery Action Creators
+var recieveGalleryContent = function recieveGalleryContent(content) {
+	return {
+		type: 'RECIEVE_GALLERY_CONTENT',
+		response: {
+			content: content
+		}
+	};
+};
+var updateGallery = exports.updateGallery = function updateGallery(content) {
+	return function (dispatch) {
+		return dispatch(recieveGalleryContent(content));
+	};
+};
+
+var updateSlide = function updateSlide(direction) {
+	return {
+		type: 'UPDATE_ACTIVE_SLIDE',
+		response: direction
+	};
+};
+var updateActiveSlide = exports.updateActiveSlide = function updateActiveSlide(direction) {
+	return function (dispatch) {
+		return dispatch(updateSlide(direction));
+	};
+};
+
+var updateGalleryVisibility = function updateGalleryVisibility(visible) {
+	return {
+		type: 'UPDATE_GALLERY_VISIBILITY',
+		response: visible
+	};
+};
+var toggleGallery = exports.toggleGallery = function toggleGallery(visible) {
+	return function (dispatch) {
+		return dispatch(updateGalleryVisibility(visible));
 	};
 };

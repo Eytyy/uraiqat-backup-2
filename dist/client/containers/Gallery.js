@@ -12,15 +12,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _reducers = require('../reducers');
+
+var _GallerySlide = require('../components/media/GallerySlide');
+
+var _GallerySlide2 = _interopRequireDefault(_GallerySlide);
+
 var _actions = require('../actions');
 
 var actions = _interopRequireWildcard(_actions);
-
-var _reducers = require('../reducers');
-
-var _Slide = require('../components/media/Slide');
-
-var _Slide2 = _interopRequireDefault(_Slide);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -32,27 +32,30 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Slider = function (_Component) {
-	_inherits(Slider, _Component);
+var Gallery = function (_Component) {
+	_inherits(Gallery, _Component);
 
-	function Slider() {
-		_classCallCheck(this, Slider);
+	function Gallery() {
+		_classCallCheck(this, Gallery);
 
-		var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this));
+		var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
 
-		_this.onSlideClick = _this.onSlideClick.bind(_this);
 		_this.updateSlide = _this.updateSlide.bind(_this);
+		_this.closeGallery = _this.closeGallery.bind(_this);
 		return _this;
 	}
 
-	_createClass(Slider, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var _props = this.props,
-			    content = _props.content,
-			    updateGallery = _props.updateGallery;
+	_createClass(Gallery, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			var content = nextProps.content;
+			var isActive = content.isActive;
 
-			updateGallery(content);
+			if (isActive) {
+				document.body.classList.add('js-gallery-isActive');
+			} else {
+				document.body.classList.remove('js-gallery-isActive');
+			}
 		}
 	}, {
 		key: 'updateSlide',
@@ -62,11 +65,11 @@ var Slider = function (_Component) {
 			updateActiveSlide(direction);
 		}
 	}, {
-		key: 'onSlideClick',
-		value: function onSlideClick() {
+		key: 'closeGallery',
+		value: function closeGallery() {
 			var toggleGallery = this.props.toggleGallery;
 
-			var openGallery = true;
+			var openGallery = false;
 			toggleGallery(openGallery);
 		}
 	}, {
@@ -74,75 +77,73 @@ var Slider = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
-			var _props2 = this.props,
-			    content = _props2.content,
-			    classList = _props2.classList,
-			    imagesQuery = _props2.imagesQuery,
-			    activeSlideIndex = _props2.activeSlideIndex;
+			var content = this.props.content;
+			var slides = content.slides,
+			    isActive = content.isActive,
+			    activeSlide = content.activeSlide;
 
-			var sliderRailStyle = {
-				transform: 'translateX(-' + activeSlideIndex * 100 + '%)'
-			};
-			if (content.length === 0) {
+			var visibleSlide = slides[activeSlide];
+			if (!isActive) {
 				return null;
 			}
 			return _react2.default.createElement(
 				'div',
-				{ className: 'slider ' + classList },
+				{ className: 'gallery' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'slider__inner' },
-					_react2.default.createElement(
-						'div',
-						{ style: sliderRailStyle, className: 'slider__slides' },
-						content.map(function (_ref) {
-							var fields = _ref.fields,
-							    sys = _ref.sys;
-							return _react2.default.createElement(_Slide2.default, { onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
-						})
-					)
+					{ className: 'gallery__inner' },
+					_react2.default.createElement(_GallerySlide2.default, { active: activeSlide, key: visibleSlide.id, content: visibleSlide })
 				),
 				content.length === 1 ? null : _react2.default.createElement(
 					'div',
 					{ className: 'slider__controls' },
 					_react2.default.createElement(
 						'div',
-						{ onClick: function onClick() {
-								return _this2.updateSlide('prev');
-							}, className: 'slider__controls__item slider-btn slider-btn--prev' },
-						'<'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'slider__controls__item slider__counter' },
-						activeSlideIndex + 1,
-						'/',
-						content.length
-					),
-					_react2.default.createElement(
-						'div',
-						{ onClick: function onClick() {
-								return _this2.updateSlide('next');
-							}, className: 'slider__controls__item slider-btn slider-btn--next' },
-						'>'
+						{ className: 'slider__controls__inner' },
+						_react2.default.createElement(
+							'div',
+							{ onClick: this.closeGallery, className: 'slider__controls__item slider-btn slider-btn--close' },
+							'x'
+						),
+						_react2.default.createElement(
+							'div',
+							{ onClick: function onClick() {
+									return _this2.updateSlide('prev');
+								}, className: 'slider__controls__item slider-btn slider-btn--prev' },
+							'<'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'slider__controls__item slider__counter' },
+							activeSlide + 1,
+							'/',
+							slides.length
+						),
+						_react2.default.createElement(
+							'div',
+							{ onClick: function onClick() {
+									return _this2.updateSlide('next');
+								}, className: 'slider__controls__item slider-btn slider-btn--next' },
+							'>'
+						)
 					)
 				)
 			);
 		}
 	}]);
 
-	return Slider;
+	return Gallery;
 }(_react.Component);
 
-Slider.defaultProps = {
-	isFlexible: false,
-	activeSlideIndex: 0
+Gallery.defaultProps = {
+	activeSlide: 0
 };
 
 var mapStateToProps = function mapStateToProps(state) {
 	return {
-		activeSlideIndex: (0, _reducers.getActiveSlide)(state)
+		content: (0, _reducers.getGalleryContent)(state),
+		activeSlide: (0, _reducers.getActiveSlide)(state)
 	};
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(Slider);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(Gallery);

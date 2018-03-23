@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -19,12 +19,17 @@ var _related = require('./related');
 
 var fromRelated = _interopRequireWildcard(_related);
 
+var _gallery = require('./gallery');
+
+var fromGallery = _interopRequireWildcard(_gallery);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
 	posts: fromHome.default,
 	projects: fromWork.default,
-	related: fromRelated.default
+	related: fromRelated.default,
+	gallery: fromGallery.default
 });
 
 // Home Selectors
@@ -80,7 +85,6 @@ var getProject = exports.getProject = function getProject(state, id) {
 };
 
 // Related Selectors
-
 var isRelatedFetching = exports.isRelatedFetching = function isRelatedFetching(state) {
 	return fromRelated.getIsFetching(state.related);
 };
@@ -93,4 +97,12 @@ var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, 
 	});
 };
 
+// Gallery Selectors
+var getGalleryContent = exports.getGalleryContent = function getGalleryContent(state) {
+	return fromGallery.getGalleryContent(state.gallery);
+};
+
+var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state) {
+	return fromGallery.getActiveSlide(state.gallery);
+};
 exports.default = RootReducer;

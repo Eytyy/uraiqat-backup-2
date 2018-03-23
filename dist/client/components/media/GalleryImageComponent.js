@@ -10,26 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
-
-var _reactRouterConfig = require('react-router-config');
-
-var _ScrollToTop = require('./ScrollToTop');
-
-var _ScrollToTop2 = _interopRequireDefault(_ScrollToTop);
-
-var _Gallery = require('./Gallery');
-
-var _Gallery2 = _interopRequireDefault(_Gallery);
-
-var _menu = require('./navigation/menu');
-
-var _menu2 = _interopRequireDefault(_menu);
-
-var _Footer = require('../components/Footer');
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38,48 +18,45 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_Component) {
-	_inherits(App, _Component);
+var GalleryImageComponent = function (_Component) {
+	_inherits(GalleryImageComponent, _Component);
 
-	function App() {
-		_classCallCheck(this, App);
+	function GalleryImageComponent() {
+		_classCallCheck(this, GalleryImageComponent);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (GalleryImageComponent.__proto__ || Object.getPrototypeOf(GalleryImageComponent)).apply(this, arguments));
 	}
 
-	_createClass(App, [{
+	_createClass(GalleryImageComponent, [{
 		key: 'render',
 		value: function render() {
-			var route = this.props.route;
+			var _props = this.props,
+			    content = _props.content,
+			    active = _props.active;
+			var file = content.file,
+			    description = content.description;
 
+			var isImageLandscape = file.details.image.width > file.details.image.height;
 			return _react2.default.createElement(
 				'div',
-				{ className: 'container__inner' },
-				_react2.default.createElement(_Gallery2.default, null),
+				{ className: 'slide gallery__slide gallery__slide--' + (isImageLandscape ? 'landscape' : 'portrait') },
 				_react2.default.createElement(
-					_ScrollToTop2.default,
-					null,
+					'div',
+					{ className: 'gallery__slide__media' },
 					_react2.default.createElement(
-						'header',
-						{ className: 'website-header' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'website-header__inner wrapper' },
-							_react2.default.createElement(_menu2.default, null)
-						)
+						'div',
+						{ className: 'caption' },
+						active + 1,
+						': ',
+						description
 					),
-					_react2.default.createElement(
-						'main',
-						{ role: 'main', className: 'main-content' },
-						(0, _reactRouterConfig.renderRoutes)(route.routes)
-					),
-					_react2.default.createElement(_Footer2.default, null)
+					_react2.default.createElement('img', { src: file.url })
 				)
 			);
 		}
 	}]);
 
-	return App;
+	return GalleryImageComponent;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)()(App);
+exports.default = GalleryImageComponent;

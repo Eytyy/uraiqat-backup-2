@@ -1,0 +1,52 @@
+
+.slider__inner {
+	overflow: hidden;
+}
+
+.slider__slides {
+	display: flex;
+	transition: transform 200ms linear;
+}	
+
+.slider .slide {
+	flex: 0 0 100%;
+}
+
+.slider__controls {
+	float: right;
+	color: blue;
+	font-family: $font--bold;
+	text-align: center;
+	&__item {
+		margin-bottom: 16px;
+	}
+}
+
+.slider__counter {
+	font-size: 14px;
+}
+
+.slider-btn {
+	cursor: pointer;
+}
+
+.slider .slide {
+	position: relative;
+	cursor: pointer;
+	&:after {
+		content: '+ open gallery';
+		display: block;
+		color: blue;
+		font-family: $font--bold;
+		font-size: 20px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		transition: opacity 100ms linear;
+	}
+	&:hover:after {
+		opacity: 1;
+	}
+}
