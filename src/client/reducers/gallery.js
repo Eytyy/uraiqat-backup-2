@@ -69,8 +69,11 @@ const gallery = combineReducers({
 });
 
 export const getGalleryContent = (state) => {
-	console.log(state.ById[state.All.activeGalleryId]);
-	return [];
+	return state.All.activeGalleryId ? {
+		galleryId: state.All.activeGalleryId,
+		...state.ById[state.All.activeGalleryId],
+		isActive: state.All.isActive,
+	}: [];
 };
 
 export const getActiveSlide = (state, id) =>

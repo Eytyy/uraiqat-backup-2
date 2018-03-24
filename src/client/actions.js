@@ -163,11 +163,11 @@ const updateSlide = (sliderId, direction) => ({
 export const updateActiveSlide = (sliderId, direction) => (dispatch) => dispatch(updateSlide(sliderId, direction));
 
 
-const updateGalleryVisibility = (SliderId, isVisible) => ({
+const updateGalleryVisibility = (sliderId, isVisible) => ({
 	type: 'UPDATE_GALLERY_VISIBILITY',
 	response: {
-		SliderId,
+		sliderId,
 		isVisible
 	}
 });
-export const toggleGallery = (SliderId, isVisible) => dispatch => dispatch(updateGalleryVisibility(SliderId, isVisible));
+export const toggleGallery = (sliderId, isVisible) => dispatch => dispatch(updateGalleryVisibility(sliderId, isVisible));

@@ -99,8 +99,7 @@ var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, 
 
 // Gallery Selectors
 var getGalleryContent = exports.getGalleryContent = function getGalleryContent(state) {
-	fromGallery.getGalleryContent(state.gallery);
-	return [];
+	return fromGallery.getGalleryContent(state.gallery);
 };
 
 var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state, id) {

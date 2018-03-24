@@ -592,7 +592,8 @@ nav {
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  padding-bottom: 64px; }
   .gallery .slider__controls {
     position: absolute;
     top: 0;
@@ -606,6 +607,14 @@ nav {
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
+  .gallery .caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 20px;
+    text-align: left;
+    line-height: 32px;
+    color: #000; }
 
 .gallery__inner {
   width: calc(100% - 98px); }
@@ -618,11 +627,6 @@ nav {
 .gallery__slide__media {
   position: relative;
   display: inline-block; }
-  .gallery__slide__media .caption {
-    font-size: 20px;
-    text-align: left;
-    line-height: 32px;
-    color: #000; }
 
 .preview-image {
   position: relative;

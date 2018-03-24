@@ -26,7 +26,6 @@ class Slider extends Component {
 	}
 	render() {
 		const { content, classList, imagesQuery, activeSlideIndex } = this.props;
-		console.log(activeSlideIndex);
 		const sliderRailStyle = {
 			transform: `translateX(-${activeSlideIndex * 100}%)`
 		};

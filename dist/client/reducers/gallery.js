@@ -82,8 +82,11 @@ var gallery = (0, _redux.combineReducers)({
 });
 
 var getGalleryContent = exports.getGalleryContent = function getGalleryContent(state) {
-	console.log(state.ById[state.All.activeGalleryId]);
-	return [];
+	return state.All.activeGalleryId ? _extends({
+		galleryId: state.All.activeGalleryId
+	}, state.ById[state.All.activeGalleryId], {
+		isActive: state.All.isActive
+	}) : [];
 };
 
 var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state, id) {

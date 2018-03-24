@@ -9,6 +9,7 @@
 	height: calc(100% - 64px);
 	display: flex;
 	align-items: center;
+	padding-bottom: 64px;
 	.slider__controls {
 		position: absolute;
 		top: 0;
@@ -23,6 +24,15 @@
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
+	}
+	.caption {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		font-size: 20px;
+		text-align: left;
+		line-height: 32px;
+		color: #000;
 	}
 }
 
@@ -42,10 +52,4 @@
 .gallery__slide__media {
 	position: relative;
 	display: inline-block;
-	.caption {
-		font-size: 20px;
-		text-align: left;
-		line-height: 32px;
-		color: #000;
-	}
 }

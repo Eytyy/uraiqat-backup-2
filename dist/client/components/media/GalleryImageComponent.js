@@ -47,14 +47,14 @@ var GalleryImageComponent = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'gallery__slide__media' },
-					_react2.default.createElement('img', { style: style, src: file.url }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'caption' },
-						active + 1,
-						': ',
-						description
-					)
+					_react2.default.createElement('img', { style: style, src: file.url })
+				),
+				description && _react2.default.createElement(
+					'div',
+					{ className: 'caption' },
+					active + 1,
+					': ',
+					description
 				)
 			);
 		}

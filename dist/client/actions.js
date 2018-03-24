@@ -213,17 +213,17 @@ var updateActiveSlide = exports.updateActiveSlide = function updateActiveSlide(s
 	};
 };
 
-var updateGalleryVisibility = function updateGalleryVisibility(SliderId, isVisible) {
+var updateGalleryVisibility = function updateGalleryVisibility(sliderId, isVisible) {
 	return {
 		type: 'UPDATE_GALLERY_VISIBILITY',
 		response: {
-			SliderId: SliderId,
+			sliderId: sliderId,
 			isVisible: isVisible
 		}
 	};
 };
-var toggleGallery = exports.toggleGallery = function toggleGallery(SliderId, isVisible) {
+var toggleGallery = exports.toggleGallery = function toggleGallery(sliderId, isVisible) {
 	return function (dispatch) {
-		return dispatch(updateGalleryVisibility(SliderId, isVisible));
+		return dispatch(updateGalleryVisibility(sliderId, isVisible));
 	};
 };

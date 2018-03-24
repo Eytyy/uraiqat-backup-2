@@ -85,7 +85,6 @@ var Slider = function (_Component) {
 			    imagesQuery = _props4.imagesQuery,
 			    activeSlideIndex = _props4.activeSlideIndex;
 
-			console.log(activeSlideIndex);
 			var sliderRailStyle = {
 				transform: 'translateX(-' + activeSlideIndex * 100 + '%)'
 			};
