@@ -530,7 +530,8 @@ nav {
     margin-bottom: 16px; }
 
 .slider__counter {
-  font-size: 14px; }
+  font-size: 14px;
+  color: #000; }
 
 .slider-btn {
   cursor: pointer; }
@@ -554,6 +555,28 @@ nav {
     transition: opacity 100ms linear; }
   .slider .slide:hover:after {
     opacity: 1; }
+
+.slider--main,
+.slider--small {
+  position: relative; }
+  .slider--main .slider__controls,
+  .slider--small .slider__controls {
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+.slider--main {
+  width: 903px; }
+  .slider--main .slider__inner {
+    width: 826px; }
+  .slider--main .slide__image {
+    height: 512px; }
+
+.slider--small .slider__inner {
+  width: 334px; }
+
+.slider--small .slide__image {
+  height: 254px; }
 
 .gallery {
   position: fixed;

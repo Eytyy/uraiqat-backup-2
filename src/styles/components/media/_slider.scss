@@ -24,6 +24,7 @@
 
 .slider__counter {
 	font-size: 14px;
+	color: #000;
 }
 
 .slider-btn {
@@ -48,5 +49,33 @@
 	}
 	&:hover:after {
 		opacity: 1;
+	}
+}
+
+.slider--main,
+.slider--small {
+	position: relative;
+	.slider__controls {
+		position: absolute;
+    right: 0;
+    top: 0;
+	}
+}
+.slider--main {
+	width: 903px;
+	.slider__inner {
+		width: 826px;
+	}
+	.slide__image {
+		height: 512px;
+	}
+}
+
+.slider--small {
+	.slider__inner {
+		width: 334px;
+	}
+	.slide__image {
+		height: 254px;
 	}
 }

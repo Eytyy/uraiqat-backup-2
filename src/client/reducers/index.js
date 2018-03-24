@@ -60,7 +60,11 @@ export const getRelatedPosts = (state, id, postID) => {
 };
 
 // Gallery Selectors
-export const getGalleryContent = state => fromGallery.getGalleryContent(state.gallery);
+export const getGalleryContent = state => {
+	fromGallery.getGalleryContent(state.gallery);
+	return [];
+};
 
-export const getActiveSlide = state => fromGallery.getActiveSlide(state.gallery);
+export const getActiveSlide = (state, id) => fromGallery.getActiveSlide(state.gallery, id);
+
 export default RootReducer;

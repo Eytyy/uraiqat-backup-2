@@ -50,36 +50,42 @@ var Slider = function (_Component) {
 		value: function componentDidMount() {
 			var _props = this.props,
 			    content = _props.content,
-			    updateGallery = _props.updateGallery;
+			    updateGallery = _props.updateGallery,
+			    sliderId = _props.sliderId;
 
-			updateGallery(content);
+			updateGallery(sliderId, content);
 		}
 	}, {
 		key: 'updateSlide',
 		value: function updateSlide(direction) {
-			var updateActiveSlide = this.props.updateActiveSlide;
+			var _props2 = this.props,
+			    updateActiveSlide = _props2.updateActiveSlide,
+			    sliderId = _props2.sliderId;
 
-			updateActiveSlide(direction);
+			updateActiveSlide(sliderId, direction);
 		}
 	}, {
 		key: 'onSlideClick',
 		value: function onSlideClick() {
-			var toggleGallery = this.props.toggleGallery;
+			var _props3 = this.props,
+			    toggleGallery = _props3.toggleGallery,
+			    sliderId = _props3.sliderId;
 
 			var openGallery = true;
-			toggleGallery(openGallery);
+			toggleGallery(sliderId, openGallery);
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
 
-			var _props2 = this.props,
-			    content = _props2.content,
-			    classList = _props2.classList,
-			    imagesQuery = _props2.imagesQuery,
-			    activeSlideIndex = _props2.activeSlideIndex;
+			var _props4 = this.props,
+			    content = _props4.content,
+			    classList = _props4.classList,
+			    imagesQuery = _props4.imagesQuery,
+			    activeSlideIndex = _props4.activeSlideIndex;
 
+			console.log(activeSlideIndex);
 			var sliderRailStyle = {
 				transform: 'translateX(-' + activeSlideIndex * 100 + '%)'
 			};
@@ -139,9 +145,10 @@ Slider.defaultProps = {
 	activeSlideIndex: 0
 };
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, _ref2) {
+	var sliderId = _ref2.sliderId;
 	return {
-		activeSlideIndex: (0, _reducers.getActiveSlide)(state)
+		activeSlideIndex: (0, _reducers.getActiveSlide)(state, sliderId)
 	};
 };
 

@@ -19,13 +19,14 @@ var _FlexibleImageComponent2 = _interopRequireDefault(_FlexibleImageComponent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PostContentMedia = function PostContentMedia(_ref) {
-	var content = _ref.content;
+	var content = _ref.content,
+	    id = _ref.id;
 
 	if (typeof content === 'undefined') {
 		return null;
 	}
 
-	return content.files.length > 1 ? _react2.default.createElement(_Slider2.default, { classList: 'post__media', imagesQuery: '?fl=progressive&w=882', content: content.files }) : _react2.default.createElement(_FlexibleImageComponent2.default, { content: content.files[0] });
+	return content.files.length > 1 ? _react2.default.createElement(_Slider2.default, { sliderId: id, classList: 'post__media', imagesQuery: '?fl=progressive&w=882', content: content.files }) : _react2.default.createElement(_FlexibleImageComponent2.default, { content: content.files[0] });
 };
 
 exports.default = PostContentMedia;

@@ -99,10 +99,12 @@ var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, 
 
 // Gallery Selectors
 var getGalleryContent = exports.getGalleryContent = function getGalleryContent(state) {
-	return fromGallery.getGalleryContent(state.gallery);
+	fromGallery.getGalleryContent(state.gallery);
+	return [];
 };
 
-var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state) {
-	return fromGallery.getActiveSlide(state.gallery);
+var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state, id) {
+	return fromGallery.getActiveSlide(state.gallery, id);
 };
+
 exports.default = RootReducer;

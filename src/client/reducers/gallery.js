@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const updateSlide = (currentSlideIndex, noOfSlides, direction) => {
 	if (direction === 'next') {
 		if (currentSlideIndex === noOfSlides - 1) {
@@ -11,41 +13,67 @@ const updateSlide = (currentSlideIndex, noOfSlides, direction) => {
 	return currentSlideIndex - 1;
 };
 
-const gallery = (state = {
-	slides: [],
-	activeSlide: 0,
-	isActive: false,
+const ById = (state = {
 }, action) => {
 	switch (action.type) {
-	case 'UPDATE_GALLERY_VISIBILITY':
-		return {
-			...state,
-			isActive: action.response,
-		};
 	case 'RECIEVE_GALLERY_CONTENT': //eslint-disable-line
+		const ids = {};
 		const slides = action.response.content.map(({ sys, fields}) => ({
 			...fields,
 			id: sys.id,
 		}));
+		ids[action.response.sliderId] = {
+			id: action.response.sliderId,
+			slides,
+			activeSlide: 0
+		};
 		return {
 			...state,
-			slides
+			...ids
 		};
 	case 'UPDATE_ACTIVE_SLIDE': //eslint-disable-line
-		const newActiveSlide = updateSlide(state.activeSlide, state.slides.length, action.response);
+		const slider = state[action.response.sliderId];
+		const sliderNextSlide = updateSlide(slider.activeSlide, slider.slides.length, action.response.direction);
+		const newSliderState = {
+			...slider,
+			activeSlide: sliderNextSlide
+		};
 		return {
 			...state,
-			activeSlide: newActiveSlide,
+			[action.response.sliderId]: {...newSliderState}
 		};
 	default:
 		return state;
 	}
 };
 
-export const getIsFetching = state => state.All.isFetching;
+const All = (state = {
+	isActive: false,
+	activeGalleryId: null,
+}, action) => {
+	switch (action.type) {
+	case 'UPDATE_GALLERY_VISIBILITY':
+		return {
+			...state,
+			activeGalleryId: action.response.sliderId || state.activeGalleryId,
+			isActive: action.response.isVisible,
+		};
+	default:
+		return state;
+	}
+};
 
-export const getGalleryContent = state => state;
+const gallery = combineReducers({
+	All,
+	ById,
+});
 
-export const getActiveSlide = state => state.activeSlide;
+export const getGalleryContent = (state) => {
+	console.log(state.ById[state.All.activeGalleryId]);
+	return [];
+};
+
+export const getActiveSlide = (state, id) =>
+	typeof state.ById[id] !== 'undefined' ? state.ById[id].activeSlide : 0;
 
 export default gallery;

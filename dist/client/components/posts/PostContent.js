@@ -36,7 +36,7 @@ var PostContent = function PostContent(_ref) {
 				case 'blockPostText':
 					return _react2.default.createElement(_PostContentText2.default, { key: sys.id, content: fields });
 				case 'blockPostMedia':
-					return _react2.default.createElement(_PostContentMedia2.default, { key: sys.id, content: fields });
+					return _react2.default.createElement(_PostContentMedia2.default, { key: sys.id, id: sys.id, content: fields });
 				default:
 					return _react2.default.createElement(_PostContentSubtitle2.default, { key: sys.id, content: fields });
 			}

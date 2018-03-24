@@ -142,25 +142,32 @@ export const fetchRelated = (id) => (dispatch, getState) => {
 
 
 // Gallery Action Creators
-const recieveGalleryContent = (content) => ({
+const recieveGalleryContent = (sliderId, content) => ({
 	type: 'RECIEVE_GALLERY_CONTENT',
 	response: {
+		sliderId,
 		content,
 	}
 });
-export const updateGallery = (content) => (dispatch) =>
-	dispatch(recieveGalleryContent(content));
+export const updateGallery = (sliderId, content) => (dispatch) =>
+	dispatch(recieveGalleryContent(sliderId, content));
 
 
-const updateSlide = (direction) => ({
+const updateSlide = (sliderId, direction) => ({
 	type: 'UPDATE_ACTIVE_SLIDE',
-	response: direction,
+	response: {
+		direction,
+		sliderId
+	},
 });
-export const updateActiveSlide = (direction) => (dispatch) => dispatch(updateSlide(direction));
+export const updateActiveSlide = (sliderId, direction) => (dispatch) => dispatch(updateSlide(sliderId, direction));
 
 
-const updateGalleryVisibility = visible => ({
+const updateGalleryVisibility = (SliderId, isVisible) => ({
 	type: 'UPDATE_GALLERY_VISIBILITY',
-	response: visible
+	response: {
+		SliderId,
+		isVisible
+	}
 });
-export const toggleGallery = visible => dispatch => dispatch(updateGalleryVisibility(visible));
+export const toggleGallery = (SliderId, isVisible) => dispatch => dispatch(updateGalleryVisibility(SliderId, isVisible));

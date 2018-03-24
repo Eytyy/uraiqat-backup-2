@@ -11,7 +11,7 @@ const PostContent = ({ content }) => {
 				case 'blockPostText':
 					return <PostContentText key={sys.id} content={fields} />;
 				case 'blockPostMedia':
-					return <PostContentMedia key={sys.id} content={fields} />;
+					return <PostContentMedia key={sys.id} id={sys.id} content={fields} />;
 				default: 
 					return <PostContentSubtitle key={sys.id} content={fields} />;
 				}

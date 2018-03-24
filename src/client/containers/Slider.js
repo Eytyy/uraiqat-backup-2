@@ -12,20 +12,21 @@ class Slider extends Component {
 		this.updateSlide = this.updateSlide.bind(this);
 	}
 	componentDidMount() {
-		const { content, updateGallery } = this.props;
-		updateGallery(content);
+		const { content, updateGallery, sliderId } = this.props;
+		updateGallery(sliderId, content);
 	}
 	updateSlide(direction) {
-		const { updateActiveSlide } = this.props;
-		updateActiveSlide(direction);
+		const { updateActiveSlide, sliderId } = this.props;
+		updateActiveSlide(sliderId, direction);
 	}
 	onSlideClick() {
-		const {toggleGallery } = this.props;
+		const {toggleGallery, sliderId} = this.props;
 		const openGallery = true;
-		toggleGallery(openGallery);
+		toggleGallery(sliderId, openGallery);
 	}
 	render() {
 		const { content, classList, imagesQuery, activeSlideIndex } = this.props;
+		console.log(activeSlideIndex);
 		const sliderRailStyle = {
 			transform: `translateX(-${activeSlideIndex * 100}%)`
 		};
@@ -58,8 +59,8 @@ Slider.defaultProps = {
 	activeSlideIndex: 0,
 };
 
-const mapStateToProps = (state) => ({
-	activeSlideIndex: getActiveSlide(state),
+const mapStateToProps = (state, {sliderId}) => ({
+	activeSlideIndex: getActiveSlide(state, sliderId),
 });
 
 export default connect(

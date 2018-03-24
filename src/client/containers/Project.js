@@ -60,7 +60,7 @@ class Project extends Component { //eslint-disable-line
 				</header>
 				<div className="project__top">
 					<div className="project__media">
-						<Slider classList="slider--main" imagesQuery={'?fl=progressive&w=826&h=512'} content={mainSlider} />
+						<Slider classList="slider--main" sliderId={`${content.id}m`} imagesQuery={'?fl=progressive&w=826&h=512'} content={mainSlider} />
 					</div> 
 					<div className="project__meta">
 						<div className="project__meta__item">
@@ -91,7 +91,7 @@ class Project extends Component { //eslint-disable-line
 						</span>}
 					</div>
 					<div className="project__drawings">
-						<Slider classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
+						<Slider sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
 				<aside className="related-content post__related">
