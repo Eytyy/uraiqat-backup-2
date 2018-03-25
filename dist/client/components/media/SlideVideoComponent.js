@@ -89,16 +89,24 @@ var SlideVideoComponent = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'slider__inner-controls slider__inner-controls--video' },
-						!this.state.playing && _react2.default.createElement(
+						_react2.default.createElement(
 							'span',
 							{ onClick: this.onSlideClick, className: 'video-controls__item open-gallery' },
-							'+ open gallery ',
+							'+ open ',
 							' / '
 						),
 						_react2.default.createElement(
 							'span',
 							{ onClick: this.toggleVideo, className: 'video-controls__item video-btn' },
-							this.state.playing ? 'pause' : 'play'
+							this.state.playing ? _react2.default.createElement(
+								'span',
+								{ 'class': 'video-btn__txt' },
+								'pause'
+							) : _react2.default.createElement(
+								'span',
+								{ 'class': 'video-btn__txt' },
+								'play'
+							)
 						)
 					),
 					_react2.default.createElement('video', { ref: function ref(el) {

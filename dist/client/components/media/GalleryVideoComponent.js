@@ -67,13 +67,13 @@ var VideoComponent = function (_Component) {
 			    classList = _props.classList;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
-			var allClasses = 'slide slide--video gallery__slide ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
+			var allClasses = 'slide slide--video video gallery__slide ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
 			return _react2.default.createElement(
 				'div',
 				{ onClick: this.toggleVideo, className: allClasses },
 				_react2.default.createElement(
 					'div',
-					{ className: 'video__wrapper video' },
+					{ className: 'video__wrapper' },
 					_react2.default.createElement(
 						'div',
 						{ className: 'video-controls' },

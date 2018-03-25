@@ -205,8 +205,10 @@ img {
 .js-gallery-isActive {
   height: 100%;
   overflow: hidden; }
-  .js-gallery-isActive main {
-    opacity: 0; }
+  .js-gallery-isActive main,
+  .js-gallery-isActive .website-footer,
+  .js-gallery-isActive .website-header {
+    opacity: 0.025; }
 
 .ws {
   opacity: 0; }
@@ -562,6 +564,71 @@ nav {
 .slide:hover .slider__inner-controls {
   opacity: 1; }
 
+.post__media .slide--video .slider__inner-controls {
+  -webkit-transition: width 300ms ease-in-out, height 300ms ease-in-out, opacity 300ms ease-in-out;
+  transition: width 300ms ease-in-out, height 300ms ease-in-out, opacity 300ms ease-in-out;
+  height: 68px; }
+
+.post__media .slide--video .video-btn {
+  position: relative; }
+  .post__media .slide--video .video-btn:before {
+    content: '';
+    display: inline-block; }
+
+.post__media .slide--video.js-videoIsPaused .slider__inner-controls {
+  width: 80px;
+  opacity: 1;
+  overflow: hidden;
+  -webkit-transform: translate(-30%, -60%);
+          transform: translate(-30%, -60%); }
+
+.post__media .slide--video.js-videoIsPaused .open-gallery {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden; }
+
+.post__media .slide--video.js-videoIsPaused .video-btn {
+  margin-left: 0; }
+  .post__media .slide--video.js-videoIsPaused .video-btn:before {
+    border: 25px solid transparent;
+    border-left: 40px solid blue;
+    top: 1px;
+    position: relative;
+    margin-right: 5px; }
+
+.post__media .slide--video.js-videoIsPaused .video-btn__txt {
+  display: none; }
+
+.post__media .slide--video.js-videoIsPaused:hover .slider__inner-controls {
+  width: 206px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+.post__media .slide--video.js-videoIsPaused:hover .video-btn {
+  margin-left: 14px; }
+  .post__media .slide--video.js-videoIsPaused:hover .video-btn:before {
+    border: 7px solid transparent;
+    border-left: 12px solid blue; }
+
+.post__media .slide--video.js-videoIsPaused:hover .video-btn__txt {
+  display: inline-block; }
+
+.post__media .slide--video.js-videoIsPaused:hover .open-gallery {
+  width: 112px;
+  height: 64px;
+  overflow: visible;
+  opacity: 1; }
+
+.post__media .slide--video.js-videoIsActive .slider__inner-controls {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+.post__media .slide--video.js-videoIsActive .video-btn:before {
+  border: 5px solid blue;
+  margin-right: 10px;
+  margin-left: 14px; }
+
 .slider--main,
 .slider--small {
   position: relative; }
@@ -600,7 +667,6 @@ nav {
   width: 1344px;
   overflow: scroll;
   z-index: 200;
-  background: #FFF;
   height: calc(100% - 64px);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -622,7 +688,7 @@ nav {
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
-  .gallery .video {
+  .gallery .video__wrapper {
     padding-top: 56.25%; }
   .gallery .caption {
     position: absolute;
@@ -701,28 +767,11 @@ nav {
 .post-preview--featured .post-preview__video.js-videoIsActive .video-state {
   border: 20px solid red; }
 
-.video-btn {
-  position: relative; }
-  .video-btn:before {
-    content: '';
-    display: inline-block; }
-  .js-videoIsPaused .video-btn:before {
-    border: 7px solid transparent;
-    border-left: 12px solid blue;
-    top: 1px;
-    position: relative;
-    margin-right: 5px; }
-  .js-videoIsActive .video-btn:before {
-    margin-right: 10px;
-    border: 5px solid blue; }
-
 .slider .video {
   cursor: default;
   position: relative;
   background: #000;
   height: 576px; }
-  .slider .video .video-btn {
-    margin-left: 14px; }
   .slider .video video {
     width: 100%;
     height: auto;
@@ -730,13 +779,3 @@ nav {
     left: 0;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
-  .slider .video:after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    margin-right: 5px;
-    border: 25px solid transparent;
-    border-left: 40px solid blue; }

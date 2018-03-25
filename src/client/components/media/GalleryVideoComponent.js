@@ -29,10 +29,10 @@ class VideoComponent extends Component {
 	render() {
 		const { content, classList } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
-		const allClasses = `slide slide--video gallery__slide ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
+		const allClasses = `slide slide--video video gallery__slide ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
 			<div onClick={this.toggleVideo} className={allClasses}>
-				<div className="video__wrapper video">
+				<div className="video__wrapper">
 					<div className="video-controls">
 						<span className="video-controls__item video-state"></span>
 					</div>

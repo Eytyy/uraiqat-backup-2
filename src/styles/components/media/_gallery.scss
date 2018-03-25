@@ -5,7 +5,6 @@
 	width: 1344px;
 	overflow: scroll;
 	z-index: 200;
-	background: #FFF;
 	height: calc(100% - 64px);
 	display: flex;
 	align-items: center;
@@ -25,7 +24,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 	}
-	.video {
+	.video__wrapper {
 		padding-top: 56.25%;
 	}
 	.caption {

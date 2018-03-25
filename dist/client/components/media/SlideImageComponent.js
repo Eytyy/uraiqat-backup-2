@@ -31,7 +31,7 @@ var SlideImageComponent = function SlideImageComponent(_ref) {
 		_react2.default.createElement(
 			'div',
 			{ className: 'slider__inner-controls', onClick: onSlideClick },
-			'+ open gallery'
+			'+ open'
 		),
 		_react2.default.createElement('div', { className: 'preview-image slide__image', style: style }),
 		description && _react2.default.createElement(

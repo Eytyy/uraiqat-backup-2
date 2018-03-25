@@ -43,13 +43,13 @@ class SlideVideoComponent extends Component {
 			<div className={allClasses}>
 				<div className="video video__wrapper">
 					<div className="slider__inner-controls slider__inner-controls--video">
-						{ !this.state.playing &&
+						{
 							<span onClick={this.onSlideClick} className="video-controls__item open-gallery">
-								+ open gallery {' / '}
+								+ open {' / '}
 							</span>
 						}
 						<span onClick={this.toggleVideo} className="video-controls__item video-btn">
-							{this.state.playing ? 'pause' : 'play'}
+							{this.state.playing ? <span class="video-btn__txt">pause</span> : <span class="video-btn__txt">play</span>}
 						</span>
 					</div>
 					<video ref={(el) => { this.video = el; }}  src={url} />

@@ -11,7 +11,7 @@ const SlideImageComponent = ({ content, imagesQuery, id, onClick }) => {
 	};
 	return (
 		<div className="slide slide--image">
-			<div className="slider__inner-controls" onClick={onSlideClick}>+ open gallery</div>
+			<div className="slider__inner-controls" onClick={onSlideClick}>+ open</div>
 			<div className="preview-image slide__image" style={style}></div>
 			{ description && <div className="caption">{description}</div>}
 		</div>
