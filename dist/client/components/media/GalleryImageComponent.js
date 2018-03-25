@@ -43,7 +43,7 @@ var GalleryImageComponent = function (_Component) {
 			};
 			return _react2.default.createElement(
 				'div',
-				{ className: 'slide gallery__slide gallery__slide--' + (isImageLandscape ? 'landscape' : 'portrait') },
+				{ className: 'slide slide--image gallery__slide gallery__slide--' + (isImageLandscape ? 'landscape' : 'portrait') },
 				_react2.default.createElement(
 					'div',
 					{ className: 'gallery__slide__media' },

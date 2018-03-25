@@ -32,6 +32,7 @@ var SlideVideoComponent = function (_Component) {
 		_this.playVideo = _this.playVideo.bind(_this);
 		_this.stopVideo = _this.stopVideo.bind(_this);
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
+		_this.onSlideClick = _this.onSlideClick.bind(_this);
 		return _this;
 	}
 
@@ -43,42 +44,72 @@ var SlideVideoComponent = function (_Component) {
 			} else {
 				this.playVideo();
 			}
-			this.setState({
-				playing: !this.state.playing
-			});
 		}
 	}, {
 		key: 'playVideo',
 		value: function playVideo() {
 			this.video.play();
+			this.setState({
+				playing: true
+			});
 		}
 	}, {
 		key: 'stopVideo',
 		value: function stopVideo() {
 			this.video.pause();
+			this.setState({
+				playing: false
+			});
+		}
+	}, {
+		key: 'onSlideClick',
+		value: function onSlideClick() {
+			var _props = this.props,
+			    onClick = _props.onClick,
+			    id = _props.id;
+
+			this.stopVideo();
+			onClick(id);
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
 
-			var _props = this.props,
-			    content = _props.content,
-			    classList = _props.classList;
+			var content = this.props.content;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
-			var allClasses = 'video ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
+			var allClasses = 'slide slide--video ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
 			return _react2.default.createElement(
 				'div',
-				{ onClick: this.toggleVideo, className: allClasses },
+				{ className: allClasses },
 				_react2.default.createElement(
 					'div',
-					{ className: 'video-controls' },
-					_react2.default.createElement('span', { className: 'video-controls__item video-state' })
+					{ className: 'video video__wrapper' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'slider__inner-controls slider__inner-controls--video' },
+						!this.state.playing && _react2.default.createElement(
+							'span',
+							{ onClick: this.onSlideClick, className: 'video-controls__item open-gallery' },
+							'+ open gallery ',
+							' / '
+						),
+						_react2.default.createElement(
+							'span',
+							{ onClick: this.toggleVideo, className: 'video-controls__item video-btn' },
+							this.state.playing ? 'pause' : 'play'
+						)
+					),
+					_react2.default.createElement('video', { ref: function ref(el) {
+							_this2.video = el;
+						}, src: url })
 				),
-				_react2.default.createElement('video', { ref: function ref(el) {
-						_this2.video = el;
-					}, src: url })
+				content.description && _react2.default.createElement(
+					'div',
+					{ className: 'caption' },
+					content.description
+				)
 			);
 		}
 	}]);

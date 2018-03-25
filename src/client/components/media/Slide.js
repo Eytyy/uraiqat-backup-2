@@ -6,7 +6,7 @@ import SlideVideoComponent from './SlideVideoComponent';
 const Slide = ({ imagesQuery, content, onClick }) => {
 	const isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
 	return isMediaOfTypeImage ?
-		<SlideImageComponent onClick={onClick} imagesQuery={imagesQuery}  content={content} /> :
+		<SlideImageComponent onClick={onClick} imagesQuery={imagesQuery} content={content} /> :
 		<SlideVideoComponent onClick={onClick} content={content} /> ;
 };
 

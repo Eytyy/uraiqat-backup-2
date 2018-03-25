@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SlideImageComponent = ({ content, classList, imagesQuery, id, onClick }) => {
+const SlideImageComponent = ({ content, imagesQuery, id, onClick }) => {
 	const { file, description } = content;
 	const url = typeof imagesQuery !== 'undefined' ? `${file.url}${imagesQuery}` : file.url;
 	const style = {
@@ -10,9 +10,10 @@ const SlideImageComponent = ({ content, classList, imagesQuery, id, onClick }) =
 		onClick(id);
 	};
 	return (
-		<div className="slide">
-			<div onClick={onSlideClick} className="preview-image slide__image" style={style}></div>
-			<div className="caption">{description}</div>
+		<div className="slide slide--image">
+			<div className="slider__inner-controls" onClick={onSlideClick}>+ open gallery</div>
+			<div className="preview-image slide__image" style={style}></div>
+			{ description && <div className="caption">{description}</div>}
 		</div>
 	);
 };

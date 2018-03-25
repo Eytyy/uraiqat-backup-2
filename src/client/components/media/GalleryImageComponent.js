@@ -10,7 +10,7 @@ class GalleryImageComponent extends Component {
 			width: isImageLandscape ? '100%' : 'auto'
 		};
 		return (
-			<div className={`slide gallery__slide gallery__slide--${isImageLandscape ? 'landscape' : 'portrait' }`}>
+			<div className={`slide slide--image gallery__slide gallery__slide--${isImageLandscape ? 'landscape' : 'portrait' }`}>
 				<div className="gallery__slide__media">
 					<img style={style} src={file.url} />
 				</div>

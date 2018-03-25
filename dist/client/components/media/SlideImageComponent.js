@@ -12,7 +12,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var SlideImageComponent = function SlideImageComponent(_ref) {
 	var content = _ref.content,
-	    classList = _ref.classList,
 	    imagesQuery = _ref.imagesQuery,
 	    id = _ref.id,
 	    onClick = _ref.onClick;
@@ -28,9 +27,14 @@ var SlideImageComponent = function SlideImageComponent(_ref) {
 	};
 	return _react2.default.createElement(
 		'div',
-		{ className: 'slide' },
-		_react2.default.createElement('div', { onClick: onSlideClick, className: 'preview-image slide__image', style: style }),
+		{ className: 'slide slide--image' },
 		_react2.default.createElement(
+			'div',
+			{ className: 'slider__inner-controls', onClick: onSlideClick },
+			'+ open gallery'
+		),
+		_react2.default.createElement('div', { className: 'preview-image slide__image', style: style }),
+		description && _react2.default.createElement(
 			'div',
 			{ className: 'caption' },
 			description

@@ -33,9 +33,11 @@
 
 .slider .slide {
 	position: relative;
-	cursor: pointer;
-	&:after {
-		content: '+ open gallery';
+
+}
+.slide {
+	.slider__inner-controls {
+		cursor: pointer;
 		display: block;
 		color: blue;
 		font-family: $font--bold;
@@ -46,11 +48,20 @@
 		transform: translate(-50%, -50%);
 		opacity: 0;
 		transition: opacity 100ms linear;
+		z-index: 10;
+		.video-controls__item {
+			display: inline-block;
+			padding-top: 16px;
+			padding-bottom: 16px;
+		}
 	}
-	&:hover:after {
-		opacity: 1;
+	&:hover{
+		.slider__inner-controls {
+			opacity: 1;
+		}
 	}
 }
+
 
 .slider--main,
 .slider--small {

@@ -67,18 +67,27 @@ var VideoComponent = function (_Component) {
 			    classList = _props.classList;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
-			var allClasses = 'video ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
+			var allClasses = 'slide slide--video gallery__slide ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
 			return _react2.default.createElement(
 				'div',
 				{ onClick: this.toggleVideo, className: allClasses },
 				_react2.default.createElement(
 					'div',
-					{ className: 'video-controls' },
-					_react2.default.createElement('span', { className: 'video-controls__item video-state' })
+					{ className: 'video__wrapper video' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'video-controls' },
+						_react2.default.createElement('span', { className: 'video-controls__item video-state' })
+					),
+					_react2.default.createElement('video', { ref: function ref(el) {
+							_this2.video = el;
+						}, src: url })
 				),
-				_react2.default.createElement('video', { ref: function ref(el) {
-						_this2.video = el;
-					}, src: url })
+				content.description && _react2.default.createElement(
+					'div',
+					{ className: 'caption' },
+					content.description
+				)
 			);
 		}
 	}]);

@@ -29,13 +29,16 @@ class VideoComponent extends Component {
 	render() {
 		const { content, classList } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
-		const allClasses = `video ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
+		const allClasses = `slide slide--video gallery__slide ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
 			<div onClick={this.toggleVideo} className={allClasses}>
-				<div className="video-controls">
-					<span className="video-controls__item video-state"></span>
+				<div className="video__wrapper video">
+					<div className="video-controls">
+						<span className="video-controls__item video-state"></span>
+					</div>
+					<video ref={(el) => { this.video = el; }}  src={url} />
 				</div>
-				<video ref={(el) => { this.video = el; }}  src={url} />
+				{ content.description && <div className="caption">{content.description}</div>}
 			</div>
 		);
 	}
