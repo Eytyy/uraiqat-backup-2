@@ -103,7 +103,7 @@ var Slider = function (_Component) {
 						content.map(function (_ref) {
 							var fields = _ref.fields,
 							    sys = _ref.sys;
-							return _react2.default.createElement(_Slide2.default, { onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
+							return _react2.default.createElement(_Slide2.default, { active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
 						})
 					)
 				),

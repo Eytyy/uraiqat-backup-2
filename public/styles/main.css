@@ -601,7 +601,7 @@ nav {
   display: none; }
 
 .post__media .slide--video.js-videoIsPaused:hover .slider__inner-controls {
-  width: 206px;
+  width: 250px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
@@ -615,7 +615,7 @@ nav {
   display: inline-block; }
 
 .post__media .slide--video.js-videoIsPaused:hover .open-gallery {
-  width: 112px;
+  width: 156px;
   height: 64px;
   overflow: visible;
   opacity: 1; }
@@ -688,7 +688,10 @@ nav {
     top: 50%;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
+  .gallery .video {
+    position: static; }
   .gallery .video__wrapper {
+    position: relative;
     padding-top: 56.25%; }
   .gallery .caption {
     position: absolute;

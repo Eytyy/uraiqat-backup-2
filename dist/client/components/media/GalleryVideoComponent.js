@@ -64,7 +64,8 @@ var VideoComponent = function (_Component) {
 
 			var _props = this.props,
 			    content = _props.content,
-			    classList = _props.classList;
+			    classList = _props.classList,
+			    active = _props.active;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 			var allClasses = 'slide slide--video video gallery__slide ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
@@ -86,6 +87,8 @@ var VideoComponent = function (_Component) {
 				content.description && _react2.default.createElement(
 					'div',
 					{ className: 'caption' },
+					active + 1,
+					': ',
 					content.description
 				)
 			);

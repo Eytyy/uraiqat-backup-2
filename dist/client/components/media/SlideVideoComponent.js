@@ -76,7 +76,9 @@ var SlideVideoComponent = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
-			var content = this.props.content;
+			var _props2 = this.props,
+			    content = _props2.content,
+			    active = _props2.active;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 			var allClasses = 'slide slide--video ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
@@ -92,7 +94,7 @@ var SlideVideoComponent = function (_Component) {
 						_react2.default.createElement(
 							'span',
 							{ onClick: this.onSlideClick, className: 'video-controls__item open-gallery' },
-							'+ open ',
+							'+ enlarge ',
 							' / '
 						),
 						_react2.default.createElement(
@@ -116,6 +118,8 @@ var SlideVideoComponent = function (_Component) {
 				content.description && _react2.default.createElement(
 					'div',
 					{ className: 'caption' },
+					active + 1,
+					': ',
 					content.description
 				)
 			);

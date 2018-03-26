@@ -36,7 +36,7 @@ class SlideVideoComponent extends Component {
 		onClick(id);
 	}
 	render() {
-		const { content } = this.props;
+		const { content, active } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 		const allClasses = `slide slide--video ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
@@ -45,7 +45,7 @@ class SlideVideoComponent extends Component {
 					<div className="slider__inner-controls slider__inner-controls--video">
 						{
 							<span onClick={this.onSlideClick} className="video-controls__item open-gallery">
-								+ open {' / '}
+								+ enlarge {' / '}
 							</span>
 						}
 						<span onClick={this.toggleVideo} className="video-controls__item video-btn">
@@ -54,7 +54,8 @@ class SlideVideoComponent extends Component {
 					</div>
 					<video ref={(el) => { this.video = el; }}  src={url} />
 				</div>
-				{ content.description && <div className="caption">{content.description}</div>}
+				{ content.description && <div className="caption">{active + 1}: {content.description}</div>}
+				
 			</div>
 		);
 	}
