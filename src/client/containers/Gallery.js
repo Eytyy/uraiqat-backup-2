@@ -43,25 +43,28 @@ class Gallery extends Component {
 		
 		return ( 
 			<div className="gallery">
-				<div className="gallery__inner">
+				<div className={`${slides.length === 1 ? 'gallery__inner--single' : 'gallery__inner'}`}>
 					<div style={sliderRailStyle} className="gallery__slides">
 						{
 							slides.map((slide, index) => <GallerySlide index={index} key={slide.id} content={slide} />)
 						}
 					</div>
 				</div>
-				{
-					content.length === 1 ?
-						null:
-						<div className="slider__controls">
-							<div onClick={this.closeGallery} className="slider__controls__item slider-btn slider-btn--close">x</div>
+				<div className="slider__controls">
+					<div onClick={this.closeGallery} className="slider__controls__item slider-btn slider-btn--close">x</div>
+					{
+						slides.length === 1 ?
+							null:
 							<div className="slider__controls__bottom">
 								<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
 								<div className="slider__controls__item slider__counter">{activeSlide + 1}{'/'}{slides.length}</div>
 								<div onClick={() => this.updateSlide('next')} className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>
 							</div>
-						</div>
-				}
+					}
+					
+					
+				</div>
+
 			</div>);
 	}
 }

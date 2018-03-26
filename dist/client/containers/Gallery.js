@@ -97,7 +97,7 @@ var Gallery = function (_Component) {
 				{ className: 'gallery' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'gallery__inner' },
+					{ className: '' + (slides.length === 1 ? 'gallery__inner--single' : 'gallery__inner') },
 					_react2.default.createElement(
 						'div',
 						{ style: sliderRailStyle, className: 'gallery__slides' },
@@ -106,7 +106,7 @@ var Gallery = function (_Component) {
 						})
 					)
 				),
-				content.length === 1 ? null : _react2.default.createElement(
+				_react2.default.createElement(
 					'div',
 					{ className: 'slider__controls' },
 					_react2.default.createElement(
@@ -114,7 +114,7 @@ var Gallery = function (_Component) {
 						{ onClick: this.closeGallery, className: 'slider__controls__item slider-btn slider-btn--close' },
 						'x'
 					),
-					_react2.default.createElement(
+					slides.length === 1 ? null : _react2.default.createElement(
 						'div',
 						{ className: 'slider__controls__bottom' },
 						_react2.default.createElement(

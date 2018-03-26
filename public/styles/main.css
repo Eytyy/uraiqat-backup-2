@@ -684,6 +684,8 @@ nav {
   .gallery .slider__controls__bottom {
     position: absolute;
     top: 50%;
+    left: 0;
+    right: 0;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
   .gallery .video {
@@ -694,7 +696,7 @@ nav {
   .gallery .caption {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 24px;
     font-size: 20px;
     text-align: left;
     line-height: 32px;
@@ -704,8 +706,10 @@ nav {
   height: 100%; }
 
 .gallery__inner {
-  width: calc(100% - 98px);
+  width: calc(100% - 70px);
   overflow: hidden; }
+  .gallery__inner--single {
+    width: 100%; }
 
 .gallery__slides {
   display: -webkit-box;
