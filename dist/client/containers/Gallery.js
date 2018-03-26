@@ -88,14 +88,23 @@ var Gallery = function (_Component) {
 			if (!isActive) {
 				return null;
 			}
-			var visibleSlide = slides[activeSlide];
+			var sliderRailStyle = {
+				transform: 'translateX(-' + activeSlide * 100 + '%)'
+			};
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'gallery' },
 				_react2.default.createElement(
 					'div',
 					{ className: 'gallery__inner' },
-					_react2.default.createElement(_GallerySlide2.default, { active: activeSlide, key: visibleSlide.id, content: visibleSlide })
+					_react2.default.createElement(
+						'div',
+						{ style: sliderRailStyle, className: 'gallery__slides' },
+						slides.map(function (slide, index) {
+							return _react2.default.createElement(_GallerySlide2.default, { index: index, key: slide.id, content: slide });
+						})
+					)
 				),
 				content.length === 1 ? null : _react2.default.createElement(
 					'div',

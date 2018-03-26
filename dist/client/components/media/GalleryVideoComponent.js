@@ -65,7 +65,7 @@ var VideoComponent = function (_Component) {
 			var _props = this.props,
 			    content = _props.content,
 			    classList = _props.classList,
-			    active = _props.active;
+			    index = _props.index;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 			var allClasses = 'slide slide--video video gallery__slide ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
@@ -74,22 +74,26 @@ var VideoComponent = function (_Component) {
 				{ onClick: this.toggleVideo, className: allClasses },
 				_react2.default.createElement(
 					'div',
-					{ className: 'video__wrapper' },
+					{ className: 'gallery__slide__content' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'video-controls' },
-						_react2.default.createElement('span', { className: 'video-controls__item video-state' })
+						{ className: 'video__wrapper' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'video-controls' },
+							_react2.default.createElement('span', { className: 'video-controls__item video-state' })
+						),
+						_react2.default.createElement('video', { ref: function ref(el) {
+								_this2.video = el;
+							}, src: url })
 					),
-					_react2.default.createElement('video', { ref: function ref(el) {
-							_this2.video = el;
-						}, src: url })
-				),
-				content.description && _react2.default.createElement(
-					'div',
-					{ className: 'caption' },
-					active + 1,
-					': ',
-					content.description
+					content.description && _react2.default.createElement(
+						'div',
+						{ className: 'caption' },
+						index + 1,
+						': ',
+						content.description
+					)
 				)
 			);
 		}

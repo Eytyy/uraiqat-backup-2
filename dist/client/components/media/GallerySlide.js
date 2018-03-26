@@ -21,10 +21,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Slide = function Slide(_ref) {
 	var imagesQuery = _ref.imagesQuery,
 	    content = _ref.content,
-	    active = _ref.active;
+	    index = _ref.index;
 
 	var isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
-	return isMediaOfTypeImage ? _react2.default.createElement(_GalleryImageComponent2.default, { active: active, classList: 'slide slide--image', imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_GalleryVideoComponent2.default, { active: active, classList: 'slide slide--video', content: content });
+	return isMediaOfTypeImage ? _react2.default.createElement(_GalleryImageComponent2.default, { index: index, classList: 'slide slide--image', imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_GalleryVideoComponent2.default, { index: index, classList: 'slide slide--video', content: content });
 };
 
 exports.default = Slide;

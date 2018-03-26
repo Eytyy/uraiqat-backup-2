@@ -37,11 +37,18 @@ class Gallery extends Component {
 		if (!isActive) {
 			return null;
 		}
-		const visibleSlide = slides[activeSlide];
+		const sliderRailStyle = {
+			transform: `translateX(-${activeSlide * 100}%)`
+		};
+		
 		return ( 
 			<div className="gallery">
 				<div className="gallery__inner">
-					<GallerySlide active={activeSlide} key={visibleSlide.id} content={visibleSlide} />
+					<div style={sliderRailStyle} className="gallery__slides">
+						{
+							slides.map((slide, index) => <GallerySlide index={index} key={slide.id} content={slide} />)
+						}
+					</div>
 				</div>
 				{
 					content.length === 1 ?
