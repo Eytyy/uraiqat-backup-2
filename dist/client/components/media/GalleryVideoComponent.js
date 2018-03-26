@@ -36,6 +36,13 @@ var VideoComponent = function (_Component) {
 	}
 
 	_createClass(VideoComponent, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.activeSlide !== nextProps.index && this.state.playing) {
+				this.stopVideo();
+			}
+		}
+	}, {
 		key: 'toggleVideo',
 		value: function toggleVideo() {
 			if (this.state.playing) {
@@ -43,19 +50,22 @@ var VideoComponent = function (_Component) {
 			} else {
 				this.playVideo();
 			}
-			this.setState({
-				playing: !this.state.playing
-			});
 		}
 	}, {
 		key: 'playVideo',
 		value: function playVideo() {
 			this.video.play();
+			this.setState({
+				playing: true
+			});
 		}
 	}, {
 		key: 'stopVideo',
 		value: function stopVideo() {
 			this.video.pause();
+			this.setState({
+				playing: false
+			});
 		}
 	}, {
 		key: 'render',

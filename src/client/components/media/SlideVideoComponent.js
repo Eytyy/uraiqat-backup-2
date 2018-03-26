@@ -11,6 +11,11 @@ class SlideVideoComponent extends Component {
 		this.toggleVideo = this.toggleVideo.bind(this);
 		this.onSlideClick = this.onSlideClick.bind(this);
 	}
+	componentWillReceiveProps(nextProps) {
+		if ((nextProps.activeSlide !== nextProps.index) && this.state.playing) {
+			this.stopVideo();
+		}
+	}
 	toggleVideo() {
 		if (this.state.playing) {
 			this.stopVideo();
@@ -49,7 +54,7 @@ class SlideVideoComponent extends Component {
 							</span>
 						}
 						<span onClick={this.toggleVideo} className="video-controls__item video-btn">
-							{this.state.playing ? <span class="video-btn__txt">pause</span> : <span class="video-btn__txt">play</span>}
+							{this.state.playing ? <span className="video-btn__txt">pause</span> : <span className="video-btn__txt">play</span>}
 						</span>
 					</div>
 					<video ref={(el) => { this.video = el; }}  src={url} />

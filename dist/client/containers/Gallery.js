@@ -97,12 +97,12 @@ var Gallery = function (_Component) {
 				{ className: 'gallery' },
 				_react2.default.createElement(
 					'div',
-					{ className: '' + (slides.length === 1 ? 'gallery__inner--single' : 'gallery__inner') },
+					{ className: '' + (slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner') },
 					_react2.default.createElement(
 						'div',
 						{ style: sliderRailStyle, className: 'gallery__slides' },
 						slides.map(function (slide, index) {
-							return _react2.default.createElement(_GallerySlide2.default, { index: index, key: slide.id, content: slide });
+							return _react2.default.createElement(_GallerySlide2.default, { activeSlide: activeSlide, index: index, key: slide.id, content: slide });
 						})
 					)
 				),

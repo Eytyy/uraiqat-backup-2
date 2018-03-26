@@ -34,7 +34,7 @@
 	.caption {
 		position: absolute;
 		left: 0;
-		bottom: 24px;
+		bottom: -3px;
 		font-size: 20px;
 		text-align: left;
 		line-height: 32px;
@@ -42,11 +42,9 @@
 	}
 }
 .gallery__inner {
-	height: 100%;
-}
-.gallery__inner {
 	width: calc(100% - 70px);
 	overflow: hidden;
+	height: 100%;
 	&--single {
 		width: 100%;
 	}

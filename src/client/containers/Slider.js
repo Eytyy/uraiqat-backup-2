@@ -36,8 +36,8 @@ class Slider extends Component {
 			<div className={`slider ${classList}`}>
 				<div className="slider__inner">
 					<div style={sliderRailStyle} className="slider__slides">
-						{ content.map(({ fields, sys }) =>
-							<Slide active={activeSlideIndex} onClick={this.onSlideClick} key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
+						{ content.map(({ fields, sys }, index) =>
+							<Slide index={index} active={activeSlideIndex} onClick={this.onSlideClick} key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
 					</div>
 				</div>
 				{

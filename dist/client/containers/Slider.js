@@ -100,10 +100,10 @@ var Slider = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ style: sliderRailStyle, className: 'slider__slides' },
-						content.map(function (_ref) {
+						content.map(function (_ref, index) {
 							var fields = _ref.fields,
 							    sys = _ref.sys;
-							return _react2.default.createElement(_Slide2.default, { active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
+							return _react2.default.createElement(_Slide2.default, { index: index, active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
 						})
 					)
 				),

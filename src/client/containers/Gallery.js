@@ -43,10 +43,10 @@ class Gallery extends Component {
 		
 		return ( 
 			<div className="gallery">
-				<div className={`${slides.length === 1 ? 'gallery__inner--single' : 'gallery__inner'}`}>
+				<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
 					<div style={sliderRailStyle} className="gallery__slides">
 						{
-							slides.map((slide, index) => <GallerySlide index={index} key={slide.id} content={slide} />)
+							slides.map((slide, index) => <GallerySlide activeSlide={activeSlide} index={index} key={slide.id} content={slide} />)
 						}
 					</div>
 				</div>

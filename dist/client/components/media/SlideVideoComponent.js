@@ -37,6 +37,13 @@ var SlideVideoComponent = function (_Component) {
 	}
 
 	_createClass(SlideVideoComponent, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.activeSlide !== nextProps.index && this.state.playing) {
+				this.stopVideo();
+			}
+		}
+	}, {
 		key: 'toggleVideo',
 		value: function toggleVideo() {
 			if (this.state.playing) {
@@ -102,11 +109,11 @@ var SlideVideoComponent = function (_Component) {
 							{ onClick: this.toggleVideo, className: 'video-controls__item video-btn' },
 							this.state.playing ? _react2.default.createElement(
 								'span',
-								{ 'class': 'video-btn__txt' },
+								{ className: 'video-btn__txt' },
 								'pause'
 							) : _react2.default.createElement(
 								'span',
-								{ 'class': 'video-btn__txt' },
+								{ className: 'video-btn__txt' },
 								'play'
 							)
 						)

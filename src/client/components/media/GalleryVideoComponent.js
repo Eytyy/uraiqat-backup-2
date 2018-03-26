@@ -10,21 +10,30 @@ class VideoComponent extends Component {
 		this.stopVideo = this.stopVideo.bind(this);
 		this.toggleVideo = this.toggleVideo.bind(this);
 	}
+	componentWillReceiveProps(nextProps) {
+		if ((nextProps.activeSlide !== nextProps.index) && this.state.playing) {
+			this.stopVideo();
+		}
+	}
+	
 	toggleVideo() {
 		if (this.state.playing) {
 			this.stopVideo();
 		} else {
 			this.playVideo();
 		}
-		this.setState({
-			playing: !this.state.playing
-		});
 	}
 	playVideo() {
 		this.video.play();
+		this.setState({
+			playing: true
+		});
 	}
 	stopVideo() {
 		this.video.pause();
+		this.setState({
+			playing: false
+		});
 	}
 	render() {
 		const { content, classList, index } = this.props;
