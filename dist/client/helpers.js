@@ -83,20 +83,20 @@ var config = {
 		h: 576
 	},
 	'default-post--portrait': {
-		w: 266,
-		h: 384
+		w: 280,
+		h: 416
 	},
 	'default-post--landscape': {
-		w: 392,
-		h: 256
+		w: 406,
+		h: 288
 	},
 	'featured-post--portrait': {
-		w: 448,
-		h: 640
+		w: 462,
+		h: 672
 	},
 	'featured-post--landscape': {
-		w: 868,
-		h: 544
+		w: 882,
+		h: 576
 	}
 };
 

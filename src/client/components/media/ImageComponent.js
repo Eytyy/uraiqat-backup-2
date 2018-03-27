@@ -38,11 +38,14 @@ class ImageComponent extends Component {
 			backgroundImage: `url('${url}')`,
 		};
 		const classes = typeof classList !== 'undefined' ? classList : '';
-		return this.state.imageIsLoaded ?
-			<div className={`preview-image ${classes}`} style={style}></div> :
-			<div className={`preview-pattern ${classes}`}>
-				<Pattern sliderName={patternId} />
-			</div>;
+		return(
+			<div className={`${classes}`}>
+				<div className={`${this.state.imageIsLoaded ? 'preview-image' : 'preview-image--loading'}`} style={style}></div>
+				<div className={`preview-pattern ${classes} ${this.state.imageIsLoaded ? 'preview-pattern--hidden' : ''}`}>
+					<Pattern sliderName={patternId} />
+				</div>
+			</div>
+		);
 	}
 }
 

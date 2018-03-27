@@ -86,10 +86,15 @@ var ImageComponent = function (_Component) {
 				backgroundImage: 'url(\'' + url + '\')'
 			};
 			var classes = typeof classList !== 'undefined' ? classList : '';
-			return this.state.imageIsLoaded ? _react2.default.createElement('div', { className: 'preview-image ' + classes, style: style }) : _react2.default.createElement(
+			return _react2.default.createElement(
 				'div',
-				{ className: 'preview-pattern ' + classes },
-				_react2.default.createElement(_Pattern2.default, { sliderName: patternId })
+				{ className: '' + classes },
+				_react2.default.createElement('div', { className: '' + (this.state.imageIsLoaded ? 'preview-image' : 'preview-image--loading'), style: style }),
+				_react2.default.createElement(
+					'div',
+					{ className: 'preview-pattern ' + classes + ' ' + (this.state.imageIsLoaded ? 'preview-pattern--hidden' : '') },
+					_react2.default.createElement(_Pattern2.default, { sliderName: patternId })
+				)
 			);
 		}
 	}]);
