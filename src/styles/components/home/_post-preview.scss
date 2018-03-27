@@ -6,7 +6,7 @@
 		display: block;
 		position: relative;
 	}
-	&__image {
+	&__image .preview-image {
 		@extend %bw-filter;
 	}
 	&__content {
@@ -22,8 +22,8 @@
 
 .post-preview__link {
 	&:hover {
-		.post-preview__image:after,
-		.post-preview__image:before {
+		.post-preview__image .preview-image:after,
+		.post-preview__image .preview-image:before {
 			background-color: transparent;
 		}
 	}

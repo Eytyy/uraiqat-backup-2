@@ -97,6 +97,10 @@ var config = {
 	'featured-post--landscape': {
 		w: 882,
 		h: 576
+	},
+	'related-project--landscape': {
+		w: 644,
+		h: 448
 	}
 };
 

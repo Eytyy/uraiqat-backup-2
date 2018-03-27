@@ -36,23 +36,10 @@ var RelatedProject = function (_Component) {
 	function RelatedProject() {
 		_classCallCheck(this, RelatedProject);
 
-		var _this = _possibleConstructorReturn(this, (RelatedProject.__proto__ || Object.getPrototypeOf(RelatedProject)).call(this));
-
-		_this.state = {
-			orientation: 'portrait'
-		};
-		_this.updateOrientation = _this.updateOrientation.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (RelatedProject.__proto__ || Object.getPrototypeOf(RelatedProject)).apply(this, arguments));
 	}
 
 	_createClass(RelatedProject, [{
-		key: 'updateOrientation',
-		value: function updateOrientation(orientation) {
-			this.setState({
-				orientation: orientation
-			});
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			var _props = this.props,
@@ -61,7 +48,6 @@ var RelatedProject = function (_Component) {
 			var previewMainThumbnail = content.previewMainThumbnail,
 			    year = content.year,
 			    projectName = content.projectName;
-			// determine whether the media content is a video or an image
 
 			return _react2.default.createElement(
 				_Preview2.default,
@@ -76,7 +62,7 @@ var RelatedProject = function (_Component) {
 						' -> ',
 						'Project'
 					),
-					_react2.default.createElement(_PostMediaImage2.default, { updateOrientation: this.updateOrientation, content: previewMainThumbnail }),
+					_react2.default.createElement(_PostMediaImage2.default, { orientation: 'landscape', patternId: 'related-project', content: previewMainThumbnail }),
 					projectName && _react2.default.createElement(
 						'h3',
 						{ className: 'post-preview__title title' },
