@@ -8,7 +8,6 @@ export const getRandomIntInclusive = (min, max) => {
 };
 
 
-
 // Window Helpers
 export const getWindowSize = () => ({
 	width: window.innerWidth,
@@ -52,10 +51,10 @@ export const getFontValues = () => {
 	
 };
 
-export const getContainerSize = () => {
+export const getContainerSize = (container) => {
 	const containerSize = {
-		w: 882,
-		h: 576
+		w: container.w,
+		h: container.h
 	};
 	const font = getFontValues();
 
@@ -66,8 +65,20 @@ export const getContainerSize = () => {
 	
 };
 
-export const getNoOfChars = () => {
-	const containerSize = getContainerSize();
+
+const config = {
+	'project-main-slider': {
+		w: 826,
+		h: 512,
+	},
+	'project-drawings-slider': {
+		w: 334,
+		h: 254,
+	},
+};
+
+export const getNoOfChars = (sliderName) => {
+	const containerSize = getContainerSize(config[sliderName]);
 	const font = getFontValues();
 
 	const x = Math.floor(containerSize.w/font.characterWidth);

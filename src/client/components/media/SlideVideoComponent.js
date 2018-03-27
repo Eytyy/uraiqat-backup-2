@@ -60,7 +60,6 @@ class SlideVideoComponent extends Component {
 					<video ref={(el) => { this.video = el; }}  src={url} />
 				</div>
 				{ content.description && <div className="caption">{active + 1}: {content.description}</div>}
-				
 			</div>
 		);
 	}

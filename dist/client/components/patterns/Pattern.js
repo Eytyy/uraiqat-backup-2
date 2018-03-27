@@ -16,12 +16,14 @@ var _helpers = require('../../helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Pattern = function Pattern() {
+var Pattern = function Pattern(_ref) {
+	var sliderName = _ref.sliderName;
+
 	if (typeof window === 'undefined') {
-		return null;
+		return _react2.default.createElement('div', { className: 'pattern pattern--slider' });
 	}
 
-	var numberOfLines = (0, _helpers.getNoOfChars)();
+	var numberOfLines = (0, _helpers.getNoOfChars)(sliderName);
 	var fakeArray = Array(numberOfLines.y).fill('pl');
 
 	return _react2.default.createElement(

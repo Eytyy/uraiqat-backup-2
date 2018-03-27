@@ -22,10 +22,6 @@ var _Slide = require('../components/media/Slide');
 
 var _Slide2 = _interopRequireDefault(_Slide);
 
-var _Pattern = require('../components/patterns/Pattern');
-
-var _Pattern2 = _interopRequireDefault(_Pattern);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -45,7 +41,6 @@ var Slider = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this));
 
 		_this.state = {
-			allImagesAreLoaded: false,
 			clientLoaded: false
 		};
 		_this.onSlideClick = _this.onSlideClick.bind(_this);
@@ -54,35 +49,6 @@ var Slider = function (_Component) {
 	}
 
 	_createClass(Slider, [{
-		key: 'checkImage',
-		value: function checkImage(path) {
-			return new Promise(function (resolve) {
-				var img = new Image();
-				var imgSrc = path.fields.file.url;
-				img.onload = function () {
-					console.log('loaded', imgSrc);
-					return resolve({ imgSrc: imgSrc, status: 'ok' });
-				};
-				img.onerror = function () {
-					return resolve({ imgSrc: imgSrc, status: 'error' });
-				};
-				img.src = imgSrc;
-			});
-		}
-	}, {
-		key: 'loadImages',
-		value: function loadImages() {
-			var _this2 = this;
-
-			var content = this.props.content;
-
-			Promise.all(content.map(this.checkImage)).then(function () {
-				_this2.setState({
-					allImagesAreLoaded: true
-				});
-			});
-		}
-	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _props = this.props,
@@ -93,7 +59,6 @@ var Slider = function (_Component) {
 			this.setState({
 				clientLoaded: true
 			});
-			this.loadImages();
 			updateGallery(sliderId, content);
 		}
 	}, {
@@ -118,27 +83,27 @@ var Slider = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this2 = this;
 
 			var _props4 = this.props,
 			    content = _props4.content,
 			    classList = _props4.classList,
 			    imagesQuery = _props4.imagesQuery,
-			    activeSlideIndex = _props4.activeSlideIndex;
+			    activeSlideIndex = _props4.activeSlideIndex,
+			    sliderName = _props4.sliderName;
 
 			var sliderRailStyle = {
 				transform: 'translateX(-' + activeSlideIndex * 100 + '%)'
 			};
+			// return null if there are no slides
 			if (content.length === 0) {
 				return null;
 			}
-			if (!this.state.allImagesAreLoaded) {
-				return _react2.default.createElement(_Pattern2.default, null);
-			}
+			// otherwise render the slider
 			return _react2.default.createElement(
 				'div',
 				{ ref: function ref(el) {
-						_this3.slider = el;
+						_this2.slider = el;
 					}, className: 'slider ' + classList },
 				_react2.default.createElement(
 					'div',
@@ -149,7 +114,7 @@ var Slider = function (_Component) {
 						content.map(function (_ref, index) {
 							var fields = _ref.fields,
 							    sys = _ref.sys;
-							return _react2.default.createElement(_Slide2.default, { index: index, active: activeSlideIndex, onClick: _this3.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
+							return _react2.default.createElement(_Slide2.default, { sliderName: sliderName, index: index, active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
 						})
 					)
 				),
@@ -159,7 +124,7 @@ var Slider = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ onClick: function onClick() {
-								return _this3.updateSlide('next');
+								return _this2.updateSlide('next');
 							}, className: 'slider__controls__item slider-btn slider-btn--next' },
 						'>'
 					),
@@ -173,7 +138,7 @@ var Slider = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ onClick: function onClick() {
-								return _this3.updateSlide('prev');
+								return _this2.updateSlide('prev');
 							}, className: 'slider__controls__item slider-btn slider-btn--prev' },
 						'<'
 					)

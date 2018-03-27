@@ -3,12 +3,12 @@ import React from 'react';
 import PatternLine from './PatternLine';
 import { getNoOfChars } from '../../helpers';
 
-const Pattern = () => {
+const Pattern = ({ sliderName }) => {
 	if (typeof window === 'undefined') {
-		return null;
+		return <div className="pattern pattern--slider"></div>;
 	}
 
-	const numberOfLines = getNoOfChars();
+	const numberOfLines = getNoOfChars(sliderName);
 	const fakeArray = Array(numberOfLines.y).fill('pl');
 
 	return (

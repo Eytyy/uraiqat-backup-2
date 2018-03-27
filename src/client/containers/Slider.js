@@ -4,46 +4,21 @@ import * as actions from '../actions';
 import { getActiveSlide } from '../reducers';
 
 import Slide from '../components/media/Slide';
-import Pattern from '../components/patterns/Pattern';
 
 class Slider extends Component {
 	constructor() {
 		super();
 		this.state = {
-			allImagesAreLoaded: false,
 			clientLoaded: false,
 		};
 		this.onSlideClick = this.onSlideClick.bind(this);
 		this.updateSlide = this.updateSlide.bind(this);
 	}
-
-	checkImage(path) {
-		return new Promise(resolve => {
-			const img = new Image();
-			const imgSrc = path.fields.file.url;
-			img.onload = () => {
-				console.log('loaded', imgSrc);
-				return resolve({imgSrc, status: 'ok'});
-			};
-			img.onerror = () => resolve({imgSrc, status: 'error'});
-			img.src = imgSrc;
-		});
-	}
-	loadImages() {
-		const { content } = this.props;
-		Promise.all(content.map(this.checkImage)).then(() => {
-			this.setState({
-				allImagesAreLoaded: true,
-			});
-		});
-	}
-		
 	componentDidMount() {
 		const { content, updateGallery, sliderId } = this.props;
 		this.setState({
 			clientLoaded: true,
 		});
-		this.loadImages();
 		updateGallery(sliderId, content);
 	}
 	updateSlide(direction) {
@@ -56,22 +31,21 @@ class Slider extends Component {
 		toggleGallery(sliderId, openGallery);
 	}
 	render() {
-		const { content, classList, imagesQuery, activeSlideIndex } = this.props;
+		const { content, classList, imagesQuery, activeSlideIndex, sliderName } = this.props;
 		const sliderRailStyle = {
 			transform: `translateX(-${activeSlideIndex * 100}%)`
 		};
+		// return null if there are no slides
 		if (content.length === 0) {
 			return null;
-		}
-		if (!this.state.allImagesAreLoaded) {
-			return <Pattern />;
-		}
+		}	
+		// otherwise render the slider
 		return ( 
 			<div ref={(el) => { this.slider = el; }} className={`slider ${classList}`}>
 				<div className="slider__inner">
 					<div style={sliderRailStyle} className="slider__slides">
 						{ content.map(({ fields, sys }, index) =>
-							<Slide index={index} active={activeSlideIndex} onClick={this.onSlideClick} key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
+							<Slide sliderName={sliderName} index={index} active={activeSlideIndex} onClick={this.onSlideClick} key={sys.id} imagesQuery={imagesQuery} content={fields} />)}
 					</div>
 				</div>
 				{

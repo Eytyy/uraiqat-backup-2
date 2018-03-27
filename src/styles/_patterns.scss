@@ -1,3 +1,11 @@
 .pattern {
 	font-family: $font--bold;
 }
+
+.slider--main .pattern {
+	height: 512px;
+}
+
+.slider--small .pattern {
+	height: 254px;
+}

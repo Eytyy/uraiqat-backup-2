@@ -822,3 +822,9 @@ nav {
 
 .pattern {
   font-family: "ZeitungMonoPro-Bold"; }
+
+.slider--main .pattern {
+  height: 512px; }
+
+.slider--small .pattern {
+  height: 254px; }

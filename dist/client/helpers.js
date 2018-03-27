@@ -56,10 +56,10 @@ var getFontValues = exports.getFontValues = function getFontValues() {
 	return font;
 };
 
-var getContainerSize = exports.getContainerSize = function getContainerSize() {
+var getContainerSize = exports.getContainerSize = function getContainerSize(container) {
 	var containerSize = {
-		w: 882,
-		h: 576
+		w: container.w,
+		h: container.h
 	};
 	var font = getFontValues();
 
@@ -69,8 +69,19 @@ var getContainerSize = exports.getContainerSize = function getContainerSize() {
 	return containerSize;
 };
 
-var getNoOfChars = exports.getNoOfChars = function getNoOfChars() {
-	var containerSize = getContainerSize();
+var config = {
+	'project-main-slider': {
+		w: 826,
+		h: 512
+	},
+	'project-drawings-slider': {
+		w: 334,
+		h: 254
+	}
+};
+
+var getNoOfChars = exports.getNoOfChars = function getNoOfChars(sliderName) {
+	var containerSize = getContainerSize(config[sliderName]);
 	var font = getFontValues();
 
 	var x = Math.floor(containerSize.w / font.characterWidth);
