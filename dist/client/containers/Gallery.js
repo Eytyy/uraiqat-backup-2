@@ -120,9 +120,9 @@ var Gallery = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ onClick: function onClick() {
-									return _this2.updateSlide('prev');
-								}, className: 'slider__controls__item slider-btn slider-btn--prev' },
-							'<'
+									return _this2.updateSlide('next');
+								}, className: 'slider__controls__item slider-btn slider-btn--next' },
+							'>'
 						),
 						_react2.default.createElement(
 							'div',
@@ -134,9 +134,9 @@ var Gallery = function (_Component) {
 						_react2.default.createElement(
 							'div',
 							{ onClick: function onClick() {
-									return _this2.updateSlide('next');
-								}, className: 'slider__controls__item slider-btn slider-btn--next' },
-							'>'
+									return _this2.updateSlide('prev');
+								}, className: 'slider__controls__item slider-btn slider-btn--prev' },
+							'<'
 						)
 					)
 				)

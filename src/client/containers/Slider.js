@@ -3,96 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { getActiveSlide } from '../reducers';
 
-import {getWindowSize} from './helprs';
-
 import Slide from '../components/media/Slide';
-
-const PatternHelpers = () => {
-	const containerSize = {
-		w: 882,
-		h: 576
-	};
-	const windowDimensions = {
-		w: getWindowSize().width,
-		h: getWindowSize().height,
-	};
-	
-	let font = {};
-
-	if (windowDimensions.w >= 1920 && windowDimensions.h >= 1080) {
-		font.characterWidth = 14;
-		font.characterHeight = 32;
-	} else if(windowDimensions.w > 380 && windowDimensions.h > 900) {
-		font.characterWidth = 14;
-		font.characterHeight = 32;
-	} else {
-		font.characterWidth = 14;
-		font.characterHeight = 32;
-	}
-
-	containerSize.w = containerSize.w - (font.characterWidth * 2);
-	containerSize.h = containerSize.h - (font.characterHeight);
-
-	const x = Math.floor(containerSize.w/font.characterWidth);
-	const y = Math.floor(containerSize.h/font.characterHeight);
-	
-	return {
-		getWindowDimensions() {
-			return windowDimensions;
-		},
-		getContainerSize() {
-			return containerSize;
-		},
-		getNoOfChars() {
-			return {
-				x,
-				y
-			};
-		}
-	};
-};
-
-const PatternLine = ({ noOfChars }) => {
-	let count = 1;
-	function getRandomIntInclusive(min, max) {
-		min = Math.ceil(min);
-		max = Math.floor(max);
-		return Math.floor(Math.random() * (max - min + 1)) + min; 
-	}
-	function getRandomGlyph() {
-		const glyphs= ['-', '-','/', '\\', '-', '-', '{', '-', '>', '-', '<', '\\', '-', '}', '-', '-', ']', '-', '[', '-', '/',  '-', '-', '-', '/', '-', '\\', '-'];
-		let index = getRandomIntInclusive(1, glyphs.length - 2);
-		let glyph = glyphs[index];
-		return glyph;
-	}
-	const generatePattern = () => {
-		let pattern = '';
-		for (count; count <= noOfChars; count++) {
-			pattern += getRandomGlyph();
-		}
-		return pattern;
-	};
-	return <div className='patternline'>{generatePattern()}</div>;
-};
-
-const Pattern = () => {
-	if (typeof window === 'undefined') {
-		return null;
-	}
-	const helpers = PatternHelpers();
-
-	const numberOfLines = helpers.getNoOfChars();
-	const fakeArray = Array(numberOfLines.y).fill('pl');
-
-	return (
-		<div className="pattern pattern--slider">
-			{
-				fakeArray.map((item, index) =>
-					<PatternLine key={`pl-${index}`} noOfChars={numberOfLines.x} ></PatternLine>)
-			}
-		</div>
-	);
-};
+import Pattern from '../components/patterns/Pattern';
 
 class Slider extends Component {
 	constructor() {
@@ -166,9 +78,9 @@ class Slider extends Component {
 					content.length === 1 ?
 						null:
 						<div className="slider__controls">
-							<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
-							<div className="slider__controls__item slider__counter">{activeSlideIndex + 1}{'/'}{content.length}</div>
 							<div onClick={() => this.updateSlide('next')} className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>
+							<div className="slider__controls__item slider__counter">{activeSlideIndex + 1}{'/'}{content.length}</div>
+							<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
 						</div>
 				}
 			</div>);

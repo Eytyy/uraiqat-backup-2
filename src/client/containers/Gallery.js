@@ -56,9 +56,9 @@ class Gallery extends Component {
 						slides.length === 1 ?
 							null:
 							<div className="slider__controls__bottom">
-								<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
-								<div className="slider__controls__item slider__counter">{activeSlide + 1}{'/'}{slides.length}</div>
 								<div onClick={() => this.updateSlide('next')} className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>
+								<div className="slider__controls__item slider__counter">{activeSlide + 1}{'/'}{slides.length}</div>
+								<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
 							</div>
 					}
 					
