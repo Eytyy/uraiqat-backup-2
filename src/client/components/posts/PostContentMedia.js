@@ -8,7 +8,7 @@ const PostContentMedia = ({ content, id }) => {
 	}
 	
 	return content.files.length > 1 ?
-		<Slider sliderId={id} classList="post__media" imagesQuery={'?fl=progressive&w=882'} content={content.files} />:
+		<Slider sliderName="post-slider" sliderId={id} classList="post__media" imagesQuery={'?fl=progressive&w=882'} content={content.files} />:
 		<FlexibleImageComponent content={content.files[0]} />;
 };
 

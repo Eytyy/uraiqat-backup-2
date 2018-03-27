@@ -26,7 +26,7 @@ var PostContentMedia = function PostContentMedia(_ref) {
 		return null;
 	}
 
-	return content.files.length > 1 ? _react2.default.createElement(_Slider2.default, { sliderId: id, classList: 'post__media', imagesQuery: '?fl=progressive&w=882', content: content.files }) : _react2.default.createElement(_FlexibleImageComponent2.default, { content: content.files[0] });
+	return content.files.length > 1 ? _react2.default.createElement(_Slider2.default, { sliderName: 'post-slider', sliderId: id, classList: 'post__media', imagesQuery: '?fl=progressive&w=882', content: content.files }) : _react2.default.createElement(_FlexibleImageComponent2.default, { content: content.files[0] });
 };
 
 exports.default = PostContentMedia;

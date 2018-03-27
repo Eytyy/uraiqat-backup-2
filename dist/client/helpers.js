@@ -77,6 +77,10 @@ var config = {
 	'project-drawings-slider': {
 		w: 334,
 		h: 254
+	},
+	'post-slider': {
+		w: 882,
+		h: 576
 	}
 };
 
