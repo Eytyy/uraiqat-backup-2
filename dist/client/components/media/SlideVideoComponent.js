@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Pattern = require('../patterns/Pattern');
+
+var _Pattern2 = _interopRequireDefault(_Pattern);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,12 +31,15 @@ var SlideVideoComponent = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (SlideVideoComponent.__proto__ || Object.getPrototypeOf(SlideVideoComponent)).call(this));
 
 		_this.state = {
-			playing: false
+			playing: false,
+			videoIsLoaded: false
 		};
 		_this.playVideo = _this.playVideo.bind(_this);
 		_this.stopVideo = _this.stopVideo.bind(_this);
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
 		_this.onSlideClick = _this.onSlideClick.bind(_this);
+		_this.loadVideo = _this.loadVideo.bind(_this);
+		_this.checkVideo = _this.checkVideo.bind(_this);
 		return _this;
 	}
 
@@ -79,13 +86,47 @@ var SlideVideoComponent = function (_Component) {
 			onClick(id);
 		}
 	}, {
+		key: 'checkVideo',
+		value: function checkVideo() {
+			var _this2 = this;
+
+			var content = this.props.content;
+
+			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
+			return new Promise(function (resolve) {
+				_this2.video.addEventListener('loadeddata', function () {
+					return resolve({ url: url, status: 'ok' });
+				}, false);
+				_this2.video.addEventListener('error', function () {
+					return resolve({ url: url, status: 'error' });
+				}, false);
+			});
+		}
+	}, {
+		key: 'loadVideo',
+		value: function loadVideo() {
+			var _this3 = this;
+
+			this.checkVideo().then(function () {
+				_this3.setState({
+					videoIsLoaded: true
+				});
+			});
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.loadVideo();
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this4 = this;
 
 			var _props2 = this.props,
 			    content = _props2.content,
-			    active = _props2.active;
+			    active = _props2.active,
+			    sliderName = _props2.sliderName;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 			var allClasses = 'slide slide--video ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
@@ -94,7 +135,7 @@ var SlideVideoComponent = function (_Component) {
 				{ className: allClasses },
 				_react2.default.createElement(
 					'div',
-					{ className: 'video video__wrapper' },
+					{ className: 'video video__wrapper ' + (this.state.videoIsLoaded ? 'video--loaded' : 'video--loading') },
 					_react2.default.createElement(
 						'div',
 						{ className: 'slider__inner-controls slider__inner-controls--video' },
@@ -119,8 +160,9 @@ var SlideVideoComponent = function (_Component) {
 						)
 					),
 					_react2.default.createElement('video', { ref: function ref(el) {
-							_this2.video = el;
-						}, src: url })
+							_this4.video = el;
+						}, src: url }),
+					!this.state.videoIsLoaded && _react2.default.createElement(_Pattern2.default, { sliderName: sliderName })
 				),
 				content.description && _react2.default.createElement(
 					'div',

@@ -48,10 +48,12 @@ var SlideImageComponent = function (_Component) {
 		}
 	}, {
 		key: 'checkImage',
-		value: function checkImage(image) {
+		value: function checkImage() {
+			var content = this.props.content;
+
 			return new Promise(function (resolve) {
 				var img = new Image();
-				var imgSrc = image.file.url;
+				var imgSrc = content.file.url;
 				img.onload = function () {
 					return resolve({ imgSrc: imgSrc, status: 'ok' });
 				};
@@ -66,9 +68,7 @@ var SlideImageComponent = function (_Component) {
 		value: function loadImage() {
 			var _this2 = this;
 
-			var content = this.props.content;
-
-			this.checkImage(content).then(function () {
+			this.checkImage().then(function () {
 				_this2.setState({
 					imageIsLoaded: true
 				});

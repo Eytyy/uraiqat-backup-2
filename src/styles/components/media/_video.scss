@@ -75,13 +75,25 @@
 .slider .video {
 	cursor: default;
 	position: relative;
-	background: #000;
+	background-color: #000;
 	height: 576px;
+	transition: background-color 100ms ease-in-out;
 	video {
 		width: 100%;
 		height: auto;
 		top: 50%;
 		left: 0;
+		opacity: 1;
 		transform: translateY(-50%);
+		transition: opacity 100ms ease-in-out;
+	}
+	&--loading {
+		background-color: transparent;
+		video {
+			opacity: 0;
+		}
+		.video-btn {
+			display: none;
+		}
 	}
 }

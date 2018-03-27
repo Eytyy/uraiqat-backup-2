@@ -688,8 +688,6 @@ nav {
     right: 0;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
-  .gallery .video {
-    position: static; }
   .gallery .video__wrapper {
     position: relative;
     padding-top: 56.25%; }
@@ -810,15 +808,26 @@ nav {
 .slider .video {
   cursor: default;
   position: relative;
-  background: #000;
-  height: 576px; }
+  background-color: #000;
+  height: 576px;
+  -webkit-transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out; }
   .slider .video video {
     width: 100%;
     height: auto;
     top: 50%;
     left: 0;
+    opacity: 1;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
+            transform: translateY(-50%);
+    -webkit-transition: opacity 100ms ease-in-out;
+    transition: opacity 100ms ease-in-out; }
+  .slider .video--loading {
+    background-color: transparent; }
+    .slider .video--loading video {
+      opacity: 0; }
+    .slider .video--loading .video-btn {
+      display: none; }
 
 .pattern {
   font-family: "ZeitungMonoPro-Bold"; }

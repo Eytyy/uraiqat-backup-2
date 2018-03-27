@@ -13,10 +13,11 @@ class SlideImageComponent extends Component {
 		const { onClick, id } = this.props;
 		onClick(id);
 	}
-	checkImage(image) {
+	checkImage() {
+		const { content } = this.props;
 		return new Promise(resolve => {
 			const img = new Image();
-			const imgSrc = image.file.url;
+			const imgSrc = content.file.url;
 			img.onload = () => {
 				return resolve({imgSrc, status: 'ok'});
 			};
@@ -25,8 +26,7 @@ class SlideImageComponent extends Component {
 		});
 	}
 	loadImage() {
-		const { content } = this.props;
-		this.checkImage(content).then(() => {
+		this.checkImage().then(() => {
 			this.setState({
 				imageIsLoaded: true,
 			});
