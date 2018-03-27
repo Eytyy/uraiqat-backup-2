@@ -8,28 +8,19 @@ import PostMediaVideo from '../PostMediaVideo';
 import { formatDate } from '../../../helpers';
 
 class PostFeaturedMedia extends Component {
-	constructor() {
-		super();
-		this.state = {
-			orientation: 'landscape'
-		};
-		this.updateOrientation = this.updateOrientation.bind(this);
-	}
-	updateOrientation(orientation) {
-		this.setState({
-			orientation,
-		});
-	}
 	render() {
 		const { content } = this.props;
 		const { previewThumbnail, id, category, date, title, previewText } = content;
+		
 		// determine whether the media content is a video or an image
 		const isMediaOfTypeImage = RegExp('image').test(previewThumbnail.fields.file.contentType);
 		if (isMediaOfTypeImage) {
+			const imgSize = previewThumbnail.fields.file.details.image;
+			const orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
 			return (
-				<Preview classList={`post-preview post-preview--featured post-preview--${this.state.orientation}`}>
+				<Preview classList={`post-preview post-preview--featured post-preview--${orientation}`}>
 					<Link className="post-preview__link" to={`/journal/${id}`}>
-						<PostMediaImage updateOrientation={this.updateOrientation} content={previewThumbnail} />
+						<PostMediaImage orientation={orientation} patternId="featured-post" content={previewThumbnail} />
 						<div className="post-preview__content">
 							<div className="post-preview__content__inner">
 								{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }

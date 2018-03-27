@@ -40,23 +40,10 @@ var PostDefaultMedia = function (_Component) {
 	function PostDefaultMedia() {
 		_classCallCheck(this, PostDefaultMedia);
 
-		var _this = _possibleConstructorReturn(this, (PostDefaultMedia.__proto__ || Object.getPrototypeOf(PostDefaultMedia)).call(this));
-
-		_this.state = {
-			orientation: 'portrait'
-		};
-		_this.updateOrientation = _this.updateOrientation.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (PostDefaultMedia.__proto__ || Object.getPrototypeOf(PostDefaultMedia)).apply(this, arguments));
 	}
 
 	_createClass(PostDefaultMedia, [{
-		key: 'updateOrientation',
-		value: function updateOrientation(orientation) {
-			this.setState({
-				orientation: orientation
-			});
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			var content = this.props.content;
@@ -109,17 +96,51 @@ var PostDefaultMedia = function (_Component) {
 						)
 					)
 				);
-			} else if (this.state.orientation === 'portrait') {
-				return _react2.default.createElement(
-					_Preview2.default,
-					{ classList: 'post-preview post-preview--default post-preview--portrait' },
-					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ className: 'post-preview__link', to: '/journal/' + id },
-						_react2.default.createElement(_PostMediaImage2.default, { updateOrientation: this.updateOrientation, content: previewThumbnail }),
+			} else {
+				var imgSize = previewThumbnail.fields.file.details.image;
+				var orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
+				if (orientation === 'portrait') {
+					return _react2.default.createElement(
+						_Preview2.default,
+						{ classList: 'post-preview post-preview--default post-preview--portrait' },
 						_react2.default.createElement(
-							'div',
-							{ className: 'post-preview__content' },
+							_reactRouterDom.Link,
+							{ className: 'post-preview__link', to: '/journal/' + id },
+							_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'post-preview__content' },
+								(category || date) && _react2.default.createElement(
+									'div',
+									{ className: 'post-preview__meta' },
+									(0, _helpers.formatDate)(date),
+									' -> ',
+									category.fields.title
+								),
+								title && _react2.default.createElement(
+									'h2',
+									{ className: 'post-preview__title title' },
+									title
+								),
+								previewText && _react2.default.createElement(
+									'div',
+									{ className: 'post-preview__desc' },
+									_react2.default.createElement(
+										'p',
+										null,
+										previewText
+									)
+								)
+							)
+						)
+					);
+				} else {
+					return _react2.default.createElement(
+						_Preview2.default,
+						{ classList: 'post-preview post-preview--default post-preview--landscape' },
+						_react2.default.createElement(
+							_reactRouterDom.Link,
+							{ className: 'post-preview__link', to: '/journal/' + id },
 							(category || date) && _react2.default.createElement(
 								'div',
 								{ className: 'post-preview__meta' },
@@ -127,6 +148,7 @@ var PostDefaultMedia = function (_Component) {
 								' -> ',
 								category.fields.title
 							),
+							_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
 							title && _react2.default.createElement(
 								'h2',
 								{ className: 'post-preview__title title' },
@@ -142,39 +164,8 @@ var PostDefaultMedia = function (_Component) {
 								)
 							)
 						)
-					)
-				);
-			} else {
-				return _react2.default.createElement(
-					_Preview2.default,
-					{ classList: 'post-preview post-preview--default post-preview--landscape' },
-					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ className: 'post-preview__link', to: '/journal/' + id },
-						(category || date) && _react2.default.createElement(
-							'div',
-							{ className: 'post-preview__meta' },
-							(0, _helpers.formatDate)(date),
-							' -> ',
-							category.fields.title
-						),
-						_react2.default.createElement(_PostMediaImage2.default, { updateOrientation: this.updateOrientation, content: previewThumbnail }),
-						title && _react2.default.createElement(
-							'h2',
-							{ className: 'post-preview__title title' },
-							title
-						),
-						previewText && _react2.default.createElement(
-							'div',
-							{ className: 'post-preview__desc' },
-							_react2.default.createElement(
-								'p',
-								null,
-								previewText
-							)
-						)
-					)
-				);
+					);
+				}
 			}
 		}
 	}]);

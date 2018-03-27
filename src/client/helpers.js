@@ -79,6 +79,22 @@ const config = {
 		w: 882,
 		h: 576,
 	},
+	'default-post--portrait': {
+		w: 266,
+		h: 384,
+	},
+	'default-post--landscape': {
+		w: 392,
+		h: 256,
+	},
+	'featured-post--portrait': {
+		w: 448,
+		h: 640,
+	},
+	'featured-post--landscape': {
+		w: 868,
+		h: 544,
+	},
 };
 
 export const getNoOfChars = (sliderName) => {

@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import ImageComponent from '../media/ImageComponent';
 
 class PostMediaImage extends Component {
-	componentDidMount() {
-		const { content, updateOrientation } = this.props;
-		const imgSize = content.fields.file.details.image;
-		const orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
-		updateOrientation(orientation);
-	}
-	
 	render() {
-		const { content } = this.props;
+		const { content, patternId, orientation } = this.props;
 		const imageClass = 'post-preview__image';
-		return <ImageComponent classList={imageClass} src={content.fields.file.url} />;
+		return <ImageComponent
+			patternId={`${patternId}--${orientation}`}
+			classList={imageClass}
+			src={content.fields.file.url}
+			size={content.fields.file.details.image}
+		/>;
 	}
 }
 

@@ -8,18 +8,6 @@ import PostMediaVideo from '../PostMediaVideo';
 import { formatDate } from '../../../helpers';
 
 class PostDefaultMedia extends Component {
-	constructor() {
-		super();
-		this.state = {
-			orientation: 'portrait'
-		};
-		this.updateOrientation = this.updateOrientation.bind(this);
-	}
-	updateOrientation(orientation) {
-		this.setState({
-			orientation,
-		});
-	}
 	render() {
 		const { content } = this.props;
 		const { previewThumbnail, id, category, date, title, previewText} = content;
@@ -42,30 +30,34 @@ class PostDefaultMedia extends Component {
 				</Preview>
 			);
 		}
-		else if (this.state.orientation === 'portrait') {
-			return (
-				<Preview classList="post-preview post-preview--default post-preview--portrait">
-					<Link className="post-preview__link" to={`/journal/${id}`}>
-						<PostMediaImage updateOrientation={this.updateOrientation} content={previewThumbnail} />
-						<div className="post-preview__content">
+		else {
+			const imgSize = previewThumbnail.fields.file.details.image;
+			const orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
+			if (orientation === 'portrait') {
+				return (
+					<Preview classList="post-preview post-preview--default post-preview--portrait">
+						<Link className="post-preview__link" to={`/journal/${id}`}>
+							<PostMediaImage orientation={orientation} patternId="default-post" content={previewThumbnail} />
+							<div className="post-preview__content">
+								{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+								{ title && <h2 className="post-preview__title title">{title}</h2> }
+								{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
+							</div>
+						</Link>
+					</Preview>
+				);
+			} else {
+				return (
+					<Preview classList="post-preview post-preview--default post-preview--landscape">
+						<Link className="post-preview__link" to={`/journal/${id}`}>
 							{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+							<PostMediaImage orientation={orientation} patternId="default-post" content={previewThumbnail} />
 							{ title && <h2 className="post-preview__title title">{title}</h2> }
 							{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
-						</div>
-					</Link>
-				</Preview>
-			);
-		} else {
-			return (
-				<Preview classList="post-preview post-preview--default post-preview--landscape">
-					<Link className="post-preview__link" to={`/journal/${id}`}>
-						{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
-						<PostMediaImage updateOrientation={this.updateOrientation} content={previewThumbnail} />
-						{ title && <h2 className="post-preview__title title">{title}</h2> }
-						{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
-					</Link>
-				</Preview>
-			);
+						</Link>
+					</Preview>
+				);
+			}
 		}
 	}
 }

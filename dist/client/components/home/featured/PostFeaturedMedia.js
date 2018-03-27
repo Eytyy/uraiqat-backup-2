@@ -40,23 +40,10 @@ var PostFeaturedMedia = function (_Component) {
 	function PostFeaturedMedia() {
 		_classCallCheck(this, PostFeaturedMedia);
 
-		var _this = _possibleConstructorReturn(this, (PostFeaturedMedia.__proto__ || Object.getPrototypeOf(PostFeaturedMedia)).call(this));
-
-		_this.state = {
-			orientation: 'landscape'
-		};
-		_this.updateOrientation = _this.updateOrientation.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (PostFeaturedMedia.__proto__ || Object.getPrototypeOf(PostFeaturedMedia)).apply(this, arguments));
 	}
 
 	_createClass(PostFeaturedMedia, [{
-		key: 'updateOrientation',
-		value: function updateOrientation(orientation) {
-			this.setState({
-				orientation: orientation
-			});
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			var content = this.props.content;
@@ -66,17 +53,20 @@ var PostFeaturedMedia = function (_Component) {
 			    date = content.date,
 			    title = content.title,
 			    previewText = content.previewText;
+
 			// determine whether the media content is a video or an image
 
 			var isMediaOfTypeImage = RegExp('image').test(previewThumbnail.fields.file.contentType);
 			if (isMediaOfTypeImage) {
+				var imgSize = previewThumbnail.fields.file.details.image;
+				var orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
 				return _react2.default.createElement(
 					_Preview2.default,
-					{ classList: 'post-preview post-preview--featured post-preview--' + this.state.orientation },
+					{ classList: 'post-preview post-preview--featured post-preview--' + orientation },
 					_react2.default.createElement(
 						_reactRouterDom.Link,
 						{ className: 'post-preview__link', to: '/journal/' + id },
-						_react2.default.createElement(_PostMediaImage2.default, { updateOrientation: this.updateOrientation, content: previewThumbnail }),
+						_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'featured-post', content: previewThumbnail }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-preview__content' },

@@ -32,23 +32,20 @@ var PostMediaImage = function (_Component) {
 	}
 
 	_createClass(PostMediaImage, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var _props = this.props,
-			    content = _props.content,
-			    updateOrientation = _props.updateOrientation;
-
-			var imgSize = content.fields.file.details.image;
-			var orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
-			updateOrientation(orientation);
-		}
-	}, {
 		key: 'render',
 		value: function render() {
-			var content = this.props.content;
+			var _props = this.props,
+			    content = _props.content,
+			    patternId = _props.patternId,
+			    orientation = _props.orientation;
 
 			var imageClass = 'post-preview__image';
-			return _react2.default.createElement(_ImageComponent2.default, { classList: imageClass, src: content.fields.file.url });
+			return _react2.default.createElement(_ImageComponent2.default, {
+				patternId: patternId + '--' + orientation,
+				classList: imageClass,
+				src: content.fields.file.url,
+				size: content.fields.file.details.image
+			});
 		}
 	}]);
 
