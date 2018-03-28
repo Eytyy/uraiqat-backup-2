@@ -104,11 +104,11 @@ var config = {
 	},
 	'project-main-thumb': {
 		w: 728,
-		h: 448
+		h: 480
 	},
 	'project-drawing-thumb--landscape': {
 		w: 662,
-		h: 240
+		h: 256
 	},
 	'project-drawing-thumb--portrait': {
 		w: 350,
@@ -117,7 +117,7 @@ var config = {
 
 	'project-other-thumb': {
 		w: 350,
-		h: 240
+		h: 256
 	}
 };
 
