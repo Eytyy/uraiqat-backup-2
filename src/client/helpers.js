@@ -119,8 +119,6 @@ const config = {
 };
 
 export const getNoOfChars = (sliderName) => {
-	console.log(sliderName);
-	console.log(config[sliderName]);
 	const containerSize = getContainerSize(config[sliderName]);
 	const font = getFontValues();
 

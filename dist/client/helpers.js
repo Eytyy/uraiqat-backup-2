@@ -122,8 +122,6 @@ var config = {
 };
 
 var getNoOfChars = exports.getNoOfChars = function getNoOfChars(sliderName) {
-	console.log(sliderName);
-	console.log(config[sliderName]);
 	var containerSize = getContainerSize(config[sliderName]);
 	var font = getFontValues();
 
