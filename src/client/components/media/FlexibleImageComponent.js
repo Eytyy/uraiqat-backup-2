@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const FlexibleImageComponent = ({ content }) => {
-	const { description, file } = content.fields;
-	return (
-		<div className="post__media">
-			<img src={file.url} />
-			{ description && <div className="post__media__caption">{description}</div>}
-		</div>
-	);
-};
+class FlexibleImageComponent extends Component {
+	componentDidMount() {
+		const { content } = this.props;
+		// const { width, height } = content.fields.file.details.image;
 
-export default FlexibleImageComponent;
+		// const containerMaxHeight = Math.floor((this.wrapper.offsetWidth / (width/height)) / 32) * 32;
+		// this.wrapper.style.height = `${containerMaxHeight}px`;
+
+	}
+	
+	render() {
+		const { content } = this.props;
+		const { description, file } = content.fields;
+		return (
+			<div ref={(el) => this.wrapper = el}className="post__media post__media--image">
+				<div className="post__media__image">
+					<img src={file.url} />
+				</div>
+				{ description && <div className="post__media__caption">{description}</div>}
+			</div>
+		);
+	}
+}
+
+export default FlexibleImageComponent; 

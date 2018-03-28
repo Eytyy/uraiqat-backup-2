@@ -126,6 +126,10 @@ var config = {
 	'project-other-thumb': {
 		w: 350,
 		h: 256
+	},
+	'post-media--video': {
+		w: 900,
+		h: 512
 	}
 };
 

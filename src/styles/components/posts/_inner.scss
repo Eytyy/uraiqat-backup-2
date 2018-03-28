@@ -41,6 +41,20 @@
 		top: 0;
 		transform: translateX(100%);
 	}
+	&__image {
+		overflow: hidden;
+	}
+	&__video-wrapper {
+		height: 480px;
+	}
+	.video {
+		height: 100%;
+		width: 100%;
+		video {
+			width: 100%;
+			height: auto;
+		}
+	}
 }
 
 .post__media__caption {

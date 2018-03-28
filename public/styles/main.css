@@ -469,6 +469,16 @@ nav {
     top: 0;
     -webkit-transform: translateX(100%);
             transform: translateX(100%); }
+  .post__media__image {
+    overflow: hidden; }
+  .post__media__video-wrapper {
+    height: 480px; }
+  .post__media .video {
+    height: 100%;
+    width: 100%; }
+    .post__media .video video {
+      width: 100%;
+      height: auto; }
 
 .post__media__caption {
   margin-top: 8px;
