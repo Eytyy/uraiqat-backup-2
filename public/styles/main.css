@@ -4,9 +4,9 @@
   display: block;
   clear: both; }
 
-.post-preview__image .preview-image, .project-preview__image--main, .project-preview__image--craft, .video.post-preview__video {
+.post-preview__image .preview-image, .project-preview__image--main .preview-image, .project-preview__image--craft .preview-image, .video.post-preview__video {
   position: relative; }
-  .post-preview__image .preview-image:before, .project-preview__image--main:before, .project-preview__image--craft:before, .video.post-preview__video:before {
+  .post-preview__image .preview-image:before, .project-preview__image--main .preview-image:before, .project-preview__image--craft .preview-image:before, .video.post-preview__video:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -15,7 +15,7 @@
     height: 100%;
     background-color: #FFF;
     mix-blend-mode: color; }
-  .post-preview__image .preview-image:after, .project-preview__image--main:after, .project-preview__image--craft:after, .video.post-preview__video:after {
+  .post-preview__image .preview-image:after, .project-preview__image--main .preview-image:after, .project-preview__image--craft .preview-image:after, .video.post-preview__video:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -25,9 +25,9 @@
     background-color: #000;
     mix-blend-mode: screen; }
 
-.project-preview__image--drawing, .project__drawings .preview-image {
+.project-preview__image--drawing .preview-image, .project__drawings .preview-image {
   position: relative; }
-  .project-preview__image--drawing:before, .project__drawings .preview-image:before {
+  .project-preview__image--drawing .preview-image:before, .project__drawings .preview-image:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -36,7 +36,7 @@
     height: 100%;
     background-color: #FFF;
     mix-blend-mode: color; }
-  .project-preview__image--drawing:after, .project__drawings .preview-image:after {
+  .project-preview__image--drawing .preview-image:after, .project__drawings .preview-image:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -46,9 +46,9 @@
     background-color: blue;
     mix-blend-mode: screen; }
 
-.project-preview__image--diagram {
+.project-preview__image--diagram .preview-image {
   position: relative; }
-  .project-preview__image--diagram:after {
+  .project-preview__image--diagram .preview-image:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -57,7 +57,7 @@
     height: 100%;
     background-color: red;
     mix-blend-mode: lighten; }
-  .project-preview__image--diagram:before {
+  .project-preview__image--diagram .preview-image:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -370,11 +370,12 @@ nav {
       -ms-flex: 0 0 644px;
           flex: 0 0 644px; }
 
-.project-preview__image--main, .project-preview__image--drawing {
-  height: 416px; }
-
-.project-preview__image--craft, .project-preview__image--diagram {
-  height: 208px; }
+.project-preview__image {
+  position: relative; }
+  .project-preview__image--main, .project-preview__image--drawing {
+    height: 416px; }
+  .project-preview__image--craft, .project-preview__image--diagram {
+    height: 208px; }
 
 .project-preview__thumbs--landscape .project-preview__image--drawing {
   -webkit-box-flex: 0;
@@ -387,7 +388,7 @@ nav {
       -ms-flex: 0 0 50%;
           flex: 0 0 50%; }
 
-.project-preview__image--craft {
+.project-preview__image--craft .preview-image {
   opacity: 0.5; }
 
 .project__top {

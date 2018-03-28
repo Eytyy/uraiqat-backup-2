@@ -101,10 +101,29 @@ var config = {
 	'related-project--landscape': {
 		w: 644,
 		h: 448
+	},
+	'project-main-thumb': {
+		w: 728,
+		h: 448
+	},
+	'project-drawing-thumb--landscape': {
+		w: 662,
+		h: 240
+	},
+	'project-drawing-thumb--portrait': {
+		w: 350,
+		h: 448
+	},
+
+	'project-other-thumb': {
+		w: 350,
+		h: 240
 	}
 };
 
 var getNoOfChars = exports.getNoOfChars = function getNoOfChars(sliderName) {
+	console.log(sliderName);
+	console.log(config[sliderName]);
 	var containerSize = getContainerSize(config[sliderName]);
 	var font = getFontValues();
 

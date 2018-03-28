@@ -32,6 +32,7 @@
 }
 
 .project-preview__image {
+	position: relative;
 	&--main,
 	&--drawing {
 		height: 416px;
@@ -56,19 +57,19 @@
 }
 
 
-.project-preview__image--main {
+.project-preview__image--main .preview-image {
 	@extend %bw-filter;
 }
 
-.project-preview__image--drawing {
+.project-preview__image--drawing .preview-image {
 	@extend %blue-filter;
 }
 
-.project-preview__image--craft {
+.project-preview__image--craft .preview-image {
 	@extend %bw-filter;
 	opacity: 0.5;
 }
 
-.project-preview__image--diagram {
+.project-preview__image--diagram .preview-image {
 	@extend %red-filter;
 }
