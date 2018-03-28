@@ -80,7 +80,9 @@ class SlideVideoComponent extends Component {
 						</span>
 					</div>
 					<video ref={(el) => { this.video = el; }}  src={url} />
-					{ !this.state.videoIsLoaded && <Pattern sliderName={sliderName} /> }
+					<div className={`preview-pattern ${this.state.videoIsLoaded ? 'preview-pattern--hidden' : ''}`}>
+						<Pattern sliderName={sliderName} />
+					</div>
 				</div>
 				{ content.description && <div className="caption">{active + 1}: {content.description}</div>}
 			</div>

@@ -162,7 +162,11 @@ var SlideVideoComponent = function (_Component) {
 					_react2.default.createElement('video', { ref: function ref(el) {
 							_this4.video = el;
 						}, src: url }),
-					!this.state.videoIsLoaded && _react2.default.createElement(_Pattern2.default, { sliderName: sliderName })
+					_react2.default.createElement(
+						'div',
+						{ className: 'preview-pattern ' + (this.state.videoIsLoaded ? 'preview-pattern--hidden' : '') },
+						_react2.default.createElement(_Pattern2.default, { sliderName: sliderName })
+					)
 				),
 				content.description && _react2.default.createElement(
 					'div',

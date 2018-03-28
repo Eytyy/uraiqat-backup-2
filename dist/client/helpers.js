@@ -98,6 +98,14 @@ var config = {
 		w: 882,
 		h: 576
 	},
+	'featured-post--video': {
+		w: 896,
+		h: 576
+	},
+	'default-post--video': {
+		w: 638,
+		h: 384
+	},
 	'related-project--landscape': {
 		w: 644,
 		h: 448

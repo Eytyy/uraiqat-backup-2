@@ -20,7 +20,7 @@ class PostDefaultMedia extends Component {
 					<Link className="post-preview__link" to={`/journal/${id}`}>
 						{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
 					</Link>
-					<PostMediaVideo content={previewThumbnail} />
+					<PostMediaVideo content={previewThumbnail} patternId="default-post--video"  />
 					<Link className="post-preview__link" to={`/journal/${id}`}>
 						<div className="post-preview__content">
 							{ title && <h2 className="post-preview__title title">{title}</h2> }

@@ -1,10 +1,13 @@
 import React from 'react';
 import VideoComponent from '../media/VideoComponent';
 
-const PostMediaVideo = ({ content }) => {
+const PostMediaVideo = ({ content, patternId }) => {
 	const videoClass = 'post-preview__video';
 	return (
-		<VideoComponent classList={videoClass} content={content} /> 
+		<VideoComponent 
+			patternId={patternId}
+			classList={videoClass} content={content} 
+		/> 
 	);
 };
 

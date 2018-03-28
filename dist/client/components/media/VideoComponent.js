@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Pattern = require('../patterns/Pattern');
+
+var _Pattern2 = _interopRequireDefault(_Pattern);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,11 +31,14 @@ var VideoComponent = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (VideoComponent.__proto__ || Object.getPrototypeOf(VideoComponent)).call(this));
 
 		_this.state = {
-			playing: false
+			playing: false,
+			videoIsLoaded: false
 		};
 		_this.playVideo = _this.playVideo.bind(_this);
 		_this.stopVideo = _this.stopVideo.bind(_this);
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
+		_this.loadVideo = _this.loadVideo.bind(_this);
+		_this.checkVideo = _this.checkVideo.bind(_this);
 		return _this;
 	}
 
@@ -58,13 +65,47 @@ var VideoComponent = function (_Component) {
 			this.video.pause();
 		}
 	}, {
+		key: 'checkVideo',
+		value: function checkVideo() {
+			var _this2 = this;
+
+			var content = this.props.content;
+
+			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
+			return new Promise(function (resolve) {
+				_this2.video.addEventListener('loadeddata', function () {
+					return resolve({ url: url, status: 'ok' });
+				}, false);
+				_this2.video.addEventListener('error', function () {
+					return resolve({ url: url, status: 'error' });
+				}, false);
+			});
+		}
+	}, {
+		key: 'loadVideo',
+		value: function loadVideo() {
+			var _this3 = this;
+
+			this.checkVideo().then(function () {
+				_this3.setState({
+					videoIsLoaded: true
+				});
+			});
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.loadVideo();
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this4 = this;
 
 			var _props = this.props,
 			    content = _props.content,
-			    classList = _props.classList;
+			    classList = _props.classList,
+			    patternId = _props.patternId;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 			var allClasses = 'video ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');
@@ -77,8 +118,13 @@ var VideoComponent = function (_Component) {
 					_react2.default.createElement('span', { className: 'video-controls__item video-state' })
 				),
 				_react2.default.createElement('video', { ref: function ref(el) {
-						_this2.video = el;
-					}, src: url })
+						_this4.video = el;
+					}, src: url }),
+				_react2.default.createElement(
+					'div',
+					{ className: 'preview-pattern ' + (this.state.videoIsLoaded ? 'preview-pattern--hidden' : '') },
+					_react2.default.createElement(_Pattern2.default, { sliderName: patternId })
+				)
 			);
 		}
 	}]);

@@ -102,7 +102,7 @@ var PostFeaturedMedia = function (_Component) {
 			return _react2.default.createElement(
 				_Preview2.default,
 				{ classList: 'post-preview post-preview--video post-preview--featured post-preview--landscape' },
-				_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail }),
+				_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail, patternId: 'featured-post--video' }),
 				_react2.default.createElement(
 					_reactRouterDom.Link,
 					{ className: 'post-preview__link', to: '/journal/' + id },

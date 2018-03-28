@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import Pattern from '../patterns/Pattern';
 
 class VideoComponent extends Component {
 	constructor() {
 		super();
 		this.state = {
 			playing: false,
+			videoIsLoaded: false,
 		};
 		this.playVideo = this.playVideo.bind(this);
 		this.stopVideo = this.stopVideo.bind(this);
 		this.toggleVideo = this.toggleVideo.bind(this);
+		this.loadVideo = this.loadVideo.bind(this);
+		this.checkVideo = this.checkVideo.bind(this);
 	}
 	toggleVideo() {
 		if (this.state.playing) {
@@ -26,8 +30,26 @@ class VideoComponent extends Component {
 	stopVideo() {
 		this.video.pause();
 	}
+	checkVideo() {
+		const { content } = this.props;
+		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
+		return new Promise(resolve => {
+			this.video.addEventListener('loadeddata', () => resolve({url, status: 'ok'}), false);
+			this.video.addEventListener('error', () => resolve({url, status: 'error'}), false);
+		});
+	}
+	loadVideo() {
+		this.checkVideo().then(() => {
+			this.setState({
+				videoIsLoaded: true,
+			});
+		});
+	}
+	componentDidMount() {
+		this.loadVideo();
+	}
 	render() {
-		const { content, classList } = this.props;
+		const { content, classList, patternId } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 		const allClasses = `video ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
@@ -36,6 +58,9 @@ class VideoComponent extends Component {
 					<span className="video-controls__item video-state"></span>
 				</div>
 				<video ref={(el) => { this.video = el; }}  src={url} />
+				<div className={`preview-pattern ${this.state.videoIsLoaded ? 'preview-pattern--hidden' : ''}`}>
+					<Pattern sliderName={patternId} />
+				</div>
 			</div>
 		);
 	}

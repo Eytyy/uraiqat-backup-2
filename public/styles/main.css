@@ -246,8 +246,8 @@ nav {
 
 .post-preview--default.post-preview--video {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 694px;
-          flex: 0 0 694px; }
+      -ms-flex: 0 0 686px;
+          flex: 0 0 686px; }
   .post-preview--default.post-preview--video .post-preview__video {
     width: 100%;
     height: 352px; }
@@ -851,8 +851,8 @@ nav {
 
 .preview-pattern {
   opacity: 1;
-  -webkit-transition: opacity 400ms ease-in-out 300ms;
-  transition: opacity 400ms ease-in-out 300ms;
+  -webkit-transition: opacity 400ms ease-in-out 200ms;
+  transition: opacity 400ms ease-in-out 200ms;
   position: absolute;
   top: 0;
   left: 0;

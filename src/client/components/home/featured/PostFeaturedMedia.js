@@ -34,7 +34,7 @@ class PostFeaturedMedia extends Component {
 		}
 		return (
 			<Preview classList="post-preview post-preview--video post-preview--featured post-preview--landscape">
-				<PostMediaVideo content={previewThumbnail} />
+				<PostMediaVideo content={previewThumbnail} patternId="featured-post--video" />
 				<Link className="post-preview__link" to={`/journal/${id}`}>
 					<div className="post-preview__content">
 						<div className="post-preview__content__inner">

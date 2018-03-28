@@ -72,7 +72,7 @@ var PostDefaultMedia = function (_Component) {
 							category.fields.title
 						)
 					),
-					_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail }),
+					_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail, patternId: 'default-post--video' }),
 					_react2.default.createElement(
 						_reactRouterDom.Link,
 						{ className: 'post-preview__link', to: '/journal/' + id },
