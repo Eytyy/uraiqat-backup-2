@@ -127,11 +127,15 @@ const config = {
 	'post-media--video': {
 		w: 900,
 		h: 512,
+	},
+	'post-media--image': {
+		w: 900,
+		h: 512
 	}
 };
 
-export const getNoOfChars = (sliderName) => {
-	const containerSize = getContainerSize(config[sliderName]);
+export const getNoOfChars = (sliderName, preconfig) => {
+	const containerSize = typeof preconfig === 'undefined' ? getContainerSize(config[sliderName]) : getContainerSize(preconfig);
 	const font = getFontValues();
 
 	const x = Math.floor(containerSize.w/font.characterWidth);

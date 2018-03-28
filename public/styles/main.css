@@ -859,7 +859,8 @@ nav {
 .slider--small .pattern {
   height: 254px; }
 
-.preview-pattern {
+.preview-pattern,
+.post__image__pattern {
   opacity: 1;
   -webkit-transition: opacity 400ms ease-in-out 200ms;
   transition: opacity 400ms ease-in-out 200ms;
@@ -867,5 +868,6 @@ nav {
   top: 0;
   left: 0;
   width: 100%; }
-  .preview-pattern--hidden {
+  .preview-pattern--hidden,
+  .post__image__pattern--hidden {
     opacity: 0; }

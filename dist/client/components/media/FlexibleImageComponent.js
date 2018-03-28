@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Pattern = require('../patterns/Pattern');
+
+var _Pattern2 = _interopRequireDefault(_Pattern);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,22 +28,66 @@ var FlexibleImageComponent = function (_Component) {
 	function FlexibleImageComponent() {
 		_classCallCheck(this, FlexibleImageComponent);
 
-		return _possibleConstructorReturn(this, (FlexibleImageComponent.__proto__ || Object.getPrototypeOf(FlexibleImageComponent)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (FlexibleImageComponent.__proto__ || Object.getPrototypeOf(FlexibleImageComponent)).call(this));
+
+		_this.getContainerHeight = _this.getContainerHeight.bind(_this);
+		_this.state = {
+			imageIsLoaded: false
+		};
+		return _this;
 	}
 
 	_createClass(FlexibleImageComponent, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {
+		key: 'getContainerHeight',
+		value: function getContainerHeight(forPattern) {
 			var content = this.props.content;
-			// const { width, height } = content.fields.file.details.image;
+			var _content$fields$file$ = content.fields.file.details.image,
+			    width = _content$fields$file$.width,
+			    height = _content$fields$file$.height;
 
-			// const containerMaxHeight = Math.floor((this.wrapper.offsetWidth / (width/height)) / 32) * 32;
-			// this.wrapper.style.height = `${containerMaxHeight}px`;
+			return !forPattern ? Math.floor(this.wrapper.offsetWidth / (width / height) / 32) * 32 + 'px' : Math.floor(882 / (width / height) / 32) * 32;
 		}
 	}, {
-		key: "render",
-		value: function render() {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.wrapper.style.height = this.getContainerHeight(false);
+			this.loadImage();
+		}
+	}, {
+		key: 'checkImage',
+		value: function checkImage() {
+			var _props = this.props,
+			    content = _props.content,
+			    imagesQuery = _props.imagesQuery;
+
+			var url = typeof imagesQuery !== 'undefined' ? '' + content.fields.file.url + imagesQuery : content.fields.file.url;
+			return new Promise(function (resolve) {
+				var img = new Image();
+				var imgSrc = url;
+				img.onload = function () {
+					return resolve({ imgSrc: imgSrc, status: 'ok' });
+				};
+				img.onerror = function () {
+					return resolve({ imgSrc: imgSrc, status: 'error' });
+				};
+				img.src = imgSrc;
+			});
+		}
+	}, {
+		key: 'loadImage',
+		value: function loadImage() {
 			var _this2 = this;
+
+			this.checkImage().then(function () {
+				_this2.setState({
+					imageIsLoaded: true
+				});
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
 
 			var content = this.props.content;
 			var _content$fields = content.fields,
@@ -47,18 +95,23 @@ var FlexibleImageComponent = function (_Component) {
 			    file = _content$fields.file;
 
 			return _react2.default.createElement(
-				"div",
+				'div',
 				{ ref: function ref(el) {
-						return _this2.wrapper = el;
-					}, className: "post__media post__media--image" },
+						return _this3.wrapper = el;
+					}, className: 'post__media post__media--image' },
 				_react2.default.createElement(
-					"div",
-					{ className: "post__media__image" },
-					_react2.default.createElement("img", { src: file.url })
+					'div',
+					{ className: 'post__media__image' },
+					_react2.default.createElement('img', { src: file.url })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'post__image__pattern ' + (this.state.imageIsLoaded ? 'post__image__pattern--hidden' : '') },
+					_react2.default.createElement(_Pattern2.default, { sliderName: 'post-media--image', patternconfig: { w: 900, h: this.getContainerHeight(true) + 32 } })
 				),
 				description && _react2.default.createElement(
-					"div",
-					{ className: "post__media__caption" },
+					'div',
+					{ className: 'post__media__caption' },
 					description
 				)
 			);

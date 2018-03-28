@@ -10,7 +10,8 @@
 	height: 254px;
 }
 
-.preview-pattern {
+.preview-pattern,
+.post__image__pattern {
 	opacity: 1;
 	transition: opacity 400ms ease-in-out 200ms;
 	position: absolute;

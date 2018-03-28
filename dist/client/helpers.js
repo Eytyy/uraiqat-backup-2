@@ -130,11 +130,15 @@ var config = {
 	'post-media--video': {
 		w: 900,
 		h: 512
+	},
+	'post-media--image': {
+		w: 900,
+		h: 512
 	}
 };
 
-var getNoOfChars = exports.getNoOfChars = function getNoOfChars(sliderName) {
-	var containerSize = getContainerSize(config[sliderName]);
+var getNoOfChars = exports.getNoOfChars = function getNoOfChars(sliderName, preconfig) {
+	var containerSize = typeof preconfig === 'undefined' ? getContainerSize(config[sliderName]) : getContainerSize(preconfig);
 	var font = getFontValues();
 
 	var x = Math.floor(containerSize.w / font.characterWidth);
