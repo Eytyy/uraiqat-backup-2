@@ -112,7 +112,7 @@ var config = {
 	},
 	'project-drawing-thumb--portrait': {
 		w: 350,
-		h: 448
+		h: 480
 	},
 
 	'project-other-thumb': {
