@@ -241,6 +241,9 @@ nav {
 .post-preview__link:hover .post-preview__image .preview-image:before {
   background-color: transparent; }
 
+.post-preview__image {
+  position: relative; }
+
 .post-preview--default.post-preview--video {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 694px;

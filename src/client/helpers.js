@@ -80,15 +80,15 @@ const config = {
 		h: 576,
 	},
 	'default-post--portrait': {
-		w: 280,
+		w: 294,
 		h: 416,
 	},
 	'default-post--landscape': {
-		w: 406,
+		w: 420,
 		h: 288,
 	},
 	'featured-post--portrait': {
-		w: 462,
+		w: 476,
 		h: 672,
 	},
 	'featured-post--landscape': {

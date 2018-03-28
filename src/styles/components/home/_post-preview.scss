@@ -29,6 +29,10 @@
 	}
 }
 
+.post-preview__image {
+	position: relative;
+}
+
 .post-preview--default {
 	&.post-preview--video {
 		flex: 0 0 694px;
