@@ -7,6 +7,7 @@ import { fetchProjects } from '../actions';
 import { isProjectsFetching, getProjects } from '../reducers';
 
 import Landing from '../components/landing/Landing';
+import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class Work extends Component {
 	static fetchData(store) {
@@ -19,7 +20,7 @@ class Work extends Component {
 	render() {
 		const { isFetching, content } = this.props;
 		if (isFetching && content.length === 0 || content.length === 0 ) {
-			return <div>Loading Projects.. this will be replaced with the patterns transition</div>;
+			return <LoadingPattern />;
 		}
 		return <Landing content={content} page='work'></Landing>;
 	}

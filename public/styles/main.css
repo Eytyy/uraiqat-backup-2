@@ -871,3 +871,23 @@ nav {
   .preview-pattern--hidden,
   .post__image__pattern--hidden {
     opacity: 0; }
+
+.loader {
+  background: #FFF;
+  position: fixed;
+  top: 32px;
+  bottom: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  left: 0;
+  width: 100%;
+  z-index: 200; }
+
+.pattern--loading {
+  background: #FFF;
+  max-width: 1344px;
+  margin: 0 auto; }

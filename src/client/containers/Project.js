@@ -14,6 +14,8 @@ import BodyText from '../components/BodyText';
 import Slider from './Slider';
 import RelatedPosts from '../components/related/RelatedPosts';
 
+import LoadingPattern from '../components/patterns/LoadingPattern';
+
 class Project extends Component { //eslint-disable-line
 	constructor() {
 		super();
@@ -50,7 +52,7 @@ class Project extends Component { //eslint-disable-line
 	render() {
 		const { content, isFetching, match } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {
-			return <div>Loading project ... this will be replaced with the pattern transition</div>;
+			return <div className="loader"><LoadingPattern /></div>;
 		}
 		const { projectName, aboutTheProject, drawings, mainSlider, location, year, budget, area, status, typology } = content;
 		return (

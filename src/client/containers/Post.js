@@ -15,6 +15,8 @@ import PostContent from '../components/posts/PostContent';
 import RelatedProject from '../components/related/RelatedProject';
 import RelatedPosts from '../components/related/RelatedPosts';
 
+import LoadingPattern from '../components/patterns/LoadingPattern';
+
 class Post extends Component { //eslint-disable-line
 	static fetchData(store, id) {
 		return store.dispatch(fetchPost(id));
@@ -42,7 +44,7 @@ class Post extends Component { //eslint-disable-line
 		const { tags, date, author, mainContent, externalPostUrl, externalPostSource, relatedProject } = content;
 		const id = match.params.id;
 		if (isFetching || typeof content.id === 'undefined') {
-			return <div>Loading post this will be repalced with the pattern transition</div>;
+			return <div className="loader"><LoadingPattern /></div>;
 		}
 		return (
 			<article className="post">

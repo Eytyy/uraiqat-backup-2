@@ -25,7 +25,6 @@ class App extends Component {
 					</main>
 					<Footer />
 				</ScrollToTop>
-			
 			</div>
 		);
 	}

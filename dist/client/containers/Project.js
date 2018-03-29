@@ -40,6 +40,10 @@ var _RelatedPosts = require('../components/related/RelatedPosts');
 
 var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
 
+var _LoadingPattern = require('../components/patterns/LoadingPattern');
+
+var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -108,8 +112,8 @@ var Project = function (_Component) {
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
 					'div',
-					null,
-					'Loading project ... this will be replaced with the pattern transition'
+					{ className: 'loader' },
+					_react2.default.createElement(_LoadingPattern2.default, null)
 				);
 			}
 			var projectName = content.projectName,

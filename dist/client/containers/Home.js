@@ -16,8 +16,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRedux = require('react-redux');
 
-var _reactRouterDom = require('react-router-dom');
-
 var _redux = require('redux');
 
 var _actions = require('../actions');
@@ -27,6 +25,10 @@ var _reducers = require('../reducers');
 var _Landing = require('../components/landing/Landing');
 
 var _Landing2 = _interopRequireDefault(_Landing);
+
+var _LoadingPattern = require('../components/patterns/LoadingPattern');
+
+var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42,15 +44,34 @@ var Home = function (_Component) {
 	function Home() {
 		_classCallCheck(this, Home);
 
-		return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+		_this.state = {
+			intro: false
+		};
+		_this.to = null;
+		return _this;
 	}
 
 	_createClass(Home, [{
+		key: 'hideLoader',
+		value: function hideLoader() {
+			this.setState({
+				intro: true
+			});
+		}
+	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			var _this2 = this;
+
 			var fetchPosts = this.props.fetchPosts;
 
-			return fetchPosts();
+			return fetchPosts().then(function () {
+				setTimeout(function () {
+					_this2.hideLoader();
+				}, 300);
+			});
 		}
 	}, {
 		key: 'render',
@@ -59,11 +80,11 @@ var Home = function (_Component) {
 			    isFetching = _props.isFetching,
 			    content = _props.content;
 
-			if (isFetching && content.length === 0 || content.length === 0) {
+			if (isFetching && content.length === 0 || content.length === 0 || !this.state.intro) {
 				return _react2.default.createElement(
 					'div',
-					null,
-					'Loading Posts.. this will be replaced with the pattern transition'
+					{ className: 'loader' },
+					_react2.default.createElement(_LoadingPattern2.default, null)
 				);
 			}
 			return _react2.default.createElement(_Landing2.default, { content: content, page: 'journal' });
