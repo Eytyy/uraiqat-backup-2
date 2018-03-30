@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
+import { getFilters } from '../../reducers';
 import * as actions from '../../actions';
 
 class FilterSearch extends Component {
@@ -25,7 +27,24 @@ class FilterSearch extends Component {
 			searchIsVisible: !this.state.searchIsVisible
 		});
 	}
+	toggleFilter() {
+		this.setState({
+			filtersAreVisible: !this.state.filtersAreVisible
+		});
+	}
 	onfilterClick() {
+		const { fetchFilters, content } = this.props;
+		if (!this.state.filtersAreVisible) {
+			if (content.length === 0) {
+				fetchFilters().then(() => {
+					this.toggleFilter();
+				});
+			}
+			this.toggleFilter();
+		} else {
+			this.toggleFilter();
+
+		}
 	}
 	onSearchSubmit(event) {
 		const { fetchSearchResults } = this.props;
@@ -37,6 +56,7 @@ class FilterSearch extends Component {
 		return false;
 	}
 	render() {
+		const { content } = this.props;
 		return (
 			<div>
 				{'---/-/|<//'}<span className="ws">-</span><span className="ws">-</span>
@@ -66,7 +86,12 @@ class FilterSearch extends Component {
 	}
 }
 
+const mapStateToProps = state => ({
+	content: getFilters(state),
+});
+
+
 export default withRouter(connect(
-	null,
+	mapStateToProps,
 	actions
 )(FilterSearch));

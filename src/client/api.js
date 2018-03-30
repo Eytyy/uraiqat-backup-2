@@ -16,9 +16,7 @@ export function fetchPosts() {
 		content_type: 'landingPage',
 		'fields.pageTitle': 'Home/Journal',
 		include: 3
-	}).then((payload) => {
-		return payload.items;
-	});
+	}).then(payload => payload.items);
 }
 
 export function fetchPost(id) {
@@ -35,9 +33,7 @@ export function fetchProjects() {
 		content_type: 'landingPage',
 		'fields.pageTitle': 'Work',
 		include: 3
-	}).then((payload) => {
-		return payload.items;
-	});
+	}).then(payload => payload.items);
 }
 
 export function fetchProject(id) {
@@ -53,9 +49,7 @@ export function fetchRelatedPosts(id) {
 	return client.getEntries({
 		content_type: 'post',
 		'fields.relatedProject.sys.id': id
-	}).then((payload) => {
-		return payload.items;
-	});
+	}).then(payload => payload.items);
 }
 
 export function fetchSearchResults(query) {
@@ -64,4 +58,11 @@ export function fetchSearchResults(query) {
 	})
 		.then((response) => response.items.filter(({ sys }) => sys.contentType.sys.id === 'work' || sys.contentType.sys.id === 'post' ))
 		.catch(console.error);
+}
+
+export function fetchFilters() {
+	return client.getEntries({
+		'content_type': 'postCategory',
+		include: 3
+	}).then(response => response.items).catch(console.error);
 }

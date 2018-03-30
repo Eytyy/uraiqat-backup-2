@@ -9,6 +9,7 @@ exports.fetchProjects = fetchProjects;
 exports.fetchProject = fetchProject;
 exports.fetchRelatedPosts = fetchRelatedPosts;
 exports.fetchSearchResults = fetchSearchResults;
+exports.fetchFilters = fetchFilters;
 
 var _contentful = require('contentful');
 
@@ -77,5 +78,14 @@ function fetchSearchResults(query) {
 			var sys = _ref.sys;
 			return sys.contentType.sys.id === 'work' || sys.contentType.sys.id === 'post';
 		});
+	}).catch(console.error);
+}
+
+function fetchFilters() {
+	return client.getEntries({
+		'content_type': 'postCategory',
+		include: 3
+	}).then(function (response) {
+		return response.items;
 	}).catch(console.error);
 }

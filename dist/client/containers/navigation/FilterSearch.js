@@ -14,6 +14,8 @@ var _reactRedux = require('react-redux');
 
 var _reactRouterDom = require('react-router-dom');
 
+var _reducers = require('../../reducers');
+
 var _actions = require('../../actions');
 
 var actions = _interopRequireWildcard(_actions);
@@ -62,8 +64,32 @@ var FilterSearch = function (_Component) {
 			});
 		}
 	}, {
+		key: 'toggleFilter',
+		value: function toggleFilter() {
+			this.setState({
+				filtersAreVisible: !this.state.filtersAreVisible
+			});
+		}
+	}, {
 		key: 'onfilterClick',
-		value: function onfilterClick() {}
+		value: function onfilterClick() {
+			var _this2 = this;
+
+			var _props = this.props,
+			    fetchFilters = _props.fetchFilters,
+			    content = _props.content;
+
+			if (!this.state.filtersAreVisible) {
+				if (content.length === 0) {
+					fetchFilters().then(function () {
+						_this2.toggleFilter();
+					});
+				}
+				this.toggleFilter();
+			} else {
+				this.toggleFilter();
+			}
+		}
 	}, {
 		key: 'onSearchSubmit',
 		value: function onSearchSubmit(event) {
@@ -79,7 +105,9 @@ var FilterSearch = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
+
+			var content = this.props.content;
 
 			return _react2.default.createElement(
 				'div',
@@ -134,7 +162,7 @@ var FilterSearch = function (_Component) {
 						'form',
 						{ onSubmit: this.onSearchSubmit, className: 'search' },
 						_react2.default.createElement('input', { autoComplete: 'off', name: 'keyword', ref: function ref(el) {
-								return _this2.search = el;
+								return _this3.search = el;
 							}, className: 'search__input', type: 'text', placeholder: 'Enter your search keyword here' }),
 						_react2.default.createElement(
 							'span',
@@ -196,4 +224,10 @@ var FilterSearch = function (_Component) {
 	return FilterSearch;
 }(_react.Component);
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, actions)(FilterSearch));
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		content: (0, _reducers.getFilters)(state)
+	};
+};
+
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(FilterSearch));

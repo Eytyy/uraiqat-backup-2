@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -117,6 +117,12 @@ var isSearchFetching = exports.isSearchFetching = function isSearchFetching(stat
 };
 var getSearchResults = exports.getSearchResults = function getSearchResults(state, query) {
 	var content = fromSearch.getAll(state.search, query);
+	return typeof content === 'undefined' ? [] : content;
+};
+
+// Filters Selectors
+var getFilters = exports.getFilters = function getFilters(state) {
+	var content = fromSearch.getFilters(state.search);
 	return typeof content === 'undefined' ? [] : content;
 };
 

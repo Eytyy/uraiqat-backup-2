@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 const All = (state = {
 	results: {},
+	filters: [],
 	isFetching: false,
 }, action) => {
 	switch (action.type) {
@@ -19,6 +20,15 @@ const All = (state = {
 			},
 			isFetching: false,
 		};
+	case 'RECIEVE_FILTERS':  //eslint-disable-line
+		const filters = action.response.map(({ sys, fields }) => ({
+			title: fields.title,
+			id: sys.id
+		}));
+		return {
+			...state,
+			filters,
+		};
 	default:
 		return state;
 	}
@@ -31,5 +41,7 @@ const search = combineReducers({
 export const getIsFetching = state => state.All.isFetching;
 
 export const getAll = (state, query) => state.All.results[query];
+
+export const getFilters = (state) => state.All.filters;
 
 export default search;

@@ -76,4 +76,11 @@ export const getSearchResults = (state, query) => {
 	
 };
 
+// Filters Selectors
+export const getFilters = (state) => {
+	const content = fromSearch.getFilters(state.search);
+	return typeof content === 'undefined' ? [] : content;
+	
+};
+
 export default RootReducer;

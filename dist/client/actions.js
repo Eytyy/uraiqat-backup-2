@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -255,6 +255,36 @@ var fetchSearchResults = exports.fetchSearchResults = function fetchSearchResult
 			return response;
 		}).then(function (response) {
 			dispatch(recieveSearch(response, query));
+		});
+	};
+};
+
+// Filter Action Creator
+
+var requestFilters = function requestFilters() {
+	return {
+		type: 'REQUEST_FILTERS'
+	};
+};
+
+var recieveFilters = function recieveFilters(payload) {
+	return {
+		type: 'RECIEVE_FILTERS',
+		response: payload
+	};
+};
+
+var fetchFilters = exports.fetchFilters = function fetchFilters() {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestFilters);
+		if ((0, _reducers.isSearchFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchFilters().then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveFilters(response));
 		});
 	};
 };

@@ -195,3 +195,30 @@ export const fetchSearchResults = (query) => (dispatch, getState) => {
 		dispatch(recieveSearch(response, query));
 	});
 };
+
+
+// Filter Action Creator
+
+const requestFilters = () => ({
+	type: 'REQUEST_FILTERS'
+});
+
+const recieveFilters = (payload) => ({
+	type: 'RECIEVE_FILTERS',
+	response: payload,
+});
+
+export const fetchFilters = () => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestFilters);
+	if (isSearchFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchFilters().then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recieveFilters(response));
+	});
+};
+
+
