@@ -47,7 +47,7 @@ var RelatedProject = function (_Component) {
 			    id = _props.id;
 			var previewMainThumbnail = content.previewMainThumbnail,
 			    year = content.year,
-			    projectName = content.projectName;
+			    title = content.title;
 
 			return _react2.default.createElement(
 				_Preview2.default,
@@ -63,10 +63,10 @@ var RelatedProject = function (_Component) {
 						'Project'
 					),
 					_react2.default.createElement(_PostMediaImage2.default, { orientation: 'landscape', patternId: 'related-project', content: previewMainThumbnail }),
-					projectName && _react2.default.createElement(
+					title && _react2.default.createElement(
 						'h3',
 						{ className: 'post-preview__title title' },
-						projectName,
+						title,
 						' -> '
 					)
 				)

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -225,5 +225,36 @@ var updateGalleryVisibility = function updateGalleryVisibility(sliderId, isVisib
 var toggleGallery = exports.toggleGallery = function toggleGallery(sliderId, isVisible) {
 	return function (dispatch) {
 		return dispatch(updateGalleryVisibility(sliderId, isVisible));
+	};
+};
+
+// Search Action Creator 
+
+var requestSearch = function requestSearch() {
+	return {
+		type: 'REQUEST_SEARCH'
+	};
+};
+
+var recieveSearch = function recieveSearch(payload, query) {
+	return {
+		type: 'RECIEVE_SEARCH',
+		response: payload,
+		query: query
+	};
+};
+
+var fetchSearchResults = exports.fetchSearchResults = function fetchSearchResults(query) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestSearch);
+		if ((0, _reducers.isSearchFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchSearchResults(query).then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveSearch(response, query));
+		});
 	};
 };

@@ -54,11 +54,11 @@ class Project extends Component { //eslint-disable-line
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
-		const { projectName, aboutTheProject, drawings, mainSlider, location, year, budget, area, status, typology } = content;
+		const { title, aboutTheProject, drawings, mainSlider, location, year, budget, area, status, typology } = content;
 		return (
 			<article className="project">
 				<header>
-					<h1 className="main-title">{projectName}</h1>
+					<h1 className="main-title">{title}</h1>
 				</header>
 				<div className="project__top">
 					<div className="project__media">

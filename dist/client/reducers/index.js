@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -23,13 +23,18 @@ var _gallery = require('./gallery');
 
 var fromGallery = _interopRequireWildcard(_gallery);
 
+var _search = require('./search');
+
+var fromSearch = _interopRequireWildcard(_search);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
 	posts: fromHome.default,
 	projects: fromWork.default,
 	related: fromRelated.default,
-	gallery: fromGallery.default
+	gallery: fromGallery.default,
+	search: fromSearch.default
 });
 
 // Home Selectors
@@ -104,6 +109,15 @@ var getGalleryContent = exports.getGalleryContent = function getGalleryContent(s
 
 var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state, id) {
 	return fromGallery.getActiveSlide(state.gallery, id);
+};
+
+// Search Selectors
+var isSearchFetching = exports.isSearchFetching = function isSearchFetching(state) {
+	return fromSearch.getIsFetching(state.search);
+};
+var getSearchResults = exports.getSearchResults = function getSearchResults(state, query) {
+	var content = fromSearch.getAll(state.search, query);
+	return typeof content === 'undefined' ? [] : content;
 };
 
 exports.default = RootReducer;

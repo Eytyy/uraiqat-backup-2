@@ -20,12 +20,12 @@ const Typology = ({ content }) => {
 };
 
 const ProjectPreview = (content) => {
-	const { id, projectName, year, typology, previewMainThumbnail, previewDrawingThumbnail, previewDiagramThumbnail, previewCraftThumbnail } = content;
+	const { id, title, year, typology, previewMainThumbnail, previewDrawingThumbnail, previewDiagramThumbnail, previewCraftThumbnail } = content;
 	return (
 		<article className="project-preview">
 			<Link className="project-preview__link" to={`/work/${id}`}>
 				<header className="project-preview__header">
-					<h2 className="project-preview__project-name title">{projectName}</h2>
+					<h2 className="project-preview__project-name title">{title}</h2>
 					<div className="post-preview__meta">
 						{ year && <span className="post-preview__meta__item">{year}{' -> '}</span>}
 						{ typology.length !== 0 ? <Typology content={typology} /> : null }

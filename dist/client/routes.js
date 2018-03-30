@@ -36,6 +36,10 @@ var _Contact = require('./containers/Contact');
 
 var _Contact2 = _interopRequireDefault(_Contact);
 
+var _Search = require('./containers/Search');
+
+var _Search2 = _interopRequireDefault(_Search);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = [{ component: _App2.default,
@@ -60,6 +64,9 @@ var routes = [{ component: _App2.default,
 	}, { path: '/journal/:id',
 		exact: true,
 		component: _Post2.default
+	}, { path: '/search',
+		exact: true,
+		component: _Search2.default
 	}]
 }];
 

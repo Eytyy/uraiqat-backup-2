@@ -47,7 +47,7 @@ var Typology = function Typology(_ref) {
 
 var ProjectPreview = function ProjectPreview(content) {
 	var id = content.id,
-	    projectName = content.projectName,
+	    title = content.title,
 	    year = content.year,
 	    typology = content.typology,
 	    previewMainThumbnail = content.previewMainThumbnail,
@@ -67,7 +67,7 @@ var ProjectPreview = function ProjectPreview(content) {
 				_react2.default.createElement(
 					'h2',
 					{ className: 'project-preview__project-name title' },
-					projectName
+					title
 				),
 				_react2.default.createElement(
 					'div',

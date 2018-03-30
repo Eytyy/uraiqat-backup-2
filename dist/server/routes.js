@@ -183,7 +183,7 @@ router.get('/work/:id', function (req, res) {
 		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
 		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
 		res.render('index', {
-			title: 'Work | ' + obj.projectName,
+			title: 'Work | ' + obj.title,
 			data: payload,
 			content: content
 		});

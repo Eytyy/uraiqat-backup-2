@@ -1,4 +1,4 @@
-import { getIsClientLoading, isPostsFetching, isPostFetching, isProjectsFetching, isProjectFetching, isRelatedFetching } from './reducers';
+import { getIsClientLoading, isPostsFetching, isPostFetching, isProjectsFetching, isProjectFetching, isRelatedFetching, isSearchFetching } from './reducers';
 import * as api from './api';
 
 // App Action Creators
@@ -71,7 +71,6 @@ export const fetchPost = (id) => (dispatch, getState) => {
 		dispatch(recievePost(response));
 	});
 };
-
 
 // Work Action Creators
 const requestProjects = () => ({
@@ -171,3 +170,28 @@ const updateGalleryVisibility = (sliderId, isVisible) => ({
 	}
 });
 export const toggleGallery = (sliderId, isVisible) => dispatch => dispatch(updateGalleryVisibility(sliderId, isVisible));
+
+// Search Action Creator 
+
+const requestSearch = () => ({
+	type: 'REQUEST_SEARCH'
+});
+
+const recieveSearch = (payload, query) => ({
+	type: 'RECIEVE_SEARCH',
+	response: payload,
+	query,
+});
+
+export const fetchSearchResults = (query) => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestSearch);
+	if (isSearchFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchSearchResults(query).then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recieveSearch(response, query));
+	});
+};

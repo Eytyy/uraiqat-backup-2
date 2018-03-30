@@ -10,11 +10,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
 var _reactRouterDom = require('react-router-dom');
 
-var _FilterSearch = require('./FilterSearch');
+var _actions = require('../../actions');
 
-var _FilterSearch2 = _interopRequireDefault(_FilterSearch);
+var actions = _interopRequireWildcard(_actions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,178 +28,172 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var menu = function (_Component) {
-	_inherits(menu, _Component);
+var FilterSearch = function (_Component) {
+	_inherits(FilterSearch, _Component);
 
-	function menu() {
-		_classCallCheck(this, menu);
+	function FilterSearch() {
+		_classCallCheck(this, FilterSearch);
 
-		return _possibleConstructorReturn(this, (menu.__proto__ || Object.getPrototypeOf(menu)).call(this));
+		var _this = _possibleConstructorReturn(this, (FilterSearch.__proto__ || Object.getPrototypeOf(FilterSearch)).call(this));
+
+		_this.state = {
+			searchIsVisible: false,
+			filtersAreVisible: false
+		};
+		_this.onSearchClick = _this.onSearchClick.bind(_this);
+		_this.onfilterClick = _this.onfilterClick.bind(_this);
+		_this.onSearchSubmit = _this.onSearchSubmit.bind(_this);
+		_this.clearSearch = _this.clearSearch.bind(_this);
+		return _this;
 	}
 
-	_createClass(menu, [{
+	_createClass(FilterSearch, [{
+		key: 'clearSearch',
+		value: function clearSearch() {
+			if (this.search) {
+				this.search.value = '';
+			}
+		}
+	}, {
+		key: 'onSearchClick',
+		value: function onSearchClick() {
+			this.setState({
+				searchIsVisible: !this.state.searchIsVisible
+			});
+		}
+	}, {
+		key: 'onfilterClick',
+		value: function onfilterClick() {}
+	}, {
+		key: 'onSearchSubmit',
+		value: function onSearchSubmit(event) {
+			var fetchSearchResults = this.props.fetchSearchResults;
+
+			var keyword = new FormData(event.target).get('keyword');
+			fetchSearchResults(keyword);
+			event.preventDefault();
+			this.props.history.push('/search?keyword=' + keyword);
+			this.clearSearch();
+			return false;
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			return _react2.default.createElement(
-				'nav',
+				'div',
 				null,
+				'---/-/|<//',
 				_react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ className: 'link', to: '/' },
-						'U'
-					),
-					'----/-/|<',
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ activeClassName: 'active', className: 'link menu-link', to: '/practice' },
-						_react2.default.createElement(
-							'span',
-							{ className: 'ind' },
-							'->'
-						),
-						'Practice'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					'/',
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ activeClassName: 'active', className: 'link menu-link', to: '/work' },
-						_react2.default.createElement(
-							'span',
-							{ className: 'ind' },
-							'->'
-						),
-						'Work'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					'/',
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ activeClassName: 'active', className: 'link menu-link', to: '/atelier' },
-						_react2.default.createElement(
-							'span',
-							{ className: 'ind' },
-							'->'
-						),
-						'Atelier'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					'/',
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ activeClassName: 'active', className: 'link menu-link', to: '/contact' },
-						_react2.default.createElement(
-							'span',
-							{ className: 'ind' },
-							'->'
-						),
-						'Contact'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					'-/|<//-////-\\-----/-',
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ className: 'link', activeClassName: 'active', to: '/' },
-						'URAIQAT'
-					),
-					'///-\\-'
+					'span',
+					{ className: 'ws' },
+					'-'
 				),
 				_react2.default.createElement(
-					'div',
-					null,
-					'----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/',
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ className: 'link', to: '/' },
-						'ARCHITECTS'
-					),
-					'\\--'
+					'span',
+					{ className: 'ws' },
+					'-'
 				),
-				_react2.default.createElement(_FilterSearch2.default, null)
+				_react2.default.createElement(
+					'span',
+					{ className: 'link link--filter', onClick: this.onfilterClick },
+					this.state.filtersAreVisible ? '-Filter' : '+Filter'
+				),
+				this.state.searchIsVisible ? _react2.default.createElement(
+					'span',
+					null,
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					'/',
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'link link--search', onClick: this.onSearchClick },
+						'xSearch'
+					),
+					':',
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'form',
+						{ onSubmit: this.onSearchSubmit, className: 'search' },
+						_react2.default.createElement('input', { autoComplete: 'off', name: 'keyword', ref: function ref(el) {
+								return _this2.search = el;
+							}, className: 'search__input', type: 'text', placeholder: 'Enter your search keyword here' }),
+						_react2.default.createElement(
+							'span',
+							{ className: 'ws' },
+							'-'
+						),
+						_react2.default.createElement(
+							'span',
+							{ className: 'ws' },
+							'-'
+						),
+						'<//-////-\\-----/-/|<//-////-\\---'
+					)
+				) : _react2.default.createElement(
+					'span',
+					null,
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					'/',
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'link link--search', onClick: this.onSearchClick },
+						'Search'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					'//-\\-----/-/|<//-////-\\-----/-/|<//-////-\\-----/-/|<//-////-\\---'
+				)
 			);
 		}
 	}]);
 
-	return menu;
+	return FilterSearch;
 }(_react.Component);
 
-exports.default = menu;
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, actions)(FilterSearch));

@@ -8,7 +8,7 @@ import Project from './containers/Project';
 import Atelier from './containers/Atelier';
 import Practice from './containers/Practice';
 import Contact from './containers/Contact';
-
+import Search from './containers/Search';
 
 const routes = [
 	{ component: App,
@@ -40,6 +40,10 @@ const routes = [
 			{ path: '/journal/:id',
 				exact: true,
 				component: Post
+			},
+			{ path: '/search',
+				exact: true,
+				component: Search
 			}
 		]
 	}

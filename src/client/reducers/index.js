@@ -2,13 +2,15 @@ import { combineReducers } from 'redux';
 import posts, * as fromHome from './home';
 import projects, * as fromWork from './work';
 import related, * as fromRelated from './related';
-import gallery, * as fromGallery from './gallery'
+import gallery, * as fromGallery from './gallery';
+import search, * as fromSearch from './search';
 
 const RootReducer = combineReducers({
 	posts,
 	projects,
 	related,
-	gallery
+	gallery,
+	search
 });
 
 // Home Selectors
@@ -65,5 +67,13 @@ export const getGalleryContent = state => {
 };
 
 export const getActiveSlide = (state, id) => fromGallery.getActiveSlide(state.gallery, id);
+
+// Search Selectors
+export const isSearchFetching = state => fromSearch.getIsFetching(state.search);
+export const getSearchResults = (state, query) => {
+	const content = fromSearch.getAll(state.search, query);
+	return typeof content === 'undefined' ? [] : content;
+	
+};
 
 export default RootReducer;

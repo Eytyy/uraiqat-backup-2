@@ -9,13 +9,13 @@ import { formatDate } from '../../helpers';
 class RelatedProject extends Component {
 	render() {
 		const { content, id } = this.props;
-		const { previewMainThumbnail, year, projectName} = content;
+		const { previewMainThumbnail, year, title} = content;
 		return (
 			<Preview classList="post-preview post-preview--default post-preview--landscape related-item related-item--project">
 				<Link className="post-preview__link" to={`/work/${id}`}>
 					{ year && <div className="post-preview__meta">{formatDate(year)}{' -> '}Project</div> }
 					<PostMediaImage orientation="landscape" patternId="related-project" content={previewMainThumbnail} />
-					{ projectName && <h3 className="post-preview__title title">{projectName}{' -> '}</h3> }
+					{ title && <h3 className="post-preview__title title">{title}{' -> '}</h3> }
 				</Link>
 			</Preview>
 		);

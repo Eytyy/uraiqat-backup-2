@@ -20,3 +20,23 @@ nav {
 		}
 	}
 }
+
+.link--search {
+	cursor: pointer;
+}
+
+.search {
+	display: inline;
+}
+
+.search__input {
+	appearance: none;
+	border: 0px;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	line-height: 32px;
+	font-family: $font--bold;
+	width: 420px;
+	outline: 0;
+}

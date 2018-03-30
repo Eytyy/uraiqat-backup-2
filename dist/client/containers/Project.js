@@ -116,7 +116,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(_LoadingPattern2.default, null)
 				);
 			}
-			var projectName = content.projectName,
+			var title = content.title,
 			    aboutTheProject = content.aboutTheProject,
 			    drawings = content.drawings,
 			    mainSlider = content.mainSlider,
@@ -136,7 +136,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'h1',
 						{ className: 'main-title' },
-						projectName
+						title
 					)
 				),
 				_react2.default.createElement(
