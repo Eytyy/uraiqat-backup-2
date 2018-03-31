@@ -40,14 +40,17 @@ export const getFontValues = () => {
 		font.size = 20;
 		font.characterHeight = 32;
 		font.characterWidth = 14;
+		font.extra = 0;
 	} else if (windowDimensions.w >= 768 ) {
 		font.size = 16;
 		font.characterHeight = 26;
-		font.characterWidth = 14;
+		font.characterWidth = 12;
+		font.extra = 4;
 	} else {
 		font.size = 14;
 		font.characterWidth = 10;
 		font.characterHeight = 24;
+		font.extra = 1;
 	}
 	return font;
 };
@@ -57,13 +60,11 @@ export const getContainerSize = (container) => {
 		w: container.w,
 		h: container.h
 	};
-	const font = getFontValues();
 
-	containerSize.w = containerSize.w - (font.characterWidth * 2);
-	containerSize.h = containerSize.h - (font.characterHeight);
+	containerSize.w = containerSize.w;
+	containerSize.h = containerSize.h;
 
 	return containerSize;
-	
 };
 
 
@@ -139,7 +140,7 @@ export const getNoOfChars = (sliderName, preconfig) => {
 	const containerSize = typeof preconfig === 'undefined' ? getContainerSize(config[sliderName]) : getContainerSize(preconfig);
 	const font = getFontValues();
 
-	const x = Math.floor(containerSize.w/font.characterWidth);
+	const x = Math.floor(containerSize.w/font.characterWidth) + font.extra;
 	const y = Math.floor(containerSize.h/font.characterHeight);
 
 	return {

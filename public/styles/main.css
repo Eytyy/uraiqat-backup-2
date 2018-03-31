@@ -176,10 +176,12 @@ body {
 .wrapper {
   margin: 0 auto;
   width: 100%;
+  padding: 0 20px;
   padding: 0 20px 0; }
   @media (min-width: 768px) {
     .container,
     .wrapper {
+      padding: 0;
       width: 720px; } }
   @media (min-width: 1024px) {
     .container,
@@ -421,6 +423,18 @@ body {
 .post-preview--default.post-preview--portrait .post-preview__image {
   height: 360px; }
 
+.post-preview--default.post-preview--portrait .post-preview__meta--bottom {
+  display: none; }
+
+.post-preview--default.post-preview--portrait .post-preview__meta--top {
+  margin-bottom: 12px; }
+  @media (min-width: 768px) {
+    .post-preview--default.post-preview--portrait .post-preview__meta--top {
+      margin-bottom: 13px; } }
+  @media (min-width: 1024px) {
+    .post-preview--default.post-preview--portrait .post-preview__meta--top {
+      margin-bottom: 16px; } }
+
 @media (min-width: 375px) {
   .post-preview--default.post-preview--portrait .post-preview__image {
     height: 456px; } }
@@ -439,6 +453,10 @@ body {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 602px;
             flex: 0 0 602px; }
+    .post-preview--default.post-preview--portrait .post-preview__meta--bottom {
+      display: block; }
+    .post-preview--default.post-preview--portrait .post-preview__meta--top {
+      display: none; }
     .post-preview--default.post-preview--portrait .post-preview__image {
       -webkit-box-flex: 0;
           -ms-flex: 0 0 210px;
@@ -538,7 +556,15 @@ body {
               flex: 0 0 1176px; } }
 
 .post-preview--default.post-preview--landscape .post-preview__meta {
-  margin-bottom: 16px; }
+  margin-bottom: 12px; }
+
+@media (min-width: 768px) {
+  .post-preview--default.post-preview--landscape .post-preview__meta {
+    margin-bottom: 13px; } }
+
+@media (min-width: 1024px) {
+  .post-preview--default.post-preview--landscape .post-preview__meta {
+    margin-bottom: 16px; } }
 
 .post-preview--featured.post-preview--landscape .post-preview__content {
   position: relative;
@@ -1220,9 +1246,11 @@ nav {
 .pattern--loading {
   margin: 0 auto;
   width: 100%;
+  padding: 0 20px;
   background: #FFF; }
   @media (min-width: 768px) {
     .pattern--loading {
+      padding: 0;
       width: 720px; } }
   @media (min-width: 1024px) {
     .pattern--loading {
