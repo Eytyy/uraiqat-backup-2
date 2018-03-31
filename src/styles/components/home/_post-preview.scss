@@ -1,5 +1,4 @@
 .post-preview {
-	margin-bottom: 64px;
 	a {
 		text-decoration: none;
 		color: #000;
@@ -34,22 +33,12 @@
 }
 
 .post-preview--default {
-	&.post-preview--video {
-		flex: 0 0 686px;
-		.post-preview__video {
-			width: 100%;
-			height: 352px;
-		}
-	}
 	.post-preview__title {
-		margin: 16px 0 0;
-		font-size: 20px;
-		line-height: 32px;
+		@extend %defaultFont;
 		color: blue;
 	}
 	.post-preview__desc {
-		font-size: 14px;
-		line-height: 22px;
+		@extend %bodyFont;
 	}
 }
 
@@ -61,69 +50,12 @@
 
 .post-preview--featured {
 	.post-preview__title {
+		@extend %featuredFont;
 		margin: 0;
-		font-size: 48px;
-		line-height: 64px;
 		color: red;
 	}
 	.post-preview__content__inner {
 		background: #FFF;
-		padding: 32px 28px 32px 28px;
-	}
-	.post-preview__video {
-		width: 868px;
-		height: 544px;
-	}
-}
-
-.post-preview--portrait {
-	.post-preview__link {
-		display: flex;
-	}
-	.post-preview__title {
-		margin: 0 0 10px;
-	}	
-	.post-preview__image {
-		flex: 0 0 266px;
-		height: 384px;
-	}
-	.post-preview__content {
-		flex: 0 0 364px;
-		padding-left: 14px;
-	}	
-	&.post-preview--featured {
-		.post-preview__image {
-			flex: 0 0 448px;
-			height: 650px;
-		}
-		.post-preview__title {
-			position: relative;;
-		}		
-		.post-preview__content {
-			margin-top: 64px;
-			flex: 0 0 700px;
-			margin-left: -70px;
-		}
-	}
-}
-
-.post-preview--landscape {
-	&.post-preview--default .post-preview__meta {
-		margin-bottom: 16px;
-	}
-	.post-preview__image {
-		height: 256px;
-	}
-	&.post-preview--featured {
-		
-		.post-preview__image {
-		}
-		.post-preview__content {
-			width: 826px;
-			margin: -96px 0 0 auto;
-			position: relative;
-			z-index: 2;
-		}
 	}
 }
 

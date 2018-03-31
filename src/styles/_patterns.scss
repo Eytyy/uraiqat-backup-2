@@ -1,7 +1,3 @@
-.pattern {
-	font-family: $font--bold;
-}
-
 .slider--main .pattern {
 	height: 512px;
 }
@@ -14,7 +10,7 @@
 .post__image__pattern {
 	opacity: 1;
 	transition: opacity 400ms ease-in-out 200ms;
-	position: absolute;
+	position: absolute !important;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -35,7 +31,6 @@
 	z-index: 200;
 }
 .pattern--loading {
+	@include wrapper;
 	background: #FFF;
-	max-width: 1344px;
-	margin: 0 auto;
 }

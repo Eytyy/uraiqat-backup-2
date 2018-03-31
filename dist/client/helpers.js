@@ -42,17 +42,19 @@ var getFontValues = exports.getFontValues = function getFontValues() {
 	var font = {};
 	var windowDimensions = getWindowDimensions();
 
-	if (windowDimensions.w >= 1920 && windowDimensions.h >= 1080) {
-		font.characterWidth = 14;
+	if (windowDimensions.w >= 1024) {
+		font.size = 20;
 		font.characterHeight = 32;
-	} else if (windowDimensions.w > 380 && windowDimensions.h > 900) {
 		font.characterWidth = 14;
-		font.characterHeight = 32;
+	} else if (windowDimensions.w >= 768) {
+		font.size = 16;
+		font.characterHeight = 26;
+		font.characterWidth = 14;
 	} else {
-		font.characterWidth = 14;
-		font.characterHeight = 32;
+		font.size = 14;
+		font.characterWidth = 10;
+		font.characterHeight = 24;
 	}
-
 	return font;
 };
 

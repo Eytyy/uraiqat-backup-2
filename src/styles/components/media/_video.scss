@@ -48,7 +48,6 @@
 	}	
 	&.post-preview__video {
 		@extend %bw-filter;
-		margin: 0 auto;
 		&:before,
 		&:after {
 			z-index: 2;
@@ -62,13 +61,25 @@
 
 .post-preview--featured .post-preview__video {
 	.video-state {
-    border-left: 40px solid red;
+		border: 20px solid transparent;
+    border-left: 30px solid red;
 	}
 	&.js-videoIsActive {
 		.video-state {
-			border: 20px solid red;
+			border: 15px solid red;
 		}
 	}	
+	@include respond-to(tablet) {
+		.video-state {
+			border: 25px solid transparent;
+			border-left: 40px solid red;
+		}
+		&.js-videoIsActive {
+			.video-state {
+				border: 20px solid red;
+			}
+		}	
+	}
 }
 
 

@@ -4,9 +4,28 @@ $font: 'ZeitungMonoPro-Reg';
 $font--bold: 'ZeitungMonoPro-Bold';
 
 $breakpoints: (
-  'small': '(min-width: 520px)',
-  'medium': '(min-width: 900px)',
-  'large': '(min-width: 1440px)',
-  'xlarge': '(min-width: 1600px)',
-  'xxlarge': '(min-width: 1920px)',
+  'mobile': '(min-width: 320px)',
+  'mobile-x2': '(min-width: 375px)',
+  'mobile-x3': '(min-width: 414px)',
+  'tablet': '(min-width: 768px)',
+  'desktop': '(min-width: 1024px)',
+  'desktop-1280': '(min-width: 1280px)',
+  'desktop-1440': '(min-width: 1440px)',
+  'desktop-1600': '(min-width: 1600px)',
+  'desktop-1920': '(min-width: 1920px)',
 );
+
+// Max content wrapper widths
+$mobile-max: 320px;
+$tablet-max: 720px;
+$desktop-max: 952px;
+$desktop-1280-max: 1162px;
+$desktop-1440-max: 1344px;
+$desktop-1600-max: 1512px;
+
+// Default blocks gutters
+$tablet-block-gutter: 80px;
+$desktop-block-gutter: 56px;
+$desktop-1440-block-gutter: 84px;
+$desktop-1600-block-gutter: 98px;
+

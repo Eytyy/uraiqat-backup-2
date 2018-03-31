@@ -7,3 +7,24 @@
     @content;
   }
 }
+
+
+@mixin wrapper() {
+  margin: 0 auto;
+	width: 100%;
+  @include respond-to(tablet) {
+		width: $tablet-max;
+	}
+	@include respond-to(desktop) {
+		width: $desktop-max;
+	}
+	@include respond-to(desktop-1280) {
+		width: $desktop-1280-max;
+	}
+	@include respond-to(desktop-1440) {
+		width: $desktop-1440-max;
+	}
+	@include respond-to(desktop-1600) {
+		width: $desktop-1600-max;
+	}
+}

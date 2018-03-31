@@ -1,11 +1,81 @@
+// fonts for $breakpoints[mobile]
+$fs: 14px;
+$lh: 24px;
+$char-width: 10px;
+
+$body-fs: 12px;
+$body-lh: 18px;
+
+$featured-fs: 20px;
+$featured-lh: 32px;
+
+// fonts for >= $breakpoints[tablet]
+$tablet-fs: 16px;
+$tablet-lh: 26px;
+$tablet-char-width: 12px;
+
+$tablet-featured-fs: 32px;
+$tablet-featured-lh: 44px;
+
+// fonts for >= $breakpoints[desktop]
+$desktop-fs: 20px;
+$desktop-lh: 32px;
+$desktop-char-width: 14px;
+
+$desktop-body-fs: 14px;
+$desktop-body-lh: 22px;
+
+$desktop-featured-fs: 48px;
+$desktop-featured-lh: 64px;
+
+// Patterns/Main Font Styles
+%defaultFont {
+  font-size: $fs;
+  line-height: $lh;
+  @include respond-to(tablet) {
+    font-size: $tablet-fs;
+    line-height: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+    font-size: $desktop-fs;
+    line-height: $desktop-lh;
+	}
+}
+
+// Body text Font Styles
+%bodyFont {
+	font-size: $body-fs;
+	line-height: $body-lh;
+	@include respond-to(desktop) {
+		font-size: $desktop-body-fs;
+		line-height: $desktop-body-lh;
+	}
+}
+
+// Featured Blocks Font Styles
+%featuredFont {
+	font-size: $featured-fs;
+	line-height: $featured-lh;
+	@include respond-to(tablet) {
+		font-size: $tablet-featured-fs;
+		line-height: $tablet-featured-lh;
+	}
+	@include respond-to(desktop-1440) {
+		font-size: $desktop-featured-fs;
+		line-height: $desktop-featured-lh;
+	}
+}
+
 body {
+	@extend %defaultFont;
 	font-family: $font;
-	font-size: 20px;
-	line-height: 32px;
 }
 
 a,
-strong {
+strong,
+h1, h2, h3, h4, h5,
+.website-footer,
+.pattern {
 	font-family: $font--bold;
 }
 
@@ -19,9 +89,7 @@ p {
 
 
 h1, h2, h3, h4, h5 {
-	font-family: $font--bold;
-	font-size: 20px;
-	line-height: 32px;
+	@extend %defaultFont;
 	margin: 0;
 }
 
@@ -29,6 +97,3 @@ h1, h2, h3, h4, h5 {
 	margin-bottom: 64px;
 }
 
-.website-footer {
-	font-family: $font--bold;
-}
