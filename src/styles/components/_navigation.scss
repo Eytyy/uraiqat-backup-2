@@ -33,13 +33,12 @@
 }
 
 .search__input {
+	@extend %defaultFont;
+	font-family: $font--bold;
 	appearance: none;
 	border: 0px;
 	margin: 0;
 	padding: 0;
-	font-size: 20px;
-	line-height: 32px;
-	font-family: $font--bold;
 	width: 420px;
 	outline: 0;
 }

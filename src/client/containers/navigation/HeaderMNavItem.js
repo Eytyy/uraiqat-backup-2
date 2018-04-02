@@ -1,10 +1,18 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const HeaderMNavItem = () => {
+const HeaderMNavItem = ({ link, glyph, name }) => {
 	return (
-		<div>
-			
-		</div>
+		<NavLink
+			activeClassName="active"
+			className="link menu-link"
+			to={link}
+		>
+			{ name }
+			<span className="ws">-</span>
+			<span className={glyph.className}>{glyph.content}</span>
+			<span className="ws">-</span>
+		</NavLink>
 	);
 };
 

@@ -50,7 +50,6 @@ const HeaderDTFiltersList = ({ content }) => {
 	const fixedEnd = 14;
 	const availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	const filters = createFilters(content, availableSpace);
-	console.log(filters);
 	return (
 		<div className="filters-list">
 			{

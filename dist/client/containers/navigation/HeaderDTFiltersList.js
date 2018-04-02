@@ -69,7 +69,6 @@ var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
 	var fixedEnd = 14;
 	var availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	var filters = createFilters(content, availableSpace);
-	console.log(filters);
 	return _react2.default.createElement(
 		'div',
 		{ className: 'filters-list' },

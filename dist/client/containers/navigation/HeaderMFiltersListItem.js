@@ -10,13 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HeaderDT = require('./HeaderDT');
+var _HeaderPatternChunk = require('./HeaderPatternChunk');
 
-var _HeaderDT2 = _interopRequireDefault(_HeaderDT);
-
-var _HeaderM = require('./HeaderM');
-
-var _HeaderM2 = _interopRequireDefault(_HeaderM);
+var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,51 +22,82 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Header = function (_Component) {
-	_inherits(Header, _Component);
+var HeaderMFiltersListItem = function (_Component) {
+	_inherits(HeaderMFiltersListItem, _Component);
 
-	function Header() {
-		_classCallCheck(this, Header);
+	function HeaderMFiltersListItem() {
+		_classCallCheck(this, HeaderMFiltersListItem);
 
-		var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+		var _this = _possibleConstructorReturn(this, (HeaderMFiltersListItem.__proto__ || Object.getPrototypeOf(HeaderMFiltersListItem)).call(this));
 
 		_this.state = {
-			width: 0,
-			height: 0
+			active: false
 		};
-		_this.updateDimensions = _this.updateDimensions.bind(_this);
+		_this.onFilterClick = _this.onFilterClick.bind(_this);
 		return _this;
 	}
 
-	_createClass(Header, [{
-		key: 'updateDimensions',
-		value: function updateDimensions() {
-			var width = window.innerWidth;
-			var height = window.innerHeight;
-
-			this.setState({ width: width, height: height });
-		}
-	}, {
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			this.updateDimensions();
-			window.addEventListener('resize', this.updateDimensions);
+	_createClass(HeaderMFiltersListItem, [{
+		key: 'onFilterClick',
+		value: function onFilterClick() {
+			this.setState({
+				active: !this.state.active
+			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			if (typeof window === 'undefined') {
-				return _react2.default.createElement('header', { className: 'website-header' });
-			}
+			var name = this.props.name;
+
 			return _react2.default.createElement(
-				'header',
-				{ className: 'website-header' },
-				this.state.width >= 1280 ? _react2.default.createElement(_HeaderDT2.default, null) : _react2.default.createElement(_HeaderM2.default, null)
+				'div',
+				null,
+				_react2.default.createElement(
+					'span',
+					{ onClick: this.onFilterClick, className: 'filter link' },
+					this.state.active ? _react2.default.createElement(
+						'span',
+						{ className: 'filterBox' },
+						'[',
+						_react2.default.createElement(
+							'span',
+							{ className: 'filterBox__state' },
+							'x'
+						),
+						']'
+					) : _react2.default.createElement(
+						'span',
+						{ className: 'filterBox' },
+						'[',
+						_react2.default.createElement(
+							'span',
+							{ className: 'filterBox__state' },
+							' '
+						),
+						']'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						null,
+						name
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					)
+				),
+				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: name.length + 5 })
 			);
 		}
 	}]);
 
-	return Header;
+	return HeaderMFiltersListItem;
 }(_react.Component);
 
-exports.default = Header;
+exports.default = HeaderMFiltersListItem;

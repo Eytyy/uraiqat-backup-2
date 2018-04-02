@@ -22,10 +22,10 @@ body {
 	z-index: 100;
 	background: #FFF;
 	@include respond-to(tablet) {
-		padding: $tablet-lh 0 0;
+		padding: $tablet-lh 0 ($tablet-lh/4);
 	}
 	@include respond-to(desktop) {
-		padding: $desktop-lh 0 0;
+		padding: $desktop-lh 0 ($desktop-lh/4);
 	}
 }
 

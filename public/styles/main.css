@@ -78,15 +78,15 @@ body {
   font-family: "ZeitungMonoPro-Bold";
   src: url(/fonts/ZeitungMonoPro-Bold.eot?#iefix) format("embedded-opentype"), url(/fonts/ZeitungMonoPro-Bold.woff2) format("woff2"), url(/fonts/ZeitungMonoPro-Bold.woff) format("woff"), url(/fonts/ZeitungMonoPro-Bold.ttf) format("truetype"), url(/fonts/ZeitungMonoPro-Bold.svg#ZeitungMonoPro-Bold) format("svg"); }
 
-body, h1, h2, h3, h4, h5, .post-preview--default .post-preview__title {
+body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title {
   font-size: 14px;
   line-height: 24px; }
   @media (min-width: 768px) {
-    body, h1, h2, h3, h4, h5, .post-preview--default .post-preview__title {
+    body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title {
       font-size: 16px;
       line-height: 26px; } }
   @media (min-width: 1024px) {
-    body, h1, h2, h3, h4, h5, .post-preview--default .post-preview__title {
+    body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title {
       font-size: 20px;
       line-height: 32px; } }
 
@@ -222,10 +222,10 @@ body {
   background: #FFF; }
   @media (min-width: 768px) {
     .website-header {
-      padding: 26px 0 0; } }
+      padding: 26px 0 6.5px; } }
   @media (min-width: 1024px) {
     .website-header {
-      padding: 32px 0 0; } }
+      padding: 32px 0 8px; } }
 
 .main-content {
   padding-top: 120px; }
@@ -643,15 +643,13 @@ img {
   display: inline; }
 
 .search__input {
+  font-family: "ZeitungMonoPro-Bold";
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   border: 0px;
   margin: 0;
   padding: 0;
-  font-size: 20px;
-  line-height: 32px;
-  font-family: "ZeitungMonoPro-Bold";
   width: 420px;
   outline: 0; }
 

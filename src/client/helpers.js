@@ -47,12 +47,12 @@ export const getFontValues = () => {
 		font.size = 16;
 		font.characterHeight = 26;
 		font.characterWidth = 12;
-		font.extra = 4;
+		font.extra = 0;
 	} else {
 		font.size = 14;
 		font.characterWidth = 10;
 		font.characterHeight = 24;
-		font.extra = 1;
+		font.extra = 0;
 	}
 	return font;
 };

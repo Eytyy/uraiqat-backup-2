@@ -50,7 +50,7 @@ var Filter = function (_Component) {
 				{ onClick: this.onFilterClick, className: "filter link" },
 				this.state.active ? _react2.default.createElement(
 					"span",
-					{ "class": "filterBox" },
+					{ className: "filterBox" },
 					"[",
 					_react2.default.createElement(
 						"span",
@@ -60,7 +60,7 @@ var Filter = function (_Component) {
 					"]"
 				) : _react2.default.createElement(
 					"span",
-					{ "class": "filterBox" },
+					{ className: "filterBox" },
 					"[",
 					_react2.default.createElement(
 						"span",

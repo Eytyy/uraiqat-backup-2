@@ -18,8 +18,8 @@ class Filter extends Component {
 		return (
 			<span onClick={this.onFilterClick} className="filter link">
 				{ this.state.active ? 
-					<span class="filterBox">[<span className="filterBox__state">x</span>]</span> :
-					<span class="filterBox">[<span className="filterBox__state"> </span>]</span>
+					<span className="filterBox">[<span className="filterBox__state">x</span>]</span> :
+					<span className="filterBox">[<span className="filterBox__state"> </span>]</span>
 				} 
 				<span className="ws">-</span>								
 				<span>{content}</span>
