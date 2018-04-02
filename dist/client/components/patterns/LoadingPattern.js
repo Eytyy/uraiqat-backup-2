@@ -21,21 +21,8 @@ var LoadingPattern = function LoadingPattern() {
 		return _react2.default.createElement('div', { className: 'pattern pattern--loading' });
 	}
 	var windowSize = (0, _helpers.getWindowDimensions)();
-	var maxWidth = void 0;
+	var maxWidth = (0, _helpers.getMaxWidth)();
 
-	if (windowSize.w >= 1600) {
-		maxWidth = 1512;
-	} else if (windowSize.w >= 1440) {
-		maxWidth = 1344;
-	} else if (windowSize.w >= 1280) {
-		maxWidth = 1162;
-	} else if (windowSize.w >= 1024) {
-		maxWidth = 952;
-	} else if (windowSize.w >= 768) {
-		maxWidth = 720;
-	} else {
-		maxWidth = 320;
-	}
 	var font = (0, _helpers.getFontValues)();
 	var config = {
 		w: maxWidth,

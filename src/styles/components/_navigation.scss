@@ -2,8 +2,11 @@
 	opacity: 0;
 }
 
-nav {
+.website-header {
 	font-family: $font--bold;
+	nav {
+		display: inline-block;
+	}
 	a {
 		text-decoration: none;
 	}

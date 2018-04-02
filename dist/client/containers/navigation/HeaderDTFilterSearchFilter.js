@@ -18,67 +18,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Filter = function (_Component) {
-	_inherits(Filter, _Component);
+var HeaderDTFilterSearchFilter = function (_Component) {
+	_inherits(HeaderDTFilterSearchFilter, _Component);
 
-	function Filter() {
-		_classCallCheck(this, Filter);
+	function HeaderDTFilterSearchFilter() {
+		_classCallCheck(this, HeaderDTFilterSearchFilter);
 
-		var _this = _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).call(this));
-
-		_this.state = {
-			active: false
-		};
-		_this.onFilterClick = _this.onFilterClick.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (HeaderDTFilterSearchFilter.__proto__ || Object.getPrototypeOf(HeaderDTFilterSearchFilter)).apply(this, arguments));
 	}
 
-	_createClass(Filter, [{
-		key: "onFilterClick",
-		value: function onFilterClick() {
-			this.setState({
-				active: !this.state.active
-			});
-		}
-	}, {
+	_createClass(HeaderDTFilterSearchFilter, [{
 		key: "render",
 		value: function render() {
-			var content = this.props.content;
+			var _props = this.props,
+			    config = _props.config,
+			    filtersAreVisible = _props.filtersAreVisible,
+			    onfilterClick = _props.onfilterClick;
 
 			return _react2.default.createElement(
 				"span",
-				{ onClick: this.onFilterClick, className: "filter link" },
-				this.state.active ? _react2.default.createElement(
-					"span",
-					{ "class": "filterBox" },
-					"[",
-					_react2.default.createElement(
-						"span",
-						{ className: "filterBox__state" },
-						"x"
-					),
-					"]"
-				) : _react2.default.createElement(
-					"span",
-					{ "class": "filterBox" },
-					"[",
-					_react2.default.createElement(
-						"span",
-						{ className: "filterBox__state" },
-						" "
-					),
-					"]"
-				),
-				_react2.default.createElement(
-					"span",
-					{ className: "ws" },
-					"-"
-				),
-				_react2.default.createElement(
-					"span",
-					null,
-					content
-				),
+				{ className: "filters" },
 				_react2.default.createElement(
 					"span",
 					{ className: "ws" },
@@ -91,14 +50,30 @@ var Filter = function (_Component) {
 				),
 				_react2.default.createElement(
 					"span",
+					{ className: "link", onClick: onfilterClick },
+					filtersAreVisible ? '-' : config.glyph.content,
+					config.name
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: "ind-list" },
+					":"
+				),
+				_react2.default.createElement(
+					"span",
 					{ className: "ws" },
 					"-"
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: "separator" },
+					'/'
 				)
 			);
 		}
 	}]);
 
-	return Filter;
+	return HeaderDTFilterSearchFilter;
 }(_react.Component);
 
-exports.default = Filter;
+exports.default = HeaderDTFilterSearchFilter;

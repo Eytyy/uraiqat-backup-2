@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 
 import ScrollToTop from './ScrollToTop';
 import Gallery from './Gallery';
-import Menu from './navigation/menu';
+import Header from './navigation/Header';
 import Footer from '../components/Footer';
 
 class App extends Component {
@@ -15,11 +15,7 @@ class App extends Component {
 			<div className="container__inner">
 				<Gallery />
 				<ScrollToTop>
-					<header className="website-header">
-						<div className="website-header__inner wrapper">
-							<Menu />
-						</div>
-					</header>
+					<Header />
 					<main role="main" className="main-content">
 						{ renderRoutes(route.routes) }
 					</main>

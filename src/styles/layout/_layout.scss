@@ -15,7 +15,7 @@ body {
 
 .website-header {
 	position: fixed;
-	padding: $lh 0 0;
+	padding: $lh 0 ($lh/4);
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -58,7 +58,9 @@ body {
 		}
 	}
 	@include respond-to(desktop-1600) {
-		margin-left: -1 * $desktop-1600-block-gutter;
+		.landing-page--journal & {
+			margin-left: -1 * $desktop-1600-block-gutter;
+		}		
 	}
 }
 

@@ -25,8 +25,10 @@ export const getWindowDimensions = () => {
 
 
 // Patterns Helpers
-export const getRandomGlyph = () => {
-	const glyphs= ['-', '-','/', '\\', '-', '-', '{', '-', '>', '-', '<', '\\', '-', '}', '-', '-', ']', '-', '[', '-', '/',  '-', '-', '-', '/', '-', '\\', '-'];
+export const getRandomGlyph = (defaultGlyphs) => {
+	const glyphs = typeof defaultGlyphs !=='undefined' ?
+		defaultGlyphs :
+		['-', '-','/', '\\', '-', '-', '{', '-', '>', '-', '<', '\\', '-', '}', '-', '-', ']', '-', '[', '-', '/',  '-', '-', '-', '/', '-', '\\', '-'];
 	let index = getRandomIntInclusive(1, glyphs.length - 2);
 	let glyph = glyphs[index];
 	return glyph;
@@ -147,4 +149,23 @@ export const getNoOfChars = (sliderName, preconfig) => {
 		x,
 		y
 	};
+};
+
+export const getMaxWidth = () => {
+	const windowSize = getWindowDimensions();
+	let maxWidth;	
+	if (windowSize.w >= 1600) {
+		maxWidth = 1512;
+	} else if (windowSize.w >= 1440 ) {
+		maxWidth = 1344;
+	} else if (windowSize.w >= 1280 ) {
+		maxWidth = 1162;
+	} else if (windowSize.w >= 1024 ) {
+		maxWidth = 952;
+	} else if (windowSize.w >= 768) {
+		maxWidth = 720;
+	} else {
+		maxWidth = 320;
+	}
+	return maxWidth;
 };

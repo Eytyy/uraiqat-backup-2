@@ -31,8 +31,8 @@ var getWindowDimensions = exports.getWindowDimensions = function getWindowDimens
 };
 
 // Patterns Helpers
-var getRandomGlyph = exports.getRandomGlyph = function getRandomGlyph() {
-	var glyphs = ['-', '-', '/', '\\', '-', '-', '{', '-', '>', '-', '<', '\\', '-', '}', '-', '-', ']', '-', '[', '-', '/', '-', '-', '-', '/', '-', '\\', '-'];
+var getRandomGlyph = exports.getRandomGlyph = function getRandomGlyph(defaultGlyphs) {
+	var glyphs = typeof defaultGlyphs !== 'undefined' ? defaultGlyphs : ['-', '-', '/', '\\', '-', '-', '{', '-', '>', '-', '<', '\\', '-', '}', '-', '-', ']', '-', '[', '-', '/', '-', '-', '-', '/', '-', '\\', '-'];
 	var index = getRandomIntInclusive(1, glyphs.length - 2);
 	var glyph = glyphs[index];
 	return glyph;
@@ -152,4 +152,23 @@ var getNoOfChars = exports.getNoOfChars = function getNoOfChars(sliderName, prec
 		x: x,
 		y: y
 	};
+};
+
+var getMaxWidth = exports.getMaxWidth = function getMaxWidth() {
+	var windowSize = getWindowDimensions();
+	var maxWidth = void 0;
+	if (windowSize.w >= 1600) {
+		maxWidth = 1512;
+	} else if (windowSize.w >= 1440) {
+		maxWidth = 1344;
+	} else if (windowSize.w >= 1280) {
+		maxWidth = 1162;
+	} else if (windowSize.w >= 1024) {
+		maxWidth = 952;
+	} else if (windowSize.w >= 768) {
+		maxWidth = 720;
+	} else {
+		maxWidth = 320;
+	}
+	return maxWidth;
 };

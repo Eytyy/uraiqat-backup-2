@@ -149,6 +149,9 @@ a {
   color: #000;
   text-decoration: none; }
 
+.link {
+  cursor: pointer; }
+
 .link,
 a .title {
   color: blue; }
@@ -168,6 +171,11 @@ a:hover .title {
   color: #4A4A4A;
   font-size: 14px;
   line-height: 32px; }
+
+.filterBox {
+  color: #000; }
+  .filterBox__state {
+    color: blue; }
 
 body {
   padding-top: 32px; }
@@ -206,7 +214,7 @@ body {
 
 .website-header {
   position: fixed;
-  padding: 24px 0 0;
+  padding: 24px 0 6px;
   top: 0;
   left: 0;
   width: 100%;
@@ -246,7 +254,7 @@ body {
     margin-left: -84px; } }
 
 @media (min-width: 1600px) {
-  .landing-section {
+  .landing-page--journal .landing-section {
     margin-left: -98px; } }
 
 .post-preview {
@@ -616,11 +624,13 @@ img {
 .ws {
   opacity: 0; }
 
-nav {
+.website-header {
   font-family: "ZeitungMonoPro-Bold"; }
-  nav a {
+  .website-header nav {
+    display: inline-block; }
+  .website-header a {
     text-decoration: none; }
-  nav .ind {
+  .website-header .ind {
     opacity: 0; }
 
 .menu-link:hover .ind, .menu-link.active .ind {

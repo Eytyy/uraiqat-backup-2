@@ -22,9 +22,9 @@ var _Gallery = require('./Gallery');
 
 var _Gallery2 = _interopRequireDefault(_Gallery);
 
-var _menu = require('./navigation/menu');
+var _Header = require('./navigation/Header');
 
-var _menu2 = _interopRequireDefault(_menu);
+var _Header2 = _interopRequireDefault(_Header);
 
 var _Footer = require('../components/Footer');
 
@@ -59,15 +59,7 @@ var App = function (_Component) {
 				_react2.default.createElement(
 					_ScrollToTop2.default,
 					null,
-					_react2.default.createElement(
-						'header',
-						{ className: 'website-header' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'website-header__inner wrapper' },
-							_react2.default.createElement(_menu2.default, null)
-						)
-					),
+					_react2.default.createElement(_Header2.default, null),
 					_react2.default.createElement(
 						'main',
 						{ role: 'main', className: 'main-content' },
