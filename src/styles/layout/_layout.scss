@@ -540,7 +540,7 @@ img {
 			height: 192px;
 		}
 	}
-	@include respond-to(desktop-1280) {
+	@include respond-to(desktop-1440) {
 		&--main,
 		&--drawing {
 			height: 416px;
@@ -548,6 +548,16 @@ img {
 		&--craft,
 		&--diagram {
 			height: 208px;
+		}
+	}
+	@include respond-to(desktop-1600) {
+		&--main,
+		&--drawing {
+			height: 512px;
+		}
+		&--craft,
+		&--diagram {
+			height: 256px;
 		}
 	}
 }
@@ -617,6 +627,15 @@ img {
 			flex: 0 0 322px;
 		}
 	}
+	@include respond-to(desktop-1600) {
+		.project-preview__image--main {
+			flex: 0 0 784px;
+		}
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			flex: 0 0 364px;
+		}
+	}
 }
 
 .project-preview__thumbs--landscape {
@@ -683,6 +702,16 @@ img {
 		.project-preview__image--drawing,
 		.project-preview__thumbs__right-col {
 			width: 644px;
+		}
+	}
+	@include respond-to(desktop-1600) {
+		height: 512px;
+		.project-preview__image--main {
+			width: 784px;
+		}		
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			width: 728px;
 		}
 	}
 }
