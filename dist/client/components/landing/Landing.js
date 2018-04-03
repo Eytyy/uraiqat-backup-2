@@ -22,7 +22,7 @@ var Landing = function Landing(_ref) {
 	var page = _ref.page,
 	    content = _ref.content;
 
-	var classList = 'landing-page landing-page--' + page;
+	var classList = 'landing-page landing-page--' + page + ' main-section';
 	var mainContent = content.mainContent,
 	    featuredContent = content.featuredContent;
 

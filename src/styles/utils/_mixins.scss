@@ -10,11 +10,13 @@
 
 
 @mixin wrapper() {
-  margin: 0 auto;
-	width: 100%;
+	margin: 0 auto;
+	width: 320px;
 	padding: 0 20px;
-  @include respond-to(tablet) {
+  @include respond-to(mobile) {
 		padding: 0;
+	}	
+  @include respond-to(tablet) {
 		width: $tablet-max;
 	}
 	@include respond-to(desktop) {

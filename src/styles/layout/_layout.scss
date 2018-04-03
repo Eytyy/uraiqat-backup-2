@@ -13,6 +13,14 @@ body {
 	}
 }
 
+.main-section {
+	max-width: 280px;
+	margin: 0 auto;
+	@include respond-to(tablet) {
+		max-width: 100%;
+	}
+}
+
 .website-header {
 	position: fixed;
 	padding: $lh 0 ($lh/4);
@@ -474,5 +482,207 @@ img {
 	.website-footer,
 	.website-header {
 		opacity: 0.025;
+	}
+}
+
+
+// Work Landing Layout
+
+.project-preview {
+	overflow: hidden;
+	margin-bottom: $lh * 3;
+	.landing-section--main & {
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.project-preview__image {
+	position: relative;
+	&--main {
+		height: 168px;
+	}
+	&--drawing {
+		height: 192px;
+	}
+	&--craft,
+	&--diagram {
+		height: 96px;
+	}
+	@include respond-to(tablet) {
+		&--main,
+		&--drawing {
+			height: 260px;
+		}
+		&--craft,
+		&--diagram {
+			height: 130px;
+		}
+	}
+	@include respond-to(desktop) {
+		&--main,
+		&--drawing {
+			height: 320px;
+		}
+		&--craft,
+		&--diagram {
+			height: 160px;
+		}
+	}
+	@include respond-to(desktop-1280) {
+		&--main,
+		&--drawing {
+			height: 384px;
+		}
+		&--craft,
+		&--diagram {
+			height: 192px;
+		}
+	}
+	@include respond-to(desktop-1280) {
+		&--main,
+		&--drawing {
+			height: 416px;
+		}
+		&--craft,
+		&--diagram {
+			height: 208px;
+		}
+	}
+}
+.project-preview__thumbs {
+	margin-top: $lh;
+	@include respond-to(tablet) {
+		margin-top: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+		margin-top: $desktop-lh;
+	}
+}
+
+.project-preview__thumbs--portrait {
+	display: flex;
+	flex-wrap: wrap;
+	.project-preview__image--main {
+		flex: 0 0 100%;
+	}	
+	.project-preview__image--drawing {
+		flex: 0 0 50%;
+	}
+	.project-preview__thumbs__right-col {
+		display: flex;
+		flex-wrap: wrap;
+		flex: 0 0 50%;
+		.project-preview__image {
+			flex: 0 0 100%;
+		}
+	}
+	@include respond-to(tablet) {
+		display: flex;
+		.project-preview__image--main {
+			flex: 0 0 384px;
+		}
+		.project-preview__image--drawing {
+			flex: 0 0 168px;
+		}
+		.project-preview__thumbs__right-col {
+			flex: 0 0 168px;
+		}
+	}
+	@include respond-to(desktop) {
+		.project-preview__image--main {
+			flex: 0 0 532px;
+		}
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			flex: 0 0 210px;
+		}
+	}
+	@include respond-to(desktop-1280) {
+		.project-preview__image--main {
+			flex: 0 0 574px;
+		}
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			flex: 0 0 294px;
+		}
+	}
+	@include respond-to(desktop-1440) {
+		.project-preview__image--main {
+			flex: 0 0 700px;
+		}
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			flex: 0 0 322px;
+		}
+	}
+}
+
+.project-preview__thumbs--landscape {
+	.project-preview__image--drawing {
+		height: 96px;
+	}
+	.project-preview__thumbs__right-col {
+		display: flex;
+		flex-wrap: wrap;
+		.project-preview__image {
+			flex: 0 0 50%;
+		}		
+	}
+	@include respond-to(tablet) {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		height: 260px;
+		.project-preview__image--drawing {
+			width: 336px;
+			flex: 0 0 50%;
+		}
+		.project-preview__image--craft,
+		.project-preview__image--diagram {
+				flex: 0 0 100%;
+				width: 50%;
+		}
+		.project-preview__image--main {
+			flex: 0 0 100%;
+			width: 384px;
+		}
+		.project-preview__thumbs__right-col {
+			display: flex;
+			flex-wrap: wrap;
+			flex: 0 0 50%;
+			width: 336px;
+		}
+	}
+	@include respond-to(desktop) {
+		height: 320px;
+		.project-preview__image--main {
+			width: 532px;
+		}		
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			width: 420px;
+		}
+	}
+	@include respond-to(desktop-1280) {
+		height: 384px;
+		.project-preview__image--main {
+			width: 574px;
+		}		
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			width: 588px;
+		}
+	}
+	@include respond-to(desktop-1440) {
+		height: 416px;
+		.project-preview__image--main {
+			width: 700px;
+		}		
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			width: 644px;
+		}
 	}
 }

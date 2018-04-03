@@ -84,12 +84,12 @@ const config = {
 		h: 576,
 	},
 	'default-post--portrait': {
-		w: 294,
-		h: 416,
+		w: 266,
+		h: 384,
 	},
 	'default-post--landscape': {
-		w: 420,
-		h: 288,
+		w: 392,
+		h: 256,
 	},
 	'featured-post--portrait': {
 		w: 476,
@@ -100,33 +100,33 @@ const config = {
 		h: 576,
 	},
 	'featured-post--video': {
-		w: 896,
-		h: 576,
+		w: 868,
+		h: 544,
 	},
 	'default-post--video': {
-		w: 638,
-		h: 384,
+		w: 630,
+		h: 352,
 	},
 	'related-project--landscape': {
 		w: 644,
 		h: 448
 	},
 	'project-main-thumb': {
-		w: 728,
-		h: 480,
+		w: 700,
+		h: 416,
 	},
 	'project-drawing-thumb--landscape': {
-		w: 662,
-		h: 256,
+		w: 644,
+		h: 208,
 	},
 	'project-drawing-thumb--portrait': {
-		w: 350,
-		h: 480,
+		w: 322,
+		h: 416,
 	}
 	,
 	'project-other-thumb': {
-		w: 350,
-		h: 256,
+		w: 322,
+		h: 208,
 	},
 	'post-media--video': {
 		w: 900,
@@ -164,8 +164,10 @@ export const getMaxWidth = () => {
 		maxWidth = 952;
 	} else if (windowSize.w >= 768) {
 		maxWidth = 720;
-	} else {
+	}else if (windowSize.w >= 320) {
 		maxWidth = 320;
+	} else {
+		maxWidth = 280;
 	}
 	return maxWidth;
 };
