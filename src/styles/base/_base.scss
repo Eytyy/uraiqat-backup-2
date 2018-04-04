@@ -44,11 +44,16 @@ a {
 }
 
 .caption {
-  margin-top: 8px;
+  @extend %bodyFont;
   font-family: $font--bold;
   color: $secondaryTextColor;
-	font-size: 14px;
-	line-height: 32px;
+  margin-top: $lh/2;
+  @include respond-to(tablet) {
+    margin-top: $tablet-lh/2;
+  }
+  @include respond-to(desktop) {
+    margin-top: $desktop-lh/2;
+  }  
 }
 
 .filterBox {

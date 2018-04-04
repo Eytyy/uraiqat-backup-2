@@ -94,6 +94,12 @@ h1, h2, h3, h4, h5 {
 }
 
 .main-title {
-	margin-bottom: 64px;
+	margin-bottom: $lh * 2;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+	}
+	@include respond-to(tablet) {
+		margin-bottom: $desktop-lh * 2;
+	}
 }
 
