@@ -28,13 +28,17 @@ class RelatedPosts extends Component { //eslint-disable-line
 		if (isFetching || content.length === 0) {
 			return null;
 		}
-		return content.map(({fields, sys}) => {
-			const withid = {
-				...fields,
-				id: sys.id,
-			};
-			return <PostDefault content={withid} key={sys.id} />;
-		});
+		return (<aside className="related-content post__related">
+			{
+				content.map(({fields, sys}) => {
+					const withid = {
+						...fields,
+						id: sys.id,
+					};
+					return <PostDefault content={withid} key={sys.id} />;
+				})
+			}
+		</aside>);	
 	}
 }
 

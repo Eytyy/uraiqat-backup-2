@@ -34,9 +34,12 @@ $video-post-height--desktop-1600: 378px;
 		padding-top: 60%;
 	}
 	.post-preview__title {
-		margin: 16px 0 0;
+		margin: ($lh/2) 0 ($lh/4);
 	}
 	@include respond-to(tablet) {
+		.post-preview__title {
+			margin: ($tablet-lh/2) 0 ($tablet-lh/4);
+		}
 		.post-preview__video {
 			padding-top: 0;
 			height: $video-post-height--tablet;
@@ -51,6 +54,9 @@ $video-post-height--desktop-1600: 378px;
 		}
 	}	
 	@include respond-to(desktop) {
+		.post-preview__title {
+			margin: ($desktop-lh/2) 0 ($desktop-lh/4);
+		}
 		&.post-preview--video {
 			flex: 0 0 ($video-post--desktop + $desktop-block-gutter);
 		}
@@ -197,10 +203,10 @@ $portrait-post-image--desktop-1440: 266px;
 }
 
 .post-preview--portrait {
-	.post-preview__title {
-		margin: 0 0 10px;
-	}	
 	@include respond-to(desktop) {
+		.post-preview__title {
+			margin: 0 0 10px;
+		}	
 		.post-preview__link {
 			display: flex;
 		}

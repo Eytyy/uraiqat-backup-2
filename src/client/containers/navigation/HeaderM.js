@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import HeaderMMain from './HeaderMMain';
 import HeaderMSearch from './HeaderMSearch';
@@ -14,6 +14,11 @@ class HeaderM extends Component {
 			isVisible: false,
 		};
 		this.toggle = this.toggle.bind(this);
+	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.location.pathname !== this.props.location.pathname && this.state.isVisible) {
+			this.toggle();
+		}
 	}
 	toggle() {
 		this.setState({
@@ -44,4 +49,4 @@ class HeaderM extends Component {
 	}
 }
 
-export default HeaderM;
+export default withRouter(HeaderM);

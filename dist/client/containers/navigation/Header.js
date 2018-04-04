@@ -65,7 +65,7 @@ var Header = function (_Component) {
 			return _react2.default.createElement(
 				'header',
 				{ className: 'website-header' },
-				this.state.width >= 1280 ? _react2.default.createElement(_HeaderDT2.default, null) : _react2.default.createElement(_HeaderM2.default, null)
+				this.state.width >= 1024 ? _react2.default.createElement(_HeaderDT2.default, null) : _react2.default.createElement(_HeaderM2.default, null)
 			);
 		}
 	}]);

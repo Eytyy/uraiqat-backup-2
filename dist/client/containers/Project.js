@@ -150,9 +150,9 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__meta' },
-						_react2.default.createElement(
+						typology && _react2.default.createElement(
 							'div',
-							{ className: 'project__meta__item' },
+							{ className: 'project__meta__item typology' },
 							_react2.default.createElement(_CommaSpearatedList2.default, { classList: '', content: typology })
 						),
 						location && _react2.default.createElement(
@@ -226,11 +226,7 @@ var Project = function (_Component) {
 						_react2.default.createElement(_Slider2.default, { sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
 					)
 				),
-				_react2.default.createElement(
-					'aside',
-					{ className: 'related-content post__related' },
-					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
-				)
+				_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
 			);
 		}
 	}], [{

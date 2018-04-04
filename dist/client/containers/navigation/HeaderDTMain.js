@@ -22,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var HeaderDTMain = function HeaderDTMain() {
 	var numberOfStaticItems = 'U'.length + 'Uraiqat'.length;
-	var fixedStart = 10;
+	var fixedStart = window.innerWidth > 1280 ? 10 : 7;
 	var config = {
 		spacesBefore: 1,
 		spacesAfter: 3,

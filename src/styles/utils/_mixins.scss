@@ -13,7 +13,7 @@
 	margin: 0 auto;
 	width: 320px;
 	padding: 0 20px;
-  @include respond-to(mobile) {
+  @include respond-to(mobile-x2) {
 		padding: 0;
 	}	
   @include respond-to(tablet) {

@@ -50,7 +50,7 @@ var getFontValues = exports.getFontValues = function getFontValues() {
 	} else if (windowDimensions.w >= 768) {
 		font.size = 16;
 		font.characterHeight = 26;
-		font.characterWidth = 12;
+		font.characterWidth = 11.25;
 		font.extra = 0;
 	} else {
 		font.size = 14;
@@ -167,7 +167,7 @@ var getMaxWidth = exports.getMaxWidth = function getMaxWidth() {
 		maxWidth = 952;
 	} else if (windowSize.w >= 768) {
 		maxWidth = 720;
-	} else if (windowSize.w >= 320) {
+	} else if (windowSize.w > 375) {
 		maxWidth = 320;
 	} else {
 		maxWidth = 280;

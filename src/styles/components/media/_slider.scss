@@ -38,8 +38,8 @@
 
 .slide {
 	.slider__inner-controls {
+		display: none;
 		cursor: pointer;
-		display: block;
 		color: blue;
 		font-family: $font--bold;
 		font-size: 20px;
@@ -60,6 +60,9 @@
 		.slider__inner-controls {
 			opacity: 1;
 		}
+	}
+	@include respond-to(tablet) {
+		display: block;
 	}
 }
 

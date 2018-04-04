@@ -28,7 +28,7 @@ class Header extends Component {
 		}
 		return (
 			<header className="website-header">
-				{ this.state.width >= 1280 ? <HeaderDT /> : <HeaderM /> }
+				{ this.state.width >= 1024 ? <HeaderDT /> : <HeaderM /> }
 			</header>
 		);
 	}

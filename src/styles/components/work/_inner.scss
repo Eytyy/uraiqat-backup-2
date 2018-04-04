@@ -17,13 +17,17 @@
 .project__media {
 	margin-bottom: $lh;
 	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
 		margin-left: $tablet-char-width * 3;
 	}
 	@include respond-to(desktop) {
 		margin-left: $desktop-char-width * 3;
+		margin-bottom: $desktop-lh * 2;
+		max-width: 903px;
 	}
 	@include respond-to(desktop-1440) {
 		float: left;
+		margin-bottom: 0;
 	}
 }
 
@@ -34,15 +38,23 @@
 	@include respond-to(tablet) {
 		&__item {
 			display: inline-block;
+			margin-right: $tablet-char-width * 3;
+			&:last-child {
+				margin: 0;
+			}
 		}
 
 	}
+	@include respond-to(desktop) {
+		max-width: 686px;
+	}	
 	@include respond-to(desktop-1440) {
+		float: right;
+		width: 308px;
 		&__item {
 			display: block;
+			margin: 0;
 		}
-		float: right;
-		width: 252px;
 	}	
 }
 
@@ -75,6 +87,8 @@
 		}
 	}	
 	@include respond-to(desktop) {
+		width: 630px;
+		float: left;
 		&.js-isExpanded {
 			p {
 				margin-bottom: $desktop-lh;
@@ -83,8 +97,9 @@
 				margin-bottom: 0;
 			}
 		}
+	}
+	@include respond-to(desktop-1440) {
 		width: 686px;
-		float: left;
 	}
 }
 
@@ -95,10 +110,15 @@
 		@extend %blue-filter;
 		background-size: 200%;
 	}
+	@include respond-to(tablet) {
+		width: 252px;
+	}	
 	@include respond-to(desktop) {
 		float: right;
-		width: 392px;
 		margin-top: 0;
+	}	
+	@include respond-to(desktop-1280) {
+		width: 392px;
 	}	
 }
 
@@ -124,30 +144,34 @@
     top: 0;
 	}
 } 
+
 .slider--main {
 	width: 100%;
 	.slide__image {
-		height: 240px;
+		height: 192px;
 	}
 	.slider__controls {
 		top: -24px;
-		height: calc(240px + 48px);
-		transform: translateX(100%);
-		right: 10px;
-		.slider__counter,
-		.slider-btn--prev {
-			position: absolute;
-		}
-		.slider__counter {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-		.slider-btn--prev {
-			bottom: -24px;
-		}
+    display: flex;
+	}
+	.slider-btn--next {
+		order: 3;
+	}
+	.slider__counter {
+		order: 2;
+		margin: 0 20px;
+	}
+	.slider-btn--prev {
+		order: 1
 	}
 	@include respond-to(tablet) {
+		.slider__controls {
+			top: 0;
+			display: block;
+		}
+		.slider__counter {
+			margin: 0;
+		}
 		.slider__inner {
 			width: calc( 100% - 70px - (12px * 2));
 		}
@@ -157,7 +181,7 @@
 	}
 	@include respond-to(desktop) {
 		.slider__inner {
-			width: calc(100% - 70px - (14px * 2));
+			width: calc(100% - 70px);
 		}
 		.slide__image {
 			height: 512px;
@@ -166,11 +190,13 @@
 }
 
 .slider--small {
-	.slider__inner {
-		width: calc(100% - (10px * 6));
+	&.single {
+		.slider__inner {
+			width: 100%;
+		}		
 	}
 	.slide__image {
-		height: 206px;
+		height: 126px;
 	}
 	.slide .slider__inner-controls {
 		width: 100%;
@@ -181,6 +207,14 @@
     color: #000;
 	}
 	@include respond-to(desktop) {
+		.slide__image {
+			height: 160px;
+		}		
+	}	
+	@include respond-to(desktop-1280) {
+		.slider__inner {
+			width: calc(100% - (10px * 6));
+		}
 		.slide__image {
 			height: 254px;
 		}

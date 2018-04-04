@@ -52,6 +52,13 @@ var HeaderM = function (_Component) {
 	}
 
 	_createClass(HeaderM, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.location.pathname !== this.props.location.pathname && this.state.isVisible) {
+				this.toggle();
+			}
+		}
+	}, {
 		key: 'toggle',
 		value: function toggle() {
 			this.setState({
@@ -103,4 +110,4 @@ var HeaderM = function (_Component) {
 	return HeaderM;
 }(_react.Component);
 
-exports.default = HeaderM;
+exports.default = (0, _reactRouterDom.withRouter)(HeaderM);

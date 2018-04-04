@@ -124,7 +124,7 @@ var HeaderDTFilterSearch = function (_Component) {
 		value: function render() {
 			var content = this.props.content;
 
-			var fixedStart = 11;
+			var fixedStart = window.innerWidth > 1280 ? 11 : 8;
 			var config = {
 				separator: '/',
 				filter: {

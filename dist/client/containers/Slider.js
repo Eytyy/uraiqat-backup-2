@@ -104,7 +104,7 @@ var Slider = function (_Component) {
 				'div',
 				{ ref: function ref(el) {
 						_this2.slider = el;
-					}, className: 'slider ' + classList },
+					}, className: 'slider ' + (content.length > 1 ? 'multiple' : 'single') + ' ' + classList },
 				_react2.default.createElement(
 					'div',
 					{ className: 'slider__inner' },

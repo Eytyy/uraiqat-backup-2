@@ -1,17 +1,22 @@
 .related-content {
-	display: flex;
-	flex-wrap: wrap;
-	margin-left: -84px;
-	margin-top: 96px;
+	margin-top: $lh * 3;
 	.related-item {
-		.post-preview__image {
-		}
 		&--project {
 			flex: 0 0 714px;
 			.post-preview__image {
 				height: 416px;
 			}
 		}
+	}
+	@include respond-to(tablet) {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: $tablet-char-width * -6;
+		margin-top: $tablet-lh * 3;
+	}
+	@include respond-to(desktop) {
+		margin-left: $desktop-char-width * -6;
+		margin-top: $desktop-lh * 3;
 	}
 }
 

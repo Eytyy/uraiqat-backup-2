@@ -41,7 +41,7 @@ class Slider extends Component {
 		}	
 		// otherwise render the slider
 		return ( 
-			<div ref={(el) => { this.slider = el; }} className={`slider ${classList}`}>
+			<div ref={(el) => { this.slider = el; }} className={`slider ${content.length > 1 ? 'multiple' : 'single'} ${classList}`}>
 				<div className="slider__inner">
 					<div style={sliderRailStyle} className="slider__slides">
 						{ content.map(({ fields, sys }, index) =>

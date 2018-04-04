@@ -63,7 +63,7 @@ class HeaderDTFilterSearch extends Component {
 	}
 	render() {
 		const { content } = this.props;
-		const fixedStart = 11;
+		const fixedStart = window.innerWidth > 1280 ? 11 : 8;
 		const config = {
 			separator: '/',
 			filter: {
