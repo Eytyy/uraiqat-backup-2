@@ -122,7 +122,9 @@ var HeaderDTFilterSearch = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var content = this.props.content;
+			var _props2 = this.props,
+			    content = _props2.content,
+			    location = _props2.location;
 
 			var fixedStart = window.innerWidth > 1280 ? 11 : 8;
 			var config = {
@@ -142,15 +144,15 @@ var HeaderDTFilterSearch = function (_Component) {
 				}
 			};
 			var reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
-			var reservedFilterSize = config.filter.name.length + config.filter.glyph.content.length;
-			var reservedEmptySpaces = config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
+			var reservedFilterSize = location.pathname !== '/' ? 0 : config.filter.name.length + config.filter.glyph.content.length;
+			var reservedEmptySpaces = location.pathname !== '/' ? config.search.spacesAfter + config.search.spacesBefore : config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
 			var numberofNavSeparators = 1;
 			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
 			return _react2.default.createElement(
 				'div',
 				{ className: 'header--desktop__main' },
 				_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: fixedStart }),
-				_react2.default.createElement(_HeaderDTFilterSearchFilter2.default, { filtersAreVisible: this.state.filtersAreVisible, onfilterClick: this.onfilterClick, config: config.filter }),
+				reservedFilterSize === 0 ? null : _react2.default.createElement(_HeaderDTFilterSearchFilter2.default, { filtersAreVisible: this.state.filtersAreVisible, onfilterClick: this.onfilterClick, config: config.filter }),
 				_react2.default.createElement(_HeaderDTFilterSearchSearch2.default, { searchIsVisible: this.state.searchIsVisible, onSearchClick: this.onSearchClick, onSearchSubmit: this.onSearchSubmit, config: config.search }),
 				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: totalReservedSpaces }),
 				this.state.filtersAreVisible ? _react2.default.createElement(_HeaderDTFiltersList2.default, { content: content }) : null

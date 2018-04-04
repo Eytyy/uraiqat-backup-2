@@ -62,7 +62,7 @@ class HeaderDTFilterSearch extends Component {
 		return false;
 	}
 	render() {
-		const { content } = this.props;
+		const { content, location } = this.props;
 		const fixedStart = window.innerWidth > 1280 ? 11 : 8;
 		const config = {
 			separator: '/',
@@ -81,14 +81,16 @@ class HeaderDTFilterSearch extends Component {
 			}
 		};
 		const reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
-		const reservedFilterSize = config.filter.name.length + config.filter.glyph.content.length;
-		const reservedEmptySpaces = config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
+		const reservedFilterSize = location.pathname !== '/' ? 0 : config.filter.name.length + config.filter.glyph.content.length;
+		const reservedEmptySpaces = location.pathname !== '/' ?
+			config.search.spacesAfter + config.search.spacesBefore :
+			config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
 		const numberofNavSeparators = 1;
 		const totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
 		return (
 			<div className="header--desktop__main">
 				<HeaderPatternChunk fixed={fixedStart} />
-				<HeaderDTFilterSearchFilter filtersAreVisible={this.state.filtersAreVisible} onfilterClick={this.onfilterClick} config={config.filter} />
+				{ reservedFilterSize === 0 ? null : <HeaderDTFilterSearchFilter filtersAreVisible={this.state.filtersAreVisible} onfilterClick={this.onfilterClick} config={config.filter} />}
 				<HeaderDTFilterSearchSearch searchIsVisible={this.state.searchIsVisible} onSearchClick={this.onSearchClick} onSearchSubmit={this.onSearchSubmit} config={config.search} />
 				<HeaderPatternChunk reserved={totalReservedSpaces} />
 				{ this.state.filtersAreVisible ? <HeaderDTFiltersList content={content} /> : null}
