@@ -78,8 +78,8 @@ $video-post-height--desktop-1600: 378px;
 }
 
 .post-preview--featured {
-	margin-left: ($mobile-padding * -1);
-	margin-right: ($mobile-padding * -1);
+	margin-left: auto;
+	margin-right: auto;
 	.post-preview__title {
 		margin: 0;
 	}
@@ -101,8 +101,6 @@ $video-post-height--desktop-1600: 378px;
 		}
 	}
 	@include respond-to(tablet) {
-		margin-left: auto;
-		margin-right: auto;
 		.post-preview__video {
 			margin: 0 auto;
 			padding: 0;

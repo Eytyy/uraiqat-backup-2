@@ -31,7 +31,16 @@
 	.label {
 		font-family: $font--bold;
 	}
+	@include respond-to(tablet) {
+		&__item {
+			display: inline-block;
+		}
+
+	}
 	@include respond-to(desktop-1440) {
+		&__item {
+			display: block;
+		}
 		float: right;
 		width: 252px;
 	}	
@@ -80,13 +89,16 @@
 }
 
 .project__drawings {
-	width: 392px;
+	width: 100%;
+	margin-top: $lh * 2;
 	.preview-image {
 		@extend %blue-filter;
 		background-size: 200%;
 	}
 	@include respond-to(desktop) {
 		float: right;
+		width: 392px;
+		margin-top: 0;
 	}	
 }
 
@@ -145,7 +157,7 @@
 	}
 	@include respond-to(desktop) {
 		.slider__inner {
-			width: calc( 100% - 70px - (14px * 2));
+			width: calc(100% - 70px - (14px * 2));
 		}
 		.slide__image {
 			height: 512px;
@@ -155,10 +167,10 @@
 
 .slider--small {
 	.slider__inner {
-		width: 334px;
+		width: calc(100% - (10px * 6));
 	}
 	.slide__image {
-		height: 254px;
+		height: 206px;
 	}
 	.slide .slider__inner-controls {
 		width: 100%;
@@ -167,5 +179,10 @@
     transform: translateY(-50%);
 		text-align: center;
     color: #000;
+	}
+	@include respond-to(desktop) {
+		.slide__image {
+			height: 254px;
+		}
 	}
 }
