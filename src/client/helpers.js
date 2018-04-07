@@ -59,9 +59,37 @@ export const getFontValues = () => {
 
 const config = {
 	mobile: {
+		'default-post--portrait': {
+			w: 280,
+			h: 360,
+		},
+		'default-post--landscape': {
+			w: 280,
+			h: 168,
+		},
+		'featured-post--portrait': {
+			w: 280,
+			h: 420,
+		},
+		'featured-post--landscape': {
+			w: 280,
+			h: 192,
+		},
+		'featured-post--video': {
+			w: 280,
+			h: 192,
+		},
+		'default-post--video': {
+			w: 280,
+			h: 168,
+		},
 		'project-main-thumb': {
 			w: 280,
 			h: 168,
+		},
+		'post-slider': {
+			w: 882,
+			h: 576,
 		},
 		'project-drawing-thumb--portrait': {
 			w: 140,
@@ -74,12 +102,52 @@ const config = {
 		'project-other-thumb': {
 			w: 140,
 			h: 96,
+		},
+		'project-main-slider': {
+			w: 280,
+			h: 192,
+		},
+		'project-drawings-slider': {
+			w: 280,
+			h: 144,
+		},
+		'related-project--landscape': {
+			w: 644,
+			h: 448
 		},
 	},
 	mobileX2: {
+		'default-post--portrait': {
+			w: 320,
+			h: 480,
+		},
+		'default-post--landscape': {
+			w: 320,
+			h: 192,
+		},
+		'featured-post--portrait': {
+			w: 320,
+			h: 456,
+		},
+		'featured-post--landscape': {
+			w: 320,
+			h: 192,
+		},
+		'featured-post--video': {
+			w: 320,
+			h: 240,
+		},
+		'default-post--video': {
+			w: 320,
+			h: 240,
+		},
 		'project-main-thumb': {
 			w: 320,
 			h: 168,
+		},
+		'post-slider': {
+			w: 882,
+			h: 576,
 		},
 		'project-drawing-thumb--portrait': {
 			w: 160,
@@ -93,8 +161,48 @@ const config = {
 			w: 160,
 			h: 96,
 		},
+		'project-main-slider': {
+			w: 320,
+			h: 192,
+		},
+		'project-drawings-slider': {
+			w: 320,
+			h: 144,
+		},
+		'related-project--landscape': {
+			w: 320,
+			h: 448
+		},
 	},
 	tablet: {
+		'default-post--portrait': {
+			w: 210,
+			h: 286,
+		},
+		'default-post--landscape': {
+			w: 312,
+			h: 208,
+		},
+		'featured-post--portrait': {
+			w: 360,
+			h: 546,
+		},
+		'featured-post--landscape': {
+			w: 516,
+			h: 312,
+		},
+		'featured-post--video': {
+			w: 516,
+			h: 312,
+		},
+		'default-post--video': {
+			w: 312,
+			h: 208,
+		},
+		'post-slider': {
+			w: 882,
+			h: 576,
+		},
 		'project-main-thumb': {
 			w: 384,
 			h: 260,
@@ -111,8 +219,48 @@ const config = {
 			w: 168,
 			h: 130,
 		},
+		'project-main-slider': {
+			w: 590,
+			h: 416,
+		},
+		'project-drawings-slider': {
+			w: 252,
+			h: 144,
+		},
+		'related-project--landscape': {
+			w: 644,
+			h: 448
+		},
 	},
 	desktop: {
+		'default-post--portrait': {
+			w: 210,
+			h: 320,
+		},
+		'default-post--landscape': {
+			w: 350,
+			h: 224,
+		},
+		'featured-post--portrait': {
+			w: 360,
+			h: 546,
+		},
+		'featured-post--landscape': {
+			w: 868,
+			h: 512,
+		},
+		'featured-post--video': {
+			w: 868,
+			h: 512,
+		},
+		'default-post--video': {
+			w: 532,
+			h: 320,
+		},
+		'post-slider': {
+			w: 882,
+			h: 576,
+		},
 		'project-main-thumb': {
 			w: 532,
 			h: 320,
@@ -129,8 +277,48 @@ const config = {
 			w: 210,
 			h: 160,
 		},
+		'project-main-slider': {
+			w: 833,
+			h: 512,
+		},
+		'project-drawings-slider': {
+			w: 252,
+			h: 160,
+		},
+		'related-project--landscape': {
+			w: 644,
+			h: 448
+		},
 	},
 	desktop1280: {
+		'default-post--portrait': {
+			w: 210,
+			h: 320,
+		},
+		'default-post--landscape': {
+			w: 350,
+			h: 224,
+		},
+		'featured-post--portrait': {
+			w: 360,
+			h: 546,
+		},
+		'featured-post--landscape': {
+			w: 868,
+			h: 512,
+		},
+		'featured-post--video': {
+			w: 868,
+			h: 512,
+		},
+		'default-post--video': {
+			w: 532,
+			h: 328,
+		},
+		'post-slider': {
+			w: 882,
+			h: 576,
+		},
 		'project-main-thumb': {
 			w: 574,
 			h: 384,
@@ -146,6 +334,18 @@ const config = {
 		'project-other-thumb': {
 			w: 294,
 			h: 192,
+		},
+		'project-main-slider': {
+			w: 833,
+			h: 512,
+		},
+		'project-drawings-slider': {
+			w: 336,
+			h: 254,
+		},
+		'related-project--landscape': {
+			w: 644,
+			h: 448
 		},
 	},
 	desktop1440: {
@@ -177,14 +377,6 @@ const config = {
 			w: 882,
 			h: 576,
 		},
-		'post-media--video': {
-			w: 900,
-			h: 512,
-		},
-		'post-media--image': {
-			w: 900,
-			h: 512
-		},
 		'project-main-thumb': {
 			w: 700,
 			h: 416,
@@ -202,11 +394,11 @@ const config = {
 			h: 208,
 		},
 		'project-main-slider': {
-			w: 826,
+			w: 833,
 			h: 512,
 		},
 		'project-drawings-slider': {
-			w: 334,
+			w: 336,
 			h: 254,
 		},
 		'related-project--landscape': {

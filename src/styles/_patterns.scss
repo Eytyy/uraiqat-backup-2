@@ -1,9 +1,21 @@
 .slider--main .pattern {
-	height: 512px;
+	height: 192px;
+	@include respond-to(tablet) {
+		height: 416px;
+	}
+	@include respond-to(desktop) {
+		height: 512px;
+	}
 }
 
 .slider--small .pattern {
-	height: 254px;
+	height: 144px;
+	@include respond-to(tablet) {
+		height: 160px;
+	}
+	@include respond-to(desktop) {
+		height: 254px;
+	}
 }
 
 .preview-pattern,

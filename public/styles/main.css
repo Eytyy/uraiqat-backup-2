@@ -361,10 +361,6 @@ body {
   @media (min-width: 375px) {
     .post-preview--featured .post-preview__video {
       height: 240px; } }
-  @media (min-width: 414px) {
-    .post-preview--featured .post-preview__video {
-      padding-top: 54.669703872437%;
-      height: 0; } }
   @media (min-width: 768px) {
     .post-preview--featured .post-preview__video {
       margin: 0 auto;
@@ -393,7 +389,7 @@ body {
 
 .post-preview--landscape .post-preview__image,
 .post-preview--text .post-preview__image {
-  padding-top: 60%;
+  height: 240px;
   position: relative; }
   .post-preview--landscape .post-preview__image .preview-image,
   .post-preview--text .post-preview__image .preview-image {
@@ -409,8 +405,7 @@ body {
             flex: 0 0 392px; }
     .post-preview--landscape .post-preview__image,
     .post-preview--text .post-preview__image {
-      height: 208px;
-      padding-top: 0; }
+      height: 208px; }
       .post-preview--landscape .post-preview__image .preview-image,
       .post-preview--text .post-preview__image .preview-image {
         position: static; } }
@@ -956,7 +951,7 @@ img {
     .project__media {
       margin-left: 42px;
       margin-bottom: 64px;
-      max-width: 903px; } }
+      width: 903px; } }
   @media (min-width: 1440px) {
     .project__media {
       float: left;
@@ -1097,7 +1092,7 @@ img {
   width: 100%; }
 
 .slider--small .slide__image {
-  height: 126px; }
+  height: 144px; }
 
 .slider--small .slide .slider__inner-controls {
   width: 100%;
@@ -1114,7 +1109,7 @@ img {
 
 @media (min-width: 1280px) {
   .slider--small .slider__inner {
-    width: calc(100% - 60px); }
+    width: calc(100% - 56px); }
   .slider--small .slide__image {
     height: 254px; } }
 
@@ -1521,10 +1516,22 @@ img {
       display: none; }
 
 .slider--main .pattern {
-  height: 512px; }
+  height: 192px; }
+  @media (min-width: 768px) {
+    .slider--main .pattern {
+      height: 416px; } }
+  @media (min-width: 1024px) {
+    .slider--main .pattern {
+      height: 512px; } }
 
 .slider--small .pattern {
-  height: 254px; }
+  height: 144px; }
+  @media (min-width: 768px) {
+    .slider--small .pattern {
+      height: 160px; } }
+  @media (min-width: 1024px) {
+    .slider--small .pattern {
+      height: 254px; } }
 
 .preview-pattern,
 .post__image__pattern {

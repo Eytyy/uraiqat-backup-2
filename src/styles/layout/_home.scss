@@ -100,12 +100,6 @@ $video-post-height--desktop-1600: 378px;
 			height: 240px;
 		}	
 	}
-	@include respond-to(mobile-x3) {
-		.post-preview__video {
-			padding-top: 54.669703872437%;
-			height: 0;
-		}
-	}
 	@include respond-to(tablet) {
 		.post-preview__video {
 			margin: 0 auto;
@@ -167,7 +161,7 @@ $portrait-post-image--desktop-1440: 266px;
 .post-preview--landscape,
 .post-preview--text {
 	.post-preview__image {
-		padding-top: 60%;
+		height: 240px;
 		position: relative;
 		.preview-image {
 			position: absolute;
@@ -179,7 +173,6 @@ $portrait-post-image--desktop-1440: 266px;
 		flex: 0 0 ($default-post--tablet + $tablet-block-gutter);
 		.post-preview__image {
 			height: 208px;
-			padding-top: 0;
 			.preview-image {
 				position: static;
 			}
