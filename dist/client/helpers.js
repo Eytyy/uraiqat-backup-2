@@ -92,8 +92,12 @@ var config = {
 			h: 168
 		},
 		'post-slider': {
-			w: 882,
-			h: 576
+			w: 280,
+			h: 192
+		},
+		'post-media--video': {
+			w: 280,
+			h: 192
 		},
 		'project-drawing-thumb--portrait': {
 			w: 140,
@@ -116,8 +120,8 @@ var config = {
 			h: 144
 		},
 		'related-project--landscape': {
-			w: 644,
-			h: 448
+			w: 280,
+			h: 192
 		}
 	},
 	mobileX2: {
@@ -139,7 +143,7 @@ var config = {
 		},
 		'featured-post--video': {
 			w: 320,
-			h: 240
+			h: 192
 		},
 		'default-post--video': {
 			w: 320,
@@ -150,8 +154,12 @@ var config = {
 			h: 168
 		},
 		'post-slider': {
-			w: 882,
-			h: 576
+			w: 320,
+			h: 192
+		},
+		'post-media--video': {
+			w: 320,
+			h: 192
 		},
 		'project-drawing-thumb--portrait': {
 			w: 160,
@@ -175,7 +183,7 @@ var config = {
 		},
 		'related-project--landscape': {
 			w: 320,
-			h: 448
+			h: 416
 		}
 	},
 	tablet: {
@@ -204,8 +212,12 @@ var config = {
 			h: 208
 		},
 		'post-slider': {
-			w: 882,
-			h: 576
+			w: 566,
+			h: 416
+		},
+		'post-media--video': {
+			w: 660,
+			h: 416
 		},
 		'project-main-thumb': {
 			w: 384,
@@ -233,7 +245,7 @@ var config = {
 		},
 		'related-project--landscape': {
 			w: 644,
-			h: 448
+			h: 416
 		}
 	},
 	desktop: {
@@ -262,8 +274,12 @@ var config = {
 			h: 320
 		},
 		'post-slider': {
-			w: 882,
-			h: 576
+			w: 742,
+			h: 512
+		},
+		'post-media--video': {
+			w: 812,
+			h: 512
 		},
 		'project-main-thumb': {
 			w: 532,
@@ -290,8 +306,8 @@ var config = {
 			h: 160
 		},
 		'related-project--landscape': {
-			w: 644,
-			h: 448
+			w: 602,
+			h: 384
 		}
 	},
 	desktop1280: {
@@ -320,8 +336,12 @@ var config = {
 			h: 328
 		},
 		'post-slider': {
-			w: 882,
-			h: 576
+			w: 742,
+			h: 512
+		},
+		'post-media--video': {
+			w: 812,
+			h: 512
 		},
 		'project-main-thumb': {
 			w: 574,
@@ -348,8 +368,8 @@ var config = {
 			h: 254
 		},
 		'related-project--landscape': {
-			w: 644,
-			h: 448
+			w: 630,
+			h: 416
 		}
 	},
 	desktop1440: {
@@ -378,8 +398,12 @@ var config = {
 			h: 352
 		},
 		'post-slider': {
-			w: 882,
-			h: 576
+			w: 742,
+			h: 512
+		},
+		'post-media--video': {
+			w: 812,
+			h: 512
 		},
 		'project-main-thumb': {
 			w: 700,
@@ -406,11 +430,72 @@ var config = {
 			h: 254
 		},
 		'related-project--landscape': {
-			w: 644,
-			h: 448
+			w: 630,
+			h: 416
 		}
 	},
-	desktop1600: {}
+	desktop1600: {
+		'default-post--portrait': {
+			w: 266,
+			h: 384
+		},
+		'default-post--landscape': {
+			w: 392,
+			h: 256
+		},
+		'featured-post--portrait': {
+			w: 476,
+			h: 672
+		},
+		'featured-post--landscape': {
+			w: 882,
+			h: 576
+		},
+		'featured-post--video': {
+			w: 868,
+			h: 544
+		},
+		'default-post--video': {
+			w: 630,
+			h: 352
+		},
+		'post-slider': {
+			w: 742,
+			h: 512
+		},
+		'post-media--video': {
+			w: 882,
+			h: 512
+		},
+		'project-main-thumb': {
+			w: 700,
+			h: 416
+		},
+		'project-drawing-thumb--portrait': {
+			w: 322,
+			h: 416
+		},
+		'project-drawing-thumb--landscape': {
+			w: 644,
+			h: 208
+		},
+		'project-other-thumb': {
+			w: 322,
+			h: 208
+		},
+		'project-main-slider': {
+			w: 833,
+			h: 512
+		},
+		'project-drawings-slider': {
+			w: 336,
+			h: 254
+		},
+		'related-project--landscape': {
+			w: 630,
+			h: 416
+		}
+	}
 };
 var getContainerSize = exports.getContainerSize = function getContainerSize(container, preConfig) {
 	var containerSize = {};
@@ -435,7 +520,7 @@ var getContainerSize = exports.getContainerSize = function getContainerSize(cont
 		configTarget = config['desktop'];
 	} else if (windowDimensions.w >= 768) {
 		configTarget = config['tablet'];
-	} else if (windowDimensions.w >= 414) {
+	} else if (windowDimensions.w >= 375) {
 		configTarget = config['mobileX2'];
 	} else {
 		configTarget = config['mobile'];
@@ -471,7 +556,7 @@ var getMaxWidth = exports.getMaxWidth = function getMaxWidth() {
 		maxWidth = 952;
 	} else if (windowSize.w >= 768) {
 		maxWidth = 720;
-	} else if (windowSize.w > 375) {
+	} else if (windowSize.w >= 375) {
 		maxWidth = 320;
 	} else {
 		maxWidth = 280;

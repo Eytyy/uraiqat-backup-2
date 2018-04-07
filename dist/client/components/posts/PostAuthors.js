@@ -23,7 +23,7 @@ var PostAuthorWithLink = function PostAuthorWithLink(_ref) {
 		_react2.default.createElement(
 			_reactRouterDom.Link,
 			{ className: 'post__authors__list__item__link', to: '/team/' + content.relatedTeamMemberProfile.sys.id },
-			content.authorName,
+			content.title,
 			index === lastIndex ? '.' : ' ,'
 		)
 	);

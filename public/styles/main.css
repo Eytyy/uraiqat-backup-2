@@ -124,7 +124,13 @@ p {
   font-family: "ZeitungMonoPro-Reg"; }
 
 .field-body p {
-  margin-bottom: 32px; }
+  margin-bottom: 24px; }
+  @media (min-width: 768px) {
+    .field-body p {
+      margin-bottom: 26px; } }
+  @media (min-width: 1024px) {
+    .field-body p {
+      margin-bottom: 32px; } }
 
 h1, h2, h3, h4, h5 {
   margin: 0; }
@@ -301,6 +307,9 @@ body {
     .post-preview {
       padding-left: 98px; } }
 
+.landing-section--main .post-preview:last-child {
+  margin-bottom: 0; }
+
 .post-preview--default .post-preview__video {
   padding-top: 60%; }
 
@@ -358,9 +367,6 @@ body {
     height: 192px; }
   .post-preview--featured .post-preview__content {
     margin-top: 24px; }
-  @media (min-width: 375px) {
-    .post-preview--featured .post-preview__video {
-      height: 240px; } }
   @media (min-width: 768px) {
     .post-preview--featured .post-preview__video {
       margin: 0 auto;
@@ -596,37 +602,29 @@ body {
 @media (min-width: 768px) {
   .post-preview--featured.post-preview--landscape {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 596px;
-            flex: 0 0 596px; } }
-
-@media (min-width: 1024px) {
-  .post-preview--featured.post-preview--landscape {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 840px;
-            flex: 0 0 840px; } }
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%; } }
 
 @media (min-width: 1440px) {
-  .post-preview--featured.post-preview--landscape {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 952px;
-            flex: 0 0 952px; }
-    .post-preview--featured.post-preview--landscape .post-preview__content {
-      width: 826px;
-      margin: -96px 0 0 auto; } }
-
-@media (min-width: 1600px) {
-  .post-preview--featured.post-preview--landscape {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 966px;
-            flex: 0 0 966px; } }
+  .post-preview--featured.post-preview--landscape .post-preview__content {
+    width: 826px;
+    margin: -96px 0 0 auto; } }
 
 img {
   width: 100%;
   height: auto; }
 
 .website-footer {
-  margin-top: 96px;
-  padding-bottom: 32px; }
+  margin-top: 48px;
+  padding-bottom: 24px; }
+  @media (min-width: 768px) {
+    .website-footer {
+      margin-top: 52px;
+      padding-bottom: 26px; } }
+  @media (min-width: 1024px) {
+    .website-footer {
+      margin-top: 64px;
+      padding-bottom: 32px; } }
 
 .js-gallery-isActive {
   height: 100%;
@@ -1120,76 +1118,148 @@ img {
 .post__meta {
   display: inline-block;
   color: #4A4A4A;
-  font-size: 12px;
-  line-height: 28px; }
+  font-size: 10px;
+  line-height: 20px; }
   .post__meta__item,
   .post__meta .label {
     display: inline; }
   .post__meta .label {
     font-family: "ZeitungMonoPro-Bold"; }
+  @media (min-width: 768px) {
+    .post__meta {
+      font-size: 12px;
+      line-height: 24px; } }
 
 .post__authors__list__item__link {
   text-decoration: underline; }
 
 .post__content {
   width: 100%;
-  padding: 50px 0 0 0; }
+  padding: 48px 0 0 0; }
   @media (min-width: 768px) {
     .post__content {
-      padding: 60px 0 0 104px; } }
+      padding: 52px 0 0 60px; } }
   @media (min-width: 1024px) {
     .post__content {
       width: 882px;
-      padding: 70px 0 0 128px; } }
+      padding: 64px 0 0 70px; } }
 
 .post__media {
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   position: relative; }
   .post__media .slider__slides {
     float: none; }
-  .post__media .slide__image {
-    height: 576px; }
-  .post__media .slider__controls {
-    position: absolute;
-    right: -28px;
-    top: 0;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%); }
+  .post__media .slide__image, .post__media__video-wrapper {
+    height: 192px; }
   .post__media__image {
     overflow: hidden; }
-  .post__media__video-wrapper {
-    height: 480px; }
   .post__media .video {
     height: 100%;
-    width: 100%; }
+    width: 100%;
+    background-color: #000; }
     .post__media .video video {
       width: 100%;
-      height: auto; }
+      height: auto;
+      left: auto;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%); }
+  @media (min-width: 768px) {
+    .post__media {
+      margin-bottom: 52px; }
+      .post__media .slide__image, .post__media__video-wrapper {
+        height: 416px; } }
+  @media (min-width: 1024px) {
+    .post__media {
+      margin-bottom: 64px; }
+      .post__media .slide__image, .post__media__video-wrapper {
+        height: 512px; } }
 
 .post__media__caption {
   margin-top: 8px;
   color: #4A4A4A;
   font-family: "ZeitungMonoPro-Bold";
-  font-size: 14px;
-  line-height: 32px; }
+  font-size: 12px;
+  line-height: 18px; }
+  @media (min-width: 1024px) {
+    .post__media__caption {
+      font-size: 14px;
+      line-height: 22px; } }
 
 .field-body p:last-child {
   margin-bottom: 0; }
 
 .field-body + .post__media,
 .field-body + .subtitle {
-  margin-top: 64px; }
+  margin-top: 48px; }
+  @media (min-width: 768px) {
+    .field-body + .post__media,
+    .field-body + .subtitle {
+      margin-top: 52px; } }
+  @media (min-width: 1024px) {
+    .field-body + .post__media,
+    .field-body + .subtitle {
+      margin-top: 64px; } }
 
 .subtitle {
-  margin-bottom: 64px;
-  margin-left: -128px;
+  margin-bottom: 48px;
   max-width: 392px; }
+  @media (min-width: 768px) {
+    .subtitle {
+      margin-bottom: 52px; } }
+  @media (min-width: 1024px) {
+    .subtitle {
+      margin-bottom: 64px;
+      margin-left: -126px; } }
 
 .post__external-link {
   width: 882px;
-  margin: 68px 0 0 128px; }
+  margin-top: 48px; }
   .post__external-link a {
     color: blue; }
+  @media (min-width: 768px) {
+    .post__external-link {
+      margin-top: 52px; } }
+  @media (min-width: 1024px) {
+    .post__external-link {
+      margin: 64px 0 0 126px; } }
+
+.post__media .slider__controls {
+  position: absolute;
+  right: 0;
+  top: -24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.post__media .slider-btn--next {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3; }
+
+.post__media .slider__counter {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  margin: 0 20px; }
+
+.post__media .slider-btn--prev {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+@media (min-width: 768px) {
+  .post__media .slider__controls {
+    top: 0;
+    display: block; }
+  .post__media .slider__counter {
+    margin: 0; }
+  .post__media .slider__inner {
+    width: calc(100% - 94px); } }
+
+@media (min-width: 1024px) {
+  .post__media .slider__inner {
+    width: calc(100% - 70px); } }
 
 .related-content {
   margin-top: 72px; }
@@ -1198,7 +1268,7 @@ img {
         -ms-flex: 0 0 714px;
             flex: 0 0 714px; }
     .related-content .related-item--project .post-preview__image {
-      height: 416px; }
+      height: 192px; }
   @media (min-width: 768px) {
     .related-content {
       display: -webkit-box;
@@ -1524,9 +1594,9 @@ img {
   cursor: default;
   position: relative;
   background-color: #000;
-  height: 576px;
   -webkit-transition: background-color 100ms ease-in-out;
-  transition: background-color 100ms ease-in-out; }
+  transition: background-color 100ms ease-in-out;
+  height: 192px; }
   .slider .video video {
     width: 100%;
     height: auto;
@@ -1543,6 +1613,12 @@ img {
       opacity: 0; }
     .slider .video--loading .video-btn {
       display: none; }
+  @media (min-width: 768px) {
+    .slider .video {
+      height: 416px; } }
+  @media (min-width: 1024px) {
+    .slider .video {
+      height: 512px; } }
 
 .slider--main .pattern {
   height: 192px; }

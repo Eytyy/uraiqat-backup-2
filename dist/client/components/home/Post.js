@@ -21,6 +21,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Post = function Post(content) {
 	var previewDisplaySize = content.previewDisplaySize;
 
+	if (typeof content.title === 'undefined') {
+		return null;
+	}
 	return previewDisplaySize === 'Featured' ? _react2.default.createElement(_PostFeatured2.default, { content: content }) : _react2.default.createElement(_PostDefault2.default, { content: content });
 };
 

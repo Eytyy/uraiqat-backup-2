@@ -5,7 +5,7 @@ const PostAuthorWithLink = ({ content, index, lastIndex}) => {
 	return (
 		<span className="post__authors__list__item">
 			<Link className="post__authors__list__item__link" to={`/team/${content.relatedTeamMemberProfile.sys.id}`} >
-				{content.authorName}{index === lastIndex ? '.' : ' ,'}
+				{ content.title }{index === lastIndex ? '.' : ' ,'}
 			</Link>
 		</span>
 	);

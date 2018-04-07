@@ -84,7 +84,13 @@ p {
 }
 
 .field-body p {
-  margin-bottom: 32px;
+	margin-bottom: $lh;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh;
+	}
 }
 
 
