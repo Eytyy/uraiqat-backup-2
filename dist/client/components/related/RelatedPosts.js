@@ -77,19 +77,15 @@ var RelatedPosts = function (_Component) {
 			if (isFetching || content.length === 0) {
 				return null;
 			}
-			return _react2.default.createElement(
-				'aside',
-				{ className: 'related-content post__related' },
-				content.map(function (_ref) {
-					var fields = _ref.fields,
-					    sys = _ref.sys;
+			return content.map(function (_ref) {
+				var fields = _ref.fields,
+				    sys = _ref.sys;
 
-					var withid = _extends({}, fields, {
-						id: sys.id
-					});
-					return _react2.default.createElement(_PostDefault2.default, { content: withid, key: sys.id });
-				})
-			);
+				var withid = _extends({}, fields, {
+					id: sys.id
+				});
+				return _react2.default.createElement(_PostDefault2.default, { content: withid, key: sys.id });
+			});
 		}
 	}], [{
 		key: 'fetchData',

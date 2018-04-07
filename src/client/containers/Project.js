@@ -96,7 +96,9 @@ class Project extends Component { //eslint-disable-line
 						<Slider sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
-				<RelatedPosts id={match.params.id} />
+				<aside className="related-content project__related">
+					<RelatedPosts id={match.params.id} />
+				</aside>
 			</article>
 		);
 	}

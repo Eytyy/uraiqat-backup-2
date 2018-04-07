@@ -13,10 +13,39 @@
 		flex-wrap: wrap;
 		margin-left: $tablet-char-width * -6;
 		margin-top: $tablet-lh * 3;
+		.related-item {
+			&--project {
+				flex: 0 0 100%;
+				.post-preview__image {
+					height: 416px;
+				}
+			}
+		}
 	}
 	@include respond-to(desktop) {
-		margin-left: $desktop-char-width * -6;
+		margin-left: $desktop-char-width * -4;
 		margin-top: $desktop-lh * 3;
+		.related-item {
+			&--project {
+				flex: 0 0 602px;
+				.post-preview__image {
+					height: 384px;
+				}
+			}
+		}
+	}
+	@include respond-to(desktop-1280) {
+		.related-item {
+			&--project {
+				flex: 0 0 630px;
+				.post-preview__image {
+					height: 416px;
+				}
+			}
+		}
+	}
+	@include respond-to(desktop-1440) {
+		margin-left: $desktop-char-width * -6;
 	}
 }
 

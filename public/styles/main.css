@@ -389,7 +389,7 @@ body {
 
 .post-preview--landscape .post-preview__image,
 .post-preview--text .post-preview__image {
-  height: 240px;
+  height: 192px;
   position: relative; }
   .post-preview--landscape .post-preview__image .preview-image,
   .post-preview--text .post-preview__image .preview-image {
@@ -1118,7 +1118,7 @@ img {
   max-width: 392px; }
 
 .post__meta {
-  display: inline;
+  display: inline-block;
   color: #4A4A4A;
   font-size: 12px;
   line-height: 28px; }
@@ -1132,8 +1132,15 @@ img {
   text-decoration: underline; }
 
 .post__content {
-  width: 882px;
-  margin: 68px 0 0 128px; }
+  width: 100%;
+  padding: 50px 0 0 0; }
+  @media (min-width: 768px) {
+    .post__content {
+      padding: 60px 0 0 104px; } }
+  @media (min-width: 1024px) {
+    .post__content {
+      width: 882px;
+      padding: 70px 0 0 128px; } }
 
 .post__media {
   margin-bottom: 64px;
@@ -1200,11 +1207,33 @@ img {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
       margin-left: -72px;
-      margin-top: 78px; } }
+      margin-top: 78px; }
+      .related-content .related-item--project {
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 100%;
+                flex: 0 0 100%; }
+        .related-content .related-item--project .post-preview__image {
+          height: 416px; } }
   @media (min-width: 1024px) {
     .related-content {
-      margin-left: -84px;
-      margin-top: 96px; } }
+      margin-left: -56px;
+      margin-top: 96px; }
+      .related-content .related-item--project {
+        -webkit-box-flex: 0;
+            -ms-flex: 0 0 602px;
+                flex: 0 0 602px; }
+        .related-content .related-item--project .post-preview__image {
+          height: 384px; } }
+  @media (min-width: 1280px) {
+    .related-content .related-item--project {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 630px;
+              flex: 0 0 630px; }
+      .related-content .related-item--project .post-preview__image {
+        height: 416px; } }
+  @media (min-width: 1440px) {
+    .related-content {
+      margin-left: -84px; } }
 
 .slider__inner {
   overflow: hidden; }
