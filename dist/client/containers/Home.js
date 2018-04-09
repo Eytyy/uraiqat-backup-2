@@ -80,6 +80,7 @@ var Home = function (_Component) {
 			    isFetching = _props.isFetching,
 			    content = _props.content;
 
+			console.log(content);
 			if (isFetching && content.length === 0 || content.length === 0 || !this.state.intro) {
 				return _react2.default.createElement(
 					'div',
@@ -107,7 +108,7 @@ Home.propTypes = {
 var mapStateToProps = function mapStateToProps(state) {
 	return {
 		isFetching: (0, _reducers.isPostsFetching)(state),
-		content: (0, _reducers.getPosts)(state)
+		content: (0, _reducers.getFilteredContent)(state)
 	};
 };
 

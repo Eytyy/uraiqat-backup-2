@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchPosts } from '../actions';
-import { isPostsFetching, getPosts } from '../reducers';
+import { isPostsFetching, getPosts, getFilteredContent } from '../reducers';
 
 import Landing from '../components/landing/Landing';
 import LoadingPattern from '../components/patterns/LoadingPattern';
@@ -35,6 +35,7 @@ class Home extends Component {
 	}
 	render() {
 		const { isFetching, content } = this.props;
+		console.log(content);
 		if (isFetching && content.length === 0 || content.length === 0 || !this.state.intro ) {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
@@ -49,7 +50,7 @@ Home.propTypes = {
 
 const mapStateToProps = state => ({
 	isFetching: isPostsFetching(state),
-	content: getPosts(state),
+	content: getFilteredContent(state)
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPosts }, dispatch);

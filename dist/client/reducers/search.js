@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getFilters = exports.getAll = exports.getIsFetching = undefined;
+exports.getActiveFilters = exports.getFilters = exports.getAll = exports.getIsFetching = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -39,11 +39,23 @@ var All = function All() {
 				    fields = _ref.fields;
 				return {
 					title: fields.title,
-					id: sys.id
+					id: sys.id,
+					active: false
 				};
 			});
 			return _extends({}, state, {
 				filters: filters
+			});
+		case 'UPDATE_FILTER':
+			//eslint-disable-line
+			var updatedFilters = state.filters;
+			var filter = updatedFilters.find(function (_ref2) {
+				var id = _ref2.id;
+				return id === action.response.id;
+			});
+			filter.active = !filter.active;
+			return _extends({}, state, {
+				filters: [].concat(_toConsumableArray(updatedFilters))
 			});
 		default:
 			return state;
@@ -64,6 +76,13 @@ var getAll = exports.getAll = function getAll(state, query) {
 
 var getFilters = exports.getFilters = function getFilters(state) {
 	return state.All.filters;
+};
+
+var getActiveFilters = exports.getActiveFilters = function getActiveFilters(state) {
+	return state.All.filters.filter(function (_ref3) {
+		var active = _ref3.active;
+		return active;
+	});
 };
 
 exports.default = search;

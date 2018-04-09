@@ -18,7 +18,8 @@ class HeaderDTFilterSearch extends Component {
 			filtersAreVisible: false,
 			searchIsVisible: false,
 		};
-		this.onfilterClick = this.onfilterClick.bind(this);
+		this.onfiltersClick = this.onfiltersClick.bind(this);
+		this.onFilterClick = this.onFilterClick.bind(this);
 		this.onSearchClick = this.onSearchClick.bind(this);
 		this.onSearchSubmit = this.onSearchSubmit.bind(this);
 		this.clearSearch = this.clearSearch.bind(this);
@@ -28,7 +29,7 @@ class HeaderDTFilterSearch extends Component {
 			filtersAreVisible: !this.state.filtersAreVisible
 		});
 	}
-	onfilterClick() {
+	onfiltersClick() {
 		const { fetchFilters, content } = this.props;
 		if (!this.state.filtersAreVisible) {
 			if (content.length === 0) {
@@ -41,6 +42,10 @@ class HeaderDTFilterSearch extends Component {
 		} else {
 			this.toggleFilter();
 		}
+	}
+	onFilterClick(id) {
+		const { updateFilter } = this.props;
+		updateFilter(id);
 	}
 	clearSearch() {
 		if (this.search) {
@@ -60,6 +65,11 @@ class HeaderDTFilterSearch extends Component {
 		this.props.history.push(`/search?keyword=${keyword}`);
 		this.clearSearch();
 		return false;
+	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.location.pathname !== this.props.location.pathname && this.state.filtersAreVisible) {
+			this.toggleFilter();
+		}
 	}
 	render() {
 		const { content, location } = this.props;
@@ -90,10 +100,10 @@ class HeaderDTFilterSearch extends Component {
 		return (
 			<div className="header--desktop__main">
 				<HeaderPatternChunk fixed={fixedStart} />
-				{ reservedFilterSize === 0 ? null : <HeaderDTFilterSearchFilter filtersAreVisible={this.state.filtersAreVisible} onfilterClick={this.onfilterClick} config={config.filter} />}
+				{ reservedFilterSize === 0 ? null : <HeaderDTFilterSearchFilter filtersAreVisible={this.state.filtersAreVisible} onfiltersClick={this.onfiltersClick} config={config.filter} />}
 				<HeaderDTFilterSearchSearch searchIsVisible={this.state.searchIsVisible} onSearchClick={this.onSearchClick} onSearchSubmit={this.onSearchSubmit} config={config.search} />
 				<HeaderPatternChunk reserved={totalReservedSpaces} />
-				{ this.state.filtersAreVisible ? <HeaderDTFiltersList content={content} /> : null}
+				<HeaderDTFiltersList onFilterClick={this.onFilterClick} content={content} isVisible={this.state.filtersAreVisible} />
 			</div>
 		);
 	}

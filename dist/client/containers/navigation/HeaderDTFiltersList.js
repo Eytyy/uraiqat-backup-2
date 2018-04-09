@@ -22,8 +22,8 @@ var createFilters = function createFilters(content, availableSpace) {
 	var lineNumber = 0;
 	var spacesForEachFilter = 7;
 
-	function addFilterToLine(id, title) {
-		filters['line' + lineNumber].push({ id: id, title: title });
+	function addFilterToLine(id, title, active) {
+		filters['line' + lineNumber].push({ id: id, title: title, active: active });
 		limit = limit - title.length - spacesForEachFilter;
 		filters['line' + lineNumber].leftOvers = limit;
 	}
@@ -36,26 +36,29 @@ var createFilters = function createFilters(content, availableSpace) {
 
 	content.forEach(function (_ref) {
 		var title = _ref.title,
-		    id = _ref.id;
+		    id = _ref.id,
+		    active = _ref.active;
 
 		if (limit && title.length + spacesForEachFilter <= limit) {
 			if (typeof filters['line' + lineNumber] !== 'undefined') {
-				addFilterToLine(id, title);
+				addFilterToLine(id, title, active);
 			} else {
 				createNewLine();
-				addFilterToLine(id, title);
+				addFilterToLine(id, title, active);
 			}
 		} else {
 			createNewLine();
 			filters['line' + lineNumber] = [];
-			addFilterToLine(id, title);
+			addFilterToLine(id, title, active);
 		}
 	});
 	return filters;
 };
 
 var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
-	var content = _ref2.content;
+	var content = _ref2.content,
+	    onFilterClick = _ref2.onFilterClick,
+	    isVisible = _ref2.isVisible;
 
 	var maxWidth = (0, _helpers.getMaxWidth)();
 	var config = {
@@ -69,11 +72,14 @@ var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
 	var fixedEnd = 14;
 	var availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	var filters = createFilters(content, availableSpace);
+	if (!isVisible) {
+		return null;
+	}
 	return _react2.default.createElement(
 		'div',
 		{ className: 'filters-list' },
 		Object.keys(filters).map(function (key) {
-			return _react2.default.createElement(_Filters2.default, { fixedStart: fixedStart, fixedEnd: fixedEnd, key: key, content: filters[key] });
+			return _react2.default.createElement(_Filters2.default, { onFilterClick: onFilterClick, fixedStart: fixedStart, fixedEnd: fixedEnd, key: key, content: filters[key] });
 		})
 	);
 };

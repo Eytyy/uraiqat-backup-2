@@ -49,7 +49,8 @@ var HeaderMFilter = function (_Component) {
 		_this.state = {
 			filtersAreVisible: false
 		};
-		_this.onfilterClick = _this.onfilterClick.bind(_this);
+		_this.onfiltersClick = _this.onfiltersClick.bind(_this);
+		_this.onFilterClick = _this.onFilterClick.bind(_this);
 		return _this;
 	}
 
@@ -61,8 +62,8 @@ var HeaderMFilter = function (_Component) {
 			});
 		}
 	}, {
-		key: 'onfilterClick',
-		value: function onfilterClick() {
+		key: 'onfiltersClick',
+		value: function onfiltersClick() {
 			var _this2 = this;
 
 			var _props = this.props,
@@ -82,6 +83,13 @@ var HeaderMFilter = function (_Component) {
 			}
 		}
 	}, {
+		key: 'onFilterClick',
+		value: function onFilterClick(id) {
+			var updateFilter = this.props.updateFilter;
+
+			updateFilter(id);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var content = this.props.content;
@@ -97,7 +105,7 @@ var HeaderMFilter = function (_Component) {
 				{ className: 'header-mobile__filters' },
 				_react2.default.createElement(
 					'span',
-					{ className: 'link', onClick: this.onfilterClick },
+					{ className: 'link', onClick: this.onfiltersClick },
 					config.name
 				),
 				this.state.filtersAreVisible ? ':' : _react2.default.createElement(
@@ -118,10 +126,10 @@ var HeaderMFilter = function (_Component) {
 				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: reservedSpaces }),
 				this.state.filtersAreVisible ? _react2.default.createElement(
 					'span',
-					{ onClick: this.onfilterClick, className: 'link' },
+					{ onClick: this.onfiltersClick, className: 'link' },
 					'x'
 				) : '<',
-				this.state.filtersAreVisible ? _react2.default.createElement(_HeaderMFiltersList2.default, { content: content }) : null
+				this.state.filtersAreVisible ? _react2.default.createElement(_HeaderMFiltersList2.default, { onFilterClick: this.onFilterClick, content: content }) : null
 			);
 		}
 	}]);

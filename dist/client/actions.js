@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -229,7 +229,6 @@ var toggleGallery = exports.toggleGallery = function toggleGallery(sliderId, isV
 };
 
 // Search Action Creator 
-
 var requestSearch = function requestSearch() {
 	return {
 		type: 'REQUEST_SEARCH'
@@ -260,7 +259,6 @@ var fetchSearchResults = exports.fetchSearchResults = function fetchSearchResult
 };
 
 // Filter Action Creator
-
 var requestFilters = function requestFilters() {
 	return {
 		type: 'REQUEST_FILTERS'
@@ -286,5 +284,19 @@ var fetchFilters = exports.fetchFilters = function fetchFilters() {
 		}).then(function (response) {
 			dispatch(recieveFilters(response));
 		});
+	};
+};
+
+var updateFilterState = function updateFilterState(id) {
+	return {
+		type: 'UPDATE_FILTER',
+		response: {
+			id: id
+		}
+	};
+};
+var updateFilter = exports.updateFilter = function updateFilter(id) {
+	return function (dispatch) {
+		return dispatch(updateFilterState(id));
 	};
 };

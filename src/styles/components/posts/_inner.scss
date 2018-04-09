@@ -121,7 +121,7 @@
 	}
 	@include respond-to(desktop) {
 		margin-bottom: $desktop-lh * 2;
-		margin-left: $desktop-char-width * -9;
+		margin-left: $desktop-char-width * -5;
 		
 	}
 }

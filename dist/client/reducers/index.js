@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -124,6 +124,33 @@ var getSearchResults = exports.getSearchResults = function getSearchResults(stat
 var getFilters = exports.getFilters = function getFilters(state) {
 	var content = fromSearch.getFilters(state.search);
 	return typeof content === 'undefined' ? [] : content;
+};
+
+var getActiveFilters = exports.getActiveFilters = function getActiveFilters(state) {
+	return fromSearch.getActiveFilters(state.search);
+};
+
+var getFilteredContent = exports.getFilteredContent = function getFilteredContent(state) {
+	var posts = getPosts(state);
+	var filters = getActiveFilters(state).map(function (_ref2) {
+		var title = _ref2.title;
+		return title;
+	});
+	if (filters.length > 0) {
+		var featuredContent = posts.featuredContent.filter(function (_ref3) {
+			var category = _ref3.category;
+			return filters.indexOf(category.fields.title) > -1;
+		});
+		var mainContent = posts.mainContent.filter(function (_ref4) {
+			var category = _ref4.category;
+			return filters.indexOf(category.fields.title) > -1;
+		});
+		return {
+			featuredContent: featuredContent,
+			mainContent: mainContent
+		};
+	}
+	return posts;
 };
 
 exports.default = RootReducer;

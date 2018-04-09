@@ -58,7 +58,8 @@ var HeaderDTFilterSearch = function (_Component) {
 			filtersAreVisible: false,
 			searchIsVisible: false
 		};
-		_this.onfilterClick = _this.onfilterClick.bind(_this);
+		_this.onfiltersClick = _this.onfiltersClick.bind(_this);
+		_this.onFilterClick = _this.onFilterClick.bind(_this);
 		_this.onSearchClick = _this.onSearchClick.bind(_this);
 		_this.onSearchSubmit = _this.onSearchSubmit.bind(_this);
 		_this.clearSearch = _this.clearSearch.bind(_this);
@@ -73,8 +74,8 @@ var HeaderDTFilterSearch = function (_Component) {
 			});
 		}
 	}, {
-		key: 'onfilterClick',
-		value: function onfilterClick() {
+		key: 'onfiltersClick',
+		value: function onfiltersClick() {
 			var _this2 = this;
 
 			var _props = this.props,
@@ -92,6 +93,13 @@ var HeaderDTFilterSearch = function (_Component) {
 			} else {
 				this.toggleFilter();
 			}
+		}
+	}, {
+		key: 'onFilterClick',
+		value: function onFilterClick(id) {
+			var updateFilter = this.props.updateFilter;
+
+			updateFilter(id);
 		}
 	}, {
 		key: 'clearSearch',
@@ -118,6 +126,13 @@ var HeaderDTFilterSearch = function (_Component) {
 			this.props.history.push('/search?keyword=' + keyword);
 			this.clearSearch();
 			return false;
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.location.pathname !== this.props.location.pathname && this.state.filtersAreVisible) {
+				this.toggleFilter();
+			}
 		}
 	}, {
 		key: 'render',
@@ -152,10 +167,10 @@ var HeaderDTFilterSearch = function (_Component) {
 				'div',
 				{ className: 'header--desktop__main' },
 				_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: fixedStart }),
-				reservedFilterSize === 0 ? null : _react2.default.createElement(_HeaderDTFilterSearchFilter2.default, { filtersAreVisible: this.state.filtersAreVisible, onfilterClick: this.onfilterClick, config: config.filter }),
+				reservedFilterSize === 0 ? null : _react2.default.createElement(_HeaderDTFilterSearchFilter2.default, { filtersAreVisible: this.state.filtersAreVisible, onfiltersClick: this.onfiltersClick, config: config.filter }),
 				_react2.default.createElement(_HeaderDTFilterSearchSearch2.default, { searchIsVisible: this.state.searchIsVisible, onSearchClick: this.onSearchClick, onSearchSubmit: this.onSearchSubmit, config: config.search }),
 				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: totalReservedSpaces }),
-				this.state.filtersAreVisible ? _react2.default.createElement(_HeaderDTFiltersList2.default, { content: content }) : null
+				_react2.default.createElement(_HeaderDTFiltersList2.default, { onFilterClick: this.onFilterClick, content: content, isVisible: this.state.filtersAreVisible })
 			);
 		}
 	}]);

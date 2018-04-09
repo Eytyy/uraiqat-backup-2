@@ -37,7 +37,7 @@
 	@include respond-to(desktop-1280) {
 		.related-item {
 			&--project {
-				flex: 0 0 630px;
+				flex: 0 0 616px;
 				.post-preview__image {
 					height: 416px;
 				}

@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -16,88 +14,60 @@ var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var HeaderMFiltersListItem = function HeaderMFiltersListItem(_ref) {
+	var content = _ref.content,
+	    active = _ref.active,
+	    onFilterClick = _ref.onFilterClick,
+	    id = _ref.id;
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var HeaderMFiltersListItem = function (_Component) {
-	_inherits(HeaderMFiltersListItem, _Component);
-
-	function HeaderMFiltersListItem() {
-		_classCallCheck(this, HeaderMFiltersListItem);
-
-		var _this = _possibleConstructorReturn(this, (HeaderMFiltersListItem.__proto__ || Object.getPrototypeOf(HeaderMFiltersListItem)).call(this));
-
-		_this.state = {
-			active: false
-		};
-		_this.onFilterClick = _this.onFilterClick.bind(_this);
-		return _this;
-	}
-
-	_createClass(HeaderMFiltersListItem, [{
-		key: 'onFilterClick',
-		value: function onFilterClick() {
-			this.setState({
-				active: !this.state.active
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var name = this.props.name;
-
-			return _react2.default.createElement(
-				'div',
-				null,
+	var onClick = function onClick() {
+		onFilterClick(id);
+	};
+	return _react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(
+			'span',
+			{ onClick: onClick, className: 'filter link' },
+			active ? _react2.default.createElement(
+				'span',
+				{ className: 'filterBox' },
+				'[',
 				_react2.default.createElement(
 					'span',
-					{ onClick: this.onFilterClick, className: 'filter link' },
-					this.state.active ? _react2.default.createElement(
-						'span',
-						{ className: 'filterBox' },
-						'[',
-						_react2.default.createElement(
-							'span',
-							{ className: 'filterBox__state' },
-							'x'
-						),
-						']'
-					) : _react2.default.createElement(
-						'span',
-						{ className: 'filterBox' },
-						'[',
-						_react2.default.createElement(
-							'span',
-							{ className: 'filterBox__state' },
-							' '
-						),
-						']'
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(
-						'span',
-						null,
-						name
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					)
+					{ className: 'filterBox__state' },
+					'x'
 				),
-				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: name.length + 5 })
-			);
-		}
-	}]);
-
-	return HeaderMFiltersListItem;
-}(_react.Component);
+				']'
+			) : _react2.default.createElement(
+				'span',
+				{ className: 'filterBox' },
+				'[',
+				_react2.default.createElement(
+					'span',
+					{ className: 'filterBox__state' },
+					' '
+				),
+				']'
+			),
+			_react2.default.createElement(
+				'span',
+				{ className: 'ws' },
+				'-'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				content
+			),
+			_react2.default.createElement(
+				'span',
+				{ className: 'ws' },
+				'-'
+			)
+		),
+		_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: content.length + 5 })
+	);
+};
 
 exports.default = HeaderMFiltersListItem;

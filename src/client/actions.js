@@ -172,7 +172,6 @@ const updateGalleryVisibility = (sliderId, isVisible) => ({
 export const toggleGallery = (sliderId, isVisible) => dispatch => dispatch(updateGalleryVisibility(sliderId, isVisible));
 
 // Search Action Creator 
-
 const requestSearch = () => ({
 	type: 'REQUEST_SEARCH'
 });
@@ -196,9 +195,7 @@ export const fetchSearchResults = (query) => (dispatch, getState) => {
 	});
 };
 
-
 // Filter Action Creator
-
 const requestFilters = () => ({
 	type: 'REQUEST_FILTERS'
 });
@@ -221,4 +218,10 @@ export const fetchFilters = () => (dispatch, getState) => {
 	});
 };
 
-
+const updateFilterState = (id) => ({
+	type: 'UPDATE_FILTER',
+	response: {
+		id,
+	},
+});
+export const updateFilter = id => (dispatch) => dispatch(updateFilterState(id));

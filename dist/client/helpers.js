@@ -368,7 +368,7 @@ var config = {
 			h: 254
 		},
 		'related-project--landscape': {
-			w: 630,
+			w: 616,
 			h: 416
 		}
 	},

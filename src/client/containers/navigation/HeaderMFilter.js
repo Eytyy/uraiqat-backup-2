@@ -14,14 +14,15 @@ class HeaderMFilter extends Component {
 		this.state = {
 			filtersAreVisible: false,
 		};
-		this.onfilterClick = this.onfilterClick.bind(this);
+		this.onfiltersClick = this.onfiltersClick.bind(this);
+		this.onFilterClick = this.onFilterClick.bind(this);
 	}
 	toggleFilter() {
 		this.setState({
 			filtersAreVisible: !this.state.filtersAreVisible
 		});
 	}
-	onfilterClick() {
+	onfiltersClick() {
 		const { fetchFilters, content } = this.props;
 		if (!this.state.filtersAreVisible) {
 			if (content.length === 0) {
@@ -35,6 +36,10 @@ class HeaderMFilter extends Component {
 			this.toggleFilter();
 		}
 	}
+	onFilterClick(id) {
+		const { updateFilter } = this.props;
+		updateFilter(id);
+	}
 	render() {
 		const { content } = this.props;
 		const config = {
@@ -45,15 +50,15 @@ class HeaderMFilter extends Component {
 		const reservedSpaces = config.name.length + config.spacesAfter;
 		return (
 			<div className="header-mobile__filters">
-				<span className="link" onClick={this.onfilterClick}>
+				<span className="link" onClick={this.onfiltersClick}>
 					{config.name}
 				</span>
 				{ this.state.filtersAreVisible ? ':' : <span className="ws">-</span>}
 				<span className="ws">-</span>
 				<span className="ws">-</span>
 				<HeaderPatternChunk reserved={reservedSpaces} />
-				{ this.state.filtersAreVisible ? <span onClick={this.onfilterClick} className="link">x</span> : '<'}
-				{ this.state.filtersAreVisible ? <HeaderMFiltersList content={content} /> : null}
+				{ this.state.filtersAreVisible ? <span onClick={this.onfiltersClick} className="link">x</span> : '<'}
+				{ this.state.filtersAreVisible ? <HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} /> : null}
 			</div>
 		);
 	}

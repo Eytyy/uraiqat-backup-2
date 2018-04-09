@@ -83,4 +83,22 @@ export const getFilters = (state) => {
 	
 };
 
+export const getActiveFilters = (state) => {
+	return fromSearch.getActiveFilters(state.search);
+};
+
+export const getFilteredContent = (state) => {
+	const posts = getPosts(state);
+	const filters = getActiveFilters(state).map(({ title }) => title);
+	if (filters.length > 0) {
+		const featuredContent = posts.featuredContent.filter(({ category }) =>  filters.indexOf(category.fields.title) > -1);
+		const mainContent = posts.mainContent.filter(({ category }) => filters.indexOf(category.fields.title) > -1);
+		return {
+			featuredContent,
+			mainContent
+		};
+	}
+	return posts;
+};
+
 export default RootReducer;

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class HeaderDTFilterSearchFilter extends Component {
 	render() {
-		const { config, filtersAreVisible, onfilterClick } = this.props;
+		const { config, filtersAreVisible, onfiltersClick } = this.props;
 		return (
 			<span className="filters">
 				<span className="ws">-</span>
 				<span className="ws">-</span>
-				<span className="link" onClick={onfilterClick}>
+				<span className="link" onClick={onfiltersClick}>
 					{ filtersAreVisible ? '-' : config.glyph.content}
 					{config.name}
 				</span>

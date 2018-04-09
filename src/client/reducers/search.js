@@ -23,11 +23,22 @@ const All = (state = {
 	case 'RECIEVE_FILTERS':  //eslint-disable-line
 		const filters = action.response.map(({ sys, fields }) => ({
 			title: fields.title,
-			id: sys.id
+			id: sys.id,
+			active: false,
 		}));
 		return {
 			...state,
 			filters,
+		};
+	case 'UPDATE_FILTER':  //eslint-disable-line
+		const updatedFilters = state.filters;
+		const filter = updatedFilters.find(({ id }) => id === action.response.id);
+		filter.active = !filter.active;
+		return {
+			...state,
+			filters: [
+				...updatedFilters
+			]
 		};
 	default:
 		return state;
@@ -43,5 +54,7 @@ export const getIsFetching = state => state.All.isFetching;
 export const getAll = (state, query) => state.All.results[query];
 
 export const getFilters = (state) => state.All.filters;
+
+export const getActiveFilters = (state) => state.All.filters.filter(({ active }) => active);
 
 export default search;

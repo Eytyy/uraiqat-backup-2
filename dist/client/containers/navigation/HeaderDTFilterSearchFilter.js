@@ -33,7 +33,7 @@ var HeaderDTFilterSearchFilter = function (_Component) {
 			var _props = this.props,
 			    config = _props.config,
 			    filtersAreVisible = _props.filtersAreVisible,
-			    onfilterClick = _props.onfilterClick;
+			    onfiltersClick = _props.onfiltersClick;
 
 			return _react2.default.createElement(
 				"span",
@@ -50,7 +50,7 @@ var HeaderDTFilterSearchFilter = function (_Component) {
 				),
 				_react2.default.createElement(
 					"span",
-					{ className: "link", onClick: onfilterClick },
+					{ className: "link", onClick: onfiltersClick },
 					filtersAreVisible ? '-' : config.glyph.content,
 					config.name
 				),
