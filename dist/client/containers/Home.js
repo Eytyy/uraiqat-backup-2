@@ -80,7 +80,6 @@ var Home = function (_Component) {
 			    isFetching = _props.isFetching,
 			    content = _props.content;
 
-			console.log(content);
 			if (isFetching && content.length === 0 || content.length === 0 || !this.state.intro) {
 				return _react2.default.createElement(
 					'div',

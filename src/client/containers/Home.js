@@ -35,7 +35,6 @@ class Home extends Component {
 	}
 	render() {
 		const { isFetching, content } = this.props;
-		console.log(content);
 		if (isFetching && content.length === 0 || content.length === 0 || !this.state.intro ) {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
