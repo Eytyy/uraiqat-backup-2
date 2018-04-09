@@ -1,4 +1,14 @@
-import { getIsClientLoading, isPostsFetching, isPostFetching, isProjectsFetching, isProjectFetching, isRelatedFetching, isSearchFetching } from './reducers';
+import {
+	getIsClientLoading,
+	isPostsFetching,
+	isPostFetching,
+	isProjectsFetching,
+	isProjectFetching,
+	isRelatedFetching, 
+	isSearchFetching,
+	isPracticeFetching
+} from './reducers';
+
 import * as api from './api';
 
 // App Action Creators
@@ -224,4 +234,31 @@ const updateFilterState = (id) => ({
 		id,
 	},
 });
+
 export const updateFilter = id => (dispatch) => dispatch(updateFilterState(id));
+
+
+// Pratctice Action Creator 
+const requestPractice = () => ({
+	type: 'REQUEST_PRACTICE'
+});
+
+const recievePractice = (payload) => ({
+	type: 'RECIEVE_PRACTICE',
+	response: payload,
+});
+
+export const fetchPractice = () => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestPractice);
+	if (isPracticeFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchPractice().then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recievePractice(response));
+	});
+};
+
+

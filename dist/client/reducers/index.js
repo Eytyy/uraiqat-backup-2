@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -27,6 +27,10 @@ var _search = require('./search');
 
 var fromSearch = _interopRequireWildcard(_search);
 
+var _practice = require('./practice');
+
+var fromPractice = _interopRequireWildcard(_practice);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
@@ -34,7 +38,8 @@ var RootReducer = (0, _redux.combineReducers)({
 	projects: fromWork.default,
 	related: fromRelated.default,
 	gallery: fromGallery.default,
-	search: fromSearch.default
+	search: fromSearch.default,
+	practice: fromPractice.default
 });
 
 // Home Selectors
@@ -151,6 +156,14 @@ var getFilteredContent = exports.getFilteredContent = function getFilteredConten
 		};
 	}
 	return posts;
+};
+
+var isPracticeFetching = exports.isPracticeFetching = function isPracticeFetching(state) {
+	return fromPractice.getIsFetching(state.practice);
+};
+
+var getPracticeContent = exports.getPracticeContent = function getPracticeContent(state) {
+	return fromPractice.getContent(state.practice);
 };
 
 exports.default = RootReducer;

@@ -66,3 +66,11 @@ export function fetchFilters() {
 		include: 3
 	}).then(response => response.items).catch(console.error);
 }
+
+export function fetchPractice() {
+	return client.getEntries({
+		content_type: 'practiceLanding',
+		'fields.title': 'Practice',
+		include: 3
+	}).then(payload => payload.items[0]);
+}

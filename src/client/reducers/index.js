@@ -4,13 +4,15 @@ import projects, * as fromWork from './work';
 import related, * as fromRelated from './related';
 import gallery, * as fromGallery from './gallery';
 import search, * as fromSearch from './search';
+import practice, * as fromPractice from './practice';
 
 const RootReducer = combineReducers({
 	posts,
 	projects,
 	related,
 	gallery,
-	search
+	search,
+	practice
 });
 
 // Home Selectors
@@ -99,6 +101,12 @@ export const getFilteredContent = (state) => {
 		};
 	}
 	return posts;
+};
+
+export const isPracticeFetching = state => fromPractice.getIsFetching(state.practice);
+
+export const getPracticeContent = state => {
+	return fromPractice.getContent(state.practice);
 };
 
 export default RootReducer;

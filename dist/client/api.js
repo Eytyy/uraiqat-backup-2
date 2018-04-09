@@ -10,6 +10,7 @@ exports.fetchProject = fetchProject;
 exports.fetchRelatedPosts = fetchRelatedPosts;
 exports.fetchSearchResults = fetchSearchResults;
 exports.fetchFilters = fetchFilters;
+exports.fetchPractice = fetchPractice;
 
 var _contentful = require('contentful');
 
@@ -88,4 +89,14 @@ function fetchFilters() {
 	}).then(function (response) {
 		return response.items;
 	}).catch(console.error);
+}
+
+function fetchPractice() {
+	return client.getEntries({
+		content_type: 'practiceLanding',
+		'fields.title': 'Practice',
+		include: 3
+	}).then(function (payload) {
+		return payload.items[0];
+	});
 }

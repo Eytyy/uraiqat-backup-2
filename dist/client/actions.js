@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -295,8 +295,38 @@ var updateFilterState = function updateFilterState(id) {
 		}
 	};
 };
+
 var updateFilter = exports.updateFilter = function updateFilter(id) {
 	return function (dispatch) {
 		return dispatch(updateFilterState(id));
+	};
+};
+
+// Pratctice Action Creator 
+var requestPractice = function requestPractice() {
+	return {
+		type: 'REQUEST_PRACTICE'
+	};
+};
+
+var recievePractice = function recievePractice(payload) {
+	return {
+		type: 'RECIEVE_PRACTICE',
+		response: payload
+	};
+};
+
+var fetchPractice = exports.fetchPractice = function fetchPractice() {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestPractice);
+		if ((0, _reducers.isPracticeFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchPractice().then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recievePractice(response));
+		});
 	};
 };
