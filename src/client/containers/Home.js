@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchPosts } from '../actions';
-import { isPostsFetching, getPosts, getFilteredContent } from '../reducers';
+import { isPostsFetching, getFilteredContent } from '../reducers';
 
 import Landing from '../components/landing/Landing';
 import LoadingPattern from '../components/patterns/LoadingPattern';
