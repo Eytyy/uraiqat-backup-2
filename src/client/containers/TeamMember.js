@@ -3,7 +3,7 @@ import React from 'react';
 const Team = () => {
 	return (
 		<div>
-			<h1>Team: Work In Progress</h1>
+			<h1>Team Member: Work In Progress</h1>
 		</div>
 	);
 };

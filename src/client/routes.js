@@ -9,6 +9,8 @@ import Atelier from './containers/Atelier';
 import Practice from './containers/Practice';
 import Contact from './containers/Contact';
 import Search from './containers/Search';
+import TeamMember from './containers/TeamMember';
+import Career from './containers/Career';
 
 const routes = [
 	{ component: App,
@@ -44,6 +46,14 @@ const routes = [
 			{ path: '/search',
 				exact: true,
 				component: Search
+			},
+			{ path: '/team/:id',
+				exact: true,
+				component: TeamMember
+			},
+			{ path: '/careers/:id',
+				exact: true,
+				component: Career
 			}
 		]
 	}

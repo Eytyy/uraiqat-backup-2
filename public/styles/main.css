@@ -1643,6 +1643,7 @@ img {
   padding: 48px 0 0 0;
   margin-bottom: 72px; }
   .practice-section--team .practice-section__inner {
+    width: 100%;
     margin-bottom: 0; }
   @media (min-width: 768px) {
     .practice-section__inner {
@@ -1659,29 +1660,41 @@ img {
 
 .team-member-preview {
   margin-bottom: 48px; }
-  .team-member-preview .post-preview__image {
+  .team-member-preview .preview-image {
     height: 360px; }
+  .team-member-preview:hover .preview-image:after,
+  .team-member-preview:hover .preview-image:before {
+    background-color: transparent; }
   @media (min-width: 375px) {
-    .team-member-preview .post-preview__image {
+    .team-member-preview .preview-image {
       height: 456px; } }
   @media (min-width: 768px) {
     .team-member-preview {
       -webkit-box-flex: 0;
-          -ms-flex: 0 0 368px;
-              flex: 0 0 368px;
+          -ms-flex: 0 0 346px;
+              flex: 0 0 346px;
       margin-bottom: 52px;
       padding-left: 80px; }
-      .team-member-preview .post-preview__image {
+      .team-member-preview .preview-image {
         height: 384px; } }
   @media (min-width: 1024px) {
     .team-member-preview {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 322px;
+              flex: 0 0 322px;
       padding-left: 56px;
       margin-bottom: 64px; } }
   @media (min-width: 1440px) {
     .team-member-preview {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 350px;
+              flex: 0 0 350px;
       padding-left: 84px; } }
   @media (min-width: 1600px) {
     .team-member-preview {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 364px;
+              flex: 0 0 364px;
       padding-left: 98px; } }
 
 .team-member-preview__name {

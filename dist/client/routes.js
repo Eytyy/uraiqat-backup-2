@@ -40,6 +40,14 @@ var _Search = require('./containers/Search');
 
 var _Search2 = _interopRequireDefault(_Search);
 
+var _TeamMember = require('./containers/TeamMember');
+
+var _TeamMember2 = _interopRequireDefault(_TeamMember);
+
+var _Career = require('./containers/Career');
+
+var _Career2 = _interopRequireDefault(_Career);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = [{ component: _App2.default,
@@ -67,6 +75,12 @@ var routes = [{ component: _App2.default,
 	}, { path: '/search',
 		exact: true,
 		component: _Search2.default
+	}, { path: '/team/:id',
+		exact: true,
+		component: _TeamMember2.default
+	}, { path: '/careers/:id',
+		exact: true,
+		component: _Career2.default
 	}]
 }];
 

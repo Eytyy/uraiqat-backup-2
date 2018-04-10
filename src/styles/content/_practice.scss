@@ -21,6 +21,7 @@
 	padding: ($lh * 2) 0 0 0;
 	margin-bottom: $lh * 3;
 	.practice-section--team & {
+		width: 100%;
 		margin-bottom: 0;
 	}
 	@include respond-to(tablet) {
@@ -45,30 +46,39 @@
 
 .team-member-preview {
 	margin-bottom: $lh * 2;
-	.post-preview__image {
+	.preview-image {
 		height: $portrait-height;
 	}
+	&:hover {
+		.preview-image:after,
+		.preview-image:before {
+			background-color: transparent;
+		}
+	}
 	@include respond-to(mobile-x2) {
-		.post-preview__image {
+		.preview-image {
 			height: $portrait-height--x2;
 		}
 	}	
 	@include respond-to(tablet) {
-		flex: 0 0 ($portrait-post--tablet + $tablet-block-gutter);
+		flex: 0 0 (266 + $tablet-block-gutter);
 		margin-bottom: $tablet-lh * 2;
 		padding-left: $tablet-block-gutter;
-		.post-preview__image {
+		.preview-image {
 			height: $portrait-height--desktop-1440;
 		}
 	}	
 	@include respond-to(desktop) {
+		flex: 0 0 (266 + $desktop-block-gutter);
 		padding-left: $desktop-block-gutter;
 		margin-bottom: $desktop-lh * 2;
 	}	
 	@include respond-to(desktop-1440) {
+		flex: 0 0 (266 + $desktop-1440-block-gutter);
 		padding-left: $desktop-1440-block-gutter;
 	}
 	@include respond-to(desktop-1600) {
+		flex: 0 0 (266 + $desktop-1600-block-gutter);
 		padding-left: $desktop-1600-block-gutter;
 	}	
 }
