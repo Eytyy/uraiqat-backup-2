@@ -20,13 +20,17 @@ var Basic = function Basic(_ref) {
 
 	return _react2.default.createElement(
 		'section',
-		{ className: 'practice-section practice-section' + sectionTitle },
+		{ className: 'practice-section practice-section--' + sectionTitle },
 		_react2.default.createElement(
 			'h2',
 			{ className: 'practice-section__title' },
 			sectionTitle
 		),
-		_react2.default.createElement(_BodyText2.default, { content: content })
+		_react2.default.createElement(
+			'div',
+			{ className: 'practice-section__inner' },
+			_react2.default.createElement(_BodyText2.default, { content: content })
+		)
 	);
 };
 

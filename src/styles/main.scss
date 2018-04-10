@@ -17,6 +17,9 @@
 @import "components/work/landing";
 @import "components/work/inner";
 
+@import "components/atelier/landing";
+@import "components/atelier/inner";
+
 @import "components/posts/inner";
 
 @import "components/related";
@@ -25,5 +28,7 @@
 @import "components/media/gallery";
 @import "components/media/image-preview";
 @import "components/media/video";
+
+@import "content/practice";
 
 @import "patterns";

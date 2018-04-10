@@ -1,0 +1,117 @@
+.practice-section {
+	.field-body {
+		width: 100%;
+		img {
+			margin: ($lh * 2) 0;
+		}
+		@include respond-to(tablet) {
+			img {
+				margin: ($tablet-lh * 2) 0;
+			}
+		}
+		@include respond-to(desktop) {
+			img {
+				margin: ($desktop-lh * 2) 0;
+			}
+		}
+	}
+}
+
+.practice-section__inner {
+	padding: ($lh * 2) 0 0 0;
+	margin-bottom: $lh * 3;
+	.practice-section--team & {
+		margin-bottom: 0;
+	}
+	@include respond-to(tablet) {
+		padding: ($tablet-lh * 2)  0 0 ($tablet-char-width * 5);
+		margin-bottom: $tablet-lh * 3;
+	}
+	@include respond-to(desktop) {
+		width: 882px;
+		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 5);
+		margin-bottom: $desktop-lh * 3;
+	}
+}
+
+.practice-section__title {
+	text-transform: capitalize;
+}
+
+// Portrait Default
+.practice-section__team-list {
+	@extend %defaultGrid;
+}
+
+.team-member-preview {
+	margin-bottom: $lh * 2;
+	.post-preview__image {
+		height: $portrait-height;
+	}
+	@include respond-to(mobile-x2) {
+		.post-preview__image {
+			height: $portrait-height--x2;
+		}
+	}	
+	@include respond-to(tablet) {
+		flex: 0 0 ($portrait-post--tablet + $tablet-block-gutter);
+		margin-bottom: $tablet-lh * 2;
+		padding-left: $tablet-block-gutter;
+		.post-preview__image {
+			height: $portrait-height--desktop-1440;
+		}
+	}	
+	@include respond-to(desktop) {
+		padding-left: $desktop-block-gutter;
+		margin-bottom: $desktop-lh * 2;
+	}	
+	@include respond-to(desktop-1440) {
+		padding-left: $desktop-1440-block-gutter;
+	}
+	@include respond-to(desktop-1600) {
+		padding-left: $desktop-1600-block-gutter;
+	}	
+}
+
+.team-member-preview__name {
+	margin-top: $lh/2;
+	@include respond-to(tablet) {
+		margin-top: $tablet-lh/2;
+	}
+	@include respond-to(desktop) {
+		margin-top: $desktop-lh/2;
+	}
+}
+
+.career-preview__link {
+	display: flex;
+	.career-preview__date,
+	.sep {
+		color: #000;
+	}
+	.sep {
+		margin: 0 $char-width;
+	}
+	@include respond-to(tablet) {
+		.sep {
+			margin: 0 $tablet-char-width;
+		}
+	}
+	@include respond-to(desktop) {
+		.sep {
+			margin: 0 $desktop-char-width;
+		}
+	}
+}
+
+.practice-section--careers {
+	.field-body {
+		margin-bottom: $lh;
+	}
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh;
+	}
+}

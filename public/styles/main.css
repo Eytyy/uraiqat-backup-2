@@ -269,7 +269,7 @@ body {
       padding-top: 160px; } }
 
 @media (min-width: 768px) {
-  .landing-page--journal .landing-section {
+  .landing-page--journal .landing-section, .practice-section__team-list {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -278,15 +278,15 @@ body {
     margin-left: -80px; } }
 
 @media (min-width: 1024px) {
-  .landing-page--journal .landing-section {
+  .landing-page--journal .landing-section, .practice-section__team-list {
     margin-left: -56px; } }
 
 @media (min-width: 1440px) {
-  .landing-page--journal .landing-section {
+  .landing-page--journal .landing-section, .practice-section__team-list {
     margin-left: -84px; } }
 
 @media (min-width: 1600px) {
-  .landing-page--journal .landing-section {
+  .landing-page--journal .landing-section, .practice-section__team-list {
     margin-left: -98px; } }
 
 .post-preview {
@@ -1372,7 +1372,7 @@ img {
   opacity: 1; }
 
 @media (min-width: 768px) {
-  .slide {
+  .slide .slider__inner-controls {
     display: block; } }
 
 .post__media .slide--video .slider__inner-controls {
@@ -1627,6 +1627,98 @@ img {
   @media (min-width: 1024px) {
     .slider .video {
       height: 512px; } }
+
+.practice-section .field-body {
+  width: 100%; }
+  .practice-section .field-body img {
+    margin: 48px 0; }
+  @media (min-width: 768px) {
+    .practice-section .field-body img {
+      margin: 52px 0; } }
+  @media (min-width: 1024px) {
+    .practice-section .field-body img {
+      margin: 64px 0; } }
+
+.practice-section__inner {
+  padding: 48px 0 0 0;
+  margin-bottom: 72px; }
+  .practice-section--team .practice-section__inner {
+    margin-bottom: 0; }
+  @media (min-width: 768px) {
+    .practice-section__inner {
+      padding: 52px 0 0 60px;
+      margin-bottom: 78px; } }
+  @media (min-width: 1024px) {
+    .practice-section__inner {
+      width: 882px;
+      padding: 64px 0 0 70px;
+      margin-bottom: 96px; } }
+
+.practice-section__title {
+  text-transform: capitalize; }
+
+.team-member-preview {
+  margin-bottom: 48px; }
+  .team-member-preview .post-preview__image {
+    height: 360px; }
+  @media (min-width: 375px) {
+    .team-member-preview .post-preview__image {
+      height: 456px; } }
+  @media (min-width: 768px) {
+    .team-member-preview {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 368px;
+              flex: 0 0 368px;
+      margin-bottom: 52px;
+      padding-left: 80px; }
+      .team-member-preview .post-preview__image {
+        height: 384px; } }
+  @media (min-width: 1024px) {
+    .team-member-preview {
+      padding-left: 56px;
+      margin-bottom: 64px; } }
+  @media (min-width: 1440px) {
+    .team-member-preview {
+      padding-left: 84px; } }
+  @media (min-width: 1600px) {
+    .team-member-preview {
+      padding-left: 98px; } }
+
+.team-member-preview__name {
+  margin-top: 12px; }
+  @media (min-width: 768px) {
+    .team-member-preview__name {
+      margin-top: 13px; } }
+  @media (min-width: 1024px) {
+    .team-member-preview__name {
+      margin-top: 16px; } }
+
+.career-preview__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .career-preview__link .career-preview__date,
+  .career-preview__link .sep {
+    color: #000; }
+  .career-preview__link .sep {
+    margin: 0 10px; }
+  @media (min-width: 768px) {
+    .career-preview__link .sep {
+      margin: 0 12px; } }
+  @media (min-width: 1024px) {
+    .career-preview__link .sep {
+      margin: 0 14px; } }
+
+.practice-section--careers .field-body {
+  margin-bottom: 24px; }
+
+@media (min-width: 768px) {
+  .practice-section--careers {
+    margin-bottom: 26px; } }
+
+@media (min-width: 1024px) {
+  .practice-section--careers {
+    margin-bottom: 32px; } }
 
 .slider--main .pattern {
   height: 192px; }

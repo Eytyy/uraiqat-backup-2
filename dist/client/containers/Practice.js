@@ -82,7 +82,7 @@ var Practice = function (_Component) {
 				_react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
 				_react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
 				_react2.default.createElement(_Team2.default, { content: content.fields.team }),
-				_react2.default.createElement(_Careers2.default, { content: content.fields.careers })
+				_react2.default.createElement(_Careers2.default, { desc: content.fields.careersBody, content: content.fields.careers })
 			);
 		}
 	}], [{

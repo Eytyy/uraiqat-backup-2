@@ -62,7 +62,9 @@
 		}
 	}
 	@include respond-to(tablet) {
-		display: block;
+		.slider__inner-controls {
+			display: block;
+		}
 	}
 }
 

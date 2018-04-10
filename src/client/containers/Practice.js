@@ -30,7 +30,7 @@ class Practice extends Component {
 				<Basic sectionTitle="about" content={content.fields.about} />
 				<Basic sectionTitle="philosophy" content={content.fields.philosophy} />
 				<Team content={content.fields.team} />
-				<Careers content={content.fields.careers} />
+				<Careers desc={content.fields.careersBody} content={content.fields.careers} />
 			</section>
 		);
 	}
