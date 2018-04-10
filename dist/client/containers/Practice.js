@@ -22,17 +22,17 @@ var _actions = require('../actions');
 
 var _reducers = require('../reducers');
 
-var _PracticeDefault = require('../components/practice/PracticeDefault');
+var _Basic = require('../components/practice/Basic');
 
-var _PracticeDefault2 = _interopRequireDefault(_PracticeDefault);
+var _Basic2 = _interopRequireDefault(_Basic);
 
-var _PracticeCareers = require('../components/practice/PracticeCareers');
+var _Careers = require('../components/practice/Careers');
 
-var _PracticeCareers2 = _interopRequireDefault(_PracticeCareers);
+var _Careers2 = _interopRequireDefault(_Careers);
 
-var _PracticeTeam = require('../components/practice/PracticeTeam');
+var _Team = require('../components/practice/Team');
 
-var _PracticeTeam2 = _interopRequireDefault(_PracticeTeam);
+var _Team2 = _interopRequireDefault(_Team);
 
 var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
@@ -79,10 +79,10 @@ var Practice = function (_Component) {
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-page landing-page--practice main-section' },
-				_react2.default.createElement(_PracticeDefault2.default, { sectionTitle: 'about', content: content.fields.about }),
-				_react2.default.createElement(_PracticeDefault2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
-				_react2.default.createElement(_PracticeTeam2.default, { content: content.fields.team }),
-				_react2.default.createElement(_PracticeCareers2.default, { content: content.fields.careers })
+				_react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
+				_react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
+				_react2.default.createElement(_Team2.default, { content: content.fields.team }),
+				_react2.default.createElement(_Careers2.default, { content: content.fields.careers })
 			);
 		}
 	}], [{

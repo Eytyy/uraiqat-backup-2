@@ -6,9 +6,9 @@ import { bindActionCreators } from 'redux';
 import { fetchPractice } from '../actions';
 import { isPracticeFetching, getPracticeContent } from '../reducers';
 
-import PracticeDefault from '../components/practice/PracticeDefault';
-import PracticeCareers from '../components/practice/PracticeCareers';
-import PracticeTeam from '../components/practice/PracticeTeam';
+import Basic from '../components/practice/Basic';
+import Careers from '../components/practice/Careers';
+import Team from '../components/practice/Team';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
@@ -27,10 +27,10 @@ class Practice extends Component {
 		}
 		return (
 			<section className="landing-page landing-page--practice main-section" >
-				<PracticeDefault sectionTitle="about" content={content.fields.about} />
-				<PracticeDefault sectionTitle="philosophy" content={content.fields.philosophy} />
-				<PracticeTeam content={content.fields.team} />
-				<PracticeCareers content={content.fields.careers} />
+				<Basic sectionTitle="about" content={content.fields.about} />
+				<Basic sectionTitle="philosophy" content={content.fields.philosophy} />
+				<Team content={content.fields.team} />
+				<Careers content={content.fields.careers} />
 			</section>
 		);
 	}

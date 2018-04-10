@@ -14,7 +14,7 @@ var _BodyText2 = _interopRequireDefault(_BodyText);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PracticeDefault = function PracticeDefault(_ref) {
+var Basic = function Basic(_ref) {
 	var sectionTitle = _ref.sectionTitle,
 	    content = _ref.content;
 
@@ -30,4 +30,4 @@ var PracticeDefault = function PracticeDefault(_ref) {
 	);
 };
 
-exports.default = PracticeDefault;
+exports.default = Basic;

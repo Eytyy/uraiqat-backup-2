@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PracticeTeam = ({ content }) => {
+const Team = ({ content }) => {
 	return (
 		<section className="practice-section__careers practice__team">
 			<h2 className="practice-section__title" >Team</h2>
@@ -22,4 +22,4 @@ const PracticeTeam = ({ content }) => {
 	);
 };
 
-export default PracticeTeam;
+export default Team;

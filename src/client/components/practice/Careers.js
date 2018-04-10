@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PracticeCareers = ({ content }) => {
+const Careers = ({ content }) => {
 	return (
 		<section className="practice-section__careers practice__careers">
 			<h2 className="practice-section__title" >Careers</h2>
@@ -18,4 +18,4 @@ const PracticeCareers = ({ content }) => {
 	);
 };
 
-export default PracticeCareers;
+export default Careers;
