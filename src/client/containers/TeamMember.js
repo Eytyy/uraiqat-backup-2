@@ -39,8 +39,8 @@ class TeamMember extends Component { //eslint-disable-line
 		return (
 			<article className="team-member">
 				<header className="team-member__header">
-					<h1 className="main-title team-member__title">{name}</h1>
-					<h2 className="team-member__role">{role}</h2>
+					{name && <h1 className="main-title team-member__title">{name}</h1>}
+					{role && <h2 className="team-member__role">{role}</h2>}
 				</header>
 				<div className="team-member__content">
 					<div className="team-member__content__col team-member__content__col--left">
@@ -53,7 +53,7 @@ class TeamMember extends Component { //eslint-disable-line
 						</div>
 					</div>
 					<div className="team-member__content__col team-member__content__col--right">
-						<BodyText content={about} />
+						{about && <BodyText content={about} />}
 					</div>
 				</div>
 				<aside className="related-content team-member__related">

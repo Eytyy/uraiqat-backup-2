@@ -106,12 +106,12 @@ var TeamMember = function (_Component) {
 				_react2.default.createElement(
 					'header',
 					{ className: 'team-member__header' },
-					_react2.default.createElement(
+					name && _react2.default.createElement(
 						'h1',
 						{ className: 'main-title team-member__title' },
 						name
 					),
-					_react2.default.createElement(
+					role && _react2.default.createElement(
 						'h2',
 						{ className: 'team-member__role' },
 						role
@@ -152,7 +152,7 @@ var TeamMember = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'team-member__content__col team-member__content__col--right' },
-						_react2.default.createElement(_BodyText2.default, { content: about })
+						about && _react2.default.createElement(_BodyText2.default, { content: about })
 					)
 				),
 				_react2.default.createElement('aside', { className: 'related-content team-member__related' })
