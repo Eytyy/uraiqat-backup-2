@@ -312,21 +312,21 @@ const requestAuthorRelated = () => ({
 	type: 'REQUEST_AUTHOR_RELATED'
 });
 
-const recieveAuthorRelated = (payload, id) => ({
+const recieveAuthorRelated = (payload, name) => ({
 	type: 'RECIEVE_AUTHOR_RELATED',
 	response: payload,
-	projectID: id,
+	authorName: name,
 });
 
-export const fetchAuthorRelated = (id) => (dispatch, getState) => {
+export const fetchAuthorRelated = (name) => (dispatch, getState) => {
 	const state = getState();
 	dispatch(requestAuthorRelated());
 	if (isRelatedAuthorPostsFetching(state)) {
 		return Promise.resolve();
 	}
-	return api.fetchRelatedAuthorPosts(id).then((response) => {
+	return api.fetchRelatedAuthorPosts(name).then((response) => {
 		return response;
 	}).then(response => {
-		dispatch(recieveAuthorRelated(response, id));
+		dispatch(recieveAuthorRelated(response, name));
 	});
 };

@@ -33,7 +33,7 @@ const AuthorRelated = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_AUTHOR_RELATED': //eslint-disable-line
-		const content = [...state.content, action.projectID];
+		const content = [...state.content, action.authorName];
 		return {
 			...state,
 			content,

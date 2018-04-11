@@ -53,10 +53,19 @@ export function fetchRelatedPosts(id) {
 }
 
 export function fetchRelatedAuthorPosts(name) {
-	return client.getEntries({
-		content_type: 'post',
-		'fields.author.fields.name': name
+	const author = client.getEntries({
+		content_type: 'author',
+		'fields.title': name
+	}).then(payload => {
+		return payload.items[0].sys.id;
+	}).then(id => {
+		return client.getEntries({
+			content_type: 'post',
+			'fields.author.sys.id': id
+		});
 	}).then(payload => payload.items);
+	
+	return author;
 }
 
 export function fetchSearchResults(query) {

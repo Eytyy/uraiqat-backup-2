@@ -32,9 +32,9 @@ var _BodyText = require('../components/BodyText');
 
 var _BodyText2 = _interopRequireDefault(_BodyText);
 
-var _RelatedPosts = require('../components/related/RelatedPosts');
+var _RelatedAuthorPosts = require('../components/related/RelatedAuthorPosts');
 
-var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
+var _RelatedAuthorPosts2 = _interopRequireDefault(_RelatedAuthorPosts);
 
 var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
@@ -155,7 +155,11 @@ var TeamMember = function (_Component) {
 						about && _react2.default.createElement(_BodyText2.default, { content: about })
 					)
 				),
-				_react2.default.createElement('aside', { className: 'related-content team-member__related' })
+				_react2.default.createElement(
+					'aside',
+					{ className: 'related-content team-member__related' },
+					_react2.default.createElement(_RelatedAuthorPosts2.default, { name: name })
+				)
 			);
 		}
 	}], [{

@@ -392,25 +392,25 @@ var requestAuthorRelated = function requestAuthorRelated() {
 	};
 };
 
-var recieveAuthorRelated = function recieveAuthorRelated(payload, id) {
+var recieveAuthorRelated = function recieveAuthorRelated(payload, name) {
 	return {
 		type: 'RECIEVE_AUTHOR_RELATED',
 		response: payload,
-		projectID: id
+		authorName: name
 	};
 };
 
-var fetchAuthorRelated = exports.fetchAuthorRelated = function fetchAuthorRelated(id) {
+var fetchAuthorRelated = exports.fetchAuthorRelated = function fetchAuthorRelated(name) {
 	return function (dispatch, getState) {
 		var state = getState();
 		dispatch(requestAuthorRelated());
 		if ((0, _reducers.isRelatedAuthorPostsFetching)(state)) {
 			return Promise.resolve();
 		}
-		return api.fetchRelatedAuthorPosts(id).then(function (response) {
+		return api.fetchRelatedAuthorPosts(name).then(function (response) {
 			return response;
 		}).then(function (response) {
-			dispatch(recieveAuthorRelated(response, id));
+			dispatch(recieveAuthorRelated(response, name));
 		});
 	};
 };

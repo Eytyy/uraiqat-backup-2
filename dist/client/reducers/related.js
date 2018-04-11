@@ -49,7 +49,7 @@ var AuthorRelated = function AuthorRelated() {
 			});
 		case 'RECIEVE_AUTHOR_RELATED':
 			//eslint-disable-line
-			var content = [].concat(_toConsumableArray(state.content), [action.projectID]);
+			var content = [].concat(_toConsumableArray(state.content), [action.authorName]);
 			return _extends({}, state, {
 				content: content,
 				isFetching: false

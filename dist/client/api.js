@@ -73,12 +73,21 @@ function fetchRelatedPosts(id) {
 }
 
 function fetchRelatedAuthorPosts(name) {
-	return client.getEntries({
-		content_type: 'post',
-		'fields.author.fields.name': name
+	var author = client.getEntries({
+		content_type: 'author',
+		'fields.title': name
+	}).then(function (payload) {
+		return payload.items[0].sys.id;
+	}).then(function (id) {
+		return client.getEntries({
+			content_type: 'post',
+			'fields.author.sys.id': id
+		});
 	}).then(function (payload) {
 		return payload.items;
 	});
+
+	return author;
 }
 
 function fetchSearchResults(query) {

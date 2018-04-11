@@ -11,7 +11,7 @@ import { getTeamMember, isTeamMemberFetching } from '../reducers';
 import PostMediaImage from '../components/home/PostMediaImage';
 import BodyText from '../components/BodyText';
 
-import RelatedAuthorPosts from '../components/related/RelatedPosts';
+import RelatedAuthorPosts from '../components/related/RelatedAuthorPosts';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
@@ -57,6 +57,7 @@ class TeamMember extends Component { //eslint-disable-line
 					</div>
 				</div>
 				<aside className="related-content team-member__related">
+					<RelatedAuthorPosts name={name} />
 				</aside>
 			</article>
 		);

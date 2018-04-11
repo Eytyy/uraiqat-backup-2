@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import PropTypes from 'prop-types';
 import PostDefault from '../../components/home/default/PostDefault';
 
-import { fetchAuthorRelated } from '../../actions';
+import * as actions from '../../actions';
 import { getRelatedAuthorPosts, isRelatedAuthorPostsFetching } from '../../reducers';
 
 class RelatedAuthorPosts extends Component { //eslint-disable-line
-	static fetchData(store, name) {
-		return store.dispatch(fetchAuthorRelated(name));
-	}
 	componentDidMount() {
 		const { content, isFetching } = this.props;
 		if (!isFetching && typeof content.id === 'undefined') {
@@ -41,14 +37,13 @@ class RelatedAuthorPosts extends Component { //eslint-disable-line
 }
 
 const mapStateToProps = (state, ownProps) => {
-	const { id, postID } = ownProps;
+	const { name } = ownProps;
 	return {
-		content: getRelatedAuthorPosts(state, id, postID),
+		content: getRelatedAuthorPosts(state, name),
 		isFetching: isRelatedAuthorPostsFetching(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchAuthorRelated }, dispatch);
 
 RelatedAuthorPosts.propTypes = {
 	isFetching: PropTypes.bool.isRequired,
@@ -61,5 +56,5 @@ RelatedAuthorPosts.defaultProps = {
 
 export default withRouter(connect(
 	mapStateToProps,
-	mapDispatchToProps
+	actions
 )(RelatedAuthorPosts));

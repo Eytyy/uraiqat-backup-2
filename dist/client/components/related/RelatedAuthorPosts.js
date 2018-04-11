@@ -16,8 +16,6 @@ var _reactRouterDom = require('react-router-dom');
 
 var _reactRedux = require('react-redux');
 
-var _redux = require('redux');
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -28,7 +26,11 @@ var _PostDefault2 = _interopRequireDefault(_PostDefault);
 
 var _actions = require('../../actions');
 
+var actions = _interopRequireWildcard(_actions);
+
 var _reducers = require('../../reducers');
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,6 +51,7 @@ var RelatedAuthorPosts = function (_Component) {
 
 	_createClass(RelatedAuthorPosts, [{
 		key: 'componentDidMount',
+		//eslint-disable-line
 		value: function componentDidMount() {
 			var _props = this.props,
 			    content = _props.content,
@@ -87,29 +90,18 @@ var RelatedAuthorPosts = function (_Component) {
 				return _react2.default.createElement(_PostDefault2.default, { content: withid, key: sys.id });
 			});
 		}
-	}], [{
-		key: 'fetchData',
-		//eslint-disable-line
-		value: function fetchData(store, name) {
-			return store.dispatch((0, _actions.fetchAuthorRelated)(name));
-		}
 	}]);
 
 	return RelatedAuthorPosts;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-	var id = ownProps.id,
-	    postID = ownProps.postID;
+	var name = ownProps.name;
 
 	return {
-		content: (0, _reducers.getRelatedAuthorPosts)(state, id, postID),
+		content: (0, _reducers.getRelatedAuthorPosts)(state, name),
 		isFetching: (0, _reducers.isRelatedAuthorPostsFetching)(state)
 	};
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchAuthorRelated: _actions.fetchAuthorRelated }, dispatch);
 };
 
 RelatedAuthorPosts.propTypes = {
@@ -121,4 +113,4 @@ RelatedAuthorPosts.defaultProps = {
 	content: []
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(RelatedAuthorPosts));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(RelatedAuthorPosts));
