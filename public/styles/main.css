@@ -1,5 +1,5 @@
 .project__top:after,
-.project__bottom:after {
+.project__bottom:after, .team-member__content:after {
   content: '';
   display: block;
   clear: both; }
@@ -131,6 +131,9 @@ p {
   @media (min-width: 1024px) {
     .field-body p {
       margin-bottom: 32px; } }
+
+.field-body a {
+  color: blue; }
 
 h1, h2, h3, h4, h5 {
   margin: 0; }
@@ -1732,6 +1735,55 @@ img {
 @media (min-width: 1024px) {
   .practice-section--careers {
     margin-bottom: 32px; } }
+
+.team-member__header {
+  margin-bottom: 48px; }
+  @media (min-width: 768px) {
+    .team-member__header {
+      margin-bottom: 52px; } }
+  @media (min-width: 768px) {
+    .team-member__header {
+      margin-bottom: 64px; } }
+
+.team-member__title {
+  margin: 0; }
+
+.team-member__content .post-preview__image {
+  height: 512px; }
+
+@media (min-width: 768px) {
+  .team-member__content {
+    padding-left: 60px; } }
+
+@media (min-width: 1024px) {
+  .team-member__content {
+    padding-left: 70px; } }
+
+.team-member__content__col {
+  float: left; }
+  .team-member__content__col--left {
+    width: 337px; }
+  .team-member__content__col--right {
+    width: 780px;
+    padding-left: 112px; }
+
+@media (min-width: 768px) {
+  .career__content {
+    padding-left: 60px; } }
+
+@media (min-width: 1024px) {
+  .career__content {
+    width: 882px;
+    padding-left: 70px; } }
+
+.team-member__links {
+  margin-top: 24px; }
+  @media (min-width: 768px) {
+    .team-member__links {
+      margin-top: 26px; } }
+  @media (min-width: 1024px) {
+    .team-member__links {
+      margin-top: 32px; } }
 
 .slider--main .pattern {
   height: 192px; }

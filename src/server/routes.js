@@ -247,5 +247,78 @@ router.get('/journal/:id', (req, res) => {
 	});
 });
 
+router.get('/team/:id', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route, match}) => {
+		let fetchData = route.component.fetchData;
+		const val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
+		return val;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		const payload = store.getState();
+		const obj = payload.posts.ById[`${req.params.id}`];
+		// ogURL: `<meta property="og:url" content="${req.url}" />`,
+		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
+		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
+		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		res.render('index', {
+			title: `Team Member | `,
+			data: payload,
+			content
+		});
+	});
+});
+
+router.get('/careers/:id', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route, match}) => {
+		let fetchData = route.component.fetchData;
+		const val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
+		return val;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		const payload = store.getState();
+		const obj = payload.posts.ById[`${req.params.id}`];
+		// ogURL: `<meta property="og:url" content="${req.url}" />`,
+		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
+		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
+		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		res.render('index', {
+			title: `Career | `,
+			data: payload,
+			content
+		});
+	});
+});
+
+
 
 module.exports = router;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -192,6 +192,7 @@ var recieveGalleryContent = function recieveGalleryContent(sliderId, content) {
 		}
 	};
 };
+
 var updateGallery = exports.updateGallery = function updateGallery(sliderId, content) {
 	return function (dispatch) {
 		return dispatch(recieveGalleryContent(sliderId, content));
@@ -207,6 +208,7 @@ var updateSlide = function updateSlide(sliderId, direction) {
 		}
 	};
 };
+
 var updateActiveSlide = exports.updateActiveSlide = function updateActiveSlide(sliderId, direction) {
 	return function (dispatch) {
 		return dispatch(updateSlide(sliderId, direction));
@@ -222,6 +224,7 @@ var updateGalleryVisibility = function updateGalleryVisibility(sliderId, isVisib
 		}
 	};
 };
+
 var toggleGallery = exports.toggleGallery = function toggleGallery(sliderId, isVisible) {
 	return function (dispatch) {
 		return dispatch(updateGalleryVisibility(sliderId, isVisible));
@@ -327,6 +330,87 @@ var fetchPractice = exports.fetchPractice = function fetchPractice() {
 			return response;
 		}).then(function (response) {
 			dispatch(recievePractice(response));
+		});
+	};
+};
+
+var requestCareer = function requestCareer() {
+	return {
+		type: 'REQUEST_CAREER'
+	};
+};
+
+var recieveCareer = function recieveCareer(payload) {
+	return {
+		type: 'RECIEVE_CAREER',
+		response: payload
+	};
+};
+
+var fetchCareer = exports.fetchCareer = function fetchCareer(id) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestCareer());
+		if ((0, _reducers.isCareerFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchPost(id).then(function (response) {
+			dispatch(recieveCareer(response));
+		});
+	};
+};
+
+var requestTeamMember = function requestTeamMember() {
+	return {
+		type: 'REQUEST_TEAMMEMBER'
+	};
+};
+
+var recieveTeamMember = function recieveTeamMember(payload) {
+	return {
+		type: 'RECIEVE_TEAMMEMBER',
+		response: payload
+	};
+};
+
+var fetchTeamMember = exports.fetchTeamMember = function fetchTeamMember(id) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestTeamMember());
+		if ((0, _reducers.isTeamMemberFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchPost(id).then(function (response) {
+			dispatch(recieveTeamMember(response));
+		});
+	};
+};
+
+var requestAuthorRelated = function requestAuthorRelated() {
+	return {
+		type: 'REQUEST_AUTHOR_RELATED'
+	};
+};
+
+var recieveAuthorRelated = function recieveAuthorRelated(payload, id) {
+	return {
+		type: 'RECIEVE_AUTHOR_RELATED',
+		response: payload,
+		projectID: id
+	};
+};
+
+var fetchAuthorRelated = exports.fetchAuthorRelated = function fetchAuthorRelated(id) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestAuthorRelated());
+		if ((0, _reducers.isRelatedAuthorPostsFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchRelatedAuthorPosts(id).then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveAuthorRelated(response, id));
 		});
 	};
 };

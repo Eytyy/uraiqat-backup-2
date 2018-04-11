@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getPost = exports.getAll = exports.getIsFetching = undefined;
+exports.getAuthorPost = exports.getAuthorAll = exports.getIsAuthorFetching = exports.getPost = exports.getAll = exports.getIsFetching = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -28,6 +28,54 @@ var All = function All() {
 			var content = [].concat(_toConsumableArray(state.content), [action.projectID]);
 			return _extends({}, state, {
 				content: content,
+				isFetching: false
+			});
+		default:
+			return state;
+	}
+};
+
+var AuthorRelated = function AuthorRelated() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+		content: [],
+		isFetching: false
+	};
+	var action = arguments[1];
+
+	switch (action.type) {
+		case 'REQUEST_AUTHOR_RELATED':
+			return _extends({}, state, {
+				isFetching: true
+			});
+		case 'RECIEVE_AUTHOR_RELATED':
+			//eslint-disable-line
+			var content = [].concat(_toConsumableArray(state.content), [action.projectID]);
+			return _extends({}, state, {
+				content: content,
+				isFetching: false
+			});
+		default:
+			return state;
+	}
+};
+
+var ByAuthorName = function ByAuthorName() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+		isFetching: false
+	};
+	var action = arguments[1];
+
+	switch (action.type) {
+		case 'REQUEST_AUTHOR_RELATED':
+			return _extends({}, state, {
+				isFetching: true
+			});
+
+		case 'RECIEVE_AUTHOR_RELATED':
+			//eslint-disable-line
+			var names = {};
+			names[action.authorName] = action.response;
+			return _extends({}, state, names, {
 				isFetching: false
 			});
 		default:
@@ -61,7 +109,9 @@ var ById = function ById() {
 
 var related = (0, _redux.combineReducers)({
 	All: All,
-	ById: ById
+	ById: ById,
+	AuthorRelated: AuthorRelated,
+	ByAuthorName: ByAuthorName
 });
 
 var getIsFetching = exports.getIsFetching = function getIsFetching(state) {
@@ -74,6 +124,18 @@ var getAll = exports.getAll = function getAll(state) {
 
 var getPost = exports.getPost = function getPost(state, id) {
 	return state.ById[id];
+};
+
+var getIsAuthorFetching = exports.getIsAuthorFetching = function getIsAuthorFetching(state) {
+	return state.AuthorRelated.isFetching;
+};
+
+var getAuthorAll = exports.getAuthorAll = function getAuthorAll(state) {
+	return state.AuthorRelated.content;
+};
+
+var getAuthorPost = exports.getAuthorPost = function getAuthorPost(state, name) {
+	return state.ByAuthorName[name];
 };
 
 exports.default = related;

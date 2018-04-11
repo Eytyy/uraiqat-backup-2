@@ -6,7 +6,10 @@ import {
 	isProjectFetching,
 	isRelatedFetching, 
 	isSearchFetching,
-	isPracticeFetching
+	isPracticeFetching,
+	isTeamMemberFetching,
+	isRelatedAuthorPostsFetching,
+	isCareerFetching
 } from './reducers';
 
 import * as api from './api';
@@ -81,6 +84,7 @@ export const fetchPost = (id) => (dispatch, getState) => {
 		dispatch(recievePost(response));
 	});
 };
+
 
 // Work Action Creators
 const requestProjects = () => ({
@@ -158,9 +162,9 @@ const recieveGalleryContent = (sliderId, content) => ({
 		content,
 	}
 });
+
 export const updateGallery = (sliderId, content) => (dispatch) =>
 	dispatch(recieveGalleryContent(sliderId, content));
-
 
 const updateSlide = (sliderId, direction) => ({
 	type: 'UPDATE_ACTIVE_SLIDE',
@@ -169,8 +173,8 @@ const updateSlide = (sliderId, direction) => ({
 		sliderId
 	},
 });
-export const updateActiveSlide = (sliderId, direction) => (dispatch) => dispatch(updateSlide(sliderId, direction));
 
+export const updateActiveSlide = (sliderId, direction) => (dispatch) => dispatch(updateSlide(sliderId, direction));
 
 const updateGalleryVisibility = (sliderId, isVisible) => ({
 	type: 'UPDATE_GALLERY_VISIBILITY',
@@ -179,7 +183,9 @@ const updateGalleryVisibility = (sliderId, isVisible) => ({
 		isVisible
 	}
 });
+
 export const toggleGallery = (sliderId, isVisible) => dispatch => dispatch(updateGalleryVisibility(sliderId, isVisible));
+
 
 // Search Action Creator 
 const requestSearch = () => ({
@@ -204,6 +210,7 @@ export const fetchSearchResults = (query) => (dispatch, getState) => {
 		dispatch(recieveSearch(response, query));
 	});
 };
+
 
 // Filter Action Creator
 const requestFilters = () => ({
@@ -261,4 +268,65 @@ export const fetchPractice = () => (dispatch, getState) => {
 	});
 };
 
+const requestCareer = () => ({
+	type: 'REQUEST_CAREER'
+});
 
+const recieveCareer = payload => ({
+	type: 'RECIEVE_CAREER',
+	response: payload,
+});
+
+export const fetchCareer = (id) => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestCareer());
+	if (isCareerFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchPost(id).then((response) => {
+		dispatch(recieveCareer(response));
+	});
+};
+
+const requestTeamMember = () => ({
+	type: 'REQUEST_TEAMMEMBER'
+});
+
+const recieveTeamMember = payload => ({
+	type: 'RECIEVE_TEAMMEMBER',
+	response: payload,
+});
+
+export const fetchTeamMember = (id) => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestTeamMember());
+	if (isTeamMemberFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchPost(id).then((response) => {
+		dispatch(recieveTeamMember(response));
+	});
+};
+
+const requestAuthorRelated = () => ({
+	type: 'REQUEST_AUTHOR_RELATED'
+});
+
+const recieveAuthorRelated = (payload, id) => ({
+	type: 'RECIEVE_AUTHOR_RELATED',
+	response: payload,
+	projectID: id,
+});
+
+export const fetchAuthorRelated = (id) => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestAuthorRelated());
+	if (isRelatedAuthorPostsFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchRelatedAuthorPosts(id).then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recieveAuthorRelated(response, id));
+	});
+};

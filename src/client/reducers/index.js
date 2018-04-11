@@ -57,10 +57,15 @@ export const getProject = (state, id) => {
 
 // Related Selectors
 export const isRelatedFetching = state => fromRelated.getIsFetching(state.related);
-
 export const getRelatedPosts = (state, id, postID) => {
 	const content = fromRelated.getPost(state.related, id);
 	return typeof content === 'undefined' ? [] : content.filter(({sys}) => sys.id !== postID);
+};
+
+export const isRelatedAuthorPostsFetching = state => fromRelated.getIsAuthorFetching(state.related);
+export const getRelatedAuthorPosts = (state, name) => {
+	const content = fromRelated.getAuthorPost(state.related, name);
+	return typeof content === 'undefined' ? [] : content;
 };
 
 // Gallery Selectors
@@ -107,6 +112,18 @@ export const isPracticeFetching = state => fromPractice.getIsFetching(state.prac
 
 export const getPracticeContent = state => {
 	return fromPractice.getContent(state.practice);
+};
+
+export const isTeamMemberFetching = state => fromPractice.getIsTeamMemberFetching(state.practice);
+
+export const getTeamMember = (state, id) => {
+	return fromPractice.getTeamMember(state.practice, id);
+};
+
+export const isCareerFetching = state => fromPractice.getIsCareerFetching(state.practice);
+
+export const getCareer = (state, id) => {
+	return fromPractice.getCareer(state.practice, id);
 };
 
 export default RootReducer;

@@ -8,6 +8,7 @@ exports.fetchPost = fetchPost;
 exports.fetchProjects = fetchProjects;
 exports.fetchProject = fetchProject;
 exports.fetchRelatedPosts = fetchRelatedPosts;
+exports.fetchRelatedAuthorPosts = fetchRelatedAuthorPosts;
 exports.fetchSearchResults = fetchSearchResults;
 exports.fetchFilters = fetchFilters;
 exports.fetchPractice = fetchPractice;
@@ -66,6 +67,15 @@ function fetchRelatedPosts(id) {
 	return client.getEntries({
 		content_type: 'post',
 		'fields.relatedProject.sys.id': id
+	}).then(function (payload) {
+		return payload.items;
+	});
+}
+
+function fetchRelatedAuthorPosts(name) {
+	return client.getEntries({
+		content_type: 'post',
+		'fields.author.fields.name': name
 	}).then(function (payload) {
 		return payload.items;
 	});

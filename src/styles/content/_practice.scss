@@ -125,3 +125,63 @@
 		margin-bottom: $desktop-lh;
 	}
 }
+
+// Team Memeber Inner Page
+
+.team-member__header {
+	margin-bottom: $lh * 2;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+	}
+	@include respond-to(tablet) {
+		margin-bottom: $desktop-lh * 2;
+	}
+}
+
+.team-member__title {
+	margin: 0;
+}
+
+.team-member__content {
+	@extend %clearfix;
+	.post-preview__image {
+		height: 512px;
+	}
+	@include respond-to(tablet) {
+		padding-left: ($tablet-char-width * 5);
+	}
+	@include respond-to(desktop) {
+		padding-left: ($desktop-char-width * 5);
+	}
+}
+
+.team-member__content__col {
+	float: left;
+	&--left {
+		width: 337px;
+	}
+	&--right {
+		width:( 668px + ($desktop-char-width * 8));
+		padding-left: $desktop-char-width * 8;
+	}
+}
+
+.career__content {
+	@include respond-to(tablet) {
+		padding-left: ($tablet-char-width * 5);
+	}
+	@include respond-to(desktop) {
+		width: 882px;
+		padding-left: ($desktop-char-width * 5);
+	}
+}
+
+.team-member__links {
+	margin-top: $lh;
+	@include respond-to(tablet) {
+		margin-top: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+		margin-top: $desktop-lh;
+	}
+}

@@ -52,6 +52,13 @@ export function fetchRelatedPosts(id) {
 	}).then(payload => payload.items);
 }
 
+export function fetchRelatedAuthorPosts(name) {
+	return client.getEntries({
+		content_type: 'post',
+		'fields.author.fields.name': name
+	}).then(payload => payload.items);
+}
+
 export function fetchSearchResults(query) {
 	return client.getEntries({
 		'query': query

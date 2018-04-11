@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -98,13 +98,20 @@ var getProject = exports.getProject = function getProject(state, id) {
 var isRelatedFetching = exports.isRelatedFetching = function isRelatedFetching(state) {
 	return fromRelated.getIsFetching(state.related);
 };
-
 var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, id, postID) {
 	var content = fromRelated.getPost(state.related, id);
 	return typeof content === 'undefined' ? [] : content.filter(function (_ref) {
 		var sys = _ref.sys;
 		return sys.id !== postID;
 	});
+};
+
+var isRelatedAuthorPostsFetching = exports.isRelatedAuthorPostsFetching = function isRelatedAuthorPostsFetching(state) {
+	return fromRelated.getIsAuthorFetching(state.related);
+};
+var getRelatedAuthorPosts = exports.getRelatedAuthorPosts = function getRelatedAuthorPosts(state, name) {
+	var content = fromRelated.getAuthorPost(state.related, name);
+	return typeof content === 'undefined' ? [] : content;
 };
 
 // Gallery Selectors
@@ -164,6 +171,22 @@ var isPracticeFetching = exports.isPracticeFetching = function isPracticeFetchin
 
 var getPracticeContent = exports.getPracticeContent = function getPracticeContent(state) {
 	return fromPractice.getContent(state.practice);
+};
+
+var isTeamMemberFetching = exports.isTeamMemberFetching = function isTeamMemberFetching(state) {
+	return fromPractice.getIsTeamMemberFetching(state.practice);
+};
+
+var getTeamMember = exports.getTeamMember = function getTeamMember(state, id) {
+	return fromPractice.getTeamMember(state.practice, id);
+};
+
+var isCareerFetching = exports.isCareerFetching = function isCareerFetching(state) {
+	return fromPractice.getIsCareerFetching(state.practice);
+};
+
+var getCareer = exports.getCareer = function getCareer(state, id) {
+	return fromPractice.getCareer(state.practice, id);
 };
 
 exports.default = RootReducer;

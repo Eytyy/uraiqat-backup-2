@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -20,17 +22,13 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _actions = require('../actions');
+var _PostDefault = require('../../components/home/default/PostDefault');
 
-var _reducers = require('../reducers');
+var _PostDefault2 = _interopRequireDefault(_PostDefault);
 
-var _BodyText = require('../components/BodyText');
+var _actions = require('../../actions');
 
-var _BodyText2 = _interopRequireDefault(_BodyText);
-
-var _LoadingPattern = require('../components/patterns/LoadingPattern');
-
-var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
+var _reducers = require('../../reducers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,16 +38,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Career = function (_Component) {
-	_inherits(Career, _Component);
+var RelatedAuthorPosts = function (_Component) {
+	_inherits(RelatedAuthorPosts, _Component);
 
-	function Career() {
-		_classCallCheck(this, Career);
+	function RelatedAuthorPosts() {
+		_classCallCheck(this, RelatedAuthorPosts);
 
-		return _possibleConstructorReturn(this, (Career.__proto__ || Object.getPrototypeOf(Career)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (RelatedAuthorPosts.__proto__ || Object.getPrototypeOf(RelatedAuthorPosts)).apply(this, arguments));
 	}
 
-	_createClass(Career, [{
+	_createClass(RelatedAuthorPosts, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _props = this.props,
@@ -64,11 +62,10 @@ var Career = function (_Component) {
 		key: 'fetchData',
 		value: function fetchData() {
 			var _props2 = this.props,
-			    fetchCareer = _props2.fetchCareer,
-			    match = _props2.match;
+			    fetchAuthorRelated = _props2.fetchAuthorRelated,
+			    name = _props2.name;
 
-			var id = match.params.id;
-			fetchCareer(id);
+			fetchAuthorRelated(name);
 		}
 	}, {
 		key: 'render',
@@ -76,70 +73,52 @@ var Career = function (_Component) {
 			var _props3 = this.props,
 			    content = _props3.content,
 			    isFetching = _props3.isFetching;
-			var title = content.title,
-			    description = content.description;
 
-			if (isFetching || typeof content.id === 'undefined') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loader' },
-					_react2.default.createElement(_LoadingPattern2.default, null)
-				);
+			if (isFetching || content.length === 0) {
+				return null;
 			}
-			return _react2.default.createElement(
-				'article',
-				{ className: 'career' },
-				_react2.default.createElement(
-					'header',
-					{ className: 'career__header' },
-					_react2.default.createElement(
-						'h1',
-						{ className: 'main-title career__title' },
-						title
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'career__content' },
-					_react2.default.createElement(_BodyText2.default, { content: description })
-				)
-			);
+			return content.map(function (_ref) {
+				var fields = _ref.fields,
+				    sys = _ref.sys;
+
+				var withid = _extends({}, fields, {
+					id: sys.id
+				});
+				return _react2.default.createElement(_PostDefault2.default, { content: withid, key: sys.id });
+			});
 		}
 	}], [{
 		key: 'fetchData',
 		//eslint-disable-line
-		value: function fetchData(store, id) {
-			return store.dispatch((0, _actions.fetchCareer)(id));
+		value: function fetchData(store, name) {
+			return store.dispatch((0, _actions.fetchAuthorRelated)(name));
 		}
 	}]);
 
-	return Career;
+	return RelatedAuthorPosts;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-	var match = ownProps.match;
+	var id = ownProps.id,
+	    postID = ownProps.postID;
 
-	var id = match.params.id;
 	return {
-		content: (0, _reducers.getCareer)(state, id),
-		isFetching: (0, _reducers.isCareerFetching)(state)
+		content: (0, _reducers.getRelatedAuthorPosts)(state, id, postID),
+		isFetching: (0, _reducers.isRelatedAuthorPostsFetching)(state)
 	};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchCareer: _actions.fetchCareer }, dispatch);
+	return (0, _redux.bindActionCreators)({ fetchAuthorRelated: _actions.fetchAuthorRelated }, dispatch);
 };
 
-Career.propTypes = {
-	content: _propTypes2.default.shape({
-		id: _propTypes2.default.string
-	}),
+RelatedAuthorPosts.propTypes = {
 	isFetching: _propTypes2.default.bool.isRequired,
-	fetchCareer: _propTypes2.default.func.isRequired
+	fetchAuthorRelated: _propTypes2.default.func.isRequired
 };
 
-Career.defaultProps = {
-	content: {}
+RelatedAuthorPosts.defaultProps = {
+	content: []
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Career));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(RelatedAuthorPosts));
