@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import posts, * as fromHome from './home';
 import projects, * as fromWork from './work';
+import atelier, * as fromAtelier from './atelier';
 import related, * as fromRelated from './related';
 import gallery, * as fromGallery from './gallery';
 import search, * as fromSearch from './search';
@@ -9,6 +10,7 @@ import practice, * as fromPractice from './practice';
 const RootReducer = combineReducers({
 	posts,
 	projects,
+	atelier,
 	related,
 	gallery,
 	search,
@@ -54,6 +56,27 @@ export const isProjectFetching = state => fromWork.getIsFetching(state.projects)
 export const getProject = (state, id) => {
 	return fromWork.getProject(state.projects, id);
 };
+
+// Atelier Selectors
+export const isAtelierProjectsFetching = state => fromAtelier.getIsFetching(state.atelier);
+
+export const getAtelierProjects = state => {
+	const featuredContent = fromAtelier.getAll(state.atelier).featuredContent
+		.map(id => fromWork.getProject(state.atelier, id));
+	const mainContent = fromAtelier.getAll(state.atelier).mainContent
+		.map(id => fromAtelier.getProject(state.atelier, id));
+	return {
+		featuredContent,
+		mainContent
+	};
+};
+
+export const isAtelierProjectFetching = state => fromAtelier.getIsFetching(state.atelier);
+
+export const getAtelierProject = (state, id) => {
+	return fromAtelier.getProject(state.atelier, id);
+};
+
 
 // Related Selectors
 export const isRelatedFetching = state => fromRelated.getIsFetching(state.related);

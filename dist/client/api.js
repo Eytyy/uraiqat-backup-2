@@ -7,6 +7,8 @@ exports.fetchPosts = fetchPosts;
 exports.fetchPost = fetchPost;
 exports.fetchProjects = fetchProjects;
 exports.fetchProject = fetchProject;
+exports.fetchAtelierProjects = fetchAtelierProjects;
+exports.fetchAtelierProject = fetchAtelierProject;
 exports.fetchRelatedPosts = fetchRelatedPosts;
 exports.fetchRelatedAuthorPosts = fetchRelatedAuthorPosts;
 exports.fetchSearchResults = fetchSearchResults;
@@ -55,6 +57,25 @@ function fetchProjects() {
 }
 
 function fetchProject(id) {
+	return client.getEntries({ 'sys.id': id }).then(function (payload) {
+		if (!payload.items.length) {
+			throw new Error('Entry not found');
+		}
+		return payload.items[0];
+	});
+}
+
+function fetchAtelierProjects() {
+	return client.getEntries({
+		content_type: 'landingPageType2',
+		'fields.title': 'Atelier',
+		include: 3
+	}).then(function (payload) {
+		return payload.items;
+	});
+}
+
+function fetchAtelierProject(id) {
 	return client.getEntries({ 'sys.id': id }).then(function (payload) {
 		if (!payload.items.length) {
 			throw new Error('Entry not found');

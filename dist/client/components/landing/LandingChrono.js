@@ -18,6 +18,10 @@ var _ProjectPreview = require('../work/ProjectPreview');
 
 var _ProjectPreview2 = _interopRequireDefault(_ProjectPreview);
 
+var _AtelierPreview = require('../atelier/AtelierPreview');
+
+var _AtelierPreview2 = _interopRequireDefault(_AtelierPreview);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Content = function Content(_ref) {
@@ -28,6 +32,10 @@ var Content = function Content(_ref) {
 		case 'work':
 			return content.map(function (post) {
 				return _react2.default.createElement(_ProjectPreview2.default, _extends({}, post, { id: post.id, key: post.id }));
+			});
+		case 'atelier':
+			return content.map(function (post) {
+				return _react2.default.createElement(_AtelierPreview2.default, _extends({}, post, { id: post.id, key: post.id }));
 			});
 		default:
 			return content.map(function (post) {

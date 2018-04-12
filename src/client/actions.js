@@ -4,6 +4,8 @@ import {
 	isPostFetching,
 	isProjectsFetching,
 	isProjectFetching,
+	isAtelierProjectsFetching,
+	isAtelierProjectFetching,
 	isRelatedFetching, 
 	isSearchFetching,
 	isPracticeFetching,
@@ -128,6 +130,51 @@ export const fetchProject = (id) => (dispatch, getState) => {
 		dispatch(recieveProject(response));
 	});
 };
+
+// Atelier Action Creators
+
+const requestAtelierProjects = () => ({
+	type: 'REQUEST_ATELIER_PROJECTS'
+});
+
+const recieveAtelierProjects = payload => ({
+	type: 'RECIEVE_ATELIER_PROJECTS',
+	response: payload,
+});
+
+const requestAtelierProject = () => ({
+	type: 'REQUEST_ATELIER_PROJECT'
+});
+
+const recieveAtelierProject = payload => ({
+	type: 'RECIEVE_ATELIER_PROJECT',
+	response: payload,
+});
+
+export const fetchAtelierProjects = () => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestAtelierProjects());
+	if (isAtelierProjectsFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchAtelierProjects().then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recieveAtelierProjects(response));
+	});
+};
+
+export const fetchAtelierProject = (id) => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestAtelierProject());
+	if (isAtelierProjectFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchAtelierProject(id).then((response) => {
+		dispatch(recieveAtelierProject(response));
+	});
+};
+
 
 // Related Action Creators
 const requestRelated = () => ({

@@ -122,6 +122,22 @@ var config = {
 		'related-project--landscape': {
 			w: 280,
 			h: 192
+		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	},
 	mobileX2: {
@@ -184,6 +200,22 @@ var config = {
 		'related-project--landscape': {
 			w: 320,
 			h: 416
+		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	},
 	tablet: {
@@ -246,6 +278,14 @@ var config = {
 		'related-project--landscape': {
 			w: 644,
 			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	},
 	desktop: {
@@ -308,6 +348,22 @@ var config = {
 		'related-project--landscape': {
 			w: 602,
 			h: 384
+		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	},
 	desktop1280: {
@@ -370,6 +426,22 @@ var config = {
 		'related-project--landscape': {
 			w: 616,
 			h: 416
+		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	},
 	desktop1440: {
@@ -432,6 +504,22 @@ var config = {
 		'related-project--landscape': {
 			w: 630,
 			h: 416
+		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	},
 	desktop1600: {
@@ -494,6 +582,22 @@ var config = {
 		'related-project--landscape': {
 			w: 630,
 			h: 416
+		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608
 		}
 	}
 };

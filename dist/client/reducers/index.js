@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -14,6 +14,10 @@ var fromHome = _interopRequireWildcard(_home);
 var _work = require('./work');
 
 var fromWork = _interopRequireWildcard(_work);
+
+var _atelier = require('./atelier');
+
+var fromAtelier = _interopRequireWildcard(_atelier);
 
 var _related = require('./related');
 
@@ -36,6 +40,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var RootReducer = (0, _redux.combineReducers)({
 	posts: fromHome.default,
 	projects: fromWork.default,
+	atelier: fromAtelier.default,
 	related: fromRelated.default,
 	gallery: fromGallery.default,
 	search: fromSearch.default,
@@ -92,6 +97,32 @@ var isProjectFetching = exports.isProjectFetching = function isProjectFetching(s
 
 var getProject = exports.getProject = function getProject(state, id) {
 	return fromWork.getProject(state.projects, id);
+};
+
+// Atelier Selectors
+var isAtelierProjectsFetching = exports.isAtelierProjectsFetching = function isAtelierProjectsFetching(state) {
+	return fromAtelier.getIsFetching(state.atelier);
+};
+
+var getAtelierProjects = exports.getAtelierProjects = function getAtelierProjects(state) {
+	var featuredContent = fromAtelier.getAll(state.atelier).featuredContent.map(function (id) {
+		return fromWork.getProject(state.atelier, id);
+	});
+	var mainContent = fromAtelier.getAll(state.atelier).mainContent.map(function (id) {
+		return fromAtelier.getProject(state.atelier, id);
+	});
+	return {
+		featuredContent: featuredContent,
+		mainContent: mainContent
+	};
+};
+
+var isAtelierProjectFetching = exports.isAtelierProjectFetching = function isAtelierProjectFetching(state) {
+	return fromAtelier.getIsFetching(state.atelier);
+};
+
+var getAtelierProject = exports.getAtelierProject = function getAtelierProject(state, id) {
+	return fromAtelier.getProject(state.atelier, id);
 };
 
 // Related Selectors

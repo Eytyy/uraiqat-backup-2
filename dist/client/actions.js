@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProject = exports.fetchAtelierProjects = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -148,6 +148,62 @@ var fetchProject = exports.fetchProject = function fetchProject(id) {
 		}
 		return api.fetchProject(id).then(function (response) {
 			dispatch(recieveProject(response));
+		});
+	};
+};
+
+// Atelier Action Creators
+
+var requestAtelierProjects = function requestAtelierProjects() {
+	return {
+		type: 'REQUEST_ATELIER_PROJECTS'
+	};
+};
+
+var recieveAtelierProjects = function recieveAtelierProjects(payload) {
+	return {
+		type: 'RECIEVE_ATELIER_PROJECTS',
+		response: payload
+	};
+};
+
+var requestAtelierProject = function requestAtelierProject() {
+	return {
+		type: 'REQUEST_ATELIER_PROJECT'
+	};
+};
+
+var recieveAtelierProject = function recieveAtelierProject(payload) {
+	return {
+		type: 'RECIEVE_ATELIER_PROJECT',
+		response: payload
+	};
+};
+
+var fetchAtelierProjects = exports.fetchAtelierProjects = function fetchAtelierProjects() {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestAtelierProjects());
+		if ((0, _reducers.isAtelierProjectsFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchAtelierProjects().then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveAtelierProjects(response));
+		});
+	};
+};
+
+var fetchAtelierProject = exports.fetchAtelierProject = function fetchAtelierProject(id) {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestAtelierProject());
+		if ((0, _reducers.isAtelierProjectFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchAtelierProject(id).then(function (response) {
+			dispatch(recieveAtelierProject(response));
 		});
 	};
 };

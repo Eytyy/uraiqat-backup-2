@@ -119,6 +119,22 @@ const config = {
 			w: 280,
 			h: 192
 		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416,
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 	mobileX2: {
 		'default-post--portrait': {
@@ -181,6 +197,22 @@ const config = {
 			w: 320,
 			h: 416
 		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416,
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 	tablet: {
 		'default-post--portrait': {
@@ -243,6 +275,14 @@ const config = {
 			w: 644,
 			h: 416
 		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 	desktop: {
 		'default-post--portrait': {
@@ -305,6 +345,22 @@ const config = {
 			w: 602,
 			h: 384
 		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416,
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 	desktop1280: {
 		'default-post--portrait': {
@@ -367,6 +423,22 @@ const config = {
 			w: 616,
 			h: 416
 		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416,
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 	desktop1440: {
 		'default-post--portrait': {
@@ -429,6 +501,22 @@ const config = {
 			w: 630,
 			h: 416
 		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416,
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 	desktop1600: {
 		'default-post--portrait': {
@@ -491,6 +579,22 @@ const config = {
 			w: 630,
 			h: 416
 		},
+		'atelier-main-thumb': {
+			w: 756,
+			h: 416,
+		},
+		'atelier-diagram-thumb': {
+			w: 322,
+			h: 416,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 420,
+			h: 608,
+		},
+		'atelier-diagram-thumb--portrait': {
+			w: 336,
+			h: 608,
+		}
 	},
 };
 export const getContainerSize = (container, preConfig) => {
