@@ -39,7 +39,6 @@ const All = (state = {
 	case 'RECIEVE_ATELIER_PROJECTS': //eslint-disable-line
 		const main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
 		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ?  action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
-
 		const ids = main.concat(featured);
 		return {
 			...state,
@@ -128,6 +127,8 @@ export const getAll = state => ({
 	featuredContent: state.BySection.featured,
 });
 
-export const getProject = (state, id) => state.ById[id];
+export const getProject = (state, id) => {
+	return state.ById[id];
+};
 
 export default atelier;

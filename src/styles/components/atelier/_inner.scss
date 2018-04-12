@@ -1,0 +1,47 @@
+.atelier__top {
+	margin-bottom: $lh;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+	}
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh * 2;
+	}
+}
+
+.atelier__media {
+	margin-bottom: $lh;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+		margin-left: $tablet-char-width * 3;
+	}
+	@include respond-to(desktop) {
+		margin-left: $desktop-char-width * 3;
+		margin-bottom: $desktop-lh * 2;
+		width: 1095px;
+	}
+	@include respond-to(desktop-1440) {
+		margin-bottom: 0;
+	}
+}
+
+.atelier__about {
+	width: 882px;
+}
+
+.atelier {
+	.slider--main {
+		.slide__image {
+			height: 192px;
+		}
+		@include respond-to(tablet) {
+			.slide__image {
+				height: 416px;
+			}
+		}
+		@include respond-to(desktop) {
+			.slide__image {
+				height: 576px;
+			}
+		}
+	}
+}

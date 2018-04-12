@@ -134,6 +134,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 	mobileX2: {
@@ -212,6 +216,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 	tablet: {
@@ -282,6 +290,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 	desktop: {
@@ -360,6 +372,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 	desktop1280: {
@@ -438,6 +454,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 	desktop1440: {
@@ -516,6 +536,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 	desktop1600: {
@@ -594,6 +618,10 @@ const config = {
 		'atelier-diagram-thumb--portrait': {
 			w: 336,
 			h: 608,
+		},
+		'atelier-main-slider' : {
+			w: 1022,
+			h: 576,
 		}
 	},
 };

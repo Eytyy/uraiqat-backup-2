@@ -27,7 +27,7 @@ var AtelierPreview = function AtelierPreview(content) {
 		{ className: 'atelier-preview' },
 		_react2.default.createElement(
 			_reactRouterDom.Link,
-			{ className: 'atelier-preview__link', to: '/work/' + id },
+			{ className: 'atelier-preview__link', to: '/atelier/' + id },
 			_react2.default.createElement(
 				'header',
 				{ className: 'atelier-preview__header' },

@@ -6,6 +6,8 @@ import Work from './containers/Work';
 import Project from './containers/Project';
 
 import Atelier from './containers/Atelier';
+import AtelierProject from './containers/AtelierProject';
+
 import Practice from './containers/Practice';
 import Contact from './containers/Contact';
 import Search from './containers/Search';
@@ -30,6 +32,10 @@ const routes = [
 			{ path: '/atelier',
 				exact: true,
 				component: Atelier,
+			},
+			{ path: '/atelier/:id',
+				exact: true,
+				component: AtelierProject,
 			},
 			{ path: '/practice',
 				exact: true,

@@ -67,7 +67,6 @@ var All = function All() {
 				var sys = _ref4.sys;
 				return sys.id;
 			}) : [];
-
 			var ids = main.concat(featured);
 			return _extends({}, state, {
 				content: ids,

@@ -1172,6 +1172,44 @@ img {
   width: 336px;
   height: 608px; }
 
+.atelier__top {
+  margin-bottom: 24px; }
+  @media (min-width: 768px) {
+    .atelier__top {
+      margin-bottom: 52px; } }
+  @media (min-width: 1024px) {
+    .atelier__top {
+      margin-bottom: 64px; } }
+
+.atelier__media {
+  margin-bottom: 24px; }
+  @media (min-width: 768px) {
+    .atelier__media {
+      margin-bottom: 52px;
+      margin-left: 36px; } }
+  @media (min-width: 1024px) {
+    .atelier__media {
+      margin-left: 42px;
+      margin-bottom: 64px;
+      width: 1095px; } }
+  @media (min-width: 1440px) {
+    .atelier__media {
+      margin-bottom: 0; } }
+
+.atelier__about {
+  width: 882px; }
+
+.atelier .slider--main .slide__image {
+  height: 192px; }
+
+@media (min-width: 768px) {
+  .atelier .slider--main .slide__image {
+    height: 416px; } }
+
+@media (min-width: 1024px) {
+  .atelier .slider--main .slide__image {
+    height: 576px; } }
+
 .post__title {
   margin: 0;
   max-width: 392px; }

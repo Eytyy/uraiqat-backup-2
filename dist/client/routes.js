@@ -28,6 +28,10 @@ var _Atelier = require('./containers/Atelier');
 
 var _Atelier2 = _interopRequireDefault(_Atelier);
 
+var _AtelierProject = require('./containers/AtelierProject');
+
+var _AtelierProject2 = _interopRequireDefault(_AtelierProject);
+
 var _Practice = require('./containers/Practice');
 
 var _Practice2 = _interopRequireDefault(_Practice);
@@ -63,6 +67,9 @@ var routes = [{ component: _App2.default,
 	}, { path: '/atelier',
 		exact: true,
 		component: _Atelier2.default
+	}, { path: '/atelier/:id',
+		exact: true,
+		component: _AtelierProject2.default
 	}, { path: '/practice',
 		exact: true,
 		component: _Practice2.default
