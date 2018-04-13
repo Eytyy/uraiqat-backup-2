@@ -285,7 +285,7 @@ body {
         padding-top: 96px; } }
 
 @media (min-width: 768px) {
-  .landing-page--journal .landing-section, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -294,16 +294,25 @@ body {
     margin-left: -80px; } }
 
 @media (min-width: 1024px) {
-  .landing-page--journal .landing-section, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
     margin-left: -56px; } }
 
 @media (min-width: 1440px) {
-  .landing-page--journal .landing-section, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
     margin-left: -84px; } }
 
 @media (min-width: 1600px) {
-  .landing-page--journal .landing-section, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
     margin-left: -98px; } }
+
+.search-results-title {
+  margin-bottom: 48px; }
+  @media (min-width: 768px) {
+    .search-results-title {
+      margin-bottom: 52px; } }
+  @media (min-width: 1024px) {
+    .search-results-title {
+      margin-bottom: 64px; } }
 
 .post-preview {
   margin-bottom: 48px;

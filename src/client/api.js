@@ -89,7 +89,7 @@ export function fetchSearchResults(query) {
 	return client.getEntries({
 		'query': query
 	})
-		.then((response) => response.items.filter(({ sys }) => sys.contentType.sys.id === 'work' || sys.contentType.sys.id === 'post' ))
+		.then((response) => response.items.filter(({ sys }) => sys.contentType.sys.id === 'work' || sys.contentType.sys.id === 'post' || sys.contentType.sys.id === 'atelierProject' ))
 		.catch(console.error);
 }
 

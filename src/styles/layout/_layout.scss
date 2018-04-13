@@ -84,3 +84,17 @@ body {
 		@extend %defaultGrid;
 	}	
 }
+
+.search-results {
+	@extend %defaultGrid;
+}
+
+.search-results-title {
+	margin-bottom: $lh * 2;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+	}
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh * 2;
+	}
+}

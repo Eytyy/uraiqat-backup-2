@@ -1,0 +1,92 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _Preview = require('./Preview');
+
+var _Preview2 = _interopRequireDefault(_Preview);
+
+var _PostMediaImage = require('./home/PostMediaImage');
+
+var _PostMediaImage2 = _interopRequireDefault(_PostMediaImage);
+
+var _PostMediaVideo = require('./home/PostMediaVideo');
+
+var _PostMediaVideo2 = _interopRequireDefault(_PostMediaVideo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SearchPreviewProject = function SearchPreviewProject(_ref) {
+	var content = _ref.content;
+	var previewMainThumbnail = content.previewMainThumbnail,
+	    id = content.id,
+	    year = content.year,
+	    title = content.title;
+	// determine whether the media content is a video or an image
+
+	var isMediaOfTypeImage = RegExp('image').test(previewMainThumbnail.fields.file.contentType);
+
+	if (!isMediaOfTypeImage) {
+		return _react2.default.createElement(
+			_Preview2.default,
+			{ classList: 'post-preview post-preview--video post-preview--default post-preview--landscape' },
+			_react2.default.createElement(
+				_reactRouterDom.Link,
+				{ className: 'post-preview__link', to: '/work/' + id },
+				year && _react2.default.createElement(
+					'div',
+					{ className: 'post-preview__meta' },
+					year,
+					' -> ',
+					'Work'
+				)
+			),
+			_react2.default.createElement(_PostMediaVideo2.default, { content: previewMainThumbnail, patternId: 'default-post--video' }),
+			_react2.default.createElement(
+				_reactRouterDom.Link,
+				{ className: 'post-preview__link', to: '/work/' + id },
+				_react2.default.createElement(
+					'div',
+					{ className: 'post-preview__content' },
+					title && _react2.default.createElement(
+						'h2',
+						{ className: 'post-preview__title title' },
+						title
+					)
+				)
+			)
+		);
+	} else {
+		return _react2.default.createElement(
+			_Preview2.default,
+			{ classList: 'post-preview post-preview--default post-preview--landscape' },
+			_react2.default.createElement(
+				_reactRouterDom.Link,
+				{ className: 'post-preview__link', to: '/work/' + id },
+				year && _react2.default.createElement(
+					'div',
+					{ className: 'post-preview__meta' },
+					year,
+					' -> ',
+					'Work'
+				),
+				_react2.default.createElement(_PostMediaImage2.default, { orientation: 'landscape', patternId: 'default-post', content: previewMainThumbnail }),
+				title && _react2.default.createElement(
+					'h2',
+					{ className: 'post-preview__title title' },
+					title
+				)
+			)
+		);
+	}
+};
+
+exports.default = SearchPreviewProject;

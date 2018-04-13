@@ -51,6 +51,37 @@ router.get('/', (req, res) => {
 	});
 });
 
+router.get('/search', (req, res) => {
+	const branch = matchRoutes(routes, req.url);
+	const promises = branch.map(({route}) => {
+		let fetchData = route.component.fetchData;
+		let data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(() => {
+		let context = {};
+		const content = renderToString(
+			<Provider store={store}>
+				<StaticRouter location={req.url} context={context}>
+					{renderRoutes(routes)}
+				</StaticRouter>
+			</Provider>
+		);
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		let payload = store.getState();
+		res.render('index', {
+			title: 'Uraiqat Architects',
+			data: payload,
+			content
+		});
+	});
+});
+
 router.get('/practice', (req, res) => {
 	const branch = matchRoutes(routes, req.url);
 	const promises = branch.map(({route}) => {

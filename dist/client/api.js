@@ -118,7 +118,7 @@ function fetchSearchResults(query) {
 	}).then(function (response) {
 		return response.items.filter(function (_ref) {
 			var sys = _ref.sys;
-			return sys.contentType.sys.id === 'work' || sys.contentType.sys.id === 'post';
+			return sys.contentType.sys.id === 'work' || sys.contentType.sys.id === 'post' || sys.contentType.sys.id === 'atelierProject';
 		});
 	}).catch(console.error);
 }

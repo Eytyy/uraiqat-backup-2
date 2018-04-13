@@ -79,10 +79,45 @@ router.get('/', function (req, res) {
 	});
 });
 
-router.get('/practice', function (req, res) {
+router.get('/search', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
 	var promises = branch.map(function (_ref2) {
 		var route = _ref2.route;
+
+		var fetchData = route.component.fetchData;
+		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
+	});
+	return Promise.all(promises).then(function () {
+		var context = {};
+		var content = (0, _server.renderToString)(_react2.default.createElement(
+			_reactRedux.Provider,
+			{ store: store },
+			_react2.default.createElement(
+				_StaticRouter2.default,
+				{ location: req.url, context: context },
+				(0, _reactRouterConfig.renderRoutes)(_routes2.default)
+			)
+		));
+		if (context.status === 404) {
+			res.status(404);
+		}
+		if (context.status === 302) {
+			return res.redirect(302, context.url);
+		}
+		var payload = store.getState();
+		res.render('index', {
+			title: 'Uraiqat Architects',
+			data: payload,
+			content: content
+		});
+	});
+});
+
+router.get('/practice', function (req, res) {
+	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
+	var promises = branch.map(function (_ref3) {
+		var route = _ref3.route;
 
 		var fetchData = route.component.fetchData;
 		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
@@ -116,8 +151,8 @@ router.get('/practice', function (req, res) {
 
 router.get('/work', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref3) {
-		var route = _ref3.route;
+	var promises = branch.map(function (_ref4) {
+		var route = _ref4.route;
 
 		var fetchData = route.component.fetchData;
 		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
@@ -151,9 +186,9 @@ router.get('/work', function (req, res) {
 
 router.get('/work/:id', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref4) {
-		var route = _ref4.route,
-		    match = _ref4.match;
+	var promises = branch.map(function (_ref5) {
+		var route = _ref5.route,
+		    match = _ref5.match;
 
 		var fetchData = route.component.fetchData;
 		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
@@ -192,8 +227,8 @@ router.get('/work/:id', function (req, res) {
 
 router.get('/atelier', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref5) {
-		var route = _ref5.route;
+	var promises = branch.map(function (_ref6) {
+		var route = _ref6.route;
 
 		var fetchData = route.component.fetchData;
 		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
@@ -227,9 +262,9 @@ router.get('/atelier', function (req, res) {
 
 router.get('/atelier/:id', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref6) {
-		var route = _ref6.route,
-		    match = _ref6.match;
+	var promises = branch.map(function (_ref7) {
+		var route = _ref7.route,
+		    match = _ref7.match;
 
 		var fetchData = route.component.fetchData;
 		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
@@ -268,8 +303,8 @@ router.get('/atelier/:id', function (req, res) {
 
 router.get('/contact', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref7) {
-		var route = _ref7.route;
+	var promises = branch.map(function (_ref8) {
+		var route = _ref8.route;
 
 		var fetchData = route.component.fetchData;
 		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
@@ -303,9 +338,9 @@ router.get('/contact', function (req, res) {
 
 router.get('/journal/:id', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref8) {
-		var route = _ref8.route,
-		    match = _ref8.match;
+	var promises = branch.map(function (_ref9) {
+		var route = _ref9.route,
+		    match = _ref9.match;
 
 		var fetchData = route.component.fetchData;
 		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
@@ -344,9 +379,9 @@ router.get('/journal/:id', function (req, res) {
 
 router.get('/team/:id', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref9) {
-		var route = _ref9.route,
-		    match = _ref9.match;
+	var promises = branch.map(function (_ref10) {
+		var route = _ref10.route,
+		    match = _ref10.match;
 
 		var fetchData = route.component.fetchData;
 		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
@@ -385,9 +420,9 @@ router.get('/team/:id', function (req, res) {
 
 router.get('/careers/:id', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
-	var promises = branch.map(function (_ref10) {
-		var route = _ref10.route,
-		    match = _ref10.match;
+	var promises = branch.map(function (_ref11) {
+		var route = _ref11.route,
+		    match = _ref11.match;
 
 		var fetchData = route.component.fetchData;
 		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);

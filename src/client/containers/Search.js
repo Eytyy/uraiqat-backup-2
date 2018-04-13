@@ -7,6 +7,7 @@ import * as actions from '../actions';
 import { isSearchFetching, getSearchResults } from '../reducers';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
+import SearchPreview from '../components/SearchPreview';
 
 class Search extends Component {
 	render() {
@@ -14,14 +15,13 @@ class Search extends Component {
 		if (isFetching && content.length === 0) {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
-		return <section>
-			<h1>Search:{keyword}</h1>
-			<h2>work in progress</h2>
-			<ul>
-				{
-					content.map(({sys, fields}) => <li key={sys.id}><h3>{fields.title}</h3></li>)
+		return <section className="landing-section landing-section--featured">
+			<h1 className="search-results-title" >Search results for [{keyword}]</h1>
+			<div className="search-results">
+				{	
+					content.map(({ sys, fields }) => <SearchPreview content={fields} type={sys.contentType.sys.id} id={sys.id} key={sys.id} />)
 				}
-			</ul>
+			</div>
 		</section>;
 	}
 }
@@ -31,8 +31,8 @@ Search.propTypes = {
 };
 
 const mapStateToProps = (state, {location}) => {
-	const query = new URLSearchParams(location.search);
-	const keyword = query.get('keyword');
+	const query = typeof URLSearchParams !== 'undefined' ?  new URLSearchParams(location.search) : '';
+	const keyword = typeof URLSearchParams !== 'undefined' ? query.get('keyword') : '';
 	return {
 		isFetching: isSearchFetching(state),
 		content: getSearchResults(state, keyword),

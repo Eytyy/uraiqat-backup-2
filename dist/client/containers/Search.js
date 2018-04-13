@@ -28,6 +28,10 @@ var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
 var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
 
+var _SearchPreview = require('../components/SearchPreview');
+
+var _SearchPreview2 = _interopRequireDefault(_SearchPreview);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -64,33 +68,21 @@ var Search = function (_Component) {
 			}
 			return _react2.default.createElement(
 				'section',
-				null,
+				{ className: 'landing-section landing-section--featured' },
 				_react2.default.createElement(
 					'h1',
-					null,
-					'Search:',
-					keyword
+					{ className: 'search-results-title' },
+					'Search results for [',
+					keyword,
+					']'
 				),
 				_react2.default.createElement(
-					'h2',
-					null,
-					'work in progress'
-				),
-				_react2.default.createElement(
-					'ul',
-					null,
+					'div',
+					{ className: 'search-results' },
 					content.map(function (_ref) {
 						var sys = _ref.sys,
 						    fields = _ref.fields;
-						return _react2.default.createElement(
-							'li',
-							{ key: sys.id },
-							_react2.default.createElement(
-								'h3',
-								null,
-								fields.title
-							)
-						);
+						return _react2.default.createElement(_SearchPreview2.default, { content: fields, type: sys.contentType.sys.id, id: sys.id, key: sys.id });
 					})
 				)
 			);
@@ -107,8 +99,8 @@ Search.propTypes = {
 var mapStateToProps = function mapStateToProps(state, _ref2) {
 	var location = _ref2.location;
 
-	var query = new URLSearchParams(location.search);
-	var keyword = query.get('keyword');
+	var query = typeof URLSearchParams !== 'undefined' ? new URLSearchParams(location.search) : '';
+	var keyword = typeof URLSearchParams !== 'undefined' ? query.get('keyword') : '';
 	return {
 		isFetching: (0, _reducers.isSearchFetching)(state),
 		content: (0, _reducers.getSearchResults)(state, keyword),
