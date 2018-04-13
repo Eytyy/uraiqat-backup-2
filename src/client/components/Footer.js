@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import HeaderPatternChunk from '../containers/navigation/HeaderPatternChunk';
-
+import PatternChunk from '../components/patterns/PatternChunk';
 
 class Footer extends Component {
 	constructor() {
@@ -29,10 +28,10 @@ class Footer extends Component {
 		}
 		return (
 			<footer className="website-footer">
-				<div><HeaderPatternChunk reserved={0} /></div>
-				<div><HeaderPatternChunk reserved={0} /></div>
+				<div><PatternChunk reserved={0} /></div>
+				<div><PatternChunk reserved={0} /></div>
 				<div>
-					<HeaderPatternChunk reserved={1} />
+					<PatternChunk reserved={1} />
 					<NavLink className="link" activeClassName="active" to="/">A</NavLink>
 				</div>
 			</footer>

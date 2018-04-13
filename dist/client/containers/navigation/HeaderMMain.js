@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 var _HeaderMNavItem = require('./HeaderMNavItem');
 
@@ -33,10 +33,10 @@ var HeaderDTMain = function HeaderDTMain() {
 				'div',
 				{ key: 'mobile-link--' + index, className: 'header-mobile__main__item' },
 				_react2.default.createElement(_HeaderMNavItem2.default, { name: name, link: link, glyph: glyph }),
-				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: name.length + glyph.content.length + 2 })
+				_react2.default.createElement(_PatternChunk2.default, { reserved: name.length + glyph.content.length + 2 })
 			);
 		}),
-		_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 0 })
+		_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 	);
 };
 

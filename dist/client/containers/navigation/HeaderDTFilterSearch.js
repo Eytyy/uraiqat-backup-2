@@ -20,9 +20,9 @@ var _actions = require('../../actions');
 
 var actions = _interopRequireWildcard(_actions);
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 var _HeaderDTFilterSearchFilter = require('./HeaderDTFilterSearchFilter');
 
@@ -166,10 +166,10 @@ var HeaderDTFilterSearch = function (_Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'header--desktop__main' },
-				_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: fixedStart }),
+				_react2.default.createElement(_PatternChunk2.default, { fixed: fixedStart }),
 				reservedFilterSize === 0 ? null : _react2.default.createElement(_HeaderDTFilterSearchFilter2.default, { filtersAreVisible: this.state.filtersAreVisible, onfiltersClick: this.onfiltersClick, config: config.filter }),
 				_react2.default.createElement(_HeaderDTFilterSearchSearch2.default, { searchIsVisible: this.state.searchIsVisible, onSearchClick: this.onSearchClick, onSearchSubmit: this.onSearchSubmit, config: config.search }),
-				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: totalReservedSpaces }),
+				_react2.default.createElement(_PatternChunk2.default, { reserved: totalReservedSpaces }),
 				_react2.default.createElement(_HeaderDTFiltersList2.default, { onFilterClick: this.onFilterClick, content: content, isVisible: this.state.filtersAreVisible })
 			);
 		}

@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66,7 +66,7 @@ var HeaderMFiltersListItem = function HeaderMFiltersListItem(_ref) {
 				'-'
 			)
 		),
-		_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: content.length + 5 })
+		_react2.default.createElement(_PatternChunk2.default, { reserved: content.length + 5 })
 	);
 };
 

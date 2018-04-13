@@ -5,11 +5,10 @@ import { withRouter } from 'react-router-dom';
 import { getFilters } from '../../reducers';
 import * as actions from '../../actions';
 
-import HeaderPatternChunk from './HeaderPatternChunk';
+import PatternChunk from '../../components/patterns/PatternChunk';
 import HeaderDTFilterSearchFilter from './HeaderDTFilterSearchFilter';
 import HeaderDTFilterSearchSearch from './HeaderDTFilterSearchSearch';
 import HeaderDTFiltersList from './HeaderDTFiltersList';
-
 
 class HeaderDTFilterSearch extends Component {
 	constructor() {
@@ -99,10 +98,10 @@ class HeaderDTFilterSearch extends Component {
 		const totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
 		return (
 			<div className="header--desktop__main">
-				<HeaderPatternChunk fixed={fixedStart} />
+				<PatternChunk fixed={fixedStart} />
 				{ reservedFilterSize === 0 ? null : <HeaderDTFilterSearchFilter filtersAreVisible={this.state.filtersAreVisible} onfiltersClick={this.onfiltersClick} config={config.filter} />}
 				<HeaderDTFilterSearchSearch searchIsVisible={this.state.searchIsVisible} onSearchClick={this.onSearchClick} onSearchSubmit={this.onSearchSubmit} config={config.search} />
-				<HeaderPatternChunk reserved={totalReservedSpaces} />
+				<PatternChunk reserved={totalReservedSpaces} />
 				<HeaderDTFiltersList onFilterClick={this.onFilterClick} content={content} isVisible={this.state.filtersAreVisible} />
 			</div>
 		);

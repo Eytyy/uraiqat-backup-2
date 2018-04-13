@@ -20,9 +20,9 @@ var actions = _interopRequireWildcard(_actions);
 
 var _reducers = require('../../reducers');
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 var _HeaderMFiltersList = require('./HeaderMFiltersList');
 
@@ -123,7 +123,7 @@ var HeaderMFilter = function (_Component) {
 					{ className: 'ws' },
 					'-'
 				),
-				_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: reservedSpaces }),
+				_react2.default.createElement(_PatternChunk2.default, { reserved: reservedSpaces }),
 				this.state.filtersAreVisible ? _react2.default.createElement(
 					'span',
 					{ onClick: this.onfiltersClick, className: 'link' },

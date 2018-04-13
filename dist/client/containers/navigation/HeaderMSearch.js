@@ -20,9 +20,9 @@ var actions = _interopRequireWildcard(_actions);
 
 var _helpers = require('../../helpers');
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -118,7 +118,7 @@ var HeaderMSearch = function (_Component) {
 						className: 'search__input', type: 'text',
 						placeholder: 'Enter keyword'
 					}),
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: reservedInputSpace }),
+					_react2.default.createElement(_PatternChunk2.default, { reserved: reservedInputSpace }),
 					_react2.default.createElement(
 						'span',
 						{ className: 'link', onClick: this.onSearchClick },
@@ -137,7 +137,7 @@ var HeaderMSearch = function (_Component) {
 						{ className: 'ws' },
 						'-'
 					),
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: reservedInactiveSpace })
+					_react2.default.createElement(_PatternChunk2.default, { reserved: reservedInactiveSpace })
 				)
 			);
 		}

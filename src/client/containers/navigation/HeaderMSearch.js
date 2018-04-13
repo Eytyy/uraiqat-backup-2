@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import { getFontValues } from '../../helpers';
 
-import HeaderPatternChunk from './HeaderPatternChunk';
+import PatternChunk from '../../components/patterns/PatternChunk';
 
 class HeaderMSearch extends Component {
 	constructor() {
@@ -62,13 +62,13 @@ class HeaderMSearch extends Component {
 								className="search__input" type="text"
 								placeholder="Enter keyword"
 							/>
-							<HeaderPatternChunk reserved={reservedInputSpace} />
+							<PatternChunk reserved={reservedInputSpace} />
 							<span className="link" onClick={this.onSearchClick}>x</span>
 						</form>) :
 						(<span className="header-mobile__search__glyphs">
 							<span className="ws">-</span>
 							<span className="ws">-</span>
-							<HeaderPatternChunk reserved={reservedInactiveSpace} />
+							<PatternChunk reserved={reservedInactiveSpace} />
 						</span>)
 				}
 			</div>

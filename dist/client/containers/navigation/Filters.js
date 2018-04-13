@@ -12,9 +12,9 @@ var _Filter = require('./Filter');
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27,7 +27,7 @@ var Filters = function Filters(_ref) {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'filters' },
-		_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: fixedStart }),
+		_react2.default.createElement(_PatternChunk2.default, { fixed: fixedStart }),
 		_react2.default.createElement(
 			'span',
 			{ className: 'ws' },
@@ -49,7 +49,7 @@ var Filters = function Filters(_ref) {
 			    active = _ref2.active;
 			return _react2.default.createElement(_Filter2.default, { onFilterClick: onFilterClick, key: id, content: title, id: id, active: active });
 		}),
-		_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: content.leftOvers + fixedEnd })
+		_react2.default.createElement(_PatternChunk2.default, { fixed: content.leftOvers + fixedEnd })
 	);
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { getFontValues } from '../../helpers';
 
-import HeaderPatternChunk from './HeaderPatternChunk';
+import PatternChunk from '../../components/patterns/PatternChunk';
 
 class HeaderDTFilterSearchSearch extends Component {
 	render() {
@@ -26,9 +26,9 @@ class HeaderDTFilterSearchSearch extends Component {
 								placeholder="Enter your search keyword here"
 							/>
 							<span className="ws">-</span>
-							<HeaderPatternChunk fixed={2} />
+							<PatternChunk fixed={2} />
 						</form> :
-						<HeaderPatternChunk fixed={config.searchInputSize + 3} />
+						<PatternChunk fixed={config.searchInputSize + 3} />
 				}
 		
 			</span>

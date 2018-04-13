@@ -24,9 +24,9 @@ var _HeaderMFilter = require('./HeaderMFilter');
 
 var _HeaderMFilter2 = _interopRequireDefault(_HeaderMFilter);
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -79,7 +79,7 @@ var HeaderM = function (_Component) {
 						{ className: 'link', to: '/' },
 						'U'
 					),
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 2 }),
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 2 }),
 					_react2.default.createElement(
 						'span',
 						{ className: 'mobile-menu-toggle link', to: '/', onClick: this.toggle },
@@ -89,12 +89,12 @@ var HeaderM = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
 				this.state.isVisible ? _react2.default.createElement(
 					'div',

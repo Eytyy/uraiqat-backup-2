@@ -12,9 +12,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = require('react-router-dom');
 
-var _HeaderPatternChunk = require('../containers/navigation/HeaderPatternChunk');
+var _PatternChunk = require('../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -66,17 +66,17 @@ var Footer = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: 1 }),
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 1 }),
 					_react2.default.createElement(
 						_reactRouterDom.NavLink,
 						{ className: 'link', activeClassName: 'active', to: '/' },

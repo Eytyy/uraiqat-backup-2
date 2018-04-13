@@ -14,9 +14,9 @@ var _HeaderDTMainNav = require('./HeaderDTMainNav');
 
 var _HeaderDTMainNav2 = _interopRequireDefault(_HeaderDTMainNav);
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,9 +43,9 @@ var HeaderDTMain = function HeaderDTMain() {
 			{ className: 'link', to: '/' },
 			'U'
 		),
-		_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: fixedStart }),
+		_react2.default.createElement(_PatternChunk2.default, { fixed: fixedStart }),
 		_react2.default.createElement(_HeaderDTMainNav2.default, { config: config }),
-		_react2.default.createElement(_HeaderPatternChunk2.default, { reserved: totalReservedSpaces }),
+		_react2.default.createElement(_PatternChunk2.default, { reserved: totalReservedSpaces }),
 		_react2.default.createElement(
 			_reactRouterDom.NavLink,
 			{ className: 'link', to: '/' },

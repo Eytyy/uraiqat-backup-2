@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderPatternChunk from './HeaderPatternChunk';
+import PatternChunk from '../../components/patterns/PatternChunk';
 import HeaderMNavItem from './HeaderMNavItem';
 
 const HeaderDTMain = () => {
@@ -18,11 +18,11 @@ const HeaderDTMain = () => {
 				config.items.map(({ link, glyph, name }, index) =>
 					<div key={`mobile-link--${index}`} className="header-mobile__main__item">
 						<HeaderMNavItem name={name} link={link} glyph={glyph} />
-						<HeaderPatternChunk reserved={name.length + glyph.content.length + 2} />
+						<PatternChunk reserved={name.length + glyph.content.length + 2} />
 					</div>
 				)
 			}
-			<HeaderPatternChunk reserved={0} />
+			<PatternChunk reserved={0} />
 		</div>
 	);
 };

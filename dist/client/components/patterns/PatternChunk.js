@@ -49,7 +49,7 @@ var PatternChunkReserved = function PatternChunkReserved(_ref3) {
 	var maxNoOfChars = (0, _helpers.getNoOfChars)('navigation', config);
 
 	var noOfAllowedChars = maxNoOfChars.x - reserved;
-	return _react2.default.createElement(PatternChunk, { noOfGlyphs: noOfAllowedChars });
+	return _react2.default.createElement(Chunk, { noOfGlyphs: noOfAllowedChars });
 };
 
 var PatternChunk = function PatternChunk(_ref4) {

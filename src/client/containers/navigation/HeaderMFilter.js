@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import { getFilters } from '../../reducers';
 
-import HeaderPatternChunk from './HeaderPatternChunk';
+import PatternChunk from '../../components/patterns/PatternChunk';
 import HeaderMFiltersList from './HeaderMFiltersList';
 
 class HeaderMFilter extends Component {
@@ -56,7 +56,7 @@ class HeaderMFilter extends Component {
 				{ this.state.filtersAreVisible ? ':' : <span className="ws">-</span>}
 				<span className="ws">-</span>
 				<span className="ws">-</span>
-				<HeaderPatternChunk reserved={reservedSpaces} />
+				<PatternChunk reserved={reservedSpaces} />
 				{ this.state.filtersAreVisible ? <span onClick={this.onfiltersClick} className="link">x</span> : '<'}
 				{ this.state.filtersAreVisible ? <HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} /> : null}
 			</div>

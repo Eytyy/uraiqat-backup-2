@@ -4,8 +4,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import HeaderMMain from './HeaderMMain';
 import HeaderMSearch from './HeaderMSearch';
 import HeaderMFilter from './HeaderMFilter';
-import HeaderPatternChunk from './HeaderPatternChunk';
-
+import PatternChunk from '../../components/patterns/PatternChunk';
 
 class HeaderM extends Component {
 	constructor(props) {
@@ -30,11 +29,11 @@ class HeaderM extends Component {
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div>
 					<NavLink className="link" to="/">U</NavLink>
-					<HeaderPatternChunk reserved={2} />
+					<PatternChunk reserved={2} />
 					<span className="mobile-menu-toggle link" to="/" onClick={this.toggle}>:</span>
 				</div>
-				<div><HeaderPatternChunk reserved={0} /></div>
-				<div><HeaderPatternChunk reserved={0} /></div>
+				<div><PatternChunk reserved={0} /></div>
+				<div><PatternChunk reserved={0} /></div>
 				{
 					this.state.isVisible ? 
 						<div className="menu">

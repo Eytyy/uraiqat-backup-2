@@ -12,9 +12,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _helpers = require('../../helpers');
 
-var _HeaderPatternChunk = require('./HeaderPatternChunk');
+var _PatternChunk = require('../../components/patterns/PatternChunk');
 
-var _HeaderPatternChunk2 = _interopRequireDefault(_HeaderPatternChunk);
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -83,8 +83,8 @@ var HeaderDTFilterSearchSearch = function (_Component) {
 						{ className: 'ws' },
 						'-'
 					),
-					_react2.default.createElement(_HeaderPatternChunk2.default, { fixed: 2 })
-				) : _react2.default.createElement(_HeaderPatternChunk2.default, { fixed: config.searchInputSize + 3 })
+					_react2.default.createElement(_PatternChunk2.default, { fixed: 2 })
+				) : _react2.default.createElement(_PatternChunk2.default, { fixed: config.searchInputSize + 3 })
 			);
 		}
 	}]);

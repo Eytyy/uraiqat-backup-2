@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderPatternChunk from './HeaderPatternChunk';
 
+import PatternChunk from '../../components/patterns/PatternChunk';
 
 const HeaderMFiltersListItem = ({ content, active, onFilterClick, id }) => {
 	const onClick = () => {
@@ -17,7 +17,7 @@ const HeaderMFiltersListItem = ({ content, active, onFilterClick, id }) => {
 				<span>{content}</span>
 				<span className="ws">-</span>
 			</span>
-			<HeaderPatternChunk reserved={content.length + 5} />
+			<PatternChunk reserved={content.length + 5} />
 		</div>
 	);
 };
