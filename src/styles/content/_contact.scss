@@ -1,11 +1,16 @@
 .landing-page--contact {
+	font-family: $font--bold;
 	position: relative;
 }
+
 .contact__map-wrapper {
 	position: absolute;
 	padding: $lh ($char-width * 2);
-	width: 826px;
-	height: 480px;
+	width: 420px;
+	height: 256px;
+	top: $lh * 2;
+	right: $char-width * 4;
+	background: #FFF;
 	> div {
 		position: relative;
 		width: 100%;
@@ -13,8 +18,24 @@
 	}
 	@include respond-to(tablet) {
 		padding: $lh ($tablet-char-width * 2);
+		top: $tablet-lh * 2;
+		right: $tablet-char-width * 4;
 	}
 	@include respond-to(desktop) {
-		padding: $lh ($desktop-char-width * 2);
+		padding: ($lh/2) ($desktop-char-width);
+		top: $desktop-lh * 2;
+		right: $desktop-char-width * 2;
+		width: 518px;
+    height: 352px;
 	}
+	@include respond-to(desktop-1440) {
+		right: $desktop-char-width * 4;
+		padding: $lh ($desktop-char-width * 2);
+		width: 644px;
+    height: 416px;
+	}
+	@include respond-to(desktop-1600) {
+		width: 672px;
+    height: 448px;
+	}	
 }

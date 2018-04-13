@@ -638,14 +638,20 @@ img {
 .website-footer {
   margin-top: 48px;
   padding-bottom: 24px; }
+  .contact .website-footer {
+    margin-top: 0; }
   @media (min-width: 768px) {
     .website-footer {
       margin-top: 52px;
-      padding-bottom: 26px; } }
+      padding-bottom: 26px; }
+      .contact .website-footer {
+        margin-top: 0; } }
   @media (min-width: 1024px) {
     .website-footer {
       margin-top: 64px;
-      padding-bottom: 32px; } }
+      padding-bottom: 32px; }
+      .contact .website-footer {
+        margin-top: 0; } }
 
 .js-gallery-isActive {
   height: 100%;
@@ -1880,23 +1886,43 @@ img {
       margin-top: 32px; } }
 
 .landing-page--contact {
+  font-family: "ZeitungMonoPro-Bold";
   position: relative; }
 
 .contact__map-wrapper {
   position: absolute;
   padding: 24px 20px;
-  width: 826px;
-  height: 480px; }
+  width: 420px;
+  height: 256px;
+  top: 48px;
+  right: 40px;
+  background: #FFF; }
   .contact__map-wrapper > div {
     position: relative;
     width: 100%;
     height: 100%; }
   @media (min-width: 768px) {
     .contact__map-wrapper {
-      padding: 24px 24px; } }
+      padding: 24px 24px;
+      top: 52px;
+      right: 48px; } }
   @media (min-width: 1024px) {
     .contact__map-wrapper {
-      padding: 24px 28px; } }
+      padding: 12px 14px;
+      top: 64px;
+      right: 28px;
+      width: 518px;
+      height: 352px; } }
+  @media (min-width: 1440px) {
+    .contact__map-wrapper {
+      right: 56px;
+      padding: 24px 28px;
+      width: 644px;
+      height: 416px; } }
+  @media (min-width: 1600px) {
+    .contact__map-wrapper {
+      width: 672px;
+      height: 448px; } }
 
 .slider--main .pattern {
   height: 192px; }

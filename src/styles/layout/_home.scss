@@ -378,7 +378,6 @@ $portrait-featured-content--desktop-1440: 700px;
 	}
 }
 
-
 img {
 	width: 100%;
 	height: auto;
@@ -387,13 +386,22 @@ img {
 .website-footer {
 	margin-top: $lh * 2;
 	padding-bottom: $lh;
+	.contact & {
+		margin-top: 0;
+	}
 	@include respond-to(tablet) {
 		margin-top: $tablet-lh * 2;
 		padding-bottom: $tablet-lh;
+		.contact & {
+			margin-top: 0;
+		}
 	}
 	@include respond-to(desktop) {
 		margin-top: $desktop-lh * 2;
 		padding-bottom: $desktop-lh;
+		.contact & {
+			margin-top: 0;
+		}
 	}
 }
 

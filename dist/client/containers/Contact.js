@@ -26,6 +26,18 @@ var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
 var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
 
+var _PatternChunk = require('../components/patterns/PatternChunk');
+
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
+
+var _PatternBlock = require('../components/patterns/PatternBlock');
+
+var _PatternBlock2 = _interopRequireDefault(_PatternBlock);
+
+var _ContactAddressLine = require('../components/ContactAddressLine');
+
+var _ContactAddressLine2 = _interopRequireDefault(_ContactAddressLine);
+
 var _ContactMap = require('./ContactMap');
 
 var _ContactMap2 = _interopRequireDefault(_ContactMap);
@@ -69,9 +81,74 @@ var Contact = function (_Component) {
 				);
 			}
 			var coordinates = content.fields.googleMap;
+			var _content$fields = content.fields,
+			    addressLine1 = _content$fields.addressLine1,
+			    addressLine2 = _content$fields.addressLine2,
+			    mobile = _content$fields.mobile,
+			    telephone = _content$fields.telephone,
+			    fax = _content$fields.fax,
+			    email = _content$fields.email;
+
+			var addressLine1Config = {
+				spaces: 4,
+				content: addressLine1,
+				contentLength: addressLine1.length
+			};
+			var addressLine2Config = {
+				spaces: 4,
+				content: addressLine2,
+				contentLength: addressLine2.length
+			};
+			var telephoneConfig = {
+				spaces: 4,
+				content: telephone,
+				contentLength: telephone.length
+			};
+			var mobileConfig = {
+				spaces: 4,
+				content: mobile,
+				contentLength: mobile.length
+			};
+			var faxConfig = {
+				spaces: 4,
+				content: fax,
+				contentLength: fax.length
+			};
+			var emailConfig = {
+				spaces: 4,
+				content: email,
+				contentLength: email.length
+			};
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-page landing-page--contact main-section' },
+				typeof window === 'undefined' ? null : _react2.default.createElement(
+					'div',
+					{ className: 'contact-line' },
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+				),
+				typeof window === 'undefined' ? null : _react2.default.createElement(
+					'div',
+					{ className: 'contact-line' },
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+				),
+				_react2.default.createElement(_ContactAddressLine2.default, { config: addressLine1Config }),
+				_react2.default.createElement(_ContactAddressLine2.default, { config: addressLine2Config }),
+				typeof window === 'undefined' ? null : _react2.default.createElement(
+					'div',
+					{ className: 'contact-line' },
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+				),
+				_react2.default.createElement(_ContactAddressLine2.default, { config: telephoneConfig }),
+				_react2.default.createElement(_ContactAddressLine2.default, { config: faxConfig }),
+				_react2.default.createElement(_ContactAddressLine2.default, { config: mobileConfig }),
+				typeof window === 'undefined' ? null : _react2.default.createElement(
+					'div',
+					{ className: 'contact-line' },
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+				),
+				_react2.default.createElement(_ContactAddressLine2.default, { config: emailConfig }),
+				_react2.default.createElement(_PatternBlock2.default, { reservedContent: 10 }),
 				_react2.default.createElement(
 					'div',
 					{ className: 'contact__map-wrapper' },
