@@ -8,7 +8,7 @@ const ContactAddressLineContent = ({ type, content }) => {
 	case 'email':
 		return <a className="link" href={`mailto:${content}`}>{content}</a>;
 	default:
-		return <span className="link">{content}</span>;
+		return <span className="blue">{content}</span>;
 	}
 };
 const ContactAddressLine = ({ config, type }) => {

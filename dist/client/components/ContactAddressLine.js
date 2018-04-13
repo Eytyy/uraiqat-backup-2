@@ -34,7 +34,7 @@ var ContactAddressLineContent = function ContactAddressLineContent(_ref) {
 		default:
 			return _react2.default.createElement(
 				'span',
-				{ className: 'link' },
+				{ className: 'blue' },
 				content
 			);
 	}

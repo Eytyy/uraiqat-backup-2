@@ -200,6 +200,9 @@ a:hover .title {
   .filterBox__state {
     color: blue; }
 
+.blue {
+  color: blue; }
+
 body {
   padding-top: 32px; }
 
@@ -1921,8 +1924,8 @@ img {
       height: 416px; } }
   @media (min-width: 1600px) {
     .contact__map-wrapper {
-      width: 672px;
-      height: 448px; } }
+      width: 756px;
+      height: 480px; } }
 
 .slider--main .pattern {
   height: 192px; }
