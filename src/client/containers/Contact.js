@@ -31,45 +31,51 @@ class Contact extends Component {
 		const addressLine1Config = {
 			spaces: 4,
 			content: addressLine1,
-			contentLength: addressLine1.length,
+			totalLength: addressLine1.length + 4,
 		};
 		const addressLine2Config = {
 			spaces: 4,
 			content: addressLine2,
-			contentLength: addressLine2.length,
+			totalLength: addressLine1.length + 4,
 		};
 		const telephoneConfig = {
 			spaces: 4,
 			content: telephone,
-			contentLength: telephone.length,
+			label: 'T:',
+			totalLength: telephone.length + 4 + 3,
 		};
 		const mobileConfig = {
 			spaces: 4,
 			content: mobile,
-			contentLength: mobile.length,
+			label: 'M:',
+			totalLength: mobile.length + 4 + 3,
 		};
 		const faxConfig = {
 			spaces: 4,
 			content: fax,
-			contentLength: fax.length,
+			label: 'F:',
+			totalLength: fax.length + 4 + 3,
 		};
 		const emailConfig = {
 			spaces: 4,
 			content: email,
-			contentLength: email.length,
+			totalLength: email.length + 4,
 		};
+		if (typeof window === 'undefined') {
+			return <section className="landing-page landing-page--contact main-section"></section>;
+		}
 		return (
-			<section className="landing-page landing-page--contact main-section" >
-				{ typeof window === 'undefined' ? null : <div className="contact-line"><PatternChunk reserved={0} /></div>}
-				{ typeof window === 'undefined' ? null : <div className="contact-line"><PatternChunk reserved={0} /></div>}
-				<ContactAddressLine config={addressLine1Config} />
-				<ContactAddressLine config={addressLine2Config} />
-				{ typeof window === 'undefined' ? null : <div className="contact-line"><PatternChunk reserved={0} /></div>}
-				<ContactAddressLine config={telephoneConfig} />
-				<ContactAddressLine config={faxConfig} />
-				<ContactAddressLine config={mobileConfig} />
-				{ typeof window === 'undefined' ? null : <div className="contact-line"><PatternChunk reserved={0} /></div>}
-				<ContactAddressLine config={emailConfig} />
+			<section className="landing-page landing-page--contact main-section">
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<ContactAddressLine type="text" config={addressLine1Config} />
+				<ContactAddressLine type="text" config={addressLine2Config} />
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<ContactAddressLine type="tel" config={telephoneConfig} />
+				<ContactAddressLine type="tel" config={faxConfig} />
+				<ContactAddressLine type="tel" config={mobileConfig} />
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<ContactAddressLine type="email" config={emailConfig} />
 				<PatternBlock reservedContent={10} />
 				<div className="contact__map-wrapper">
 					{ typeof window === 'undefined' ? null : <ContactMap lat={coordinates.lat} lng={coordinates.lon}/> }

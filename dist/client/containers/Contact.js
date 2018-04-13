@@ -92,62 +92,68 @@ var Contact = function (_Component) {
 			var addressLine1Config = {
 				spaces: 4,
 				content: addressLine1,
-				contentLength: addressLine1.length
+				totalLength: addressLine1.length + 4
 			};
 			var addressLine2Config = {
 				spaces: 4,
 				content: addressLine2,
-				contentLength: addressLine2.length
+				totalLength: addressLine1.length + 4
 			};
 			var telephoneConfig = {
 				spaces: 4,
 				content: telephone,
-				contentLength: telephone.length
+				label: 'T:',
+				totalLength: telephone.length + 4 + 3
 			};
 			var mobileConfig = {
 				spaces: 4,
 				content: mobile,
-				contentLength: mobile.length
+				label: 'M:',
+				totalLength: mobile.length + 4 + 3
 			};
 			var faxConfig = {
 				spaces: 4,
 				content: fax,
-				contentLength: fax.length
+				label: 'F:',
+				totalLength: fax.length + 4 + 3
 			};
 			var emailConfig = {
 				spaces: 4,
 				content: email,
-				contentLength: email.length
+				totalLength: email.length + 4
 			};
+			if (typeof window === 'undefined') {
+				return _react2.default.createElement('section', { className: 'landing-page landing-page--contact main-section' });
+			}
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-page landing-page--contact main-section' },
-				typeof window === 'undefined' ? null : _react2.default.createElement(
+				_react2.default.createElement(
 					'div',
 					{ className: 'contact-line' },
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
-				typeof window === 'undefined' ? null : _react2.default.createElement(
+				_react2.default.createElement(
 					'div',
 					{ className: 'contact-line' },
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
-				_react2.default.createElement(_ContactAddressLine2.default, { config: addressLine1Config }),
-				_react2.default.createElement(_ContactAddressLine2.default, { config: addressLine2Config }),
-				typeof window === 'undefined' ? null : _react2.default.createElement(
+				_react2.default.createElement(_ContactAddressLine2.default, { type: 'text', config: addressLine1Config }),
+				_react2.default.createElement(_ContactAddressLine2.default, { type: 'text', config: addressLine2Config }),
+				_react2.default.createElement(
 					'div',
 					{ className: 'contact-line' },
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
-				_react2.default.createElement(_ContactAddressLine2.default, { config: telephoneConfig }),
-				_react2.default.createElement(_ContactAddressLine2.default, { config: faxConfig }),
-				_react2.default.createElement(_ContactAddressLine2.default, { config: mobileConfig }),
-				typeof window === 'undefined' ? null : _react2.default.createElement(
+				_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: telephoneConfig }),
+				_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: faxConfig }),
+				_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: mobileConfig }),
+				_react2.default.createElement(
 					'div',
 					{ className: 'contact-line' },
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
-				_react2.default.createElement(_ContactAddressLine2.default, { config: emailConfig }),
+				_react2.default.createElement(_ContactAddressLine2.default, { type: 'email', config: emailConfig }),
 				_react2.default.createElement(_PatternBlock2.default, { reservedContent: 10 }),
 				_react2.default.createElement(
 					'div',
