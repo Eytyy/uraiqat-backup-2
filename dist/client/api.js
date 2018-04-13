@@ -14,6 +14,7 @@ exports.fetchRelatedAuthorPosts = fetchRelatedAuthorPosts;
 exports.fetchSearchResults = fetchSearchResults;
 exports.fetchFilters = fetchFilters;
 exports.fetchPractice = fetchPractice;
+exports.fetchContact = fetchContact;
 
 var _contentful = require('contentful');
 
@@ -135,6 +136,16 @@ function fetchPractice() {
 	return client.getEntries({
 		content_type: 'practiceLanding',
 		'fields.title': 'Practice',
+		include: 3
+	}).then(function (payload) {
+		return payload.items[0];
+	});
+}
+
+function fetchContact() {
+	return client.getEntries({
+		content_type: 'contactLanding',
+		'fields.title': 'Contact',
 		include: 3
 	}).then(function (payload) {
 		return payload.items[0];

@@ -43,13 +43,22 @@ body {
 .main-content {
 	min-height: calc(100vh -  (#{$lh} * 4) -  (#{$lh} * 2));
 	padding-top: $lh * 4;
+	.contact & {
+		padding-top: $lh * 3;
+	}
 	@include respond-to(tablet) {
 		min-height: calc(100vh -  (#{$tablet-lh} * 5) -  (#{$tablet-lh} * 2));
 		padding-top: $tablet-lh * 5;
+		.contact & {
+			padding-top: $tablet-lh * 3;
+		}
 	}
 	@include respond-to(desktop) {
 		min-height: calc(100vh -  (#{$desktop-lh} * 5) -  (#{$desktop-lh} * 2));
 		padding-top: $desktop-lh * 5;
+		.contact & {
+			padding-top: $desktop-lh * 3;
+		}
 	}
 }
 

@@ -11,7 +11,8 @@ import {
 	isPracticeFetching,
 	isTeamMemberFetching,
 	isRelatedAuthorPostsFetching,
-	isCareerFetching
+	isCareerFetching,
+	isContactFetching
 } from './reducers';
 
 import * as api from './api';
@@ -375,5 +376,27 @@ export const fetchAuthorRelated = (name) => (dispatch, getState) => {
 		return response;
 	}).then(response => {
 		dispatch(recieveAuthorRelated(response, name));
+	});
+};
+
+const requestContact = () => ({
+	type: 'REQUEST_CONTACT'
+});
+
+const recieveContact = (payload) => ({
+	type: 'RECIEVE_CONTACT',
+	response: payload,
+});
+
+export const fetchContact = () => (dispatch, getState) => {
+	const state = getState();
+	dispatch(requestContact);
+	if (isContactFetching(state)) {
+		return Promise.resolve();
+	}
+	return api.fetchContact().then((response) => {
+		return response;
+	}).then(response => {
+		dispatch(recieveContact(response));
 	});
 };

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -35,6 +35,10 @@ var _practice = require('./practice');
 
 var fromPractice = _interopRequireWildcard(_practice);
 
+var _contact = require('./contact');
+
+var fromContact = _interopRequireWildcard(_contact);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
@@ -44,7 +48,8 @@ var RootReducer = (0, _redux.combineReducers)({
 	related: fromRelated.default,
 	gallery: fromGallery.default,
 	search: fromSearch.default,
-	practice: fromPractice.default
+	practice: fromPractice.default,
+	contact: fromContact.default
 });
 
 // Home Selectors
@@ -218,6 +223,14 @@ var isCareerFetching = exports.isCareerFetching = function isCareerFetching(stat
 
 var getCareer = exports.getCareer = function getCareer(state, id) {
 	return fromPractice.getCareer(state.practice, id);
+};
+
+var isContactFetching = exports.isContactFetching = function isContactFetching(state) {
+	return fromPractice.getIsFetching(state.contact);
+};
+
+var getContactContent = exports.getContactContent = function getContactContent(state) {
+	return fromContact.getContent(state.contact);
 };
 
 exports.default = RootReducer;

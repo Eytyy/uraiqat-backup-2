@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProject = exports.fetchAtelierProjects = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProject = exports.fetchAtelierProjects = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -467,6 +467,34 @@ var fetchAuthorRelated = exports.fetchAuthorRelated = function fetchAuthorRelate
 			return response;
 		}).then(function (response) {
 			dispatch(recieveAuthorRelated(response, name));
+		});
+	};
+};
+
+var requestContact = function requestContact() {
+	return {
+		type: 'REQUEST_CONTACT'
+	};
+};
+
+var recieveContact = function recieveContact(payload) {
+	return {
+		type: 'RECIEVE_CONTACT',
+		response: payload
+	};
+};
+
+var fetchContact = exports.fetchContact = function fetchContact() {
+	return function (dispatch, getState) {
+		var state = getState();
+		dispatch(requestContact);
+		if ((0, _reducers.isContactFetching)(state)) {
+			return Promise.resolve();
+		}
+		return api.fetchContact().then(function (response) {
+			return response;
+		}).then(function (response) {
+			dispatch(recieveContact(response));
 		});
 	};
 };

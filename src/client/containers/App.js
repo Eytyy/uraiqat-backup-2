@@ -10,9 +10,10 @@ import Footer from '../components/Footer';
 
 class App extends Component {
 	render() {
-		const { route } = this.props;
+		const { route, location } = this.props;
+		const pageName = location.pathname.split('/')[1] || 'front';
 		return (
-			<div className="container__inner">
+			<div className={`container__inner ${pageName}`}>
 				<Gallery />
 				<ScrollToTop>
 					<Header />

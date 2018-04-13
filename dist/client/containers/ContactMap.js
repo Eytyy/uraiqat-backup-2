@@ -10,25 +10,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
-
-var _reactRouterConfig = require('react-router-config');
-
-var _ScrollToTop = require('./ScrollToTop');
-
-var _ScrollToTop2 = _interopRequireDefault(_ScrollToTop);
-
-var _Gallery = require('./Gallery');
-
-var _Gallery2 = _interopRequireDefault(_Gallery);
-
-var _Header = require('./navigation/Header');
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Footer = require('../components/Footer');
-
-var _Footer2 = _interopRequireDefault(_Footer);
+var _googleMapsReact = require('google-maps-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,43 +20,52 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_Component) {
-	_inherits(App, _Component);
+var ContactMap = function (_React$Component) {
+	_inherits(ContactMap, _React$Component);
 
-	function App() {
-		_classCallCheck(this, App);
+	function ContactMap() {
+		_classCallCheck(this, ContactMap);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (ContactMap.__proto__ || Object.getPrototypeOf(ContactMap)).apply(this, arguments));
 	}
 
-	_createClass(App, [{
+	_createClass(ContactMap, [{
 		key: 'render',
 		value: function render() {
+			var style = {
+				width: '100%',
+				height: '100%',
+				'marginLeft': 'auto',
+				'marginRight': 'auto'
+			};
 			var _props = this.props,
-			    route = _props.route,
-			    location = _props.location;
+			    lat = _props.lat,
+			    lng = _props.lng;
 
-			var pageName = location.pathname.split('/')[1] || 'front';
 			return _react2.default.createElement(
-				'div',
-				{ className: 'container__inner ' + pageName },
-				_react2.default.createElement(_Gallery2.default, null),
-				_react2.default.createElement(
-					_ScrollToTop2.default,
-					null,
-					_react2.default.createElement(_Header2.default, null),
-					_react2.default.createElement(
-						'main',
-						{ role: 'main', className: 'main-content' },
-						(0, _reactRouterConfig.renderRoutes)(route.routes)
-					),
-					_react2.default.createElement(_Footer2.default, null)
-				)
+				_googleMapsReact.Map,
+				{
+					item: true,
+					style: style,
+					google: this.props.google,
+					zoom: 17,
+					initialCenter: { lat: lat, lng: lng },
+					mapTypeId: 'satellite'
+
+				},
+				_react2.default.createElement(_googleMapsReact.Marker, {
+					onClick: this.onMarkerClick,
+					title: 'Uraiqat Architects',
+					position: { lat: lat, lng: lng },
+					name: 'Uraiqat Architects'
+				})
 			);
 		}
 	}]);
 
-	return App;
-}(_react.Component);
+	return ContactMap;
+}(_react2.default.Component);
 
-exports.default = (0, _reactRedux.connect)()(App);
+exports.default = (0, _googleMapsReact.GoogleApiWrapper)({
+	api: 'AIzaSyD0PIdl8wYQiWMhOMecKk2EhfhivW-3k6k'
+})(ContactMap);

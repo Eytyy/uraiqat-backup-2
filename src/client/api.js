@@ -107,3 +107,11 @@ export function fetchPractice() {
 		include: 3
 	}).then(payload => payload.items[0]);
 }
+
+export function fetchContact() {
+	return client.getEntries({
+		content_type: 'contactLanding',
+		'fields.title': 'Contact',
+		include: 3
+	}).then(payload => payload.items[0]);
+}

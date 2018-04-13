@@ -6,6 +6,7 @@ import related, * as fromRelated from './related';
 import gallery, * as fromGallery from './gallery';
 import search, * as fromSearch from './search';
 import practice, * as fromPractice from './practice';
+import contact, * as fromContact from './contact';
 
 const RootReducer = combineReducers({
 	posts,
@@ -14,7 +15,8 @@ const RootReducer = combineReducers({
 	related,
 	gallery,
 	search,
-	practice
+	practice,
+	contact
 });
 
 // Home Selectors
@@ -148,5 +150,13 @@ export const isCareerFetching = state => fromPractice.getIsCareerFetching(state.
 export const getCareer = (state, id) => {
 	return fromPractice.getCareer(state.practice, id);
 };
+
+export const isContactFetching = state => fromPractice.getIsFetching(state.contact);
+
+export const getContactContent = state => {
+	return fromContact.getContent(state.contact);
+};
+
+
 
 export default RootReducer;
