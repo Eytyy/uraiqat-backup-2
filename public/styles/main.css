@@ -1,4 +1,4 @@
-.project__top:after,
+.inner__nav:after, .project__top:after,
 .project__bottom:after, .atelier-preview__thumbs:after, .team-member__content:after {
   content: '';
   display: block;
@@ -315,6 +315,19 @@ body {
   @media (min-width: 1024px) {
     .search-results-title {
       margin-bottom: 64px; } }
+
+.inner__nav {
+  text-align: right;
+  margin-top: 48px; }
+  .inner__nav__item {
+    float: right;
+    clear: right; }
+  @media (min-width: 768px) {
+    .inner__nav {
+      margin-top: 52px; } }
+  @media (min-width: 1024px) {
+    .inner__nav {
+      margin-top: 64px; } }
 
 .post-preview {
   margin-bottom: 48px;

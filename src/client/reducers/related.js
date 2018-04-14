@@ -102,7 +102,9 @@ export const getIsFetching = state => state.All.isFetching;
 
 export const getAll = state => state.All.content;
 
-export const getPost = (state, id) => state.ById[id];
+export const getPost = (state, id) => {
+	return state.ById[id];
+};
 
 export const getIsAuthorFetching = state => state.AuthorRelated.isFetching;
 

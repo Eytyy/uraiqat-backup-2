@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import PropTypes from 'prop-types';
 
-import { fetchProject } from '../actions';
-import { getProject, isProjectFetching } from '../reducers';
+import { fetchProjects } from '../actions';
+import { getProject, isProjectsFetching, getNextPrev } from '../reducers';
 
 import CommaSeparatedList from '../components/CommaSpearatedList';
 import BodyText from '../components/BodyText';
@@ -25,17 +25,16 @@ class Project extends Component { //eslint-disable-line
 		};
 		this.toggleAbout = this.toggleAbout.bind(this);
 	}
-	static fetchData(store, id) {
-		return store.dispatch(fetchProject(id));
+	static fetchData(store) {
+		return store.dispatch(fetchProjects());
 	}
 	componentDidMount() {
-		const { content, isFetching } = this.props;
-		if (!isFetching && typeof content.id === 'undefined') {
-			this.fetchData();
-		}
-		const shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
-		this.setState({
-			shouldAboutRetract
+		const { fetchProjects } = this.props;
+		fetchProjects().then(() => {
+			const shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
+			this.setState({
+				shouldAboutRetract
+			});
 		});
 	}
 	toggleAbout() {
@@ -43,14 +42,8 @@ class Project extends Component { //eslint-disable-line
 			isAboutVisible: !this.state.isAboutVisible
 		});
 	}
-
-	fetchData() {
-		const { fetchProject, match } = this.props;
-		const id = match.params.id;
-		fetchProject(id);
-	}
 	render() {
-		const { content, isFetching, match } = this.props;
+		const { content, innerNav, isFetching, match } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
@@ -96,6 +89,15 @@ class Project extends Component { //eslint-disable-line
 						<Slider sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
+				<aside className="inner__nav">
+					{ innerNav.prev &&
+						<Link to={`/work/${innerNav.prev.id}`} className="inner__nav__item inner__nav__item--next link" >
+							{'<-'}Prev Project
+						</Link>
+					}
+					{ innerNav.next && <Link to={`/work/${innerNav.next.id}`} className="inner__nav__item inner__nav__item--next link" >
+						Next Project{'->'}</Link> }
+				</aside>
 				<aside className="related-content project__related">
 					<RelatedPosts id={match.params.id} />
 				</aside>
@@ -109,18 +111,19 @@ const mapStateToProps = (state, ownProps) => {
 	const id = match.params.id;
 	return {
 		content: getProject(state, id),
-		isFetching: isProjectFetching(state),
+		innerNav: getNextPrev(state, id),
+		isFetching: isProjectsFetching(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchProject }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchProjects }, dispatch);
 
 Project.propTypes = {
 	content: PropTypes.shape({
 		id: PropTypes.string,
 	}),
 	isFetching: PropTypes.bool.isRequired,
-	fetchProject: PropTypes.func.isRequired,
+	fetchProjects: PropTypes.func.isRequired,
 };
 
 Project.defaultProps = {

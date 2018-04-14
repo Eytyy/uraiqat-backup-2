@@ -14,14 +14,14 @@ class RelatedPosts extends Component { //eslint-disable-line
 		return store.dispatch(fetchRelated(id));
 	}
 	componentDidMount() {
-		const { content, isFetching } = this.props;
-		if (!isFetching && typeof content.id === 'undefined') {
-			this.fetchData();
-		}
-	}
-	fetchData() {
 		const { fetchRelated, id } = this.props;
 		fetchRelated(id);
+	}
+	componentWillReceiveProps({ id }) {
+		const { fetchRelated } = this.props;
+		if (this.props.id !== id) {
+			fetchRelated(id);
+		}
 	}
 	render() {
 		const { content, isFetching } = this.props;

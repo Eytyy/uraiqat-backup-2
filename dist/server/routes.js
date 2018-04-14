@@ -187,12 +187,11 @@ router.get('/work', function (req, res) {
 router.get('/work/:id', function (req, res) {
 	var branch = (0, _reactRouterConfig.matchRoutes)(_routes2.default, req.url);
 	var promises = branch.map(function (_ref5) {
-		var route = _ref5.route,
-		    match = _ref5.match;
+		var route = _ref5.route;
 
 		var fetchData = route.component.fetchData;
-		var val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
-		return val;
+		var data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
 	});
 	return Promise.all(promises).then(function () {
 		var context = {};

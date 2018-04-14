@@ -146,10 +146,10 @@ router.get('/work', (req, res) => {
 
 router.get('/work/:id', (req, res) => {
 	const branch = matchRoutes(routes, req.url);
-	const promises = branch.map(({route, match}) => {
+	const promises = branch.map(({route}) => {
 		let fetchData = route.component.fetchData;
-		const val = fetchData instanceof Function ? fetchData(store, req.params.id) : Promise.resolve(null);
-		return val;
+		let data = fetchData instanceof Function ? fetchData(store) : Promise.resolve(null);
+		return data;
 	});
 	return Promise.all(promises).then(() => {
 		let context = {};

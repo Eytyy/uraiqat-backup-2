@@ -128,4 +128,14 @@ export const getAll = state => ({
 
 export const getProject = (state, id) => state.ById[id];
 
+export const getNextPrev = (state, id) => {
+	const content = state.All.content;
+	const currentIndex = content.findIndex((item) => item === id);
+	const nextItemIndex = currentIndex === content.length - 1 ? 0 : currentIndex + 1;
+	const prevItemIndex = currentIndex === 0 ? content.length - 1 : currentIndex - 1;
+	return {
+		next: state.ById[content[nextItemIndex]],
+		prev: state.ById[content[prevItemIndex]],
+	};
+};
 export default work;

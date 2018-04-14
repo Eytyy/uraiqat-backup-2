@@ -72,16 +72,15 @@ var Project = function (_Component) {
 	_createClass(Project, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			var _props = this.props,
-			    content = _props.content,
-			    isFetching = _props.isFetching;
+			var _this2 = this;
 
-			if (!isFetching && typeof content.id === 'undefined') {
-				this.fetchData();
-			}
-			var shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
-			this.setState({
-				shouldAboutRetract: shouldAboutRetract
+			var fetchProjects = this.props.fetchProjects;
+
+			fetchProjects().then(function () {
+				var shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
+				_this2.setState({
+					shouldAboutRetract: shouldAboutRetract
+				});
 			});
 		}
 	}, {
@@ -92,22 +91,13 @@ var Project = function (_Component) {
 			});
 		}
 	}, {
-		key: 'fetchData',
-		value: function fetchData() {
-			var _props2 = this.props,
-			    fetchProject = _props2.fetchProject,
-			    match = _props2.match;
-
-			var id = match.params.id;
-			fetchProject(id);
-		}
-	}, {
 		key: 'render',
 		value: function render() {
-			var _props3 = this.props,
-			    content = _props3.content,
-			    isFetching = _props3.isFetching,
-			    match = _props3.match;
+			var _props = this.props,
+			    content = _props.content,
+			    innerNav = _props.innerNav,
+			    isFetching = _props.isFetching,
+			    match = _props.match;
 
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
@@ -228,6 +218,22 @@ var Project = function (_Component) {
 				),
 				_react2.default.createElement(
 					'aside',
+					{ className: 'inner__nav' },
+					innerNav.prev && _react2.default.createElement(
+						_reactRouterDom.Link,
+						{ to: '/work/' + innerNav.prev.id, className: 'inner__nav__item inner__nav__item--next link' },
+						'<-',
+						'Prev Project'
+					),
+					innerNav.next && _react2.default.createElement(
+						_reactRouterDom.Link,
+						{ to: '/work/' + innerNav.next.id, className: 'inner__nav__item inner__nav__item--next link' },
+						'Next Project',
+						'->'
+					)
+				),
+				_react2.default.createElement(
+					'aside',
 					{ className: 'related-content project__related' },
 					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
 				)
@@ -235,8 +241,8 @@ var Project = function (_Component) {
 		}
 	}], [{
 		key: 'fetchData',
-		value: function fetchData(store, id) {
-			return store.dispatch((0, _actions.fetchProject)(id));
+		value: function fetchData(store) {
+			return store.dispatch((0, _actions.fetchProjects)());
 		}
 	}]);
 
@@ -249,12 +255,13 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 	var id = match.params.id;
 	return {
 		content: (0, _reducers.getProject)(state, id),
-		isFetching: (0, _reducers.isProjectFetching)(state)
+		innerNav: (0, _reducers.getNextPrev)(state, id),
+		isFetching: (0, _reducers.isProjectsFetching)(state)
 	};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchProject: _actions.fetchProject }, dispatch);
+	return (0, _redux.bindActionCreators)({ fetchProjects: _actions.fetchProjects }, dispatch);
 };
 
 Project.propTypes = {
@@ -262,7 +269,7 @@ Project.propTypes = {
 		id: _propTypes2.default.string
 	}),
 	isFetching: _propTypes2.default.bool.isRequired,
-	fetchProject: _propTypes2.default.func.isRequired
+	fetchProjects: _propTypes2.default.func.isRequired
 };
 
 Project.defaultProps = {

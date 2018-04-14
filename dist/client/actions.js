@@ -226,6 +226,7 @@ var recieveRelated = function recieveRelated(payload, id) {
 var fetchRelated = exports.fetchRelated = function fetchRelated(id) {
 	return function (dispatch, getState) {
 		var state = getState();
+		console.log('fetch');
 		dispatch(requestRelated());
 		if ((0, _reducers.isRelatedFetching)(state)) {
 			return Promise.resolve();

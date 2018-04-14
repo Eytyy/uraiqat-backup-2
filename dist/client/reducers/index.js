@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getNextPrev = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -104,6 +104,10 @@ var getProject = exports.getProject = function getProject(state, id) {
 	return fromWork.getProject(state.projects, id);
 };
 
+var getNextPrev = exports.getNextPrev = function getNextPrev(state, id) {
+	return fromWork.getNextPrev(state.projects, id);
+};
+
 // Atelier Selectors
 var isAtelierProjectsFetching = exports.isAtelierProjectsFetching = function isAtelierProjectsFetching(state) {
 	return fromAtelier.getIsFetching(state.atelier);
@@ -136,6 +140,10 @@ var isRelatedFetching = exports.isRelatedFetching = function isRelatedFetching(s
 };
 var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, id, postID) {
 	var content = fromRelated.getPost(state.related, id);
+	if (typeof postID === 'undefined') {
+		var rval = typeof content === 'undefined' ? [] : content;
+		return rval;
+	}
 	return typeof content === 'undefined' ? [] : content.filter(function (_ref) {
 		var sys = _ref.sys;
 		return sys.id !== postID;

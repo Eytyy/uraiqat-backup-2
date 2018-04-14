@@ -190,6 +190,7 @@ const recieveRelated = (payload, id) => ({
 
 export const fetchRelated = (id) => (dispatch, getState) => {
 	const state = getState();
+	console.log('fetch');
 	dispatch(requestRelated());
 	if (isRelatedFetching(state)) {
 		return Promise.resolve();

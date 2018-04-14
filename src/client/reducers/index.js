@@ -59,6 +59,10 @@ export const getProject = (state, id) => {
 	return fromWork.getProject(state.projects, id);
 };
 
+export const getNextPrev =(state, id) => {
+	return fromWork.getNextPrev(state.projects, id);
+};
+
 // Atelier Selectors
 export const isAtelierProjectsFetching = state => fromAtelier.getIsFetching(state.atelier);
 
@@ -84,6 +88,10 @@ export const getAtelierProject = (state, id) => {
 export const isRelatedFetching = state => fromRelated.getIsFetching(state.related);
 export const getRelatedPosts = (state, id, postID) => {
 	const content = fromRelated.getPost(state.related, id);
+	if (typeof postID === 'undefined') {
+		const rval = typeof content === 'undefined' ? [] : content;
+		return rval;
+	}
 	return typeof content === 'undefined' ? [] : content.filter(({sys}) => sys.id !== postID);
 };
 
