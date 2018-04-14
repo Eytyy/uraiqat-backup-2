@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux';
 
 import PropTypes from 'prop-types';
 
-import { fetchAtelierProject } from '../actions';
-import { getAtelierProject, isAtelierProjectFetching, getNextPrev } from '../reducers';
+import { fetchAtelierProjects } from '../actions';
+import { getAtelierProject, isAtelierProjectsFetching, getNextPrev } from '../reducers';
 
 import BodyText from '../components/BodyText';
 
@@ -17,13 +17,12 @@ import InnerNav from '../components/InnerNav';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class AtelierProject extends Component { //eslint-disable-line
-	static fetchData(store, id) {
-		return store.dispatch(fetchAtelierProject(id));
+	static fetchData(store) {
+		return store.dispatch(fetchAtelierProjects());
 	}
-	fetchData() {
-		const { fetchAtelierProject, match } = this.props;
-		const id = match.params.id;
-		fetchAtelierProject(id);
+	componentDidMount() {
+		const { fetchAtelierProjects } = this.props;
+		return fetchAtelierProjects();
 	}
 	render() {
 		const { content, innerNavContent, isFetching, match } = this.props;
@@ -61,18 +60,18 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		content: getAtelierProject(state, id),
 		innerNavContent: getNextPrev(state, id, 'atelier'),
-		isFetching: isAtelierProjectFetching(state),
+		isFetching: isAtelierProjectsFetching(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchAtelierProject }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchAtelierProjects }, dispatch);
 
 AtelierProject.propTypes = {
 	content: PropTypes.shape({
 		id: PropTypes.string,
 	}),
 	isFetching: PropTypes.bool.isRequired,
-	fetchAtelierProject: PropTypes.func.isRequired,
+	fetchAtelierProjects: PropTypes.func.isRequired,
 };
 
 AtelierProject.defaultProps = {

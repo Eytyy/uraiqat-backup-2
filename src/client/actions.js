@@ -99,15 +99,6 @@ const recieveProjects = payload => ({
 	response: payload,
 });
 
-const requestProject = () => ({
-	type: 'REQUEST_PROJECT'
-});
-
-const recieveProject = payload => ({
-	type: 'RECIEVE_PROJECT',
-	response: payload,
-});
-
 export const fetchProjects = () => (dispatch, getState) => {
 	const state = getState();
 	dispatch(requestProjects());
@@ -121,17 +112,6 @@ export const fetchProjects = () => (dispatch, getState) => {
 	});
 };
 
-export const fetchProject = (id) => (dispatch, getState) => {
-	const state = getState();
-	dispatch(requestProject());
-	if (isProjectFetching(state)) {
-		return Promise.resolve();
-	}
-	return api.fetchProject(id).then((response) => {
-		dispatch(recieveProject(response));
-	});
-};
-
 // Atelier Action Creators
 
 const requestAtelierProjects = () => ({
@@ -140,15 +120,6 @@ const requestAtelierProjects = () => ({
 
 const recieveAtelierProjects = payload => ({
 	type: 'RECIEVE_ATELIER_PROJECTS',
-	response: payload,
-});
-
-const requestAtelierProject = () => ({
-	type: 'REQUEST_ATELIER_PROJECT'
-});
-
-const recieveAtelierProject = payload => ({
-	type: 'RECIEVE_ATELIER_PROJECT',
 	response: payload,
 });
 
@@ -164,18 +135,6 @@ export const fetchAtelierProjects = () => (dispatch, getState) => {
 		dispatch(recieveAtelierProjects(response));
 	});
 };
-
-export const fetchAtelierProject = (id) => (dispatch, getState) => {
-	const state = getState();
-	dispatch(requestAtelierProject());
-	if (isAtelierProjectFetching(state)) {
-		return Promise.resolve();
-	}
-	return api.fetchAtelierProject(id).then((response) => {
-		dispatch(recieveAtelierProject(response));
-	});
-};
-
 
 // Related Action Creators
 const requestRelated = () => ({

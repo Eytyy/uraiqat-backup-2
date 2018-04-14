@@ -36,30 +36,12 @@ export function fetchProjects() {
 	}).then(payload => payload.items);
 }
 
-export function fetchProject(id) {
-	return client.getEntries({ 'sys.id': id }).then((payload) => {
-		if (!payload.items.length) {
-			throw new Error('Entry not found');
-		}
-		return payload.items[0];
-	});
-}
-
 export function fetchAtelierProjects() {
 	return client.getEntries({
 		content_type: 'landingPageType2',
 		'fields.title': 'Atelier',
 		include: 3
 	}).then(payload => payload.items);
-}
-
-export function fetchAtelierProject(id) {
-	return client.getEntries({ 'sys.id': id }).then((payload) => {
-		if (!payload.items.length) {
-			throw new Error('Entry not found');
-		}
-		return payload.items[0];
-	});
 }
 
 export function fetchRelatedPosts(id) {

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProject = exports.fetchAtelierProjects = exports.fetchProject = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
+exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.initClient = undefined;
 
 var _reducers = require('./reducers');
 
@@ -111,19 +111,6 @@ var recieveProjects = function recieveProjects(payload) {
 	};
 };
 
-var requestProject = function requestProject() {
-	return {
-		type: 'REQUEST_PROJECT'
-	};
-};
-
-var recieveProject = function recieveProject(payload) {
-	return {
-		type: 'RECIEVE_PROJECT',
-		response: payload
-	};
-};
-
 var fetchProjects = exports.fetchProjects = function fetchProjects() {
 	return function (dispatch, getState) {
 		var state = getState();
@@ -135,19 +122,6 @@ var fetchProjects = exports.fetchProjects = function fetchProjects() {
 			return response;
 		}).then(function (response) {
 			dispatch(recieveProjects(response));
-		});
-	};
-};
-
-var fetchProject = exports.fetchProject = function fetchProject(id) {
-	return function (dispatch, getState) {
-		var state = getState();
-		dispatch(requestProject());
-		if ((0, _reducers.isProjectFetching)(state)) {
-			return Promise.resolve();
-		}
-		return api.fetchProject(id).then(function (response) {
-			dispatch(recieveProject(response));
 		});
 	};
 };
@@ -167,19 +141,6 @@ var recieveAtelierProjects = function recieveAtelierProjects(payload) {
 	};
 };
 
-var requestAtelierProject = function requestAtelierProject() {
-	return {
-		type: 'REQUEST_ATELIER_PROJECT'
-	};
-};
-
-var recieveAtelierProject = function recieveAtelierProject(payload) {
-	return {
-		type: 'RECIEVE_ATELIER_PROJECT',
-		response: payload
-	};
-};
-
 var fetchAtelierProjects = exports.fetchAtelierProjects = function fetchAtelierProjects() {
 	return function (dispatch, getState) {
 		var state = getState();
@@ -191,19 +152,6 @@ var fetchAtelierProjects = exports.fetchAtelierProjects = function fetchAtelierP
 			return response;
 		}).then(function (response) {
 			dispatch(recieveAtelierProjects(response));
-		});
-	};
-};
-
-var fetchAtelierProject = exports.fetchAtelierProject = function fetchAtelierProject(id) {
-	return function (dispatch, getState) {
-		var state = getState();
-		dispatch(requestAtelierProject());
-		if ((0, _reducers.isAtelierProjectFetching)(state)) {
-			return Promise.resolve();
-		}
-		return api.fetchAtelierProject(id).then(function (response) {
-			dispatch(recieveAtelierProject(response));
 		});
 	};
 };

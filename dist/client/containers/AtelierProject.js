@@ -64,23 +64,20 @@ var AtelierProject = function (_Component) {
 	}
 
 	_createClass(AtelierProject, [{
-		key: 'fetchData',
-		value: function fetchData() {
-			var _props = this.props,
-			    fetchAtelierProject = _props.fetchAtelierProject,
-			    match = _props.match;
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var fetchAtelierProjects = this.props.fetchAtelierProjects;
 
-			var id = match.params.id;
-			fetchAtelierProject(id);
+			return fetchAtelierProjects();
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var _props2 = this.props,
-			    content = _props2.content,
-			    innerNavContent = _props2.innerNavContent,
-			    isFetching = _props2.isFetching,
-			    match = _props2.match;
+			var _props = this.props,
+			    content = _props.content,
+			    innerNavContent = _props.innerNavContent,
+			    isFetching = _props.isFetching,
+			    match = _props.match;
 
 			if (isFetching || typeof content.id === 'undefined') {
 				return _react2.default.createElement(
@@ -134,8 +131,8 @@ var AtelierProject = function (_Component) {
 	}], [{
 		key: 'fetchData',
 		//eslint-disable-line
-		value: function fetchData(store, id) {
-			return store.dispatch((0, _actions.fetchAtelierProject)(id));
+		value: function fetchData(store) {
+			return store.dispatch((0, _actions.fetchAtelierProjects)());
 		}
 	}]);
 
@@ -149,12 +146,12 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 	return {
 		content: (0, _reducers.getAtelierProject)(state, id),
 		innerNavContent: (0, _reducers.getNextPrev)(state, id, 'atelier'),
-		isFetching: (0, _reducers.isAtelierProjectFetching)(state)
+		isFetching: (0, _reducers.isAtelierProjectsFetching)(state)
 	};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchAtelierProject: _actions.fetchAtelierProject }, dispatch);
+	return (0, _redux.bindActionCreators)({ fetchAtelierProjects: _actions.fetchAtelierProjects }, dispatch);
 };
 
 AtelierProject.propTypes = {
@@ -162,7 +159,7 @@ AtelierProject.propTypes = {
 		id: _propTypes2.default.string
 	}),
 	isFetching: _propTypes2.default.bool.isRequired,
-	fetchAtelierProject: _propTypes2.default.func.isRequired
+	fetchAtelierProjects: _propTypes2.default.func.isRequired
 };
 
 AtelierProject.defaultProps = {
