@@ -4,9 +4,9 @@
   display: block;
   clear: both; }
 
-.post-preview__image .preview-image, .project-preview__image--main .preview-image, .project-preview__image--craft .preview-image, .video.post-preview__video {
+.post-preview__image .preview-image, .project-preview__image--main .preview-image, .project-preview__image--craft .preview-image, .atelier-preview__thumbs .atelier-preview__image .preview-image, .video.post-preview__video {
   position: relative; }
-  .post-preview__image .preview-image:before, .project-preview__image--main .preview-image:before, .project-preview__image--craft .preview-image:before, .video.post-preview__video:before {
+  .post-preview__image .preview-image:before, .project-preview__image--main .preview-image:before, .project-preview__image--craft .preview-image:before, .atelier-preview__thumbs .atelier-preview__image .preview-image:before, .video.post-preview__video:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -15,7 +15,7 @@
     height: 100%;
     background-color: #FFF;
     mix-blend-mode: color; }
-  .post-preview__image .preview-image:after, .project-preview__image--main .preview-image:after, .project-preview__image--craft .preview-image:after, .video.post-preview__video:after {
+  .post-preview__image .preview-image:after, .project-preview__image--main .preview-image:after, .project-preview__image--craft .preview-image:after, .atelier-preview__thumbs .atelier-preview__image .preview-image:after, .video.post-preview__video:after {
     content: '';
     position: absolute;
     top: 0px;
