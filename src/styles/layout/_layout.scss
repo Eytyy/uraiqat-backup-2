@@ -32,6 +32,9 @@ body {
 	width: 100%;
 	z-index: 100;
 	background: #FFF;
+	.contact & {
+		padding-bottom: 0;
+	}
 	@include respond-to(tablet) {
 		padding: $tablet-lh 0 ($tablet-lh/4);
 	}

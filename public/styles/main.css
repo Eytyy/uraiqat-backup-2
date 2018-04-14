@@ -259,6 +259,8 @@ body {
   width: 100%;
   z-index: 100;
   background: #FFF; }
+  .contact .website-header {
+    padding-bottom: 0; }
   @media (min-width: 768px) {
     .website-header {
       padding: 26px 0 6.5px; } }
