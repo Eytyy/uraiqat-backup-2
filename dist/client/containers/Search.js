@@ -72,9 +72,7 @@ var Search = function (_Component) {
 				_react2.default.createElement(
 					'h1',
 					{ className: 'search-results-title' },
-					'Search results for [',
-					keyword,
-					']'
+					content.length === 0 ? 'Couldn\'t find content with the keyword [' + keyword + ']' : 'Search results for [' + keyword + ']'
 				),
 				_react2.default.createElement(
 					'div',

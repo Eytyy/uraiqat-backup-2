@@ -62,7 +62,7 @@ class Post extends Component { //eslint-disable-line
 				{
 					!relatedProject ? null:
 						<aside className="related-content post__related">
-							{relatedProject && <RelatedProject id={relatedProject[0].sys.id} content={relatedProject[0].fields} />}
+							{relatedProject && <RelatedProject id={relatedProject[0].sys.id} content={relatedProject[0].fields} type={relatedProject[0].sys.contentType.sys.id} />}
 							<RelatedPosts id={relatedProject[0].sys.id} postID={id} />
 						</aside>
 				}

@@ -44,7 +44,8 @@ var RelatedProject = function (_Component) {
 		value: function render() {
 			var _props = this.props,
 			    content = _props.content,
-			    id = _props.id;
+			    id = _props.id,
+			    type = _props.type;
 			var previewMainThumbnail = content.previewMainThumbnail,
 			    year = content.year,
 			    title = content.title;
@@ -54,7 +55,7 @@ var RelatedProject = function (_Component) {
 				{ classList: 'post-preview post-preview--default post-preview--landscape related-item related-item--project' },
 				_react2.default.createElement(
 					_reactRouterDom.Link,
-					{ className: 'post-preview__link', to: '/work/' + id },
+					{ className: 'post-preview__link', to: '/' + (type === 'atelierProject' ? 'atelier' : 'work') + '/' + id },
 					year && _react2.default.createElement(
 						'div',
 						{ className: 'post-preview__meta' },
