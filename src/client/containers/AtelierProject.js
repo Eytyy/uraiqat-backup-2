@@ -6,12 +6,13 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
 import { fetchAtelierProject } from '../actions';
-import { getAtelierProject, isAtelierProjectFetching } from '../reducers';
+import { getAtelierProject, isAtelierProjectFetching, getNextPrev } from '../reducers';
 
 import BodyText from '../components/BodyText';
 
 import Slider from './Slider';
 import RelatedPosts from '../components/related/RelatedPosts';
+import InnerNav from '../components/InnerNav';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
@@ -25,7 +26,7 @@ class AtelierProject extends Component { //eslint-disable-line
 		fetchAtelierProject(id);
 	}
 	render() {
-		const { content, isFetching, match } = this.props;
+		const { content, innerNavContent, isFetching, match } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
@@ -45,6 +46,7 @@ class AtelierProject extends Component { //eslint-disable-line
 						<BodyText content={description} />
 					</div>
 				</div>}
+				<InnerNav {...innerNavContent} type="atelier" />
 				<aside className="related-content atelier__related">
 					<RelatedPosts id={match.params.id} />
 				</aside>
@@ -58,6 +60,7 @@ const mapStateToProps = (state, ownProps) => {
 	const id = match.params.id;
 	return {
 		content: getAtelierProject(state, id),
+		innerNavContent: getNextPrev(state, id, 'atelier'),
 		isFetching: isAtelierProjectFetching(state),
 	};
 };

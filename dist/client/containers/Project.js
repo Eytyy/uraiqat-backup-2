@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -39,6 +41,10 @@ var _Slider2 = _interopRequireDefault(_Slider);
 var _RelatedPosts = require('../components/related/RelatedPosts');
 
 var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
+
+var _InnerNav = require('../components/InnerNav');
+
+var _InnerNav2 = _interopRequireDefault(_InnerNav);
 
 var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
@@ -95,7 +101,7 @@ var Project = function (_Component) {
 		value: function render() {
 			var _props = this.props,
 			    content = _props.content,
-			    innerNav = _props.innerNav,
+			    innerNavContent = _props.innerNavContent,
 			    isFetching = _props.isFetching,
 			    match = _props.match;
 
@@ -216,22 +222,7 @@ var Project = function (_Component) {
 						_react2.default.createElement(_Slider2.default, { sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
 					)
 				),
-				_react2.default.createElement(
-					'aside',
-					{ className: 'inner__nav' },
-					innerNav.prev && _react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: '/work/' + innerNav.prev.id, className: 'inner__nav__item inner__nav__item--next link' },
-						'<-',
-						'Prev Project'
-					),
-					innerNav.next && _react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: '/work/' + innerNav.next.id, className: 'inner__nav__item inner__nav__item--next link' },
-						'Next Project',
-						'->'
-					)
-				),
+				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' })),
 				_react2.default.createElement(
 					'aside',
 					{ className: 'related-content project__related' },
@@ -255,7 +246,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 	var id = match.params.id;
 	return {
 		content: (0, _reducers.getProject)(state, id),
-		innerNav: (0, _reducers.getNextPrev)(state, id),
+		innerNavContent: (0, _reducers.getNextPrev)(state, id, 'work'),
 		isFetching: (0, _reducers.isProjectsFetching)(state)
 	};
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -13,6 +13,7 @@ import BodyText from '../components/BodyText';
 
 import Slider from './Slider';
 import RelatedPosts from '../components/related/RelatedPosts';
+import InnerNav from '../components/InnerNav';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
@@ -43,7 +44,7 @@ class Project extends Component { //eslint-disable-line
 		});
 	}
 	render() {
-		const { content, innerNav, isFetching, match } = this.props;
+		const { content, innerNavContent, isFetching, match } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
@@ -89,15 +90,7 @@ class Project extends Component { //eslint-disable-line
 						<Slider sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
-				<aside className="inner__nav">
-					{ innerNav.prev &&
-						<Link to={`/work/${innerNav.prev.id}`} className="inner__nav__item inner__nav__item--next link" >
-							{'<-'}Prev Project
-						</Link>
-					}
-					{ innerNav.next && <Link to={`/work/${innerNav.next.id}`} className="inner__nav__item inner__nav__item--next link" >
-						Next Project{'->'}</Link> }
-				</aside>
+				<InnerNav {...innerNavContent} type="work" />
 				<aside className="related-content project__related">
 					<RelatedPosts id={match.params.id} />
 				</aside>
@@ -111,7 +104,7 @@ const mapStateToProps = (state, ownProps) => {
 	const id = match.params.id;
 	return {
 		content: getProject(state, id),
-		innerNav: getNextPrev(state, id),
+		innerNavContent: getNextPrev(state, id, 'work'),
 		isFetching: isProjectsFetching(state),
 	};
 };

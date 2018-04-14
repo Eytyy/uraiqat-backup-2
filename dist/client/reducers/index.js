@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getNextPrev = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
 
 var _redux = require('redux');
 
@@ -104,10 +104,6 @@ var getProject = exports.getProject = function getProject(state, id) {
 	return fromWork.getProject(state.projects, id);
 };
 
-var getNextPrev = exports.getNextPrev = function getNextPrev(state, id) {
-	return fromWork.getNextPrev(state.projects, id);
-};
-
 // Atelier Selectors
 var isAtelierProjectsFetching = exports.isAtelierProjectsFetching = function isAtelierProjectsFetching(state) {
 	return fromAtelier.getIsFetching(state.atelier);
@@ -132,6 +128,15 @@ var isAtelierProjectFetching = exports.isAtelierProjectFetching = function isAte
 
 var getAtelierProject = exports.getAtelierProject = function getAtelierProject(state, id) {
 	return fromAtelier.getProject(state.atelier, id);
+};
+
+var getNextPrev = exports.getNextPrev = function getNextPrev(state, id, type) {
+	switch (type) {
+		case 'atelier':
+			return fromAtelier.getNextPrev(state.atelier, id);
+		default:
+			return fromWork.getNextPrev(state.projects, id);
+	}
 };
 
 // Related Selectors

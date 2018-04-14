@@ -59,10 +59,6 @@ export const getProject = (state, id) => {
 	return fromWork.getProject(state.projects, id);
 };
 
-export const getNextPrev =(state, id) => {
-	return fromWork.getNextPrev(state.projects, id);
-};
-
 // Atelier Selectors
 export const isAtelierProjectsFetching = state => fromAtelier.getIsFetching(state.atelier);
 
@@ -81,6 +77,15 @@ export const isAtelierProjectFetching = state => fromAtelier.getIsFetching(state
 
 export const getAtelierProject = (state, id) => {
 	return fromAtelier.getProject(state.atelier, id);
+};
+
+export const getNextPrev =(state, id, type) => {
+	switch(type) {
+	case 'atelier':
+		return fromAtelier.getNextPrev(state.atelier, id);
+	default:
+		return fromWork.getNextPrev(state.projects, id);
+	}
 };
 
 
