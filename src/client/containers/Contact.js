@@ -10,6 +10,7 @@ import LoadingPattern from '../components/patterns/LoadingPattern';
 import PatternChunk from '../components/patterns/PatternChunk';
 import PatternBlock from '../components/patterns/PatternBlock';
 import ContactAddressLine from '../components/ContactAddressLine';
+import ContactMobile from '../components/ContactMobile';
 
 import ContactMap from './ContactMap';
 
@@ -64,24 +65,31 @@ class Contact extends Component {
 		if (typeof window === 'undefined') {
 			return <section className="landing-page landing-page--contact main-section"></section>;
 		}
-		return (
-			<section className="landing-page landing-page--contact main-section">
-				<div className="contact-line"><PatternChunk reserved={0} /></div>
-				<div className="contact-line"><PatternChunk reserved={0} /></div>
-				<ContactAddressLine type="text" config={addressLine1Config} />
-				<ContactAddressLine type="text" config={addressLine2Config} />
-				<div className="contact-line"><PatternChunk reserved={0} /></div>
-				<ContactAddressLine type="tel" config={telephoneConfig} />
-				<ContactAddressLine type="tel" config={faxConfig} />
-				<ContactAddressLine type="tel" config={mobileConfig} />
-				<div className="contact-line"><PatternChunk reserved={0} /></div>
-				<ContactAddressLine type="email" config={emailConfig} />
-				<PatternBlock reservedContent={10} />
-				<div className="contact__map-wrapper">
-					{ typeof window === 'undefined' ? null : <ContactMap lat={coordinates.lat} lng={coordinates.lon}/> }
-				</div>
-			</section>
-		);
+		if (window.innerWidth < 768) {
+			return (
+				<ContactMobile content={content} />
+
+			);
+		} else {
+			return (
+				<section className="landing-page landing-page--contact main-section">
+					<div className="contact-line"><PatternChunk reserved={0} /></div>
+					<div className="contact-line"><PatternChunk reserved={0} /></div>
+					<ContactAddressLine type="text" config={addressLine1Config} />
+					<ContactAddressLine type="text" config={addressLine2Config} />
+					<div className="contact-line"><PatternChunk reserved={0} /></div>
+					<ContactAddressLine type="tel" config={telephoneConfig} />
+					<ContactAddressLine type="tel" config={faxConfig} />
+					<ContactAddressLine type="tel" config={mobileConfig} />
+					<div className="contact-line"><PatternChunk reserved={0} /></div>
+					<ContactAddressLine type="email" config={emailConfig} />
+					<PatternBlock reservedContent={10} />
+					<div className="contact__map-wrapper">
+						{ typeof window === 'undefined' ? null : <ContactMap lat={coordinates.lat} lng={coordinates.lon}/> }
+					</div>
+				</section>
+			);
+		}
 	}
 }
 

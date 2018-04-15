@@ -38,6 +38,10 @@ var _ContactAddressLine = require('../components/ContactAddressLine');
 
 var _ContactAddressLine2 = _interopRequireDefault(_ContactAddressLine);
 
+var _ContactMobile = require('../components/ContactMobile');
+
+var _ContactMobile2 = _interopRequireDefault(_ContactMobile);
+
 var _ContactMap = require('./ContactMap');
 
 var _ContactMap2 = _interopRequireDefault(_ContactMap);
@@ -125,42 +129,46 @@ var Contact = function (_Component) {
 			if (typeof window === 'undefined') {
 				return _react2.default.createElement('section', { className: 'landing-page landing-page--contact main-section' });
 			}
-			return _react2.default.createElement(
-				'section',
-				{ className: 'landing-page landing-page--contact main-section' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'contact-line' },
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'contact-line' },
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
-				),
-				_react2.default.createElement(_ContactAddressLine2.default, { type: 'text', config: addressLine1Config }),
-				_react2.default.createElement(_ContactAddressLine2.default, { type: 'text', config: addressLine2Config }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'contact-line' },
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
-				),
-				_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: telephoneConfig }),
-				_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: faxConfig }),
-				_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: mobileConfig }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'contact-line' },
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
-				),
-				_react2.default.createElement(_ContactAddressLine2.default, { type: 'email', config: emailConfig }),
-				_react2.default.createElement(_PatternBlock2.default, { reservedContent: 10 }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'contact__map-wrapper' },
-					typeof window === 'undefined' ? null : _react2.default.createElement(_ContactMap2.default, { lat: coordinates.lat, lng: coordinates.lon })
-				)
-			);
+			if (window.innerWidth < 768) {
+				return _react2.default.createElement(_ContactMobile2.default, { content: content });
+			} else {
+				return _react2.default.createElement(
+					'section',
+					{ className: 'landing-page landing-page--contact main-section' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'contact-line' },
+						_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'contact-line' },
+						_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					),
+					_react2.default.createElement(_ContactAddressLine2.default, { type: 'text', config: addressLine1Config }),
+					_react2.default.createElement(_ContactAddressLine2.default, { type: 'text', config: addressLine2Config }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'contact-line' },
+						_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					),
+					_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: telephoneConfig }),
+					_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: faxConfig }),
+					_react2.default.createElement(_ContactAddressLine2.default, { type: 'tel', config: mobileConfig }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'contact-line' },
+						_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					),
+					_react2.default.createElement(_ContactAddressLine2.default, { type: 'email', config: emailConfig }),
+					_react2.default.createElement(_PatternBlock2.default, { reservedContent: 10 }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'contact__map-wrapper' },
+						typeof window === 'undefined' ? null : _react2.default.createElement(_ContactMap2.default, { lat: coordinates.lat, lng: coordinates.lon })
+					)
+				);
+			}
 		}
 	}], [{
 		key: 'fetchData',

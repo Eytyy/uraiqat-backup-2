@@ -35,7 +35,7 @@ var PatternBlock = function PatternBlock(_ref) {
 
 	return _react2.default.createElement(
 		'div',
-		{ className: 'pattern pattern--loading' },
+		{ className: 'pattern pattern--contact-block' },
 		fakeArray.map(function (item, index) {
 			return _react2.default.createElement(_PatternLine2.default, { key: 'pl-' + index, noOfChars: numberOfLines.x });
 		})

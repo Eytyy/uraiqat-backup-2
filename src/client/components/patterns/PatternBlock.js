@@ -18,7 +18,7 @@ const PatternBlock = ({ reservedContent }) => {
 	const fakeArray = Array(numberOfLines.y).fill('pl');
 	
 	return (
-		<div className="pattern pattern--loading">
+		<div className="pattern pattern--contact-block">
 			{ fakeArray.map((item, index) => <PatternLine key={`pl-${index}`} noOfChars={numberOfLines.x} />)}
 		</div>
 	);

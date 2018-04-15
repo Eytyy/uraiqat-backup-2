@@ -5,11 +5,10 @@
 
 .contact__map-wrapper {
 	position: absolute;
-	padding: $lh ($char-width * 2);
-	width: 420px;
-	height: 256px;
-	top: $lh * 2;
-	right: $char-width * 4;
+	width: 100%;
+	height: 240px;
+	bottom: 0;
+	left: 0;
 	background: #FFF;
 	> div {
 		position: relative;
@@ -18,13 +17,16 @@
 	}
 	@include respond-to(tablet) {
 		padding: $lh ($tablet-char-width * 2);
-		top: $tablet-lh * 2;
-		right: $tablet-char-width * 4;
+		top: $tablet-lh * 11;
+		bottom: auto;
+		left: 0;
+		height: 390px;
 	}
 	@include respond-to(desktop) {
 		padding: ($lh/2) ($desktop-char-width);
 		top: $desktop-lh * 2;
 		right: $desktop-char-width * 2;
+		left: auto;
 		width: 518px;
     height: 352px;
 	}
