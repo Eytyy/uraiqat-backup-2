@@ -1,3 +1,47 @@
+.atelier-landing__top {
+	margin-bottom: $lh * 2;
+	@include respond-to(tablet) {
+		margin-bottom: ($tablet-lh * 2);
+	}
+	@include respond-to(desktop) {
+		margin-bottom: ($desktop-lh * 2);
+	}
+}
+.atelier-landing__top__media {
+	height: 192px;
+	width: 100%;
+	margin-bottom: $lh * 2;
+	.atelier-landing__video,
+	.atelier-landing__image {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	@include respond-to(mobile-x2) {
+		height: 216px;
+		width: 100%;
+	}	
+	@include respond-to(tablet) {
+		height: 390px;
+		width: 588px;
+		margin: 0 auto ($tablet-lh * 2);
+	}
+	@include respond-to(desktop) {
+		height: 544px;
+		width: 882px;
+		margin-bottom: $desktop-lh * 2;
+	}
+}
+
+.atelier-landing__top__desc {
+	@include respond-to(tablet) {
+		width: 588px;
+	}
+	@include respond-to(desktop) {
+		width: 882px;
+	}
+}
+
 .atelier-preview {
 	margin-bottom: $lh * 3;
 	@include respond-to(tablet) {
@@ -9,7 +53,6 @@
 }
 .atelier-preview__thumbs {
 	@extend %clearfix;
-	margin-left: $char-width * 3;
 	margin-top: $lh;
 	.atelier-preview__image {
 		position: relative;
@@ -19,7 +62,6 @@
 		}
 	}
 	@include respond-to(tablet) {
-		margin-left: $tablet-char-width * 3;
 		margin-top: $tablet-lh;
 	}
 	@include respond-to(desktop) {
@@ -30,23 +72,63 @@
 
 .atelier-preview__thumbs--landscape {
 	.atelier-preview__image--main {
-		width: 756px;
-		height: 416px;
+		width: 182px;
+		height: 120px;
 	}
 	.atelier-preview__image--diagram {
-		width: 322px;
-		height: 416px;
+		width: 98px;
+		height: 120px;
+	}
+	@include respond-to(mobile-x2) {
+		.atelier-preview__image--main {
+			width: 208px;
+			height: 120px;
+		}
+		.atelier-preview__image--diagram {
+			width: 112px;
+			height: 120px;
+		}
+	}
+	@include respond-to(tablet) {
+		.atelier-preview__image--main {
+			width: 468px;
+			height: 260px;
+		}
+		.atelier-preview__image--diagram {
+			width: 252px;
+			height: 260px;
+		}
 	}
 }
 
 .atelier-preview__thumbs--portrait {
 	.atelier-preview__image--main {
-		width: 420px;
-		height: 608px;
+		width: 154px;
+		height: 240px;
 	}
 	.atelier-preview__image--diagram {
-		width: 336px;
-		height: 608px;
+		width: 126px;
+		height: 240px;
+	}
+	@include respond-to(mobile-x2) {
+		.atelier-preview__image--main {
+			width: 176px;
+			height: 240px;
+		}
+		.atelier-preview__image--diagram {
+			width: 144px;
+			height: 240px;
+		}
+	}
+	@include respond-to(tablet) {
+		.atelier-preview__image--main {
+			width: 266px;
+			height: 360px;
+		}
+		.atelier-preview__image--diagram {
+			width: 224px;
+			height: 360px;
+		}
 	}
 }
 

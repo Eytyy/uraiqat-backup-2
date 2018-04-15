@@ -110,15 +110,17 @@ var isAtelierProjectsFetching = exports.isAtelierProjectsFetching = function isA
 };
 
 var getAtelierProjects = exports.getAtelierProjects = function getAtelierProjects(state) {
-	var featuredContent = fromAtelier.getAll(state.atelier).featuredContent.map(function (id) {
+	var ALL = fromAtelier.getAll(state.atelier);
+	var featuredContent = ALL.featuredContent.map(function (id) {
 		return fromWork.getProject(state.atelier, id);
 	});
-	var mainContent = fromAtelier.getAll(state.atelier).mainContent.map(function (id) {
+	var mainContent = ALL.mainContent.map(function (id) {
 		return fromAtelier.getProject(state.atelier, id);
 	});
 	return {
 		featuredContent: featuredContent,
-		mainContent: mainContent
+		mainContent: mainContent,
+		intro: ALL.intro
 	};
 };
 

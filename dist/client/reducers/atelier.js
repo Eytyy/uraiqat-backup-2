@@ -46,6 +46,7 @@ var BySection = function BySection() {
 
 var All = function All() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+		intro: {},
 		content: [],
 		isFetching: false
 	};
@@ -68,7 +69,12 @@ var All = function All() {
 				return sys.id;
 			}) : [];
 			var ids = main.concat(featured);
+			var intro = {
+				desc: action.response[0].fields.description,
+				mainMedia: action.response[0].fields.mainMedia
+			};
 			return _extends({}, state, {
+				intro: intro,
 				content: ids,
 				isFetching: false,
 				fetchedAll: true
@@ -154,6 +160,7 @@ var getIsFetching = exports.getIsFetching = function getIsFetching(state) {
 
 var getAll = exports.getAll = function getAll(state) {
 	return {
+		intro: state.All.intro,
 		mainContent: state.BySection.main,
 		featuredContent: state.BySection.featured
 	};

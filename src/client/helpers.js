@@ -120,25 +120,33 @@ const config = {
 			h: 192
 		},
 		'atelier-main-thumb': {
-			w: 756,
-			h: 416,
+			w: 182,
+			h: 120,
 		},
 		'atelier-diagram-thumb': {
-			w: 322,
-			h: 416,
+			w: 98,
+			h: 120,
 		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
+			w: 154,
+			h: 240,
 		},
 		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 126,
+			h: 240,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 280,
+			h: 192,
+		},
+		'atelier-landing-media-video': {
+			w: 280,
+			h: 192,
+		},
 	},
 	mobileX2: {
 		'default-post--portrait': {
@@ -202,25 +210,33 @@ const config = {
 			h: 416
 		},
 		'atelier-main-thumb': {
-			w: 756,
-			h: 416,
+			w: 208,
+			h: 120,
 		},
 		'atelier-diagram-thumb': {
-			w: 322,
-			h: 416,
+			w: 112,
+			h: 120,
 		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
+			w: 176,
+			h: 240,
 		},
 		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 144,
+			h: 240,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 320,
+			h: 216,
+		},
+		'atelier-landing-media-video': {
+			w: 320,
+			h: 216,
+		},
 	},
 	tablet: {
 		'default-post--portrait': {
@@ -283,18 +299,34 @@ const config = {
 			w: 644,
 			h: 416
 		},
+		'atelier-main-thumb': {
+			w: 468,
+			h: 260,
+		},
+		'atelier-diagram-thumb': {
+			w: 252,
+			h: 260,
+		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
+			w: 266,
+			h: 360,
 		},
 		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 224,
+			h: 360,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 588,
+			h: 390,
+		},
+		'atelier-landing-media-video': {
+			w: 588,
+			h: 390,
+		},
 	},
 	desktop: {
 		'default-post--portrait': {
@@ -376,7 +408,15 @@ const config = {
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 882,
+			h: 544,
+		},
+		'atelier-landing-media-video': {
+			w: 882,
+			h: 544,
+		},
 	},
 	desktop1280: {
 		'default-post--portrait': {
@@ -458,7 +498,15 @@ const config = {
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 882,
+			h: 544,
+		},
+		'atelier-landing-media-video': {
+			w: 882,
+			h: 544,
+		},
 	},
 	desktop1440: {
 		'default-post--portrait': {
@@ -540,7 +588,15 @@ const config = {
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 882,
+			h: 544,
+		},
+		'atelier-landing-media-video': {
+			w: 882,
+			h: 544,
+		},
 	},
 	desktop1600: {
 		'default-post--portrait': {
@@ -622,7 +678,15 @@ const config = {
 		'atelier-main-slider' : {
 			w: 1022,
 			h: 576,
-		}
+		},
+		'atelier-landing-media-image': {
+			w: 882,
+			h: 544,
+		},
+		'atelier-landing-media-video': {
+			w: 882,
+			h: 544,
+		},
 	},
 };
 export const getContainerSize = (container, preConfig) => {

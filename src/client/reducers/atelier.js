@@ -26,6 +26,7 @@ const BySection = (state = {
 };
 
 const All = (state = {
+	intro: {},
 	content: [],
 	isFetching: false,
 }, action) => {
@@ -40,8 +41,13 @@ const All = (state = {
 		const main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
 		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ?  action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
 		const ids = main.concat(featured);
+		const intro = {
+			desc: action.response[0].fields.description,
+			mainMedia: action.response[0].fields.mainMedia,
+		};
 		return {
 			...state,
+			intro,
 			content: ids,
 			isFetching: false,
 			fetchedAll: true,
@@ -123,6 +129,7 @@ const atelier = combineReducers({
 export const getIsFetching = state => state.All.isFetching;
 
 export const getAll = state => ({
+	intro: state.All.intro,
 	mainContent: state.BySection.main,
 	featuredContent: state.BySection.featured,
 });

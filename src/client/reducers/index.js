@@ -63,13 +63,13 @@ export const getProject = (state, id) => {
 export const isAtelierProjectsFetching = state => fromAtelier.getIsFetching(state.atelier);
 
 export const getAtelierProjects = state => {
-	const featuredContent = fromAtelier.getAll(state.atelier).featuredContent
-		.map(id => fromWork.getProject(state.atelier, id));
-	const mainContent = fromAtelier.getAll(state.atelier).mainContent
-		.map(id => fromAtelier.getProject(state.atelier, id));
+	const ALL = fromAtelier.getAll(state.atelier);
+	const featuredContent = ALL.featuredContent.map(id => fromWork.getProject(state.atelier, id));
+	const mainContent = ALL.mainContent.map(id => fromAtelier.getProject(state.atelier, id));
 	return {
 		featuredContent,
-		mainContent
+		mainContent,
+		intro: ALL.intro,
 	};
 };
 
