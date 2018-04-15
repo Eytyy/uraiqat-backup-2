@@ -51,6 +51,7 @@
 		margin-bottom: $desktop-lh * 3;
 	}
 }
+
 .atelier-preview__thumbs {
 	@extend %clearfix;
 	margin-top: $lh;
@@ -99,6 +100,16 @@
 			height: 260px;
 		}
 	}
+	@include respond-to(desktop) {
+		.atelier-preview__image--main {
+			width: 756px;
+			height: 416px;
+		}
+		.atelier-preview__image--diagram {
+			width: 322px;
+			height: 416px;
+		}
+	}
 }
 
 .atelier-preview__thumbs--portrait {
@@ -128,6 +139,16 @@
 		.atelier-preview__image--diagram {
 			width: 224px;
 			height: 360px;
+		}
+	}
+	@include respond-to(desktop) {
+		.atelier-preview__image--main {
+			width: 420px;
+			height: 608px;
+		}
+		.atelier-preview__image--diagram {
+			width: 336px;
+			height: 608px;
 		}
 	}
 }
