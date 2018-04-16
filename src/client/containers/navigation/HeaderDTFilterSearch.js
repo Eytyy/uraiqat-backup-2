@@ -25,7 +25,8 @@ class HeaderDTFilterSearch extends Component {
 	}
 	toggleFilter() {
 		this.setState({
-			filtersAreVisible: !this.state.filtersAreVisible
+			filtersAreVisible: !this.state.filtersAreVisible,
+			searchIsVisible: !this.state.filtersAreVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
 		});
 	}
 	onfiltersClick() {
@@ -53,7 +54,8 @@ class HeaderDTFilterSearch extends Component {
 	}
 	onSearchClick() {
 		this.setState({
-			searchIsVisible: !this.state.searchIsVisible
+			searchIsVisible: !this.state.searchIsVisible,
+			filtersAreVisible: !this.state.searchIsVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 		});
 	}
 	onSearchSubmit(event) {
@@ -63,11 +65,23 @@ class HeaderDTFilterSearch extends Component {
 		event.preventDefault();
 		this.props.history.push(`/search?keyword=${keyword}`);
 		this.clearSearch();
+		this.onSearchClick();
 		return false;
 	}
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.location.pathname !== this.props.location.pathname && this.state.filtersAreVisible) {
-			this.toggleFilter();
+		if (nextProps.location.pathname !== this.props.location.pathname) {
+			let filterState = this.state.filtersAreVisible;
+			let searchState = this.state.searchIsVisible;
+			if (this.state.filtersAreVisible) {
+				filterState = !this.state.filtersAreVisible;
+			}
+			if (this.state.searchIsVisible) {
+				searchState= !this.state.searchIsVisible;
+			}
+			this.setState({
+				searchIsVisible: searchState,
+				filtersAreVisible: filterState,
+			});
 		}
 	}
 	render() {

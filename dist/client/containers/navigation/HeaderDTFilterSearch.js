@@ -70,7 +70,8 @@ var HeaderDTFilterSearch = function (_Component) {
 		key: 'toggleFilter',
 		value: function toggleFilter() {
 			this.setState({
-				filtersAreVisible: !this.state.filtersAreVisible
+				filtersAreVisible: !this.state.filtersAreVisible,
+				searchIsVisible: !this.state.filtersAreVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
 			});
 		}
 	}, {
@@ -112,7 +113,8 @@ var HeaderDTFilterSearch = function (_Component) {
 		key: 'onSearchClick',
 		value: function onSearchClick() {
 			this.setState({
-				searchIsVisible: !this.state.searchIsVisible
+				searchIsVisible: !this.state.searchIsVisible,
+				filtersAreVisible: !this.state.searchIsVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 			});
 		}
 	}, {
@@ -125,13 +127,25 @@ var HeaderDTFilterSearch = function (_Component) {
 			event.preventDefault();
 			this.props.history.push('/search?keyword=' + keyword);
 			this.clearSearch();
+			this.onSearchClick();
 			return false;
 		}
 	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
-			if (nextProps.location.pathname !== this.props.location.pathname && this.state.filtersAreVisible) {
-				this.toggleFilter();
+			if (nextProps.location.pathname !== this.props.location.pathname) {
+				var filterState = this.state.filtersAreVisible;
+				var searchState = this.state.searchIsVisible;
+				if (this.state.filtersAreVisible) {
+					filterState = !this.state.filtersAreVisible;
+				}
+				if (this.state.searchIsVisible) {
+					searchState = !this.state.searchIsVisible;
+				}
+				this.setState({
+					searchIsVisible: searchState,
+					filtersAreVisible: filterState
+				});
 			}
 		}
 	}, {
