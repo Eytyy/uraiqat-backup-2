@@ -151,6 +151,29 @@ h1, h2, h3, h4, h5 {
     .main-title {
       margin-bottom: 64px; } }
 
+blockquote {
+  position: relative;
+  padding: 0;
+  color: #5a5a5a;
+  margin: 48px 0 48px 0; }
+  blockquote p:before {
+    margin-left: -10px; }
+  blockquote p:after,
+  blockquote p:before {
+    content: '"';
+    color: blue;
+    font-family: "ZeitungMonoPro-Bold"; }
+  @media (min-width: 768px) {
+    blockquote {
+      margin: 52px 0 52px 72px; }
+      blockquote p:before {
+        margin-left: -12px; } }
+  @media (min-width: 1024px) {
+    blockquote {
+      margin: 64px 0 64px 84px; }
+      blockquote p:before {
+        margin-left: -14px; } }
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1365,7 +1388,19 @@ img {
 
 .post__title {
   margin: 0;
-  max-width: 392px; }
+  max-width: 336px; }
+  @media (min-width: 768px) {
+    .post__title {
+      max-width: 364px; } }
+  @media (min-width: 1024px) {
+    .post__title {
+      max-width: 448px; } }
+  @media (min-width: 1440px) {
+    .post__title {
+      max-width: 512px; } }
+  @media (min-width: 1600px) {
+    .post__title {
+      max-width: 640px; } }
 
 .post__meta {
   display: inline-block;
@@ -1395,6 +1430,10 @@ img {
     .post__content {
       width: 882px;
       padding: 64px 0 0 70px; } }
+  @media (min-width: 1600px) {
+    .post__content {
+      padding: 64px 0 0 84px;
+      width: 1008px; } }
 
 .post__media {
   margin-bottom: 48px;

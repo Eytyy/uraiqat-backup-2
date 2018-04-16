@@ -1,6 +1,18 @@
 .post__title {
 	margin: 0;
-	max-width: 392px;
+	max-width: $lh * 14;
+	@include respond-to(tablet) {
+		max-width: $tablet-lh * 14;
+	}
+	@include respond-to(desktop) {
+		max-width: $desktop-lh * 14;
+	}
+	@include respond-to(desktop-1440) {
+		max-width: $desktop-lh * 16;
+	}
+	@include respond-to(desktop-1600) {
+		max-width: $desktop-lh * 20;
+	}
 }
 
 .post__meta {
@@ -35,7 +47,9 @@
 		width: 882px;
 		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 5);
 	}
-	@include respond-to(desktop-1440) {
+	@include respond-to(desktop-1600) {
+		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 6);
+		width: 1008px;
 	}
 }
 
@@ -175,3 +189,4 @@
 		}
 	}
 }
+

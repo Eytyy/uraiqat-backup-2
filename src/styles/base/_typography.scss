@@ -112,3 +112,30 @@ h1, h2, h3, h4, h5 {
 	}
 }
 
+blockquote {
+	position: relative;
+	padding: 0;
+	color: #5a5a5a;
+	margin: ($lh * 2) 0 ($lh * 2) 0;
+	p:before {
+		margin-left: $char-width * -1;
+	}
+	p:after,
+	p:before {
+		content: '"';
+		color: blue;
+		font-family: $font--bold;
+	}
+	@include respond-to(tablet) {
+		margin: ($tablet-lh * 2) 0 ($tablet-lh * 2) ($tablet-char-width * 6);
+		p:before {
+			margin-left: $tablet-char-width * -1;
+		}
+	}
+	@include respond-to(desktop) {
+		margin: ($desktop-lh * 2) 0 ($desktop-lh * 2) ($desktop-char-width * 6);
+		p:before {
+			margin-left: $desktop-char-width * -1;
+		}
+	}
+}
