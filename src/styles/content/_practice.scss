@@ -41,6 +41,10 @@
 			margin-bottom: $desktop-lh;
 		}
 	}
+	@include respond-to(desktop-1600) {
+		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 6);
+		width: 1008px;
+	}
 }
 
 .practice-section__title {

@@ -1943,6 +1943,10 @@ img {
       .practice-section--team .practice-section__inner {
         width: 100%;
         margin-bottom: 32px; } }
+  @media (min-width: 1600px) {
+    .practice-section__inner {
+      padding: 64px 0 0 84px;
+      width: 1008px; } }
 
 .practice-section__title {
   text-transform: capitalize; }
