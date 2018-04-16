@@ -17,15 +17,18 @@
 	@include respond-to(desktop) {
 		margin-left: $desktop-char-width * 3;
 		margin-bottom: $desktop-lh * 2;
-		width: 1095px;
+		width: 924px;
 	}
 	@include respond-to(desktop-1440) {
 		margin-bottom: 0;
+		width: 1095px;
 	}
 }
 
 .atelier__about {
-	width: 882px;
+	@include respond-to(desktop) {
+		width: 882px;
+	}	
 }
 
 .atelier {
@@ -35,10 +38,15 @@
 		}
 		@include respond-to(tablet) {
 			.slide__image {
-				height: 416px;
+				height: 338px;
 			}
 		}
 		@include respond-to(desktop) {
+			.slide__image {
+				height: 480px;
+			}
+		}
+		@include respond-to(desktop-1440) {
 			.slide__image {
 				height: 576px;
 			}

@@ -632,20 +632,20 @@ const config = {
 			h: 512,
 		},
 		'project-main-thumb': {
-			w: 700,
-			h: 416,
+			w: 784,
+			h: 512,
 		},
 		'project-drawing-thumb--portrait': {
-			w: 322,
-			h: 416,
+			w: 364,
+			h: 512,
 		},
 		'project-drawing-thumb--landscape': {
-			w: 644,
-			h: 208,
+			w: 728,
+			h: 256,
 		},
 		'project-other-thumb': {
-			w: 322,
-			h: 208,
+			w: 364,
+			h: 256,
 		},
 		'project-main-slider': {
 			w: 833,

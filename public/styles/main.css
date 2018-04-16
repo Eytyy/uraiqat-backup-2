@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5 {
   margin: 0; }
 
 .main-title {
-  margin-bottom: 48px; }
+  margin-bottom: 24px; }
   @media (min-width: 768px) {
     .main-title {
       margin-bottom: 52px; } }
@@ -204,7 +204,13 @@ a:hover .title {
   color: blue; }
 
 body {
-  padding-top: 32px; }
+  padding-top: 24px; }
+  @media (min-width: 768px) {
+    body {
+      padding-top: 26px; } }
+  @media (min-width: 1024px) {
+    body {
+      padding-top: 32px; } }
 
 .container,
 .wrapper {
@@ -863,8 +869,7 @@ img {
     .project-preview__thumbs--landscape .project-preview__image--diagram {
       -webkit-box-flex: 0;
           -ms-flex: 0 0 100%;
-              flex: 0 0 100%;
-      width: 50%; }
+              flex: 0 0 100%; }
     .project-preview__thumbs--landscape .project-preview__image--main {
       -webkit-box-flex: 0;
           -ms-flex: 0 0 100%;
@@ -1317,22 +1322,28 @@ img {
     .atelier__media {
       margin-left: 42px;
       margin-bottom: 64px;
-      width: 1095px; } }
+      width: 924px; } }
   @media (min-width: 1440px) {
     .atelier__media {
-      margin-bottom: 0; } }
+      margin-bottom: 0;
+      width: 1095px; } }
 
-.atelier__about {
-  width: 882px; }
+@media (min-width: 1024px) {
+  .atelier__about {
+    width: 882px; } }
 
 .atelier .slider--main .slide__image {
   height: 192px; }
 
 @media (min-width: 768px) {
   .atelier .slider--main .slide__image {
-    height: 416px; } }
+    height: 338px; } }
 
 @media (min-width: 1024px) {
+  .atelier .slider--main .slide__image {
+    height: 480px; } }
+
+@media (min-width: 1440px) {
   .atelier .slider--main .slide__image {
     height: 576px; } }
 
@@ -1857,20 +1868,26 @@ img {
       margin: 64px 0; } }
 
 .practice-section__inner {
-  padding: 48px 0 0 0;
-  margin-bottom: 72px; }
+  padding: 24px 0 0 0;
+  margin-bottom: 48px; }
   .practice-section--team .practice-section__inner {
     width: 100%;
-    margin-bottom: 0; }
+    margin-bottom: 24px; }
   @media (min-width: 768px) {
     .practice-section__inner {
       padding: 52px 0 0 60px;
-      margin-bottom: 78px; } }
+      margin-bottom: 78px; }
+      .practice-section--team .practice-section__inner {
+        width: 100%;
+        margin-bottom: 26px; } }
   @media (min-width: 1024px) {
     .practice-section__inner {
       width: 882px;
       padding: 64px 0 0 70px;
-      margin-bottom: 96px; } }
+      margin-bottom: 96px; }
+      .practice-section--team .practice-section__inner {
+        width: 100%;
+        margin-bottom: 32px; } }
 
 .practice-section__title {
   text-transform: capitalize; }

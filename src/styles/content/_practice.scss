@@ -18,20 +18,28 @@
 }
 
 .practice-section__inner {
-	padding: ($lh * 2) 0 0 0;
-	margin-bottom: $lh * 3;
+	padding: $lh 0 0 0;
+	margin-bottom: $lh * 2;
 	.practice-section--team & {
 		width: 100%;
-		margin-bottom: 0;
+		margin-bottom: $lh;
 	}
 	@include respond-to(tablet) {
 		padding: ($tablet-lh * 2)  0 0 ($tablet-char-width * 5);
 		margin-bottom: $tablet-lh * 3;
+		.practice-section--team & {
+			width: 100%;
+			margin-bottom: $tablet-lh;
+		}
 	}
 	@include respond-to(desktop) {
 		width: 882px;
 		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 5);
 		margin-bottom: $desktop-lh * 3;
+		.practice-section--team & {
+			width: 100%;
+			margin-bottom: $desktop-lh;
+		}
 	}
 }
 

@@ -1,7 +1,13 @@
 $mobile-padding: 20px;
 
 body {
-	padding-top: 32px;
+	padding-top: $lh;
+	@include respond-to(tablet) {
+		padding-top: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+		padding-top: $desktop-lh;
+	}
 }
 
 .container,
