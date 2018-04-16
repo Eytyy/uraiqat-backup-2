@@ -61,7 +61,7 @@ var Atelier = function (_Component) {
 			    isFetching = _props.isFetching,
 			    content = _props.content;
 
-			if (isFetching && content.length === 0 || content.length === 0) {
+			if (isFetching && typeof content.mainContent === 'undefined' || typeof content.mainContent === 'undefined') {
 				return _react2.default.createElement(_LoadingPattern2.default, null);
 			}
 			return _react2.default.createElement(_Landing2.default, { content: content, page: 'atelier' });

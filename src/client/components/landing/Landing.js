@@ -10,13 +10,13 @@ const Landing = ({ page, content }) => {
 	return ( 
 		<section className={classList}>
 			{
-				page === 'atelier' &&
+				page === 'atelier' && intro &&
 					(<div className="atelier-landing__top">
 						<div className="atelier-landing__top__media">
-							<MediaComponent media={intro.mainMedia} />
+							{ intro.mainMedia && <MediaComponent media={intro.mainMedia} /> }
 						</div>
 						<div className="atelier-landing__top__desc">
-							<BodyText content={intro.desc} />
+							{ intro.desc && <BodyText content={intro.desc} />}
 						</div>
 					</div>)
 			}

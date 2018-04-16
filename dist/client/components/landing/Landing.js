@@ -38,18 +38,18 @@ var Landing = function Landing(_ref) {
 	return _react2.default.createElement(
 		'section',
 		{ className: classList },
-		page === 'atelier' && _react2.default.createElement(
+		page === 'atelier' && intro && _react2.default.createElement(
 			'div',
 			{ className: 'atelier-landing__top' },
 			_react2.default.createElement(
 				'div',
 				{ className: 'atelier-landing__top__media' },
-				_react2.default.createElement(_MediaComponent2.default, { media: intro.mainMedia })
+				intro.mainMedia && _react2.default.createElement(_MediaComponent2.default, { media: intro.mainMedia })
 			),
 			_react2.default.createElement(
 				'div',
 				{ className: 'atelier-landing__top__desc' },
-				_react2.default.createElement(_BodyText2.default, { content: intro.desc })
+				intro.desc && _react2.default.createElement(_BodyText2.default, { content: intro.desc })
 			)
 		),
 		featuredContent && _react2.default.createElement(_LandingFeatured2.default, { page: page, content: featuredContent }),

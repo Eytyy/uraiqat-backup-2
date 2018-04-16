@@ -19,7 +19,7 @@ class Atelier extends Component {
 	}
 	render() {
 		const { isFetching, content } = this.props;
-		if (isFetching && content.length === 0 || content.length === 0 ) {
+		if (isFetching && typeof content.mainContent === 'undefined'  || typeof content.mainContent === 'undefined' ) {
 			return <LoadingPattern />;
 		}
 		return <Landing content={content} page="atelier"></Landing>;

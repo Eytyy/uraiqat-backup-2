@@ -22,9 +22,12 @@ var MediaComponent = function MediaComponent(_ref) {
 	var media = _ref.media;
 
 	var isMediaOfTypeImage = RegExp('image').test(media.fields.file.contentType);
+	console.log(media);
 	if (isMediaOfTypeImage) {
-		return _react2.default.createElement(_ImageComponent2.default, { classList: 'atelier-landing__image', patternId: 'atelier-landing-media-image',
-			src: media.fields.file.url, size: media.fields.file.details.image });
+		var style = {
+			backgroundImage: 'url(\'' + media.fields.file.url + '\')'
+		};
+		return _react2.default.createElement('div', { className: 'atelier-landing__image', style: style });
 	} else {
 		return _react2.default.createElement(_VideoComponent2.default, { classList: 'atelier-landing__video', patternId: 'atelier-landing-media-video', content: media });
 	}
