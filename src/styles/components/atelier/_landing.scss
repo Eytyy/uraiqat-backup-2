@@ -102,6 +102,16 @@
 	}
 	@include respond-to(desktop) {
 		.atelier-preview__image--main {
+			width: 644px;
+			height: 384px;
+		}
+		.atelier-preview__image--diagram {
+	    width: 266px;
+    	height: 384px;
+		}
+	}
+	@include respond-to(desktop-1440) {
+		.atelier-preview__image--main {
 			width: 756px;
 			height: 416px;
 		}
@@ -142,6 +152,16 @@
 		}
 	}
 	@include respond-to(desktop) {
+		.atelier-preview__image--main {
+			width: 378px;
+			height: 576px;
+		}
+		.atelier-preview__image--diagram {
+	    width: 294px;
+    	height: 576px;
+		}
+	}
+	@include respond-to(desktop-1440) {
 		.atelier-preview__image--main {
 			width: 420px;
 			height: 608px;

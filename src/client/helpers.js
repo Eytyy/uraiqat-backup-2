@@ -390,20 +390,20 @@ const config = {
 			h: 384
 		},
 		'atelier-main-thumb': {
-			w: 756,
-			h: 416,
+			w: 644,
+			h: 384,
 		},
 		'atelier-diagram-thumb': {
-			w: 322,
-			h: 416,
+			w: 266,
+			h: 384,
 		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
+			w: 378,
+			h: 576,
 		},
 		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 294,
+			h: 576,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
