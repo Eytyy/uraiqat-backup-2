@@ -22,10 +22,11 @@ var Slide = function Slide(_ref) {
 	var imagesQuery = _ref.imagesQuery,
 	    content = _ref.content,
 	    index = _ref.index,
-	    activeSlide = _ref.activeSlide;
+	    activeSlide = _ref.activeSlide,
+	    title = _ref.title;
 
 	var isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
-	return isMediaOfTypeImage ? _react2.default.createElement(_GalleryImageComponent2.default, { index: index, classList: 'slide slide--image', imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_GalleryVideoComponent2.default, { activeSlide: activeSlide, index: index, classList: 'slide slide--video', content: content });
+	return isMediaOfTypeImage ? _react2.default.createElement(_GalleryImageComponent2.default, { title: title, index: index, classList: 'slide slide--image', imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_GalleryVideoComponent2.default, { title: title, activeSlide: activeSlide, index: index, classList: 'slide slide--video', content: content });
 };
 
 exports.default = Slide;

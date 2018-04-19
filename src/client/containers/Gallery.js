@@ -10,6 +10,10 @@ class Gallery extends Component {
 		super();
 		this.updateSlide = this.updateSlide.bind(this);
 		this.closeGallery = this.closeGallery.bind(this);
+		this.toggleDetails = this.toggleDetails.bind(this);
+		this.state = {
+			areDetailsVisible: false,
+		};
 	}
 	componentWillReceiveProps(nextProps) {
 		const { content } = nextProps;
@@ -30,10 +34,14 @@ class Gallery extends Component {
 		const openGallery = false;
 		toggleGallery(openGallery);
 	}
-	
+	toggleDetails() {
+		this.setState({
+			areDetailsVisible: !this.state.areDetailsVisible,
+		});
+	}
 	render() {
 		const { content } = this.props;
-		const { slides, isActive, activeSlide } = content;
+		const { slides, isActive, activeSlide, title } = content;
 		if (!isActive) {
 			return null;
 		}
@@ -42,11 +50,11 @@ class Gallery extends Component {
 		};
 		
 		return ( 
-			<div className="gallery">
+			<div className={`gallery ${this.state.areDetailsVisible ? 'js-details-are-visible' : ''}`}>
 				<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
 					<div style={sliderRailStyle} className="gallery__slides">
 						{
-							slides.map((slide, index) => <GallerySlide activeSlide={activeSlide} index={index} key={slide.id} content={slide} />)
+							slides.map((slide, index) => <GallerySlide title={title} activeSlide={activeSlide} index={index} key={slide.id} content={slide} />)
 						}
 					</div>
 				</div>
@@ -61,8 +69,9 @@ class Gallery extends Component {
 								<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
 							</div>
 					}
-					
-					
+					<div onClick={this.toggleDetails} className="slider__controls__item slider-btn slider-btn--showDetails">
+						{this.state.areDetailsVisible ? '->' : 'i'}
+					</div>
 				</div>
 
 			</div>);

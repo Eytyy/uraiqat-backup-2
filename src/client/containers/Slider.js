@@ -15,11 +15,11 @@ class Slider extends Component {
 		this.updateSlide = this.updateSlide.bind(this);
 	}
 	componentDidMount() {
-		const { content, updateGallery, sliderId } = this.props;
+		const { content, updateGallery, sliderId, contentTitle } = this.props;
 		this.setState({
 			clientLoaded: true,
 		});
-		updateGallery(sliderId, content);
+		updateGallery(sliderId, content, contentTitle);
 	}
 	updateSlide(direction) {
 		const { updateActiveSlide, sliderId } = this.props;

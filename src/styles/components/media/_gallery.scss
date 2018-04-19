@@ -1,22 +1,28 @@
 .gallery {
 	position: fixed;
-	top: 32px;
-	bottom: 32px;
-	width: 1344px;
-	overflow: scroll;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
 	z-index: 200;
 	display: flex;
 	align-items: center;
 	.slider__controls {
+		background: #FFF;
 		position: absolute;
 		top: 0;
 		right: 0;
 		height: 100%;
-		width: 56px;
+		width: 70px;
 	}
 	.slider__counter {
 		font-size: 20px;
 	}	
+	.slider__controls__item {
+		padding: $lh 0;
+		margin: 0;
+	}
 	.slider__controls__bottom {
 		position: absolute;
 		top: 50%;
@@ -24,18 +30,25 @@
 		right: 0;
 		transform: translateY(-50%);
 	}
+	.gallery__slide__image-wrapper {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		background: blue;
+	}
 	.video__wrapper {
 		position: relative;
 		padding-top: 56.25%;
 	}
-	.caption {
-		position: absolute;
-		left: 0;
-		bottom: -3px;
-		font-size: 20px;
-		text-align: left;
-		line-height: 32px;
-		color: #000;
+	@include respond-to(tablet) {
+		.slider__controls__item {
+			padding: $tablet-lh 0;
+		}
+	}
+	@include respond-to(desktop) {
+		.slider__controls__item {
+			padding: $desktop-lh 0;
+		}
 	}
 }
 .gallery__inner {
@@ -62,18 +75,60 @@
 	text-align: center;
 	&--portrait {
 		img {
+			height: 100%;
+			width: auto;
 			margin: 0 auto;
 		}
 	}
 }
 .gallery__slide__content {
-	position: absolute;
-	top: 0;
-	left: 0;
 	height: 100%;
 	width: 100%;
-	padding-bottom: 32px;
+	overflow: hidden;
+	position: relative;
+}
+
+.slide-details {
+	@extend %defaultFont;
+	font-family: $font--bold;
+	position: absolute;
+	right: -100%;
+	top: 0;
+	bottom: 0;
+	padding: $lh ($char-width * 2);
+	background: #FFF;
+	color: #000;
+	text-align: left;
+	max-width: 50%;
+	transition: right 200ms ease-in-out;
 	display: flex;
-	justify-content: center;
-	align-items: center
+	align-items: center;
+	&__title {
+		margin: $lh 0 0;
+	}
+	@include respond-to(tablet) {
+		padding: $tablet-lh ($tablet-char-width * 2);
+		&__title {
+			margin: $tablet-lh 0 0;
+		}
+	}
+	@include respond-to(desktop) {
+		padding: $desktop-lh ($desktop-char-width * 2);
+		&__title {
+			margin: $desktop-lh 0 0;
+		}
+	}
+}
+
+.slider-btn--showDetails {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0;
+}
+
+.js-details-are-visible {
+	.slide-details {
+		right: 0;
+	}
 }

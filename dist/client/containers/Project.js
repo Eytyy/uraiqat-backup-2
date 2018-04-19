@@ -141,7 +141,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__media' },
-						_react2.default.createElement(_Slider2.default, { sliderName: 'project-main-slider', classList: 'slider--main', sliderId: content.id + 'm', imagesQuery: '?fl=progressive&w=826', content: mainSlider })
+						_react2.default.createElement(_Slider2.default, { contentTitle: title, sliderName: 'project-main-slider', classList: 'slider--main', sliderId: content.id + 'm', imagesQuery: '?fl=progressive&w=826', content: mainSlider })
 					),
 					_react2.default.createElement(
 						'div',
@@ -219,7 +219,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__drawings' },
-						_react2.default.createElement(_Slider2.default, { sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
+						_react2.default.createElement(_Slider2.default, { contentTitle: title, sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
 					)
 				),
 				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' })),

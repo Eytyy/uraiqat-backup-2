@@ -155,7 +155,7 @@ var config = {
 	mobileX2: {
 		'default-post--portrait': {
 			w: 320,
-			h: 480
+			h: 456
 		},
 		'default-post--landscape': {
 			w: 320,
@@ -244,24 +244,24 @@ var config = {
 	},
 	tablet: {
 		'default-post--portrait': {
-			w: 210,
-			h: 286
+			w: 228,
+			h: 312
 		},
 		'default-post--landscape': {
-			w: 312,
+			w: 324,
 			h: 208
 		},
 		'featured-post--portrait': {
-			w: 360,
-			h: 546
+			w: 288,
+			h: 468
 		},
 		'featured-post--landscape': {
-			w: 516,
-			h: 312
+			w: 612,
+			h: 390
 		},
 		'featured-post--video': {
-			w: 516,
-			h: 312
+			w: 612,
+			h: 390
 		},
 		'default-post--video': {
 			w: 312,
@@ -334,7 +334,7 @@ var config = {
 	},
 	desktop: {
 		'default-post--portrait': {
-			w: 210,
+			w: 228,
 			h: 320
 		},
 		'default-post--landscape': {
@@ -342,16 +342,16 @@ var config = {
 			h: 224
 		},
 		'featured-post--portrait': {
-			w: 360,
-			h: 546
+			w: 322,
+			h: 512
 		},
 		'featured-post--landscape': {
-			w: 868,
-			h: 512
+			w: 714,
+			h: 408
 		},
 		'featured-post--video': {
-			w: 868,
-			h: 512
+			w: 714,
+			h: 408
 		},
 		'default-post--video': {
 			w: 532,
@@ -424,7 +424,7 @@ var config = {
 	},
 	desktop1280: {
 		'default-post--portrait': {
-			w: 210,
+			w: 228,
 			h: 320
 		},
 		'default-post--landscape': {
@@ -432,16 +432,16 @@ var config = {
 			h: 224
 		},
 		'featured-post--portrait': {
-			w: 360,
-			h: 546
+			w: 322,
+			h: 512
 		},
 		'featured-post--landscape': {
-			w: 868,
-			h: 512
+			w: 714,
+			h: 408
 		},
 		'featured-post--video': {
-			w: 868,
-			h: 512
+			w: 714,
+			h: 408
 		},
 		'default-post--video': {
 			w: 532,
@@ -522,12 +522,12 @@ var config = {
 			h: 256
 		},
 		'featured-post--portrait': {
-			w: 476,
-			h: 672
+			w: 448,
+			h: 640
 		},
 		'featured-post--landscape': {
-			w: 882,
-			h: 576
+			w: 868,
+			h: 544
 		},
 		'featured-post--video': {
 			w: 868,
@@ -612,20 +612,20 @@ var config = {
 			h: 256
 		},
 		'featured-post--portrait': {
-			w: 476,
-			h: 672
+			w: 448,
+			h: 640
 		},
 		'featured-post--landscape': {
 			w: 882,
 			h: 576
 		},
 		'featured-post--video': {
-			w: 868,
+			w: 966,
 			h: 544
 		},
 		'default-post--video': {
-			w: 630,
-			h: 352
+			w: 700,
+			h: 416
 		},
 		'post-slider': {
 			w: 742,

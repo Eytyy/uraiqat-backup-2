@@ -24,6 +24,7 @@ const ById = (state = {
 		}));
 		ids[action.response.sliderId] = {
 			id: action.response.sliderId,
+			title: action.response.contentTitle,
 			slides,
 			activeSlide: 0
 		};

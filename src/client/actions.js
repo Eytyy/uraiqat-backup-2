@@ -162,16 +162,17 @@ export const fetchRelated = (id) => (dispatch, getState) => {
 
 
 // Gallery Action Creators
-const recieveGalleryContent = (sliderId, content) => ({
+const recieveGalleryContent = (sliderId, content, contentTitle) => ({
 	type: 'RECIEVE_GALLERY_CONTENT',
 	response: {
 		sliderId,
 		content,
+		contentTitle,
 	}
 });
 
-export const updateGallery = (sliderId, content) => (dispatch) =>
-	dispatch(recieveGalleryContent(sliderId, content));
+export const updateGallery = (sliderId, content, contentTitle) => (dispatch) =>
+	dispatch(recieveGalleryContent(sliderId, content, contentTitle));
 
 const updateSlide = (sliderId, direction) => ({
 	type: 'UPDATE_ACTIVE_SLIDE',

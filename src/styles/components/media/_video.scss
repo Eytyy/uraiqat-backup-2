@@ -14,7 +14,7 @@
 	.video-controls {
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: 53%;
 		transform: translate(-50%, -50%);
 		z-index: 2;
 		color: blue;
@@ -22,8 +22,8 @@
 		font-size: 32px;
 	}
 	.video-state {
-		border: 25px solid transparent;
-    border-left: 40px solid blue;
+		border: 20px solid transparent;
+		border-left: 35px solid blue;
 		display: block;
 		transition: border linear 200ms;
 	}
@@ -34,18 +34,17 @@
 		}
 		.video-controls {
 			opacity: 0;
+			left: 50%;
 		}
-	}
-	&.js-videoIsActive {
 		.video-state {
-			border: 20px solid blue;
+			border: 16px solid blue;
 		}
 		&:hover {
 			.video-controls {
 				opacity: 1;
 			}
 		}
-	}	
+	}
 	&.post-preview__video {
 		@extend %bw-filter;
 		&:before,
@@ -54,7 +53,18 @@
 		}
 		.video-controls {
 			position: absolute;
-			top: 45%;
+			top: 50%;
+		}
+	}
+	@include respond-to(desktop) {
+		.video-state {
+			border: 25px solid transparent;
+			border-left: 40px solid blue;
+		}		
+		&.js-videoIsActive {
+			.video-state {
+				border: 20px solid blue;
+			}
 		}
 	}
 }

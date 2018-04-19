@@ -42,6 +42,10 @@ var Gallery = function (_Component) {
 
 		_this.updateSlide = _this.updateSlide.bind(_this);
 		_this.closeGallery = _this.closeGallery.bind(_this);
+		_this.toggleDetails = _this.toggleDetails.bind(_this);
+		_this.state = {
+			areDetailsVisible: false
+		};
 		return _this;
 	}
 
@@ -76,6 +80,13 @@ var Gallery = function (_Component) {
 			toggleGallery(openGallery);
 		}
 	}, {
+		key: 'toggleDetails',
+		value: function toggleDetails() {
+			this.setState({
+				areDetailsVisible: !this.state.areDetailsVisible
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
@@ -83,7 +94,8 @@ var Gallery = function (_Component) {
 			var content = this.props.content;
 			var slides = content.slides,
 			    isActive = content.isActive,
-			    activeSlide = content.activeSlide;
+			    activeSlide = content.activeSlide,
+			    title = content.title;
 
 			if (!isActive) {
 				return null;
@@ -94,7 +106,7 @@ var Gallery = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'gallery' },
+				{ className: 'gallery ' + (this.state.areDetailsVisible ? 'js-details-are-visible' : '') },
 				_react2.default.createElement(
 					'div',
 					{ className: '' + (slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner') },
@@ -102,7 +114,7 @@ var Gallery = function (_Component) {
 						'div',
 						{ style: sliderRailStyle, className: 'gallery__slides' },
 						slides.map(function (slide, index) {
-							return _react2.default.createElement(_GallerySlide2.default, { activeSlide: activeSlide, index: index, key: slide.id, content: slide });
+							return _react2.default.createElement(_GallerySlide2.default, { title: title, activeSlide: activeSlide, index: index, key: slide.id, content: slide });
 						})
 					)
 				),
@@ -138,6 +150,11 @@ var Gallery = function (_Component) {
 								}, className: 'slider__controls__item slider-btn slider-btn--prev' },
 							'<'
 						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ onClick: this.toggleDetails, className: 'slider__controls__item slider-btn slider-btn--showDetails' },
+						this.state.areDetailsVisible ? '->' : 'i'
 					)
 				)
 			);

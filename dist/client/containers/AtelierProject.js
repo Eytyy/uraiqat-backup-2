@@ -108,7 +108,7 @@ var AtelierProject = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'atelier__media' },
-						_react2.default.createElement(_Slider2.default, { sliderName: 'atelier-main-slider', classList: 'slider--main', sliderId: content.id + 'm', imagesQuery: '?fl=progressive&w=1022', content: mainSlider })
+						_react2.default.createElement(_Slider2.default, { contentTitle: title, sliderName: 'atelier-main-slider', classList: 'slider--main', sliderId: content.id + 'm', imagesQuery: '?fl=progressive&w=1022', content: mainSlider })
 					)
 				),
 				description && _react2.default.createElement(

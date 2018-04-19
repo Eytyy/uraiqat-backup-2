@@ -36,7 +36,7 @@ class VideoComponent extends Component {
 		});
 	}
 	render() {
-		const { content, classList, index } = this.props;
+		const { content, classList, title } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 		const allClasses = `slide slide--video video gallery__slide ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
@@ -48,7 +48,13 @@ class VideoComponent extends Component {
 						</div>
 						<video ref={(el) => { this.video = el; }}  src={url} />
 					</div>
-					{ content.description && <div className="caption">{index + 1}: {content.description}</div>}
+					{ content.description &&
+						<div className="slide-details">
+							<div className="slide-details__content">
+								<div className="slide-details__description">{ content.description }</div>
+							</div>
+						</div>
+					}
 				</div>
 			</div>
 		);

@@ -23,13 +23,19 @@
 	}	
 	@include respond-to(tablet) {
 		height: 390px;
-		width: 588px;
-		margin: 0 auto ($tablet-lh * 2);
+		width: 588px + ($tablet-char-width * 5);
+		margin-bottom: $tablet-lh * 2;
+		padding-left: $tablet-char-width * 5;
 	}
 	@include respond-to(desktop) {
 		height: 544px;
-		width: 882px;
+		width: 882px + ($desktop-char-width * 5);
 		margin-bottom: $desktop-lh * 2;
+		padding-left: $desktop-char-width * 5;
+	}
+	@include respond-to(desktop-1600) {
+		padding-left: $desktop-char-width * 6;
+		width: 882px + ($desktop-char-width * 6);
 	}
 }
 
@@ -66,7 +72,6 @@
 		margin-top: $tablet-lh;
 	}
 	@include respond-to(desktop) {
-		margin-left: $desktop-char-width * 3;
 		margin-top: $desktop-lh;
 	}
 }

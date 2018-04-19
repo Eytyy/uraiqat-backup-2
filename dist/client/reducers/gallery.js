@@ -41,6 +41,7 @@ var ById = function ById() {
 			});
 			ids[action.response.sliderId] = {
 				id: action.response.sliderId,
+				title: action.response.contentTitle,
 				slides: slides,
 				activeSlide: 0
 			};

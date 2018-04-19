@@ -12,15 +12,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var GalleryImageComponent = function GalleryImageComponent(_ref) {
 	var content = _ref.content,
-	    index = _ref.index;
+	    title = _ref.title;
 	var file = content.file,
 	    description = content.description;
 
 	var isImageLandscape = file.details.image.width > file.details.image.height + 100;
-	var style = {
-		height: isImageLandscape ? 'auto' : window.innerHeight - 64 - 64 + 'px',
-		width: isImageLandscape ? '100%' : 'auto'
-	};
 	return _react2.default.createElement(
 		'div',
 		{ className: 'slide slide--image gallery__slide gallery__slide--' + (isImageLandscape ? 'landscape' : 'portrait') },
@@ -30,14 +26,20 @@ var GalleryImageComponent = function GalleryImageComponent(_ref) {
 			_react2.default.createElement(
 				'div',
 				{ className: 'gallery__slide__image-wrapper' },
-				_react2.default.createElement('img', { style: style, src: file.url + '?fl=progressive&w=1344' })
+				_react2.default.createElement('img', { src: file.url + '?fl=progressive&w=1344' })
 			),
 			description && _react2.default.createElement(
 				'div',
-				{ className: 'caption' },
-				index + 1,
-				': ',
-				description
+				{ className: 'slide-details' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'slide-details__content' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'slide-details__description' },
+						content.description
+					)
+				)
 			)
 		)
 	);

@@ -20,6 +20,7 @@
 
 .preview-pattern,
 .post__image__pattern {
+	z-index: 5;
 	opacity: 1;
 	transition: opacity 400ms ease-in-out 200ms;
 	position: absolute !important;

@@ -187,19 +187,20 @@ var fetchRelated = exports.fetchRelated = function fetchRelated(id) {
 };
 
 // Gallery Action Creators
-var recieveGalleryContent = function recieveGalleryContent(sliderId, content) {
+var recieveGalleryContent = function recieveGalleryContent(sliderId, content, contentTitle) {
 	return {
 		type: 'RECIEVE_GALLERY_CONTENT',
 		response: {
 			sliderId: sliderId,
-			content: content
+			content: content,
+			contentTitle: contentTitle
 		}
 	};
 };
 
-var updateGallery = exports.updateGallery = function updateGallery(sliderId, content) {
+var updateGallery = exports.updateGallery = function updateGallery(sliderId, content, contentTitle) {
 	return function (dispatch) {
-		return dispatch(recieveGalleryContent(sliderId, content));
+		return dispatch(recieveGalleryContent(sliderId, content, contentTitle));
 	};
 };
 

@@ -54,12 +54,13 @@ var Slider = function (_Component) {
 			var _props = this.props,
 			    content = _props.content,
 			    updateGallery = _props.updateGallery,
-			    sliderId = _props.sliderId;
+			    sliderId = _props.sliderId,
+			    contentTitle = _props.contentTitle;
 
 			this.setState({
 				clientLoaded: true
 			});
-			updateGallery(sliderId, content);
+			updateGallery(sliderId, content, contentTitle);
 		}
 	}, {
 		key: 'updateSlide',
