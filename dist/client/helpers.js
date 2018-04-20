@@ -113,7 +113,7 @@ var config = {
 		},
 		'project-main-slider': {
 			w: 280,
-			h: 192
+			h: 168
 		},
 		'project-drawings-slider': {
 			w: 280,
@@ -124,20 +124,12 @@ var config = {
 			h: 192
 		},
 		'atelier-main-thumb': {
-			w: 182,
-			h: 120
-		},
-		'atelier-diagram-thumb': {
-			w: 98,
-			h: 120
+			w: 320,
+			h: 168
 		},
 		'atelier-main-thumb--portrait': {
-			w: 154,
-			h: 240
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 126,
-			h: 240
+			w: 200,
+			h: 288
 		},
 		'atelier-main-slider': {
 			w: 1022,
@@ -203,7 +195,7 @@ var config = {
 		},
 		'project-main-slider': {
 			w: 320,
-			h: 192
+			h: 168
 		},
 		'project-drawings-slider': {
 			w: 320,
@@ -214,20 +206,12 @@ var config = {
 			h: 192
 		},
 		'atelier-main-thumb': {
-			w: 208,
-			h: 120
-		},
-		'atelier-diagram-thumb': {
-			w: 112,
-			h: 120
+			w: 320,
+			h: 168
 		},
 		'atelier-main-thumb--portrait': {
-			w: 176,
-			h: 240
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 144,
-			h: 240
+			w: 200,
+			h: 288
 		},
 		'atelier-main-slider': {
 			w: 1022,
@@ -304,20 +288,12 @@ var config = {
 			h: 416
 		},
 		'atelier-main-thumb': {
-			w: 468,
-			h: 260
-		},
-		'atelier-diagram-thumb': {
-			w: 252,
-			h: 260
+			w: 588,
+			h: 320
 		},
 		'atelier-main-thumb--portrait': {
-			w: 266,
-			h: 360
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 224,
-			h: 360
+			w: 378,
+			h: 576
 		},
 		'atelier-main-slider': {
 			w: 1022,
@@ -394,19 +370,11 @@ var config = {
 			h: 384
 		},
 		'atelier-main-thumb': {
-			w: 644,
-			h: 384
-		},
-		'atelier-diagram-thumb': {
-			w: 266,
+			w: 700,
 			h: 384
 		},
 		'atelier-main-thumb--portrait': {
 			w: 378,
-			h: 576
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 294,
 			h: 576
 		},
 		'atelier-main-slider': {

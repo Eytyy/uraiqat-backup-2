@@ -1328,12 +1328,7 @@ img {
 
 .atelier-preview__thumbs--portrait .atelier-preview__image--main {
   width: 200px;
-  height: 306px; }
-
-@media (min-width: 375px) {
-  .atelier-preview__thumbs--portrait .atelier-preview__image--main {
-    width: 200px;
-    height: 306px; } }
+  height: 288px; }
 
 @media (min-width: 768px) {
   .atelier-preview__thumbs--portrait .atelier-preview__image--main {

@@ -112,13 +112,7 @@
 .atelier-preview__thumbs--portrait {
 	.atelier-preview__image--main {
     width: 200px;
-    height: 306px;
-	}
-	@include respond-to(mobile-x2) {
-		.atelier-preview__image--main {
-			width: 200px;
-			height: 306px;
-		}
+    height: 288px;
 	}
 	@include respond-to(tablet) {
 		.atelier-preview__image--main {
