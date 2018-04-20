@@ -2,7 +2,7 @@ import React from 'react';
 import LandingFeatured from './LandingFeatured';
 import LandingChrono from './LandingChrono';
 import BodyText from'../BodyText';
-import MediaComponent from'../media/MediaComponent';
+// import MediaComponent from'../media/MediaComponent';
 
 const Landing = ({ page, content }) => {
 	const classList = `landing-page landing-page--${page} main-section`;
@@ -12,9 +12,7 @@ const Landing = ({ page, content }) => {
 			{
 				page === 'atelier' && intro &&
 					(<div className="atelier-landing__top">
-						<div className="atelier-landing__top__media">
-							{ intro.mainMedia && <MediaComponent media={intro.mainMedia} /> }
-						</div>
+					
 						<div className="atelier-landing__top__desc">
 							{ intro.desc && <BodyText content={intro.desc} />}
 						</div>
@@ -25,5 +23,9 @@ const Landing = ({ page, content }) => {
 		</section>
 	);
 };
+
+{/* <div className="atelier-landing__top__media">
+{ intro.mainMedia && <MediaComponent media={intro.mainMedia} /> }
+</div> */}
 
 export default Landing;

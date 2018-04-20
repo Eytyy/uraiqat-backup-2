@@ -110,10 +110,11 @@
 		background-size: 200%;
 	}
 	@include respond-to(tablet) {
-		width: 252px;
+		width: 348px;
 	}	
 	@include respond-to(desktop) {
 		float: right;
+		width: 278px;
 		margin-top: 0;
 	}	
 	@include respond-to(desktop-1280) {
@@ -147,7 +148,7 @@
 .slider--main {
 	width: 100%;
 	.slide__image {
-		height: 192px;
+		height: 168px;
 	}
 	.slider__controls {
 		top: -24px;
@@ -175,13 +176,18 @@
 			width: calc( 100% - 70px - (12px * 2));
 		}
 		.slide__image {
-			height: 416px;
+			height: 338px;
 		}
 	}
 	@include respond-to(desktop) {
 		.slider__inner {
 			width: calc(100% - 70px);
 		}
+		.slide__image {
+			height: 480px;
+		}
+	}
+	@include respond-to(desktop-1440) {
 		.slide__image {
 			height: 512px;
 		}
@@ -205,6 +211,11 @@
 		text-align: center;
     color: #000;
 	}
+	@include respond-to(tablet) {
+		.slide__image {
+			height: 208px;
+		}		
+	}	
 	@include respond-to(desktop) {
 		.slide__image {
 			height: 160px;

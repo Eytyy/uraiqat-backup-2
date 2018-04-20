@@ -22,29 +22,27 @@
 		width: 100%;
 	}	
 	@include respond-to(tablet) {
-		height: 390px;
-		width: 588px + ($tablet-char-width * 5);
+		height: 338px;
+		width: 588px;
 		margin-bottom: $tablet-lh * 2;
-		padding-left: $tablet-char-width * 5;
+		margin-left: $tablet-char-width * 3;
 	}
 	@include respond-to(desktop) {
-		height: 544px;
-		width: 882px + ($desktop-char-width * 5);
+    height: 480px;
+    width: 840px;
 		margin-bottom: $desktop-lh * 2;
-		padding-left: $desktop-char-width * 5;
-	}
-	@include respond-to(desktop-1600) {
-		padding-left: $desktop-char-width * 6;
-		width: 882px + ($desktop-char-width * 6);
+		margin-left: $desktop-char-width * 3;
 	}
 }
 
 .atelier-landing__top__desc {
-	@include respond-to(tablet) {
-		width: 588px;
+	p {
+		font-family: $font--bold;
 	}
 	@include respond-to(desktop) {
-		width: 882px;
+	}	
+	@include respond-to(desktop-1280) {
+		width: 1064px;
 	}
 }
 
@@ -70,58 +68,42 @@
 	}
 	@include respond-to(tablet) {
 		margin-top: $tablet-lh;
+		margin-left: $tablet-char-width * 4;
 	}
 	@include respond-to(desktop) {
 		margin-top: $desktop-lh;
+		margin-left: $desktop-char-width * 4;
 	}
+	@include respond-to(desktop) {
+		margin-left: $desktop-char-width * 6;
+	}	
 }
 
 .atelier-preview__thumbs--landscape {
 	.atelier-preview__image--main {
-		width: 182px;
-		height: 120px;
-	}
-	.atelier-preview__image--diagram {
-		width: 98px;
-		height: 120px;
+		width: 100%;
+		height: 168px;
 	}
 	@include respond-to(mobile-x2) {
 		.atelier-preview__image--main {
-			width: 208px;
-			height: 120px;
-		}
-		.atelier-preview__image--diagram {
-			width: 112px;
-			height: 120px;
+			height: 168px;
 		}
 	}
 	@include respond-to(tablet) {
 		.atelier-preview__image--main {
-			width: 468px;
-			height: 260px;
-		}
-		.atelier-preview__image--diagram {
-			width: 252px;
-			height: 260px;
+			width: 588px;
+			height: 320px;
 		}
 	}
 	@include respond-to(desktop) {
 		.atelier-preview__image--main {
-			width: 644px;
+			width: 700px;
 			height: 384px;
 		}
-		.atelier-preview__image--diagram {
-	    width: 266px;
-    	height: 384px;
-		}
 	}
-	@include respond-to(desktop-1440) {
+	@include respond-to(desktop-1280) {
 		.atelier-preview__image--main {
-			width: 756px;
-			height: 416px;
-		}
-		.atelier-preview__image--diagram {
-			width: 322px;
+			width: 812px;
 			height: 416px;
 		}
 	}
@@ -129,55 +111,19 @@
 
 .atelier-preview__thumbs--portrait {
 	.atelier-preview__image--main {
-		width: 154px;
-		height: 240px;
-	}
-	.atelier-preview__image--diagram {
-		width: 126px;
-		height: 240px;
+    width: 200px;
+    height: 306px;
 	}
 	@include respond-to(mobile-x2) {
 		.atelier-preview__image--main {
-			width: 176px;
-			height: 240px;
-		}
-		.atelier-preview__image--diagram {
-			width: 144px;
-			height: 240px;
+			width: 200px;
+			height: 306px;
 		}
 	}
 	@include respond-to(tablet) {
 		.atelier-preview__image--main {
-			width: 266px;
-			height: 360px;
-		}
-		.atelier-preview__image--diagram {
-			width: 224px;
-			height: 360px;
-		}
-	}
-	@include respond-to(desktop) {
-		.atelier-preview__image--main {
 			width: 378px;
 			height: 576px;
 		}
-		.atelier-preview__image--diagram {
-	    width: 294px;
-    	height: 576px;
-		}
 	}
-	@include respond-to(desktop-1440) {
-		.atelier-preview__image--main {
-			width: 420px;
-			height: 608px;
-		}
-		.atelier-preview__image--diagram {
-			width: 336px;
-			height: 608px;
-		}
-	}
-}
-
-.atelier-preview__image--diagram {
-	@extend %blue-filter;
 }

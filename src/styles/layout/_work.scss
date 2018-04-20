@@ -52,11 +52,11 @@
 	@include respond-to(desktop-1280) {
 		&--main,
 		&--drawing {
-			height: 384px;
+			height: 352px;
 		}
 		&--craft,
 		&--diagram {
-			height: 192px;
+			height: 176px;
 		}
 	}
 	@include respond-to(desktop-1440) {
@@ -130,11 +130,11 @@
 	}
 	@include respond-to(desktop-1280) {
 		.project-preview__image--main {
-			flex: 0 0 574px;
+			flex: 0 0 630px;
 		}
 		.project-preview__image--drawing,
 		.project-preview__thumbs__right-col {
-			flex: 0 0 294px;
+			flex: 0 0 266px;
 		}
 	}
 	@include respond-to(desktop-1440) {
@@ -203,13 +203,13 @@
 		}
 	}
 	@include respond-to(desktop-1280) {
-		height: 384px;
+		height: 352px;
 		.project-preview__image--main {
-			width: 574px;
+			width: 630px;
 		}		
 		.project-preview__image--drawing,
 		.project-preview__thumbs__right-col {
-			width: 588px;
+			width: 532px;
 		}
 	}
 	@include respond-to(desktop-1440) {

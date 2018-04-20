@@ -20,11 +20,9 @@ var _BodyText = require('../BodyText');
 
 var _BodyText2 = _interopRequireDefault(_BodyText);
 
-var _MediaComponent = require('../media/MediaComponent');
-
-var _MediaComponent2 = _interopRequireDefault(_MediaComponent);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import MediaComponent from'../media/MediaComponent';
 
 var Landing = function Landing(_ref) {
 	var page = _ref.page,
@@ -43,11 +41,6 @@ var Landing = function Landing(_ref) {
 			{ className: 'atelier-landing__top' },
 			_react2.default.createElement(
 				'div',
-				{ className: 'atelier-landing__top__media' },
-				intro.mainMedia && _react2.default.createElement(_MediaComponent2.default, { media: intro.mainMedia })
-			),
-			_react2.default.createElement(
-				'div',
 				{ className: 'atelier-landing__top__desc' },
 				intro.desc && _react2.default.createElement(_BodyText2.default, { content: intro.desc })
 			)
@@ -56,5 +49,9 @@ var Landing = function Landing(_ref) {
 		mainContent && _react2.default.createElement(_LandingChrono2.default, { page: page, content: mainContent })
 	);
 };
+
+{/* <div className="atelier-landing__top__media">
+ { intro.mainMedia && <MediaComponent media={intro.mainMedia} /> }
+ </div> */}
 
 exports.default = Landing;

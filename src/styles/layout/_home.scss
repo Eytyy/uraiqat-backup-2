@@ -424,20 +424,23 @@ img {
 .website-footer {
 	margin-top: $lh * 2;
 	padding-bottom: $lh;
-	.contact & {
+	.contact &,
+	.front & {
 		margin-top: 0;
 	}
 	@include respond-to(tablet) {
 		margin-top: $tablet-lh * 2;
 		padding-bottom: $tablet-lh;
-		.contact & {
+		.contact &,
+		.front & {
 			margin-top: 0;
 		}
 	}
 	@include respond-to(desktop) {
 		margin-top: $desktop-lh * 2;
 		padding-bottom: $desktop-lh;
-		.contact & {
+		.contact &,
+		.front & {
 			margin-top: 0;
 		}
 	}
