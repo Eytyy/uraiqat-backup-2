@@ -87,7 +87,7 @@ class Project extends Component { //eslint-disable-line
 						</span>}
 					</div>
 					<div className="project__drawings">
-						<Slider contentTitle={title} sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
+						<Slider type="drawings" contentTitle={title} sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
 				<InnerNav {...innerNavContent} type="work" />

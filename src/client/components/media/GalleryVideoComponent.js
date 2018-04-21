@@ -9,13 +9,23 @@ class VideoComponent extends Component {
 		this.playVideo = this.playVideo.bind(this);
 		this.stopVideo = this.stopVideo.bind(this);
 		this.toggleVideo = this.toggleVideo.bind(this);
+		this.videoLoaded = this.videoLoaded.bind(this);
+	}
+	componentDidMount() {
+		this.video.addEventListener('loadeddata', this.videoLoaded, false);
+	}
+	componentWillUnmount() {
+		this.stopVideo();
+		this.video.removeEventListener('loadeddata', this.videoLoaded);
 	}
 	componentWillReceiveProps(nextProps) {
 		if ((nextProps.activeSlide !== nextProps.index) && this.state.playing) {
 			this.stopVideo();
 		}
 	}
-	
+	videoLoaded() {
+		this.playVideo();
+	}
 	toggleVideo() {
 		if (this.state.playing) {
 			this.stopVideo();
@@ -36,7 +46,7 @@ class VideoComponent extends Component {
 		});
 	}
 	render() {
-		const { content, classList, title } = this.props;
+		const { content, classList } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 		const allClasses = `slide slide--video video gallery__slide ${classList} ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (

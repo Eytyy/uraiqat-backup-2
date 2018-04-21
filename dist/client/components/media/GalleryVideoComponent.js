@@ -32,15 +32,32 @@ var VideoComponent = function (_Component) {
 		_this.playVideo = _this.playVideo.bind(_this);
 		_this.stopVideo = _this.stopVideo.bind(_this);
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
+		_this.videoLoaded = _this.videoLoaded.bind(_this);
 		return _this;
 	}
 
 	_createClass(VideoComponent, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.video.addEventListener('loadeddata', this.videoLoaded, false);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this.stopVideo();
+			this.video.removeEventListener('loadeddata', this.videoLoaded);
+		}
+	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
 			if (nextProps.activeSlide !== nextProps.index && this.state.playing) {
 				this.stopVideo();
 			}
+		}
+	}, {
+		key: 'videoLoaded',
+		value: function videoLoaded() {
+			this.playVideo();
 		}
 	}, {
 		key: 'toggleVideo',
@@ -74,8 +91,7 @@ var VideoComponent = function (_Component) {
 
 			var _props = this.props,
 			    content = _props.content,
-			    classList = _props.classList,
-			    title = _props.title;
+			    classList = _props.classList;
 
 			var url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
 			var allClasses = 'slide slide--video video gallery__slide ' + classList + ' ' + (this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused');

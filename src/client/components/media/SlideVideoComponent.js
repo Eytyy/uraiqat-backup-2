@@ -41,8 +41,13 @@ class SlideVideoComponent extends Component {
 	}
 	onSlideClick() {
 		const { onClick, id } = this.props;
-		this.stopVideo();
-		onClick(id);
+		// if (this.state.playing) {
+		// 	this.stopVideo();
+		// }
+		if (this.state.videoIsLoaded) {
+			onClick(id);
+			// this.toggleVideo();
+		}
 	}
 	checkVideo() {
 		const { content } = this.props;
@@ -68,17 +73,7 @@ class SlideVideoComponent extends Component {
 		const allClasses = `slide slide--video ${this.state.playing ? 'js-videoIsActive' : 'js-videoIsPaused'}`;
 		return (
 			<div className={allClasses}>
-				<div className={`video video__wrapper ${this.state.videoIsLoaded ? 'video--loaded' : 'video--loading'}`}>
-					<div className="slider__inner-controls slider__inner-controls--video">
-						{
-							<span onClick={this.onSlideClick} className="video-controls__item open-gallery">
-								+ enlarge {' / '}
-							</span>
-						}
-						<span onClick={this.toggleVideo} className="video-controls__item video-btn">
-							{this.state.playing ? <span className="video-btn__txt">pause</span> : <span className="video-btn__txt">play</span>}
-						</span>
-					</div>
+				<div onClick={this.onSlideClick} className={`video video__wrapper ${this.state.videoIsLoaded ? 'video--loaded' : 'video--loading'}`}>
 					<video ref={(el) => { this.video = el; }}  src={url} />
 					<div className={`preview-pattern ${this.state.videoIsLoaded ? 'preview-pattern--hidden' : ''}`}>
 						<Pattern sliderName={sliderName} />

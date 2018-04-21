@@ -8,6 +8,9 @@
 	z-index: 200;
 	display: flex;
 	align-items: center;
+	&--drawings .gallery__inner {
+		@extend %blue-filter;
+	}
 	.slider__controls {
 		background: #FFF;
 		position: absolute;
@@ -34,10 +37,18 @@
 		height: 100%;
 		display: flex;
 		align-items: center;
+		background: #000;
 	}
 	.video__wrapper {
-		position: relative;
-		padding-top: 56.25%;
+    position: absolute;
+    padding-top: 56.25%;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+	}
+	.video .video-controls {
+		left: 50%;
 	}
 	@include respond-to(tablet) {
 		.slider__controls__item {

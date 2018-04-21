@@ -55,12 +55,13 @@ var Slider = function (_Component) {
 			    content = _props.content,
 			    updateGallery = _props.updateGallery,
 			    sliderId = _props.sliderId,
-			    contentTitle = _props.contentTitle;
+			    contentTitle = _props.contentTitle,
+			    type = _props.type;
 
 			this.setState({
 				clientLoaded: true
 			});
-			updateGallery(sliderId, content, contentTitle);
+			updateGallery(sliderId, content, contentTitle, type);
 		}
 	}, {
 		key: 'updateSlide',
@@ -76,10 +77,11 @@ var Slider = function (_Component) {
 		value: function onSlideClick() {
 			var _props3 = this.props,
 			    toggleGallery = _props3.toggleGallery,
-			    sliderId = _props3.sliderId;
+			    sliderId = _props3.sliderId,
+			    type = _props3.type;
 
 			var openGallery = true;
-			toggleGallery(sliderId, openGallery);
+			toggleGallery(sliderId, openGallery, type);
 		}
 	}, {
 		key: 'render',
@@ -91,7 +93,8 @@ var Slider = function (_Component) {
 			    classList = _props4.classList,
 			    imagesQuery = _props4.imagesQuery,
 			    activeSlideIndex = _props4.activeSlideIndex,
-			    sliderName = _props4.sliderName;
+			    sliderName = _props4.sliderName,
+			    type = _props4.type;
 
 			var sliderRailStyle = {
 				transform: 'translateX(-' + activeSlideIndex * 100 + '%)'
@@ -105,7 +108,9 @@ var Slider = function (_Component) {
 				'div',
 				{ ref: function ref(el) {
 						_this2.slider = el;
-					}, className: 'slider ' + (content.length > 1 ? 'multiple' : 'single') + ' ' + classList },
+					},
+					className: 'slider ' + (content.length > 1 ? 'multiple' : 'single') + ' ' + classList + ' ' + (type === 'drawings' ? 'slider--drawings' : 'slider--default')
+				},
 				_react2.default.createElement(
 					'div',
 					{ className: 'slider__inner' },

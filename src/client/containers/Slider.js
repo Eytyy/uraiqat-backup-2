@@ -15,23 +15,23 @@ class Slider extends Component {
 		this.updateSlide = this.updateSlide.bind(this);
 	}
 	componentDidMount() {
-		const { content, updateGallery, sliderId, contentTitle } = this.props;
+		const { content, updateGallery, sliderId, contentTitle, type } = this.props;
 		this.setState({
 			clientLoaded: true,
 		});
-		updateGallery(sliderId, content, contentTitle);
+		updateGallery(sliderId, content, contentTitle, type);
 	}
 	updateSlide(direction) {
 		const { updateActiveSlide, sliderId } = this.props;
 		updateActiveSlide(sliderId, direction);
 	}
 	onSlideClick() {
-		const {toggleGallery, sliderId} = this.props;
+		const {toggleGallery, sliderId, type} = this.props;
 		const openGallery = true;
-		toggleGallery(sliderId, openGallery);
+		toggleGallery(sliderId, openGallery, type);
 	}
 	render() {
-		const { content, classList, imagesQuery, activeSlideIndex, sliderName } = this.props;
+		const { content, classList, imagesQuery, activeSlideIndex, sliderName, type } = this.props;
 		const sliderRailStyle = {
 			transform: `translateX(-${activeSlideIndex * 100}%)`
 		};
@@ -41,7 +41,9 @@ class Slider extends Component {
 		}	
 		// otherwise render the slider
 		return ( 
-			<div ref={(el) => { this.slider = el; }} className={`slider ${content.length > 1 ? 'multiple' : 'single'} ${classList}`}>
+			<div ref={(el) => { this.slider = el; }}
+				className={`slider ${content.length > 1 ? 'multiple' : 'single'} ${classList} ${type === 'drawings' ? 'slider--drawings' : 'slider--default'}`}
+			>
 				<div className="slider__inner">
 					<div style={sliderRailStyle} className="slider__slides">
 						{ content.map(({ fields, sys }, index) =>

@@ -11,7 +11,9 @@ class SlideImageComponent extends Component {
 	}
 	onSlideClick() {
 		const { onClick, id } = this.props;
-		onClick(id);
+		if (this.state.imageIsLoaded) {
+			onClick(id);
+		}
 	}
 	checkImage() {
 		const { content } = this.props;
@@ -43,8 +45,7 @@ class SlideImageComponent extends Component {
 			backgroundImage: `url('${url}')`,
 		};
 		return (
-			<div className="slide slide--image">
-				<div className="slider__inner-controls" onClick={this.onSlideClick}>+ enlarge</div>
+			<div className="slide slide--image" onClick={this.onSlideClick}>
 				{
 					this.state.imageIsLoaded ?
 						<div className="preview-image slide__image" style={style}></div> :

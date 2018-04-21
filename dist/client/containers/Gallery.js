@@ -95,7 +95,8 @@ var Gallery = function (_Component) {
 			var slides = content.slides,
 			    isActive = content.isActive,
 			    activeSlide = content.activeSlide,
-			    title = content.title;
+			    title = content.title,
+			    type = content.type;
 
 			if (!isActive) {
 				return null;
@@ -106,7 +107,7 @@ var Gallery = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'gallery ' + (this.state.areDetailsVisible ? 'js-details-are-visible' : '') },
+				{ className: 'gallery ' + (this.state.areDetailsVisible ? 'js-details-are-visible' : '') + ' ' + (type === 'drawings' ? 'gallery--drawings' : 'gallery--default') },
 				_react2.default.createElement(
 					'div',
 					{ className: '' + (slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner') },

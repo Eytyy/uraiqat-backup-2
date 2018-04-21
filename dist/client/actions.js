@@ -187,20 +187,21 @@ var fetchRelated = exports.fetchRelated = function fetchRelated(id) {
 };
 
 // Gallery Action Creators
-var recieveGalleryContent = function recieveGalleryContent(sliderId, content, contentTitle) {
+var recieveGalleryContent = function recieveGalleryContent(sliderId, content, contentTitle, type) {
 	return {
 		type: 'RECIEVE_GALLERY_CONTENT',
 		response: {
 			sliderId: sliderId,
 			content: content,
-			contentTitle: contentTitle
+			contentTitle: contentTitle,
+			type: type
 		}
 	};
 };
 
-var updateGallery = exports.updateGallery = function updateGallery(sliderId, content, contentTitle) {
+var updateGallery = exports.updateGallery = function updateGallery(sliderId, content, contentTitle, type) {
 	return function (dispatch) {
-		return dispatch(recieveGalleryContent(sliderId, content, contentTitle));
+		return dispatch(recieveGalleryContent(sliderId, content, contentTitle, type));
 	};
 };
 
@@ -220,19 +221,20 @@ var updateActiveSlide = exports.updateActiveSlide = function updateActiveSlide(s
 	};
 };
 
-var updateGalleryVisibility = function updateGalleryVisibility(sliderId, isVisible) {
+var updateGalleryVisibility = function updateGalleryVisibility(sliderId, isVisible, type) {
 	return {
 		type: 'UPDATE_GALLERY_VISIBILITY',
 		response: {
 			sliderId: sliderId,
-			isVisible: isVisible
+			isVisible: isVisible,
+			type: type
 		}
 	};
 };
 
-var toggleGallery = exports.toggleGallery = function toggleGallery(sliderId, isVisible) {
+var toggleGallery = exports.toggleGallery = function toggleGallery(sliderId, isVisible, type) {
 	return function (dispatch) {
-		return dispatch(updateGalleryVisibility(sliderId, isVisible));
+		return dispatch(updateGalleryVisibility(sliderId, isVisible, type));
 	};
 };
 

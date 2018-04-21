@@ -41,7 +41,7 @@ class Gallery extends Component {
 	}
 	render() {
 		const { content } = this.props;
-		const { slides, isActive, activeSlide, title } = content;
+		const { slides, isActive, activeSlide, title, type } = content;
 		if (!isActive) {
 			return null;
 		}
@@ -50,7 +50,7 @@ class Gallery extends Component {
 		};
 		
 		return ( 
-			<div className={`gallery ${this.state.areDetailsVisible ? 'js-details-are-visible' : ''}`}>
+			<div className={`gallery ${this.state.areDetailsVisible ? 'js-details-are-visible' : ''} ${type === 'drawings' ? 'gallery--drawings' : 'gallery--default' }`}>
 				<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
 					<div style={sliderRailStyle} className="gallery__slides">
 						{

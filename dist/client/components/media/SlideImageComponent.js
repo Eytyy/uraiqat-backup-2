@@ -44,7 +44,9 @@ var SlideImageComponent = function (_Component) {
 			    onClick = _props.onClick,
 			    id = _props.id;
 
-			onClick(id);
+			if (this.state.imageIsLoaded) {
+				onClick(id);
+			}
 		}
 	}, {
 		key: 'checkImage',
@@ -96,12 +98,7 @@ var SlideImageComponent = function (_Component) {
 			};
 			return _react2.default.createElement(
 				'div',
-				{ className: 'slide slide--image' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'slider__inner-controls', onClick: this.onSlideClick },
-					'+ enlarge'
-				),
+				{ className: 'slide slide--image', onClick: this.onSlideClick },
 				this.state.imageIsLoaded ? _react2.default.createElement('div', { className: 'preview-image slide__image', style: style }) : _react2.default.createElement(_Pattern2.default, { sliderName: sliderName }),
 				description && _react2.default.createElement(
 					'div',

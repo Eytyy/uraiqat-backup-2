@@ -219,7 +219,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__drawings' },
-						_react2.default.createElement(_Slider2.default, { contentTitle: title, sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
+						_react2.default.createElement(_Slider2.default, { type: 'drawings', contentTitle: title, sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
 					)
 				),
 				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' })),

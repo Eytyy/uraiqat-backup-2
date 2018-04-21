@@ -6,6 +6,9 @@
 .slider__slides {
 	display: flex;
 	transition: transform 200ms linear;
+	.slide {
+		cursor: pointer;
+	}
 }	
 
 .slider .slide {

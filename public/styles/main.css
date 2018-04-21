@@ -25,11 +25,11 @@
     background-color: #000;
     mix-blend-mode: screen; }
 
-.project-preview__image--drawing .preview-image, .project__drawings .preview-image {
+.project-preview__image--drawing .preview-image, .project__drawings .preview-image, .gallery--drawings .gallery__inner {
   position: relative; }
-  .project-preview__image--drawing .preview-image:after, .project__drawings .preview-image:after, .project-preview__image--drawing .preview-image:before, .project__drawings .preview-image:before {
+  .project-preview__image--drawing .preview-image:after, .project__drawings .preview-image:after, .gallery--drawings .gallery__inner:after, .project-preview__image--drawing .preview-image:before, .project__drawings .preview-image:before, .gallery--drawings .gallery__inner:before {
     z-index: 1; }
-  .project-preview__image--drawing .preview-image:before, .project__drawings .preview-image:before {
+  .project-preview__image--drawing .preview-image:before, .project__drawings .preview-image:before, .gallery--drawings .gallery__inner:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -38,7 +38,7 @@
     height: 100%;
     background-color: #FFF;
     mix-blend-mode: color; }
-  .project-preview__image--drawing .preview-image:after, .project__drawings .preview-image:after {
+  .project-preview__image--drawing .preview-image:after, .project__drawings .preview-image:after, .gallery--drawings .gallery__inner:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -1600,6 +1600,8 @@ img {
   transition: -webkit-transform 200ms linear;
   transition: transform 200ms linear;
   transition: transform 200ms linear, -webkit-transform 200ms linear; }
+  .slider__slides .slide {
+    cursor: pointer; }
 
 .slider .slide {
   -webkit-box-flex: 0;
@@ -1756,10 +1758,18 @@ img {
     display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    background: #000; }
   .gallery .video__wrapper {
-    position: relative;
-    padding-top: 56.25%; }
+    position: absolute;
+    padding-top: 56.25%;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  .gallery .video .video-controls {
+    left: 50%; }
   @media (min-width: 768px) {
     .gallery .slider__controls__item {
       padding: 26px 0; } }
@@ -1926,7 +1936,7 @@ img {
     border: 20px solid red; } }
 
 .slider .video {
-  cursor: default;
+  cursor: pointer;
   position: relative;
   background-color: #000;
   -webkit-transition: background-color 100ms ease-in-out;

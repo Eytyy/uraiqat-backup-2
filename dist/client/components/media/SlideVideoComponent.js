@@ -81,9 +81,14 @@ var SlideVideoComponent = function (_Component) {
 			var _props = this.props,
 			    onClick = _props.onClick,
 			    id = _props.id;
+			// if (this.state.playing) {
+			// 	this.stopVideo();
+			// }
 
-			this.stopVideo();
-			onClick(id);
+			if (this.state.videoIsLoaded) {
+				onClick(id);
+				// this.toggleVideo();
+			}
 		}
 	}, {
 		key: 'checkVideo',
@@ -135,30 +140,7 @@ var SlideVideoComponent = function (_Component) {
 				{ className: allClasses },
 				_react2.default.createElement(
 					'div',
-					{ className: 'video video__wrapper ' + (this.state.videoIsLoaded ? 'video--loaded' : 'video--loading') },
-					_react2.default.createElement(
-						'div',
-						{ className: 'slider__inner-controls slider__inner-controls--video' },
-						_react2.default.createElement(
-							'span',
-							{ onClick: this.onSlideClick, className: 'video-controls__item open-gallery' },
-							'+ enlarge ',
-							' / '
-						),
-						_react2.default.createElement(
-							'span',
-							{ onClick: this.toggleVideo, className: 'video-controls__item video-btn' },
-							this.state.playing ? _react2.default.createElement(
-								'span',
-								{ className: 'video-btn__txt' },
-								'pause'
-							) : _react2.default.createElement(
-								'span',
-								{ className: 'video-btn__txt' },
-								'play'
-							)
-						)
-					),
+					{ onClick: this.onSlideClick, className: 'video video__wrapper ' + (this.state.videoIsLoaded ? 'video--loaded' : 'video--loading') },
 					_react2.default.createElement('video', { ref: function ref(el) {
 							_this4.video = el;
 						}, src: url }),
