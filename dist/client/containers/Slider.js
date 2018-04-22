@@ -64,6 +64,19 @@ var Slider = function (_Component) {
 			updateGallery(sliderId, content, contentTitle, type);
 		}
 	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(_ref) {
+			var sliderId = _ref.sliderId,
+			    content = _ref.content,
+			    contentTitle = _ref.contentTitle,
+			    type = _ref.type,
+			    updateGallery = _ref.updateGallery;
+
+			if (sliderId !== this.props.sliderId) {
+				updateGallery(sliderId, content, contentTitle, type);
+			}
+		}
+	}, {
 		key: 'updateSlide',
 		value: function updateSlide(direction) {
 			var _props2 = this.props,
@@ -117,9 +130,9 @@ var Slider = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ style: sliderRailStyle, className: 'slider__slides' },
-						content.map(function (_ref, index) {
-							var fields = _ref.fields,
-							    sys = _ref.sys;
+						content.map(function (_ref2, index) {
+							var fields = _ref2.fields,
+							    sys = _ref2.sys;
 							return _react2.default.createElement(_Slide2.default, { sliderName: sliderName, index: index, active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
 						})
 					)
@@ -161,8 +174,8 @@ Slider.defaultProps = {
 	activeSlideIndex: 0
 };
 
-var mapStateToProps = function mapStateToProps(state, _ref2) {
-	var sliderId = _ref2.sliderId;
+var mapStateToProps = function mapStateToProps(state, _ref3) {
+	var sliderId = _ref3.sliderId;
 	return {
 		activeSlideIndex: (0, _reducers.getActiveSlide)(state, sliderId)
 	};

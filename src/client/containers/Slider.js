@@ -21,6 +21,11 @@ class Slider extends Component {
 		});
 		updateGallery(sliderId, content, contentTitle, type);
 	}
+	componentWillReceiveProps({ sliderId, content, contentTitle, type, updateGallery }) {
+		if (sliderId !== this.props.sliderId) {
+			updateGallery(sliderId, content, contentTitle, type);
+		}
+	}
 	updateSlide(direction) {
 		const { updateActiveSlide, sliderId } = this.props;
 		updateActiveSlide(sliderId, direction);

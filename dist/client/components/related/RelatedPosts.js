@@ -57,13 +57,13 @@ var RelatedPosts = function (_Component) {
 			fetchRelated(id);
 		}
 	}, {
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(_ref) {
-			var id = _ref.id;
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate(nextProps) {
 			var fetchRelated = this.props.fetchRelated;
 
-			if (this.props.id !== id) {
-				fetchRelated(id);
+
+			if (nextProps.id !== this.props.id) {
+				fetchRelated(this.props.id);
 			}
 		}
 	}, {
@@ -76,9 +76,9 @@ var RelatedPosts = function (_Component) {
 			if (isFetching || content.length === 0) {
 				return null;
 			}
-			return content.map(function (_ref2) {
-				var fields = _ref2.fields,
-				    sys = _ref2.sys;
+			return content.map(function (_ref) {
+				var fields = _ref.fields,
+				    sys = _ref.sys;
 
 				var withid = _extends({}, fields, {
 					id: sys.id

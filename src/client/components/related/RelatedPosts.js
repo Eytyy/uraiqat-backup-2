@@ -17,10 +17,11 @@ class RelatedPosts extends Component { //eslint-disable-line
 		const { fetchRelated, id } = this.props;
 		fetchRelated(id);
 	}
-	componentWillReceiveProps({ id }) {
+	componentDidUpdate(nextProps) {
 		const { fetchRelated } = this.props;
-		if (this.props.id !== id) {
-			fetchRelated(id);
+		
+		if (nextProps.id !== this.props.id) {
+			fetchRelated(this.props.id);
 		}
 	}
 	render() {
