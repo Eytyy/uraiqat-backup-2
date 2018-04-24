@@ -18,9 +18,10 @@
 		right: 0;
 		height: 100%;
 		width: 70px;
+		z-index: 2;
 	}
 	.slider__counter {
-		font-size: 20px;
+		@extend %bodyFont;
 	}	
 	.slider__controls__item {
 		padding: $lh 0;

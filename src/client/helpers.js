@@ -448,20 +448,12 @@ const config = {
 			h: 416
 		},
 		'atelier-main-thumb': {
-			w: 756,
-			h: 416,
-		},
-		'atelier-diagram-thumb': {
-			w: 322,
+			w: 812,
 			h: 416,
 		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 378,
+			h: 576,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
@@ -538,20 +530,12 @@ const config = {
 			h: 416
 		},
 		'atelier-main-thumb': {
-			w: 756,
-			h: 416,
-		},
-		'atelier-diagram-thumb': {
-			w: 322,
+			w: 812,
 			h: 416,
 		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 378,
+			h: 576,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
@@ -628,20 +612,12 @@ const config = {
 			h: 416
 		},
 		'atelier-main-thumb': {
-			w: 756,
-			h: 416,
-		},
-		'atelier-diagram-thumb': {
-			w: 322,
-			h: 416,
+			w: 980,
+			h: 480,
 		},
 		'atelier-main-thumb--portrait': {
-			w: 420,
-			h: 608,
-		},
-		'atelier-diagram-thumb--portrait': {
-			w: 336,
-			h: 608,
+			w: 462,
+			h: 672,
 		},
 		'atelier-main-slider' : {
 			w: 1022,

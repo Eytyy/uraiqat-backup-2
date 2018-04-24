@@ -107,6 +107,12 @@
 			height: 416px;
 		}
 	}
+	@include respond-to(desktop-1600) {
+		.atelier-preview__image--main {
+			width: 980px;
+			height: 480px;
+		}
+	}
 }
 
 .atelier-preview__thumbs--portrait {
@@ -118,6 +124,12 @@
 		.atelier-preview__image--main {
 			width: 378px;
 			height: 576px;
+		}
+	}
+	@include respond-to(desktop-1600) {
+		.atelier-preview__image--main {
+			width: 462px;
+			height: 672px;
 		}
 	}
 }
