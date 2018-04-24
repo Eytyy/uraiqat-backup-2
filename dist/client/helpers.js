@@ -63,6 +63,10 @@ var getFontValues = exports.getFontValues = function getFontValues() {
 
 var config = {
 	mobile: {
+		'team-member--portrait': {
+			w: 280,
+			h: 360
+		},
 		'default-post--portrait': {
 			w: 280,
 			h: 360
@@ -145,6 +149,10 @@ var config = {
 		}
 	},
 	mobileX2: {
+		'team-member--portrait': {
+			w: 320,
+			h: 456
+		},
 		'default-post--portrait': {
 			w: 320,
 			h: 456
@@ -227,6 +235,10 @@ var config = {
 		}
 	},
 	tablet: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 312
@@ -309,6 +321,10 @@ var config = {
 		}
 	},
 	desktop: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 320
@@ -391,6 +407,10 @@ var config = {
 		}
 	},
 	desktop1280: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 320
@@ -473,6 +493,10 @@ var config = {
 		}
 	},
 	desktop1440: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
 		'default-post--portrait': {
 			w: 266,
 			h: 384
@@ -555,6 +579,10 @@ var config = {
 		}
 	},
 	desktop1600: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
 		'default-post--portrait': {
 			w: 266,
 			h: 384

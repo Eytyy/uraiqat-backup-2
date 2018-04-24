@@ -59,6 +59,10 @@ export const getFontValues = () => {
 
 const config = {
 	mobile: {
+		'team-member--portrait': {
+			w: 280,
+			h: 360,
+		},
 		'default-post--portrait': {
 			w: 280,
 			h: 360,
@@ -141,6 +145,10 @@ const config = {
 		},
 	},
 	mobileX2: {
+		'team-member--portrait': {
+			w: 320,
+			h: 456,
+		},
 		'default-post--portrait': {
 			w: 320,
 			h: 456,
@@ -223,6 +231,10 @@ const config = {
 		},
 	},
 	tablet: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384,
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 312,
@@ -305,6 +317,10 @@ const config = {
 		},
 	},
 	desktop: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384,
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 320,
@@ -387,6 +403,10 @@ const config = {
 		},
 	},
 	desktop1280: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384,
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 320,
@@ -469,6 +489,10 @@ const config = {
 		},
 	},
 	desktop1440: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384,
+		},
 		'default-post--portrait': {
 			w: 266,
 			h: 384,
@@ -551,6 +575,10 @@ const config = {
 		},
 	},
 	desktop1600: {
+		'team-member--portrait': {
+			w: 266,
+			h: 384,
+		},
 		'default-post--portrait': {
 			w: 266,
 			h: 384,
