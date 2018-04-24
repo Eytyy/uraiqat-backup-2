@@ -113,7 +113,7 @@ var config = {
 		},
 		'project-main-slider': {
 			w: 280,
-			h: 168
+			h: 192
 		},
 		'project-drawings-slider': {
 			w: 280,
@@ -132,8 +132,8 @@ var config = {
 			h: 288
 		},
 		'atelier-main-slider': {
-			w: 1022,
-			h: 576
+			w: 320,
+			h: 192
 		},
 		'atelier-landing-media-image': {
 			w: 280,
@@ -195,7 +195,7 @@ var config = {
 		},
 		'project-main-slider': {
 			w: 320,
-			h: 168
+			h: 192
 		},
 		'project-drawings-slider': {
 			w: 320,
@@ -214,8 +214,8 @@ var config = {
 			h: 288
 		},
 		'atelier-main-slider': {
-			w: 1022,
-			h: 576
+			w: 320,
+			h: 192
 		},
 		'atelier-landing-media-image': {
 			w: 320,
@@ -296,8 +296,8 @@ var config = {
 			h: 576
 		},
 		'atelier-main-slider': {
-			w: 1022,
-			h: 576
+			w: 590,
+			h: 388
 		},
 		'atelier-landing-media-image': {
 			w: 588,
@@ -378,8 +378,8 @@ var config = {
 			h: 576
 		},
 		'atelier-main-slider': {
-			w: 1022,
-			h: 576
+			w: 854,
+			h: 480
 		},
 		'atelier-landing-media-image': {
 			w: 882,
@@ -449,7 +449,7 @@ var config = {
 		},
 		'related-project--landscape': {
 			w: 560,
-			h: 416
+			h: 384
 		},
 		'atelier-main-thumb': {
 			w: 812,
@@ -460,8 +460,8 @@ var config = {
 			h: 576
 		},
 		'atelier-main-slider': {
-			w: 1022,
-			h: 576
+			w: 854,
+			h: 480
 		},
 		'atelier-landing-media-image': {
 			w: 882,
@@ -531,7 +531,7 @@ var config = {
 		},
 		'related-project--landscape': {
 			w: 532,
-			h: 416
+			h: 384
 		},
 		'atelier-main-thumb': {
 			w: 812,
@@ -613,7 +613,7 @@ var config = {
 		},
 		'related-project--landscape': {
 			w: 518,
-			h: 416
+			h: 384
 		},
 		'atelier-main-thumb': {
 			w: 980,
