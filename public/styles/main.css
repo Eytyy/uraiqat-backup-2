@@ -299,7 +299,7 @@ body {
 
 .main-content {
   min-height: calc(100vh - 144px);
-  padding-top: 96px; }
+  padding-top: 72px; }
   .contact .main-content {
     padding-top: 64px; }
   @media (min-width: 768px) {
@@ -2014,13 +2014,13 @@ img {
 
 .team-member-preview {
   margin-bottom: 48px; }
-  .team-member-preview .preview-image {
+  .team-member-preview .post-preview__image {
     height: 360px; }
-  .team-member-preview:hover .preview-image:after,
-  .team-member-preview:hover .preview-image:before {
+  .team-member-preview:hover .post-preview__image .preview-image:after,
+  .team-member-preview:hover .post-preview__image .preview-image:before {
     background-color: transparent; }
   @media (min-width: 375px) {
-    .team-member-preview .preview-image {
+    .team-member-preview .post-preview__image {
       height: 456px; } }
   @media (min-width: 768px) {
     .team-member-preview {
@@ -2029,7 +2029,7 @@ img {
               flex: 0 0 338px;
       margin-bottom: 52px;
       padding-left: 72px; }
-      .team-member-preview .preview-image {
+      .team-member-preview .post-preview__image {
         height: 384px; } }
   @media (min-width: 1024px) {
     .team-member-preview {
@@ -2088,7 +2088,7 @@ img {
     margin-bottom: 32px; } }
 
 .team-member__header {
-  margin-bottom: 48px; }
+  margin-bottom: 24px; }
   @media (min-width: 768px) {
     .team-member__header {
       margin-bottom: 52px; } }
@@ -2100,23 +2100,66 @@ img {
   margin: 0; }
 
 .team-member__content .post-preview__image {
-  height: 512px; }
+  height: 360px; }
+  .team-member__content .post-preview__image .preview-image:after,
+  .team-member__content .post-preview__image .preview-image:before {
+    background-color: transparent; }
+
+@media (min-width: 375px) {
+  .team-member__content .post-preview__image {
+    height: 456px; } }
 
 @media (min-width: 768px) {
   .team-member__content {
-    padding-left: 60px; } }
+    padding-left: 60px; }
+    .team-member__content .post-preview__image {
+      height: 416px;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 300px;
+              flex: 0 0 300px; }
+    .team-member__content .team-member__links {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 360px;
+              flex: 0 0 360px;
+      padding-left: 36px; } }
 
 @media (min-width: 1024px) {
   .team-member__content {
+    padding-left: 0; }
+    .team-member__content .post-preview__image {
+      height: 512px; }
+    .team-member__content .team-member__links {
+      padding-left: 0; } }
+
+@media (min-width: 1280px) {
+  .team-member__content {
     padding-left: 70px; } }
 
-.team-member__content__col {
-  float: left; }
+.team-member__content__col--left {
+  margin-bottom: 24px; }
+
+@media (min-width: 768px) {
   .team-member__content__col--left {
-    width: 337px; }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 52px; } }
+
+@media (min-width: 1024px) {
+  .team-member__content__col {
+    float: left; }
+    .team-member__content__col--left {
+      display: block;
+      width: 337px;
+      margin-bottom: 0; }
+    .team-member__content__col--right {
+      width: 602px;
+      padding-left: 70px; } }
+
+@media (min-width: 1280px) {
   .team-member__content__col--right {
     width: 780px;
-    padding-left: 112px; }
+    padding-left: 112px; } }
 
 @media (min-width: 768px) {
   .career__content {
@@ -2127,14 +2170,9 @@ img {
     width: 882px;
     padding-left: 70px; } }
 
-.team-member__links {
-  margin-top: 24px; }
-  @media (min-width: 768px) {
-    .team-member__links {
-      margin-top: 26px; } }
-  @media (min-width: 1024px) {
-    .team-member__links {
-      margin-top: 32px; } }
+@media (min-width: 1024px) {
+  .team-member__links {
+    margin-top: 32px; } }
 
 .landing-page--contact {
   font-family: "ZeitungMonoPro-Bold";
@@ -2179,6 +2217,7 @@ img {
 
 .preview-pattern,
 .post__image__pattern {
+  color: #000 !important;
   z-index: 5;
   opacity: 1;
   -webkit-transition: opacity 400ms ease-in-out 200ms;

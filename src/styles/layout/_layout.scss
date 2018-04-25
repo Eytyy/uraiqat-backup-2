@@ -51,7 +51,7 @@ body {
 
 .main-content {
 	min-height: calc(100vh -  (#{$lh} * 4) -  (#{$lh} * 2));
-	padding-top: $lh * 4;
+	padding-top: $lh * 3;
 	.contact & {
 		padding-top: $lh * 3 - $lh/3;
 	}

@@ -91,11 +91,6 @@ var HeaderM = function (_Component) {
 					null,
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
 				),
-				_react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
-				),
 				this.state.isVisible ? _react2.default.createElement(
 					'div',
 					{ className: 'menu' },

@@ -58,17 +58,17 @@
 
 .team-member-preview {
 	margin-bottom: $lh * 2;
-	.preview-image {
+	.post-preview__image {
 		height: $portrait-height;
 	}
 	&:hover {
-		.preview-image:after,
-		.preview-image:before {
+		.post-preview__image .preview-image:after,
+		.post-preview__image .preview-image:before {
 			background-color: transparent;
 		}
 	}
 	@include respond-to(mobile-x2) {
-		.preview-image {
+		.post-preview__image {
 			height: $portrait-height--x2;
 		}
 	}	
@@ -76,7 +76,7 @@
 		flex: 0 0 (266 + $tablet-block-gutter);
 		margin-bottom: $tablet-lh * 2;
 		padding-left: $tablet-block-gutter;
-		.preview-image {
+		.post-preview__image {
 			height: $portrait-height--desktop-1440;
 		}
 	}	
@@ -141,7 +141,7 @@
 // Team Memeber Inner Page
 
 .team-member__header {
-	margin-bottom: $lh * 2;
+	margin-bottom: $lh;
 	@include respond-to(tablet) {
 		margin-bottom: $tablet-lh * 2;
 	}
@@ -157,24 +157,73 @@
 .team-member__content {
 	@extend %clearfix;
 	.post-preview__image {
-		height: 512px;
+		height: $portrait-height;
+		.preview-image:after,
+		.preview-image:before {
+			background-color: transparent;
+		}
 	}
+	@include respond-to(mobile-x2) {
+		.post-preview__image {
+			height: $portrait-height--x2;
+		}
+	}	
 	@include respond-to(tablet) {
 		padding-left: ($tablet-char-width * 5);
-	}
+		.post-preview__image {
+			height: 416px;
+			flex: 0 0 300px;
+		}
+		.team-member__links {
+			flex: 0 0 360px;
+			padding-left: $tablet-char-width * 3;
+		}		
+	}	
 	@include respond-to(desktop) {
+		padding-left: 0;
+		.post-preview__image {
+			height: 512px;
+		}
+		.team-member__links {
+			padding-left: 0;
+		}		
+	}
+	@include respond-to(desktop-1280) {
 		padding-left: ($desktop-char-width * 5);
 	}
-}
-
-.team-member__content__col {
-	float: left;
-	&--left {
-		width: 337px;
+	@include respond-to(desktop-1440) {
 	}
-	&--right {
-		width:( 668px + ($desktop-char-width * 8));
-		padding-left: $desktop-char-width * 8;
+	@include respond-to(desktop-1600) {
+	}
+}
+.team-member__content__col {
+	&--left {
+		margin-bottom: $lh;
+	}	
+	@include respond-to(tablet) {
+		&--left {
+			display: flex;
+			margin-bottom: $tablet-lh * 2;
+		}		
+	}
+	@include respond-to(desktop) {
+		float: left;
+		&--left {
+			display: block;
+			width: 337px;
+			margin-bottom: 0;
+		}
+		&--right {
+			width: 602px;
+			padding-left: $desktop-char-width * 5;
+		}
+	}	
+	@include respond-to(desktop-1280) {
+		&--right {
+			width:( 668px + ($desktop-char-width * 8));
+			padding-left: $desktop-char-width * 8;
+		}
+
 	}
 }
 
@@ -189,10 +238,6 @@
 }
 
 .team-member__links {
-	margin-top: $lh;
-	@include respond-to(tablet) {
-		margin-top: $tablet-lh;
-	}
 	@include respond-to(desktop) {
 		margin-top: $desktop-lh;
 	}

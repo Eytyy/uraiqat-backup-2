@@ -123,7 +123,7 @@ var TeamMember = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'team-member__content__col team-member__content__col--left' },
-						_react2.default.createElement(_PostMediaImage2.default, { orientation: 'portrait', patternId: 'team-member', content: profileImagevideo }),
+						_react2.default.createElement(_PostMediaImage2.default, { orientation: 'portrait', patternId: 'team-member-inner', content: profileImagevideo }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'team-member__links' },

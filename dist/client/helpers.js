@@ -67,6 +67,10 @@ var config = {
 			w: 280,
 			h: 360
 		},
+		'team-member-inner--portrait': {
+			w: 280,
+			h: 360
+		},
 		'default-post--portrait': {
 			w: 280,
 			h: 360
@@ -150,6 +154,10 @@ var config = {
 	},
 	mobileX2: {
 		'team-member--portrait': {
+			w: 320,
+			h: 456
+		},
+		'team-member-inner--portrait': {
 			w: 320,
 			h: 456
 		},
@@ -239,6 +247,10 @@ var config = {
 			w: 266,
 			h: 384
 		},
+		'team-member-inner--portrait': {
+			w: 300,
+			h: 416
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 312
@@ -325,6 +337,10 @@ var config = {
 			w: 266,
 			h: 384
 		},
+		'team-member-inner--portrait': {
+			w: 337,
+			h: 512
+		},
 		'default-post--portrait': {
 			w: 228,
 			h: 320
@@ -408,6 +424,10 @@ var config = {
 	},
 	desktop1280: {
 		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
+		'team-member-inner--portrait': {
 			w: 266,
 			h: 384
 		},
@@ -497,6 +517,10 @@ var config = {
 			w: 266,
 			h: 384
 		},
+		'team-member-inner--portrait': {
+			w: 266,
+			h: 384
+		},
 		'default-post--portrait': {
 			w: 266,
 			h: 384
@@ -580,6 +604,10 @@ var config = {
 	},
 	desktop1600: {
 		'team-member--portrait': {
+			w: 266,
+			h: 384
+		},
+		'team-member-inner--portrait': {
 			w: 266,
 			h: 384
 		},

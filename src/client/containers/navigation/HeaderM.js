@@ -33,7 +33,6 @@ class HeaderM extends Component {
 					<span className="mobile-menu-toggle link" to="/" onClick={this.toggle}>:</span>
 				</div>
 				<div><PatternChunk reserved={0} /></div>
-				<div><PatternChunk reserved={0} /></div>
 				{
 					this.state.isVisible ? 
 						<div className="menu">
