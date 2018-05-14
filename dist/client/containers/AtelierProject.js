@@ -120,12 +120,12 @@ var AtelierProject = function (_Component) {
 						_react2.default.createElement(_BodyText2.default, { content: description })
 					)
 				),
-				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'atelier' })),
 				_react2.default.createElement(
 					'aside',
 					{ className: 'related-content atelier__related' },
 					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
-				)
+				),
+				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'atelier' }))
 			);
 		}
 	}], [{

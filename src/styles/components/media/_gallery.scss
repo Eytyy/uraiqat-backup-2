@@ -10,6 +10,9 @@
 	align-items: center;
 	&--drawings .gallery__inner {
 		@extend %blue-filter;
+		.gallery__slide__image-wrapper {
+			background: #FFF;
+		}
 	}
 	.slider__controls {
 		background: #FFF;

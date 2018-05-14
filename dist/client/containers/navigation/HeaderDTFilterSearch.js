@@ -71,7 +71,7 @@ var HeaderDTFilterSearch = function (_Component) {
 		value: function toggleFilter() {
 			this.setState({
 				filtersAreVisible: !this.state.filtersAreVisible,
-				searchIsVisible: !this.state.filtersAreVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
+				searchIsVisible: this.state.searchIsVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
 			});
 		}
 	}, {
@@ -114,7 +114,7 @@ var HeaderDTFilterSearch = function (_Component) {
 		value: function onSearchClick() {
 			this.setState({
 				searchIsVisible: !this.state.searchIsVisible,
-				filtersAreVisible: !this.state.searchIsVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
+				filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 			});
 		}
 	}, {

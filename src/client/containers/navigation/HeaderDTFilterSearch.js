@@ -26,7 +26,7 @@ class HeaderDTFilterSearch extends Component {
 	toggleFilter() {
 		this.setState({
 			filtersAreVisible: !this.state.filtersAreVisible,
-			searchIsVisible: !this.state.filtersAreVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
+			searchIsVisible: this.state.searchIsVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
 		});
 	}
 	onfiltersClick() {
@@ -55,7 +55,7 @@ class HeaderDTFilterSearch extends Component {
 	onSearchClick() {
 		this.setState({
 			searchIsVisible: !this.state.searchIsVisible,
-			filtersAreVisible: !this.state.searchIsVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
+			filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 		});
 	}
 	onSearchSubmit(event) {

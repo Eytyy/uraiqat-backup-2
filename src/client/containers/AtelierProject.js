@@ -45,10 +45,10 @@ class AtelierProject extends Component { //eslint-disable-line
 						<BodyText content={description} />
 					</div>
 				</div>}
-				<InnerNav {...innerNavContent} type="atelier" />
 				<aside className="related-content atelier__related">
 					<RelatedPosts id={match.params.id} />
 				</aside>
+				<InnerNav {...innerNavContent} type="atelier" />
 			</article>
 		);
 	}

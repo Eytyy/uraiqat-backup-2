@@ -19,7 +19,9 @@
 		padding: $lh ($tablet-char-width * 2);
 		top: $tablet-lh * 11;
 		bottom: auto;
-		left: 0;
+		left: $tablet-char-width * 4;
+		right: $tablet-char-width * 4;
+		width: auto;
 		height: 390px;
 	}
 	@include respond-to(desktop) {

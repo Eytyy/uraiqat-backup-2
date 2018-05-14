@@ -222,12 +222,12 @@ var Project = function (_Component) {
 						_react2.default.createElement(_Slider2.default, { type: 'drawings', contentTitle: title, sliderName: 'project-drawings-slider', sliderId: content.id + 'd', classList: 'slider--small', imagesQuery: '?fl=progressive&w=668', content: drawings })
 					)
 				),
-				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' })),
 				_react2.default.createElement(
 					'aside',
 					{ className: 'related-content project__related' },
 					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
-				)
+				),
+				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' }))
 			);
 		}
 	}], [{

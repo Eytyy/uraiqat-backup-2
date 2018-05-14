@@ -90,10 +90,10 @@ class Project extends Component { //eslint-disable-line
 						<Slider type="drawings" contentTitle={title} sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
 					</div>
 				</div>
-				<InnerNav {...innerNavContent} type="work" />
 				<aside className="related-content project__related">
 					<RelatedPosts id={match.params.id} />
 				</aside>
+				<InnerNav {...innerNavContent} type="work" />
 			</article>
 		);
 	}
