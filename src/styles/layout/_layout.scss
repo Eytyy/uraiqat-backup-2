@@ -53,7 +53,7 @@ body {
 	min-height: calc(100vh -  (#{$lh} * 4) -  (#{$lh} * 2));
 	padding-top: $lh * 3;
 	.contact & {
-		padding-top: $lh * 3 - $lh/3;
+		padding-top: $lh * 2;
 	}
 	@include respond-to(tablet) {
 		min-height: calc(100vh -  (#{$tablet-lh} * 5) -  (#{$tablet-lh} * 2));

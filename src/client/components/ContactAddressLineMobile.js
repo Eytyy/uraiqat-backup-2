@@ -13,11 +13,24 @@ const ContactAddressLineContent = ({ type, content }) => {
 	}
 };
 
+const ContactLineBlock = ({ label, content, type, reserved, emptyContent = 0 }) => {
+	return (
+		<div className="contact-line">
+			{ label && <span>{label}</span> }
+			{ label && <span className="ws">-</span>}
+			<ContactAddressLineContent content={content} type={type} />
+			<span className="ws">-</span>
+			<PatternChunk reserved={reserved - emptyContent} />
+		</div>
+	);
+};
+
 const MultipleContactLineBlocks = ({ config, type, max }) => {
 	const content = config.content.split(/[ ,.]+/);
 	const blocks = {};
 	let limit = max;
 	let count = 0;
+	let emptyContent = 0;
 
 	function appendTextToBlock (text) {
 		if (blocks[`block${count}`].length > 0) {
@@ -37,6 +50,11 @@ const MultipleContactLineBlocks = ({ config, type, max }) => {
 	}
 	
 	content.forEach(item => {
+		if (item === '') {
+			limit -= 1;
+			emptyContent += 1;
+			return;
+		}
 		if (limit && item.length < limit) {
 			if (typeof blocks[`block${count}`] !== 'undefined') {
 				appendTextToBlock(item);
@@ -51,20 +69,8 @@ const MultipleContactLineBlocks = ({ config, type, max }) => {
 	});
 	return Object.keys(blocks).map(key => {
 		let singleReserve = blocks[key].length + 2;
-		return <ContactLineBlock key={key} content={blocks[key]} reserved={singleReserve} type={type} />;
+		return <ContactLineBlock key={key} content={blocks[key]} reserved={singleReserve} emptyContent={emptyContent} type={type} />;
 	});
-};
-
-const ContactLineBlock = ({ label, content, type, reserved }) => {
-	return (
-		<div className="contact-line">
-			{ label && <span>{label}</span> }
-			{ label && <span className="ws">-</span>}
-			<ContactAddressLineContent content={content} type={type} />
-			<span className="ws">-</span>
-			<PatternChunk reserved={reserved} />
-		</div>
-	);
 };
 
 const ContactAddressLineMobile = ({ config, type }) => {

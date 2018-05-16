@@ -42,17 +42,14 @@ export const getFontValues = () => {
 		font.size = 20;
 		font.characterHeight = 32;
 		font.characterWidth = 14;
-		font.extra = 0;
 	} else if (windowDimensions.w >= 768 ) {
 		font.size = 16;
 		font.characterHeight = 26;
 		font.characterWidth = 11.25;
-		font.extra = 0;
 	} else {
 		font.size = 14;
 		font.characterWidth = 10;
 		font.characterHeight = 24;
-		font.extra = 0;
 	}
 	return font;
 };
@@ -727,7 +724,7 @@ export const getNoOfChars = (container, preconfig) => {
 	const containerSize = typeof preconfig === 'undefined' ? getContainerSize(container) : getContainerSize('custom', preconfig);
 	const font = getFontValues();
 
-	const x = Math.floor(containerSize.w/font.characterWidth) + font.extra;
+	const x = Math.floor(containerSize.w/font.characterWidth);
 	const y = Math.floor(containerSize.h/font.characterHeight);
 
 	return {

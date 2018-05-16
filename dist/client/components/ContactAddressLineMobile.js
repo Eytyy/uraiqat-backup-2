@@ -44,56 +44,13 @@ var ContactAddressLineContent = function ContactAddressLineContent(_ref) {
 	}
 };
 
-var MultipleContactLineBlocks = function MultipleContactLineBlocks(_ref2) {
-	var config = _ref2.config,
+var ContactLineBlock = function ContactLineBlock(_ref2) {
+	var label = _ref2.label,
+	    content = _ref2.content,
 	    type = _ref2.type,
-	    max = _ref2.max;
-
-	var content = config.content.split(/[ ,.]+/);
-	var blocks = {};
-	var limit = max;
-	var count = 0;
-
-	function appendTextToBlock(text) {
-		if (blocks['block' + count].length > 0) {
-			blocks['block' + count] += ' ' + text;
-			limit = limit - text.length - 1;
-		} else {
-			blocks['block' + count] += text;
-			limit = limit - text.length;
-		}
-	}
-
-	function createNewLineBlock() {
-		count = count + 1;
-		limit = max;
-		blocks['block' + count] = '';
-	}
-
-	content.forEach(function (item) {
-		if (limit && item.length < limit) {
-			if (typeof blocks['block' + count] !== 'undefined') {
-				appendTextToBlock(item);
-			} else {
-				createNewLineBlock();
-				appendTextToBlock(item);
-			}
-		} else {
-			createNewLineBlock();
-			appendTextToBlock(item);
-		}
-	});
-	return Object.keys(blocks).map(function (key) {
-		var singleReserve = blocks[key].length + 2;
-		return _react2.default.createElement(ContactLineBlock, { key: key, content: blocks[key], reserved: singleReserve, type: type });
-	});
-};
-
-var ContactLineBlock = function ContactLineBlock(_ref3) {
-	var label = _ref3.label,
-	    content = _ref3.content,
-	    type = _ref3.type,
-	    reserved = _ref3.reserved;
+	    reserved = _ref2.reserved,
+	    _ref2$emptyContent = _ref2.emptyContent,
+	    emptyContent = _ref2$emptyContent === undefined ? 0 : _ref2$emptyContent;
 
 	return _react2.default.createElement(
 		'div',
@@ -114,8 +71,59 @@ var ContactLineBlock = function ContactLineBlock(_ref3) {
 			{ className: 'ws' },
 			'-'
 		),
-		_react2.default.createElement(_PatternChunk2.default, { reserved: reserved })
+		_react2.default.createElement(_PatternChunk2.default, { reserved: reserved - emptyContent })
 	);
+};
+
+var MultipleContactLineBlocks = function MultipleContactLineBlocks(_ref3) {
+	var config = _ref3.config,
+	    type = _ref3.type,
+	    max = _ref3.max;
+
+	var content = config.content.split(/[ ,.]+/);
+	var blocks = {};
+	var limit = max;
+	var count = 0;
+	var emptyContent = 0;
+
+	function appendTextToBlock(text) {
+		if (blocks['block' + count].length > 0) {
+			blocks['block' + count] += ' ' + text;
+			limit = limit - text.length - 1;
+		} else {
+			blocks['block' + count] += text;
+			limit = limit - text.length;
+		}
+	}
+
+	function createNewLineBlock() {
+		count = count + 1;
+		limit = max;
+		blocks['block' + count] = '';
+	}
+
+	content.forEach(function (item) {
+		if (item === '') {
+			limit -= 1;
+			emptyContent += 1;
+			return;
+		}
+		if (limit && item.length < limit) {
+			if (typeof blocks['block' + count] !== 'undefined') {
+				appendTextToBlock(item);
+			} else {
+				createNewLineBlock();
+				appendTextToBlock(item);
+			}
+		} else {
+			createNewLineBlock();
+			appendTextToBlock(item);
+		}
+	});
+	return Object.keys(blocks).map(function (key) {
+		var singleReserve = blocks[key].length + 2;
+		return _react2.default.createElement(ContactLineBlock, { key: key, content: blocks[key], reserved: singleReserve, emptyContent: emptyContent, type: type });
+	});
 };
 
 var ContactAddressLineMobile = function ContactAddressLineMobile(_ref4) {

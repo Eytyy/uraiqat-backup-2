@@ -27,6 +27,9 @@ const PatternChunkReserved = ({ reserved }) => {
 	let maxNoOfChars = getNoOfChars('navigation', config);
 	
 	const noOfAllowedChars = maxNoOfChars.x - reserved;
+	if (noOfAllowedChars <= 0) {
+		return null;
+	}
 	return <Chunk noOfGlyphs={noOfAllowedChars} />;
 };
 

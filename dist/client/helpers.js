@@ -46,17 +46,14 @@ var getFontValues = exports.getFontValues = function getFontValues() {
 		font.size = 20;
 		font.characterHeight = 32;
 		font.characterWidth = 14;
-		font.extra = 0;
 	} else if (windowDimensions.w >= 768) {
 		font.size = 16;
 		font.characterHeight = 26;
 		font.characterWidth = 11.25;
-		font.extra = 0;
 	} else {
 		font.size = 14;
 		font.characterWidth = 10;
 		font.characterHeight = 24;
-		font.extra = 0;
 	}
 	return font;
 };
@@ -730,7 +727,7 @@ var getNoOfChars = exports.getNoOfChars = function getNoOfChars(container, preco
 	var containerSize = typeof preconfig === 'undefined' ? getContainerSize(container) : getContainerSize('custom', preconfig);
 	var font = getFontValues();
 
-	var x = Math.floor(containerSize.w / font.characterWidth) + font.extra;
+	var x = Math.floor(containerSize.w / font.characterWidth);
 	var y = Math.floor(containerSize.h / font.characterHeight);
 
 	return {

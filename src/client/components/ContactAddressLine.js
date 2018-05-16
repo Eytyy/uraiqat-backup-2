@@ -12,13 +12,14 @@ const ContactAddressLineContent = ({ type, content }) => {
 	}
 };
 const ContactAddressLine = ({ config, type }) => {
-	const reserved = config.totalLength + 4;
+	const fixedStart = 3;
+	const reserved = config.totalLength + fixedStart;
 	if (typeof window === 'undefined') {
 		return <div className="contact-line" />;
 	}
 	return (
 		<div className="contact-line">
-			<PatternChunk fixed={4} />
+			<PatternChunk fixed={fixedStart} />
 			<span className="ws">-</span>
 			<span className="ws">-</span>
 			{ config.label && <span>{config.label}</span> }

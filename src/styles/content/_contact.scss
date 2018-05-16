@@ -25,18 +25,21 @@
 		height: 390px;
 	}
 	@include respond-to(desktop) {
+    height: 480px;
+	}
+	@include respond-to(desktop-1280) {
 		padding: ($lh/2) ($desktop-char-width);
-		top: $desktop-lh * 2;
 		right: $desktop-char-width * 2;
 		left: auto;
 		width: 518px;
     height: 352px;
 	}
 	@include respond-to(desktop-1440) {
-		right: $desktop-char-width * 4;
+		top: $desktop-lh * 2;
+		right: $desktop-char-width * 3;
 		padding: $lh ($desktop-char-width * 2);
-		width: 644px;
-    height: 416px;
+    width: 672px;
+		height: 416px;
 	}
 	@include respond-to(desktop-1600) {
 		width: 756px;

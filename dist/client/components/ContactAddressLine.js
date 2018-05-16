@@ -43,14 +43,15 @@ var ContactAddressLine = function ContactAddressLine(_ref2) {
 	var config = _ref2.config,
 	    type = _ref2.type;
 
-	var reserved = config.totalLength + 4;
+	var fixedStart = 3;
+	var reserved = config.totalLength + fixedStart;
 	if (typeof window === 'undefined') {
 		return _react2.default.createElement('div', { className: 'contact-line' });
 	}
 	return _react2.default.createElement(
 		'div',
 		{ className: 'contact-line' },
-		_react2.default.createElement(_PatternChunk2.default, { fixed: 4 }),
+		_react2.default.createElement(_PatternChunk2.default, { fixed: fixedStart }),
 		_react2.default.createElement(
 			'span',
 			{ className: 'ws' },

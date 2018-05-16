@@ -29,67 +29,58 @@ class Contact extends Component {
 		}
 		const coordinates = content.fields.googleMap;
 		const { addressLine1, addressLine2, mobile, telephone, fax, email } = content.fields;
+		const spaceBeforeAfter = 4;
 		const addressLine1Config = {
-			spaces: 4,
 			content: addressLine1,
-			totalLength: addressLine1.length + 4,
+			totalLength: addressLine1.length + spaceBeforeAfter,
 		};
 		const addressLine2Config = {
-			spaces: 4,
 			content: addressLine2,
-			totalLength: addressLine1.length + 4,
+			totalLength: addressLine1.length + spaceBeforeAfter,
 		};
 		const telephoneConfig = {
-			spaces: 4,
 			content: telephone,
 			label: 'T:',
-			totalLength: telephone.length + 4 + 3,
+			totalLength: telephone.length + spaceBeforeAfter + 3,
 		};
 		const mobileConfig = {
-			spaces: 4,
 			content: mobile,
 			label: 'M:',
-			totalLength: mobile.length + 4 + 3,
+			totalLength: mobile.length + spaceBeforeAfter + 3,
 		};
 		const faxConfig = {
-			spaces: 4,
 			content: fax,
 			label: 'F:',
-			totalLength: fax.length + 4 + 3,
+			totalLength: fax.length + spaceBeforeAfter + 3,
 		};
 		const emailConfig = {
-			spaces: 4,
 			content: email,
-			totalLength: email.length + 4,
+			totalLength: email.length + spaceBeforeAfter,
 		};
 		if (typeof window === 'undefined') {
 			return <section className="landing-page landing-page--contact main-section"></section>;
 		}
-		if (window.innerWidth < 768) {
-			return (
-				<ContactMobile content={content} />
-
-			);
-		} else {
-			return (
-				<section className="landing-page landing-page--contact main-section">
-					<div className="contact-line"><PatternChunk reserved={0} /></div>
-					<div className="contact-line"><PatternChunk reserved={0} /></div>
-					<ContactAddressLine type="text" config={addressLine1Config} />
-					<ContactAddressLine type="text" config={addressLine2Config} />
-					<div className="contact-line"><PatternChunk reserved={0} /></div>
-					<ContactAddressLine type="tel" config={telephoneConfig} />
-					<ContactAddressLine type="tel" config={faxConfig} />
-					<ContactAddressLine type="tel" config={mobileConfig} />
-					<div className="contact-line"><PatternChunk reserved={0} /></div>
-					<ContactAddressLine type="email" config={emailConfig} />
-					<PatternBlock reservedContent={10} />
-					<div className="contact__map-wrapper">
-						{ typeof window === 'undefined' ? null : <ContactMap lat={coordinates.lat} lng={coordinates.lon}/> }
-					</div>
-				</section>
-			);
-		}
+		if (window.innerWidth < 1024) {
+			return <ContactMobile content={content} />;
+		} 
+		return (
+			<section className="landing-page landing-page--contact main-section">
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<ContactAddressLine type="text" config={addressLine1Config} />
+				<ContactAddressLine type="text" config={addressLine2Config} />
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<ContactAddressLine type="tel" config={telephoneConfig} />
+				<ContactAddressLine type="tel" config={faxConfig} />
+				<ContactAddressLine type="tel" config={mobileConfig} />
+				<div className="contact-line"><PatternChunk reserved={0} /></div>
+				<ContactAddressLine type="email" config={emailConfig} />
+				<PatternBlock reservedContent={10} />
+				<div className="contact__map-wrapper">
+					{ typeof window === 'undefined' ? null : <ContactMap lat={coordinates.lat} lng={coordinates.lon}/> }
+				</div>
+			</section>
+		);
 	}
 }
 

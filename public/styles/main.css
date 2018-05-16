@@ -301,7 +301,7 @@ body {
   min-height: calc(100vh - 144px);
   padding-top: 72px; }
   .contact .main-content {
-    padding-top: 64px; }
+    padding-top: 48px; }
   @media (min-width: 768px) {
     .main-content {
       min-height: calc(100vh - 182px);
@@ -2198,17 +2198,20 @@ img {
       height: 390px; } }
   @media (min-width: 1024px) {
     .contact__map-wrapper {
+      height: 480px; } }
+  @media (min-width: 1280px) {
+    .contact__map-wrapper {
       padding: 12px 14px;
-      top: 64px;
       right: 28px;
       left: auto;
       width: 518px;
       height: 352px; } }
   @media (min-width: 1440px) {
     .contact__map-wrapper {
-      right: 56px;
+      top: 64px;
+      right: 42px;
       padding: 24px 28px;
-      width: 644px;
+      width: 672px;
       height: 416px; } }
   @media (min-width: 1600px) {
     .contact__map-wrapper {
