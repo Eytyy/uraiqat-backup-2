@@ -11,7 +11,7 @@ class HeaderDTFilterSearchFilter extends Component {
 					{ filtersAreVisible ? '-' : config.glyph.content}
 					{config.name}
 				</span>
-				<span className="ind-list">:</span>
+				<span className={ filtersAreVisible ? 'ind ind--list' : 'ind ind--list is-hidden'}>:</span>
 				<span className="ws">-</span>
 				<span className="separator">{'/'}</span>
 			</span>

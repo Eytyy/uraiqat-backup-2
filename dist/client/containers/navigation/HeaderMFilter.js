@@ -92,14 +92,19 @@ var HeaderMFilter = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var content = this.props.content;
+			var _props2 = this.props,
+			    content = _props2.content,
+			    location = _props2.location;
 
 			var config = {
 				name: 'Filter',
 				glyph: { className: 'ind', content: '+' },
 				spacesAfter: 4
 			};
-			var reservedSpaces = config.name.length + config.spacesAfter;
+			var reservedFilterSize = location.pathname !== '/' ? 0 : config.name.length + config.spacesAfter;
+			if (reservedFilterSize === 0) {
+				return null;
+			}
 			return _react2.default.createElement(
 				'div',
 				{ className: 'header-mobile__filters' },
@@ -123,7 +128,7 @@ var HeaderMFilter = function (_Component) {
 					{ className: 'ws' },
 					'-'
 				),
-				_react2.default.createElement(_PatternChunk2.default, { reserved: reservedSpaces }),
+				_react2.default.createElement(_PatternChunk2.default, { reserved: reservedFilterSize }),
 				this.state.filtersAreVisible ? _react2.default.createElement(
 					'span',
 					{ onClick: this.onfiltersClick, className: 'link' },

@@ -86,24 +86,25 @@ class HeaderDTFilterSearch extends Component {
 	}
 	render() {
 		const { content, location } = this.props;
-		const fixedStart = window.innerWidth > 1280 ? 11 : 8;
+		const fixedStart = window.innerWidth >= 1280 ? 11 : 8;
 		const config = {
 			separator: '/',
 			filter: {
 				name: 'Filter',
 				glyph: { className: 'ind', content: '+' },
-				spacesBefore: 3,
+				spacesBefore: 2,
 				spacesAfter: 2,
 			},
 			search: {
 				name: 'Search',
 				glyph: { className: 'ind', content: ':' },
 				searchInputSize: 32,
-				spacesBefore: 3,
-				spacesAfter: 2,
+				spacesBefore: 2,
+				spacesAfter: 1,
 			}
 		};
 		const reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
+		// filters don't have a reserved space if you're not on the home page
 		const reservedFilterSize = location.pathname !== '/' ? 0 : config.filter.name.length + config.filter.glyph.content.length;
 		const reservedEmptySpaces = location.pathname !== '/' ?
 			config.search.spacesAfter + config.search.spacesBefore :
@@ -113,10 +114,26 @@ class HeaderDTFilterSearch extends Component {
 		return (
 			<div className="header--desktop__main">
 				<PatternChunk fixed={fixedStart} />
-				{ reservedFilterSize === 0 ? null : <HeaderDTFilterSearchFilter filtersAreVisible={this.state.filtersAreVisible} onfiltersClick={this.onfiltersClick} config={config.filter} />}
-				<HeaderDTFilterSearchSearch searchIsVisible={this.state.searchIsVisible} onSearchClick={this.onSearchClick} onSearchSubmit={this.onSearchSubmit} config={config.search} />
+				{ reservedFilterSize === 0 ?
+					null :
+					<HeaderDTFilterSearchFilter
+						filtersAreVisible={this.state.filtersAreVisible}
+						onfiltersClick={this.onfiltersClick}
+						config={config.filter}
+					/>
+				}
+				<HeaderDTFilterSearchSearch
+					searchIsVisible={this.state.searchIsVisible}
+					onSearchClick={this.onSearchClick}
+					onSearchSubmit={this.onSearchSubmit}
+					config={config.search}
+				/>
 				<PatternChunk reserved={totalReservedSpaces} />
-				<HeaderDTFiltersList onFilterClick={this.onFilterClick} content={content} isVisible={this.state.filtersAreVisible} />
+				<HeaderDTFiltersList
+					onFilterClick={this.onFilterClick}
+					content={content}
+					isVisible={this.state.filtersAreVisible}
+				/>
 			</div>
 		);
 	}

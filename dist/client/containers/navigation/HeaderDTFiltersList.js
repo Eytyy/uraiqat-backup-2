@@ -67,9 +67,9 @@ var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
 	};
 
 	var maxNoOfChars = (0, _helpers.getNoOfChars)('navigation', config);
-	var fixedStart = 9;
+	var fixedStart = window.innerWidth > 1280 ? 10 : 8;
 	var fixedStatrExtraSpace = 3;
-	var fixedEnd = 14;
+	var fixedEnd = 4;
 	var availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	var filters = createFilters(content, availableSpace);
 	if (!isVisible) {
@@ -79,7 +79,12 @@ var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
 		'div',
 		{ className: 'filters-list' },
 		Object.keys(filters).map(function (key) {
-			return _react2.default.createElement(_Filters2.default, { onFilterClick: onFilterClick, fixedStart: fixedStart, fixedEnd: fixedEnd, key: key, content: filters[key] });
+			return _react2.default.createElement(_Filters2.default, {
+				onFilterClick: onFilterClick,
+				fixedStart: fixedStart,
+				fixedEnd: fixedEnd, key: key,
+				content: filters[key]
+			});
 		})
 	);
 };

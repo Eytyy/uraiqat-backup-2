@@ -11,7 +11,13 @@
 		text-decoration: none;
 	}
 	.ind {
-		opacity: 0;;
+		opacity: 0;
+	}
+	.ind--list {
+		opacity: 1;
+		&.is-hidden {
+			opacity: 0;
+		}
 	}
 }
 
@@ -21,6 +27,17 @@
 		.ind {
 			opacity: 1;
 		}
+	}
+}
+
+.link,
+.ind
+.ind--list {
+	opacity: 1;
+	transition: opacity 200ms linear;
+	&.is-hidden {
+		opacity: 0;
+		visibility: hidden;
 	}
 }
 

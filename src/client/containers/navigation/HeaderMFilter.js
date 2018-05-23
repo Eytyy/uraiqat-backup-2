@@ -41,13 +41,16 @@ class HeaderMFilter extends Component {
 		updateFilter(id);
 	}
 	render() {
-		const { content } = this.props;
+		const { content, location } = this.props;
 		const config = {
 			name: 'Filter',
 			glyph: { className: 'ind', content: '+' },
 			spacesAfter: 4,
 		};
-		const reservedSpaces = config.name.length + config.spacesAfter;
+		const reservedFilterSize = location.pathname !== '/' ? 0 : config.name.length + config.spacesAfter;
+		if (reservedFilterSize === 0) {
+			return null;
+		}
 		return (
 			<div className="header-mobile__filters">
 				<span className="link" onClick={this.onfiltersClick}>
@@ -56,7 +59,7 @@ class HeaderMFilter extends Component {
 				{ this.state.filtersAreVisible ? ':' : <span className="ws">-</span>}
 				<span className="ws">-</span>
 				<span className="ws">-</span>
-				<PatternChunk reserved={reservedSpaces} />
+				<PatternChunk reserved={reservedFilterSize} />
 				{ this.state.filtersAreVisible ? <span onClick={this.onfiltersClick} className="link">x</span> : '<'}
 				{ this.state.filtersAreVisible ? <HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} /> : null}
 			</div>

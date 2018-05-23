@@ -14,23 +14,22 @@ class HeaderDTFilterSearchSearch extends Component {
 		return (
 			<span className={`search ${searchIsVisible ? 'is-visible' : 'is-hidden'}`}>
 				<span className="ws">-</span>
-				<span className="search-link link" onClick={onSearchClick}>{searchIsVisible ? 'x' : ' '}{ config.name }</span>
-				{searchIsVisible ? <span className="link">{config.glyph.content}</span> : ' '}
+				<span className={searchIsVisible ? 'link' : 'link is-hidden'}>x</span>
+				<span className="search-link link" onClick={onSearchClick}>
+					{ config.name }
+				</span>
+				<span className={searchIsVisible ? 'ind ind--list' : 'ind ind--list is-hidden'}>{config.glyph.content}</span>
 				<span className="ws">-</span>
-				{
-					searchIsVisible ?
-						<form onSubmit={onSearchSubmit} className="search">
-							<input style={formStyle} autoComplete="off"
-								name="keyword"
-								className="search__input" type="text"
-								placeholder="Enter your search keyword here"
-							/>
-							<span className="ws">-</span>
-							<PatternChunk fixed={2} />
-						</form> :
-						<PatternChunk fixed={config.searchInputSize + 3} />
+				{ searchIsVisible ?
+					<form onSubmit={onSearchSubmit} className="search">
+						<input style={formStyle} autoComplete="off"
+							name="keyword"
+							className="search__input" type="text"
+							placeholder="Enter your search keyword here"
+						/>
+					</form> :
+					<PatternChunk fixed={config.searchInputSize} />
 				}
-		
 			</span>
 		);
 	}

@@ -29,13 +29,13 @@
 	}
 	@include respond-to(desktop-1280) {
 		padding: ($lh/2) ($desktop-char-width);
+		top: $desktop-lh * 2;
 		right: $desktop-char-width * 2;
 		left: auto;
 		width: 518px;
     height: 352px;
 	}
 	@include respond-to(desktop-1440) {
-		top: $desktop-lh * 2;
 		right: $desktop-char-width * 3;
 		padding: $lh ($desktop-char-width * 2);
     width: 672px;

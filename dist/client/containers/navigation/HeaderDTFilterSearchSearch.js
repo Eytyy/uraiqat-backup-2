@@ -56,15 +56,19 @@ var HeaderDTFilterSearchSearch = function (_Component) {
 				),
 				_react2.default.createElement(
 					'span',
+					{ className: searchIsVisible ? 'link' : 'link is-hidden' },
+					'x'
+				),
+				_react2.default.createElement(
+					'span',
 					{ className: 'search-link link', onClick: onSearchClick },
-					searchIsVisible ? 'x' : ' ',
 					config.name
 				),
-				searchIsVisible ? _react2.default.createElement(
+				_react2.default.createElement(
 					'span',
-					{ className: 'link' },
+					{ className: searchIsVisible ? 'ind ind--list' : 'ind ind--list is-hidden' },
 					config.glyph.content
-				) : ' ',
+				),
 				_react2.default.createElement(
 					'span',
 					{ className: 'ws' },
@@ -77,14 +81,8 @@ var HeaderDTFilterSearchSearch = function (_Component) {
 						name: 'keyword',
 						className: 'search__input', type: 'text',
 						placeholder: 'Enter your search keyword here'
-					}),
-					_react2.default.createElement(
-						'span',
-						{ className: 'ws' },
-						'-'
-					),
-					_react2.default.createElement(_PatternChunk2.default, { fixed: 2 })
-				) : _react2.default.createElement(_PatternChunk2.default, { fixed: config.searchInputSize + 3 })
+					})
+				) : _react2.default.createElement(_PatternChunk2.default, { fixed: config.searchInputSize })
 			);
 		}
 	}]);

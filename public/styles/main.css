@@ -984,9 +984,23 @@ img {
     text-decoration: none; }
   .website-header .ind {
     opacity: 0; }
+  .website-header .ind--list {
+    opacity: 1; }
+    .website-header .ind--list.is-hidden {
+      opacity: 0; }
 
 .menu-link:hover .ind, .menu-link.active .ind {
   opacity: 1; }
+
+.link,
+.ind .ind--list {
+  opacity: 1;
+  -webkit-transition: opacity 200ms linear;
+  transition: opacity 200ms linear; }
+  .link.is-hidden,
+  .ind .ind--list.is-hidden {
+    opacity: 0;
+    visibility: hidden; }
 
 .link--search {
   cursor: pointer; }
@@ -2202,13 +2216,13 @@ img {
   @media (min-width: 1280px) {
     .contact__map-wrapper {
       padding: 12px 14px;
+      top: 64px;
       right: 28px;
       left: auto;
       width: 518px;
       height: 352px; } }
   @media (min-width: 1440px) {
     .contact__map-wrapper {
-      top: 64px;
       right: 42px;
       padding: 24px 28px;
       width: 672px;

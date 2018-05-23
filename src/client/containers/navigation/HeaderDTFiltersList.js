@@ -45,9 +45,9 @@ const HeaderDTFiltersList = ({ content, onFilterClick, isVisible }) => {
 	};
 
 	let maxNoOfChars = getNoOfChars('navigation', config);
-	const fixedStart = 9;
+	const fixedStart = window.innerWidth > 1280 ? 10 : 8;
 	const fixedStatrExtraSpace = 3;
-	const fixedEnd = 14;
+	const fixedEnd = 4;
 	const availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	const filters = createFilters(content, availableSpace);
 	if (!isVisible) {
@@ -57,7 +57,12 @@ const HeaderDTFiltersList = ({ content, onFilterClick, isVisible }) => {
 		<div className="filters-list">
 			{
 				Object.keys(filters).map(key => {
-					return <Filters onFilterClick={onFilterClick} fixedStart={fixedStart} fixedEnd={fixedEnd} key={key} content={filters[key]} />;
+					return <Filters
+						onFilterClick={onFilterClick}
+						fixedStart={fixedStart}
+						fixedEnd={fixedEnd} key={key}
+						content={filters[key]}
+					/>;
 				})
 			}
 		</div>

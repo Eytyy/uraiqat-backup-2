@@ -56,7 +56,7 @@ var HeaderDTFilterSearchFilter = function (_Component) {
 				),
 				_react2.default.createElement(
 					"span",
-					{ className: "ind-list" },
+					{ className: filtersAreVisible ? 'ind ind--list' : 'ind ind--list is-hidden' },
 					":"
 				),
 				_react2.default.createElement(
