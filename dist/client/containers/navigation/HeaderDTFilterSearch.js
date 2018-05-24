@@ -174,8 +174,9 @@ var HeaderDTFilterSearch = function (_Component) {
 			};
 			var reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
 			// filters don't have a reserved space if you're not on the home page
-			var reservedFilterSize = location.pathname !== '/' ? 0 : config.filter.name.length + config.filter.glyph.content.length;
-			var reservedEmptySpaces = location.pathname !== '/' ? config.search.spacesAfter + config.search.spacesBefore : config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
+			var isFront = location.pathname === '/';
+			var reservedFilterSize = !isFront ? 0 : config.filter.name.length + config.filter.glyph.content.length;
+			var reservedEmptySpaces = !isFront ? config.search.spacesAfter + config.search.spacesBefore : config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
 			var numberofNavSeparators = 1;
 			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
 			return _react2.default.createElement(
@@ -191,7 +192,8 @@ var HeaderDTFilterSearch = function (_Component) {
 					searchIsVisible: this.state.searchIsVisible,
 					onSearchClick: this.onSearchClick,
 					onSearchSubmit: this.onSearchSubmit,
-					config: config.search
+					config: config.search,
+					isFront: isFront
 				}),
 				_react2.default.createElement(_PatternChunk2.default, { reserved: totalReservedSpaces }),
 				_react2.default.createElement(_HeaderDTFiltersList2.default, {

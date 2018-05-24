@@ -41,15 +41,34 @@ const ContactMobile = ({ content }) => {
 	let maxWidth = getMaxWidth();
 
 	const font = getFontValues();
+	const getMapheight = () => {
+		if (windowSize.h > 1024) {
+			return 480;
+		} else if (windowSize.h > 768) {
+			return 390;
+		}
+		return 240;
+	};
+	const mapHeight = getMapheight();
 	const config = {
 		w: maxWidth,
 		h: windowSize.h - (font.characterHeight * 2),
 	};
-	const numberOfLines = getNoOfChars('loading', config);
-	const fixedNumberOfContentLines = 8;
+	const mapConfig = {
+		w: maxWidth,
+		h: mapHeight,
+	};
+
 	const headerLines = 2;
 	const footerLines = 3;
-	const fakeArray = Array(numberOfLines.y - fixedNumberOfContentLines - headerLines - footerLines).fill('pl');
+	const fixedNumberOfContentLines = 10;
+	const minimumNumberOfLines = getNoOfChars('loading', config).y - headerLines - footerLines - fixedNumberOfContentLines;
+	const numberOfEmptyLinesBeforeMap = 1;
+	const mapLines= getNoOfChars('loading', mapConfig).y + numberOfEmptyLinesBeforeMap;
+
+	const fakeArray = mapLines > minimumNumberOfLines ?
+		Array(mapLines).fill('pl') :
+		Array(minimumNumberOfLines).fill('pl');
 	
 	return (
 		<section className="landing-page landing-page--contact main-section">
@@ -63,11 +82,16 @@ const ContactMobile = ({ content }) => {
 			<ContactAddressLineMobile type="email" config={emailConfig} />
 
 			{ fakeArray.map((item, index) => 
-				<div key={`pl-${index}`} className="contact-line"><PatternChunk reserved={0} /></div>)
+				<div key={`pl-${index}`} className="contact-line">
+					<PatternChunk reserved={0} />
+				</div>)
 			}
 			
 			<div className="contact__map-wrapper">
-				{ typeof window === 'undefined' ? null : <ContactMap lat={coordinates.lat} lng={coordinates.lon}/> }
+				{ typeof window === 'undefined' ?
+					null :
+					<ContactMap lat={coordinates.lat} lng={coordinates.lon}/>
+				}
 			</div>
 		</section>
 	);

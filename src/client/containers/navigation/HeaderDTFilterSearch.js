@@ -105,8 +105,9 @@ class HeaderDTFilterSearch extends Component {
 		};
 		const reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
 		// filters don't have a reserved space if you're not on the home page
-		const reservedFilterSize = location.pathname !== '/' ? 0 : config.filter.name.length + config.filter.glyph.content.length;
-		const reservedEmptySpaces = location.pathname !== '/' ?
+		const isFront = location.pathname === '/';
+		const reservedFilterSize = !isFront ? 0 : config.filter.name.length + config.filter.glyph.content.length;
+		const reservedEmptySpaces = !isFront ?
 			config.search.spacesAfter + config.search.spacesBefore :
 			config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
 		const numberofNavSeparators = 1;
@@ -127,6 +128,7 @@ class HeaderDTFilterSearch extends Component {
 					onSearchClick={this.onSearchClick}
 					onSearchSubmit={this.onSearchSubmit}
 					config={config.search}
+					isFront={isFront}
 				/>
 				<PatternChunk reserved={totalReservedSpaces} />
 				<HeaderDTFiltersList

@@ -70,15 +70,32 @@ var ContactMobile = function ContactMobile(_ref) {
 	var maxWidth = (0, _helpers.getMaxWidth)();
 
 	var font = (0, _helpers.getFontValues)();
+	var getMapheight = function getMapheight() {
+		if (windowSize.h > 1024) {
+			return 480;
+		} else if (windowSize.h > 768) {
+			return 390;
+		}
+		return 240;
+	};
+	var mapHeight = getMapheight();
 	var config = {
 		w: maxWidth,
 		h: windowSize.h - font.characterHeight * 2
 	};
-	var numberOfLines = (0, _helpers.getNoOfChars)('loading', config);
-	var fixedNumberOfContentLines = 8;
+	var mapConfig = {
+		w: maxWidth,
+		h: mapHeight
+	};
+
 	var headerLines = 2;
 	var footerLines = 3;
-	var fakeArray = Array(numberOfLines.y - fixedNumberOfContentLines - headerLines - footerLines).fill('pl');
+	var fixedNumberOfContentLines = 10;
+	var minimumNumberOfLines = (0, _helpers.getNoOfChars)('loading', config).y - headerLines - footerLines - fixedNumberOfContentLines;
+	var numberOfEmptyLinesBeforeMap = 1;
+	var mapLines = (0, _helpers.getNoOfChars)('loading', mapConfig).y + numberOfEmptyLinesBeforeMap;
+
+	var fakeArray = mapLines > minimumNumberOfLines ? Array(mapLines).fill('pl') : Array(minimumNumberOfLines).fill('pl');
 
 	return _react2.default.createElement(
 		'section',

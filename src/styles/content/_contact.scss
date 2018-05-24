@@ -16,27 +16,26 @@
 		height: 100%;
 	}
 	@include respond-to(tablet) {
-		padding: $lh ($tablet-char-width * 2);
-		top: $tablet-lh * 11;
-		bottom: auto;
-		left: $tablet-char-width * 4;
-		right: $tablet-char-width * 4;
-		width: auto;
-		height: 390px;
+		padding: ($lh/2) ($tablet-char-width);
+		top: $tablet-lh * 2;
+		right: $tablet-char-width * 2;
+		left: auto;
+		width: 330;
+    height: 338px;
 	}
 	@include respond-to(desktop) {
-    height: 480px;
+		padding: ($lh/2) ($desktop-char-width);
+		top: $desktop-lh * 4;
+		right: $desktop-char-width * 3;
+		width: 448px;
+    height: 288px;
 	}
 	@include respond-to(desktop-1280) {
-		padding: ($lh/2) ($desktop-char-width);
 		top: $desktop-lh * 2;
-		right: $desktop-char-width * 2;
-		left: auto;
-		width: 518px;
+		width: 504px;
     height: 352px;
 	}
 	@include respond-to(desktop-1440) {
-		right: $desktop-char-width * 3;
 		padding: $lh ($desktop-char-width * 2);
     width: 672px;
 		height: 416px;

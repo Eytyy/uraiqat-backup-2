@@ -2203,27 +2203,26 @@ img {
     height: 100%; }
   @media (min-width: 768px) {
     .contact__map-wrapper {
-      padding: 24px 22px;
-      top: 286px;
-      bottom: auto;
-      left: 44px;
-      right: 44px;
-      width: auto;
-      height: 390px; } }
+      padding: 12px 11px;
+      top: 52px;
+      right: 22px;
+      left: auto;
+      width: 330;
+      height: 338px; } }
   @media (min-width: 1024px) {
     .contact__map-wrapper {
-      height: 480px; } }
+      padding: 12px 14px;
+      top: 128px;
+      right: 42px;
+      width: 448px;
+      height: 288px; } }
   @media (min-width: 1280px) {
     .contact__map-wrapper {
-      padding: 12px 14px;
       top: 64px;
-      right: 28px;
-      left: auto;
-      width: 518px;
+      width: 504px;
       height: 352px; } }
   @media (min-width: 1440px) {
     .contact__map-wrapper {
-      right: 42px;
       padding: 24px 28px;
       width: 672px;
       height: 416px; } }

@@ -6,13 +6,14 @@ import PatternChunk from '../../components/patterns/PatternChunk';
 
 class HeaderDTFilterSearchSearch extends Component {
 	render() {
-		const { config, searchIsVisible, onSearchClick, onSearchSubmit } = this.props;
+		const { config, searchIsVisible, onSearchClick, onSearchSubmit, isFront } = this.props;
 		const font = getFontValues();
 		const formStyle = {
 			width: `${config.searchInputSize * font.characterWidth}px`
 		};
 		return (
 			<span className={`search ${searchIsVisible ? 'is-visible' : 'is-hidden'}`}>
+				{ isFront ? null: <span className="ws">-</span> }
 				<span className="ws">-</span>
 				<span className={searchIsVisible ? 'link' : 'link is-hidden'}>x</span>
 				<span className="search-link link" onClick={onSearchClick}>

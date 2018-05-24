@@ -40,7 +40,8 @@ var HeaderDTFilterSearchSearch = function (_Component) {
 			    config = _props.config,
 			    searchIsVisible = _props.searchIsVisible,
 			    onSearchClick = _props.onSearchClick,
-			    onSearchSubmit = _props.onSearchSubmit;
+			    onSearchSubmit = _props.onSearchSubmit,
+			    isFront = _props.isFront;
 
 			var font = (0, _helpers.getFontValues)();
 			var formStyle = {
@@ -49,6 +50,11 @@ var HeaderDTFilterSearchSearch = function (_Component) {
 			return _react2.default.createElement(
 				'span',
 				{ className: 'search ' + (searchIsVisible ? 'is-visible' : 'is-hidden') },
+				isFront ? null : _react2.default.createElement(
+					'span',
+					{ className: 'ws' },
+					'-'
+				),
 				_react2.default.createElement(
 					'span',
 					{ className: 'ws' },
