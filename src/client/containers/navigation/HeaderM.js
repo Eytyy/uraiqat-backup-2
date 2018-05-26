@@ -30,7 +30,13 @@ class HeaderM extends Component {
 				<div>
 					<NavLink className="link" to="/">U</NavLink>
 					<PatternChunk reserved={2} />
-					<span className="mobile-menu-toggle link" to="/" onClick={this.toggle}>:</span>
+					<span className="mobile-menu-toggle-overlay" onClick={this.toggle}></span>
+					{
+						this.state.isVisible ?
+							<span className="mobile-menu-toggle link" onClick={this.toggle}>x</span> :
+							<span className="mobile-menu-toggle link" onClick={this.toggle}>:</span>
+					}
+					
 				</div>
 				<div><PatternChunk reserved={0} /></div>
 				{

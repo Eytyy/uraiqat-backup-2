@@ -80,9 +80,14 @@ var HeaderM = function (_Component) {
 						'U'
 					),
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 2 }),
-					_react2.default.createElement(
+					_react2.default.createElement('span', { className: 'mobile-menu-toggle-overlay', onClick: this.toggle }),
+					this.state.isVisible ? _react2.default.createElement(
 						'span',
-						{ className: 'mobile-menu-toggle link', to: '/', onClick: this.toggle },
+						{ className: 'mobile-menu-toggle link', onClick: this.toggle },
+						'x'
+					) : _react2.default.createElement(
+						'span',
+						{ className: 'mobile-menu-toggle link', onClick: this.toggle },
 						':'
 					)
 				),

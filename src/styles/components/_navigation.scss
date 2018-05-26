@@ -59,3 +59,15 @@
 	width: 420px;
 	outline: 0;
 }
+
+.website-header__inner--mobile {
+	position: relative;
+}
+.mobile-menu-toggle-overlay {
+	position: absolute;
+	top: -5px;
+	right: -10px;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
