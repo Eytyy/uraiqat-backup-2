@@ -21,12 +21,12 @@
 		margin-left: $tablet-char-width * 3;
 	}
 	@include respond-to(desktop) {
+		width: 840px;
+		float: left;
 		margin-left: $desktop-char-width * 3;
 		margin-bottom: $desktop-lh * 2;
 	}
 	@include respond-to(desktop-1440) {
-		width: 903px;
-		float: left;
 		margin-bottom: 0;
 	}
 }

@@ -1134,12 +1134,12 @@ img {
       margin-left: 33px; } }
   @media (min-width: 1024px) {
     .project__media {
+      width: 840px;
+      float: left;
       margin-left: 42px;
       margin-bottom: 64px; } }
   @media (min-width: 1440px) {
     .project__media {
-      width: 903px;
-      float: left;
       margin-bottom: 0; } }
 
 .project__meta .label {
