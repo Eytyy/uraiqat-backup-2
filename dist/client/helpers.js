@@ -61,8 +61,8 @@ var getFontValues = exports.getFontValues = function getFontValues() {
 var config = {
 	mobile: {
 		'team-member--portrait': {
-			w: 280,
-			h: 360
+			w: 120,
+			h: 168
 		},
 		'team-member-inner--portrait': {
 			w: 280,
@@ -151,8 +151,8 @@ var config = {
 	},
 	mobileX2: {
 		'team-member--portrait': {
-			w: 320,
-			h: 456
+			w: 130,
+			h: 192
 		},
 		'team-member-inner--portrait': {
 			w: 320,
@@ -241,7 +241,7 @@ var config = {
 	},
 	tablet: {
 		'team-member--portrait': {
-			w: 266,
+			w: 264,
 			h: 384
 		},
 		'team-member-inner--portrait': {
@@ -331,7 +331,7 @@ var config = {
 	},
 	desktop: {
 		'team-member--portrait': {
-			w: 266,
+			w: 252,
 			h: 384
 		},
 		'team-member-inner--portrait': {

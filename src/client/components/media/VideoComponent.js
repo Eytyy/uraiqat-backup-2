@@ -40,6 +40,7 @@ class VideoComponent extends Component {
 	}
 	loadVideo() {
 		this.checkVideo().then(() => {
+			console.log('video loaded');
 			this.setState({
 				videoIsLoaded: true,
 			});

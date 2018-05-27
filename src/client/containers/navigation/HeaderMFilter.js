@@ -60,8 +60,14 @@ class HeaderMFilter extends Component {
 				<span className="ws">-</span>
 				<span className="ws">-</span>
 				<PatternChunk reserved={reservedFilterSize} />
-				{ this.state.filtersAreVisible ? <span onClick={this.onfiltersClick} className="link">x</span> : '<'}
-				{ this.state.filtersAreVisible ? <HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} /> : null}
+				{ this.state.filtersAreVisible ?
+					<span onClick={this.onfiltersClick} className="link">x</span> :
+					'<'
+				}
+				{ this.state.filtersAreVisible ?
+					<HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} /> :
+					null
+				}
 			</div>
 		);
 	}

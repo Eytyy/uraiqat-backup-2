@@ -2,7 +2,7 @@ import React from 'react';
 import PatternLine from './PatternLine';
 import { getNoOfChars, getWindowDimensions, getFontValues, getMaxWidth } from '../../helpers';
 
-const PatternBlock = ({ reservedContent }) => {
+const PatternBlock = ({ reservedContent, inline }) => {
 	if (typeof window === 'undefined') {
 		return <div className="pattern pattern--block"></div>;
 	}
@@ -12,7 +12,9 @@ const PatternBlock = ({ reservedContent }) => {
 	const font = getFontValues();
 	const config = {
 		w: maxWidth,
-		h: windowSize.h - (font.characterHeight * 2) - (font.characterHeight * 3) - (font.characterHeight * 3) - (font.characterHeight * reservedContent),
+		h: typeof inline === 'undefined' ? 
+			windowSize.h - (font.characterHeight * 2) - (font.characterHeight * 3) - (font.characterHeight * 3) - (font.characterHeight * reservedContent) :
+			windowSize.h - (font.characterHeight * 3) - (font.characterHeight * reservedContent),
 	};
 	const numberOfLines = getNoOfChars('loading', config);
 	const fakeArray = Array(numberOfLines.y).fill('pl');

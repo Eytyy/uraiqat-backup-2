@@ -61,13 +61,25 @@ var HeaderM = function (_Component) {
 	}, {
 		key: 'toggle',
 		value: function toggle() {
+			var isMenuvisible = this.state.isVisible;
+			if (!isMenuvisible) {
+				isMenuvisible = true;
+				document.body.classList.add('mobileMenu-isActive');
+			} else {
+				isMenuvisible = false;
+				document.body.classList.remove('mobileMenu-isActive');
+			}
 			this.setState({
-				isVisible: !this.state.isVisible
+				isVisible: isMenuvisible
 			});
 		}
 	}, {
+		key: 'componentWillUpdate',
+		value: function componentWillUpdate() {}
+	}, {
 		key: 'render',
 		value: function render() {
+			var navigation = [{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length }, { name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length }, { name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length }, { name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length }];
 			return _react2.default.createElement(
 				'div',
 				{ className: 'website-header__inner website-header__inner--mobile wrapper' },
@@ -99,9 +111,15 @@ var HeaderM = function (_Component) {
 				this.state.isVisible ? _react2.default.createElement(
 					'div',
 					{ className: 'menu' },
-					_react2.default.createElement(_HeaderMMain2.default, null),
-					_react2.default.createElement(_HeaderMSearch2.default, null),
-					_react2.default.createElement(_HeaderMFilter2.default, null)
+					_react2.default.createElement(
+						'div',
+						{ className: 'menu__inner' },
+						_react2.default.createElement(_HeaderMMain2.default, { navigation: navigation }),
+						_react2.default.createElement(_HeaderMSearch2.default, null),
+						_react2.default.createElement(_HeaderMFilter2.default, null),
+						_react2.default.createElement(_PatternChunk2.default, { reserved: 2 }),
+						_react2.default.createElement(_PatternChunk2.default, { reserved: 2 })
+					)
 				) : null
 			);
 		}

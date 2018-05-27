@@ -17,7 +17,8 @@ var _helpers = require('../../helpers');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PatternBlock = function PatternBlock(_ref) {
-	var reservedContent = _ref.reservedContent;
+	var reservedContent = _ref.reservedContent,
+	    inline = _ref.inline;
 
 	if (typeof window === 'undefined') {
 		return _react2.default.createElement('div', { className: 'pattern pattern--block' });
@@ -28,7 +29,7 @@ var PatternBlock = function PatternBlock(_ref) {
 	var font = (0, _helpers.getFontValues)();
 	var config = {
 		w: maxWidth,
-		h: windowSize.h - font.characterHeight * 2 - font.characterHeight * 3 - font.characterHeight * 3 - font.characterHeight * reservedContent
+		h: typeof inline === 'undefined' ? windowSize.h - font.characterHeight * 2 - font.characterHeight * 3 - font.characterHeight * 3 - font.characterHeight * reservedContent : windowSize.h - font.characterHeight * 3 - font.characterHeight * reservedContent
 	};
 	var numberOfLines = (0, _helpers.getNoOfChars)('loading', config);
 	var fakeArray = Array(numberOfLines.y).fill('pl');

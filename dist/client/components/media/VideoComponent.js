@@ -87,6 +87,7 @@ var VideoComponent = function (_Component) {
 			var _this3 = this;
 
 			this.checkVideo().then(function () {
+				console.log('video loaded');
 				_this3.setState({
 					videoIsLoaded: true
 				});

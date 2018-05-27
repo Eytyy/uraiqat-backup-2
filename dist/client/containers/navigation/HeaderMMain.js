@@ -18,17 +18,16 @@ var _HeaderMNavItem2 = _interopRequireDefault(_HeaderMNavItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderDTMain = function HeaderDTMain() {
-	var config = {
-		items: [{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length }, { name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length }, { name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length }, { name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length }]
-	};
+var HeaderDTMain = function HeaderDTMain(_ref) {
+	var navigation = _ref.navigation;
+
 	return _react2.default.createElement(
 		'div',
 		{ className: 'header--mobile__main' },
-		config.items.map(function (_ref, index) {
-			var link = _ref.link,
-			    glyph = _ref.glyph,
-			    name = _ref.name;
+		navigation.map(function (_ref2, index) {
+			var link = _ref2.link,
+			    glyph = _ref2.glyph,
+			    name = _ref2.name;
 			return _react2.default.createElement(
 				'div',
 				{ key: 'mobile-link--' + index, className: 'header-mobile__main__item' },

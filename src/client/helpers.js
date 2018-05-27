@@ -57,8 +57,8 @@ export const getFontValues = () => {
 const config = {
 	mobile: {
 		'team-member--portrait': {
-			w: 280,
-			h: 360,
+			w: 120,
+			h: 168,
 		},
 		'team-member-inner--portrait': {
 			w: 280,
@@ -147,8 +147,8 @@ const config = {
 	},
 	mobileX2: {
 		'team-member--portrait': {
-			w: 320,
-			h: 456,
+			w: 130,
+			h: 192,
 		},
 		'team-member-inner--portrait': {
 			w: 320,
@@ -237,7 +237,7 @@ const config = {
 	},
 	tablet: {
 		'team-member--portrait': {
-			w: 266,
+			w: 264,
 			h: 384,
 		},
 		'team-member-inner--portrait': {
@@ -327,7 +327,7 @@ const config = {
 	},
 	desktop: {
 		'team-member--portrait': {
-			w: 266,
+			w: 252,
 			h: 384,
 		},
 		'team-member-inner--portrait': {

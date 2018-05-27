@@ -20,11 +20,28 @@ class HeaderM extends Component {
 		}
 	}
 	toggle() {
+		let isMenuvisible = this.state.isVisible;
+		if (!isMenuvisible) {
+			isMenuvisible = true;
+			document.body.classList.add('mobileMenu-isActive');
+		} else {
+			isMenuvisible = false;
+			document.body.classList.remove('mobileMenu-isActive');
+		}
 		this.setState({
-			isVisible: !this.state.isVisible
+			isVisible: isMenuvisible
 		});
 	}
+	componentWillUpdate() {
+
+	}
 	render() {
+		const navigation = [
+			{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
+			{ name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length },
+			{ name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length },
+			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
+		];
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div>
@@ -42,9 +59,13 @@ class HeaderM extends Component {
 				{
 					this.state.isVisible ? 
 						<div className="menu">
-							<HeaderMMain />
-							<HeaderMSearch />
-							<HeaderMFilter />
+							<div className="menu__inner">
+								<HeaderMMain navigation={navigation} />
+								<HeaderMSearch />
+								<HeaderMFilter />
+								<PatternChunk reserved={2} />
+								<PatternChunk reserved={2} />
+							</div>
 						</div>: null
 				}
 				

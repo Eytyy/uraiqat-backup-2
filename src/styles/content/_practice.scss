@@ -53,13 +53,15 @@
 
 // Portrait Default
 .practice-section__team-list {
-	@extend %defaultGrid;
+	@extend %teamMembersGrid;
 }
 
 .team-member-preview {
-	margin-bottom: $lh * 2;
+	flex: 0 0 (120px + $block-gutter);
+	margin-bottom: $lh;
+	padding-left: $block-gutter;
 	.post-preview__image {
-		height: $portrait-height;
+		height: 168px;
 	}
 	&:hover {
 		.post-preview__image .preview-image:after,
@@ -67,13 +69,16 @@
 			background-color: transparent;
 		}
 	}
-	@include respond-to(mobile-x2) {
+  @include respond-to(mobile-x2) {
+		flex: 0 0 (130px + $block-gutter-x2);
+		padding-left: $block-gutter-x2;
+		margin-bottom: $lh * 2;
 		.post-preview__image {
-			height: $portrait-height--x2;
+			height: 192px;
 		}
 	}	
 	@include respond-to(tablet) {
-		flex: 0 0 (266 + $tablet-block-gutter);
+		flex: 0 0 (264 + $tablet-block-gutter);
 		margin-bottom: $tablet-lh * 2;
 		padding-left: $tablet-block-gutter;
 		.post-preview__image {
@@ -81,7 +86,7 @@
 		}
 	}	
 	@include respond-to(desktop) {
-		flex: 0 0 (266 + $desktop-block-gutter);
+		flex: 0 0 (252 + $desktop-block-gutter);
 		padding-left: $desktop-block-gutter;
 		margin-bottom: $desktop-lh * 2;
 	}	

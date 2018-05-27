@@ -30,10 +30,8 @@ class Career extends Component { //eslint-disable-line
 	render() {
 		const { content, isFetching } = this.props;
 		const { title, description } = content;
-		if (isFetching || typeof content.id === 'undefined') {
-			return <div className="loader"><LoadingPattern /></div>;
-		}
-		return (
+		return isFetching || typeof content.id === 'undefined' ?
+			<div className="loader"><LoadingPattern /></div> :
 			<article className="career">
 				<header className="career__header">
 					<h1 className="main-title career__title">{title}</h1>
@@ -41,8 +39,7 @@ class Career extends Component { //eslint-disable-line
 				<div className="career__content">
 					<BodyText content={description} />
 				</div>
-			</article>
-		);
+			</article>;
 	}
 }
 

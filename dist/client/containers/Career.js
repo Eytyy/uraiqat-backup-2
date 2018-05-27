@@ -79,14 +79,11 @@ var Career = function (_Component) {
 			var title = content.title,
 			    description = content.description;
 
-			if (isFetching || typeof content.id === 'undefined') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loader' },
-					_react2.default.createElement(_LoadingPattern2.default, null)
-				);
-			}
-			return _react2.default.createElement(
+			return isFetching || typeof content.id === 'undefined' ? _react2.default.createElement(
+				'div',
+				{ className: 'loader' },
+				_react2.default.createElement(_LoadingPattern2.default, null)
+			) : _react2.default.createElement(
 				'article',
 				{ className: 'career' },
 				_react2.default.createElement(

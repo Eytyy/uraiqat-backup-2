@@ -25,7 +25,11 @@ var HeaderMFiltersList = function HeaderMFiltersList(_ref) {
 			var title = _ref2.title,
 			    id = _ref2.id,
 			    active = _ref2.active;
-			return _react2.default.createElement(_HeaderMFiltersListItem2.default, { key: id, onFilterClick: onFilterClick, content: title, id: id, active: active });
+			return _react2.default.createElement(_HeaderMFiltersListItem2.default, {
+				key: id,
+				onFilterClick: onFilterClick,
+				content: title,
+				id: id, active: active });
 		})
 	);
 };

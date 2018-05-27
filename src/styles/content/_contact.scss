@@ -17,11 +17,11 @@
 	}
 	@include respond-to(tablet) {
 		padding: ($lh/2) ($tablet-char-width);
-		top: $tablet-lh * 2;
+		top: $tablet-lh * 3;
 		right: $tablet-char-width * 2;
 		left: auto;
-		width: 330;
-    height: 338px;
+		width: 330px ;
+    height: 312px;
 	}
 	@include respond-to(desktop) {
 		padding: ($lh/2) ($desktop-char-width);

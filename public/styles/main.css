@@ -280,6 +280,23 @@ body {
     .main-section {
       max-width: 100%; } }
 
+.mobileMenu-isActive {
+  overflow: hidden; }
+  .mobileMenu-isActive .website-header {
+    overflow: hidden; }
+  .mobileMenu-isActive .menu,
+  .mobileMenu-isActive .website-header__inner--mobile {
+    height: 100%;
+    overflow: hidden; }
+  .mobileMenu-isActive .website-header__inner--mobile {
+    height: calc(100% - 48px);
+    overflow-y: scroll; }
+  @media (min-width: 768px) {
+    .mobileMenu-isActive .website-header {
+      height: calc(100% - 26px); }
+    .mobileMenu-isActive .website-header__inner--mobile {
+      height: calc(100% - 48px); } }
+
 .website-header {
   position: fixed;
   padding: 24px 0 6px;
@@ -316,7 +333,7 @@ body {
         padding-top: 96px; } }
 
 @media (min-width: 768px) {
-  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -325,16 +342,36 @@ body {
     margin-left: -72px; } }
 
 @media (min-width: 1024px) {
-  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results {
     margin-left: -56px; } }
 
 @media (min-width: 1440px) {
-  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results {
     margin-left: -84px; } }
 
 @media (min-width: 1600px) {
-  .landing-page--journal .landing-section, .search-results, .practice-section__team-list {
+  .landing-page--journal .landing-section, .search-results {
     margin-left: -98px; } }
+
+.practice-section__team-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: -20px; }
+  @media (min-width: 768px) {
+    .practice-section__team-list {
+      margin-left: -72px; } }
+  @media (min-width: 1024px) {
+    .practice-section__team-list {
+      margin-left: -56px; } }
+  @media (min-width: 1440px) {
+    .practice-section__team-list {
+      margin-left: -84px; } }
+  @media (min-width: 1600px) {
+    .practice-section__team-list {
+      margin-left: -98px; } }
 
 .search-results-title {
   margin-bottom: 48px; }
@@ -2036,20 +2073,30 @@ img {
   text-transform: capitalize; }
 
 .team-member-preview {
-  margin-bottom: 48px; }
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 140px;
+          flex: 0 0 140px;
+  margin-bottom: 24px;
+  padding-left: 20px; }
   .team-member-preview .post-preview__image {
-    height: 360px; }
+    height: 168px; }
   .team-member-preview:hover .post-preview__image .preview-image:after,
   .team-member-preview:hover .post-preview__image .preview-image:before {
     background-color: transparent; }
   @media (min-width: 375px) {
-    .team-member-preview .post-preview__image {
-      height: 456px; } }
+    .team-member-preview {
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 160px;
+              flex: 0 0 160px;
+      padding-left: 30px;
+      margin-bottom: 48px; }
+      .team-member-preview .post-preview__image {
+        height: 192px; } }
   @media (min-width: 768px) {
     .team-member-preview {
       -webkit-box-flex: 0;
-          -ms-flex: 0 0 338px;
-              flex: 0 0 338px;
+          -ms-flex: 0 0 336px;
+              flex: 0 0 336px;
       margin-bottom: 52px;
       padding-left: 72px; }
       .team-member-preview .post-preview__image {
@@ -2057,8 +2104,8 @@ img {
   @media (min-width: 1024px) {
     .team-member-preview {
       -webkit-box-flex: 0;
-          -ms-flex: 0 0 322px;
-              flex: 0 0 322px;
+          -ms-flex: 0 0 308px;
+              flex: 0 0 308px;
       padding-left: 56px;
       margin-bottom: 64px; } }
   @media (min-width: 1440px) {
@@ -2215,11 +2262,11 @@ img {
   @media (min-width: 768px) {
     .contact__map-wrapper {
       padding: 12px 11px;
-      top: 52px;
+      top: 78px;
       right: 22px;
       left: auto;
-      width: 330;
-      height: 338px; } }
+      width: 330px;
+      height: 312px; } }
   @media (min-width: 1024px) {
     .contact__map-wrapper {
       padding: 12px 14px;
