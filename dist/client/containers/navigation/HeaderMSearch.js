@@ -113,12 +113,14 @@ var HeaderMSearch = function (_Component) {
 				this.state.searchIsVisible ? _react2.default.createElement(
 					'form',
 					{ onSubmit: this.onSearchSubmit, className: 'search' },
-					_react2.default.createElement('input', { style: formStyle, autoComplete: 'off',
+					_react2.default.createElement('input', {
+						style: formStyle,
+						autoComplete: 'off',
 						name: 'keyword',
 						className: 'search__input', type: 'text',
 						placeholder: 'Enter keyword'
 					}),
-					_react2.default.createElement(_PatternChunk2.default, { reserved: reservedInputSpace }),
+					_react2.default.createElement(_PatternChunk2.default, { reserved: reservedInputSpace - 1 }),
 					_react2.default.createElement(
 						'span',
 						{ className: 'link', onClick: this.onSearchClick },

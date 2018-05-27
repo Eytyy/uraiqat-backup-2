@@ -63,8 +63,8 @@ class HeaderM extends Component {
 								<HeaderMMain navigation={navigation} />
 								<HeaderMSearch />
 								<HeaderMFilter />
-								<PatternChunk reserved={2} />
-								<PatternChunk reserved={2} />
+								<div><PatternChunk reserved={0} /></div>
+								<div><PatternChunk reserved={0} /></div>
 							</div>
 						</div>: null
 				}

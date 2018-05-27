@@ -36,11 +36,6 @@
 }
 
 .atelier-landing__top__desc {
-	p {
-		font-family: $font--bold;
-	}
-	@include respond-to(desktop) {
-	}	
 	@include respond-to(desktop-1280) {
 		width: 1064px;
 	}

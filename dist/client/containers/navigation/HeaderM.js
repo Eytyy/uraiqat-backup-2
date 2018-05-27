@@ -117,8 +117,16 @@ var HeaderM = function (_Component) {
 						_react2.default.createElement(_HeaderMMain2.default, { navigation: navigation }),
 						_react2.default.createElement(_HeaderMSearch2.default, null),
 						_react2.default.createElement(_HeaderMFilter2.default, null),
-						_react2.default.createElement(_PatternChunk2.default, { reserved: 2 }),
-						_react2.default.createElement(_PatternChunk2.default, { reserved: 2 })
+						_react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+						),
+						_react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+						)
 					)
 				) : null
 			);

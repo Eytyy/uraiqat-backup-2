@@ -335,8 +335,8 @@ var config = {
 			h: 384
 		},
 		'team-member-inner--portrait': {
-			w: 337,
-			h: 512
+			w: 308,
+			h: 480
 		},
 		'default-post--portrait': {
 			w: 228,
@@ -425,8 +425,8 @@ var config = {
 			h: 384
 		},
 		'team-member-inner--portrait': {
-			w: 266,
-			h: 384
+			w: 308,
+			h: 480
 		},
 		'default-post--portrait': {
 			w: 228,
@@ -515,8 +515,8 @@ var config = {
 			h: 384
 		},
 		'team-member-inner--portrait': {
-			w: 266,
-			h: 384
+			w: 308,
+			h: 480
 		},
 		'default-post--portrait': {
 			w: 266,
@@ -605,8 +605,8 @@ var config = {
 			h: 384
 		},
 		'team-member-inner--portrait': {
-			w: 266,
-			h: 384
+			w: 308,
+			h: 480
 		},
 		'default-post--portrait': {
 			w: 266,

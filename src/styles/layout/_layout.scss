@@ -35,22 +35,9 @@ body {
 	.website-header {
 		overflow: hidden;
 	}
-	.menu,
 	.website-header__inner--mobile {
-		height: 100%;
-		overflow: hidden;
-	}
-	.website-header__inner--mobile {
-		height: calc(100% - (#{$lh} * 2));
+		max-height: 100vh;
 		overflow-y: scroll;
-	}
-	@include respond-to(tablet) {
-		.website-header {
-			height: calc(100% - #{$tablet-lh});
-		}		
-		.website-header__inner--mobile {
-			height: calc(100% - (#{$lh} * 2));
-		}
 	}
 }
 .website-header {

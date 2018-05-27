@@ -56,20 +56,22 @@ class HeaderMSearch extends Component {
 				<span className="ws">-</span>
 				{
 					this.state.searchIsVisible ?
-						(<form onSubmit={this.onSearchSubmit} className="search">
-							<input style={formStyle} autoComplete="off"
+						<form onSubmit={this.onSearchSubmit} className="search">
+							<input
+								style={formStyle}
+								autoComplete="off"
 								name="keyword"
 								className="search__input" type="text"
 								placeholder="Enter keyword"
 							/>
-							<PatternChunk reserved={reservedInputSpace} />
+							<PatternChunk reserved={reservedInputSpace - 1} />
 							<span className="link" onClick={this.onSearchClick}>x</span>
-						</form>) :
-						(<span className="header-mobile__search__glyphs">
+						</form> :
+						<span className="header-mobile__search__glyphs">
 							<span className="ws">-</span>
 							<span className="ws">-</span>
 							<PatternChunk reserved={reservedInactiveSpace} />
-						</span>)
+						</span>
 				}
 			</div>
 		);

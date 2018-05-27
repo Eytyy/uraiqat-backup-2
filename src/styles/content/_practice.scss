@@ -170,12 +170,14 @@
 	}
 	@include respond-to(mobile-x2) {
 		.post-preview__image {
+			width: 310px;
 			height: $portrait-height--x2;
 		}
 	}	
 	@include respond-to(tablet) {
 		padding-left: ($tablet-char-width * 5);
 		.post-preview__image {
+			width: auto;
 			height: 416px;
 			flex: 0 0 300px;
 		}
@@ -187,7 +189,7 @@
 	@include respond-to(desktop) {
 		padding-left: 0;
 		.post-preview__image {
-			height: 512px;
+			height: 480px;
 		}
 		.team-member__links {
 			padding-left: 0;
@@ -195,10 +197,6 @@
 	}
 	@include respond-to(desktop-1280) {
 		padding-left: ($desktop-char-width * 5);
-	}
-	@include respond-to(desktop-1440) {
-	}
-	@include respond-to(desktop-1600) {
 	}
 }
 .team-member__content__col {
@@ -215,7 +213,7 @@
 		float: left;
 		&--left {
 			display: block;
-			width: 337px;
+			width: 308px;
 			margin-bottom: 0;
 		}
 		&--right {
@@ -243,6 +241,10 @@
 }
 
 .team-member__links {
+	margin-top: $lh;
+	@include respond-to(tablet) {
+		margin-top: 0;
+	}	
 	@include respond-to(desktop) {
 		margin-top: $desktop-lh;
 	}

@@ -52,6 +52,17 @@ $desktop-featured-lh: 64px;
 	}
 }
 
+%paragraphsFonts {
+	color: #4A4A4A;
+  @include respond-to(tablet) {
+		font-size: 14px;
+		line-height: 26px;
+	}	
+	@include respond-to(desktop) {
+		font-size: 18px;
+		line-height: 30px;
+	}	
+}
 // Featured Blocks Font Styles
 %featuredFont {
 	font-size: $featured-fs;
@@ -83,18 +94,24 @@ p {
 	font-family: $font;
 }
 
-.field-body p {
-	margin-bottom: $lh;
-	@include respond-to(tablet) {
-		margin-bottom: $tablet-lh;
-	}
-	@include respond-to(desktop) {
-		margin-bottom: $desktop-lh;
-	}
+.toggle-project-about,
+.field-body {
+	@extend %paragraphsFonts;
 }
 
-.field-body a {
-	color: blue;
+.field-body {
+	a {
+		color: blue;
+	}
+	p {
+		margin-bottom: $lh;
+		@include respond-to(tablet) {
+			margin-bottom: $tablet-lh;
+		}
+		@include respond-to(desktop) {
+			margin-bottom: $desktop-lh;
+		}
+	}
 }
 
 h1, h2, h3, h4, h5 {

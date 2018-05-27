@@ -102,6 +102,20 @@ body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__
       font-size: 14px;
       line-height: 22px; } }
 
+.toggle-project-about,
+.field-body {
+  color: #4A4A4A; }
+  @media (min-width: 768px) {
+    .toggle-project-about,
+    .field-body {
+      font-size: 14px;
+      line-height: 26px; } }
+  @media (min-width: 1024px) {
+    .toggle-project-about,
+    .field-body {
+      font-size: 18px;
+      line-height: 30px; } }
+
 .post-preview--featured .post-preview__title {
   font-size: 20px;
   line-height: 32px; }
@@ -127,6 +141,9 @@ h1, h2, h3, h4, h5,
 p {
   font-family: "ZeitungMonoPro-Reg"; }
 
+.field-body a {
+  color: blue; }
+
 .field-body p {
   margin-bottom: 24px; }
   @media (min-width: 768px) {
@@ -135,9 +152,6 @@ p {
   @media (min-width: 1024px) {
     .field-body p {
       margin-bottom: 32px; } }
-
-.field-body a {
-  color: blue; }
 
 h1, h2, h3, h4, h5 {
   margin: 0; }
@@ -284,18 +298,9 @@ body {
   overflow: hidden; }
   .mobileMenu-isActive .website-header {
     overflow: hidden; }
-  .mobileMenu-isActive .menu,
   .mobileMenu-isActive .website-header__inner--mobile {
-    height: 100%;
-    overflow: hidden; }
-  .mobileMenu-isActive .website-header__inner--mobile {
-    height: calc(100% - 48px);
+    max-height: 100vh;
     overflow-y: scroll; }
-  @media (min-width: 768px) {
-    .mobileMenu-isActive .website-header {
-      height: calc(100% - 26px); }
-    .mobileMenu-isActive .website-header__inner--mobile {
-      height: calc(100% - 48px); } }
 
 .website-header {
   position: fixed;
@@ -415,6 +420,10 @@ body {
   @media (min-width: 1600px) {
     .post-preview {
       padding-left: 98px; } }
+
+.post-preview__content {
+  position: relative;
+  z-index: 10; }
 
 .landing-section--main .post-preview:last-child {
   margin-bottom: 0; }
@@ -732,7 +741,7 @@ body {
 
 .post-preview--featured.post-preview--landscape .post-preview__content {
   position: relative;
-  z-index: 2; }
+  z-index: 10; }
 
 @media (min-width: 768px) {
   .post-preview--featured.post-preview--landscape {
@@ -1327,9 +1336,6 @@ img {
       width: 840px;
       margin-bottom: 64px;
       margin-left: 42px; } }
-
-.atelier-landing__top__desc p {
-  font-family: "ZeitungMonoPro-Bold"; }
 
 @media (min-width: 1280px) {
   .atelier-landing__top__desc {
@@ -2177,12 +2183,14 @@ img {
 
 @media (min-width: 375px) {
   .team-member__content .post-preview__image {
+    width: 310px;
     height: 456px; } }
 
 @media (min-width: 768px) {
   .team-member__content {
     padding-left: 55px; }
     .team-member__content .post-preview__image {
+      width: auto;
       height: 416px;
       -webkit-box-flex: 0;
           -ms-flex: 0 0 300px;
@@ -2197,7 +2205,7 @@ img {
   .team-member__content {
     padding-left: 0; }
     .team-member__content .post-preview__image {
-      height: 512px; }
+      height: 480px; }
     .team-member__content .team-member__links {
       padding-left: 0; } }
 
@@ -2220,7 +2228,7 @@ img {
     float: left; }
     .team-member__content__col--left {
       display: block;
-      width: 337px;
+      width: 308px;
       margin-bottom: 0; }
     .team-member__content__col--right {
       width: 602px;
@@ -2240,9 +2248,14 @@ img {
     width: 882px;
     padding-left: 70px; } }
 
-@media (min-width: 1024px) {
-  .team-member__links {
-    margin-top: 32px; } }
+.team-member__links {
+  margin-top: 24px; }
+  @media (min-width: 768px) {
+    .team-member__links {
+      margin-top: 0; } }
+  @media (min-width: 1024px) {
+    .team-member__links {
+      margin-top: 32px; } }
 
 .landing-page--contact {
   font-family: "ZeitungMonoPro-Bold";

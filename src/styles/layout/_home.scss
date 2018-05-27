@@ -20,6 +20,11 @@
 	}
 }
 
+.post-preview__content {
+	position: relative;
+	z-index: 10;
+}
+
 .landing-section--main .post-preview:last-child {
 	margin-bottom: 0;
 }
@@ -398,7 +403,7 @@ $portrait-featured-content--desktop-1440: 700px;
 .post-preview--featured.post-preview--landscape {
 	.post-preview__content {
 		position: relative;
-		z-index: 2;
+		z-index: 10;
 	}	
 	@include respond-to(tablet) {
 		flex: 0 0 100%;
