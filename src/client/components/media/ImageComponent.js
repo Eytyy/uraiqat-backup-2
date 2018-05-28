@@ -7,6 +7,7 @@ class ImageComponent extends Component {
 		this.state = {
 			imageIsLoaded: false,
 		};
+		this.isStillMounted = true;
 	}
 	checkImage() {
 		const { src, imagesQuery } = this.props;
@@ -23,13 +24,18 @@ class ImageComponent extends Component {
 	}
 	loadImage() {
 		this.checkImage().then(() => {
-			this.setState({
-				imageIsLoaded: true,
-			});
+			if (this.isStillMounted) {
+				this.setState({
+					imageIsLoaded: true,
+				});
+			}			
 		});
 	}
 	componentDidMount() {
 		this.loadImage();
+	}
+	componentWillUnmount() {
+		this.isStillMounted = false;
 	}
 	render() {
 		const { src, classList, imagesQuery, patternId } = this.props;

@@ -33,6 +33,7 @@ var ImageComponent = function (_Component) {
 		_this.state = {
 			imageIsLoaded: false
 		};
+		_this.isStillMounted = true;
 		return _this;
 	}
 
@@ -62,15 +63,22 @@ var ImageComponent = function (_Component) {
 			var _this2 = this;
 
 			this.checkImage().then(function () {
-				_this2.setState({
-					imageIsLoaded: true
-				});
+				if (_this2.isStillMounted) {
+					_this2.setState({
+						imageIsLoaded: true
+					});
+				}
 			});
 		}
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.loadImage();
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this.isStillMounted = false;
 		}
 	}, {
 		key: 'render',

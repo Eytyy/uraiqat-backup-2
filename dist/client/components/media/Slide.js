@@ -27,7 +27,17 @@ var Slide = function Slide(_ref) {
 	    sliderName = _ref.sliderName;
 
 	var isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
-	return isMediaOfTypeImage ? _react2.default.createElement(_SlideImageComponent2.default, { sliderName: sliderName, active: active, onClick: onClick, imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_SlideVideoComponent2.default, { sliderName: sliderName, index: index, active: active, onClick: onClick, content: content });
+	return isMediaOfTypeImage ? _react2.default.createElement(_SlideImageComponent2.default, {
+		sliderName: sliderName,
+		active: active,
+		onClick: onClick,
+		imagesQuery: imagesQuery,
+		content: content }) : _react2.default.createElement(_SlideVideoComponent2.default, {
+		sliderName: sliderName,
+		index: index,
+		active: active,
+		onClick: onClick,
+		content: content });
 };
 
 exports.default = Slide;

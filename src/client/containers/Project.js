@@ -56,7 +56,14 @@ class Project extends Component { //eslint-disable-line
 				</header>
 				<div className="project__top">
 					<div className="project__media">
-						<Slider contentTitle={title} sliderName="project-main-slider" classList="slider--main" sliderId={`${content.id}m`} imagesQuery={'?fl=progressive&w=826'} content={mainSlider} />
+						<Slider
+							classList="slider--main" 
+							sliderName="project-main-slider"
+							sliderId={`${content.id}m`}
+							imagesQuery={'?fl=progressive&w=826'}
+							contentTitle={title}
+							content={mainSlider}
+						/>
 					</div> 
 					<div className="project__meta">
 						{ typology && <div className="project__meta__item typology">
@@ -87,7 +94,15 @@ class Project extends Component { //eslint-disable-line
 						</span>}
 					</div>
 					<div className="project__drawings">
-						<Slider type="drawings" contentTitle={title} sliderName="project-drawings-slider" sliderId={`${content.id}d`} classList="slider--small" imagesQuery={'?fl=progressive&w=668'} content={drawings} />
+						<Slider
+							type="drawings"
+							contentTitle={title}
+							sliderName="project-drawings-slider"
+							sliderId={`${content.id}d`}
+							classList="slider--small"
+							imagesQuery={'?fl=progressive&w=668'}
+							content={drawings}
+						/>
 					</div>
 				</div>
 				<aside className="related-content project__related">

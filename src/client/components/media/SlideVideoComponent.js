@@ -8,6 +8,7 @@ class SlideVideoComponent extends Component {
 			playing: false,
 			videoIsLoaded: false,
 		};
+		this.isStillMounted = true;
 		this.playVideo = this.playVideo.bind(this);
 		this.stopVideo = this.stopVideo.bind(this);
 		this.toggleVideo = this.toggleVideo.bind(this);
@@ -41,12 +42,8 @@ class SlideVideoComponent extends Component {
 	}
 	onSlideClick() {
 		const { onClick, id } = this.props;
-		// if (this.state.playing) {
-		// 	this.stopVideo();
-		// }
 		if (this.state.videoIsLoaded) {
 			onClick(id);
-			// this.toggleVideo();
 		}
 	}
 	checkVideo() {
@@ -59,13 +56,18 @@ class SlideVideoComponent extends Component {
 	}
 	loadVideo() {
 		this.checkVideo().then(() => {
-			this.setState({
-				videoIsLoaded: true,
-			});
+			if (this.isStillMounted) {
+				this.setState({
+					videoIsLoaded: true,
+				});
+			}
 		});
 	}
 	componentDidMount() {
 		this.loadVideo();
+	}
+	componentWillUnmount() {
+		this.isStillMounted = false;
 	}
 	render() {
 		const { content, active, sliderName } = this.props;

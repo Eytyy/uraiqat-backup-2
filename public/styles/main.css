@@ -1152,6 +1152,10 @@ img {
     .project__meta__item:last-child {
       margin: 0; } }
 
+@media (min-width: 1280px) {
+  .project__meta {
+    width: 840px; } }
+
 @media (min-width: 1440px) {
   .project__meta {
     float: right;

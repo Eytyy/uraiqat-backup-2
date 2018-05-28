@@ -8,6 +8,7 @@ class SlideImageComponent extends Component {
 			imageIsLoaded: false,
 		};
 		this.onSlideClick = this.onSlideClick.bind(this);
+		this.isStillMounted = true;
 	}
 	onSlideClick() {
 		const { onClick, id } = this.props;
@@ -16,10 +17,11 @@ class SlideImageComponent extends Component {
 		}
 	}
 	checkImage() {
-		const { content } = this.props;
+		const { content, imagesQuery } = this.props;
 		return new Promise(resolve => {
 			const img = new Image();
-			const imgSrc = content.file.url;
+			const imgSrc = typeof imagesQuery !== 'undefined' ? 
+				`${content.file.url}${imagesQuery}` : content.file.url;
 			img.onload = () => {
 				return resolve({imgSrc, status: 'ok'});
 			};
@@ -29,13 +31,18 @@ class SlideImageComponent extends Component {
 	}
 	loadImage() {
 		this.checkImage().then(() => {
-			this.setState({
-				imageIsLoaded: true,
-			});
+			if (this.isStillMounted) {
+				this.setState({
+					imageIsLoaded: true,
+				});
+			}			
 		});
 	}
 	componentDidMount() {
 		this.loadImage();
+	}
+	componentWillUnmount() {
+		this.isStillMounted = false;
 	}
 	render() {
 		const { content, imagesQuery, active, sliderName } = this.props;

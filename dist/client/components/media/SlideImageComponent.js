@@ -34,6 +34,7 @@ var SlideImageComponent = function (_Component) {
 			imageIsLoaded: false
 		};
 		_this.onSlideClick = _this.onSlideClick.bind(_this);
+		_this.isStillMounted = true;
 		return _this;
 	}
 
@@ -51,11 +52,13 @@ var SlideImageComponent = function (_Component) {
 	}, {
 		key: 'checkImage',
 		value: function checkImage() {
-			var content = this.props.content;
+			var _props2 = this.props,
+			    content = _props2.content,
+			    imagesQuery = _props2.imagesQuery;
 
 			return new Promise(function (resolve) {
 				var img = new Image();
-				var imgSrc = content.file.url;
+				var imgSrc = typeof imagesQuery !== 'undefined' ? '' + content.file.url + imagesQuery : content.file.url;
 				img.onload = function () {
 					return resolve({ imgSrc: imgSrc, status: 'ok' });
 				};
@@ -71,9 +74,11 @@ var SlideImageComponent = function (_Component) {
 			var _this2 = this;
 
 			this.checkImage().then(function () {
-				_this2.setState({
-					imageIsLoaded: true
-				});
+				if (_this2.isStillMounted) {
+					_this2.setState({
+						imageIsLoaded: true
+					});
+				}
 			});
 		}
 	}, {
@@ -82,13 +87,18 @@ var SlideImageComponent = function (_Component) {
 			this.loadImage();
 		}
 	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this.isStillMounted = false;
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _props2 = this.props,
-			    content = _props2.content,
-			    imagesQuery = _props2.imagesQuery,
-			    active = _props2.active,
-			    sliderName = _props2.sliderName;
+			var _props3 = this.props,
+			    content = _props3.content,
+			    imagesQuery = _props3.imagesQuery,
+			    active = _props3.active,
+			    sliderName = _props3.sliderName;
 			var file = content.file,
 			    description = content.description;
 

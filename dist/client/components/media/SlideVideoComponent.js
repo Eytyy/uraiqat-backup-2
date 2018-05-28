@@ -34,6 +34,7 @@ var SlideVideoComponent = function (_Component) {
 			playing: false,
 			videoIsLoaded: false
 		};
+		_this.isStillMounted = true;
 		_this.playVideo = _this.playVideo.bind(_this);
 		_this.stopVideo = _this.stopVideo.bind(_this);
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
@@ -81,13 +82,9 @@ var SlideVideoComponent = function (_Component) {
 			var _props = this.props,
 			    onClick = _props.onClick,
 			    id = _props.id;
-			// if (this.state.playing) {
-			// 	this.stopVideo();
-			// }
 
 			if (this.state.videoIsLoaded) {
 				onClick(id);
-				// this.toggleVideo();
 			}
 		}
 	}, {
@@ -113,15 +110,22 @@ var SlideVideoComponent = function (_Component) {
 			var _this3 = this;
 
 			this.checkVideo().then(function () {
-				_this3.setState({
-					videoIsLoaded: true
-				});
+				if (_this3.isStillMounted) {
+					_this3.setState({
+						videoIsLoaded: true
+					});
+				}
 			});
 		}
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.loadVideo();
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this.isStillMounted = false;
 		}
 	}, {
 		key: 'render',

@@ -13,6 +13,7 @@ class VideoComponent extends Component {
 		this.toggleVideo = this.toggleVideo.bind(this);
 		this.loadVideo = this.loadVideo.bind(this);
 		this.checkVideo = this.checkVideo.bind(this);
+		this.isStillMounted = true;
 	}
 	toggleVideo() {
 		if (this.state.playing) {
@@ -40,14 +41,18 @@ class VideoComponent extends Component {
 	}
 	loadVideo() {
 		this.checkVideo().then(() => {
-			console.log('video loaded');
-			this.setState({
-				videoIsLoaded: true,
-			});
+			if (this.isStillMounted) {
+				this.setState({
+					videoIsLoaded: true,
+				});
+			}
 		});
 	}
 	componentDidMount() {
 		this.loadVideo();
+	}
+	componentWillUnmount() {
+		this.isStillMounted = false;
 	}
 	render() {
 		const { content, classList, patternId } = this.props;

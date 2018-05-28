@@ -44,6 +44,9 @@
 			}
 		}
 	}
+	@include respond-to(desktop-1280) {
+		width: 840px;
+	}
 	@include respond-to(desktop-1440) {
 		float: right;
 		width: 308px;

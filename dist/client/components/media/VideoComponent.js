@@ -39,6 +39,7 @@ var VideoComponent = function (_Component) {
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
 		_this.loadVideo = _this.loadVideo.bind(_this);
 		_this.checkVideo = _this.checkVideo.bind(_this);
+		_this.isStillMounted = true;
 		return _this;
 	}
 
@@ -87,16 +88,22 @@ var VideoComponent = function (_Component) {
 			var _this3 = this;
 
 			this.checkVideo().then(function () {
-				console.log('video loaded');
-				_this3.setState({
-					videoIsLoaded: true
-				});
+				if (_this3.isStillMounted) {
+					_this3.setState({
+						videoIsLoaded: true
+					});
+				}
 			});
 		}
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.loadVideo();
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			this.isStillMounted = false;
 		}
 	}, {
 		key: 'render',
