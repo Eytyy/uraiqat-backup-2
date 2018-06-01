@@ -14,28 +14,41 @@
 			background: #FFF;
 		}
 	}
-	.slider__controls {
-		background: #FFF;
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-		width: 70px;
-		z-index: 2;
-	}
-	.slider__counter {
-		@extend %bodyFont;
-	}	
 	.slider__controls__item {
 		padding: $lh 0;
 		margin: 0;
 	}
-	.slider__controls__bottom {
+	.gallery-btn {
 		position: absolute;
-		top: 50%;
-		left: 0;
+		font-family: $font--bold;
+		color: #FFF;
+		padding: $lh;
+		cursor: pointer;
+		@include respond-to(tablet) {
+			padding: $tablet-lh;
+		}
+		@include respond-to(desktop) {
+			padding: $desktop-lh;
+		}
+	}
+	.gallery-btn--close {
+		top: 0;
 		right: 0;
+	}
+	.gallery-btn--info {
+		display: none;
+		bottom: 0;
+		right: 0;
+	}
+	.gallery-btn--nav {
+		top: 50%;
 		transform: translateY(-50%);
+	}
+	.gallery-btn--nav--next {
+		right: 0;
+	}
+	.gallery-btn--nav--prev {
+		left: 0;
 	}
 	.gallery__slide__image-wrapper {
 		height: 100%;
@@ -66,7 +79,7 @@
 	}
 }
 .gallery__inner {
-	width: calc(100% - 70px);
+	width: 100%;
 	overflow: hidden;
 	height: 100%;
 	&--single {
@@ -103,42 +116,22 @@
 }
 
 .slide-details {
-	@extend %defaultFont;
+	@extend %bodyFont;
 	font-family: $font--bold;
 	position: absolute;
 	right: -100%;
-	top: 0;
 	bottom: 0;
-	padding: $lh ($char-width * 2);
+	padding: $body-lh/2;
 	background: #FFF;
 	color: #000;
 	text-align: left;
-	max-width: 50%;
+	width: 100%;
 	transition: right 200ms ease-in-out;
 	display: flex;
 	align-items: center;
-	&__title {
-		margin: $lh 0 0;
-	}
-	@include respond-to(tablet) {
-		padding: $tablet-lh ($tablet-char-width * 2);
-		&__title {
-			margin: $tablet-lh 0 0;
-		}
-	}
 	@include respond-to(desktop) {
-		padding: $desktop-lh ($desktop-char-width * 2);
-		&__title {
-			margin: $desktop-lh 0 0;
-		}
+		padding: $desktop-body-lh/2;
 	}
-}
-
-.slider-btn--showDetails {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: 0;
 }
 
 .js-details-are-visible {

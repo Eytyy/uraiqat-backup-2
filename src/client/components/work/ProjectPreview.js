@@ -28,7 +28,7 @@ const ProjectPreview = (content) => {
 					<h2 className="project-preview__project-name title">{title}</h2>
 					<div className="post-preview__meta">
 						{ year && <span className="post-preview__meta__item">{year}{' -> '}</span>}
-						{ typology.length !== 0 ? <Typology content={typology} /> : null }
+						{ typology && typology.length !== 0 ? <Typology content={typology} /> : null }
 					</div>
 				</header>
 				<ProjectPreviewThumbnails main={previewMainThumbnail} drawing={previewDrawingThumbnail} diagram={previewDiagramThumbnail} craft={previewCraftThumbnail} />	

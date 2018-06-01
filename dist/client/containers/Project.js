@@ -138,7 +138,7 @@ var Project = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'project__top' },
-					_react2.default.createElement(
+					mainSlider && _react2.default.createElement(
 						'div',
 						{ className: 'project__media' },
 						_react2.default.createElement(_Slider2.default, {
@@ -226,7 +226,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__drawings' },
-						_react2.default.createElement(_Slider2.default, {
+						drawings && _react2.default.createElement(_Slider2.default, {
 							type: 'drawings',
 							contentTitle: title,
 							sliderName: 'project-drawings-slider',

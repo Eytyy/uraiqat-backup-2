@@ -18,7 +18,7 @@ var _GalleryVideoComponent2 = _interopRequireDefault(_GalleryVideoComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Slide = function Slide(_ref) {
+var GallerySlide = function GallerySlide(_ref) {
 	var imagesQuery = _ref.imagesQuery,
 	    content = _ref.content,
 	    index = _ref.index,
@@ -26,7 +26,17 @@ var Slide = function Slide(_ref) {
 	    title = _ref.title;
 
 	var isMediaOfTypeImage = RegExp('image').test(content.file.contentType);
-	return isMediaOfTypeImage ? _react2.default.createElement(_GalleryImageComponent2.default, { title: title, index: index, classList: 'slide slide--image', imagesQuery: imagesQuery, content: content }) : _react2.default.createElement(_GalleryVideoComponent2.default, { title: title, activeSlide: activeSlide, index: index, classList: 'slide slide--video', content: content });
+	return isMediaOfTypeImage ? _react2.default.createElement(_GalleryImageComponent2.default, {
+		title: title,
+		index: index,
+		classList: 'slide slide--image',
+		imagesQuery: imagesQuery, content: content
+	}) : _react2.default.createElement(_GalleryVideoComponent2.default, {
+		title: title,
+		activeSlide: activeSlide,
+		index: index,
+		classList: 'slide slide--video', content: content
+	});
 };
 
-exports.default = Slide;
+exports.default = GallerySlide;

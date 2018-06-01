@@ -54,24 +54,27 @@ class Gallery extends Component {
 				<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
 					<div style={sliderRailStyle} className="gallery__slides">
 						{
-							slides.map((slide, index) => <GallerySlide title={title} activeSlide={activeSlide} index={index} key={slide.id} content={slide} />)
+							slides.map((slide, index) => 
+								<GallerySlide
+									title={title}
+									activeSlide={activeSlide}
+									index={index}
+									key={slide.id}
+									content={slide} 
+								/>)
 						}
 					</div>
 				</div>
-				<div className="slider__controls">
-					<div onClick={this.closeGallery} className="slider__controls__item slider-btn slider-btn--close">x</div>
-					{
-						slides.length === 1 ?
-							null:
-							<div className="slider__controls__bottom">
-								<div onClick={() => this.updateSlide('next')} className="slider__controls__item slider-btn slider-btn--next">{'>'}</div>
-								<div className="slider__controls__item slider__counter">{activeSlide + 1}{'/'}{slides.length}</div>
-								<div onClick={() => this.updateSlide('prev')} className="slider__controls__item slider-btn slider-btn--prev">{'<'}</div>
-							</div>
-					}
-					<div onClick={this.toggleDetails} className="slider__controls__item slider-btn slider-btn--showDetails">
-						{this.state.areDetailsVisible ? '->' : 'i'}
-					</div>
+				<div onClick={this.closeGallery} className="gallery-btn gallery-btn--close">x</div>
+				{
+					slides.length !== 1 && <div className="gallery-btn gallery-btn--nav gallery-btn--nav--next" onClick={() => this.updateSlide('next')}
+					>{'->'}</div>
+				}
+				{
+					slides.length !== 1 && <div onClick={() => this.updateSlide('prev')} className="gallery-btn gallery-btn--nav gallery-btn--nav--prev">{'<-'}</div>
+				}
+				<div onClick={this.toggleDetails} className="gallery-btn gallery-btn--info">
+					{this.state.areDetailsVisible ? 'x' : '?'}
 				</div>
 
 			</div>);

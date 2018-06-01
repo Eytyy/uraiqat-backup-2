@@ -82,23 +82,23 @@ body {
   font-family: "ZeitungMonoPro-Bold";
   src: url(/fonts/ZeitungMonoPro-Bold.eot?#iefix) format("embedded-opentype"), url(/fonts/ZeitungMonoPro-Bold.woff2) format("woff2"), url(/fonts/ZeitungMonoPro-Bold.woff) format("woff"), url(/fonts/ZeitungMonoPro-Bold.ttf) format("truetype"), url(/fonts/ZeitungMonoPro-Bold.svg#ZeitungMonoPro-Bold) format("svg"); }
 
-body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title, .slide-details {
+body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title {
   font-size: 14px;
   line-height: 24px; }
   @media (min-width: 768px) {
-    body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title, .slide-details {
+    body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title {
       font-size: 16px;
       line-height: 26px; } }
   @media (min-width: 1024px) {
-    body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title, .slide-details {
+    body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__title {
       font-size: 20px;
       line-height: 32px; } }
 
-.caption, .post-preview--default .post-preview__desc, .gallery .slider__counter {
+.caption, .post-preview--default .post-preview__desc, .slide-details {
   font-size: 12px;
   line-height: 18px; }
   @media (min-width: 1024px) {
-    .caption, .post-preview--default .post-preview__desc, .gallery .slider__counter {
+    .caption, .post-preview--default .post-preview__desc, .slide-details {
       font-size: 14px;
       line-height: 22px; } }
 
@@ -1810,24 +1810,36 @@ img {
           align-items: center; }
   .gallery--drawings .gallery__inner .gallery__slide__image-wrapper {
     background: #FFF; }
-  .gallery .slider__controls {
-    background: #FFF;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 70px;
-    z-index: 2; }
   .gallery .slider__controls__item {
     padding: 24px 0;
     margin: 0; }
-  .gallery .slider__controls__bottom {
+  .gallery .gallery-btn {
     position: absolute;
+    font-family: "ZeitungMonoPro-Bold";
+    color: #FFF;
+    padding: 24px;
+    cursor: pointer; }
+    @media (min-width: 768px) {
+      .gallery .gallery-btn {
+        padding: 26px; } }
+    @media (min-width: 1024px) {
+      .gallery .gallery-btn {
+        padding: 32px; } }
+  .gallery .gallery-btn--close {
+    top: 0;
+    right: 0; }
+  .gallery .gallery-btn--info {
+    display: none;
+    bottom: 0;
+    right: 0; }
+  .gallery .gallery-btn--nav {
     top: 50%;
-    left: 0;
-    right: 0;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
+  .gallery .gallery-btn--nav--next {
+    right: 0; }
+  .gallery .gallery-btn--nav--prev {
+    left: 0; }
   .gallery .gallery__slide__image-wrapper {
     height: 100%;
     display: -webkit-box;
@@ -1855,7 +1867,7 @@ img {
       padding: 32px 0; } }
 
 .gallery__inner {
-  width: calc(100% - 70px);
+  width: 100%;
   overflow: hidden;
   height: 100%; }
   .gallery__inner--single {
@@ -1898,13 +1910,12 @@ img {
   font-family: "ZeitungMonoPro-Bold";
   position: absolute;
   right: -100%;
-  top: 0;
   bottom: 0;
-  padding: 24px 20px;
+  padding: 9px;
   background: #FFF;
   color: #000;
   text-align: left;
-  max-width: 50%;
+  width: 100%;
   -webkit-transition: right 200ms ease-in-out;
   transition: right 200ms ease-in-out;
   display: -webkit-box;
@@ -1913,25 +1924,9 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
-  .slide-details__title {
-    margin: 24px 0 0; }
-  @media (min-width: 768px) {
-    .slide-details {
-      padding: 26px 22px; }
-      .slide-details__title {
-        margin: 26px 0 0; } }
   @media (min-width: 1024px) {
     .slide-details {
-      padding: 32px 28px; }
-      .slide-details__title {
-        margin: 32px 0 0; } }
-
-.slider-btn--showDetails {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  bottom: 0; }
+      padding: 11px; } }
 
 .js-details-are-visible .slide-details {
   right: 0; }

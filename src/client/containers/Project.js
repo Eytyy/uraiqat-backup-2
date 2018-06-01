@@ -55,7 +55,7 @@ class Project extends Component { //eslint-disable-line
 					<h1 className="main-title">{title}</h1>
 				</header>
 				<div className="project__top">
-					<div className="project__media">
+					{ mainSlider && <div className="project__media">
 						<Slider
 							classList="slider--main" 
 							sliderName="project-main-slider"
@@ -64,7 +64,7 @@ class Project extends Component { //eslint-disable-line
 							contentTitle={title}
 							content={mainSlider}
 						/>
-					</div> 
+					</div> }
 					<div className="project__meta">
 						{ typology && <div className="project__meta__item typology">
 							<CommaSeparatedList classList="" content={typology} />
@@ -94,7 +94,7 @@ class Project extends Component { //eslint-disable-line
 						</span>}
 					</div>
 					<div className="project__drawings">
-						<Slider
+						{drawings && <Slider
 							type="drawings"
 							contentTitle={title}
 							sliderName="project-drawings-slider"
@@ -102,7 +102,7 @@ class Project extends Component { //eslint-disable-line
 							classList="slider--small"
 							imagesQuery={'?fl=progressive&w=668'}
 							content={drawings}
-						/>
+						/>}
 					</div>
 				</div>
 				<aside className="related-content project__related">

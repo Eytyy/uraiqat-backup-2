@@ -115,48 +115,40 @@ var Gallery = function (_Component) {
 						'div',
 						{ style: sliderRailStyle, className: 'gallery__slides' },
 						slides.map(function (slide, index) {
-							return _react2.default.createElement(_GallerySlide2.default, { title: title, activeSlide: activeSlide, index: index, key: slide.id, content: slide });
+							return _react2.default.createElement(_GallerySlide2.default, {
+								title: title,
+								activeSlide: activeSlide,
+								index: index,
+								key: slide.id,
+								content: slide
+							});
 						})
 					)
 				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'slider__controls' },
-					_react2.default.createElement(
-						'div',
-						{ onClick: this.closeGallery, className: 'slider__controls__item slider-btn slider-btn--close' },
-						'x'
-					),
-					slides.length === 1 ? null : _react2.default.createElement(
-						'div',
-						{ className: 'slider__controls__bottom' },
-						_react2.default.createElement(
-							'div',
-							{ onClick: function onClick() {
-									return _this2.updateSlide('next');
-								}, className: 'slider__controls__item slider-btn slider-btn--next' },
-							'>'
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'slider__controls__item slider__counter' },
-							activeSlide + 1,
-							'/',
-							slides.length
-						),
-						_react2.default.createElement(
-							'div',
-							{ onClick: function onClick() {
-									return _this2.updateSlide('prev');
-								}, className: 'slider__controls__item slider-btn slider-btn--prev' },
-							'<'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ onClick: this.toggleDetails, className: 'slider__controls__item slider-btn slider-btn--showDetails' },
-						this.state.areDetailsVisible ? '->' : 'i'
-					)
+					{ onClick: this.closeGallery, className: 'gallery-btn gallery-btn--close' },
+					'x'
+				),
+				slides.length !== 1 && _react2.default.createElement(
+					'div',
+					{ className: 'gallery-btn gallery-btn--nav gallery-btn--nav--next', onClick: function onClick() {
+							return _this2.updateSlide('next');
+						}
+					},
+					'->'
+				),
+				slides.length !== 1 && _react2.default.createElement(
+					'div',
+					{ onClick: function onClick() {
+							return _this2.updateSlide('prev');
+						}, className: 'gallery-btn gallery-btn--nav gallery-btn--nav--prev' },
+					'<-'
+				),
+				_react2.default.createElement(
+					'div',
+					{ onClick: this.toggleDetails, className: 'gallery-btn gallery-btn--info' },
+					this.state.areDetailsVisible ? 'x' : '?'
 				)
 			);
 		}
