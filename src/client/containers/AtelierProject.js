@@ -36,11 +36,17 @@ class AtelierProject extends Component { //eslint-disable-line
 					<h1 className="main-title">{title}</h1>
 				</header>
 				<div className="atelier__top">
-					<div className="atelier__media">
-						<Slider contentTitle={title} sliderName="atelier-main-slider" classList="slider--main" sliderId={`${content.id}m`} imagesQuery={'?fl=progressive&w=1022'} content={mainSlider} />
-					</div> 
+					{ mainSlider && <div className="atelier__media">
+						<Slider
+							contentTitle={title}
+							sliderName="atelier-main-slider"
+							classList="slider--main" sliderId={`${content.id}m`}
+							imagesQuery={'?fl=progressive&w=1022'}
+							content={mainSlider}
+						/>
+					</div>}
 				</div>
-				{description && <div className="atelier__bottom">
+				{ description && <div className="atelier__bottom">
 					<div className="atelier__about">
 						<BodyText content={description} />
 					</div>
