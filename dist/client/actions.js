@@ -256,7 +256,7 @@ var recieveSearch = function recieveSearch(payload, query) {
 var fetchSearchResults = exports.fetchSearchResults = function fetchSearchResults(query) {
 	return function (dispatch, getState) {
 		var state = getState();
-		dispatch(requestSearch);
+		dispatch(requestSearch());
 		if ((0, _reducers.isSearchFetching)(state)) {
 			return Promise.resolve();
 		}

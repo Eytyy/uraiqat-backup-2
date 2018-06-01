@@ -16,11 +16,12 @@ class Search extends Component {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
 		return <section className="landing-section landing-section--featured">
-			<h1 className="search-results-title" >{ content.length === 0 ? `Couldn't find content with the keyword [${keyword}]` : `Search results for [${keyword}]`}</h1>
+			<h1 className="search-results-title" >
+				{ content.length === 0 ? `Couldn't find content with the keyword [${keyword}]` : `Search results for [${keyword}]`}
+			</h1>
 			<div className="search-results">
-				{	
-					content.map(({ sys, fields }) => <SearchPreview content={fields} type={sys.contentType.sys.id} id={sys.id} key={sys.id} />)
-				}
+				{	content.map(({ sys, fields }) =>
+					<SearchPreview content={fields} type={sys.contentType.sys.id} id={sys.id} key={sys.id} />)}
 			</div>
 		</section>;
 	}

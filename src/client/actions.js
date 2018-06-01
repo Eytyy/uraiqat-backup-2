@@ -3,9 +3,7 @@ import {
 	isPostsFetching,
 	isPostFetching,
 	isProjectsFetching,
-	isProjectFetching,
 	isAtelierProjectsFetching,
-	isAtelierProjectFetching,
 	isRelatedFetching, 
 	isSearchFetching,
 	isPracticeFetching,
@@ -208,9 +206,9 @@ const recieveSearch = (payload, query) => ({
 	query,
 });
 
-export const fetchSearchResults = (query) => (dispatch, getState) => {
+export const fetchSearchResults = query => (dispatch, getState) => {
 	const state = getState();
-	dispatch(requestSearch);
+	dispatch(requestSearch());
 	if (isSearchFetching(state)) {
 		return Promise.resolve();
 	}
