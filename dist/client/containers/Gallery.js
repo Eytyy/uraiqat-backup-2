@@ -12,15 +12,17 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _reactRouterDom = require('react-router-dom');
+
 var _reducers = require('../reducers');
-
-var _GallerySlide = require('../components/media/GallerySlide');
-
-var _GallerySlide2 = _interopRequireDefault(_GallerySlide);
 
 var _actions = require('../actions');
 
 var actions = _interopRequireWildcard(_actions);
+
+var _GallerySlide = require('../components/media/GallerySlide');
+
+var _GallerySlide2 = _interopRequireDefault(_GallerySlide);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -59,6 +61,9 @@ var Gallery = function (_Component) {
 				document.body.classList.add('js-gallery-isActive');
 			} else {
 				document.body.classList.remove('js-gallery-isActive');
+			}
+			if (nextProps.location.pathname !== this.props.location.pathname) {
+				this.closeGallery();
 			}
 		}
 	}, {
@@ -168,4 +173,4 @@ var mapStateToProps = function mapStateToProps(state) {
 	};
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(Gallery);
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(Gallery));

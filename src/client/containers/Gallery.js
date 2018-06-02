@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getGalleryContent } from '../reducers';
-import GallerySlide from '../components/media/GallerySlide';
+import { withRouter } from 'react-router-dom';
+
+import { getGalleryContent, getActiveSlide } from '../reducers';
 import * as actions from '../actions';
-import { getActiveSlide } from '../reducers';
+
+import GallerySlide from '../components/media/GallerySlide';
 
 class Gallery extends Component {
 	constructor() {
@@ -23,6 +25,9 @@ class Gallery extends Component {
 		} else {
 			document.body.classList.remove('js-gallery-isActive');
 		}
+		if (nextProps.location.pathname !== this.props.location.pathname) {
+			this.closeGallery();
+		}		
 	}
 	updateSlide(direction) {
 		const { updateActiveSlide, content } = this.props;
@@ -91,7 +96,7 @@ const mapStateToProps = state => ({
 	activeSlide: getActiveSlide(state),
 });
 
-export default connect(
+export default withRouter(connect(
 	mapStateToProps,
 	actions
-)(Gallery);
+)(Gallery));
