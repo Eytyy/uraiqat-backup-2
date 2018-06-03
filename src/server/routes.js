@@ -20,6 +20,7 @@ const router = express.Router();
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
+
 router.get('/', (req, res) => {
 	const branch = matchRoutes(routes, req.url);
 	const promises = branch.map(({route}) => {

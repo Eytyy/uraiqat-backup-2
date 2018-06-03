@@ -33,6 +33,7 @@ var VideoComponent = function (_Component) {
 		_this.stopVideo = _this.stopVideo.bind(_this);
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
 		_this.videoLoaded = _this.videoLoaded.bind(_this);
+		_this.resetVideo = _this.resetVideo.bind(_this);
 		return _this;
 	}
 
@@ -40,12 +41,14 @@ var VideoComponent = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.video.addEventListener('loadeddata', this.videoLoaded, false);
+			this.video.addEventListener('ended', this.resetVideo, false);
 		}
 	}, {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
 			this.stopVideo();
 			this.video.removeEventListener('loadeddata', this.videoLoaded);
+			this.video.removeEventListener('ended', this.resetVideo);
 		}
 	}, {
 		key: 'componentWillReceiveProps',
@@ -83,6 +86,12 @@ var VideoComponent = function (_Component) {
 			this.setState({
 				playing: false
 			});
+		}
+	}, {
+		key: 'resetVideo',
+		value: function resetVideo() {
+			this.video.currentTime = 0;
+			this.stopVideo();
 		}
 	}, {
 		key: 'render',

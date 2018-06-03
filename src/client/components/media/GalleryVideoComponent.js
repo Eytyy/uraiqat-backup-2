@@ -10,13 +10,16 @@ class VideoComponent extends Component {
 		this.stopVideo = this.stopVideo.bind(this);
 		this.toggleVideo = this.toggleVideo.bind(this);
 		this.videoLoaded = this.videoLoaded.bind(this);
+		this.resetVideo = this.resetVideo.bind(this);
 	}
 	componentDidMount() {
 		this.video.addEventListener('loadeddata', this.videoLoaded, false);
+		this.video.addEventListener('ended', this.resetVideo, false);
 	}
 	componentWillUnmount() {
 		this.stopVideo();
 		this.video.removeEventListener('loadeddata', this.videoLoaded);
+		this.video.removeEventListener('ended', this.resetVideo);
 	}
 	componentWillReceiveProps(nextProps) {
 		if ((nextProps.activeSlide !== nextProps.index) && this.state.playing) {
@@ -44,6 +47,10 @@ class VideoComponent extends Component {
 		this.setState({
 			playing: false
 		});
+	}
+	resetVideo() {
+		this.video.currentTime = 0;
+		this.stopVideo();
 	}
 	render() {
 		const { content, classList } = this.props;
