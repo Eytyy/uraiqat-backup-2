@@ -212,12 +212,14 @@ router.get('/work/:id', function (req, res) {
 		}
 		var payload = store.getState();
 		var obj = payload.projects.ById['' + req.params.id];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		var imageUrl = typeof obj.socialMediaImage === 'undefined' ? obj.previewMainThumbnail.fields.file.url : obj.socialMediaImage.fields.file.url;
+		var description = obj.aboutTheProject;
 		res.render('index', {
 			title: 'Work | ' + obj.title,
+			ogTitle: '<meta property="og:title" content="Work | ' + obj.title + '" />',
+			ogURL: '<meta property="og:url" content="' + req.url + '" />',
+			ogImg: '<meta property="og:image" content="' + imageUrl + '" />',
+			ogDesc: '<meta property="og:description" content="' + description + '" />',
 			data: payload,
 			content: content
 		});
@@ -251,6 +253,7 @@ router.get('/atelier', function (req, res) {
 			return res.redirect(302, context.url);
 		}
 		var payload = store.getState();
+
 		res.render('index', {
 			title: 'Atelier',
 			data: payload,
@@ -288,12 +291,16 @@ router.get('/atelier/:id', function (req, res) {
 		}
 		var payload = store.getState();
 		var obj = payload.atelier.ById['' + req.params.id];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+
+		var imageUrl = typeof obj.socialMediaImage === 'undefined' ? obj.previewMainThumbnail.fields.file.url : obj.socialMediaImage.fields.file.url;
+		var description = obj.description;
+
 		res.render('index', {
 			title: 'Work | ' + obj.title,
+			ogTitle: '<meta property="og:title" content="Work | ' + obj.title + '" />',
+			ogURL: '<meta property="og:url" content="' + req.url + '" />',
+			ogImg: '<meta property="og:image" content="' + imageUrl + '" />',
+			ogDesc: '<meta property="og:description" content="' + description + '" />',
 			data: payload,
 			content: content
 		});
@@ -364,12 +371,15 @@ router.get('/journal/:id', function (req, res) {
 		}
 		var payload = store.getState();
 		var obj = payload.posts.ById['' + req.params.id];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		var imageUrl = typeof obj.socialMediaImage === 'undefined' ? '' : obj.socialMediaImage.fields.file.url;
+		var description = typeof obj.socialMediaDescription === 'undefined' ? obj.previewText : obj.socialMediaDescription;
+
 		res.render('index', {
-			title: 'Post ' + obj.title,
+			title: 'Post | ' + obj.title,
+			ogTitle: '<meta property="og:title" content="Work | ' + obj.title + '" />',
+			ogURL: '<meta property="og:url" content="' + req.url + '" />',
+			ogImg: '<meta property="og:image" content="' + imageUrl + '" />',
+			ogDesc: '<meta property="og:description" content="' + description + '" />',
 			data: payload,
 			content: content
 		});
@@ -404,13 +414,14 @@ router.get('/team/:id', function (req, res) {
 			return res.redirect(302, context.url);
 		}
 		var payload = store.getState();
-		var obj = payload.posts.ById['' + req.params.id];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		var obj = payload.practice.TeamByID['' + req.params.id];
+		var image = obj.profileImagevideo.fields.file.url;
 		res.render('index', {
-			title: 'Team Member | ',
+			title: 'Team Member | ' + obj.name,
+			ogURL: '<meta property="og:url" content="' + req.url + '" />',
+			ogTitle: '<meta property="og:title" content="Team | ' + obj.name + '" />',
+			ogImg: '<meta property="og:image" content="' + image + '" />',
+			ogDesc: '<meta property="og:description" content="' + obj.about + '" />',
 			data: payload,
 			content: content
 		});

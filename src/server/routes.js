@@ -168,12 +168,16 @@ router.get('/work/:id', (req, res) => {
 		}
 		const payload = store.getState();
 		const obj = payload.projects.ById[`${req.params.id}`];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		const imageUrl = typeof obj.socialMediaImage === 'undefined' ?
+			obj.previewMainThumbnail.fields.file.url :
+			obj.socialMediaImage.fields.file.url;
+		const description = obj.aboutTheProject;
 		res.render('index', {
 			title: `Work | ${obj.title}`,
+			ogTitle:`<meta property="og:title" content="Work | ${obj.title}" />`,
+			ogURL: `<meta property="og:url" content="${req.url}" />`,
+			ogImg: `<meta property="og:image" content="${imageUrl}" />`,
+			ogDesc: `<meta property="og:description" content="${description}" />`,
 			data: payload,
 			content
 		});
@@ -203,6 +207,7 @@ router.get('/atelier', (req, res) => {
 			return res.redirect(302, context.url);
 		}
 		let payload = store.getState();
+
 		res.render('index', {
 			title: 'Atelier',
 			data: payload,
@@ -235,20 +240,23 @@ router.get('/atelier/:id', (req, res) => {
 		}
 		const payload = store.getState();
 		const obj = payload.atelier.ById[`${req.params.id}`];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+
+		const imageUrl = typeof obj.socialMediaImage === 'undefined' ?
+			obj.previewMainThumbnail.fields.file.url :
+			obj.socialMediaImage.fields.file.url;
+		const description = obj.description;
+
 		res.render('index', {
 			title: `Work | ${obj.title}`,
+			ogTitle:`<meta property="og:title" content="Work | ${obj.title}" />`,
+			ogURL: `<meta property="og:url" content="${req.url}" />`,
+			ogImg: `<meta property="og:image" content="${imageUrl}" />`,
+			ogDesc: `<meta property="og:description" content="${description}" />`,
 			data: payload,
 			content
 		});
 	});
 });
-
-
-
 
 router.get('/contact', (req, res) => {
 	const branch = matchRoutes(routes, req.url);
@@ -305,12 +313,19 @@ router.get('/journal/:id', (req, res) => {
 		}
 		const payload = store.getState();
 		const obj = payload.posts.ById[`${req.params.id}`];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		const imageUrl = typeof obj.socialMediaImage === 'undefined' ?
+			'' :
+			obj.socialMediaImage.fields.file.url;
+		const description = typeof obj.socialMediaDescription === 'undefined' ?
+			obj.previewText :
+			obj.socialMediaDescription;
+
 		res.render('index', {
-			title: `Post ${obj.title}`,
+			title: `Post | ${obj.title}`,
+			ogTitle:`<meta property="og:title" content="Work | ${obj.title}" />`,
+			ogURL: `<meta property="og:url" content="${req.url}" />`,
+			ogImg: `<meta property="og:image" content="${imageUrl}" />`,
+			ogDesc: `<meta property="og:description" content="${description}" />`,
 			data: payload,
 			content
 		});
@@ -340,13 +355,14 @@ router.get('/team/:id', (req, res) => {
 			return res.redirect(302, context.url);
 		}
 		const payload = store.getState();
-		const obj = payload.posts.ById[`${req.params.id}`];
-		// ogURL: `<meta property="og:url" content="${req.url}" />`,
-		// ogTitle:`<meta property="og:title" content="Post | ${obj.title}" />`,
-		// ogDesc: `<meta property="og:description" content="${obj.keyFeatures[0]}" />`,
-		// ogImg: `<meta property="og:image" content="${obj.module[0].fields.images[0].fields.file.url}" />`,
+		const obj = payload.practice.TeamByID[`${req.params.id}`];
+		const image = obj.profileImagevideo.fields.file.url;
 		res.render('index', {
-			title: `Team Member | `,
+			title: `Team Member | ${obj.name}`,
+			ogURL: `<meta property="og:url" content="${req.url}" />`,
+			ogTitle:`<meta property="og:title" content="Team | ${obj.name}" />`,
+			ogImg: `<meta property="og:image" content="${image}" />`,
+			ogDesc: `<meta property="og:description" content="${obj.about}" />`,
 			data: payload,
 			content
 		});
@@ -388,7 +404,5 @@ router.get('/careers/:id', (req, res) => {
 		});
 	});
 });
-
-
 
 module.exports = router;
