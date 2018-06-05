@@ -43,10 +43,10 @@ export const getPost = (state, id) => {
 export const isProjectsFetching = state => fromWork.getIsFetching(state.projects);
 
 export const getProjects = state => {
-	const featuredContent = fromWork.getAll(state.projects).featuredContent
-		.map(id => fromWork.getProject(state.projects, id));
-	const mainContent = fromWork.getAll(state.projects).mainContent
-		.map(id => fromWork.getProject(state.projects, id));
+	const featuredContent = fromWork.getAll(state.projects).featuredContent ? 
+		fromWork.getAll(state.projects).featuredContent.map(id => fromWork.getProject(state.projects, id)) : [];
+	const mainContent = fromWork.getAll(state.projects).mainContent ?
+		fromWork.getAll(state.projects).mainContent.map(id => fromWork.getProject(state.projects, id)) : [];
 	return {
 		featuredContent,
 		mainContent

@@ -26,12 +26,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Landing = function Landing(_ref) {
 	var page = _ref.page,
-	    content = _ref.content;
+	    content = _ref.content,
+	    intro = _ref.intro;
 
 	var classList = 'landing-page landing-page--' + page + ' main-section';
 	var mainContent = content.mainContent,
-	    featuredContent = content.featuredContent,
-	    intro = content.intro;
+	    featuredContent = content.featuredContent;
 
 	return _react2.default.createElement(
 		'section',
@@ -49,9 +49,5 @@ var Landing = function Landing(_ref) {
 		mainContent && _react2.default.createElement(_LandingChrono2.default, { page: page, content: mainContent })
 	);
 };
-
-{/* <div className="atelier-landing__top__media">
- { intro.mainMedia && <MediaComponent media={intro.mainMedia} /> }
- </div> */}
 
 exports.default = Landing;

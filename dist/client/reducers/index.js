@@ -84,12 +84,12 @@ var isProjectsFetching = exports.isProjectsFetching = function isProjectsFetchin
 };
 
 var getProjects = exports.getProjects = function getProjects(state) {
-	var featuredContent = fromWork.getAll(state.projects).featuredContent.map(function (id) {
+	var featuredContent = fromWork.getAll(state.projects).featuredContent ? fromWork.getAll(state.projects).featuredContent.map(function (id) {
 		return fromWork.getProject(state.projects, id);
-	});
-	var mainContent = fromWork.getAll(state.projects).mainContent.map(function (id) {
+	}) : [];
+	var mainContent = fromWork.getAll(state.projects).mainContent ? fromWork.getAll(state.projects).mainContent.map(function (id) {
 		return fromWork.getProject(state.projects, id);
-	});
+	}) : [];
 	return {
 		featuredContent: featuredContent,
 		mainContent: mainContent

@@ -4,9 +4,9 @@ import LandingChrono from './LandingChrono';
 import BodyText from'../BodyText';
 // import MediaComponent from'../media/MediaComponent';
 
-const Landing = ({ page, content }) => {
+const Landing = ({ page, content, intro }) => {
 	const classList = `landing-page landing-page--${page} main-section`;
-	const { mainContent, featuredContent, intro } = content;
+	const { mainContent, featuredContent } = content;
 	return ( 
 		<section className={classList}>
 			{
@@ -23,9 +23,5 @@ const Landing = ({ page, content }) => {
 		</section>
 	);
 };
-
-{/* <div className="atelier-landing__top__media">
-{ intro.mainMedia && <MediaComponent media={intro.mainMedia} /> }
-</div> */}
 
 export default Landing;

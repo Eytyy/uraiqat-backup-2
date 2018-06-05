@@ -26,14 +26,14 @@ var BySection = function BySection() {
 			});
 		case 'RECIEVE_PROJECTS':
 			//eslint-disable-line
-			var main = action.response[0].fields.mainContent.map(function (_ref) {
+			var main = action.response[0].fields.mainContent ? action.response[0].fields.mainContent.map(function (_ref) {
 				var sys = _ref.sys;
 				return sys.id;
-			});
-			var featured = action.response[0].fields.featuredContent.map(function (_ref2) {
+			}) : [];
+			var featured = action.response[0].fields.featuredContent ? action.response[0].fields.featuredContent.map(function (_ref2) {
 				var sys = _ref2.sys;
 				return sys.id;
-			});
+			}) : [];
 			return _extends({}, state, {
 				isFetching: false,
 				main: main,
@@ -59,13 +59,15 @@ var All = function All() {
 			});
 		case 'RECIEVE_PROJECTS':
 			//eslint-disable-line
-			var ids = action.response[0].fields.mainContent.map(function (_ref3) {
+			var featured = action.response[0].fields.featuredContent ? action.response[0].fields.featuredContent.map(function (_ref3) {
 				var sys = _ref3.sys;
 				return sys.id;
-			}).concat(action.response[0].fields.featuredContent.map(function (_ref4) {
+			}) : [];
+			var mainContent = action.response[0].fields.mainContent ? action.response[0].fields.mainContent.map(function (_ref4) {
 				var sys = _ref4.sys;
 				return sys.id;
-			}));
+			}) : [];
+			var ids = mainContent.concat(featured);
 			return _extends({}, state, {
 				content: ids,
 				isFetching: false,
@@ -102,22 +104,27 @@ var ById = function ById() {
 		case 'RECIEVE_PROJECTS':
 			//eslint-disable-line
 			var ids = {};
-			action.response[0].fields.mainContent.forEach(function (_ref5) {
-				var fields = _ref5.fields,
-				    sys = _ref5.sys;
+			if (typeof action.response[0].fields.mainContent !== 'undefined') {
+				action.response[0].fields.mainContent.forEach(function (_ref5) {
+					var fields = _ref5.fields,
+					    sys = _ref5.sys;
 
-				ids[sys.id] = _extends({
-					id: sys.id
-				}, fields);
-			});
-			action.response[0].fields.featuredContent.forEach(function (_ref6) {
-				var fields = _ref6.fields,
-				    sys = _ref6.sys;
+					ids[sys.id] = _extends({
+						id: sys.id
+					}, fields);
+				});
+			}
+			if (typeof action.response[0].fields.featuredContent !== 'undefined') {
+				action.response[0].fields.featuredContent.forEach(function (_ref6) {
+					var fields = _ref6.fields,
+					    sys = _ref6.sys;
 
-				ids[sys.id] = _extends({
-					id: sys.id
-				}, fields);
-			});
+					ids[sys.id] = _extends({
+						id: sys.id
+					}, fields);
+				});
+			}
+
 			return _extends({}, state, ids, {
 				isFetching: false
 			});

@@ -12,8 +12,10 @@ const BySection = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_PROJECTS': //eslint-disable-line
-		const main = action.response[0].fields.mainContent.map(({ sys }) => sys.id);
-		const featured = action.response[0].fields.featuredContent.map(({ sys }) => sys.id);
+		const main = action.response[0].fields.mainContent ?
+			action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
+		const featured = action.response[0].fields.featuredContent ?
+			action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
 		return {
 			...state,
 			isFetching: false,
@@ -37,8 +39,11 @@ const All = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_PROJECTS': //eslint-disable-line
-		const ids = action.response[0].fields.mainContent.map(({ sys }) => sys.id)
-			.concat(action.response[0].fields.featuredContent.map(({ sys }) => sys.id));
+		const featured = action.response[0].fields.featuredContent ?
+			action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
+		const mainContent = action.response[0].fields.mainContent ? 
+			action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
+		const ids = mainContent.concat(featured);
 		return {
 			...state,
 			content: ids,
@@ -73,18 +78,23 @@ const ById = (state = {
 
 	case 'RECIEVE_PROJECTS': //eslint-disable-line
 		const ids = {};
-		action.response[0].fields.mainContent.forEach(({ fields, sys }) => {
-			ids[sys.id] = {
-				id: sys.id,
-				...fields,
-			};
-		});
-		action.response[0].fields.featuredContent.forEach(({ fields, sys }) => {
-			ids[sys.id] = {
-				id: sys.id,
-				...fields,
-			};
-		});
+		if (typeof action.response[0].fields.mainContent !== 'undefined') {
+			action.response[0].fields.mainContent.forEach(({ fields, sys }) => {
+				ids[sys.id] = {
+					id: sys.id,
+					...fields,
+				};
+			});
+		}
+		if (typeof action.response[0].fields.featuredContent !== 'undefined') {
+			action.response[0].fields.featuredContent.forEach(({ fields, sys }) => {
+				ids[sys.id] = {
+					id: sys.id,
+					...fields,
+				};
+			});
+		}
+
 		return {
 			...state,
 			...ids,
