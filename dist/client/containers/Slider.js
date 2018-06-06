@@ -18,6 +18,10 @@ var actions = _interopRequireWildcard(_actions);
 
 var _reducers = require('../reducers');
 
+var _reactHammerjs = require('react-hammerjs');
+
+var _reactHammerjs2 = _interopRequireDefault(_reactHammerjs);
+
 var _Slide = require('../components/media/Slide');
 
 var _Slide2 = _interopRequireDefault(_Slide);
@@ -45,6 +49,7 @@ var Slider = function (_Component) {
 		};
 		_this.onSlideClick = _this.onSlideClick.bind(_this);
 		_this.updateSlide = _this.updateSlide.bind(_this);
+		_this.handleSwipe = _this.handleSwipe.bind(_this);
 		return _this;
 	}
 
@@ -97,6 +102,17 @@ var Slider = function (_Component) {
 			toggleGallery(sliderId, openGallery, type);
 		}
 	}, {
+		key: 'handleSwipe',
+		value: function handleSwipe(event) {
+			//eslint-disable-line
+			// show previous
+			if (event.deltaX > 0) {
+				this.updateSlide('prev');
+			} else {
+				this.updateSlide('next');
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
@@ -109,57 +125,61 @@ var Slider = function (_Component) {
 			    sliderName = _props4.sliderName,
 			    type = _props4.type;
 
-			var sliderRailStyle = {
-				transform: 'translateX(-' + activeSlideIndex * 100 + '%)'
-			};
+			var sliderRailStyle = { transform: 'translateX(-' + activeSlideIndex * 100 + '%)' };
+
 			// return null if there are no slides
 			if (content.length === 0) {
 				return null;
 			}
+
 			// otherwise render the slider
 			return _react2.default.createElement(
-				'div',
-				{ ref: function ref(el) {
-						_this2.slider = el;
-					},
-					className: 'slider ' + (content.length > 1 ? 'multiple' : 'single') + ' ' + classList + ' ' + (type === 'drawings' ? 'slider--drawings' : 'slider--default')
-				},
+				_reactHammerjs2.default,
+				{ onSwipe: this.handleSwipe, direction: 'DIRECTION_HORIZONTAL' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'slider__inner' },
+					{ ref: function ref(el) {
+							_this2.slider = el;
+						},
+						className: 'slider ' + (content.length > 1 ? 'multiple' : 'single') + ' ' + classList + ' ' + (type === 'drawings' ? 'slider--drawings' : 'slider--default')
+					},
 					_react2.default.createElement(
 						'div',
-						{ style: sliderRailStyle, className: 'slider__slides' },
-						content.map(function (_ref2, index) {
-							var fields = _ref2.fields,
-							    sys = _ref2.sys;
-							return _react2.default.createElement(_Slide2.default, { sliderName: sliderName, index: index, active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
-						})
-					)
-				),
-				content.length === 1 ? null : _react2.default.createElement(
-					'div',
-					{ className: 'slider__controls' },
-					_react2.default.createElement(
-						'div',
-						{ onClick: function onClick() {
-								return _this2.updateSlide('next');
-							}, className: 'slider__controls__item slider-btn slider-btn--next' },
-						'>'
+						{ className: 'slider__inner' },
+						_react2.default.createElement(
+							'div',
+							{ style: sliderRailStyle, className: 'slider__slides' },
+							content.map(function (_ref2, index) {
+								var fields = _ref2.fields,
+								    sys = _ref2.sys;
+								return _react2.default.createElement(_Slide2.default, { sliderName: sliderName, index: index, active: activeSlideIndex, onClick: _this2.onSlideClick, key: sys.id, imagesQuery: imagesQuery, content: fields });
+							})
+						)
 					),
-					_react2.default.createElement(
+					content.length === 1 ? null : _react2.default.createElement(
 						'div',
-						{ className: 'slider__controls__item slider__counter' },
-						activeSlideIndex + 1,
-						'/',
-						content.length
-					),
-					_react2.default.createElement(
-						'div',
-						{ onClick: function onClick() {
-								return _this2.updateSlide('prev');
-							}, className: 'slider__controls__item slider-btn slider-btn--prev' },
-						'<'
+						{ className: 'slider__controls' },
+						_react2.default.createElement(
+							'div',
+							{ onClick: function onClick() {
+									return _this2.updateSlide('next');
+								}, className: 'slider__controls__item slider-btn slider-btn--next' },
+							'>'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'slider__controls__item slider__counter' },
+							activeSlideIndex + 1,
+							'/',
+							content.length
+						),
+						_react2.default.createElement(
+							'div',
+							{ onClick: function onClick() {
+									return _this2.updateSlide('prev');
+								}, className: 'slider__controls__item slider-btn slider-btn--prev' },
+							'<'
+						)
 					)
 				)
 			);

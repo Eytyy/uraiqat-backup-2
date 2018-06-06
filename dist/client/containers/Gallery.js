@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactHammerjs = require('react-hammerjs');
+
+var _reactHammerjs2 = _interopRequireDefault(_reactHammerjs);
+
 var _reactRedux = require('react-redux');
 
 var _reactRouterDom = require('react-router-dom');
@@ -45,6 +49,8 @@ var Gallery = function (_Component) {
 		_this.updateSlide = _this.updateSlide.bind(_this);
 		_this.closeGallery = _this.closeGallery.bind(_this);
 		_this.toggleDetails = _this.toggleDetails.bind(_this);
+		_this.handleSwipe = _this.handleSwipe.bind(_this);
+
 		_this.state = {
 			areDetailsVisible: false
 		};
@@ -92,6 +98,17 @@ var Gallery = function (_Component) {
 			});
 		}
 	}, {
+		key: 'handleSwipe',
+		value: function handleSwipe(event) {
+			//eslint-disable-line
+			// show previous
+			if (event.deltaX > 0) {
+				this.updateSlide('prev');
+			} else {
+				this.updateSlide('next');
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
@@ -111,49 +128,53 @@ var Gallery = function (_Component) {
 			};
 
 			return _react2.default.createElement(
-				'div',
-				{ className: 'gallery ' + (this.state.areDetailsVisible ? 'js-details-are-visible' : '') + ' ' + (type === 'drawings' ? 'gallery--drawings' : 'gallery--default') },
+				_reactHammerjs2.default,
+				{ onSwipe: this.handleSwipe, direction: 'DIRECTION_HORIZONTAL' },
 				_react2.default.createElement(
 					'div',
-					{ className: '' + (slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner') },
+					{ className: 'gallery ' + (this.state.areDetailsVisible ? 'js-details-are-visible' : '') + ' ' + (type === 'drawings' ? 'gallery--drawings' : 'gallery--default') },
 					_react2.default.createElement(
 						'div',
-						{ style: sliderRailStyle, className: 'gallery__slides' },
-						slides.map(function (slide, index) {
-							return _react2.default.createElement(_GallerySlide2.default, {
-								title: title,
-								activeSlide: activeSlide,
-								index: index,
-								key: slide.id,
-								content: slide
-							});
-						})
+						{ className: '' + (slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner') },
+						_react2.default.createElement(
+							'div',
+							{ style: sliderRailStyle, className: 'gallery__slides' },
+							slides.map(function (slide, index) {
+								return _react2.default.createElement(_GallerySlide2.default, {
+									title: title,
+									activeSlide: activeSlide,
+									index: index,
+									key: slide.id,
+									content: slide
+								});
+							})
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ onClick: this.closeGallery, className: 'gallery-btn gallery-btn--close' },
+						'x'
+					),
+					slides.length !== 1 && _react2.default.createElement(
+						'div',
+						{ className: 'gallery-btn gallery-btn--nav gallery-btn--nav--next', onClick: function onClick() {
+								return _this2.updateSlide('next');
+							}
+						},
+						'->'
+					),
+					slides.length !== 1 && _react2.default.createElement(
+						'div',
+						{ onClick: function onClick() {
+								return _this2.updateSlide('prev');
+							}, className: 'gallery-btn gallery-btn--nav gallery-btn--nav--prev' },
+						'<-'
+					),
+					_react2.default.createElement(
+						'div',
+						{ onClick: this.toggleDetails, className: 'gallery-btn gallery-btn--info' },
+						this.state.areDetailsVisible ? 'x' : '?'
 					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ onClick: this.closeGallery, className: 'gallery-btn gallery-btn--close' },
-					'x'
-				),
-				slides.length !== 1 && _react2.default.createElement(
-					'div',
-					{ className: 'gallery-btn gallery-btn--nav gallery-btn--nav--next', onClick: function onClick() {
-							return _this2.updateSlide('next');
-						}
-					},
-					'->'
-				),
-				slides.length !== 1 && _react2.default.createElement(
-					'div',
-					{ onClick: function onClick() {
-							return _this2.updateSlide('prev');
-						}, className: 'gallery-btn gallery-btn--nav gallery-btn--nav--prev' },
-					'<-'
-				),
-				_react2.default.createElement(
-					'div',
-					{ onClick: this.toggleDetails, className: 'gallery-btn gallery-btn--info' },
-					this.state.areDetailsVisible ? 'x' : '?'
 				)
 			);
 		}

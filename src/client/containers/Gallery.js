@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Hammer from 'react-hammerjs';
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -13,6 +15,8 @@ class Gallery extends Component {
 		this.updateSlide = this.updateSlide.bind(this);
 		this.closeGallery = this.closeGallery.bind(this);
 		this.toggleDetails = this.toggleDetails.bind(this);
+		this.handleSwipe = this.handleSwipe.bind(this);
+		
 		this.state = {
 			areDetailsVisible: false,
 		};
@@ -44,6 +48,14 @@ class Gallery extends Component {
 			areDetailsVisible: !this.state.areDetailsVisible,
 		});
 	}
+	handleSwipe(event) { //eslint-disable-line
+		// show previous
+		if (event.deltaX > 0) {
+			this.updateSlide('prev');
+		} else {
+			this.updateSlide('next');
+		}
+	}
 	render() {
 		const { content } = this.props;
 		const { slides, isActive, activeSlide, title, type } = content;
@@ -55,34 +67,36 @@ class Gallery extends Component {
 		};
 		
 		return ( 
-			<div className={`gallery ${this.state.areDetailsVisible ? 'js-details-are-visible' : ''} ${type === 'drawings' ? 'gallery--drawings' : 'gallery--default' }`}>
-				<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
-					<div style={sliderRailStyle} className="gallery__slides">
-						{
-							slides.map((slide, index) => 
-								<GallerySlide
-									title={title}
-									activeSlide={activeSlide}
-									index={index}
-									key={slide.id}
-									content={slide} 
-								/>)
-						}
+			<Hammer onSwipe={this.handleSwipe} direction="DIRECTION_HORIZONTAL">
+				<div className={`gallery ${this.state.areDetailsVisible ? 'js-details-are-visible' : ''} ${type === 'drawings' ? 'gallery--drawings' : 'gallery--default' }`}>
+					<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
+						<div style={sliderRailStyle} className="gallery__slides">
+							{
+								slides.map((slide, index) => 
+									<GallerySlide
+										title={title}
+										activeSlide={activeSlide}
+										index={index}
+										key={slide.id}
+										content={slide} 
+									/>)
+							}
+						</div>
 					</div>
-				</div>
-				<div onClick={this.closeGallery} className="gallery-btn gallery-btn--close">x</div>
-				{
-					slides.length !== 1 && <div className="gallery-btn gallery-btn--nav gallery-btn--nav--next" onClick={() => this.updateSlide('next')}
-					>{'->'}</div>
-				}
-				{
-					slides.length !== 1 && <div onClick={() => this.updateSlide('prev')} className="gallery-btn gallery-btn--nav gallery-btn--nav--prev">{'<-'}</div>
-				}
-				<div onClick={this.toggleDetails} className="gallery-btn gallery-btn--info">
-					{this.state.areDetailsVisible ? 'x' : '?'}
-				</div>
+					<div onClick={this.closeGallery} className="gallery-btn gallery-btn--close">x</div>
+					{
+						slides.length !== 1 && <div className="gallery-btn gallery-btn--nav gallery-btn--nav--next" onClick={() => this.updateSlide('next')}
+						>{'->'}</div>
+					}
+					{
+						slides.length !== 1 && <div onClick={() => this.updateSlide('prev')} className="gallery-btn gallery-btn--nav gallery-btn--nav--prev">{'<-'}</div>
+					}
+					<div onClick={this.toggleDetails} className="gallery-btn gallery-btn--info">
+						{this.state.areDetailsVisible ? 'x' : '?'}
+					</div>
 
-			</div>);
+				</div>
+			</Hammer>);
 	}
 }
 
