@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = env => {
@@ -48,7 +49,10 @@ module.exports = env => {
 				'process.env': {
 					'NODE_ENV': env.prod ? JSON.stringify('production') : JSON.stringify('development')
 				}
-			})
+			}),
+			new CopyWebpackPlugin([
+				{ from: 'icons', to: 'icons' }
+			])
 		]
-	}
+	};
 };
