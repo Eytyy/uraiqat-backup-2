@@ -29,6 +29,9 @@
 	@include respond-to(desktop-1440) {
 		margin-bottom: 0;
 	}
+	@include respond-to(desktop-1600) {
+		width: 1036px;
+	}	
 }
 
 .project__meta {
@@ -190,6 +193,11 @@
 	@include respond-to(desktop-1440) {
 		.slide__image {
 			height: 512px;
+		}
+	}
+	@include respond-to(desktop-1600) {
+		.slide__image {
+			height: 544px;
 		}
 	}
 }

@@ -1141,6 +1141,9 @@ img {
   @media (min-width: 1440px) {
     .project__media {
       margin-bottom: 0; } }
+  @media (min-width: 1600px) {
+    .project__media {
+      width: 1036px; } }
 
 .project__meta .label {
   font-family: "ZeitungMonoPro-Bold"; }
@@ -1276,6 +1279,9 @@ img {
   @media (min-width: 1440px) {
     .slider--main .slide__image {
       height: 512px; } }
+  @media (min-width: 1600px) {
+    .slider--main .slide__image {
+      height: 544px; } }
 
 .slider--small.single .slider__inner {
   width: 100%; }
