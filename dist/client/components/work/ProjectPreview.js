@@ -81,7 +81,12 @@ var ProjectPreview = function ProjectPreview(content) {
 					typology && typology.length !== 0 ? _react2.default.createElement(Typology, { content: typology }) : null
 				)
 			),
-			_react2.default.createElement(_ProjectPreviewThumbnails2.default, { main: previewMainThumbnail, drawing: previewDrawingThumbnail, diagram: previewDiagramThumbnail, craft: previewCraftThumbnail })
+			_react2.default.createElement(_ProjectPreviewThumbnails2.default, {
+				main: previewMainThumbnail,
+				drawing: previewDrawingThumbnail,
+				diagram: previewDiagramThumbnail,
+				craft: previewCraftThumbnail
+			})
 		)
 	);
 };

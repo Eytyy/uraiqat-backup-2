@@ -31,7 +31,12 @@ const ProjectPreview = (content) => {
 						{ typology && typology.length !== 0 ? <Typology content={typology} /> : null }
 					</div>
 				</header>
-				<ProjectPreviewThumbnails main={previewMainThumbnail} drawing={previewDrawingThumbnail} diagram={previewDiagramThumbnail} craft={previewCraftThumbnail} />	
+				<ProjectPreviewThumbnails
+					main={previewMainThumbnail}
+					drawing={previewDrawingThumbnail}
+					diagram={previewDiagramThumbnail}
+					craft={previewCraftThumbnail} 
+				/>	
 			</Link>
 		</article>
 	);

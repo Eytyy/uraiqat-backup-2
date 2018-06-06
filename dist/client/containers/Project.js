@@ -26,9 +26,9 @@ var _actions = require('../actions');
 
 var _reducers = require('../reducers');
 
-var _CommaSpearatedList = require('../components/CommaSpearatedList');
+var _CommaSeparatedList = require('../components/CommaSeparatedList');
 
-var _CommaSpearatedList2 = _interopRequireDefault(_CommaSpearatedList);
+var _CommaSeparatedList2 = _interopRequireDefault(_CommaSeparatedList);
 
 var _BodyText = require('../components/BodyText');
 
@@ -153,11 +153,7 @@ var Project = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'project__meta' },
-						typology && _react2.default.createElement(
-							'div',
-							{ className: 'project__meta__item typology' },
-							_react2.default.createElement(_CommaSpearatedList2.default, { classList: '', content: typology })
-						),
+						typology && _react2.default.createElement(_CommaSeparatedList2.default, { classList: '', content: typology }),
 						location && _react2.default.createElement(
 							'div',
 							{ className: 'project__meta__item' },

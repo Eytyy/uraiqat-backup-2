@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { fetchProjects } from '../actions';
 import { getProject, isProjectsFetching, getNextPrev } from '../reducers';
 
-import CommaSeparatedList from '../components/CommaSpearatedList';
+import CommaSeparatedList from '../components/CommaSeparatedList';
 import BodyText from '../components/BodyText';
 
 import Slider from './Slider';
@@ -66,9 +66,7 @@ class Project extends Component { //eslint-disable-line
 						/>
 					</div> }
 					<div className="project__meta">
-						{ typology && <div className="project__meta__item typology">
-							<CommaSeparatedList classList="" content={typology} />
-						</div> }
+						{ typology && <CommaSeparatedList classList="" content={typology} />}
 						{ location && <div className="project__meta__item">
 							<span className="label">Location: </span>{location}
 						</div>}
