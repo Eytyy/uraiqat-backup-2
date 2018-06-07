@@ -22,7 +22,7 @@ var InnerNav = function InnerNav(_ref) {
 		{ className: 'inner__nav' },
 		prev && _react2.default.createElement(
 			_reactRouterDom.Link,
-			{ to: '/' + type + '/' + prev.id, className: 'inner__nav__item inner__nav__item--next link' },
+			{ to: '/' + type + '/' + prev.id, className: 'inner__nav__item inner__nav__item--prev link' },
 			'<-',
 			'Prev Project'
 		),

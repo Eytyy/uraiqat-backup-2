@@ -5,7 +5,7 @@ const InnerNav = ({ prev, next, type}) => {
 	return (
 		<aside className="inner__nav">
 			{ prev &&
-				<Link to={`/${type}/${prev.id}`} className="inner__nav__item inner__nav__item--next link" >
+				<Link to={`/${type}/${prev.id}`} className="inner__nav__item inner__nav__item--prev link" >
 					{'<-'}Prev Project
 				</Link>
 			}

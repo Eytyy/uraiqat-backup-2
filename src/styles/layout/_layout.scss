@@ -138,15 +138,11 @@ body {
 .inner__nav {
 	@extend %clearfix;
 	text-align: right;
-	margin-top: $lh * 2;
 	&__item {
 		float: right;
 		clear: right;
-	}
-	@include respond-to(tablet) {
-		margin-top: $tablet-lh * 2;
-	}
-	@include respond-to(desktop) {
-		margin-top: $desktop-lh * 2;
+		&--prev {
+			float: left;
+		}
 	}
 }

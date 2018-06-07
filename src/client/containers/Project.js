@@ -103,11 +103,10 @@ class Project extends Component { //eslint-disable-line
 						/>}
 					</div>
 				</div>
-				<InnerNav {...innerNavContent} type="work" />
 				<aside className="related-content project__related">
-					<h2 className="related-content__title" >Related</h2>
 					<RelatedPosts id={match.params.id} />
 				</aside>
+				<InnerNav {...innerNavContent} type="work" />
 			</article>
 		);
 	}

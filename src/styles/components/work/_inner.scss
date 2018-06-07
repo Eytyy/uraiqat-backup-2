@@ -4,6 +4,16 @@
 	@extend %clearfix;
 }
 
+.project__bottom {
+	margin-bottom: $lh * 2;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+	}
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh * 2;
+	}
+}
+
 .project__top {
 	margin-bottom: $lh;
 	@include respond-to(tablet) {
@@ -101,7 +111,7 @@
 		}
 	}
 	@include respond-to(desktop-1440) {
-		width: 686px;
+		width: 798px;
 	}
 }
 
