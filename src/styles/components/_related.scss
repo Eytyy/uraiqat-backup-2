@@ -1,5 +1,12 @@
+
+	@include respond-to(desktop-1600) {
+		padding-left: $desktop-1600-block-gutter;
+	}
 .related-content {
-	margin-top: $lh * 3;
+	.related-content__title {
+		flex: 0 0 100%;
+		margin-bottom: $lh;
+	}
 	.related-item {
 		&--project {
 			flex: 0 0 714px;
@@ -12,7 +19,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin-left: $tablet-char-width * -6;
-		margin-top: $tablet-lh * 3;
+		.related-content__title {
+			padding-left: $tablet-block-gutter;
+			margin-bottom: $tablet-lh;
+		}
 		.related-item {
 			&--project {
 				flex: 0 0 100%;
@@ -24,7 +34,10 @@
 	}
 	@include respond-to(desktop) {
 		margin-left: $desktop-char-width * -4;
-		margin-top: $desktop-lh * 3;
+		.related-content__title {
+			padding-left: $desktop-block-gutter;
+			margin-bottom: $desktop-lh;
+		}
 		.related-item {
 			&--project {
 				flex: 0 0 602px;
@@ -43,6 +56,14 @@
 	}
 	@include respond-to(desktop-1440) {
 		margin-left: $desktop-char-width * -6;
+		.related-content__title {
+			padding-left: $desktop-1440-block-gutter;
+		}
+	}
+	@include respond-to(desktop-1600) {
+		.related-content__title {
+			padding-left: $desktop-1600-block-gutter;
+		}		
 	}
 }
 

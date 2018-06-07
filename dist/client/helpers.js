@@ -567,7 +567,7 @@ var config = {
 			h: 208
 		},
 		'project-main-slider': {
-			w: 833,
+			w: 770,
 			h: 512
 		},
 		'project-drawings-slider': {

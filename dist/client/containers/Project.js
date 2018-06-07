@@ -233,12 +233,17 @@ var Project = function (_Component) {
 						})
 					)
 				),
+				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' })),
 				_react2.default.createElement(
 					'aside',
 					{ className: 'related-content project__related' },
+					_react2.default.createElement(
+						'h2',
+						{ className: 'related-content__title' },
+						'Related'
+					),
 					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
-				),
-				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' }))
+				)
 			);
 		}
 	}], [{
