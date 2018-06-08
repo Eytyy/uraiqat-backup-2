@@ -25,10 +25,6 @@
 	z-index: 10;
 }
 
-.landing-section--main .post-preview:last-child {
-	margin-bottom: 0;
-}
-
 $video-post--desktop: 532px;
 $video-post--desktop-1440: 630px;
 $video-post--desktop-1600: 700px;
@@ -158,7 +154,7 @@ $video-post-height--desktop-1600: 416px;
 // orientation specific styles
 
 // Landscape
-$default-post--tablet: 324px;
+$default-post--tablet: 322px;
 $default-post--desktop: 350px;
 $default-post--desktop-1440: 392px;
 

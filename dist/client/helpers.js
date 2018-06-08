@@ -129,7 +129,7 @@ var config = {
 			h: 192
 		},
 		'atelier-main-thumb': {
-			w: 320,
+			w: 310,
 			h: 168
 		},
 		'atelier-main-thumb--portrait': {
@@ -137,7 +137,7 @@ var config = {
 			h: 288
 		},
 		'atelier-main-slider': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'atelier-landing-media-image': {
@@ -155,43 +155,43 @@ var config = {
 			h: 192
 		},
 		'team-member-inner--portrait': {
-			w: 320,
+			w: 310,
 			h: 456
 		},
 		'default-post--portrait': {
-			w: 320,
+			w: 310,
 			h: 456
 		},
 		'default-post--landscape': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'featured-post--portrait': {
-			w: 320,
+			w: 310,
 			h: 456
 		},
 		'featured-post--landscape': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'featured-post--video': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'default-post--video': {
-			w: 320,
+			w: 310,
 			h: 240
 		},
 		'project-main-thumb': {
-			w: 320,
+			w: 310,
 			h: 168
 		},
 		'post-slider': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'post-media--video': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'project-drawing-thumb--portrait': {
@@ -199,7 +199,7 @@ var config = {
 			h: 192
 		},
 		'project-drawing-thumb--landscape': {
-			w: 320,
+			w: 310,
 			h: 96
 		},
 		'project-other-thumb': {
@@ -207,19 +207,19 @@ var config = {
 			h: 96
 		},
 		'project-main-slider': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'project-drawings-slider': {
-			w: 320,
+			w: 310,
 			h: 144
 		},
 		'related-project--landscape': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'atelier-main-thumb': {
-			w: 320,
+			w: 310,
 			h: 168
 		},
 		'atelier-main-thumb--portrait': {
@@ -227,15 +227,15 @@ var config = {
 			h: 288
 		},
 		'atelier-main-slider': {
-			w: 320,
+			w: 310,
 			h: 192
 		},
 		'atelier-landing-media-image': {
-			w: 320,
+			w: 310,
 			h: 216
 		},
 		'atelier-landing-media-video': {
-			w: 320,
+			w: 310,
 			h: 216
 		}
 	},
@@ -310,7 +310,7 @@ var config = {
 		},
 		'atelier-main-thumb': {
 			w: 588,
-			h: 320
+			h: 310
 		},
 		'atelier-main-thumb--portrait': {
 			w: 378,
@@ -340,7 +340,7 @@ var config = {
 		},
 		'default-post--portrait': {
 			w: 228,
-			h: 320
+			h: 310
 		},
 		'default-post--landscape': {
 			w: 350,
@@ -360,7 +360,7 @@ var config = {
 		},
 		'default-post--video': {
 			w: 532,
-			h: 320
+			h: 310
 		},
 		'post-slider': {
 			w: 742,
@@ -372,11 +372,11 @@ var config = {
 		},
 		'project-main-thumb': {
 			w: 532,
-			h: 320
+			h: 310
 		},
 		'project-drawing-thumb--portrait': {
 			w: 210,
-			h: 320
+			h: 310
 		},
 		'project-drawing-thumb--landscape': {
 			w: 420,
@@ -430,7 +430,7 @@ var config = {
 		},
 		'default-post--portrait': {
 			w: 228,
-			h: 320
+			h: 310
 		},
 		'default-post--landscape': {
 			w: 350,

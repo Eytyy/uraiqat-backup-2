@@ -21,9 +21,8 @@ body {
 
 .main-section {
 	max-width: 280px;
-	margin: 0 auto;
 	@include respond-to(mobile-x2) {
-		max-width: 320px;
+		max-width: 310px;
 	}	
 	@include respond-to(tablet) {
 		max-width: 100%;

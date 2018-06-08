@@ -8,6 +8,16 @@
 	}
 }
 
+.atelier__bottom {
+	margin-bottom: $lh * 2;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
+	}
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh * 2;
+	}
+}
+
 .atelier__media {
 	margin-bottom: $lh;
 	@include respond-to(tablet) {
