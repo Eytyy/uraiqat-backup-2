@@ -13,6 +13,7 @@ class VideoComponent extends Component {
 		this.toggleVideo = this.toggleVideo.bind(this);
 		this.loadVideo = this.loadVideo.bind(this);
 		this.checkVideo = this.checkVideo.bind(this);
+		this.renderFirstFrame = this.renderFirstFrame.bind(this);
 		this.isStillMounted = true;
 	}
 	toggleVideo() {
@@ -31,6 +32,10 @@ class VideoComponent extends Component {
 	stopVideo() {
 		this.video.pause();
 	}
+	renderFirstFrame() {
+		this.video.currentTime = 1;
+		this.stopVideo();
+	}
 	checkVideo() {
 		const { content } = this.props;
 		const url = typeof content.fields !== 'undefined' ? content.fields.file.url : content.file.url;
@@ -46,6 +51,8 @@ class VideoComponent extends Component {
 					videoIsLoaded: true,
 				});
 			}
+		}).then(() => {
+			// this.renderFirstFrame();
 		});
 	}
 	componentDidMount() {

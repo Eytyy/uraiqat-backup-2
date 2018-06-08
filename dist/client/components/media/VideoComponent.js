@@ -39,6 +39,7 @@ var VideoComponent = function (_Component) {
 		_this.toggleVideo = _this.toggleVideo.bind(_this);
 		_this.loadVideo = _this.loadVideo.bind(_this);
 		_this.checkVideo = _this.checkVideo.bind(_this);
+		_this.renderFirstFrame = _this.renderFirstFrame.bind(_this);
 		_this.isStillMounted = true;
 		return _this;
 	}
@@ -64,6 +65,12 @@ var VideoComponent = function (_Component) {
 		key: 'stopVideo',
 		value: function stopVideo() {
 			this.video.pause();
+		}
+	}, {
+		key: 'renderFirstFrame',
+		value: function renderFirstFrame() {
+			this.video.currentTime = 1;
+			this.stopVideo();
 		}
 	}, {
 		key: 'checkVideo',
@@ -93,6 +100,8 @@ var VideoComponent = function (_Component) {
 						videoIsLoaded: true
 					});
 				}
+			}).then(function () {
+				// this.renderFirstFrame();
 			});
 		}
 	}, {
