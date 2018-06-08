@@ -48,12 +48,7 @@ var Gallery = function (_Component) {
 
 		_this.updateSlide = _this.updateSlide.bind(_this);
 		_this.closeGallery = _this.closeGallery.bind(_this);
-		_this.toggleDetails = _this.toggleDetails.bind(_this);
 		_this.handleSwipe = _this.handleSwipe.bind(_this);
-
-		_this.state = {
-			areDetailsVisible: false
-		};
 		return _this;
 	}
 
@@ -63,12 +58,13 @@ var Gallery = function (_Component) {
 			var content = nextProps.content;
 			var isActive = content.isActive;
 
+
 			if (isActive) {
 				document.body.classList.add('js-gallery-isActive');
 			} else {
 				document.body.classList.remove('js-gallery-isActive');
 			}
-			if (nextProps.location.pathname !== this.props.location.pathname) {
+			if (nextProps.location.pathname !== this.props.location.pathname && isActive) {
 				this.closeGallery();
 			}
 		}
@@ -91,16 +87,8 @@ var Gallery = function (_Component) {
 			toggleGallery(openGallery);
 		}
 	}, {
-		key: 'toggleDetails',
-		value: function toggleDetails() {
-			this.setState({
-				areDetailsVisible: !this.state.areDetailsVisible
-			});
-		}
-	}, {
 		key: 'handleSwipe',
 		value: function handleSwipe(event) {
-			//eslint-disable-line
 			// show previous
 			if (event.deltaX > 0) {
 				this.updateSlide('prev');
@@ -123,6 +111,7 @@ var Gallery = function (_Component) {
 			if (!isActive) {
 				return null;
 			}
+
 			var sliderRailStyle = {
 				transform: 'translateX(-' + activeSlide * 100 + '%)'
 			};
@@ -132,7 +121,7 @@ var Gallery = function (_Component) {
 				{ onSwipe: this.handleSwipe, direction: 'DIRECTION_HORIZONTAL' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'gallery ' + (this.state.areDetailsVisible ? 'js-details-are-visible' : '') + ' ' + (type === 'drawings' ? 'gallery--drawings' : 'gallery--default') },
+					{ className: 'gallery ' + (type === 'drawings' ? 'gallery--drawings' : 'gallery--default') },
 					_react2.default.createElement(
 						'div',
 						{ className: '' + (slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner') },
@@ -169,11 +158,6 @@ var Gallery = function (_Component) {
 								return _this2.updateSlide('prev');
 							}, className: 'gallery-btn gallery-btn--nav gallery-btn--nav--prev' },
 						'<-'
-					),
-					_react2.default.createElement(
-						'div',
-						{ onClick: this.toggleDetails, className: 'gallery-btn gallery-btn--info' },
-						this.state.areDetailsVisible ? 'x' : '?'
 					)
 				)
 			);

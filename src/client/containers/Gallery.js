@@ -14,41 +14,36 @@ class Gallery extends Component {
 		super();
 		this.updateSlide = this.updateSlide.bind(this);
 		this.closeGallery = this.closeGallery.bind(this);
-		this.toggleDetails = this.toggleDetails.bind(this);
 		this.handleSwipe = this.handleSwipe.bind(this);
-		
-		this.state = {
-			areDetailsVisible: false,
-		};
 	}
+
 	componentWillReceiveProps(nextProps) {
 		const { content } = nextProps;
 		const { isActive } = content;
+
 		if (isActive) {
 			document.body.classList.add('js-gallery-isActive');
 		} else {
 			document.body.classList.remove('js-gallery-isActive');
 		}
-		if (nextProps.location.pathname !== this.props.location.pathname) {
+		if (nextProps.location.pathname !== this.props.location.pathname && isActive) {
 			this.closeGallery();
-		}		
+		}
 	}
+
 	updateSlide(direction) {
 		const { updateActiveSlide, content } = this.props;
 		const { galleryId } = content;
 		updateActiveSlide(galleryId, direction);
 	}
+
 	closeGallery() {
 		const {toggleGallery } = this.props;
 		const openGallery = false;
 		toggleGallery(openGallery);
 	}
-	toggleDetails() {
-		this.setState({
-			areDetailsVisible: !this.state.areDetailsVisible,
-		});
-	}
-	handleSwipe(event) { //eslint-disable-line
+
+	handleSwipe(event) {
 		// show previous
 		if (event.deltaX > 0) {
 			this.updateSlide('prev');
@@ -56,19 +51,19 @@ class Gallery extends Component {
 			this.updateSlide('next');
 		}
 	}
+
 	render() {
 		const { content } = this.props;
 		const { slides, isActive, activeSlide, title, type } = content;
-		if (!isActive) {
-			return null;
-		}
+		if (!isActive) { return null; }
+
 		const sliderRailStyle = {
 			transform: `translateX(-${activeSlide * 100}%)`
 		};
 		
 		return ( 
 			<Hammer onSwipe={this.handleSwipe} direction="DIRECTION_HORIZONTAL">
-				<div className={`gallery ${this.state.areDetailsVisible ? 'js-details-are-visible' : ''} ${type === 'drawings' ? 'gallery--drawings' : 'gallery--default' }`}>
+				<div className={`gallery ${type === 'drawings' ? 'gallery--drawings' : 'gallery--default' }`}>
 					<div className={`${slides.length === 1 ? 'gallery__inner gallery__inner--single' : 'gallery__inner'}`}>
 						<div style={sliderRailStyle} className="gallery__slides">
 							{
@@ -91,10 +86,6 @@ class Gallery extends Component {
 					{
 						slides.length !== 1 && <div onClick={() => this.updateSlide('prev')} className="gallery-btn gallery-btn--nav gallery-btn--nav--prev">{'<-'}</div>
 					}
-					<div onClick={this.toggleDetails} className="gallery-btn gallery-btn--info">
-						{this.state.areDetailsVisible ? 'x' : '?'}
-					</div>
-
 				</div>
 			</Hammer>);
 	}
