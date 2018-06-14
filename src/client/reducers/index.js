@@ -25,8 +25,7 @@ export const isPostsFetching = state => fromHome.getIsFetching(state.posts);
 export const getPosts = state => {
 	const featuredContent = fromHome.getAll(state.posts).featuredContent
 		.map(id => fromHome.getPost(state.posts, id));
-	const mainContent = fromHome.getAll(state.posts).mainContent
-		.map(id => fromHome.getPost(state.posts, id));
+	const mainContent = fromHome.getAll(state.posts).mainContent.map(id => fromHome.getPost(state.posts, id)).sort((a, b) => new Date(b.date) - new Date(a.date));
 	return {
 		featuredContent,
 		mainContent
@@ -46,7 +45,7 @@ export const getProjects = state => {
 	const featuredContent = fromWork.getAll(state.projects).featuredContent ? 
 		fromWork.getAll(state.projects).featuredContent.map(id => fromWork.getProject(state.projects, id)) : [];
 	const mainContent = fromWork.getAll(state.projects).mainContent ?
-		fromWork.getAll(state.projects).mainContent.map(id => fromWork.getProject(state.projects, id)) : [];
+		fromWork.getAll(state.projects).mainContent.map(id => fromWork.getProject(state.projects, id)).sort((a, b) => new Date(b.year) - new Date(a.year)) : [];
 	return {
 		featuredContent,
 		mainContent

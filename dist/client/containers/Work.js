@@ -52,7 +52,7 @@ var Work = function (_Component) {
 		value: function componentDidMount() {
 			var fetchProjects = this.props.fetchProjects;
 
-			return fetchProjects();
+			fetchProjects();
 		}
 	}, {
 		key: 'render',
@@ -62,7 +62,8 @@ var Work = function (_Component) {
 			    content = _props.content;
 
 			if (isFetching && content.length === 0 || content.length === 0) {
-				return _react2.default.createElement(_LoadingPattern2.default, null);
+				// return <LoadingPattern />;
+				return _react2.default.createElement('div', null);
 			}
 			return _react2.default.createElement(_Landing2.default, { content: content, page: 'work' });
 		}

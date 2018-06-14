@@ -159,8 +159,12 @@ var getIsFetching = exports.getIsFetching = function getIsFetching(state) {
 
 var getAll = exports.getAll = function getAll(state) {
 	return {
-		mainContent: state.BySection.main,
-		featuredContent: state.BySection.featured
+		mainContent: state.BySection.main.sort(function (a, b) {
+			return parseInt(b.year, 10) - parseInt(a.year, 10);
+		}),
+		featuredContent: state.BySection.featured.sort(function (a, b) {
+			return parseInt(b.year, 10) - parseInt(a.year, 10);
+		})
 	};
 };
 

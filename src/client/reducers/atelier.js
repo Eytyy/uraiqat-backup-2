@@ -130,8 +130,8 @@ export const getIsFetching = state => state.All.isFetching;
 
 export const getAll = state => ({
 	intro: state.All.intro,
-	mainContent: state.BySection.main,
-	featuredContent: state.BySection.featured,
+	mainContent: state.BySection.main.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10)),
+	featuredContent: state.BySection.featured.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10)),
 });
 
 export const getProject = (state, id) => {

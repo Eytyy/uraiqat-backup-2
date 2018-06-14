@@ -38,6 +38,7 @@ var Content = function Content(_ref) {
 				return _react2.default.createElement(_AtelierPreview2.default, _extends({}, post, { id: post.id, key: post.id }));
 			});
 		default:
+			// eslint-disable-line
 			return content.map(function (post) {
 				return _react2.default.createElement(_Post2.default, _extends({}, post, { id: post.id, key: post.id }));
 			});
@@ -51,15 +52,10 @@ var LandingChrono = function LandingChrono(_ref2) {
 	if (typeof content === 'undefined') {
 		return null;
 	}
-	var sorted = page === 'journal' ? content.sort(function (a, b) {
-		return parseInt(b.date, 10) - parseInt(a.date, 10);
-	}) : content.sort(function (a, b) {
-		return parseInt(b.year, 10) - parseInt(a.year, 10);
-	});
 	return _react2.default.createElement(
 		'section',
 		{ className: 'landing-section landing-section--main' },
-		_react2.default.createElement(Content, { content: sorted, page: page })
+		_react2.default.createElement(Content, { content: content, page: page })
 	);
 };
 

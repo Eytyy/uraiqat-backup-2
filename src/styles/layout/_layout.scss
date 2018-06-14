@@ -124,6 +124,10 @@ body {
 	@extend %defaultGrid;
 }
 
+.landing-page {
+	transition: height 300ms linear;
+}
+
 .search-results-title {
 	margin-bottom: $lh * 2;
 	@include respond-to(tablet) {

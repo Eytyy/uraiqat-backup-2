@@ -13,7 +13,7 @@ class Home extends Component {
 	constructor() {
 		super();
 		this.state = {
-			intro: false
+			intro: false,
 		};
 		this.to = null;
 	}
@@ -25,6 +25,14 @@ class Home extends Component {
 			intro: true
 		});
 	}
+	fetchData() {
+		return fetchPosts().then(() => {
+			setTimeout(() => {
+				this.hideLoader();
+			}, 300);
+		});
+	}
+
 	componentDidMount() {
 		const { fetchPosts } = this.props;
 		return fetchPosts().then(() => {
@@ -43,7 +51,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-	isFetching:  PropTypes.bool.isRequired,
+	isFetching: PropTypes.bool.isRequired,
 	fetchPosts: PropTypes.func.isRequired,
 };
 

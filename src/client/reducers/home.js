@@ -120,10 +120,12 @@ const home = combineReducers({
 
 export const getIsFetching = state => state.All.isFetching;
 
-export const getAll = state => ({
-	mainContent: state.BySection.main,
-	featuredContent: state.BySection.featured,
-});
+export const getAll = state => {
+	return {
+		mainContent: state.BySection.main,
+		featuredContent: state.BySection.featured,
+	};
+};
 
 export const getPost = (state, id) => state.ById[id];
 

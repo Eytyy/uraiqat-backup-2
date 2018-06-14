@@ -63,6 +63,8 @@ var getPosts = exports.getPosts = function getPosts(state) {
 	});
 	var mainContent = fromHome.getAll(state.posts).mainContent.map(function (id) {
 		return fromHome.getPost(state.posts, id);
+	}).sort(function (a, b) {
+		return new Date(b.date) - new Date(a.date);
 	});
 	return {
 		featuredContent: featuredContent,
@@ -89,6 +91,8 @@ var getProjects = exports.getProjects = function getProjects(state) {
 	}) : [];
 	var mainContent = fromWork.getAll(state.projects).mainContent ? fromWork.getAll(state.projects).mainContent.map(function (id) {
 		return fromWork.getProject(state.projects, id);
+	}).sort(function (a, b) {
+		return new Date(b.year) - new Date(a.year);
 	}) : [];
 	return {
 		featuredContent: featuredContent,

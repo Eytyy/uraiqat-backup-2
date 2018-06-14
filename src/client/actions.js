@@ -86,7 +86,6 @@ export const fetchPost = (id) => (dispatch, getState) => {
 	});
 };
 
-
 // Work Action Creators
 const requestProjects = () => ({
 	type: 'REQUEST_PROJECTS'

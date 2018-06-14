@@ -368,7 +368,7 @@ const config = {
 		},
 		'project-main-thumb': {
 			w: 532,
-			h: 310,
+			h: 320,
 		},
 		'project-drawing-thumb--portrait': {
 			w: 210,
@@ -466,7 +466,7 @@ const config = {
 		},
 		'project-drawing-thumb--landscape': {
 			w: 532,
-			h: 192,
+			h: 176,
 		},
 		'project-other-thumb': {
 			w: 266,

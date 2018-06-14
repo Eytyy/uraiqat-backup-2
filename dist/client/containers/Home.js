@@ -61,15 +61,26 @@ var Home = function (_Component) {
 			});
 		}
 	}, {
+		key: 'fetchData',
+		value: function fetchData() {
+			var _this2 = this;
+
+			return (0, _actions.fetchPosts)().then(function () {
+				setTimeout(function () {
+					_this2.hideLoader();
+				}, 300);
+			});
+		}
+	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			var _this2 = this;
+			var _this3 = this;
 
 			var fetchPosts = this.props.fetchPosts;
 
 			return fetchPosts().then(function () {
 				setTimeout(function () {
-					_this2.hideLoader();
+					_this3.hideLoader();
 				}, 300);
 			});
 		}

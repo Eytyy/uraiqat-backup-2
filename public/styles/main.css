@@ -377,6 +377,10 @@ body {
     .practice-section__team-list {
       margin-left: -98px; } }
 
+.landing-page {
+  -webkit-transition: height 300ms linear;
+  transition: height 300ms linear; }
+
 .search-results-title {
   margin-bottom: 48px; }
   @media (min-width: 768px) {

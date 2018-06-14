@@ -15,12 +15,13 @@ class Work extends Component {
 	}
 	componentDidMount() {
 		const { fetchProjects } = this.props;
-		return fetchProjects();
+		fetchProjects();
 	}
 	render() {
 		const { isFetching, content } = this.props;
 		if (isFetching && content.length === 0 || content.length === 0 ) {
-			return <LoadingPattern />;
+			// return <LoadingPattern />;
+			return <div></div>;
 		}
 		return <Landing content={content} page='work'></Landing>;
 	}
