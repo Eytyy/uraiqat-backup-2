@@ -21,8 +21,14 @@ body {
 
 .main-section {
 	max-width: 280px;
+	.contact & {
+		max-width: 100%;
+	}
 	@include respond-to(mobile-x2) {
 		max-width: 310px;
+		.contact & {
+			max-width: 100%;
+		}
 	}	
 	@include respond-to(tablet) {
 		max-width: 100%;
@@ -64,9 +70,13 @@ body {
 	padding-top: $lh * 3;
 	.contact & {
 		padding-top: $lh * 2;
+		width: 100%;
 	}
 	@include respond-to(mobile-x2) {
 		width: 310px;
+		.contact & {
+			width: 100%;
+		}
 	}
 	@include respond-to(tablet) {
 		width: 100%;
