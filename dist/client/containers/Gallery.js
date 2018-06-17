@@ -49,10 +49,16 @@ var Gallery = function (_Component) {
 		_this.updateSlide = _this.updateSlide.bind(_this);
 		_this.closeGallery = _this.closeGallery.bind(_this);
 		_this.handleSwipe = _this.handleSwipe.bind(_this);
+		_this.handleKeyStrokes = _this.handleKeyStrokes.bind(_this);
 		return _this;
 	}
 
 	_createClass(Gallery, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			document.addEventListener('keydown', this.handleKeyStrokes);
+		}
+	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
 			var content = nextProps.content;
@@ -67,6 +73,11 @@ var Gallery = function (_Component) {
 			if (nextProps.location.pathname !== this.props.location.pathname && isActive) {
 				this.closeGallery();
 			}
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			document.removeEventListener('keydown', this.handleKeyStrokes);
 		}
 	}, {
 		key: 'updateSlide',
@@ -94,6 +105,21 @@ var Gallery = function (_Component) {
 				this.updateSlide('prev');
 			} else {
 				this.updateSlide('next');
+			}
+		}
+	}, {
+		key: 'handleKeyStrokes',
+		value: function handleKeyStrokes(event) {
+			switch (event.keyCode) {
+				case 39:
+					this.updateSlide('next');
+					break;
+				case 37:
+					this.updateSlide('prev');
+					break;
+				case 27:
+					this.closeGallery();
+					break;
 			}
 		}
 	}, {

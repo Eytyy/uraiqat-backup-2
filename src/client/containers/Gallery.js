@@ -15,6 +15,11 @@ class Gallery extends Component {
 		this.updateSlide = this.updateSlide.bind(this);
 		this.closeGallery = this.closeGallery.bind(this);
 		this.handleSwipe = this.handleSwipe.bind(this);
+		this.handleKeyStrokes = this.handleKeyStrokes.bind(this);
+	}
+
+	componentDidMount() {
+		document.addEventListener('keydown', this.handleKeyStrokes);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -31,6 +36,11 @@ class Gallery extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeyStrokes);
+	}
+	
+
 	updateSlide(direction) {
 		const { updateActiveSlide, content } = this.props;
 		const { galleryId } = content;
@@ -38,7 +48,7 @@ class Gallery extends Component {
 	}
 
 	closeGallery() {
-		const {toggleGallery } = this.props;
+		const { toggleGallery } = this.props;
 		const openGallery = false;
 		toggleGallery(openGallery);
 	}
@@ -49,6 +59,20 @@ class Gallery extends Component {
 			this.updateSlide('prev');
 		} else {
 			this.updateSlide('next');
+		}
+	}
+
+	handleKeyStrokes(event) {
+		switch(event.keyCode) {
+		case 39:	
+			this.updateSlide('next');
+			break;
+		case 37:
+			this.updateSlide('prev');
+			break;
+		case 27:
+			this.closeGallery();
+			break;
 		}
 	}
 
