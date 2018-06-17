@@ -14,10 +14,7 @@ class Landing extends Component {
 		this.visible = [];
 		this.adjustContainerHeight = this.adjustContainerHeight.bind(this);
 		this.updateUi = this.updateUi.bind(this);
-		this.onScroll = throttle(
-			this.onScroll.bind(this),
-			500,
-			{ leading: false, trailing: true });
+		this.onScroll = throttle(this.onScroll.bind(this), 500, { leading: false, trailing: true });
 	}
 
 	updateUi() {
@@ -39,7 +36,10 @@ class Landing extends Component {
 	adjustContainerHeight() {
 		const featured = document.querySelector('.landing-section--featured');
 		const main = document.querySelector('.landing-section--main');
-		const newHeight = `${featured.offsetHeight + main.offsetHeight}px` ;
+		const featuredHeight = featured ? featured.offsetHeight : 0;
+		const mainHeight = main ? main.offsetHeight : 0;
+
+		const newHeight = `${featuredHeight + mainHeight}px` ;
 		this.section.style.height = newHeight;
 	}
 
@@ -58,8 +58,12 @@ class Landing extends Component {
 	componentDidUpdate() {
 		this.adjustContainerHeight();
 	}
-	
 
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.onScroll);
+		console.log('unmounted');
+	}
+	
 	render() {
 		const { page, content, intro } = this.props;
 		const { mainContent, featuredContent } = content;

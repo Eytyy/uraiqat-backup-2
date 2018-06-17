@@ -161,6 +161,7 @@
 
 .team-member__content {
 	@extend %clearfix;
+	margin-bottom: $lh * 2;
 	.post-preview__image {
 		height: $portrait-height;
 		.preview-image:after,
@@ -175,6 +176,7 @@
 		}
 	}	
 	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh * 2;
 		padding-left: ($tablet-char-width * 5);
 		.post-preview__image {
 			width: auto;
@@ -187,6 +189,7 @@
 		}		
 	}	
 	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh * 2;
 		padding-left: 0;
 		.post-preview__image {
 			height: 480px;

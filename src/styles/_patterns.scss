@@ -16,14 +16,21 @@
 .loader {
 	background: #FFF;
 	position: fixed;
-	top: 32px;
-	bottom: 32px;
-	display: flex;
-	align-items: center;
+	top: $lh;
+	bottom: $lh;
 	left: 0;
 	width: 100%;
 	z-index: 200;
+	@include respond-to(tablet) {
+		top: $tablet-lh;
+		bottom: $tablet-lh;
+	}
+	@include respond-to(desktop) {
+		top: $desktop-lh;
+		bottom: $desktop-lh;
+	}
 }
+
 .pattern--loading {
 	@include wrapper;
 	background: #FFF;

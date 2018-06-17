@@ -76,7 +76,10 @@ var Landing = function (_Component) {
 		value: function adjustContainerHeight() {
 			var featured = document.querySelector('.landing-section--featured');
 			var main = document.querySelector('.landing-section--main');
-			var newHeight = featured.offsetHeight + main.offsetHeight + 'px';
+			var featuredHeight = featured ? featured.offsetHeight : 0;
+			var mainHeight = main ? main.offsetHeight : 0;
+
+			var newHeight = featuredHeight + mainHeight + 'px';
 			this.section.style.height = newHeight;
 		}
 	}, {
@@ -98,6 +101,12 @@ var Landing = function (_Component) {
 		key: 'componentDidUpdate',
 		value: function componentDidUpdate() {
 			this.adjustContainerHeight();
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			window.removeEventListener('scroll', this.onScroll);
+			console.log('unmounted');
 		}
 	}, {
 		key: 'render',
