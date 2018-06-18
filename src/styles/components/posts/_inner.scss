@@ -40,12 +40,15 @@
 .post__content {
 	width: 100%;
 	padding: ($lh * 2) 0 0 0;
+	margin-bottom: $lh * 2;
 	@include respond-to(tablet) {
 		padding: ($tablet-lh * 2)  0 0 ($tablet-char-width * 5);
+		margin-bottom: $tablet-lh * 2;
 	}
 	@include respond-to(desktop) {
 		width: 882px;
 		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 5);
+		margin-bottom: $desktop-lh * 2;
 	}
 	@include respond-to(desktop-1600) {
 		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 6);

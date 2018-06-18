@@ -417,7 +417,7 @@ const config = {
 	},
 	desktop1280: {
 		'team-member--portrait': {
-			w: 266,
+			w: 252,
 			h: 384,
 		},
 		'team-member-inner--portrait': {
@@ -426,7 +426,7 @@ const config = {
 		},
 		'default-post--portrait': {
 			w: 228,
-			h: 310,
+			h: 320,
 		},
 		'default-post--landscape': {
 			w: 350,

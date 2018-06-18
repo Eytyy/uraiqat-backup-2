@@ -1524,14 +1524,17 @@ img {
 
 .post__content {
   width: 100%;
-  padding: 48px 0 0 0; }
+  padding: 48px 0 0 0;
+  margin-bottom: 48px; }
   @media (min-width: 768px) {
     .post__content {
-      padding: 52px 0 0 55px; } }
+      padding: 52px 0 0 55px;
+      margin-bottom: 52px; } }
   @media (min-width: 1024px) {
     .post__content {
       width: 882px;
-      padding: 64px 0 0 70px; } }
+      padding: 64px 0 0 70px;
+      margin-bottom: 64px; } }
   @media (min-width: 1600px) {
     .post__content {
       padding: 64px 0 0 84px;

@@ -6,7 +6,7 @@ import PatternChunk from '../../components/patterns/PatternChunk';
 
 const HeaderDTMain = () => {
 	const numberOfStaticItems = 'U'.length + 'Uraiqat'.length;
-	const fixedStart = window.innerWidth > 1280 ? 10 : 7;
+	const fixedStart = window.innerWidth >= 1280 ? 10 : 7;
 	const config = {
 		spacesBefore: 1,
 		spacesAfter: 3,
