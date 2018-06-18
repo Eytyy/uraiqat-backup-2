@@ -66,6 +66,17 @@ var Search = function (_Component) {
 					_react2.default.createElement(_LoadingPattern2.default, null)
 				);
 			}
+			var sortedContent = content.sort(function (a, b) {
+				if (a.fields.date && b.fields.date) {
+					return new Date(b.fields.date) - new Date(a.fields.date);
+				} else if (a.fields.year && b.fields.year) {
+					return parseInt(b.fields.year, 10) - parseInt(a.fields.year, 10);
+				}
+				var comp1 = a.fields.year ? parseInt(a.fields.year, 10) : new Date(a.fields.date).getFullYear();
+				var comp2 = b.fields.year ? parseInt(b.fields.year, 10) : new Date(b.fields.date).getFullYear();
+
+				return comp2 - comp1;
+			});
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-section landing-section--featured' },
@@ -77,7 +88,7 @@ var Search = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'search-results' },
-					content.map(function (_ref) {
+					sortedContent.map(function (_ref) {
 						var sys = _ref.sys,
 						    fields = _ref.fields;
 						return _react2.default.createElement(_SearchPreview2.default, { content: fields, type: sys.contentType.sys.id, id: sys.id, key: sys.id });
