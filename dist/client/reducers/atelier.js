@@ -26,12 +26,18 @@ var BySection = function BySection() {
 			});
 		case 'RECIEVE_ATELIER_PROJECTS':
 			//eslint-disable-line
-			var main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.map(function (_ref) {
-				var sys = _ref.sys;
+			var main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.filter(function (_ref) {
+				var fields = _ref.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref2) {
+				var sys = _ref2.sys;
 				return sys.id;
 			}) : [];
-			var featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? action.response[0].fields.featuredContent.map(function (_ref2) {
-				var sys = _ref2.sys;
+			var featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? action.response[0].fields.featuredContent.filter(function (_ref3) {
+				var fields = _ref3.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref4) {
+				var sys = _ref4.sys;
 				return sys.id;
 			}) : [];
 			return _extends({}, state, {
@@ -60,12 +66,18 @@ var All = function All() {
 			});
 		case 'RECIEVE_ATELIER_PROJECTS':
 			//eslint-disable-line
-			var main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.map(function (_ref3) {
-				var sys = _ref3.sys;
+			var main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.filter(function (_ref5) {
+				var fields = _ref5.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref6) {
+				var sys = _ref6.sys;
 				return sys.id;
 			}) : [];
-			var featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? action.response[0].fields.featuredContent.map(function (_ref4) {
-				var sys = _ref4.sys;
+			var featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? action.response[0].fields.featuredContent.filter(function (_ref7) {
+				var fields = _ref7.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref8) {
+				var sys = _ref8.sys;
 				return sys.id;
 			}) : [];
 			var ids = main.concat(featured);
@@ -110,17 +122,17 @@ var ById = function ById() {
 		case 'RECIEVE_ATELIER_PROJECTS':
 			//eslint-disable-line
 			var ids = {};
-			action.response[0].fields.mainContent && action.response[0].fields.mainContent.forEach(function (_ref5) {
-				var fields = _ref5.fields,
-				    sys = _ref5.sys;
+			action.response[0].fields.mainContent && action.response[0].fields.mainContent.forEach(function (_ref9) {
+				var fields = _ref9.fields,
+				    sys = _ref9.sys;
 
 				ids[sys.id] = _extends({
 					id: sys.id
 				}, fields);
 			});
-			action.response[0].fields.featuredContent && action.response[0].fields.featuredContent.forEach(function (_ref6) {
-				var fields = _ref6.fields,
-				    sys = _ref6.sys;
+			action.response[0].fields.featuredContent && action.response[0].fields.featuredContent.forEach(function (_ref10) {
+				var fields = _ref10.fields,
+				    sys = _ref10.sys;
 
 				ids[sys.id] = _extends({
 					id: sys.id

@@ -241,7 +241,6 @@ router.get('/atelier/:id', (req, res) => {
 		}
 		const payload = store.getState();
 		const obj = payload.atelier.ById[`${req.params.id}`];
-
 		const imageUrl = typeof obj.socialMediaImage === 'undefined' ?
 			obj.previewMainThumbnail.fields.file.url :
 			obj.socialMediaImage.fields.file.url;

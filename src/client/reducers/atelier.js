@@ -12,8 +12,14 @@ const BySection = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_ATELIER_PROJECTS': //eslint-disable-line
-		const main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
-		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ?  action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
+		const main = typeof action.response[0].fields.mainContent !== 'undefined' ?
+			action.response[0].fields.mainContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) : [];
+		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? 
+			action.response[0].fields.featuredContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) : [];
 		return {
 			...state,
 			isFetching: false,
@@ -38,8 +44,16 @@ const All = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_ATELIER_PROJECTS': //eslint-disable-line
-		const main = typeof action.response[0].fields.mainContent !== 'undefined' ? action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
-		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ?  action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
+		const main = typeof action.response[0].fields.mainContent !== 'undefined' ?
+			action.response[0].fields.mainContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) :
+			[];
+		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? 
+			action.response[0].fields.featuredContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) :
+			[];
 		const ids = main.concat(featured);
 		const intro = {
 			desc: action.response[0].fields.description,

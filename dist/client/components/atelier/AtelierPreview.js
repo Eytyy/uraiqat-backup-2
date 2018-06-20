@@ -19,8 +19,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var AtelierPreview = function AtelierPreview(content) {
 	var id = content.id,
 	    title = content.title,
-	    previewMainThumbnail = content.previewMainThumbnail,
-	    previewCrafttechdiagramThumbnail = content.previewCrafttechdiagramThumbnail;
+	    previewMainThumbnail = content.previewMainThumbnail;
 
 	return _react2.default.createElement(
 		'article',
@@ -37,7 +36,7 @@ var AtelierPreview = function AtelierPreview(content) {
 					title
 				)
 			),
-			_react2.default.createElement(_AtelierPreviewThumbnails2.default, { main: previewMainThumbnail, diagram: previewCrafttechdiagramThumbnail })
+			previewMainThumbnail && _react2.default.createElement(_AtelierPreviewThumbnails2.default, { main: previewMainThumbnail })
 		)
 	);
 };
