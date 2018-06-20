@@ -4,6 +4,9 @@
 .post-preview {
 	margin-bottom: $lh * 2;
 	transition: flex 100ms ease-in-out;
+	@include respond-to(mobile-ls) {
+		padding-left: $block-gutter;
+	}
 	@include respond-to(tablet) {
 		padding-left: $tablet-block-gutter;
 		margin-bottom: $tablet-lh * 2;
@@ -100,16 +103,33 @@ $video-post-height--desktop-1600: 416px;
 	.post-preview__content {
 		margin-top: $lh;
 	}
-	@include respond-to(tablet) {
+	@include respond-to(mobile-ls) {
 		.post-preview__video {
 			margin: 0 auto;
 			padding: 0;
+			width: 380px;
+			height: 240px;
+		}		
+		.post-preview__link {
+			width: 410px;
+			margin: 0 auto;
+		}
+		.post-preview__content {
+			margin-top: $lh * -1;
+			margin-right: $char-width * -3;
+			margin-left: $char-width * 3;
+			&__inner {
+				padding: ($lh/2) $char-width;
+			}
+		}
+	}
+	@include respond-to(tablet) {
+		.post-preview__video {
 			width: 612px;
 			height: 390px;
 		}		
 		.post-preview__link {
 			width: 636px;
-			margin: 0 auto;
 		}
 		.post-preview__content {
 			margin-top: ($tablet-lh + ($tablet-lh/2)) * -1;
@@ -154,6 +174,7 @@ $video-post-height--desktop-1600: 416px;
 // orientation specific styles
 
 // Landscape
+$default-post--mobile-ls: 220px;
 $default-post--tablet: 322px;
 $default-post--desktop: 350px;
 $default-post--desktop-1440: 392px;
@@ -165,10 +186,12 @@ $portrait-post--desktop-1600: 658px;
 
 $portrait-height: 360px;
 $portrait-height--x2: 456px;
+$portrait-height--mobile-ls: 240px;
 $portrait-height--tablet: 312px;
 $portrait-height--desktop: 320px;
 $portrait-height--desktop-1440: 384px;
 
+$portrait-post-image--mobile-ls: 160px;
 $portrait-post-image--tablet: 228px;
 $portrait-post-image--desktop: 216px;
 $portrait-post-image--desktop-1440: 266px;
@@ -184,13 +207,19 @@ $portrait-post-image--desktop-1440: 266px;
 			left: 0;
 		}
 	}
+	@include respond-to(mobile-ls) {
+		flex: 0 0 $default-post--mobile-ls;
+		.post-preview__image {
+			height: 120px;
+			.preview-image {
+				position: static;
+			}
+		}
+	}
 	@include respond-to(tablet) {
 		flex: 0 0 ($default-post--tablet + $tablet-block-gutter);
 		.post-preview__image {
 			height: 208px;
-			.preview-image {
-				position: static;
-			}
 		}
 	}	
 	@include respond-to(desktop) {
@@ -211,6 +240,16 @@ $portrait-post-image--desktop-1440: 266px;
 }
 
 .post-preview--portrait {
+	@include respond-to(mobile-ls) {
+		.post-preview__link {
+			display: flex;
+		}
+	}
+	@include respond-to(tablet) {
+		.post-preview__link {
+			display: block;
+		}
+	}
 	@include respond-to(desktop) {
 		.post-preview__title {
 			margin: 0 0 10px;
@@ -219,6 +258,10 @@ $portrait-post-image--desktop-1440: 266px;
 			display: flex;
 		}
 	}	
+}
+
+.post-preview__meta__title {
+	display: inline-block;
 }
 
 // Portrait Default
@@ -231,23 +274,41 @@ $portrait-post-image--desktop-1440: 266px;
 	}
 	.post-preview__meta--top {
 		margin-bottom: $lh/2;
-		@include respond-to(tablet) {
-			margin-bottom: $tablet-lh/2;
-		}	
-		@include respond-to(desktop) {
-			margin-bottom: $desktop-lh/2;
-		}	
 	}
 	@include respond-to(mobile-x2) {
 		.post-preview__image {
 			height: $portrait-height--x2;
 		}
-	}	
+	}
+	@include respond-to(mobile-ls) {
+		flex: 0 0 100%;
+		.post-preview__image {
+			height: $portrait-height--mobile-ls;
+			flex: 0 0 $portrait-post-image--mobile-ls;
+		}
+		.post-preview__meta--bottom {
+			display: block;
+		}
+		.post-preview__meta--top {
+			display: none;
+		}
+		.post-preview__content {
+			flex: 0 0 220px;
+			padding-left: $char-width;
+		}	
+	}
 	@include respond-to(tablet) {
 		flex: 0 0 ($portrait-post--tablet + $tablet-block-gutter);
 		.post-preview__image {
 			height: $portrait-height--tablet;
 			width: $portrait-post-image--tablet;
+		}
+		.post-preview__meta--bottom {
+			display: none;
+		}
+		.post-preview__meta--top {
+			display: block;
+			margin-bottom: $tablet-lh/2;
 		}
 	}
 	@include respond-to(desktop) {
@@ -257,6 +318,7 @@ $portrait-post-image--desktop-1440: 266px;
 		}
 		.post-preview__meta--top {
 			display: none;
+			margin-bottom: $desktop-lh/2;
 		}
 		.post-preview__image {
 			flex: 0 0 $portrait-post-image--tablet;
@@ -286,20 +348,22 @@ $portrait-post-image--desktop-1440: 266px;
 $portrait-featured-image-height--mobile: 360px;
 $portrait-featured-image-height--mobile-x2: 456px;
 
-$portrait-featured--desktop: 700px;
-$portrait-featured--desktop-1440: 1078px;
+$portrait-featured-image--mobile-ls: 220px;
+$portrait-featured-image-height--mobile-ls: 360px;
+$portrait-featured-content--mobile-ls: 280px;
 
 $portrait-featured-image--tablet: 288px;
 $portrait-featured-image-height--tablet: 468px;
+$portrait-featured-content--tablet: 420px;
 
+$portrait-featured--desktop: 700px;
 $portrait-featured-image--desktop: 322px;
 $portrait-featured-image-height--desktop: 512px;
+$portrait-featured-content--desktop: 448px;
 
+$portrait-featured--desktop-1440: 1078px;
 $portrait-featured-image--desktop-1440: 448px;
 $portrait-featured-image-height--desktop-1440: 640px;
-
-$portrait-featured-content--tablet: 420px;
-$portrait-featured-content--desktop: 448px;
 $portrait-featured-content--desktop-1440: 700px;
 
 //Portrait--Featured
@@ -320,6 +384,20 @@ $portrait-featured-content--desktop-1440: 700px;
 		.post-preview__image {
 			height: $portrait-featured-image-height--mobile-x2;
 		}		
+	}
+	@include respond-to(mobile-ls) {
+		.post-preview__image {
+			flex: 0 0 $portrait-featured-image--mobile-ls;
+			height: $portrait-featured-image-height--mobile-ls;
+		}		
+		.post-preview__content {
+			flex: 0 0 $portrait-featured-content--mobile-ls;
+			margin-top: $lh;
+			margin-left: $char-width * -9;
+			&__inner {
+				padding: ($lh/2) 0 ($lh/2) $char-width;
+			}
+		}
 	}
 	@include respond-to(tablet) {
 		.post-preview__link {
@@ -401,7 +479,7 @@ $portrait-featured-content--desktop-1440: 700px;
 		position: relative;
 		z-index: 10;
 	}	
-	@include respond-to(tablet) {
+	@include respond-to(mobile-ls) {
 		flex: 0 0 100%;
 	}	
 	@include respond-to(desktop-1440) {

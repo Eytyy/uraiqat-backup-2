@@ -3,7 +3,7 @@
 
 .project-preview {
 	overflow: hidden;
-	margin-bottom: $lh * 3;
+	margin-bottom: $lh * 2;
 	.landing-section--main & {
 		&:last-child {
 			margin-bottom: 0;
@@ -27,7 +27,19 @@
 	}
 	&--craft,
 	&--diagram {
-		height: 96px;
+		height: 72px;
+	}
+	@include respond-to(mobile-ls) {
+		&--main {
+			height: 144px;
+		}
+		&--drawing {
+			height: 144px;
+		}
+		&--craft,
+		&--diagram {
+			height: 72px;
+		}
 	}
 	@include respond-to(tablet) {
 		&--main,
@@ -107,8 +119,16 @@
 			flex: 0 0 100%;
 		}
 	}
+	@include respond-to(mobile-ls) {
+		.project-preview__image--main {
+			flex: 0 0 260px;
+		}
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col {
+			flex: 0 0 90px;
+		}
+	}
 	@include respond-to(tablet) {
-		display: flex;
 		.project-preview__image--main {
 			flex: 0 0 384px;
 		}
@@ -168,10 +188,32 @@
 			flex: 0 0 50%;
 		}		
 	}
-	@include respond-to(tablet) {
+	@include respond-to(mobile-ls) {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column;
+		height: 144px;
+		.project-preview__image--drawing {
+			height: 72px;
+			width: 180px;
+			flex: 0 0 50%;
+		}
+		.project-preview__image--craft,
+		.project-preview__image--diagram {
+				flex: 0 0 100%;
+		}
+		.project-preview__image--main {
+			flex: 0 0 100%;
+			width: 260px;
+		}
+		.project-preview__thumbs__right-col {
+			display: flex;
+			flex-wrap: wrap;
+			flex: 0 0 50%;
+			width: 180px;
+		}
+	}
+	@include respond-to(tablet) {
 		height: 260px;
 		.project-preview__image--drawing {
 			width: 336px;

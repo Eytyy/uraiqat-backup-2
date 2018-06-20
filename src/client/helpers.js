@@ -235,6 +235,96 @@ const config = {
 			h: 216,
 		},
 	},
+	mobileLS: {
+		'team-member--portrait': {
+			w: 180,
+			h: 240,
+		},
+		'team-member-inner--portrait': {
+			w: 180,
+			h: 240,
+		},
+		'default-post--portrait': {
+			w: 160,
+			h: 240,
+		},
+		'default-post--landscape': {
+			w: 200,
+			h: 120,
+		},
+		'featured-post--portrait': {
+			w: 220,
+			h: 360,
+		},
+		'featured-post--landscape': {
+			w: 380,
+			h: 240,
+		},
+		'featured-post--video': {
+			w: 380,
+			h: 240,
+		},
+		'default-post--video': {
+			w: 200,
+			h: 120,
+		},
+		'project-main-thumb': {
+			w: 260,
+			h: 144,
+		},
+		'post-slider': {
+			w: 380,
+			h: 240,
+		},
+		'post-media--video': {
+			w: 380,
+			h: 240,
+		},
+		'project-drawing-thumb--portrait': {
+			w: 90,
+			h: 144,
+		},
+		'project-drawing-thumb--landscape': {
+			w: 180,
+			h: 72,
+		},
+		'project-other-thumb': {
+			w: 90,
+			h: 72,
+		},
+		'project-main-slider': {
+			w: 380,
+			h: 192,
+		},
+		'project-drawings-slider': {
+			w: 380,
+			h: 144,
+		},
+		'related-project--landscape': {
+			w: 380,
+			h: 240,
+		},
+		'atelier-main-thumb': {
+			w: 380,
+			h: 168,
+		},
+		'atelier-main-thumb--portrait': {
+			w: 200,
+			h: 288,
+		},
+		'atelier-main-slider' : {
+			w: 380,
+			h: 240,
+		},
+		'atelier-landing-media-image': {
+			w: 380,
+			h: 216,
+		},
+		'atelier-landing-media-video': {
+			w: 380,
+			h: 216,
+		},
+	},
 	tablet: {
 		'team-member--portrait': {
 			w: 264,
@@ -709,6 +799,8 @@ export const getContainerSize = (container, preConfig) => {
 		configTarget = config['desktop'];
 	} else if (windowDimensions.w >= 768 ) {
 		configTarget = config['tablet'];
+	} else if (windowDimensions.w >= 480 ) {
+		configTarget = config['mobileLS'];
 	} else if (windowDimensions.w >= 375 ) {
 		configTarget = config['mobileX2'];
 	} else {
@@ -746,7 +838,9 @@ export const getMaxWidth = () => {
 		maxWidth = 952;
 	} else if (windowSize.w >= 768) {
 		maxWidth = 720;
-	} else if (windowSize.w >= 375) {
+	} else if (windowSize.w >= 480) {
+		maxWidth = 440;
+	}  else if (windowSize.w >= 375) {
 		maxWidth = 320;
 	} else {
 		maxWidth = 280;

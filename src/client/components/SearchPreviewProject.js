@@ -13,7 +13,11 @@ const SearchPreviewProject = ({ content, type }) => {
 		return (
 			<Preview classList="post-preview post-preview--video post-preview--default post-preview--landscape">
 				<Link className="post-preview__link" to={`/${type === 'work' ? 'work' : 'atelier'}/${id}`}>
-					{ year && type === 'work' && <div className="post-preview__meta">{year}{' -> '}{'Work'}</div> }
+					{ year && type === 'work' &&
+						<div className="post-preview__meta">
+							{year} <span className="post-preview__meta__title">{' -> '}Work</span>
+						</div>
+					}
 					{ type !== 'work' && <div className="post-preview__meta">{'Atelier'}</div> }
 				</Link>
 				<PostMediaVideo content={previewMainThumbnail} patternId="default-post--video"  />
@@ -29,7 +33,11 @@ const SearchPreviewProject = ({ content, type }) => {
 		return (
 			<Preview classList="post-preview post-preview--default post-preview--landscape">
 				<Link className="post-preview__link" to={`/${type === 'work' ? 'work' : 'atelier'}/${id}`}>
-					{ year && type === 'work' && <div className="post-preview__meta">{year}{' -> '}{'Work'}</div> }
+					{ year && type === 'work' &&
+						<div className="post-preview__meta">
+							{year} <span className="post-preview__meta__title">{' -> '}Work</span>
+						</div>
+					}
 					{ type !== 'work' && <div className="post-preview__meta">{'Atelier'}</div> }
 					<PostMediaImage orientation="landscape" patternId="default-post" content={previewMainThumbnail} />
 					{ title && <h2 className="post-preview__title title">{title}</h2> }

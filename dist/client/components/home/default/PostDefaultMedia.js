@@ -68,8 +68,13 @@ var PostDefaultMedia = function (_Component) {
 							'div',
 							{ className: 'post-preview__meta' },
 							(0, _helpers.formatDate)(date),
-							' -> ',
-							category.fields.title
+							' ',
+							_react2.default.createElement(
+								'span',
+								{ className: 'post-preview__meta__title' },
+								' -> ',
+								category.fields.title
+							)
 						)
 					),
 					_react2.default.createElement(_PostMediaVideo2.default, { content: previewThumbnail, patternId: 'default-post--video' }),
@@ -110,8 +115,13 @@ var PostDefaultMedia = function (_Component) {
 								'div',
 								{ className: 'post-preview__meta post-preview__meta--top' },
 								(0, _helpers.formatDate)(date),
-								' -> ',
-								category.fields.title
+								' ',
+								_react2.default.createElement(
+									'span',
+									{ className: 'post-preview__meta__title' },
+									' -> ',
+									category.fields.title
+								)
 							),
 							_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
 							_react2.default.createElement(
@@ -121,8 +131,13 @@ var PostDefaultMedia = function (_Component) {
 									'div',
 									{ className: 'post-preview__meta post-preview__meta--bottom' },
 									(0, _helpers.formatDate)(date),
-									' -> ',
-									category.fields.title
+									' ',
+									_react2.default.createElement(
+										'span',
+										{ className: 'post-preview__meta__title' },
+										' -> ',
+										category.fields.title
+									)
 								),
 								title && _react2.default.createElement(
 									'h2',
@@ -152,8 +167,13 @@ var PostDefaultMedia = function (_Component) {
 								'div',
 								{ className: 'post-preview__meta' },
 								(0, _helpers.formatDate)(date),
-								' -> ',
-								category.fields.title
+								' ',
+								_react2.default.createElement(
+									'span',
+									{ className: 'post-preview__meta__title' },
+									' -> ',
+									category.fields.title
+								)
 							),
 							_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
 							title && _react2.default.createElement(

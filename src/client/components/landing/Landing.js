@@ -61,7 +61,6 @@ class Landing extends Component {
 
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.onScroll);
-		console.log('unmounted');
 	}
 	
 	render() {

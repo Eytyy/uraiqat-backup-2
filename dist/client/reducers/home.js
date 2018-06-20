@@ -26,12 +26,18 @@ var BySection = function BySection() {
 			});
 		case 'RECIEVE_POSTS':
 			//eslint-disable-line
-			var main = action.response[0].fields.mainContent.map(function (_ref) {
-				var sys = _ref.sys;
+			var main = action.response[0].fields.mainContent.filter(function (_ref) {
+				var fields = _ref.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref2) {
+				var sys = _ref2.sys;
 				return sys.id;
 			});
-			var featured = action.response[0].fields.featuredContent.map(function (_ref2) {
-				var sys = _ref2.sys;
+			var featured = action.response[0].fields.featuredContent.filter(function (_ref3) {
+				var fields = _ref3.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref4) {
+				var sys = _ref4.sys;
 				return sys.id;
 			});
 			return _extends({}, state, {
@@ -59,11 +65,17 @@ var All = function All() {
 			});
 		case 'RECIEVE_POSTS':
 			//eslint-disable-line
-			var ids = action.response[0].fields.mainContent.map(function (_ref3) {
-				var sys = _ref3.sys;
+			var ids = action.response[0].fields.mainContent.filter(function (_ref5) {
+				var fields = _ref5.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref6) {
+				var sys = _ref6.sys;
 				return sys.id;
-			}).concat(action.response[0].fields.featuredContent.map(function (_ref4) {
-				var sys = _ref4.sys;
+			}).concat(action.response[0].fields.featuredContent.filter(function (_ref7) {
+				var fields = _ref7.fields;
+				return typeof fields !== 'undefined';
+			}).map(function (_ref8) {
+				var sys = _ref8.sys;
 				return sys.id;
 			}));
 			return _extends({}, state, {
@@ -102,17 +114,23 @@ var ById = function ById() {
 		case 'RECIEVE_POSTS':
 			//eslint-disable-line
 			var ids = {};
-			action.response[0].fields.mainContent.forEach(function (_ref5) {
-				var fields = _ref5.fields,
-				    sys = _ref5.sys;
+			action.response[0].fields.mainContent.filter(function (_ref9) {
+				var fields = _ref9.fields;
+				return typeof fields !== 'undefined';
+			}).forEach(function (_ref10) {
+				var fields = _ref10.fields,
+				    sys = _ref10.sys;
 
 				ids[sys.id] = _extends({
 					id: sys.id
 				}, fields);
 			});
-			action.response[0].fields.featuredContent.forEach(function (_ref6) {
-				var fields = _ref6.fields,
-				    sys = _ref6.sys;
+			action.response[0].fields.featuredContent.filter(function (_ref11) {
+				var fields = _ref11.fields;
+				return typeof fields !== 'undefined';
+			}).forEach(function (_ref12) {
+				var fields = _ref12.fields,
+				    sys = _ref12.sys;
 
 				ids[sys.id] = _extends({
 					id: sys.id

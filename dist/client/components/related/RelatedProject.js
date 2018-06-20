@@ -60,8 +60,13 @@ var RelatedProject = function (_Component) {
 						'div',
 						{ className: 'post-preview__meta' },
 						(0, _helpers.formatDate)(year),
-						' -> ',
-						'Project'
+						' ',
+						_react2.default.createElement(
+							'span',
+							{ className: 'post-preview__meta__title' },
+							' -> ',
+							'Project'
+						)
 					),
 					_react2.default.createElement(_PostMediaImage2.default, { orientation: 'landscape', patternId: 'related-project', content: previewMainThumbnail }),
 					title && _react2.default.createElement(

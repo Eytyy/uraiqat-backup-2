@@ -13,7 +13,11 @@ class RelatedProject extends Component {
 		return (
 			<Preview classList="post-preview post-preview--default post-preview--landscape related-item related-item--project">
 				<Link className="post-preview__link" to={`/${type === 'atelierProject' ? 'atelier' : 'work'}/${id}`}>
-					{ year && <div className="post-preview__meta">{formatDate(year)}{' -> '}Project</div> }
+					{ year &&
+						<div className="post-preview__meta">
+							{formatDate(year)} <span className="post-preview__meta__title">{' -> '}Project</span>
+						</div>
+					}
 					<PostMediaImage orientation="landscape" patternId="related-project" content={previewMainThumbnail} />
 					{ title && <h3 className="post-preview__title title">{title}{' -> '}</h3> }
 				</Link>

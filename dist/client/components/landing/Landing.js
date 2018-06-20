@@ -106,7 +106,6 @@ var Landing = function (_Component) {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
 			window.removeEventListener('scroll', this.onScroll);
-			console.log('unmounted');
 		}
 	}, {
 		key: 'render',

@@ -23,7 +23,11 @@ class PostFeaturedMedia extends Component {
 						<PostMediaImage orientation={orientation} patternId="featured-post" content={previewThumbnail} />
 						<div className="post-preview__content">
 							<div className="post-preview__content__inner">
-								{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+								{ (category || date) &&
+									<div className="post-preview__meta">
+										{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+									</div>
+								}
 								{ title && <h2 className="post-preview__title title">{title}</h2> }
 								{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
 							</div>
@@ -38,7 +42,11 @@ class PostFeaturedMedia extends Component {
 				<Link className="post-preview__link" to={`/journal/${id}`}>
 					<div className="post-preview__content">
 						<div className="post-preview__content__inner">
-							{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+							{ (category || date) &&
+								<div className="post-preview__meta">
+									{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+								</div>
+							}
 							{ title && <h2 className="post-preview__title title">{title}</h2> }
 							{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
 						</div>

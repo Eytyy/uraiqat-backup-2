@@ -62,7 +62,8 @@ var getPosts = exports.getPosts = function getPosts(state) {
 		return fromHome.getPost(state.posts, id);
 	});
 	var mainContent = fromHome.getAll(state.posts).mainContent.map(function (id) {
-		return fromHome.getPost(state.posts, id);
+		var post = fromHome.getPost(state.posts, id);
+		return post;
 	}).sort(function (a, b) {
 		return new Date(b.date) - new Date(a.date);
 	});

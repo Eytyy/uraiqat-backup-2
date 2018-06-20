@@ -12,8 +12,12 @@ const BySection = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_POSTS': //eslint-disable-line
-		const main = action.response[0].fields.mainContent.map(({ sys }) => sys.id);
-		const featured = action.response[0].fields.featuredContent.map(({ sys }) => sys.id);
+		const main = action.response[0].fields.mainContent
+			.filter(({ fields }) => typeof fields !== 'undefined')
+			.map(({ sys }) => sys.id);
+		const featured = action.response[0].fields.featuredContent
+			.filter(({ fields }) => typeof fields !== 'undefined')
+			.map(({ sys }) => sys.id);
 		return {
 			...state,
 			isFetching: false,
@@ -37,8 +41,13 @@ const All = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_POSTS': //eslint-disable-line
-		const ids = action.response[0].fields.mainContent.map(({ sys }) => sys.id)
-			.concat(action.response[0].fields.featuredContent.map(({ sys }) => sys.id));
+		const ids = action.response[0].fields.mainContent
+			.filter(({ fields }) => typeof fields !== 'undefined')
+			.map(({ sys }) => sys.id)
+			.concat(action.response[0].fields.featuredContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id)
+			);
 		return {
 			...state,
 			content: ids,
@@ -73,18 +82,22 @@ const ById = (state = {
 
 	case 'RECIEVE_POSTS': //eslint-disable-line
 		const ids = {};
-		action.response[0].fields.mainContent.forEach(({ fields, sys }) => {
-			ids[sys.id] = {
-				id: sys.id,
-				...fields,
-			};
-		});
-		action.response[0].fields.featuredContent.forEach(({ fields, sys }) => {
-			ids[sys.id] = {
-				id: sys.id,
-				...fields,
-			};
-		});
+		action.response[0].fields.mainContent
+			.filter(({ fields }) => typeof fields !== 'undefined')
+			.forEach(({ fields, sys }) => {
+				ids[sys.id] = {
+					id: sys.id,
+					...fields,
+				};
+			});
+		action.response[0].fields.featuredContent
+			.filter(({ fields }) => typeof fields !== 'undefined')
+			.forEach(({ fields, sys }) => {
+				ids[sys.id] = {
+					id: sys.id,
+					...fields,
+				};
+			});
 		return {
 			...state,
 			...ids,

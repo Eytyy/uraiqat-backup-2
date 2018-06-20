@@ -2,7 +2,6 @@ import { createClient } from 'contentful';
 
 const spaceId = 'ibh0p2gj0eak';
 const deliveryAccessToken = '2c1245eace1a8944181227c684940f0566c383b61edad0527b174c28d035e602';
-const apiToken = 'CFPAT-dcc445f14b6cedebbcb109ebf772bffe087c82c9f5e68a4116e566b1e38a476b';
 
 const client = createClient({
 	space: spaceId,

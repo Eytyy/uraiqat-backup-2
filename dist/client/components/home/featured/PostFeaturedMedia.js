@@ -77,8 +77,13 @@ var PostFeaturedMedia = function (_Component) {
 									'div',
 									{ className: 'post-preview__meta' },
 									(0, _helpers.formatDate)(date),
-									' -> ',
-									category.fields.title
+									' ',
+									_react2.default.createElement(
+										'span',
+										{ className: 'post-preview__meta__title' },
+										' -> ',
+										category.fields.title
+									)
 								),
 								title && _react2.default.createElement(
 									'h2',
@@ -116,8 +121,13 @@ var PostFeaturedMedia = function (_Component) {
 								'div',
 								{ className: 'post-preview__meta' },
 								(0, _helpers.formatDate)(date),
-								' -> ',
-								category.fields.title
+								' ',
+								_react2.default.createElement(
+									'span',
+									{ className: 'post-preview__meta__title' },
+									' -> ',
+									category.fields.title
+								)
 							),
 							title && _react2.default.createElement(
 								'h2',

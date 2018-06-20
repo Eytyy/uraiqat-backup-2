@@ -2,7 +2,6 @@ import React from 'react';
 import Post from '../home/Post';
 import ProjectPreview from '../work/ProjectPreview';
 import AtelierPreview from '../atelier/AtelierPreview';
-
 const Content = ({ content, page }) => {
 	switch(page) {
 	case 'work':

@@ -16,6 +16,9 @@
   @include respond-to(mobile-x2) {
 		padding: 0;
 	}	
+  @include respond-to(mobile-ls) {
+		width: $mobile-ls-max;
+	}
   @include respond-to(tablet) {
 		width: $tablet-max;
 	}

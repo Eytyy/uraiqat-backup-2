@@ -30,7 +30,7 @@ body {
 			max-width: 100%;
 		}
 	}	
-	@include respond-to(tablet) {
+	@include respond-to(mobile-ls) {
 		max-width: 100%;
 	}
 }
@@ -78,6 +78,9 @@ body {
 			width: 100%;
 		}
 	}
+	@include respond-to(mobile-ls) {
+		width: 100%;
+	}
 	@include respond-to(tablet) {
 		width: 100%;
 		min-height: calc(100vh -  (#{$tablet-lh} * 5) -  (#{$tablet-lh} * 2));
@@ -96,9 +99,12 @@ body {
 }
 
 %defaultGrid {
-	@include respond-to(tablet) {
+	@include respond-to(mobile-ls) {
 		display: flex;
 		flex-wrap: wrap;
+		margin-left: -1 * $block-gutter;
+	}
+	@include respond-to(tablet) {
 		margin-left: -1 * $tablet-block-gutter;
 	}
 	@include respond-to(desktop) {

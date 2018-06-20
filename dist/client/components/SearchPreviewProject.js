@@ -45,8 +45,13 @@ var SearchPreviewProject = function SearchPreviewProject(_ref) {
 					'div',
 					{ className: 'post-preview__meta' },
 					year,
-					' -> ',
-					'Work'
+					' ',
+					_react2.default.createElement(
+						'span',
+						{ className: 'post-preview__meta__title' },
+						' -> ',
+						'Work'
+					)
 				),
 				type !== 'work' && _react2.default.createElement(
 					'div',
@@ -80,8 +85,13 @@ var SearchPreviewProject = function SearchPreviewProject(_ref) {
 					'div',
 					{ className: 'post-preview__meta' },
 					year,
-					' -> ',
-					'Work'
+					' ',
+					_react2.default.createElement(
+						'span',
+						{ className: 'post-preview__meta__title' },
+						' -> ',
+						'Work'
+					)
 				),
 				type !== 'work' && _react2.default.createElement(
 					'div',

@@ -18,7 +18,11 @@ class PostDefaultMedia extends Component {
 			return (
 				<Preview classList="post-preview post-preview--video post-preview--default post-preview--landscape">
 					<Link className="post-preview__link" to={`/journal/${id}`}>
-						{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+						{ (category || date) &&
+							<div className="post-preview__meta">
+								{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+							</div>
+						}
 					</Link>
 					<PostMediaVideo content={previewThumbnail} patternId="default-post--video"  />
 					<Link className="post-preview__link" to={`/journal/${id}`}>
@@ -37,10 +41,18 @@ class PostDefaultMedia extends Component {
 				return (
 					<Preview classList="post-preview post-preview--default post-preview--portrait">
 						<Link className="post-preview__link" to={`/journal/${id}`}>
-							{ (category || date) && <div className="post-preview__meta post-preview__meta--top">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+							{ (category || date) &&
+								<div className="post-preview__meta post-preview__meta--top">
+									{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+								</div>
+							}
 							<PostMediaImage orientation={orientation} patternId="default-post" content={previewThumbnail} />
 							<div className="post-preview__content">
-								{ (category || date) && <div className="post-preview__meta post-preview__meta--bottom">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+								{ (category || date) &&
+									<div className="post-preview__meta post-preview__meta--bottom">
+										{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+									</div>
+								}
 								{ title && <h2 className="post-preview__title title">{title}</h2> }
 								{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
 							</div>
@@ -51,7 +63,11 @@ class PostDefaultMedia extends Component {
 				return (
 					<Preview classList="post-preview post-preview--default post-preview--landscape">
 						<Link className="post-preview__link" to={`/journal/${id}`}>
-							{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+							{ (category || date) &&
+								<div className="post-preview__meta">
+									{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+								</div>
+							}
 							<PostMediaImage orientation={orientation} patternId="default-post" content={previewThumbnail} />
 							{ title && <h2 className="post-preview__title title">{title}</h2> }
 							{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }

@@ -7,6 +7,7 @@ $breakpoints: (
   'mobile': '(min-width: 320px)',
   'mobile-x2': '(min-width: 375px)',
   'mobile-x3': '(min-width: 414px)',
+  'mobile-ls': '(min-width: 480px)',
   'tablet': '(min-width: 768px)',
   'desktop': '(min-width: 1024px)',
   'desktop-1280': '(min-width: 1280px)',
@@ -17,6 +18,7 @@ $breakpoints: (
 
 // Max content wrapper widths
 $mobile-max: 320px;
+$mobile-ls-max: 440px;
 $tablet-max: 720px;
 $desktop-max: 952px;
 $desktop-1280-max: 1162px;

@@ -10,7 +10,11 @@ const PostDefaultText = ({ content }) => {
 	return (
 		<Preview classList="post-preview post-preview--default post-preview--text">
 			<Link className="post-preview__link" to={`/journal/${id}`}>
-				{ (category || date) && <div className="post-preview__meta">{formatDate(date)}{' -> '}{category.fields.title}</div> }
+				{ (category || date) &&
+					<div className="post-preview__meta">
+						{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
+					</div>
+				}
 				{ title && <h2 className="post-preview__title title">{title}</h2> }
 				{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
 			</Link>
