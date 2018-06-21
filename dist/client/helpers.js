@@ -780,6 +780,7 @@ var config = {
 		}
 	}
 };
+
 var getContainerSize = exports.getContainerSize = function getContainerSize(container, preConfig) {
 	var containerSize = {};
 
@@ -815,11 +816,11 @@ var getContainerSize = exports.getContainerSize = function getContainerSize(cont
 	return containerSize;
 };
 
-var getNoOfChars = exports.getNoOfChars = function getNoOfChars(container, preconfig) {
+var getNoOfChars = exports.getNoOfChars = function getNoOfChars(container, preconfig, adjust) {
 	var containerSize = typeof preconfig === 'undefined' ? getContainerSize(container) : getContainerSize('custom', preconfig);
-	var font = getFontValues();
+	var font = adjust ? { characterWidth: 12, characterHeight: 24 } : getFontValues();
 
-	var x = Math.floor(containerSize.w / font.characterWidth);
+	var x = adjust ? Math.floor(containerSize.w / font.characterWidth) + 3 : Math.floor(containerSize.w / font.characterWidth);
 	var y = Math.floor(containerSize.h / font.characterHeight);
 
 	return {

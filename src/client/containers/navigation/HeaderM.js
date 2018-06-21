@@ -11,6 +11,7 @@ class HeaderM extends Component {
 		super(props);
 		this.state = {
 			isVisible: false,
+			adjustForMobile: false,
 		};
 		this.toggle = this.toggle.bind(this);
 	}
@@ -32,9 +33,15 @@ class HeaderM extends Component {
 			isVisible: isMenuvisible
 		});
 	}
-	componentWillUpdate() {
+	componentDidMount() {
+		if (document.querySelector('.uLink').offsetWidth === 12) {
+			this.setState({
+				adjustForMobile: true,
+			});
+		}
 
 	}
+
 	render() {
 		const navigation = [
 			{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
@@ -45,8 +52,9 @@ class HeaderM extends Component {
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div>
-					<NavLink className="link" to="/">U</NavLink>
-					<PatternChunk reserved={2} />
+					<span className="fake">U</span>
+					<NavLink className="link uLink" to="/">U</NavLink>
+					<PatternChunk adjust={this.state.adjustForMobile} reserved={2} />
 					<span className="mobile-menu-toggle-overlay" onClick={this.toggle}></span>
 					{
 						this.state.isVisible ?
@@ -55,16 +63,16 @@ class HeaderM extends Component {
 					}
 					
 				</div>
-				<div><PatternChunk reserved={0} /></div>
+				<div><PatternChunk reserved={0} adjust={this.state.adjustForMobile} /></div>
 				{
 					this.state.isVisible ? 
 						<div className="menu">
 							<div className="menu__inner">
-								<HeaderMMain navigation={navigation} />
-								<HeaderMSearch />
-								<HeaderMFilter />
-								<div><PatternChunk reserved={0} /></div>
-								<div><PatternChunk reserved={0} /></div>
+								<HeaderMMain adjust={this.state.adjustForMobile} navigation={navigation} />
+								<HeaderMSearch adjust={this.state.adjustForMobile} />
+								<HeaderMFilter adjust={this.state.adjustForMobile} />
+								<div><PatternChunk adjust={this.state.adjustForMobile} reserved={0} /></div>
+								<div><PatternChunk adjust={this.state.adjustForMobile} reserved={0} /></div>
 							</div>
 						</div>: null
 				}

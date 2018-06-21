@@ -19,7 +19,7 @@ var Chunk = function Chunk(_ref) {
 
 	var generatePattern = function generatePattern() {
 		var pattern = '';
-		var glyphs = ['-', '-', '/', '\\', '-', '-', '|', '-', '>', '-', '<', '\\', '-', '|', '-', '-', '|', '-', '|', '-', '/', '-', '-', '-', '/', '-', '\\', '-'];
+		var glyphs = ['-', '-', '/', '-', '-', '|', '-', '>', '-', '<', '-', '|', '-', '-', '|', '-', '|', '-', '/', '-', '-', '-', '/', '-', '-'];
 		for (count; count <= noOfGlyphs; count++) {
 			pattern += (0, _helpers.getRandomGlyph)(glyphs);
 		}
@@ -38,7 +38,8 @@ var PatternChunkFixed = function PatternChunkFixed(_ref2) {
 };
 
 var PatternChunkReserved = function PatternChunkReserved(_ref3) {
-	var reserved = _ref3.reserved;
+	var reserved = _ref3.reserved,
+	    adjust = _ref3.adjust;
 
 	var maxWidth = (0, _helpers.getMaxWidth)();
 	var config = {
@@ -46,20 +47,22 @@ var PatternChunkReserved = function PatternChunkReserved(_ref3) {
 		h: 1
 	};
 
-	var maxNoOfChars = (0, _helpers.getNoOfChars)('navigation', config);
+	var maxNoOfChars = (0, _helpers.getNoOfChars)('navigation', config, adjust);
 
 	var noOfAllowedChars = maxNoOfChars.x - reserved;
+
 	if (noOfAllowedChars <= 0) {
 		return null;
 	}
-	return _react2.default.createElement(Chunk, { noOfGlyphs: noOfAllowedChars });
+	return _react2.default.createElement(Chunk, { where: 'navigation', noOfGlyphs: noOfAllowedChars });
 };
 
 var PatternChunk = function PatternChunk(_ref4) {
 	var fixed = _ref4.fixed,
-	    reserved = _ref4.reserved;
+	    reserved = _ref4.reserved,
+	    adjust = _ref4.adjust;
 
-	return typeof fixed !== 'undefined' ? _react2.default.createElement(PatternChunkFixed, { fixed: fixed }) : _react2.default.createElement(PatternChunkReserved, { reserved: reserved });
+	return typeof fixed !== 'undefined' ? _react2.default.createElement(PatternChunkFixed, { fixed: fixed }) : _react2.default.createElement(PatternChunkReserved, { reserved: reserved, adjust: adjust });
 };
 
 exports.default = PatternChunk;

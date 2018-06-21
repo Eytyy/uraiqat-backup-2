@@ -776,6 +776,7 @@ const config = {
 		},
 	},
 };
+
 export const getContainerSize = (container, preConfig) => {
 	let containerSize = {};
 
@@ -811,12 +812,11 @@ export const getContainerSize = (container, preConfig) => {
 	return containerSize;
 };
 
-
-export const getNoOfChars = (container, preconfig) => {
+export const getNoOfChars = (container, preconfig, adjust) => {
 	const containerSize = typeof preconfig === 'undefined' ? getContainerSize(container) : getContainerSize('custom', preconfig);
-	const font = getFontValues();
+	const font = adjust ? { characterWidth: 12, characterHeight: 24 } : getFontValues();
 
-	const x = Math.floor(containerSize.w/font.characterWidth);
+	const x = adjust ? Math.floor(containerSize.w/font.characterWidth) + 3 : Math.floor(containerSize.w/font.characterWidth);
 	const y = Math.floor(containerSize.h/font.characterHeight);
 
 	return {

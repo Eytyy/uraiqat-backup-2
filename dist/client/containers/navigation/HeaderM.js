@@ -45,7 +45,8 @@ var HeaderM = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (HeaderM.__proto__ || Object.getPrototypeOf(HeaderM)).call(this, props));
 
 		_this.state = {
-			isVisible: false
+			isVisible: false,
+			adjustForMobile: false
 		};
 		_this.toggle = _this.toggle.bind(_this);
 		return _this;
@@ -74,8 +75,14 @@ var HeaderM = function (_Component) {
 			});
 		}
 	}, {
-		key: 'componentWillUpdate',
-		value: function componentWillUpdate() {}
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			if (document.querySelector('.uLink').offsetWidth === 12) {
+				this.setState({
+					adjustForMobile: true
+				});
+			}
+		}
 	}, {
 		key: 'render',
 		value: function render() {
@@ -87,11 +94,16 @@ var HeaderM = function (_Component) {
 					'div',
 					null,
 					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ className: 'link', to: '/' },
+						'span',
+						{ className: 'fake' },
 						'U'
 					),
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 2 }),
+					_react2.default.createElement(
+						_reactRouterDom.NavLink,
+						{ className: 'link uLink', to: '/' },
+						'U'
+					),
+					_react2.default.createElement(_PatternChunk2.default, { adjust: this.state.adjustForMobile, reserved: 2 }),
 					_react2.default.createElement('span', { className: 'mobile-menu-toggle-overlay', onClick: this.toggle }),
 					this.state.isVisible ? _react2.default.createElement(
 						'span',
@@ -106,7 +118,7 @@ var HeaderM = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { reserved: 0, adjust: this.state.adjustForMobile })
 				),
 				this.state.isVisible ? _react2.default.createElement(
 					'div',
@@ -114,18 +126,18 @@ var HeaderM = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'menu__inner' },
-						_react2.default.createElement(_HeaderMMain2.default, { navigation: navigation }),
-						_react2.default.createElement(_HeaderMSearch2.default, null),
-						_react2.default.createElement(_HeaderMFilter2.default, null),
+						_react2.default.createElement(_HeaderMMain2.default, { adjust: this.state.adjustForMobile, navigation: navigation }),
+						_react2.default.createElement(_HeaderMSearch2.default, { adjust: this.state.adjustForMobile }),
+						_react2.default.createElement(_HeaderMFilter2.default, { adjust: this.state.adjustForMobile }),
 						_react2.default.createElement(
 							'div',
 							null,
-							_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+							_react2.default.createElement(_PatternChunk2.default, { adjust: this.state.adjustForMobile, reserved: 0 })
 						),
 						_react2.default.createElement(
 							'div',
 							null,
-							_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+							_react2.default.createElement(_PatternChunk2.default, { adjust: this.state.adjustForMobile, reserved: 0 })
 						)
 					)
 				) : null

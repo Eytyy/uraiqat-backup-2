@@ -1,5 +1,10 @@
 $mobile-padding: 20px;
-
+.fake {
+	opacity: 0;
+	visibility: 0;
+	position: absolute;
+	z-index: -10;
+}
 body {
 	padding-top: $lh;
 	@include respond-to(tablet) {

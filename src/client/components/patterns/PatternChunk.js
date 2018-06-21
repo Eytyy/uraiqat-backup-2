@@ -6,7 +6,7 @@ const Chunk = ({ noOfGlyphs }) => {
 	
 	const generatePattern = () => {
 		let pattern = '';
-		const glyphs = ['-', '-', '/', '\\', '-', '-', '|', '-', '>', '-', '<', '\\', '-', '|', '-', '-', '|', '-', '|', '-', '/',  '-', '-', '-', '/', '-', '\\', '-'];
+		const glyphs = ['-', '-', '/', '-', '-', '|', '-', '>', '-', '<',  '-', '|', '-', '-', '|', '-', '|', '-', '/',  '-', '-', '-', '/', '-',  '-'];
 		for (count; count <= noOfGlyphs; count++) {
 			pattern += getRandomGlyph(glyphs);
 		}
@@ -17,26 +17,27 @@ const Chunk = ({ noOfGlyphs }) => {
 
 const PatternChunkFixed = ({ fixed }) => <Chunk noOfGlyphs={fixed} />;
 
-const PatternChunkReserved = ({ reserved }) => {
+const PatternChunkReserved = ({ reserved, adjust }) => {
 	let maxWidth = getMaxWidth();
 	const config = {
 		w: maxWidth,
 		h: 1,
 	};
 
-	let maxNoOfChars = getNoOfChars('navigation', config);
-	
+	let maxNoOfChars = getNoOfChars('navigation', config, adjust);
+
 	const noOfAllowedChars = maxNoOfChars.x - reserved;
+	
 	if (noOfAllowedChars <= 0) {
 		return null;
 	}
-	return <Chunk noOfGlyphs={noOfAllowedChars} />;
+	return <Chunk where={'navigation'} noOfGlyphs={noOfAllowedChars} />;
 };
 
-const PatternChunk = ({ fixed, reserved }) => {
+const PatternChunk = ({ fixed, reserved, adjust }) => {
 	return typeof fixed !== 'undefined' ?
 		<PatternChunkFixed fixed={fixed} /> :
-		<PatternChunkReserved reserved={reserved} />;
+		<PatternChunkReserved reserved={reserved} adjust={adjust} />;
 };
 
 export default PatternChunk;

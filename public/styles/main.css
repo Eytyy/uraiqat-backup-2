@@ -240,6 +240,12 @@ a:hover .title {
 .blue {
   color: blue; }
 
+.fake {
+  opacity: 0;
+  visibility: 0;
+  position: absolute;
+  z-index: -10; }
+
 body {
   padding-top: 24px; }
   @media (min-width: 768px) {
