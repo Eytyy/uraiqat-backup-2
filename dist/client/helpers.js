@@ -241,12 +241,12 @@ var config = {
 	},
 	mobileLS: {
 		'team-member--portrait': {
-			w: 180,
-			h: 240
+			w: 130,
+			h: 192
 		},
 		'team-member-inner--portrait': {
-			w: 180,
-			h: 240
+			w: 310,
+			h: 456
 		},
 		'default-post--portrait': {
 			w: 160,
@@ -297,8 +297,8 @@ var config = {
 			h: 72
 		},
 		'project-main-slider': {
-			w: 380,
-			h: 192
+			w: 440,
+			h: 240
 		},
 		'project-drawings-slider': {
 			w: 380,
@@ -309,12 +309,12 @@ var config = {
 			h: 240
 		},
 		'atelier-main-thumb': {
-			w: 380,
-			h: 168
+			w: 430,
+			h: 192
 		},
 		'atelier-main-thumb--portrait': {
-			w: 200,
-			h: 288
+			w: 230,
+			h: 384
 		},
 		'atelier-main-slider': {
 			w: 380,
@@ -400,10 +400,10 @@ var config = {
 		},
 		'atelier-main-thumb': {
 			w: 588,
-			h: 310
+			h: 288
 		},
 		'atelier-main-thumb--portrait': {
-			w: 378,
+			w: 322,
 			h: 576
 		},
 		'atelier-main-slider': {

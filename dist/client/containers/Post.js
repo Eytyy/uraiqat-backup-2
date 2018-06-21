@@ -166,7 +166,11 @@ var Post = function (_Component) {
 				!relatedProject ? null : _react2.default.createElement(
 					'aside',
 					{ className: 'related-content post__related' },
-					relatedProject && _react2.default.createElement(_RelatedProject2.default, { id: relatedProject[0].sys.id, content: relatedProject[0].fields, type: relatedProject[0].sys.contentType.sys.id }),
+					relatedProject && _react2.default.createElement(_RelatedProject2.default, {
+						id: relatedProject[0].sys.id,
+						content: relatedProject[0].fields,
+						type: relatedProject[0].sys.contentType.sys.id
+					}),
 					_react2.default.createElement(_RelatedPosts2.default, { id: relatedProject[0].sys.id, postID: id })
 				)
 			);

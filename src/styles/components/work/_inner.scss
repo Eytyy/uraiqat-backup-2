@@ -177,6 +177,11 @@
 	.slider-btn--prev {
 		order: 1
 	}
+	@include respond-to(mobile-ls) {
+		.slide__image {
+			height: 240px;
+		}
+	}
 	@include respond-to(tablet) {
 		.slider__controls {
 			top: 0;
