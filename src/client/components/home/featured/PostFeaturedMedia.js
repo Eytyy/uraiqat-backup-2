@@ -11,6 +11,7 @@ class PostFeaturedMedia extends Component {
 	render() {
 		const { content } = this.props;
 		const { previewThumbnail, id, category, date, title, previewText } = content;
+		const query = window.innerWidth > 768 ? 'w=1020' : 'w=800';
 		
 		// determine whether the media content is a video or an image
 		const isMediaOfTypeImage = RegExp('image').test(previewThumbnail.fields.file.contentType);
@@ -20,7 +21,7 @@ class PostFeaturedMedia extends Component {
 			return (
 				<Preview classList={`post-preview post-preview--featured post-preview--${orientation}`}>
 					<Link className="post-preview__link" to={`/journal/${id}`}>
-						<PostMediaImage orientation={orientation} patternId="featured-post" content={previewThumbnail} />
+						<PostMediaImage query={query} orientation={orientation} patternId="featured-post" content={previewThumbnail} />
 						<div className="post-preview__content">
 							<div className="post-preview__content__inner">
 								{ (category || date) &&

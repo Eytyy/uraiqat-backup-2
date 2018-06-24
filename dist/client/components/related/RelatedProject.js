@@ -68,7 +68,7 @@ var RelatedProject = function (_Component) {
 							'Project'
 						)
 					),
-					_react2.default.createElement(_PostMediaImage2.default, { orientation: 'landscape', patternId: 'related-project', content: previewMainThumbnail }),
+					_react2.default.createElement(_PostMediaImage2.default, { query: 'w=1020', orientation: 'landscape', patternId: 'related-project', content: previewMainThumbnail }),
 					title && _react2.default.createElement(
 						'h3',
 						{ className: 'post-preview__title title' },

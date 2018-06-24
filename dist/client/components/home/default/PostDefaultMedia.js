@@ -104,6 +104,7 @@ var PostDefaultMedia = function (_Component) {
 			} else {
 				var imgSize = previewThumbnail.fields.file.details.image;
 				var orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
+				var query = window.innerWidth > 1440 ? 'w=800' : 'w=600';
 				if (orientation === 'portrait') {
 					return _react2.default.createElement(
 						_Preview2.default,
@@ -123,7 +124,7 @@ var PostDefaultMedia = function (_Component) {
 									category.fields.title
 								)
 							),
-							_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
+							_react2.default.createElement(_PostMediaImage2.default, { query: query, orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
 							_react2.default.createElement(
 								'div',
 								{ className: 'post-preview__content' },
@@ -175,7 +176,7 @@ var PostDefaultMedia = function (_Component) {
 									category.fields.title
 								)
 							),
-							_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
+							_react2.default.createElement(_PostMediaImage2.default, { query: query, orientation: orientation, patternId: 'default-post', content: previewThumbnail }),
 							title && _react2.default.createElement(
 								'h2',
 								{ className: 'post-preview__title title' },

@@ -54,8 +54,9 @@ var PostFeaturedMedia = function (_Component) {
 			    title = content.title,
 			    previewText = content.previewText;
 
-			// determine whether the media content is a video or an image
+			var query = window.innerWidth > 768 ? 'w=1020' : 'w=800';
 
+			// determine whether the media content is a video or an image
 			var isMediaOfTypeImage = RegExp('image').test(previewThumbnail.fields.file.contentType);
 			if (isMediaOfTypeImage) {
 				var imgSize = previewThumbnail.fields.file.details.image;
@@ -66,7 +67,7 @@ var PostFeaturedMedia = function (_Component) {
 					_react2.default.createElement(
 						_reactRouterDom.Link,
 						{ className: 'post-preview__link', to: '/journal/' + id },
-						_react2.default.createElement(_PostMediaImage2.default, { orientation: orientation, patternId: 'featured-post', content: previewThumbnail }),
+						_react2.default.createElement(_PostMediaImage2.default, { query: query, orientation: orientation, patternId: 'featured-post', content: previewThumbnail }),
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-preview__content' },

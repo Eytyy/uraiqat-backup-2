@@ -37,6 +37,7 @@ class PostDefaultMedia extends Component {
 		else {
 			const imgSize = previewThumbnail.fields.file.details.image;
 			const orientation = imgSize.width > imgSize.height ? 'landscape' : 'portrait';
+			const query = window.innerWidth > 1440 ? 'w=800' : 'w=600';
 			if (orientation === 'portrait') {
 				return (
 					<Preview classList="post-preview post-preview--default post-preview--portrait">
@@ -46,7 +47,7 @@ class PostDefaultMedia extends Component {
 									{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
 								</div>
 							}
-							<PostMediaImage orientation={orientation} patternId="default-post" content={previewThumbnail} />
+							<PostMediaImage query={query} orientation={orientation} patternId="default-post" content={previewThumbnail} />
 							<div className="post-preview__content">
 								{ (category || date) &&
 									<div className="post-preview__meta post-preview__meta--bottom">
@@ -68,7 +69,7 @@ class PostDefaultMedia extends Component {
 									{formatDate(date)} <span className="post-preview__meta__title">{' -> '}{category.fields.title}</span>
 								</div>
 							}
-							<PostMediaImage orientation={orientation} patternId="default-post" content={previewThumbnail} />
+							<PostMediaImage query={query} orientation={orientation} patternId="default-post" content={previewThumbnail} />
 							{ title && <h2 className="post-preview__title title">{title}</h2> }
 							{ previewText && <div className="post-preview__desc"><p>{previewText}</p></div> }
 						</Link>

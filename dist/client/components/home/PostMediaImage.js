@@ -37,13 +37,15 @@ var PostMediaImage = function (_Component) {
 			var _props = this.props,
 			    content = _props.content,
 			    patternId = _props.patternId,
-			    orientation = _props.orientation;
+			    orientation = _props.orientation,
+			    query = _props.query;
 
 			var imageClass = 'post-preview__image';
+			var imgSrc = query ? content.fields.file.url + '?' + query : content.fields.file.url;
 			return _react2.default.createElement(_ImageComponent2.default, {
 				patternId: patternId + '--' + orientation,
 				classList: imageClass,
-				src: content.fields.file.url,
+				src: imgSrc,
 				size: content.fields.file.details.image
 			});
 		}

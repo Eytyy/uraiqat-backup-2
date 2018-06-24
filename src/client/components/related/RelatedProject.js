@@ -18,7 +18,7 @@ class RelatedProject extends Component {
 							{formatDate(year)} <span className="post-preview__meta__title">{' -> '}Project</span>
 						</div>
 					}
-					<PostMediaImage orientation="landscape" patternId="related-project" content={previewMainThumbnail} />
+					<PostMediaImage query={'w=1020'} orientation="landscape" patternId="related-project" content={previewMainThumbnail} />
 					{ title && <h3 className="post-preview__title title">{title}{' -> '}</h3> }
 				</Link>
 			</Preview>

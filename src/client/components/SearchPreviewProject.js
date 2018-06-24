@@ -39,7 +39,7 @@ const SearchPreviewProject = ({ content, type }) => {
 						</div>
 					}
 					{ type !== 'work' && <div className="post-preview__meta">{'Atelier'}</div> }
-					<PostMediaImage orientation="landscape" patternId="default-post" content={previewMainThumbnail} />
+					<PostMediaImage query={'w=1020'} orientation="landscape" patternId="default-post" content={previewMainThumbnail} />
 					{ title && <h2 className="post-preview__title title">{title}</h2> }
 				</Link>
 			</Preview>
