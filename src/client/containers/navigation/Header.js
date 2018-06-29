@@ -23,14 +23,11 @@ class Header extends Component {
 		window.addEventListener('resize', this.updateDimensions);
 	}
 	render() {
-		if (typeof window === 'undefined') {
-			return <header className="website-header"></header>;
-		}
-		return (
+		return typeof window === 'undefined' ? 
+			<header className="website-header"></header> :
 			<header className="website-header">
-				{ this.state.width >= 1024 ? <HeaderDT /> : <HeaderM /> }
-			</header>
-		);
+				{ this.state.width >= 1024 && <HeaderDT /> || <HeaderM /> }
+			</header>;
 	}
 }
 

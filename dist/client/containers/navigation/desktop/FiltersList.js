@@ -72,10 +72,7 @@ var FiltersList = function FiltersList(_ref2) {
 	var fixedEnd = 4;
 	var availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	var filters = createFilters(content, availableSpace);
-	if (!isVisible) {
-		return null;
-	}
-	return _react2.default.createElement(
+	return isVisible && _react2.default.createElement(
 		'div',
 		{ className: 'filters-list' },
 		Object.keys(filters).map(function (key) {

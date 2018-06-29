@@ -98,7 +98,12 @@ var SearchPreviewProject = function SearchPreviewProject(_ref) {
 					{ className: 'post-preview__meta' },
 					'Atelier'
 				),
-				_react2.default.createElement(_PostMediaImage2.default, { query: 'w=1020', orientation: 'landscape', patternId: 'default-post', content: previewMainThumbnail }),
+				_react2.default.createElement(_PostMediaImage2.default, {
+					content: previewMainThumbnail,
+					query: 'w=1020',
+					orientation: 'landscape',
+					patternId: 'default-post'
+				}),
 				title && _react2.default.createElement(
 					'h2',
 					{ className: 'post-preview__title title' },

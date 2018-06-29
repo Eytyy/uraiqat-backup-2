@@ -135,7 +135,7 @@ var Filter = function (_Component) {
 					{ onClick: this.onfiltersClick, className: 'link' },
 					'x'
 				) : '<',
-				this.state.filtersAreVisible ? _react2.default.createElement(_FiltersList2.default, { onFilterClick: this.onFilterClick, content: content, adjust: adjustForMobile }) : null
+				this.state.filtersAreVisible && _react2.default.createElement(_FiltersList2.default, { onFilterClick: this.onFilterClick, content: content, adjust: adjustForMobile })
 			);
 		}
 	}]);

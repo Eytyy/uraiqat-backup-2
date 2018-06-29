@@ -59,13 +59,10 @@ var Header = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			if (typeof window === 'undefined') {
-				return _react2.default.createElement('header', { className: 'website-header' });
-			}
-			return _react2.default.createElement(
+			return typeof window === 'undefined' ? _react2.default.createElement('header', { className: 'website-header' }) : _react2.default.createElement(
 				'header',
 				{ className: 'website-header' },
-				this.state.width >= 1024 ? _react2.default.createElement(_Header2.default, null) : _react2.default.createElement(_Header4.default, null)
+				this.state.width >= 1024 && _react2.default.createElement(_Header2.default, null) || _react2.default.createElement(_Header4.default, null)
 			);
 		}
 	}]);

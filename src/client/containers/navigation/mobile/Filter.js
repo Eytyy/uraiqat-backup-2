@@ -61,12 +61,10 @@ class Filter extends Component {
 				<span className="ws">-</span>
 				<PatternChunk reserved={reservedFilterSize} adjust={adjustForMobile} />
 				{ this.state.filtersAreVisible ?
-					<span onClick={this.onfiltersClick} className="link">x</span> :
-					'<'
+					<span onClick={this.onfiltersClick} className="link">x</span> : '<'
 				}
-				{ this.state.filtersAreVisible ?
-					<FiltersList onFilterClick={this.onFilterClick} content={content} adjust={adjustForMobile} /> :
-					null
+				{ this.state.filtersAreVisible &&
+					<FiltersList onFilterClick={this.onFilterClick} content={content} adjust={adjustForMobile} />
 				}
 			</div>
 		);

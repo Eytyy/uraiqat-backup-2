@@ -94,6 +94,7 @@ var Search = function (_Component) {
 			};
 			var reservedInputSpace = config.name.length + config.searchInputSize + config.spacesAfter;
 			var reservedInactiveSpace = config.name.length + config.spacesAfter;
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'search ' + (this.state.searchIsVisible ? 'is-visible' : 'is-hidden') + ' header-mobile__search' },

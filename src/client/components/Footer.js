@@ -23,20 +23,19 @@ class Footer extends Component {
 		window.addEventListener('resize', this.updateDimensions);
 	}
 	render() {
-		if (typeof window === 'undefined') {
-			return <footer className="website-footer" />;
-		}
 		const { adjust } = this.props;
-		return (
-			<footer className="website-footer">
-				<div><PatternChunk adjust={adjust} reserved={0} /></div>
-				<div><PatternChunk adjust={adjust} reserved={0} /></div>
-				<div>
-					<PatternChunk adjust={adjust} reserved={1} />
-					<NavLink className="link" activeClassName="active" to="/">A</NavLink>
-				</div>
-			</footer>
-		);
+		return typeof window === 'undefined' ?
+			<footer className="website-footer" />:
+			(
+				<footer className="website-footer">
+					<div><PatternChunk adjust={adjust} reserved={0} /></div>
+					<div><PatternChunk adjust={adjust} reserved={0} /></div>
+					<div>
+						<PatternChunk adjust={adjust} reserved={1} />
+						<NavLink className="link" activeClassName="active" to="/">A</NavLink>
+					</div>
+				</footer>
+			);
 	}
 }
 

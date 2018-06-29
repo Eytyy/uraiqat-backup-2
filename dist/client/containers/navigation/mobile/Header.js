@@ -111,7 +111,7 @@ var Header = function (_Component) {
 					null,
 					_react2.default.createElement(_PatternChunk2.default, { reserved: 0, adjust: adjustForMobile })
 				),
-				this.state.isVisible ? _react2.default.createElement(
+				this.state.isVisible && _react2.default.createElement(
 					'div',
 					{ className: 'menu' },
 					_react2.default.createElement(
@@ -131,7 +131,7 @@ var Header = function (_Component) {
 							_react2.default.createElement(_PatternChunk2.default, { adjust: adjustForMobile, reserved: 0 })
 						)
 					)
-				) : null
+				)
 			);
 		}
 	}]);

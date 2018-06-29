@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -18,43 +18,62 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Preview = function (_Component) {
-	_inherits(Preview, _Component);
+var FilterSearchFilter = function (_Component) {
+	_inherits(FilterSearchFilter, _Component);
 
-	function Preview() {
-		_classCallCheck(this, Preview);
+	function FilterSearchFilter() {
+		_classCallCheck(this, FilterSearchFilter);
 
-		return _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (FilterSearchFilter.__proto__ || Object.getPrototypeOf(FilterSearchFilter)).apply(this, arguments));
 	}
 
-	_createClass(Preview, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var previewHeight = this.previewBlock.offsetHeight;
-			var heightRelativeToCharHeight = previewHeight % 32;
-			var padding = heightRelativeToCharHeight === 0 ? 0 : (1 - heightRelativeToCharHeight / 32) * 32;
-			this.previewBlock.style.paddingBottom = padding + 'px';
-		}
-	}, {
-		key: 'render',
+	_createClass(FilterSearchFilter, [{
+		key: "render",
 		value: function render() {
-			var _this2 = this;
-
 			var _props = this.props,
-			    classList = _props.classList,
-			    children = _props.children;
+			    config = _props.config,
+			    filtersAreVisible = _props.filtersAreVisible,
+			    onToggle = _props.onToggle;
 
 			return _react2.default.createElement(
-				'article',
-				{ ref: function ref(el) {
-						_this2.previewBlock = el;
-					}, className: classList },
-				children
+				"span",
+				{ className: "filters" },
+				_react2.default.createElement(
+					"span",
+					{ className: "ws" },
+					"-"
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: "ws" },
+					"-"
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: "link", onClick: onToggle },
+					filtersAreVisible ? '-' : config.glyph.content,
+					config.name
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: filtersAreVisible ? 'ind ind--list' : 'ind ind--list is-hidden' },
+					":"
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: "ws" },
+					"-"
+				),
+				_react2.default.createElement(
+					"span",
+					{ className: "separator" },
+					'/'
+				)
 			);
 		}
 	}]);
 
-	return Preview;
+	return FilterSearchFilter;
 }(_react.Component);
 
-exports.default = Preview;
+exports.default = FilterSearchFilter;

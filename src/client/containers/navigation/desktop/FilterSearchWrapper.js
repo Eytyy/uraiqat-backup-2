@@ -6,30 +6,32 @@ import { getFilters } from '../../../reducers';
 import * as actions from '../../../actions';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
-import FilterSearchFilter from './FilterSearchFilter';
-import FilterSearchSearch from './FilterSearchSearch';
+import FiltersToggle from './FiltersToggle';
+import Search from './Search';
 import FiltersList from './FiltersList';
 
-class FilterSearch extends Component {
+class FilterSearchWrapper extends Component {
 	constructor() {
 		super();
 		this.state = {
 			filtersAreVisible: false,
 			searchIsVisible: false,
 		};
-		this.onfiltersClick = this.onfiltersClick.bind(this);
+		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onFilterClick = this.onFilterClick.bind(this);
 		this.onSearchClick = this.onSearchClick.bind(this);
 		this.onSearchSubmit = this.onSearchSubmit.bind(this);
 		this.clearSearch = this.clearSearch.bind(this);
 	}
+
 	toggleFilter() {
 		this.setState({
 			filtersAreVisible: !this.state.filtersAreVisible,
 			searchIsVisible: this.state.searchIsVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
 		});
 	}
-	onfiltersClick() {
+
+	onToggleClick() {
 		const { fetchFilters, content } = this.props;
 		if (!this.state.filtersAreVisible) {
 			if (content.length === 0) {
@@ -43,21 +45,25 @@ class FilterSearch extends Component {
 			this.toggleFilter();
 		}
 	}
+
 	onFilterClick(id) {
 		const { updateFilter } = this.props;
 		updateFilter(id);
 	}
+
 	clearSearch() {
 		if (this.search) {
 			this.search.value = '';
 		}
 	}
+
 	onSearchClick() {
 		this.setState({
 			searchIsVisible: !this.state.searchIsVisible,
 			filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 		});
 	}
+
 	onSearchSubmit(event) {
 		const { fetchSearchResults } = this.props;
 		const keyword = new FormData(event.target).get('keyword');
@@ -68,6 +74,7 @@ class FilterSearch extends Component {
 		this.onSearchClick();
 		return false;
 	}
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.location.pathname !== this.props.location.pathname) {
 			let filterState = this.state.filtersAreVisible;
@@ -84,6 +91,7 @@ class FilterSearch extends Component {
 			});
 		}
 	}
+
 	render() {
 		const { content, location } = this.props;
 		const fixedStart = window.innerWidth >= 1280 ? 11 : 8;
@@ -115,15 +123,14 @@ class FilterSearch extends Component {
 		return (
 			<div className="header--desktop__main">
 				<PatternChunk fixed={fixedStart} />
-				{ reservedFilterSize === 0 ?
-					null :
-					<FilterSearchFilter
+				{ reservedFilterSize !== 0 &&
+					<FiltersToggle
 						filtersAreVisible={this.state.filtersAreVisible}
-						onfiltersClick={this.onfiltersClick}
+						onToggle={this.onToggleClick}
 						config={config.filter}
 					/>
 				}
-				<FilterSearchSearch
+				<Search
 					searchIsVisible={this.state.searchIsVisible}
 					onSearchClick={this.onSearchClick}
 					onSearchSubmit={this.onSearchSubmit}
@@ -148,4 +155,4 @@ const mapStateToProps = state => ({
 export default withRouter(connect(
 	mapStateToProps,
 	actions
-)(FilterSearch));
+)(FilterSearchWrapper));

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class FilterSearchFilter extends Component {
 	render() {
-		const { config, filtersAreVisible, onfiltersClick } = this.props;
+		const { config, filtersAreVisible, onToggle } = this.props;
 		return (
 			<span className="filters">
 				<span className="ws">-</span>
 				<span className="ws">-</span>
-				<span className="link" onClick={onfiltersClick}>
+				<span className="link" onClick={onToggle}>
 					{ filtersAreVisible ? '-' : config.glyph.content}
 					{config.name}
 				</span>

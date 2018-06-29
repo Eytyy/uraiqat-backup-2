@@ -28,6 +28,7 @@ var SearchPreview = function SearchPreview(_ref) {
 	var contentWid = _extends({}, content, {
 		id: id
 	});
+
 	return type === 'post' ? _react2.default.createElement(_PostDefault2.default, { content: contentWid }) : _react2.default.createElement(_SearchPreviewProject2.default, { type: type, content: contentWid });
 };
 

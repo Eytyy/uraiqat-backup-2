@@ -6,9 +6,8 @@ const Filter = ({ content, active, onFilterClick, id }) => {
 	};
 	return (
 		<span onClick={onClick} className="filter link">
-			{ active ? 
-				<span className="filterBox">[<span className="filterBox__state">x</span>]</span> :
-				<span className="filterBox">[<span className="filterBox__state"> </span>]</span>
+			{ active && <span className="filterBox">[<span className="filterBox__state">x</span>]</span>
+				|| <span className="filterBox">[<span className="filterBox__state"> </span>]</span>
 			} 
 			<span className="ws">-</span>								
 			<span>{content}</span>

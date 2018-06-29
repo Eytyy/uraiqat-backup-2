@@ -59,16 +59,16 @@ class Header extends Component {
 				</div>
 				<div><PatternChunk reserved={0} adjust={adjustForMobile} /></div>
 				{
-					this.state.isVisible ? 
-						<div className="menu">
-							<div className="menu__inner">
-								<Main adjust={adjustForMobile} navigation={navigation} />
-								<Search adjust={adjustForMobile} />
-								<Filter adjust={adjustForMobile} />
-								<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
-								<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
-							</div>
-						</div>: null
+					this.state.isVisible && 
+					<div className="menu">
+						<div className="menu__inner">
+							<Main adjust={adjustForMobile} navigation={navigation} />
+							<Search adjust={adjustForMobile} />
+							<Filter adjust={adjustForMobile} />
+							<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
+							<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
+						</div>
+					</div>
 				}
 			</div>
 		);

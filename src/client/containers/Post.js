@@ -21,12 +21,14 @@ class Post extends Component { //eslint-disable-line
 	static fetchData(store, id) {
 		return store.dispatch(fetchPost(id));
 	}
+	
 	componentDidMount() {
 		const { content, isFetching } = this.props;
 		if (!isFetching && typeof content.id === 'undefined') {
 			this.fetchData();
 		}
 	}
+	
 	componentWillReceiveProps(nextProps) {
 		const { content, isFetching } = nextProps;
 		if (!isFetching && typeof content.id === 'undefined') {
@@ -39,6 +41,7 @@ class Post extends Component { //eslint-disable-line
 		const id = match.params.id;
 		fetchPost(id);
 	}
+	
 	render() {
 		const { content, isFetching, match } = this.props;
 		const { tags, date, author, mainContent, externalPostUrl, externalPostSource, relatedProject } = content;

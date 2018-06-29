@@ -50,10 +50,7 @@ const FiltersList = ({ content, onFilterClick, isVisible }) => {
 	const fixedEnd = 4;
 	const availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
 	const filters = createFilters(content, availableSpace);
-	if (!isVisible) {
-		return null;
-	}
-	return (
+	return isVisible && (
 		<div className="filters-list">
 			{
 				Object.keys(filters).map(key => {

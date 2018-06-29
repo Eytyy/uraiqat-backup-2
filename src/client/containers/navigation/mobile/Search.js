@@ -37,7 +37,7 @@ class Search extends Component {
 		return false;
 	}
 	render() {
-		const {adjust} = this.props;
+		const { adjust } = this.props;
 		const config = {
 			name: 'Search',
 			glyph: { className: 'ind', content: ':' },
@@ -50,6 +50,7 @@ class Search extends Component {
 		};
 		const reservedInputSpace = config.name.length + config.searchInputSize + config.spacesAfter;
 		const reservedInactiveSpace = config.name.length + config.spacesAfter;
+
 		return (
 			<div className={`search ${this.state.searchIsVisible ? 'is-visible' : 'is-hidden'} header-mobile__search`}>
 				<span className="search-link link" onClick={this.onSearchClick}>{ config.name }</span>

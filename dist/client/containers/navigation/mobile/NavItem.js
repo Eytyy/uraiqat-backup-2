@@ -19,11 +19,7 @@ var NavItem = function NavItem(_ref) {
 
 	return _react2.default.createElement(
 		_reactRouterDom.NavLink,
-		{
-			activeClassName: 'active',
-			className: 'link menu-link',
-			to: link
-		},
+		{ activeClassName: 'active', className: 'link menu-link', to: link },
 		name,
 		_react2.default.createElement(
 			'span',

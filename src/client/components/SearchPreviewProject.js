@@ -15,15 +15,15 @@ const SearchPreviewProject = ({ content, type }) => {
 				<Link className="post-preview__link" to={`/${type === 'work' ? 'work' : 'atelier'}/${id}`}>
 					{ year && type === 'work' &&
 						<div className="post-preview__meta">
-							{year} <span className="post-preview__meta__title">{' -> '}Work</span>
+							{ year } <span className="post-preview__meta__title">{' -> '}Work</span>
 						</div>
 					}
 					{ type !== 'work' && <div className="post-preview__meta">{'Atelier'}</div> }
 				</Link>
 				<PostMediaVideo content={previewMainThumbnail} patternId="default-post--video"  />
-				<Link className="post-preview__link" to={`/${type === 'work' ? 'work' : 'atelier'}/${id}`}>
+				<Link className="post-preview__link" to={`/${type === 'work' ? 'work' : 'atelier'}/${ id }`}>
 					<div className="post-preview__content">
-						{ title && <h2 className="post-preview__title title">{title}</h2> }
+						{ title && <h2 className="post-preview__title title">{ title }</h2> }
 					</div>
 				</Link>
 			</Preview>
@@ -32,15 +32,20 @@ const SearchPreviewProject = ({ content, type }) => {
 	else {
 		return (
 			<Preview classList="post-preview post-preview--default post-preview--landscape">
-				<Link className="post-preview__link" to={`/${type === 'work' ? 'work' : 'atelier'}/${id}`}>
+				<Link className="post-preview__link" to={`/${ type === 'work' ? 'work' : 'atelier' }/${ id }`}>
 					{ year && type === 'work' &&
 						<div className="post-preview__meta">
-							{year} <span className="post-preview__meta__title">{' -> '}Work</span>
+							{ year } <span className="post-preview__meta__title">{' -> '}Work</span>
 						</div>
 					}
-					{ type !== 'work' && <div className="post-preview__meta">{'Atelier'}</div> }
-					<PostMediaImage query={'w=1020'} orientation="landscape" patternId="default-post" content={previewMainThumbnail} />
-					{ title && <h2 className="post-preview__title title">{title}</h2> }
+					{ type !== 'work' && <div className="post-preview__meta">{ 'Atelier' }</div> }
+					<PostMediaImage
+						content={ previewMainThumbnail }
+						query="w=1020"
+						orientation="landscape"
+						patternId="default-post"
+					/>
+					{ title && <h2 className="post-preview__title title">{ title }</h2> }
 				</Link>
 			</Preview>
 		);

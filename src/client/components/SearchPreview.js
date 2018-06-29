@@ -7,7 +7,10 @@ const SearchPreview = ({ content, type, id }) => {
 		...content,
 		id: id
 	};
-	return type === 'post' ? <PostDefault content={contentWid} /> : <SearchPreviewProject type={type} content={contentWid} />;
+
+	return type === 'post' ?
+		<PostDefault content={contentWid} /> :
+		<SearchPreviewProject type={type} content={contentWid} />;
 };
 
 export default SearchPreview;

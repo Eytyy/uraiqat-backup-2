@@ -57,12 +57,9 @@ var Footer = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			if (typeof window === 'undefined') {
-				return _react2.default.createElement('footer', { className: 'website-footer' });
-			}
 			var adjust = this.props.adjust;
 
-			return _react2.default.createElement(
+			return typeof window === 'undefined' ? _react2.default.createElement('footer', { className: 'website-footer' }) : _react2.default.createElement(
 				'footer',
 				{ className: 'website-footer' },
 				_react2.default.createElement(

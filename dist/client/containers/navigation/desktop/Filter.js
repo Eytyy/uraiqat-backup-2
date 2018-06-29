@@ -22,7 +22,7 @@ var Filter = function Filter(_ref) {
 	return _react2.default.createElement(
 		"span",
 		{ onClick: onClick, className: "filter link" },
-		active ? _react2.default.createElement(
+		active && _react2.default.createElement(
 			"span",
 			{ className: "filterBox" },
 			"[",
@@ -32,7 +32,7 @@ var Filter = function Filter(_ref) {
 				"x"
 			),
 			"]"
-		) : _react2.default.createElement(
+		) || _react2.default.createElement(
 			"span",
 			{ className: "filterBox" },
 			"[",
