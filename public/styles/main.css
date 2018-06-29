@@ -406,6 +406,15 @@ body {
     .practice-section__team-list {
       margin-left: -98px; } }
 
+.landing-section--featured {
+  padding-bottom: 72px; }
+  @media (min-width: 768px) {
+    .landing-section--featured {
+      padding-bottom: 78px; } }
+  @media (min-width: 1024px) {
+    .landing-section--featured {
+      padding-bottom: 96px; } }
+
 .landing-page {
   -webkit-transition: height 300ms linear;
   transition: height 300ms linear; }
@@ -1504,6 +1513,8 @@ img {
 
 .atelier-preview {
   margin-bottom: 72px; }
+  .atelier-preview:last-child {
+    margin-bottom: 0; }
   @media (min-width: 768px) {
     .atelier-preview {
       margin-bottom: 78px; } }

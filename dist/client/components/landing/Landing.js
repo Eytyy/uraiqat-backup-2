@@ -76,8 +76,8 @@ var Landing = function (_Component) {
 		value: function adjustContainerHeight() {
 			var featured = document.querySelector('.landing-section--featured');
 			var main = document.querySelector('.landing-section--main');
-			var featuredHeight = featured ? featured.offsetHeight : 0;
-			var mainHeight = main ? main.offsetHeight : 0;
+			var featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
+			var mainHeight = main ? main.getBoundingClientRect().height : 0;
 
 			var newHeight = featuredHeight + mainHeight + 'px';
 			this.section.style.height = newHeight;
@@ -120,9 +120,10 @@ var Landing = function (_Component) {
 			    featuredContent = content.featuredContent;
 
 			var classList = 'landing-page landing-page--' + page + ' main-section';
+			var numberOfVisibleItemsPerScroll = page === 'journal' ? 8 : 3;
 
-			this.visibleFeatured = typeof this.state.skip !== 'undefined' ? featuredContent.slice(0, this.state.skip * 5 + 5) : featuredContent;
-			this.visibleMain = typeof this.state.skip !== 'undefined' ? mainContent.slice(0, this.state.skip * 5 + 5 - this.visibleFeatured.length) : mainContent;
+			this.visibleFeatured = typeof this.state.skip !== 'undefined' ? featuredContent.slice(0, this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll) : featuredContent;
+			this.visibleMain = typeof this.state.skip !== 'undefined' ? mainContent.slice(0, this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll - this.visibleFeatured.length) : mainContent;
 			this.visible = this.visibleFeatured.length + this.visibleMain.length;
 
 			return _react2.default.createElement(

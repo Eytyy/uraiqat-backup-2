@@ -36,8 +36,8 @@ class Landing extends Component {
 	adjustContainerHeight() {
 		const featured = document.querySelector('.landing-section--featured');
 		const main = document.querySelector('.landing-section--main');
-		const featuredHeight = featured ? featured.offsetHeight : 0;
-		const mainHeight = main ? main.offsetHeight : 0;
+		const featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
+		const mainHeight = main ? main.getBoundingClientRect().height : 0;
 
 		const newHeight = `${featuredHeight + mainHeight}px` ;
 		this.section.style.height = newHeight;
@@ -67,11 +67,12 @@ class Landing extends Component {
 		const { page, content, intro } = this.props;
 		const { mainContent, featuredContent } = content;
 		const classList = `landing-page landing-page--${page} main-section`;
+		const numberOfVisibleItemsPerScroll = page === 'journal' ? 8 : 3;
 
 		this.visibleFeatured = typeof this.state.skip !== 'undefined' ?
-			featuredContent.slice(0, (this.state.skip * 5 + 5)) : featuredContent;
+			featuredContent.slice(0, (this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll)) : featuredContent;
 		this.visibleMain = typeof this.state.skip !== 'undefined' ?
-			mainContent.slice(0, (this.state.skip * 5 + 5) - this.visibleFeatured.length) : mainContent;
+			mainContent.slice(0, (this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll) - this.visibleFeatured.length) : mainContent;
 		this.visible = this.visibleFeatured.length + this.visibleMain.length;
 
 		return ( 

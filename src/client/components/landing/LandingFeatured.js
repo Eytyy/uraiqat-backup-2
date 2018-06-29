@@ -15,7 +15,7 @@ const Content = ({ content, page }) => {
 };
 
 const LandingFeatured = ({ content, page }) => {
-	if (typeof content === 'undefined') {
+	if (typeof content === 'undefined' || content.length === 0) {
 		return null;
 	}
 	return (

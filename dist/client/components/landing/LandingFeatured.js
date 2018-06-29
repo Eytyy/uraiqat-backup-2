@@ -48,7 +48,7 @@ var LandingFeatured = function LandingFeatured(_ref2) {
 	var content = _ref2.content,
 	    page = _ref2.page;
 
-	if (typeof content === 'undefined') {
+	if (typeof content === 'undefined' || content.length === 0) {
 		return null;
 	}
 	return _react2.default.createElement(

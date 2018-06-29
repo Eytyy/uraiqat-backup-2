@@ -146,6 +146,16 @@ body {
 	}	
 }
 
+.landing-section--featured {
+	padding-bottom: $lh * 3;
+	@include respond-to(tablet) {
+		padding-bottom: $tablet-lh * 3;
+	}
+	@include respond-to(desktop) {
+		padding-bottom: $desktop-lh * 3;
+	}
+}
+
 .search-results {
 	@extend %defaultGrid;
 }
