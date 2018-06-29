@@ -4,7 +4,7 @@ import ContactAddressLineMobile from '../components/ContactAddressLineMobile';
 import ContactMap from '../containers/ContactMap';
 import { getNoOfChars, getWindowDimensions, getFontValues, getMaxWidth } from '../helpers';
 
-const ContactMobile = ({ content }) => {
+const ContactMobile = ({ content, adjust }) => {
 	const coordinates = content.fields.googleMap;
 	const { addressLine1, addressLine2, mobile, telephone, fax, email } = content.fields;
 	const fixedWhiteSpace = 1;
@@ -72,18 +72,18 @@ const ContactMobile = ({ content }) => {
 	
 	return (
 		<section className="landing-page landing-page--contact main-section">
-			<ContactAddressLineMobile type="text" config={addressLine1Config} />
-			<ContactAddressLineMobile type="text" config={addressLine2Config} />
-			<div className="contact-line"><PatternChunk reserved={0} /></div>
-			<ContactAddressLineMobile type="tel" config={telephoneConfig} />
-			<ContactAddressLineMobile type="tel" config={faxConfig} />
-			<ContactAddressLineMobile type="tel" config={mobileConfig} />
-			<div className="contact-line"><PatternChunk reserved={0} /></div>
-			<ContactAddressLineMobile type="email" config={emailConfig} />
+			<ContactAddressLineMobile adjust={adjust} type="text" config={addressLine1Config} />
+			<ContactAddressLineMobile adjust={adjust} type="text" config={addressLine2Config} />
+			<div className="contact-line"><PatternChunk adjust={adjust} reserved={0} /></div>
+			<ContactAddressLineMobile adjust={adjust} type="tel" config={telephoneConfig} />
+			<ContactAddressLineMobile adjust={adjust} type="tel" config={faxConfig} />
+			<ContactAddressLineMobile adjust={adjust} type="tel" config={mobileConfig} />
+			<div className="contact-line"><PatternChunk adjust={adjust} reserved={0} /></div>
+			<ContactAddressLineMobile adjust={adjust} type="email" config={emailConfig} />
 
 			{ fakeArray.map((item, index) => 
 				<div key={`pl-${index}`} className="contact-line">
-					<PatternChunk reserved={0} />
+					<PatternChunk adjust={adjust} reserved={0} />
 				</div>)
 			}
 			

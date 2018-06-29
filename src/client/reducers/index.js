@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import app,  * as fromApp from './app';
 import posts, * as fromHome from './home';
 import projects, * as fromWork from './work';
 import atelier, * as fromAtelier from './atelier';
@@ -9,6 +10,7 @@ import practice, * as fromPractice from './practice';
 import contact, * as fromContact from './contact';
 
 const RootReducer = combineReducers({
+	app,
 	posts,
 	projects,
 	atelier,
@@ -19,6 +21,9 @@ const RootReducer = combineReducers({
 	contact
 });
 
+// App Selectors
+
+export const getAppConfigs = state => fromApp.getConfigs(state.app);
 // Home Selectors
 export const isPostsFetching = state => fromHome.getIsFetching(state.posts);
 

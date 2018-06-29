@@ -12,7 +12,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _reactRouterDom = require('react-router-dom');
+
 var _reactRouterConfig = require('react-router-config');
+
+var _actions = require('../actions');
+
+var actions = _interopRequireWildcard(_actions);
+
+var _reducers = require('../reducers');
 
 var _ScrollToTop = require('./ScrollToTop');
 
@@ -29,6 +37,8 @@ var _Header2 = _interopRequireDefault(_Header);
 var _Footer = require('../components/Footer');
 
 var _Footer2 = _interopRequireDefault(_Footer);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,16 +58,33 @@ var App = function (_Component) {
 	}
 
 	_createClass(App, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var updateApp = this.props.updateApp;
+
+			if (document.querySelector('.uLink').offsetWidth === 12) {
+				updateApp({
+					adjustForMobile: true
+				});
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _props = this.props,
 			    route = _props.route,
-			    location = _props.location;
+			    location = _props.location,
+			    configs = _props.configs;
 
 			var pageName = location.pathname.split('/')[1] || 'front';
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container__inner ' + pageName },
+				_react2.default.createElement(
+					'span',
+					{ className: 'fake' },
+					'U'
+				),
 				_react2.default.createElement(_Gallery2.default, null),
 				_react2.default.createElement(
 					_ScrollToTop2.default,
@@ -68,7 +95,7 @@ var App = function (_Component) {
 						{ role: 'main', className: 'main-content' },
 						(0, _reactRouterConfig.renderRoutes)(route.routes)
 					),
-					_react2.default.createElement(_Footer2.default, null)
+					_react2.default.createElement(_Footer2.default, { adjust: configs.adjustForMobile })
 				)
 			);
 		}
@@ -77,4 +104,10 @@ var App = function (_Component) {
 	return App;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)()(App);
+var mapStateToProps = function mapStateToProps(state) {
+	return {
+		configs: (0, _reducers.getAppConfigs)(state)
+	};
+};
+
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(App));

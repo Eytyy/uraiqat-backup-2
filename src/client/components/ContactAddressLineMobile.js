@@ -13,19 +13,19 @@ const ContactAddressLineContent = ({ type, content }) => {
 	}
 };
 
-const ContactLineBlock = ({ label, content, type, reserved, emptyContent = 0 }) => {
+const ContactLineBlock = ({ label, content, type, reserved, emptyContent = 0, adjust }) => {
 	return (
 		<div className="contact-line">
 			{ label && <span>{label}</span> }
 			{ label && <span className="ws">-</span>}
 			<ContactAddressLineContent content={content} type={type} />
 			<span className="ws">-</span>
-			<PatternChunk reserved={reserved - emptyContent} />
+			<PatternChunk reserved={reserved - emptyContent} adjust={adjust} />
 		</div>
 	);
 };
 
-const MultipleContactLineBlocks = ({ config, type, max }) => {
+const MultipleContactLineBlocks = ({ config, type, max, adjust }) => {
 	const content = config.content.split(/[ ,.]+/);
 	const blocks = {};
 	let limit = max;
@@ -69,25 +69,25 @@ const MultipleContactLineBlocks = ({ config, type, max }) => {
 	});
 	return Object.keys(blocks).map(key => {
 		let singleReserve = blocks[key].length + 2;
-		return <ContactLineBlock key={key} content={blocks[key]} reserved={singleReserve} emptyContent={emptyContent} type={type} />;
+		return <ContactLineBlock adjust={adjust} key={key} content={blocks[key]} reserved={singleReserve} emptyContent={emptyContent} type={type} />;
 	});
 };
 
-const ContactAddressLineMobile = ({ config, type }) => {
+const ContactAddressLineMobile = ({ config, type, adjust }) => {
 	const reserved = config.totalLength;
 	let maxWidth = getMaxWidth();
 	const windowConfig = {
 		w: maxWidth,
 		h: 1,
 	};
-	let maxNoOfChars = getNoOfChars('contact', windowConfig);
+	let maxNoOfChars = getNoOfChars('contact', windowConfig, adjust);
 
 	if (typeof window === 'undefined') {
 		return <div className="contact-line" />;
 	}
 	return maxNoOfChars.x <= reserved ? 
-		<MultipleContactLineBlocks config={config} type={type} reserved={reserved} max={maxNoOfChars.x} /> :
-		<ContactLineBlock {...config} type={type} reserved={reserved} />;
+		<MultipleContactLineBlocks adjust={adjust} config={config} type={type} reserved={reserved} max={maxNoOfChars.x} /> :
+		<ContactLineBlock adjust={adjust} {...config} type={type} reserved={reserved} />;
 };
 
 export default ContactAddressLineMobile;

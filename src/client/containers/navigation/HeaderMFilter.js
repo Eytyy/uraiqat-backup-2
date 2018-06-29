@@ -41,7 +41,7 @@ class HeaderMFilter extends Component {
 		updateFilter(id);
 	}
 	render() {
-		const { content, location } = this.props;
+		const { content, location, adjustForMobile } = this.props;
 		const config = {
 			name: 'Filter',
 			glyph: { className: 'ind', content: '+' },
@@ -59,13 +59,13 @@ class HeaderMFilter extends Component {
 				{ this.state.filtersAreVisible ? ':' : <span className="ws">-</span>}
 				<span className="ws">-</span>
 				<span className="ws">-</span>
-				<PatternChunk reserved={reservedFilterSize} />
+				<PatternChunk reserved={reservedFilterSize} adjust={adjustForMobile} />
 				{ this.state.filtersAreVisible ?
 					<span onClick={this.onfiltersClick} className="link">x</span> :
 					'<'
 				}
 				{ this.state.filtersAreVisible ?
-					<HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} /> :
+					<HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} adjust={adjustForMobile} /> :
 					null
 				}
 			</div>

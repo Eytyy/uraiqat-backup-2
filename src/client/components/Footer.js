@@ -26,12 +26,13 @@ class Footer extends Component {
 		if (typeof window === 'undefined') {
 			return <footer className="website-footer" />;
 		}
+		const { adjust } = this.props;
 		return (
 			<footer className="website-footer">
-				<div><PatternChunk reserved={0} /></div>
-				<div><PatternChunk reserved={0} /></div>
+				<div><PatternChunk adjust={adjust} reserved={0} /></div>
+				<div><PatternChunk adjust={adjust} reserved={0} /></div>
 				<div>
-					<PatternChunk reserved={1} />
+					<PatternChunk adjust={adjust} reserved={1} />
 					<NavLink className="link" activeClassName="active" to="/">A</NavLink>
 				</div>
 			</footer>

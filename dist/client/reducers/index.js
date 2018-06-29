@@ -3,9 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = undefined;
+exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = exports.getAppConfigs = undefined;
 
 var _redux = require('redux');
+
+var _app = require('./app');
+
+var fromApp = _interopRequireWildcard(_app);
 
 var _home = require('./home');
 
@@ -42,6 +46,7 @@ var fromContact = _interopRequireWildcard(_contact);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
+	app: fromApp.default,
 	posts: fromHome.default,
 	projects: fromWork.default,
 	atelier: fromAtelier.default,
@@ -52,6 +57,11 @@ var RootReducer = (0, _redux.combineReducers)({
 	contact: fromContact.default
 });
 
+// App Selectors
+
+var getAppConfigs = exports.getAppConfigs = function getAppConfigs(state) {
+	return fromApp.getConfigs(state.app);
+};
 // Home Selectors
 var isPostsFetching = exports.isPostsFetching = function isPostsFetching(state) {
 	return fromHome.getIsFetching(state.posts);

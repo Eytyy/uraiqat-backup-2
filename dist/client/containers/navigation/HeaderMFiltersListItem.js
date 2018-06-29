@@ -18,7 +18,8 @@ var HeaderMFiltersListItem = function HeaderMFiltersListItem(_ref) {
 	var content = _ref.content,
 	    active = _ref.active,
 	    onFilterClick = _ref.onFilterClick,
-	    id = _ref.id;
+	    id = _ref.id,
+	    adjust = _ref.adjust;
 
 	var onClick = function onClick() {
 		onFilterClick(id);
@@ -66,7 +67,7 @@ var HeaderMFiltersListItem = function HeaderMFiltersListItem(_ref) {
 				'-'
 			)
 		),
-		_react2.default.createElement(_PatternChunk2.default, { reserved: content.length + 5 })
+		_react2.default.createElement(_PatternChunk2.default, { reserved: content.length + 5, adjust: adjust })
 	);
 };
 

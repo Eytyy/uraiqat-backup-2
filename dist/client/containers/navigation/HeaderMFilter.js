@@ -94,7 +94,8 @@ var HeaderMFilter = function (_Component) {
 		value: function render() {
 			var _props2 = this.props,
 			    content = _props2.content,
-			    location = _props2.location;
+			    location = _props2.location,
+			    adjustForMobile = _props2.adjustForMobile;
 
 			var config = {
 				name: 'Filter',
@@ -128,13 +129,13 @@ var HeaderMFilter = function (_Component) {
 					{ className: 'ws' },
 					'-'
 				),
-				_react2.default.createElement(_PatternChunk2.default, { reserved: reservedFilterSize }),
+				_react2.default.createElement(_PatternChunk2.default, { reserved: reservedFilterSize, adjust: adjustForMobile }),
 				this.state.filtersAreVisible ? _react2.default.createElement(
 					'span',
 					{ onClick: this.onfiltersClick, className: 'link' },
 					'x'
 				) : '<',
-				this.state.filtersAreVisible ? _react2.default.createElement(_HeaderMFiltersList2.default, { onFilterClick: this.onFilterClick, content: content }) : null
+				this.state.filtersAreVisible ? _react2.default.createElement(_HeaderMFiltersList2.default, { onFilterClick: this.onFilterClick, content: content, adjust: adjustForMobile }) : null
 			);
 		}
 	}]);

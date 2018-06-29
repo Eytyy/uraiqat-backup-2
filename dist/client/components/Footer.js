@@ -60,23 +60,25 @@ var Footer = function (_Component) {
 			if (typeof window === 'undefined') {
 				return _react2.default.createElement('footer', { className: 'website-footer' });
 			}
+			var adjust = this.props.adjust;
+
 			return _react2.default.createElement(
 				'footer',
 				{ className: 'website-footer' },
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
 				),
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+					_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
 				),
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 1 }),
+					_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 1 }),
 					_react2.default.createElement(
 						_reactRouterDom.NavLink,
 						{ className: 'link', activeClassName: 'active', to: '/' },

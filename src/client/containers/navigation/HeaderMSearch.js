@@ -37,6 +37,7 @@ class HeaderMSearch extends Component {
 		return false;
 	}
 	render() {
+		const {adjust} = this.props;
 		const config = {
 			name: 'Search',
 			glyph: { className: 'ind', content: ':' },
@@ -64,13 +65,13 @@ class HeaderMSearch extends Component {
 								className="search__input" type="text"
 								placeholder="Enter keyword"
 							/>
-							<PatternChunk reserved={reservedInputSpace - 1} />
+							<PatternChunk adjust={adjust} reserved={reservedInputSpace - 1} />
 							<span className="link" onClick={this.onSearchClick}>x</span>
 						</form> :
 						<span className="header-mobile__search__glyphs">
 							<span className="ws">-</span>
 							<span className="ws">-</span>
-							<PatternChunk reserved={reservedInactiveSpace} />
+							<PatternChunk adjust={adjust}  reserved={reservedInactiveSpace} />
 						</span>
 				}
 			</div>

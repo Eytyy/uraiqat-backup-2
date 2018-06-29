@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchContact } from '../actions';
-import { isContactFetching, getContactContent } from '../reducers';
+import { isContactFetching, getContactContent, getAppConfigs } from '../reducers';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
 import PatternChunk from '../components/patterns/PatternChunk';
@@ -23,7 +23,9 @@ class Contact extends Component {
 		return fetchContact();
 	}
 	render() {
-		const { isFetching, content } = this.props;
+		const { isFetching, content, configs } = this.props;
+		const { adjustForMobile } = configs;
+
 		if (isFetching && content.length === 0 || typeof content.fields === 'undefined' ) {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
@@ -61,7 +63,7 @@ class Contact extends Component {
 			return <section className="landing-page landing-page--contact main-section"></section>;
 		}
 		if (window.innerWidth < 1024) {
-			return <ContactMobile content={content} />;
+			return <ContactMobile adjust={adjustForMobile} content={content} />;
 		} 
 		return (
 			<section className="landing-page landing-page--contact main-section">
@@ -91,7 +93,8 @@ Contact.propTypes = {
 
 const mapStateToProps = state => ({
 	isFetching: isContactFetching(state),
-	content: getContactContent(state)
+	content: getContactContent(state),
+	configs: getAppConfigs(state)
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchContact }, dispatch);

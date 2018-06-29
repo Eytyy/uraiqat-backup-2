@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import { getAppConfigs } from '../../reducers';
+ 
 import HeaderMMain from './HeaderMMain';
 import HeaderMSearch from './HeaderMSearch';
 import HeaderMFilter from './HeaderMFilter';
@@ -11,7 +13,6 @@ class HeaderM extends Component {
 		super(props);
 		this.state = {
 			isVisible: false,
-			adjustForMobile: false,
 		};
 		this.toggle = this.toggle.bind(this);
 	}
@@ -33,14 +34,7 @@ class HeaderM extends Component {
 			isVisible: isMenuvisible
 		});
 	}
-	componentDidMount() {
-		if (document.querySelector('.uLink').offsetWidth === 12) {
-			this.setState({
-				adjustForMobile: true,
-			});
-		}
 
-	}
 
 	render() {
 		const navigation = [
@@ -49,12 +43,12 @@ class HeaderM extends Component {
 			{ name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length },
 			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
 		];
+		const { adjustForMobile } = this.props.configs;
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div>
-					<span className="fake">U</span>
 					<NavLink className="link uLink" to="/">U</NavLink>
-					<PatternChunk adjust={this.state.adjustForMobile} reserved={2} />
+					<PatternChunk adjust={adjustForMobile} reserved={2} />
 					<span className="mobile-menu-toggle-overlay" onClick={this.toggle}></span>
 					{
 						this.state.isVisible ?
@@ -63,16 +57,16 @@ class HeaderM extends Component {
 					}
 					
 				</div>
-				<div><PatternChunk reserved={0} adjust={this.state.adjustForMobile} /></div>
+				<div><PatternChunk reserved={0} adjust={adjustForMobile} /></div>
 				{
 					this.state.isVisible ? 
 						<div className="menu">
 							<div className="menu__inner">
-								<HeaderMMain adjust={this.state.adjustForMobile} navigation={navigation} />
-								<HeaderMSearch adjust={this.state.adjustForMobile} />
-								<HeaderMFilter adjust={this.state.adjustForMobile} />
-								<div><PatternChunk adjust={this.state.adjustForMobile} reserved={0} /></div>
-								<div><PatternChunk adjust={this.state.adjustForMobile} reserved={0} /></div>
+								<HeaderMMain adjust={adjustForMobile} navigation={navigation} />
+								<HeaderMSearch adjust={adjustForMobile} />
+								<HeaderMFilter adjust={adjustForMobile} />
+								<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
+								<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
 							</div>
 						</div>: null
 				}
@@ -82,4 +76,12 @@ class HeaderM extends Component {
 	}
 }
 
-export default withRouter(HeaderM);
+const mapStateToProps = (state) => {
+	return {
+		configs: getAppConfigs(state)
+	};
+};
+
+export default withRouter(connect(
+	mapStateToProps
+)(HeaderM));

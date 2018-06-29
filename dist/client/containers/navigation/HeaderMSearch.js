@@ -80,6 +80,8 @@ var HeaderMSearch = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
+			var adjust = this.props.adjust;
+
 			var config = {
 				name: 'Search',
 				glyph: { className: 'ind', content: ':' },
@@ -120,7 +122,7 @@ var HeaderMSearch = function (_Component) {
 						className: 'search__input', type: 'text',
 						placeholder: 'Enter keyword'
 					}),
-					_react2.default.createElement(_PatternChunk2.default, { reserved: reservedInputSpace - 1 }),
+					_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: reservedInputSpace - 1 }),
 					_react2.default.createElement(
 						'span',
 						{ className: 'link', onClick: this.onSearchClick },
@@ -139,7 +141,7 @@ var HeaderMSearch = function (_Component) {
 						{ className: 'ws' },
 						'-'
 					),
-					_react2.default.createElement(_PatternChunk2.default, { reserved: reservedInactiveSpace })
+					_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: reservedInactiveSpace })
 				)
 			);
 		}

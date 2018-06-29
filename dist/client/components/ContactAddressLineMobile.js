@@ -50,7 +50,8 @@ var ContactLineBlock = function ContactLineBlock(_ref2) {
 	    type = _ref2.type,
 	    reserved = _ref2.reserved,
 	    _ref2$emptyContent = _ref2.emptyContent,
-	    emptyContent = _ref2$emptyContent === undefined ? 0 : _ref2$emptyContent;
+	    emptyContent = _ref2$emptyContent === undefined ? 0 : _ref2$emptyContent,
+	    adjust = _ref2.adjust;
 
 	return _react2.default.createElement(
 		'div',
@@ -71,14 +72,15 @@ var ContactLineBlock = function ContactLineBlock(_ref2) {
 			{ className: 'ws' },
 			'-'
 		),
-		_react2.default.createElement(_PatternChunk2.default, { reserved: reserved - emptyContent })
+		_react2.default.createElement(_PatternChunk2.default, { reserved: reserved - emptyContent, adjust: adjust })
 	);
 };
 
 var MultipleContactLineBlocks = function MultipleContactLineBlocks(_ref3) {
 	var config = _ref3.config,
 	    type = _ref3.type,
-	    max = _ref3.max;
+	    max = _ref3.max,
+	    adjust = _ref3.adjust;
 
 	var content = config.content.split(/[ ,.]+/);
 	var blocks = {};
@@ -122,13 +124,14 @@ var MultipleContactLineBlocks = function MultipleContactLineBlocks(_ref3) {
 	});
 	return Object.keys(blocks).map(function (key) {
 		var singleReserve = blocks[key].length + 2;
-		return _react2.default.createElement(ContactLineBlock, { key: key, content: blocks[key], reserved: singleReserve, emptyContent: emptyContent, type: type });
+		return _react2.default.createElement(ContactLineBlock, { adjust: adjust, key: key, content: blocks[key], reserved: singleReserve, emptyContent: emptyContent, type: type });
 	});
 };
 
 var ContactAddressLineMobile = function ContactAddressLineMobile(_ref4) {
 	var config = _ref4.config,
-	    type = _ref4.type;
+	    type = _ref4.type,
+	    adjust = _ref4.adjust;
 
 	var reserved = config.totalLength;
 	var maxWidth = (0, _helpers.getMaxWidth)();
@@ -136,12 +139,12 @@ var ContactAddressLineMobile = function ContactAddressLineMobile(_ref4) {
 		w: maxWidth,
 		h: 1
 	};
-	var maxNoOfChars = (0, _helpers.getNoOfChars)('contact', windowConfig);
+	var maxNoOfChars = (0, _helpers.getNoOfChars)('contact', windowConfig, adjust);
 
 	if (typeof window === 'undefined') {
 		return _react2.default.createElement('div', { className: 'contact-line' });
 	}
-	return maxNoOfChars.x <= reserved ? _react2.default.createElement(MultipleContactLineBlocks, { config: config, type: type, reserved: reserved, max: maxNoOfChars.x }) : _react2.default.createElement(ContactLineBlock, _extends({}, config, { type: type, reserved: reserved }));
+	return maxNoOfChars.x <= reserved ? _react2.default.createElement(MultipleContactLineBlocks, { adjust: adjust, config: config, type: type, reserved: reserved, max: maxNoOfChars.x }) : _react2.default.createElement(ContactLineBlock, _extends({ adjust: adjust }, config, { type: type, reserved: reserved }));
 };
 
 exports.default = ContactAddressLineMobile;

@@ -75,7 +75,10 @@ var Contact = function (_Component) {
 		value: function render() {
 			var _props = this.props,
 			    isFetching = _props.isFetching,
-			    content = _props.content;
+			    content = _props.content,
+			    configs = _props.configs;
+			var adjustForMobile = configs.adjustForMobile;
+
 
 			if (isFetching && content.length === 0 || typeof content.fields === 'undefined') {
 				return _react2.default.createElement(
@@ -125,7 +128,7 @@ var Contact = function (_Component) {
 				return _react2.default.createElement('section', { className: 'landing-page landing-page--contact main-section' });
 			}
 			if (window.innerWidth < 1024) {
-				return _react2.default.createElement(_ContactMobile2.default, { content: content });
+				return _react2.default.createElement(_ContactMobile2.default, { adjust: adjustForMobile, content: content });
 			}
 			return _react2.default.createElement(
 				'section',
@@ -182,7 +185,8 @@ Contact.propTypes = {
 var mapStateToProps = function mapStateToProps(state) {
 	return {
 		isFetching: (0, _reducers.isContactFetching)(state),
-		content: (0, _reducers.getContactContent)(state)
+		content: (0, _reducers.getContactContent)(state),
+		configs: (0, _reducers.getAppConfigs)(state)
 	};
 };
 

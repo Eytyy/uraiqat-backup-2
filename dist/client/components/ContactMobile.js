@@ -25,7 +25,8 @@ var _helpers = require('../helpers');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ContactMobile = function ContactMobile(_ref) {
-	var content = _ref.content;
+	var content = _ref.content,
+	    adjust = _ref.adjust;
 
 	var coordinates = content.fields.googleMap;
 	var _content$fields = content.fields,
@@ -100,27 +101,27 @@ var ContactMobile = function ContactMobile(_ref) {
 	return _react2.default.createElement(
 		'section',
 		{ className: 'landing-page landing-page--contact main-section' },
-		_react2.default.createElement(_ContactAddressLineMobile2.default, { type: 'text', config: addressLine1Config }),
-		_react2.default.createElement(_ContactAddressLineMobile2.default, { type: 'text', config: addressLine2Config }),
+		_react2.default.createElement(_ContactAddressLineMobile2.default, { adjust: adjust, type: 'text', config: addressLine1Config }),
+		_react2.default.createElement(_ContactAddressLineMobile2.default, { adjust: adjust, type: 'text', config: addressLine2Config }),
 		_react2.default.createElement(
 			'div',
 			{ className: 'contact-line' },
-			_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+			_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
 		),
-		_react2.default.createElement(_ContactAddressLineMobile2.default, { type: 'tel', config: telephoneConfig }),
-		_react2.default.createElement(_ContactAddressLineMobile2.default, { type: 'tel', config: faxConfig }),
-		_react2.default.createElement(_ContactAddressLineMobile2.default, { type: 'tel', config: mobileConfig }),
+		_react2.default.createElement(_ContactAddressLineMobile2.default, { adjust: adjust, type: 'tel', config: telephoneConfig }),
+		_react2.default.createElement(_ContactAddressLineMobile2.default, { adjust: adjust, type: 'tel', config: faxConfig }),
+		_react2.default.createElement(_ContactAddressLineMobile2.default, { adjust: adjust, type: 'tel', config: mobileConfig }),
 		_react2.default.createElement(
 			'div',
 			{ className: 'contact-line' },
-			_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+			_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
 		),
-		_react2.default.createElement(_ContactAddressLineMobile2.default, { type: 'email', config: emailConfig }),
+		_react2.default.createElement(_ContactAddressLineMobile2.default, { adjust: adjust, type: 'email', config: emailConfig }),
 		fakeArray.map(function (item, index) {
 			return _react2.default.createElement(
 				'div',
 				{ key: 'pl-' + index, className: 'contact-line' },
-				_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+				_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
 			);
 		}),
 		_react2.default.createElement(

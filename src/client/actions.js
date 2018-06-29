@@ -42,6 +42,17 @@ export const initClient = () => (dispatch, getState) => {
 	});
 };
 
+const updateAppConfigs = (configs) => ({
+	type: 'UPDATE_APP_CONFIGS',
+	response: {
+		...configs
+	},
+});
+
+export const updateApp = configs => (dispatch) => {
+	dispatch(updateAppConfigs(configs));
+};
+
 
 // Journal Action Creators
 const requestPosts = () => ({

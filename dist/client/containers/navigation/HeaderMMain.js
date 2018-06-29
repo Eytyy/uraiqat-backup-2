@@ -19,7 +19,8 @@ var _HeaderMNavItem2 = _interopRequireDefault(_HeaderMNavItem);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HeaderDTMain = function HeaderDTMain(_ref) {
-	var navigation = _ref.navigation;
+	var navigation = _ref.navigation,
+	    adjust = _ref.adjust;
 
 	return _react2.default.createElement(
 		'div',
@@ -31,11 +32,11 @@ var HeaderDTMain = function HeaderDTMain(_ref) {
 			return _react2.default.createElement(
 				'div',
 				{ key: 'mobile-link--' + index, className: 'header-mobile__main__item' },
-				_react2.default.createElement(_HeaderMNavItem2.default, { name: name, link: link, glyph: glyph }),
-				_react2.default.createElement(_PatternChunk2.default, { reserved: name.length + glyph.content.length + 2 })
+				_react2.default.createElement(_HeaderMNavItem2.default, { adjust: adjust, name: name, link: link, glyph: glyph }),
+				_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: name.length + glyph.content.length + 2 })
 			);
 		}),
-		_react2.default.createElement(_PatternChunk2.default, { reserved: 0 })
+		_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
 	);
 };
 
