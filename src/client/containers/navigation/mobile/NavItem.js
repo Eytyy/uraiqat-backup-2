@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const HeaderMNavItem = ({ link, glyph, name }) => {
+const NavItem = ({ link, glyph, name }) => {
 	return (
 		<NavLink
 			activeClassName="active"
@@ -16,4 +16,4 @@ const HeaderMNavItem = ({ link, glyph, name }) => {
 	);
 };
 
-export default HeaderMNavItem;
+export default NavItem;

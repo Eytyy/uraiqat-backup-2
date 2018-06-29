@@ -1,12 +1,12 @@
 import React from 'react';
-import HeaderMFiltersListItem from './FiltersListItem';
+import FiltersListItem from './FiltersListItem';
 
-const HeaderMFiltersList = ({ content, onFilterClick, adjust }) => {
+const FiltersList = ({ content, onFilterClick, adjust }) => {
 	return (
 		<div className="header-mobile__filters__list">
 			{
 				content.map(({ title, id, active }) => 
-					<HeaderMFiltersListItem
+					<FiltersListItem
 						adjust={adjust}
 						key={id}
 						onFilterClick={onFilterClick}
@@ -17,4 +17,4 @@ const HeaderMFiltersList = ({ content, onFilterClick, adjust }) => {
 	);
 };
 
-export default HeaderMFiltersList;
+export default FiltersList;

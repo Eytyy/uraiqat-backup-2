@@ -4,7 +4,7 @@ import { getFontValues } from '../../../helpers';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
-class HeaderDTFilterSearchSearch extends Component {
+class FilterSearchSearch extends Component {
 	render() {
 		const { config, searchIsVisible, onSearchClick, onSearchSubmit, isFront } = this.props;
 		const font = getFontValues();
@@ -36,4 +36,4 @@ class HeaderDTFilterSearchSearch extends Component {
 	}
 }
 
-export default HeaderDTFilterSearchSearch;
+export default FilterSearchSearch;

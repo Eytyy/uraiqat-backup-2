@@ -14,7 +14,7 @@ var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderMFiltersListItem = function HeaderMFiltersListItem(_ref) {
+var FiltersListItem = function FiltersListItem(_ref) {
 	var content = _ref.content,
 	    active = _ref.active,
 	    onFilterClick = _ref.onFilterClick,
@@ -71,4 +71,4 @@ var HeaderMFiltersListItem = function HeaderMFiltersListItem(_ref) {
 	);
 };
 
-exports.default = HeaderMFiltersListItem;
+exports.default = FiltersListItem;

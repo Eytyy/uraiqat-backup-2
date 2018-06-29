@@ -55,7 +55,7 @@ var createFilters = function createFilters(content, availableSpace) {
 	return filters;
 };
 
-var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
+var FiltersList = function FiltersList(_ref2) {
 	var content = _ref2.content,
 	    onFilterClick = _ref2.onFilterClick,
 	    isVisible = _ref2.isVisible;
@@ -89,4 +89,4 @@ var HeaderDTFiltersList = function HeaderDTFiltersList(_ref2) {
 	);
 };
 
-exports.default = HeaderDTFiltersList;
+exports.default = FiltersList;

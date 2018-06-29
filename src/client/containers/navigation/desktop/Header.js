@@ -1,16 +1,16 @@
 import React from 'react';
-import HeaderDTMain from './Main';
-import HeaderDTSecond from './Second';
-import HeaderDTFilterSearch from './FilterSearch';
+import Main from './Main';
+import Second from './Second';
+import FilterSearch from './FilterSearch';
 
-const HeaderDT = () => {
+const Header = () => {
 	return (
 		<div className="website-header__inner website-header__inner--desktop wrapper">
-			<HeaderDTMain />
-			<HeaderDTSecond />
-			<HeaderDTFilterSearch />
+			<Main />
+			<Second />
+			<FilterSearch />
 		</div>
 	);
 };
 
-export default HeaderDT;
+export default Header;

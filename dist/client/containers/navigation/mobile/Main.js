@@ -18,7 +18,7 @@ var _NavItem2 = _interopRequireDefault(_NavItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderDTMain = function HeaderDTMain(_ref) {
+var Main = function Main(_ref) {
 	var navigation = _ref.navigation,
 	    adjust = _ref.adjust;
 
@@ -40,4 +40,4 @@ var HeaderDTMain = function HeaderDTMain(_ref) {
 	);
 };
 
-exports.default = HeaderDTMain;
+exports.default = Main;

@@ -40,13 +40,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HeaderM = function (_Component) {
-	_inherits(HeaderM, _Component);
+var Header = function (_Component) {
+	_inherits(Header, _Component);
 
-	function HeaderM(props) {
-		_classCallCheck(this, HeaderM);
+	function Header(props) {
+		_classCallCheck(this, Header);
 
-		var _this = _possibleConstructorReturn(this, (HeaderM.__proto__ || Object.getPrototypeOf(HeaderM)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
 		_this.state = {
 			isVisible: false
@@ -55,7 +55,7 @@ var HeaderM = function (_Component) {
 		return _this;
 	}
 
-	_createClass(HeaderM, [{
+	_createClass(Header, [{
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
 			if (nextProps.location.pathname !== this.props.location.pathname && this.state.isVisible) {
@@ -136,7 +136,7 @@ var HeaderM = function (_Component) {
 		}
 	}]);
 
-	return HeaderM;
+	return Header;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -145,4 +145,4 @@ var mapStateToProps = function mapStateToProps(state) {
 	};
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(HeaderM));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Header));

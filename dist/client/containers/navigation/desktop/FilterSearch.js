@@ -46,13 +46,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HeaderDTFilterSearch = function (_Component) {
-	_inherits(HeaderDTFilterSearch, _Component);
+var FilterSearch = function (_Component) {
+	_inherits(FilterSearch, _Component);
 
-	function HeaderDTFilterSearch() {
-		_classCallCheck(this, HeaderDTFilterSearch);
+	function FilterSearch() {
+		_classCallCheck(this, FilterSearch);
 
-		var _this = _possibleConstructorReturn(this, (HeaderDTFilterSearch.__proto__ || Object.getPrototypeOf(HeaderDTFilterSearch)).call(this));
+		var _this = _possibleConstructorReturn(this, (FilterSearch.__proto__ || Object.getPrototypeOf(FilterSearch)).call(this));
 
 		_this.state = {
 			filtersAreVisible: false,
@@ -66,7 +66,7 @@ var HeaderDTFilterSearch = function (_Component) {
 		return _this;
 	}
 
-	_createClass(HeaderDTFilterSearch, [{
+	_createClass(FilterSearch, [{
 		key: 'toggleFilter',
 		value: function toggleFilter() {
 			this.setState({
@@ -205,7 +205,7 @@ var HeaderDTFilterSearch = function (_Component) {
 		}
 	}]);
 
-	return HeaderDTFilterSearch;
+	return FilterSearch;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -214,4 +214,4 @@ var mapStateToProps = function mapStateToProps(state) {
 	};
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(HeaderDTFilterSearch));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(FilterSearch));

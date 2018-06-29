@@ -22,7 +22,7 @@ var _FilterSearch2 = _interopRequireDefault(_FilterSearch);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderDT = function HeaderDT() {
+var Header = function Header() {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'website-header__inner website-header__inner--desktop wrapper' },
@@ -32,4 +32,4 @@ var HeaderDT = function HeaderDT() {
 	);
 };
 
-exports.default = HeaderDT;
+exports.default = Header;

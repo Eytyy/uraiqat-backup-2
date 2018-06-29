@@ -14,7 +14,7 @@ var _FiltersListItem2 = _interopRequireDefault(_FiltersListItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderMFiltersList = function HeaderMFiltersList(_ref) {
+var FiltersList = function FiltersList(_ref) {
 	var content = _ref.content,
 	    onFilterClick = _ref.onFilterClick,
 	    adjust = _ref.adjust;
@@ -36,4 +36,4 @@ var HeaderMFiltersList = function HeaderMFiltersList(_ref) {
 	);
 };
 
-exports.default = HeaderMFiltersList;
+exports.default = FiltersList;

@@ -12,7 +12,7 @@ var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderMNavItem = function HeaderMNavItem(_ref) {
+var NavItem = function NavItem(_ref) {
 	var link = _ref.link,
 	    glyph = _ref.glyph,
 	    name = _ref.name;
@@ -43,4 +43,4 @@ var HeaderMNavItem = function HeaderMNavItem(_ref) {
 	);
 };
 
-exports.default = HeaderMNavItem;
+exports.default = NavItem;

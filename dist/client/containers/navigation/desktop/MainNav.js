@@ -12,7 +12,7 @@ var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderDTMainNav = function HeaderDTMainNav(_ref) {
+var MainNav = function MainNav(_ref) {
 	var config = _ref.config;
 
 	return _react2.default.createElement(
@@ -69,4 +69,4 @@ var HeaderDTMainNav = function HeaderDTMainNav(_ref) {
 	);
 };
 
-exports.default = HeaderDTMainNav;
+exports.default = MainNav;

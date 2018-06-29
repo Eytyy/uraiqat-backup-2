@@ -34,13 +34,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HeaderMSearch = function (_Component) {
-	_inherits(HeaderMSearch, _Component);
+var Search = function (_Component) {
+	_inherits(Search, _Component);
 
-	function HeaderMSearch() {
-		_classCallCheck(this, HeaderMSearch);
+	function Search() {
+		_classCallCheck(this, Search);
 
-		var _this = _possibleConstructorReturn(this, (HeaderMSearch.__proto__ || Object.getPrototypeOf(HeaderMSearch)).call(this));
+		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
 		_this.state = {
 			searchIsVisible: false
@@ -51,7 +51,7 @@ var HeaderMSearch = function (_Component) {
 		return _this;
 	}
 
-	_createClass(HeaderMSearch, [{
+	_createClass(Search, [{
 		key: 'clearSearch',
 		value: function clearSearch() {
 			if (this.search) {
@@ -147,7 +147,7 @@ var HeaderMSearch = function (_Component) {
 		}
 	}]);
 
-	return HeaderMSearch;
+	return Search;
 }(_react.Component);
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, actions)(HeaderMSearch));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(null, actions)(Search));

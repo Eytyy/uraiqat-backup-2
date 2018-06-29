@@ -6,11 +6,11 @@ import { getFilters } from '../../../reducers';
 import * as actions from '../../../actions';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
-import HeaderDTFilterSearchFilter from './FilterSearchFilter';
-import HeaderDTFilterSearchSearch from './FilterSearchSearch';
-import HeaderDTFiltersList from './FiltersList';
+import FilterSearchFilter from './FilterSearchFilter';
+import FilterSearchSearch from './FilterSearchSearch';
+import FiltersList from './FiltersList';
 
-class HeaderDTFilterSearch extends Component {
+class FilterSearch extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -117,13 +117,13 @@ class HeaderDTFilterSearch extends Component {
 				<PatternChunk fixed={fixedStart} />
 				{ reservedFilterSize === 0 ?
 					null :
-					<HeaderDTFilterSearchFilter
+					<FilterSearchFilter
 						filtersAreVisible={this.state.filtersAreVisible}
 						onfiltersClick={this.onfiltersClick}
 						config={config.filter}
 					/>
 				}
-				<HeaderDTFilterSearchSearch
+				<FilterSearchSearch
 					searchIsVisible={this.state.searchIsVisible}
 					onSearchClick={this.onSearchClick}
 					onSearchSubmit={this.onSearchSubmit}
@@ -131,7 +131,7 @@ class HeaderDTFilterSearch extends Component {
 					isFront={isFront}
 				/>
 				<PatternChunk reserved={totalReservedSpaces} />
-				<HeaderDTFiltersList
+				<FiltersList
 					onFilterClick={this.onFilterClick}
 					content={content}
 					isVisible={this.state.filtersAreVisible}
@@ -148,4 +148,4 @@ const mapStateToProps = state => ({
 export default withRouter(connect(
 	mapStateToProps,
 	actions
-)(HeaderDTFilterSearch));
+)(FilterSearch));

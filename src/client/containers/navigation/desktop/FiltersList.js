@@ -37,7 +37,7 @@ const createFilters = ( content , availableSpace ) => {
 	return filters;
 };
 
-const HeaderDTFiltersList = ({ content, onFilterClick, isVisible }) => {
+const FiltersList = ({ content, onFilterClick, isVisible }) => {
 	let maxWidth = getMaxWidth();
 	const config = {
 		w: maxWidth,
@@ -69,4 +69,4 @@ const HeaderDTFiltersList = ({ content, onFilterClick, isVisible }) => {
 	);
 };
 
-export default HeaderDTFiltersList;
+export default FiltersList;

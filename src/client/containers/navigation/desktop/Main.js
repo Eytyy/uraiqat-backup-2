@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import HeaderDTMainNav from './MainNav';
+import MainNav from './MainNav';
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
-const HeaderDTMain = () => {
+const Main = () => {
 	const numberOfStaticItems = 'U'.length + 'Uraiqat'.length;
 	const fixedStart = window.innerWidth >= 1280 ? 10 : 7;
 	const config = {
@@ -28,11 +28,11 @@ const HeaderDTMain = () => {
 		<div className="header--desktop__main">
 			<NavLink className="link" to="/">U</NavLink>
 			<PatternChunk fixed={fixedStart} />
-			<HeaderDTMainNav config={config} />
+			<MainNav config={config} />
 			<PatternChunk reserved={totalReservedSpaces} />
 			<NavLink className="link" to="/">Uraiqat</NavLink>
 		</div>
 	);
 };
 
-export default HeaderDTMain;
+export default Main;

@@ -6,9 +6,9 @@ import * as actions from '../../../actions';
 import { getFilters } from '../../../reducers';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
-import HeaderMFiltersList from './FiltersList';
+import FiltersList from './FiltersList';
 
-class HeaderMFilter extends Component {
+class Filter extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -65,7 +65,7 @@ class HeaderMFilter extends Component {
 					'<'
 				}
 				{ this.state.filtersAreVisible ?
-					<HeaderMFiltersList onFilterClick={this.onFilterClick} content={content} adjust={adjustForMobile} /> :
+					<FiltersList onFilterClick={this.onFilterClick} content={content} adjust={adjustForMobile} /> :
 					null
 				}
 			</div>
@@ -80,4 +80,4 @@ const mapStateToProps = state => ({
 export default withRouter(connect(
 	mapStateToProps,
 	actions
-)(HeaderMFilter));
+)(Filter));

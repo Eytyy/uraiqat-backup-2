@@ -20,7 +20,7 @@ var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderDTMain = function HeaderDTMain() {
+var Main = function Main() {
 	var numberOfStaticItems = 'U'.length + 'Uraiqat'.length;
 	var fixedStart = window.innerWidth >= 1280 ? 10 : 7;
 	var config = {
@@ -54,4 +54,4 @@ var HeaderDTMain = function HeaderDTMain() {
 	);
 };
 
-exports.default = HeaderDTMain;
+exports.default = Main;

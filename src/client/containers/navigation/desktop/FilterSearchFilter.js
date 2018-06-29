@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class HeaderDTFilterSearchFilter extends Component {
+class FilterSearchFilter extends Component {
 	render() {
 		const { config, filtersAreVisible, onfiltersClick } = this.props;
 		return (
@@ -19,4 +19,4 @@ class HeaderDTFilterSearchFilter extends Component {
 	}
 }
 
-export default HeaderDTFilterSearchFilter;
+export default FilterSearchFilter;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
-const HeaderMFiltersListItem = ({ content, active, onFilterClick, id, adjust }) => {
+const FiltersListItem = ({ content, active, onFilterClick, id, adjust }) => {
 	const onClick = () => {
 		onFilterClick(id);
 	};
@@ -22,4 +22,4 @@ const HeaderMFiltersListItem = ({ content, active, onFilterClick, id, adjust }) 
 	);
 };
 
-export default HeaderMFiltersListItem;
+export default FiltersListItem;

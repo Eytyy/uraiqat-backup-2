@@ -18,16 +18,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var HeaderDTFilterSearchFilter = function (_Component) {
-	_inherits(HeaderDTFilterSearchFilter, _Component);
+var FilterSearchFilter = function (_Component) {
+	_inherits(FilterSearchFilter, _Component);
 
-	function HeaderDTFilterSearchFilter() {
-		_classCallCheck(this, HeaderDTFilterSearchFilter);
+	function FilterSearchFilter() {
+		_classCallCheck(this, FilterSearchFilter);
 
-		return _possibleConstructorReturn(this, (HeaderDTFilterSearchFilter.__proto__ || Object.getPrototypeOf(HeaderDTFilterSearchFilter)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (FilterSearchFilter.__proto__ || Object.getPrototypeOf(FilterSearchFilter)).apply(this, arguments));
 	}
 
-	_createClass(HeaderDTFilterSearchFilter, [{
+	_createClass(FilterSearchFilter, [{
 		key: "render",
 		value: function render() {
 			var _props = this.props,
@@ -73,7 +73,7 @@ var HeaderDTFilterSearchFilter = function (_Component) {
 		}
 	}]);
 
-	return HeaderDTFilterSearchFilter;
+	return FilterSearchFilter;
 }(_react.Component);
 
-exports.default = HeaderDTFilterSearchFilter;
+exports.default = FilterSearchFilter;

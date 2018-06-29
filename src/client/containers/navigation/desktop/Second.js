@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
-const HeaderDTSecond = () => {
+const Second = () => {
 	const numberOfStaticItems = 'Architects'.length;
 	return (
 		<div className="header--desktop__main__second">
@@ -13,4 +13,4 @@ const HeaderDTSecond = () => {
 	);
 };
 
-export default HeaderDTSecond;
+export default Second;

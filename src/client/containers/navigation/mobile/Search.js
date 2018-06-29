@@ -7,7 +7,7 @@ import { getFontValues } from '../../../helpers';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
-class HeaderMSearch extends Component {
+class Search extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -82,4 +82,4 @@ class HeaderMSearch extends Component {
 export default withRouter(connect(
 	null,
 	actions
-)(HeaderMSearch));
+)(Search));

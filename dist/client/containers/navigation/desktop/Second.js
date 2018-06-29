@@ -16,7 +16,7 @@ var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeaderDTSecond = function HeaderDTSecond() {
+var Second = function Second() {
 	var numberOfStaticItems = 'Architects'.length;
 	return _react2.default.createElement(
 		'div',
@@ -30,4 +30,4 @@ var HeaderDTSecond = function HeaderDTSecond() {
 	);
 };
 
-exports.default = HeaderDTSecond;
+exports.default = Second;

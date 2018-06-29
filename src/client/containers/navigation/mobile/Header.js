@@ -3,12 +3,12 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAppConfigs } from '../../../reducers';
  
-import HeaderMMain from './Main';
-import HeaderMSearch from './Search';
-import HeaderMFilter from './Filter';
+import Main from './Main';
+import Search from './Search';
+import Filter from './Filter';
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
-class HeaderM extends Component {
+class Header extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -21,6 +21,7 @@ class HeaderM extends Component {
 			this.toggle();
 		}
 	}
+
 	toggle() {
 		let isMenuvisible = this.state.isVisible;
 		if (!isMenuvisible) {
@@ -34,7 +35,6 @@ class HeaderM extends Component {
 			isVisible: isMenuvisible
 		});
 	}
-
 
 	render() {
 		const navigation = [
@@ -62,15 +62,14 @@ class HeaderM extends Component {
 					this.state.isVisible ? 
 						<div className="menu">
 							<div className="menu__inner">
-								<HeaderMMain adjust={adjustForMobile} navigation={navigation} />
-								<HeaderMSearch adjust={adjustForMobile} />
-								<HeaderMFilter adjust={adjustForMobile} />
+								<Main adjust={adjustForMobile} navigation={navigation} />
+								<Search adjust={adjustForMobile} />
+								<Filter adjust={adjustForMobile} />
 								<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
 								<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
 							</div>
 						</div>: null
 				}
-				
 			</div>
 		);
 	}
@@ -84,4 +83,4 @@ const mapStateToProps = (state) => {
 
 export default withRouter(connect(
 	mapStateToProps
-)(HeaderM));
+)(Header));

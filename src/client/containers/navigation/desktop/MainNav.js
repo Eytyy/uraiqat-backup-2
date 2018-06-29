@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const HeaderDTMainNav = ({ config }) => {
+const MainNav = ({ config }) => {
 	return (
 		<nav className="header--desktop__main__nav">
 			{
@@ -27,4 +27,4 @@ const HeaderDTMainNav = ({ config }) => {
 	);
 };
 
-export default HeaderDTMainNav;
+export default MainNav;
