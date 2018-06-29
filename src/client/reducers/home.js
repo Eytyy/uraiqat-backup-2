@@ -12,12 +12,14 @@ const BySection = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_POSTS': //eslint-disable-line
-		const main = action.response[0].fields.mainContent
-			.filter(({ fields }) => typeof fields !== 'undefined')
-			.map(({ sys }) => sys.id);
-		const featured = action.response[0].fields.featuredContent
-			.filter(({ fields }) => typeof fields !== 'undefined')
-			.map(({ sys }) => sys.id);
+		const main = typeof action.response[0].fields.mainContent !== 'undefined'?
+			action.response[0].fields.mainContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) : [];
+		const featured = typeof action.response[0].fields.featuredContent !== 'undefined'?
+			action.response[0].fields.featuredContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) : [];
 		return {
 			...state,
 			isFetching: false,
@@ -41,13 +43,17 @@ const All = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_POSTS': //eslint-disable-line
-		const ids = action.response[0].fields.mainContent
-			.filter(({ fields }) => typeof fields !== 'undefined')
-			.map(({ sys }) => sys.id)
-			.concat(action.response[0].fields.featuredContent
+		const main = typeof action.response[0].fields.mainContent !== 'undefined' ?
+			action.response[0].fields.mainContent
 				.filter(({ fields }) => typeof fields !== 'undefined')
-				.map(({ sys }) => sys.id)
-			);
+				.map(({ sys }) => sys.id) :
+			[];
+		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? 
+			action.response[0].fields.featuredContent
+				.filter(({ fields }) => typeof fields !== 'undefined')
+				.map(({ sys }) => sys.id) :
+			[];
+		const ids = main.concat(featured);
 		return {
 			...state,
 			content: ids,
@@ -82,7 +88,7 @@ const ById = (state = {
 
 	case 'RECIEVE_POSTS': //eslint-disable-line
 		const ids = {};
-		action.response[0].fields.mainContent
+		action.response[0].fields.mainContent && action.response[0].fields.mainContent
 			.filter(({ fields }) => typeof fields !== 'undefined')
 			.forEach(({ fields, sys }) => {
 				ids[sys.id] = {
@@ -90,7 +96,7 @@ const ById = (state = {
 					...fields,
 				};
 			});
-		action.response[0].fields.featuredContent
+		action.response[0].fields.featuredContent &&	action.response[0].fields.featuredContent
 			.filter(({ fields }) => typeof fields !== 'undefined')
 			.forEach(({ fields, sys }) => {
 				ids[sys.id] = {
