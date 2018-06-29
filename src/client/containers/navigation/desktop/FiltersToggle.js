@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FilterSearchFilter extends Component {
-	render() {
-		const { config, filtersAreVisible, onToggle } = this.props;
-		return (
-			<span className="filters">
-				<span className="ws">-</span>
-				<span className="ws">-</span>
-				<span className="link" onClick={onToggle}>
-					{ filtersAreVisible ? '-' : config.glyph.content}
-					{config.name}
-				</span>
-				<span className={ filtersAreVisible ? 'ind ind--list' : 'ind ind--list is-hidden'}>:</span>
-				<span className="ws">-</span>
-				<span className="separator">{'/'}</span>
+const FiltersToggle = ({ config, filtersAreVisible, onToggle }) => {
+	return (
+		<span className="filters">
+			<span className="ws">-</span>
+			<span className="ws">-</span>
+			<span className="link" onClick={ onToggle }>
+				{ filtersAreVisible ? '-' : config.glyph.content }
+				{ config.name }
 			</span>
-		);
-	}
-}
+			<span className={ filtersAreVisible ? 'ind ind--list' : 'ind ind--list is-hidden'}>:</span>
+			<span className="ws">-</span>
+			<span className="separator">{ '/' }</span>
+		</span>
+	);
+};
 
-export default FilterSearchFilter;
+export default FiltersToggle;

@@ -10,27 +10,33 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = require('react-router-dom');
-
 var _reactRedux = require('react-redux');
+
+var _reactRouterDom = require('react-router-dom');
 
 var _reducers = require('../../../reducers');
 
-var _Main = require('./Main');
+var _actions = require('../../../actions');
 
-var _Main2 = _interopRequireDefault(_Main);
+var actions = _interopRequireWildcard(_actions);
+
+var _PatternChunk = require('../../../components/patterns/PatternChunk');
+
+var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
+
+var _FiltersToggle = require('./FiltersToggle');
+
+var _FiltersToggle2 = _interopRequireDefault(_FiltersToggle);
 
 var _Search = require('./Search');
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Filter = require('./Filter');
+var _FiltersList = require('./FiltersList');
 
-var _Filter2 = _interopRequireDefault(_Filter);
+var _FiltersList2 = _interopRequireDefault(_FiltersList);
 
-var _PatternChunk = require('../../../components/patterns/PatternChunk');
-
-var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,20 +46,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Header = function (_Component) {
-	_inherits(Header, _Component);
+var FilterSearchWrapper = function (_Component) {
+	_inherits(FilterSearchWrapper, _Component);
 
-	function Header(props) {
-		_classCallCheck(this, Header);
+	function FilterSearchWrapper() {
+		_classCallCheck(this, FilterSearchWrapper);
 
-		var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (FilterSearchWrapper.__proto__ || Object.getPrototypeOf(FilterSearchWrapper)).call(this));
 
 		_this.state = {
-			isVisible: false,
 			filtersAreVisible: false,
 			searchIsVisible: false
 		};
-		_this.toggle = _this.toggle.bind(_this);
 		_this.onToggleClick = _this.onToggleClick.bind(_this);
 		_this.onFilterClick = _this.onFilterClick.bind(_this);
 		_this.onSearchClick = _this.onSearchClick.bind(_this);
@@ -62,7 +66,7 @@ var Header = function (_Component) {
 		return _this;
 	}
 
-	_createClass(Header, [{
+	_createClass(FilterSearchWrapper, [{
 		key: 'toggleFilter',
 		value: function toggleFilter() {
 			this.setState({
@@ -90,6 +94,13 @@ var Header = function (_Component) {
 			} else {
 				this.toggleFilter();
 			}
+		}
+	}, {
+		key: 'onFilterClick',
+		value: function onFilterClick(id) {
+			var updateFilter = this.props.updateFilter;
+
+			updateFilter(id);
 		}
 	}, {
 		key: 'clearSearch',
@@ -120,21 +131,6 @@ var Header = function (_Component) {
 			return false;
 		}
 	}, {
-		key: 'toggle',
-		value: function toggle() {
-			var isMenuvisible = this.state.isVisible;
-			if (!isMenuvisible) {
-				isMenuvisible = true;
-				document.body.classList.add('mobileMenu-isActive');
-			} else {
-				isMenuvisible = false;
-				document.body.classList.remove('mobileMenu-isActive');
-			}
-			this.setState({
-				isVisible: isMenuvisible
-			});
-		}
-	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
 			if (nextProps.location.pathname !== this.props.location.pathname) {
@@ -146,9 +142,6 @@ var Header = function (_Component) {
 				if (this.state.searchIsVisible) {
 					searchState = !this.state.searchIsVisible;
 				}
-				if (this.state.isVisible) {
-					this.toggle();
-				}
 				this.setState({
 					searchIsVisible: searchState,
 					filtersAreVisible: filterState
@@ -158,81 +151,67 @@ var Header = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var navigation = [{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length }, { name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length }, { name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length }, { name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length }];
-			var _props$configs = this.props.configs,
-			    adjustForMobile = _props$configs.adjustForMobile,
-			    content = _props$configs.content;
+			var _props2 = this.props,
+			    content = _props2.content,
+			    location = _props2.location;
 
+			var fixedStart = window.innerWidth >= 1280 ? 11 : 8;
+			var config = {
+				separator: '/',
+				filter: {
+					name: 'Filter',
+					glyph: { className: 'ind', content: '+' },
+					spacesBefore: 2,
+					spacesAfter: 2
+				},
+				search: {
+					name: 'Search',
+					glyph: { className: 'ind', content: ':' },
+					searchInputSize: 32,
+					spacesBefore: 2,
+					spacesAfter: 1
+				}
+			};
+			var reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
+			// filters don't have a reserved space if you're not on the home page
+			var isFront = location.pathname === '/';
+			var reservedFilterSize = !isFront ? 0 : config.filter.name.length + config.filter.glyph.content.length;
+			var reservedEmptySpaces = !isFront ? config.search.spacesAfter + config.search.spacesBefore : config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
+			var numberofNavSeparators = 1;
+			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
 			return _react2.default.createElement(
 				'div',
-				{ className: 'website-header__inner website-header__inner--mobile wrapper' },
-				_react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						_reactRouterDom.NavLink,
-						{ className: 'link uLink', to: '/' },
-						'U'
-					),
-					_react2.default.createElement(_PatternChunk2.default, { adjust: adjustForMobile, reserved: 2 }),
-					_react2.default.createElement('span', { className: 'mobile-menu-toggle-overlay', onClick: this.toggle }),
-					this.state.isVisible ? _react2.default.createElement(
-						'span',
-						{ className: 'mobile-menu-toggle link', onClick: this.toggle },
-						'x'
-					) : _react2.default.createElement(
-						'span',
-						{ className: 'mobile-menu-toggle link', onClick: this.toggle },
-						':'
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_PatternChunk2.default, { reserved: 0, adjust: adjustForMobile })
-				),
-				this.state.isVisible && _react2.default.createElement(
-					'div',
-					{ className: 'menu' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'menu__inner' },
-						_react2.default.createElement(_Main2.default, { adjust: adjustForMobile, navigation: navigation }),
-						_react2.default.createElement(_Search2.default, {
-							adjust: adjustForMobile,
-							searchIsVisible: this.state.searchIsVisible,
-							onSearchClick: this.onSearchClick,
-							onSearchSubmit: this.onSearchSubmit
-						}),
-						_react2.default.createElement(_Filter2.default, {
-							adjust: adjustForMobile,
-							filtersAreVisible: this.state.filtersAreVisible,
-							content: content
-						}),
-						_react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(_PatternChunk2.default, { adjust: adjustForMobile, reserved: 0 })
-						),
-						_react2.default.createElement(
-							'div',
-							null,
-							_react2.default.createElement(_PatternChunk2.default, { adjust: adjustForMobile, reserved: 0 })
-						)
-					)
-				)
+				{ className: 'header--desktop__main' },
+				_react2.default.createElement(_PatternChunk2.default, { fixed: fixedStart }),
+				reservedFilterSize !== 0 && _react2.default.createElement(_FiltersToggle2.default, {
+					filtersAreVisible: this.state.filtersAreVisible,
+					onToggle: this.onToggleClick,
+					config: config.filter
+				}),
+				_react2.default.createElement(_Search2.default, {
+					searchIsVisible: this.state.searchIsVisible,
+					onSearchClick: this.onSearchClick,
+					onSearchSubmit: this.onSearchSubmit,
+					config: config.search,
+					isFront: isFront
+				}),
+				_react2.default.createElement(_PatternChunk2.default, { reserved: totalReservedSpaces }),
+				_react2.default.createElement(_FiltersList2.default, {
+					onFilterClick: this.onFilterClick,
+					content: content,
+					isVisible: this.state.filtersAreVisible
+				})
 			);
 		}
 	}]);
 
-	return Header;
+	return FilterSearchWrapper;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state) {
 	return {
-		configs: (0, _reducers.getAppConfigs)(state),
 		content: (0, _reducers.getFilters)(state)
 	};
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Header));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(FilterSearchWrapper));

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAppConfigs } from '../../../reducers';
+import { getAppConfigs, getFilters } from '../../../reducers';
  
 import Main from './Main';
 import Search from './Search';
-import Filter from './Filter';
+import FilterToggle from './Filter';
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
 class Header extends Component {
@@ -13,14 +13,63 @@ class Header extends Component {
 		super(props);
 		this.state = {
 			isVisible: false,
+			filtersAreVisible: false,
+			searchIsVisible: false,
 		};
 		this.toggle = this.toggle.bind(this);
+		this.onToggleClick = this.onToggleClick.bind(this);
+		this.onFilterClick = this.onFilterClick.bind(this);
+		this.onSearchClick = this.onSearchClick.bind(this);
+		this.onSearchSubmit = this.onSearchSubmit.bind(this);
+		this.clearSearch = this.clearSearch.bind(this);
 	}
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.location.pathname !== this.props.location.pathname && this.state.isVisible) {
-			this.toggle();
+
+	toggleFilter() {
+		this.setState({
+			filtersAreVisible: !this.state.filtersAreVisible,
+			searchIsVisible: this.state.searchIsVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
+		});
+	}
+
+	onToggleClick() {
+		const { fetchFilters, content } = this.props;
+		if (!this.state.filtersAreVisible) {
+			if (content.length === 0) {
+				fetchFilters().then(() => {
+					this.toggleFilter();
+				});
+			} else {
+				this.toggleFilter();
+			}
+		} else {
+			this.toggleFilter();
 		}
 	}
+
+	clearSearch() {
+		if (this.search) {
+			this.search.value = '';
+		}
+	}
+
+	onSearchClick() {
+		this.setState({
+			searchIsVisible: !this.state.searchIsVisible,
+			filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
+		});
+	}
+
+	onSearchSubmit(event) {
+		const { fetchSearchResults } = this.props;
+		const keyword = new FormData(event.target).get('keyword');
+		fetchSearchResults(keyword);
+		event.preventDefault();
+		this.props.history.push(`/search?keyword=${keyword}`);
+		this.clearSearch();
+		this.onSearchClick();
+		return false;
+	}
+
 
 	toggle() {
 		let isMenuvisible = this.state.isVisible;
@@ -36,6 +85,26 @@ class Header extends Component {
 		});
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.location.pathname !== this.props.location.pathname) {
+			let filterState = this.state.filtersAreVisible;
+			let searchState = this.state.searchIsVisible;
+			if (this.state.filtersAreVisible) {
+				filterState = !this.state.filtersAreVisible;
+			}
+			if (this.state.searchIsVisible) {
+				searchState= !this.state.searchIsVisible;
+			}
+			if (this.state.isVisible) {
+				this.toggle();
+			}
+			this.setState({
+				searchIsVisible: searchState,
+				filtersAreVisible: filterState,
+			});
+		}
+	}
+
 	render() {
 		const navigation = [
 			{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
@@ -43,7 +112,7 @@ class Header extends Component {
 			{ name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length },
 			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
 		];
-		const { adjustForMobile } = this.props.configs;
+		const { adjustForMobile, content } = this.props.configs;
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div>
@@ -55,7 +124,6 @@ class Header extends Component {
 							<span className="mobile-menu-toggle link" onClick={this.toggle}>x</span> :
 							<span className="mobile-menu-toggle link" onClick={this.toggle}>:</span>
 					}
-					
 				</div>
 				<div><PatternChunk reserved={0} adjust={adjustForMobile} /></div>
 				{
@@ -63,8 +131,17 @@ class Header extends Component {
 					<div className="menu">
 						<div className="menu__inner">
 							<Main adjust={adjustForMobile} navigation={navigation} />
-							<Search adjust={adjustForMobile} />
-							<Filter adjust={adjustForMobile} />
+							<Search
+								adjust={adjustForMobile}
+								searchIsVisible={this.state.searchIsVisible}
+								onSearchClick={this.onSearchClick}
+								onSearchSubmit={this.onSearchSubmit}
+							/>
+							<FilterToggle
+								adjust={ adjustForMobile }
+								filtersAreVisible={ this.state.filtersAreVisible }
+								content={ content }
+							/>
 							<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
 							<div><PatternChunk adjust={adjustForMobile} reserved={0} /></div>
 						</div>
@@ -77,7 +154,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		configs: getAppConfigs(state)
+		configs: getAppConfigs(state),
+		content: getFilters(state),
 	};
 };
 
