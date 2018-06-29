@@ -1,5 +1,5 @@
 import React from 'react';
-import { getNoOfChars, getMaxWidth } from '../../helpers';
+import { getNoOfChars, getMaxWidth } from '../../../helpers';
 import Filters from './Filters';
 
 const createFilters = ( content , availableSpace ) => {

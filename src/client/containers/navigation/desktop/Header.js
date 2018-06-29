@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderDTMain from './HeaderDTMain';
-import HeaderDTSecond from './HeaderDTSecond';
-import HeaderDTFilterSearch from './HeaderDTFilterSearch';
+import HeaderDTMain from './Main';
+import HeaderDTSecond from './Second';
+import HeaderDTFilterSearch from './FilterSearch';
 
 const HeaderDT = () => {
 	return (

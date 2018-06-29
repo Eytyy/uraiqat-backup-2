@@ -437,7 +437,7 @@ body {
       float: left; }
 
 .post-preview {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   -webkit-transition: -webkit-box-flex 100ms ease-in-out;
   transition: -webkit-box-flex 100ms ease-in-out;
   transition: flex 100ms ease-in-out;

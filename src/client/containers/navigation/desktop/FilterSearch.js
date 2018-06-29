@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { getFilters } from '../../reducers';
-import * as actions from '../../actions';
+import { getFilters } from '../../../reducers';
+import * as actions from '../../../actions';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
-import HeaderDTFilterSearchFilter from './HeaderDTFilterSearchFilter';
-import HeaderDTFilterSearchSearch from './HeaderDTFilterSearchSearch';
-import HeaderDTFiltersList from './HeaderDTFiltersList';
+import PatternChunk from '../../../components/patterns/PatternChunk';
+import HeaderDTFilterSearchFilter from './FilterSearchFilter';
+import HeaderDTFilterSearchSearch from './FilterSearchSearch';
+import HeaderDTFiltersList from './FiltersList';
 
 class HeaderDTFilterSearch extends Component {
 	constructor() {

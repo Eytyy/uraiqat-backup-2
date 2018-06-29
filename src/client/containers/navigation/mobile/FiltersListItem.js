@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 const HeaderMFiltersListItem = ({ content, active, onFilterClick, id, adjust }) => {
 	const onClick = () => {

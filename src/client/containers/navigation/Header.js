@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import HeaderDT from './HeaderDT';
-import HeaderM from './HeaderM';
+import HeaderDT from './desktop/Header';
+import HeaderM from './mobile/Header';
 
 class Header extends Component {
 	constructor() {

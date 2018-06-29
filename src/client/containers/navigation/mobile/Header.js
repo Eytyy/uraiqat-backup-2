@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAppConfigs } from '../../reducers';
+import { getAppConfigs } from '../../../reducers';
  
-import HeaderMMain from './HeaderMMain';
-import HeaderMSearch from './HeaderMSearch';
-import HeaderMFilter from './HeaderMFilter';
-import PatternChunk from '../../components/patterns/PatternChunk';
+import HeaderMMain from './Main';
+import HeaderMSearch from './Search';
+import HeaderMFilter from './Filter';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 class HeaderM extends Component {
 	constructor(props) {

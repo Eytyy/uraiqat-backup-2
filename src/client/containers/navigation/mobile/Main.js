@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
-import HeaderMNavItem from './HeaderMNavItem';
+import PatternChunk from '../../../components/patterns/PatternChunk';
+import HeaderMNavItem from './NavItem';
 
 const HeaderDTMain = ({ navigation, adjust }) => {
 	return (

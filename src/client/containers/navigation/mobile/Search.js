@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import * as actions from '../../actions';
-import { getFontValues } from '../../helpers';
+import * as actions from '../../../actions';
+import { getFontValues } from '../../../helpers';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 class HeaderMSearch extends Component {
 	constructor() {

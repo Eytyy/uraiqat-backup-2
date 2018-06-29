@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { getFontValues } from '../../helpers';
+import { getFontValues } from '../../../helpers';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 class HeaderDTFilterSearchSearch extends Component {
 	render() {

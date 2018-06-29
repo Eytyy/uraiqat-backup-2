@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderMFiltersListItem from './HeaderMFiltersListItem';
+import HeaderMFiltersListItem from './FiltersListItem';
 
 const HeaderMFiltersList = ({ content, onFilterClick, adjust }) => {
 	return (

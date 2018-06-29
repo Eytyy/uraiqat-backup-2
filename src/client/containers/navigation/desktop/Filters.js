@@ -1,6 +1,6 @@
 import React from 'react';
 import Filter from './Filter';
-import PatternChunk from '../../components/patterns/PatternChunk';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 const Filters = ({ content, fixedEnd, fixedStart, onFilterClick }) => {
 	return (

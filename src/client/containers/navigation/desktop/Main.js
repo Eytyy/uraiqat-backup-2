@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import HeaderDTMainNav from './HeaderDTMainNav';
-import PatternChunk from '../../components/patterns/PatternChunk';
+import HeaderDTMainNav from './MainNav';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 const HeaderDTMain = () => {
 	const numberOfStaticItems = 'U'.length + 'Uraiqat'.length;

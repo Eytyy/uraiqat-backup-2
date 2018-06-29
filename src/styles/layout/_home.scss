@@ -2,7 +2,7 @@
 // Home Blocks Layout
 
 .post-preview {
-	margin-bottom: $lh * 2;
+	margin-bottom: $lh;
 	transition: flex 100ms ease-in-out;
 	@include respond-to(mobile-ls) {
 		padding-left: $block-gutter;

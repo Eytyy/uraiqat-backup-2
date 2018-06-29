@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
+import PatternChunk from '../../../components/patterns/PatternChunk';
 
 const HeaderDTSecond = () => {
 	const numberOfStaticItems = 'Architects'.length;

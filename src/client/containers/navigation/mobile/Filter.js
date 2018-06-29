@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import * as actions from '../../actions';
-import { getFilters } from '../../reducers';
+import * as actions from '../../../actions';
+import { getFilters } from '../../../reducers';
 
-import PatternChunk from '../../components/patterns/PatternChunk';
-import HeaderMFiltersList from './HeaderMFiltersList';
+import PatternChunk from '../../../components/patterns/PatternChunk';
+import HeaderMFiltersList from './FiltersList';
 
 class HeaderMFilter extends Component {
 	constructor() {
