@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as actions from '../../../actions';
 import { getAppConfigs, getFilters } from '../../../reducers';
  
 import Main from './Main';
 import Search from './Search';
-import FilterToggle from './Filter';
+import Filters from './Filters';
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
 class Header extends Component {
@@ -16,8 +17,9 @@ class Header extends Component {
 			filtersAreVisible: false,
 			searchIsVisible: false,
 		};
-		this.toggle = this.toggle.bind(this);
-		this.onToggleClick = this.onToggleClick.bind(this);
+		this.onMenuToggle = this.onMenuToggle.bind(this);
+		this.toggleFilter = this.toggleFilter.bind(this);
+		this.onToggleFilters = this.onToggleFilters.bind(this);
 		this.onFilterClick = this.onFilterClick.bind(this);
 		this.onSearchClick = this.onSearchClick.bind(this);
 		this.onSearchSubmit = this.onSearchSubmit.bind(this);
@@ -31,7 +33,7 @@ class Header extends Component {
 		});
 	}
 
-	onToggleClick() {
+	onToggleFilters() {
 		const { fetchFilters, content } = this.props;
 		if (!this.state.filtersAreVisible) {
 			if (content.length === 0) {
@@ -45,6 +47,12 @@ class Header extends Component {
 			this.toggleFilter();
 		}
 	}
+
+	onFilterClick(id) {
+		const { updateFilter } = this.props;
+		updateFilter(id);
+	}
+
 
 	clearSearch() {
 		if (this.search) {
@@ -71,7 +79,7 @@ class Header extends Component {
 	}
 
 
-	toggle() {
+	onMenuToggle() {
 		let isMenuvisible = this.state.isVisible;
 		if (!isMenuvisible) {
 			isMenuvisible = true;
@@ -96,7 +104,7 @@ class Header extends Component {
 				searchState= !this.state.searchIsVisible;
 			}
 			if (this.state.isVisible) {
-				this.toggle();
+				this.onMenuToggle();
 			}
 			this.setState({
 				searchIsVisible: searchState,
@@ -112,17 +120,19 @@ class Header extends Component {
 			{ name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length },
 			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
 		];
-		const { adjustForMobile, content } = this.props.configs;
+		const { configs, content } = this.props;
+		const { adjustForMobile } = configs;
+		
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div>
 					<NavLink className="link uLink" to="/">U</NavLink>
 					<PatternChunk adjust={adjustForMobile} reserved={2} />
-					<span className="mobile-menu-toggle-overlay" onClick={this.toggle}></span>
+					<span className="mobile-menu-toggle-overlay" onClick={this.onMenuToggle}></span>
 					{
 						this.state.isVisible ?
-							<span className="mobile-menu-toggle link" onClick={this.toggle}>x</span> :
-							<span className="mobile-menu-toggle link" onClick={this.toggle}>:</span>
+							<span className="mobile-menu-toggle link" onClick={this.onMenuToggle}>x</span> :
+							<span className="mobile-menu-toggle link" onClick={this.onMenuToggle}>:</span>
 					}
 				</div>
 				<div><PatternChunk reserved={0} adjust={adjustForMobile} /></div>
@@ -137,7 +147,9 @@ class Header extends Component {
 								onSearchClick={this.onSearchClick}
 								onSearchSubmit={this.onSearchSubmit}
 							/>
-							<FilterToggle
+							<Filters
+								onFilterClick={this.onFilterClick}
+								onToggle={this.onToggleFilters}
 								adjust={ adjustForMobile }
 								filtersAreVisible={ this.state.filtersAreVisible }
 								content={ content }
@@ -160,5 +172,6 @@ const mapStateToProps = (state) => {
 };
 
 export default withRouter(connect(
-	mapStateToProps
+	mapStateToProps,
+	actions
 )(Header));

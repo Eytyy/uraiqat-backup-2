@@ -100,26 +100,33 @@ class FilterSearchWrapper extends Component {
 			filter: {
 				name: 'Filter',
 				glyph: { className: 'ind', content: '+' },
-				spacesBefore: 2,
-				spacesAfter: 2,
+				spacesBefore: 3,
+				spacesAfter: 1,
 			},
 			search: {
 				name: 'Search',
 				glyph: { className: 'ind', content: ':' },
 				searchInputSize: 32,
-				spacesBefore: 2,
+				spacesBefore: 3,
 				spacesAfter: 1,
 			}
 		};
 		const reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
 		// filters don't have a reserved space if you're not on the home page
 		const isFront = location.pathname === '/';
-		const reservedFilterSize = !isFront ? 0 : config.filter.name.length + config.filter.glyph.content.length;
-		const reservedEmptySpaces = !isFront ?
-			config.search.spacesAfter + config.search.spacesBefore :
-			config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
-		const numberofNavSeparators = 1;
-		const totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
+		const reservedFilterSize = isFront ? config.filter.name.length + config.filter.glyph.content.length + config.separator.length : 0;
+		const reservedEmptySpaces = isFront ?
+			config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore :
+			config.search.spacesAfter + config.search.spacesBefore;
+
+
+		const totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + fixedStart;
+
+		console.log('reserved for filters', reservedFilterSize);
+		console.log('reserved for search', reservedSearchSize);
+		console.log('reserved for empty', reservedEmptySpaces);
+		console.log('fixed', fixedStart);
+		console.log('total', totalReservedSpaces);
 		return (
 			<div className="header--desktop__main">
 				<PatternChunk fixed={fixedStart} />

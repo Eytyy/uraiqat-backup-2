@@ -16,9 +16,9 @@ var _Second = require('./Second');
 
 var _Second2 = _interopRequireDefault(_Second);
 
-var _FilterSearch = require('./FilterSearch');
+var _FilterSearchWrapper = require('./FilterSearchWrapper');
 
-var _FilterSearch2 = _interopRequireDefault(_FilterSearch);
+var _FilterSearchWrapper2 = _interopRequireDefault(_FilterSearchWrapper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,7 +28,7 @@ var Header = function Header() {
 		{ className: 'website-header__inner website-header__inner--desktop wrapper' },
 		_react2.default.createElement(_Main2.default, null),
 		_react2.default.createElement(_Second2.default, null),
-		_react2.default.createElement(_FilterSearch2.default, null)
+		_react2.default.createElement(_FilterSearchWrapper2.default, null)
 	);
 };
 

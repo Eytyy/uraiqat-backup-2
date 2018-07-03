@@ -14,6 +14,10 @@ var _reactRouterDom = require('react-router-dom');
 
 var _reactRedux = require('react-redux');
 
+var _actions = require('../../../actions');
+
+var actions = _interopRequireWildcard(_actions);
+
 var _reducers = require('../../../reducers');
 
 var _Main = require('./Main');
@@ -24,13 +28,15 @@ var _Search = require('./Search');
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Filter = require('./Filter');
+var _Filters = require('./Filters');
 
-var _Filter2 = _interopRequireDefault(_Filter);
+var _Filters2 = _interopRequireDefault(_Filters);
 
 var _PatternChunk = require('../../../components/patterns/PatternChunk');
 
 var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53,8 +59,9 @@ var Header = function (_Component) {
 			filtersAreVisible: false,
 			searchIsVisible: false
 		};
-		_this.toggle = _this.toggle.bind(_this);
-		_this.onToggleClick = _this.onToggleClick.bind(_this);
+		_this.onMenuToggle = _this.onMenuToggle.bind(_this);
+		_this.toggleFilter = _this.toggleFilter.bind(_this);
+		_this.onToggleFilters = _this.onToggleFilters.bind(_this);
 		_this.onFilterClick = _this.onFilterClick.bind(_this);
 		_this.onSearchClick = _this.onSearchClick.bind(_this);
 		_this.onSearchSubmit = _this.onSearchSubmit.bind(_this);
@@ -71,8 +78,8 @@ var Header = function (_Component) {
 			});
 		}
 	}, {
-		key: 'onToggleClick',
-		value: function onToggleClick() {
+		key: 'onToggleFilters',
+		value: function onToggleFilters() {
 			var _this2 = this;
 
 			var _props = this.props,
@@ -90,6 +97,13 @@ var Header = function (_Component) {
 			} else {
 				this.toggleFilter();
 			}
+		}
+	}, {
+		key: 'onFilterClick',
+		value: function onFilterClick(id) {
+			var updateFilter = this.props.updateFilter;
+
+			updateFilter(id);
 		}
 	}, {
 		key: 'clearSearch',
@@ -120,8 +134,8 @@ var Header = function (_Component) {
 			return false;
 		}
 	}, {
-		key: 'toggle',
-		value: function toggle() {
+		key: 'onMenuToggle',
+		value: function onMenuToggle() {
 			var isMenuvisible = this.state.isVisible;
 			if (!isMenuvisible) {
 				isMenuvisible = true;
@@ -147,7 +161,7 @@ var Header = function (_Component) {
 					searchState = !this.state.searchIsVisible;
 				}
 				if (this.state.isVisible) {
-					this.toggle();
+					this.onMenuToggle();
 				}
 				this.setState({
 					searchIsVisible: searchState,
@@ -159,9 +173,11 @@ var Header = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var navigation = [{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length }, { name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length }, { name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length }, { name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length }];
-			var _props$configs = this.props.configs,
-			    adjustForMobile = _props$configs.adjustForMobile,
-			    content = _props$configs.content;
+			var _props2 = this.props,
+			    configs = _props2.configs,
+			    content = _props2.content;
+			var adjustForMobile = configs.adjustForMobile;
+
 
 			return _react2.default.createElement(
 				'div',
@@ -175,14 +191,14 @@ var Header = function (_Component) {
 						'U'
 					),
 					_react2.default.createElement(_PatternChunk2.default, { adjust: adjustForMobile, reserved: 2 }),
-					_react2.default.createElement('span', { className: 'mobile-menu-toggle-overlay', onClick: this.toggle }),
+					_react2.default.createElement('span', { className: 'mobile-menu-toggle-overlay', onClick: this.onMenuToggle }),
 					this.state.isVisible ? _react2.default.createElement(
 						'span',
-						{ className: 'mobile-menu-toggle link', onClick: this.toggle },
+						{ className: 'mobile-menu-toggle link', onClick: this.onMenuToggle },
 						'x'
 					) : _react2.default.createElement(
 						'span',
-						{ className: 'mobile-menu-toggle link', onClick: this.toggle },
+						{ className: 'mobile-menu-toggle link', onClick: this.onMenuToggle },
 						':'
 					)
 				),
@@ -204,7 +220,9 @@ var Header = function (_Component) {
 							onSearchClick: this.onSearchClick,
 							onSearchSubmit: this.onSearchSubmit
 						}),
-						_react2.default.createElement(_Filter2.default, {
+						_react2.default.createElement(_Filters2.default, {
+							onFilterClick: this.onFilterClick,
+							onToggle: this.onToggleFilters,
 							adjust: adjustForMobile,
 							filtersAreVisible: this.state.filtersAreVisible,
 							content: content
@@ -235,4 +253,4 @@ var mapStateToProps = function mapStateToProps(state) {
 	};
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Header));
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(Header));

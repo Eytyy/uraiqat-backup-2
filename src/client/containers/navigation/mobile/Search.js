@@ -25,7 +25,7 @@ const Search = ({ adjust, onSearchClick, onSearchSubmit, searchIsVisible }) => {
 			{ searchIsVisible ? <span className="link">{ config.glyph.content }</span> : ' ' }
 			<span className="ws">-</span>
 			{
-				this.state.searchIsVisible ?
+				searchIsVisible ?
 					<form onSubmit={ onSearchSubmit } className="search">
 						<input
 							style={ formStyle }

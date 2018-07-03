@@ -1,14 +1,14 @@
 import React from 'react';
 import Main from './Main';
 import Second from './Second';
-import FilterSearch from './FilterSearch';
+import FilterSearchWrapper from './FilterSearchWrapper';
 
 const Header = () => {
 	return (
 		<div className="website-header__inner website-header__inner--desktop wrapper">
 			<Main />
 			<Second />
-			<FilterSearch />
+			<FilterSearchWrapper />
 		</div>
 	);
 };

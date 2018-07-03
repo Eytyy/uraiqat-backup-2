@@ -16,13 +16,15 @@ var _FiltersList = require('./FiltersList');
 
 var _FiltersList2 = _interopRequireDefault(_FiltersList);
 
+var _reactRouterDom = require('react-router-dom');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
 	var content = _ref.content,
 	    location = _ref.location,
 	    adjustForMobile = _ref.adjustForMobile,
-	    onFiltersToggle = _ref.onFiltersToggle,
+	    onToggle = _ref.onToggle,
 	    onFilterClick = _ref.onFilterClick,
 	    filtersAreVisible = _ref.filtersAreVisible;
 
@@ -38,10 +40,10 @@ var Filter = function Filter(_ref) {
 		{ className: 'header-mobile__filters' },
 		_react2.default.createElement(
 			'span',
-			{ className: 'link', onClick: onFiltersToggle },
+			{ className: 'link', onClick: onToggle },
 			config.name
 		),
-		undefined.state.filtersAreVisible ? ':' : _react2.default.createElement(
+		filtersAreVisible ? ':' : _react2.default.createElement(
 			'span',
 			{ className: 'ws' },
 			'-'
@@ -59,11 +61,11 @@ var Filter = function Filter(_ref) {
 		_react2.default.createElement(_PatternChunk2.default, { reserved: reservedFilterSize, adjust: adjustForMobile }),
 		filtersAreVisible ? _react2.default.createElement(
 			'span',
-			{ onClick: onFiltersToggle, className: 'link' },
+			{ onClick: onToggle, className: 'link' },
 			'x'
 		) : '<',
 		filtersAreVisible && _react2.default.createElement(_FiltersList2.default, { onFilterClick: onFilterClick, content: content, adjust: adjustForMobile })
 	);
 };
 
-exports.default = Filter;
+exports.default = (0, _reactRouterDom.withRouter)(Filter);

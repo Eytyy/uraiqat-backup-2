@@ -54,7 +54,7 @@ var Search = function Search(_ref) {
 			{ className: 'ws' },
 			'-'
 		),
-		undefined.state.searchIsVisible ? _react2.default.createElement(
+		searchIsVisible ? _react2.default.createElement(
 			'form',
 			{ onSubmit: onSearchSubmit, className: 'search' },
 			_react2.default.createElement('input', {

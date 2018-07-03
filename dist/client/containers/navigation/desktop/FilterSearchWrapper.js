@@ -161,24 +161,30 @@ var FilterSearchWrapper = function (_Component) {
 				filter: {
 					name: 'Filter',
 					glyph: { className: 'ind', content: '+' },
-					spacesBefore: 2,
-					spacesAfter: 2
+					spacesBefore: 3,
+					spacesAfter: 1
 				},
 				search: {
 					name: 'Search',
 					glyph: { className: 'ind', content: ':' },
 					searchInputSize: 32,
-					spacesBefore: 2,
+					spacesBefore: 3,
 					spacesAfter: 1
 				}
 			};
 			var reservedSearchSize = config.search.name.length + config.search.glyph.content.length + config.search.searchInputSize;
 			// filters don't have a reserved space if you're not on the home page
 			var isFront = location.pathname === '/';
-			var reservedFilterSize = !isFront ? 0 : config.filter.name.length + config.filter.glyph.content.length;
-			var reservedEmptySpaces = !isFront ? config.search.spacesAfter + config.search.spacesBefore : config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore;
-			var numberofNavSeparators = 1;
-			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + numberofNavSeparators + fixedStart;
+			var reservedFilterSize = isFront ? config.filter.name.length + config.filter.glyph.content.length + config.separator.length : 0;
+			var reservedEmptySpaces = isFront ? config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore : config.search.spacesAfter + config.search.spacesBefore;
+
+			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + fixedStart;
+
+			console.log('reserved for filters', reservedFilterSize);
+			console.log('reserved for search', reservedSearchSize);
+			console.log('reserved for empty', reservedEmptySpaces);
+			console.log('fixed', fixedStart);
+			console.log('total', totalReservedSpaces);
 			return _react2.default.createElement(
 				'div',
 				{ className: 'header--desktop__main' },

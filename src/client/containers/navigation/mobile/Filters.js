@@ -2,6 +2,7 @@ import React from 'react';
 
 import PatternChunk from '../../../components/patterns/PatternChunk';
 import FiltersList from './FiltersList';
+import { withRouter } from 'react-router-dom';
 
 const Filter = ({ content, location, adjustForMobile, onToggle, onFilterClick, filtersAreVisible }) => {
 	const config = {
@@ -14,7 +15,7 @@ const Filter = ({ content, location, adjustForMobile, onToggle, onFilterClick, f
 	return (
 		reservedFilterSize !== 0 && <div className="header-mobile__filters">
 			<span className="link" onClick={ onToggle }>{ config.name }</span>
-			{ this.state.filtersAreVisible ? ':' : <span className="ws">-</span> }
+			{ filtersAreVisible ? ':' : <span className="ws">-</span> }
 			<span className="ws">-</span>
 			<span className="ws">-</span>
 			<PatternChunk reserved={ reservedFilterSize } adjust={ adjustForMobile } />
@@ -26,4 +27,4 @@ const Filter = ({ content, location, adjustForMobile, onToggle, onFilterClick, f
 	);
 };
 
-export default Filter;
+export default withRouter(Filter);
