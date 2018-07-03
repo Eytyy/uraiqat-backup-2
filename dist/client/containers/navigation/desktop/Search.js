@@ -50,7 +50,7 @@ var FilterSearchSearch = function (_Component) {
 			return _react2.default.createElement(
 				'span',
 				{ className: 'search ' + (searchIsVisible ? 'is-visible' : 'is-hidden') },
-				isFront && _react2.default.createElement(
+				_react2.default.createElement(
 					'span',
 					{ className: 'ws' },
 					'-'

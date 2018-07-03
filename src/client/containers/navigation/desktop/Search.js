@@ -13,7 +13,7 @@ class FilterSearchSearch extends Component {
 		};
 		return (
 			<span className={`search ${searchIsVisible ? 'is-visible' : 'is-hidden'}`}>
-				{ isFront && <span className="ws">-</span> }
+				<span className="ws">-</span>
 				<span className="ws">-</span>
 				<span className={searchIsVisible ? 'link' : 'link is-hidden'}>x</span>
 				<span className="search-link link" onClick={onSearchClick}>{ config.name }</span>
