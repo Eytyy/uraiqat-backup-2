@@ -20,6 +20,9 @@ var Careers = function Careers(_ref) {
 	var content = _ref.content,
 	    desc = _ref.desc;
 
+	if (!content) {
+		return null;
+	}
 	return _react2.default.createElement(
 		'section',
 		{ className: 'practice-section--careers practice-section' },

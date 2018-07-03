@@ -180,11 +180,6 @@ var FilterSearchWrapper = function (_Component) {
 
 			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + fixedStart;
 
-			console.log('reserved for filters', reservedFilterSize);
-			console.log('reserved for search', reservedSearchSize);
-			console.log('reserved for empty', reservedEmptySpaces);
-			console.log('fixed', fixedStart);
-			console.log('total', totalReservedSpaces);
 			return _react2.default.createElement(
 				'div',
 				{ className: 'header--desktop__main' },

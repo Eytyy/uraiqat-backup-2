@@ -122,11 +122,6 @@ class FilterSearchWrapper extends Component {
 
 		const totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + fixedStart;
 
-		console.log('reserved for filters', reservedFilterSize);
-		console.log('reserved for search', reservedSearchSize);
-		console.log('reserved for empty', reservedEmptySpaces);
-		console.log('fixed', fixedStart);
-		console.log('total', totalReservedSpaces);
 		return (
 			<div className="header--desktop__main">
 				<PatternChunk fixed={fixedStart} />

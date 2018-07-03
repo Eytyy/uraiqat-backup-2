@@ -27,10 +27,10 @@ class Practice extends Component {
 		}
 		return (
 			<section className="landing-page landing-page--practice main-section" >
-				<Basic sectionTitle="about" content={content.fields.about} />
-				<Basic sectionTitle="philosophy" content={content.fields.philosophy} />
-				<Team content={content.fields.team} />
-				<Careers desc={content.fields.careersBody} content={content.fields.careers} />
+				{ content.fields.about && <Basic sectionTitle="about" content={content.fields.about} />}
+				{ content.fields.philosophy && <Basic sectionTitle="philosophy" content={content.fields.philosophy} /> }
+				{ content.fields.team && <Team content={content.fields.team} /> }
+				{ content.fields.careersBody && <Careers desc={content.fields.careersBody} content={content.fields.careers} /> }
 			</section>
 		);
 	}

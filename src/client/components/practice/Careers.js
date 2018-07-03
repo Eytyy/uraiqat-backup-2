@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import BodyText from '../BodyText';
 
 const Careers = ({ content, desc }) => {
+	if (!content) {
+		return null;
+	}
 	return (
 		<section className="practice-section--careers practice-section">
 			<h2 className="practice-section__title" >Careers</h2>

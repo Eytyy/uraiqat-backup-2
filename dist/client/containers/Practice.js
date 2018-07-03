@@ -79,10 +79,10 @@ var Practice = function (_Component) {
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-page landing-page--practice main-section' },
-				_react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
-				_react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
-				_react2.default.createElement(_Team2.default, { content: content.fields.team }),
-				_react2.default.createElement(_Careers2.default, { desc: content.fields.careersBody, content: content.fields.careers })
+				content.fields.about && _react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
+				content.fields.philosophy && _react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
+				content.fields.team && _react2.default.createElement(_Team2.default, { content: content.fields.team }),
+				content.fields.careersBody && _react2.default.createElement(_Careers2.default, { desc: content.fields.careersBody, content: content.fields.careers })
 			);
 		}
 	}], [{

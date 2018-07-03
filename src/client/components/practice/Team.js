@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import PostMediaImage from '../home/PostMediaImage';
 
 const Team = ({ content }) => {
+	if (!content) {
+		return null;
+	}
 	return (
 		<section className="practice-section--team practice-section">
 			<h2 className="practice-section__title" >Team</h2>

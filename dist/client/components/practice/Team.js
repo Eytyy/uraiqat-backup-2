@@ -19,6 +19,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Team = function Team(_ref) {
 	var content = _ref.content;
 
+	if (!content) {
+		return null;
+	}
 	return _react2.default.createElement(
 		'section',
 		{ className: 'practice-section--team practice-section' },
