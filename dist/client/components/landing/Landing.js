@@ -74,9 +74,11 @@ var Landing = function (_Component) {
 	}, {
 		key: 'adjustContainerHeight',
 		value: function adjustContainerHeight() {
+			var intro = this.props.content.intro;
+
 			var featured = document.querySelector('.landing-section--featured');
 			var main = document.querySelector('.landing-section--main');
-			var introHeight = this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10);
+			var introHeight = intro ? this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10) : 0;
 			var featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
 			var mainHeight = main ? main.getBoundingClientRect().height : 0;
 

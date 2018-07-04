@@ -34,9 +34,10 @@ class Landing extends Component {
 	}
 
 	adjustContainerHeight() {
+		const { intro } = this.props.content;
 		const featured = document.querySelector('.landing-section--featured');
 		const main = document.querySelector('.landing-section--main');
-		const introHeight = this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10);
+		const introHeight = intro ? this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10) : 0;
 		const featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
 		const mainHeight = main ? main.getBoundingClientRect().height : 0;
 		
