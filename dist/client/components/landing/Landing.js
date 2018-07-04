@@ -67,7 +67,7 @@ var Landing = function (_Component) {
 			if (this.visible === this.contentLength) {
 				return;
 			}
-			if (window.innerHeight * this.state.initialIndex >= this.section.offsetHeight - window.scrollY) {
+			if (window.innerHeight * this.state.initialIndex >= this.section.offsetHeight - this.intro.offsetHeight - window.scrollY) {
 				requestAnimationFrame(this.updateUi);
 			}
 		}
@@ -76,10 +76,11 @@ var Landing = function (_Component) {
 		value: function adjustContainerHeight() {
 			var featured = document.querySelector('.landing-section--featured');
 			var main = document.querySelector('.landing-section--main');
+			var introHeight = this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10);
 			var featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
 			var mainHeight = main ? main.getBoundingClientRect().height : 0;
 
-			var newHeight = featuredHeight + mainHeight + 'px';
+			var newHeight = featuredHeight + mainHeight + introHeight + 'px';
 			this.section.style.height = newHeight;
 		}
 	}, {
@@ -114,8 +115,8 @@ var Landing = function (_Component) {
 
 			var _props = this.props,
 			    page = _props.page,
-			    content = _props.content,
-			    intro = _props.intro;
+			    content = _props.content;
+			var intro = content.intro;
 			var mainContent = content.mainContent,
 			    featuredContent = content.featuredContent;
 
@@ -133,7 +134,9 @@ var Landing = function (_Component) {
 					}, className: classList },
 				page === 'atelier' && intro && _react2.default.createElement(
 					'div',
-					{ className: 'atelier-landing__top' },
+					{ ref: function ref(el) {
+							_this2.intro = el;
+						}, className: 'atelier-landing__top' },
 					_react2.default.createElement(
 						'div',
 						{ className: 'atelier-landing__top__desc' },

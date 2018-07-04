@@ -28,7 +28,7 @@ class Landing extends Component {
 		if (this.visible === this.contentLength) {
 			return;
 		}
-		if (window.innerHeight * this.state.initialIndex >= this.section.offsetHeight - window.scrollY) {
+		if (window.innerHeight * this.state.initialIndex >= this.section.offsetHeight - this.intro.offsetHeight - window.scrollY) {
 			requestAnimationFrame(this.updateUi);
 		}
 	}
@@ -36,10 +36,11 @@ class Landing extends Component {
 	adjustContainerHeight() {
 		const featured = document.querySelector('.landing-section--featured');
 		const main = document.querySelector('.landing-section--main');
+		const introHeight = this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10);
 		const featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
 		const mainHeight = main ? main.getBoundingClientRect().height : 0;
-
-		const newHeight = `${featuredHeight + mainHeight}px` ;
+		
+		const newHeight = `${featuredHeight + mainHeight + introHeight}px` ;
 		this.section.style.height = newHeight;
 	}
 
@@ -64,7 +65,8 @@ class Landing extends Component {
 	}
 	
 	render() {
-		const { page, content, intro } = this.props;
+		const { page, content } = this.props;
+		const { intro } = content;
 		const { mainContent, featuredContent } = content;
 		const classList = `landing-page landing-page--${page} main-section`;
 		const numberOfVisibleItemsPerScroll = page === 'journal' ? 8 : 3;
@@ -78,7 +80,7 @@ class Landing extends Component {
 		return ( 
 			<section ref={(el) => {this.section = el;}} className={classList}>
 				{ page === 'atelier' && intro &&
-					(<div className="atelier-landing__top">
+					(<div  ref={(el) => {this.intro = el;}} className="atelier-landing__top">
 						<div className="atelier-landing__top__desc">
 							{ intro.desc && <BodyText content={intro.desc} />}
 						</div>
