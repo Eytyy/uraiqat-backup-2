@@ -67,7 +67,8 @@ var Landing = function (_Component) {
 			if (this.visible === this.contentLength) {
 				return;
 			}
-			if (window.innerHeight * this.state.initialIndex >= this.section.offsetHeight - this.intro.offsetHeight - window.scrollY) {
+			var introHeight = this.intro ? this.intro.offsetHeight : 0;
+			if (window.innerHeight * this.state.initialIndex >= this.section.offsetHeight - introHeight - window.scrollY) {
 				requestAnimationFrame(this.updateUi);
 			}
 		}
