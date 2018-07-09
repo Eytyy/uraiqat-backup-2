@@ -844,6 +844,9 @@ body {
   .post-preview--default.post-preview--landscape .post-preview__meta {
     margin-bottom: 16px; } }
 
+.post-preview--featured.post-preview--landscape .post-preview__image {
+  height: 192px; }
+
 .post-preview--featured.post-preview--landscape .post-preview__content {
   position: relative;
   z-index: 10; }
@@ -852,16 +855,26 @@ body {
   .post-preview--featured.post-preview--landscape {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
-            flex: 0 0 100%; } }
+            flex: 0 0 100%; }
+    .post-preview--featured.post-preview--landscape .post-preview__image {
+      height: 240px; } }
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
+  .post-preview--featured.post-preview--landscape .post-preview__image {
+    height: 408px; }
   .post-preview--featured.post-preview--landscape .post-preview__content {
     width: 826px;
     margin: -96px -56px 0 auto; } }
 
 @media (min-width: 1440px) {
+  .post-preview--featured.post-preview--landscape .post-preview__image {
+    height: 544px; }
   .post-preview--featured.post-preview--landscape .post-preview__content {
     width: 966px; } }
+
+@media (min-width: 1600px) {
+  .post-preview--featured.post-preview--landscape .post-preview__image {
+    height: 576px; } }
 
 img {
   width: 100%;

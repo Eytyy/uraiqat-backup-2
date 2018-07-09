@@ -473,24 +473,53 @@ $portrait-featured-content--desktop-1440: 700px;
 	}	
 }
 
-// Landscape--Featured
+$landscape-featured-image-height--mobile: 192px;
+$landscape-featured-image-height--mobile-x2: 456px;
+
+$landscape-featured-image-height--mobile-ls: 240px;
+
+$landscape-featured-image-height--tablet: 390px;
+
+$landscape-featured-image-height--desktop: 408px;
+
+$landscape-featured-image-height--desktop-1440: 544px;
+$landscape-featured-image-height--desktop-1600: 576px;
+
+// Landscape--Featured 
 .post-preview--featured.post-preview--landscape {
+	.post-preview__image {
+		height: $landscape-featured-image-height--mobile;
+	}
 	.post-preview__content {
 		position: relative;
 		z-index: 10;
 	}	
 	@include respond-to(mobile-ls) {
 		flex: 0 0 100%;
+		.post-preview__image {
+			height: $landscape-featured-image-height--mobile-ls;
+		}
 	}	
-	@include respond-to(desktop-1440) {
+	@include respond-to(desktop) {
+		.post-preview__image {
+			height: $landscape-featured-image-height--desktop;
+		}
 		.post-preview__content {
 			width: 826px;
 			margin: -96px -56px 0 auto;
 		}
 	}
 	@include respond-to(desktop-1440) {
+		.post-preview__image {
+			height: $landscape-featured-image-height--desktop-1440;
+		}
 		.post-preview__content {
 			width: 966px;
+		}
+	}
+	@include respond-to(desktop-1600) {
+		.post-preview__image {
+			height: $landscape-featured-image-height--desktop-1600;
 		}
 	}
 }
