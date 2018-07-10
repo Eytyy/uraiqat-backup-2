@@ -45,7 +45,7 @@ var FlexibleImageComponent = function (_Component) {
 				_react2.default.createElement(
 					"div",
 					{ className: "post__media__image" },
-					_react2.default.createElement("img", { src: file.url })
+					_react2.default.createElement("img", { src: file.url + "?w=924" })
 				),
 				description && _react2.default.createElement(
 					"div",

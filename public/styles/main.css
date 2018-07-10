@@ -859,22 +859,27 @@ body {
     .post-preview--featured.post-preview--landscape .post-preview__image {
       height: 240px; } }
 
+@media (min-width: 768px) {
+  .post-preview--featured.post-preview--landscape .post-preview__image {
+    height: 390px; } }
+
 @media (min-width: 1024px) {
   .post-preview--featured.post-preview--landscape .post-preview__image {
-    height: 408px; }
-  .post-preview--featured.post-preview--landscape .post-preview__content {
-    width: 826px;
-    margin: -96px -56px 0 auto; } }
+    height: 408px; } }
 
 @media (min-width: 1440px) {
   .post-preview--featured.post-preview--landscape .post-preview__image {
     height: 544px; }
+  .post-preview--featured.post-preview--landscape .post-preview__link {
+    width: 868px; }
   .post-preview--featured.post-preview--landscape .post-preview__content {
     width: 966px; } }
 
 @media (min-width: 1600px) {
   .post-preview--featured.post-preview--landscape .post-preview__image {
-    height: 576px; } }
+    height: 576px; }
+  .post-preview--featured.post-preview--landscape .post-preview__link {
+    width: 966px; } }
 
 img {
   width: 100%;

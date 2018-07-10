@@ -707,8 +707,8 @@ const config = {
 			h: 640,
 		},
 		'featured-post--landscape': {
-			w: 882,
-			h: 576,
+			w: 966,
+			h: 544,
 		},
 		'featured-post--video': {
 			w: 966,

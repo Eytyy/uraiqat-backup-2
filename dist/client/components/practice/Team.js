@@ -45,7 +45,7 @@ var Team = function Team(_ref) {
 						_react2.default.createElement(
 							_reactRouterDom.Link,
 							{ className: 'link team-member-preview__link', to: 'team/' + sys.id },
-							_react2.default.createElement(_PostMediaImage2.default, { orientation: 'portrait', patternId: 'team-member', content: fields.profileImagevideo }),
+							_react2.default.createElement(_PostMediaImage2.default, { orientation: 'portrait', patternId: 'team-member', query: 'w=350', content: fields.profileImagevideo }),
 							_react2.default.createElement(
 								'h3',
 								{ className: 'team-member-preview__name' },

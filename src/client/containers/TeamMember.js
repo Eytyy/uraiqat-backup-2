@@ -44,7 +44,7 @@ class TeamMember extends Component { //eslint-disable-line
 				</header>
 				<div className="team-member__content">
 					<div className="team-member__content__col team-member__content__col--left">
-						<PostMediaImage orientation="portrait" patternId="team-member-inner" content={profileImagevideo} />
+						<PostMediaImage orientation="portrait" patternId="team-member-inner" query="w=350" content={profileImagevideo} />
 						<div className="team-member__links">
 							{personalWebsiteLink && <a className="link" href={personalWebsiteLink} target="_blank">Website</a>}
 							{facebookLink && <a className="link" href={facebookLink} target="_blank">Facebook</a>}
