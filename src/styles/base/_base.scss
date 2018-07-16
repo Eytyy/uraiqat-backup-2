@@ -56,6 +56,13 @@ a {
   }  
 }
 
+em {
+  font-family: $font--bold;
+}
+em, i {
+  font-style: normal;
+}
+
 .filterBox {
   color: #000;
   &__state {

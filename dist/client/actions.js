@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPost = exports.fetchPosts = exports.updateApp = exports.initClient = undefined;
+exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPosts = exports.updateApp = exports.initClient = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -71,19 +71,6 @@ var recievePosts = function recievePosts(payload) {
 	};
 };
 
-var requestPost = function requestPost() {
-	return {
-		type: 'REQUEST_POST'
-	};
-};
-
-var recievePost = function recievePost(payload) {
-	return {
-		type: 'RECIEVE_POST',
-		response: payload
-	};
-};
-
 var fetchPosts = exports.fetchPosts = function fetchPosts() {
 	return function (dispatch, getState) {
 		var state = getState();
@@ -95,19 +82,6 @@ var fetchPosts = exports.fetchPosts = function fetchPosts() {
 			return response;
 		}).then(function (response) {
 			dispatch(recievePosts(response));
-		});
-	};
-};
-
-var fetchPost = exports.fetchPost = function fetchPost(id) {
-	return function (dispatch, getState) {
-		var state = getState();
-		dispatch(requestPost());
-		if ((0, _reducers.isPostFetching)(state)) {
-			return Promise.resolve();
-		}
-		return api.fetchPost(id).then(function (response) {
-			dispatch(recievePost(response));
 		});
 	};
 };

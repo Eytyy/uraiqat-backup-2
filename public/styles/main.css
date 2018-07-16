@@ -232,6 +232,12 @@ a:hover .title {
     .caption {
       margin-top: 16px; } }
 
+em {
+  font-family: "ZeitungMonoPro-Bold"; }
+
+em, i {
+  font-style: normal; }
+
 .filterBox {
   color: #000; }
   .filterBox__state {
@@ -1793,15 +1799,15 @@ img {
 
 .post__external-link {
   width: 882px;
-  margin-top: 48px; }
+  margin-bottom: 48px; }
   .post__external-link a {
     color: blue; }
   @media (min-width: 768px) {
     .post__external-link {
-      margin-top: 52px; } }
+      margin-bottom: 52px; } }
   @media (min-width: 1024px) {
     .post__external-link {
-      margin: 64px 0 0 126px; } }
+      margin: 0 0 64px 126px; } }
 
 .post__media .slider__controls {
   position: absolute;

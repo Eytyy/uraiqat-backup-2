@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux';
 
 import PropTypes from 'prop-types';
 
-import { fetchPost } from '../actions';
-import { getPost, isPostFetching } from '../reducers';
+import { fetchPosts } from '../actions';
+import { getPost, isPostFetching, getNextPrev} from '../reducers';
 
 import PostTags from '../components/posts/PostTags';
 import PostAuthors from '../components/posts/PostAuthors';
@@ -16,10 +16,11 @@ import RelatedProject from '../components/related/RelatedProject';
 import RelatedPosts from '../components/related/RelatedPosts';
 
 import LoadingPattern from '../components/patterns/LoadingPattern';
+import InnerNav from '../components/InnerNav';
 
 class Post extends Component { //eslint-disable-line
-	static fetchData(store, id) {
-		return store.dispatch(fetchPost(id));
+	static fetchData(store) {
+		return store.dispatch(fetchPosts());
 	}
 	
 	componentDidMount() {
@@ -37,13 +38,13 @@ class Post extends Component { //eslint-disable-line
 	}
 
 	fetchData() {
-		const { fetchPost, match } = this.props;
+		const { fetchPosts, match } = this.props;
 		const id = match.params.id;
-		fetchPost(id);
+		fetchPosts(id);
 	}
 	
 	render() {
-		const { content, isFetching, match } = this.props;
+		const { content, innerNavContent, isFetching, match } = this.props;
 		const { tags, date, author, mainContent, externalPostUrl, externalPostSource, relatedProject } = content;
 		const id = match.params.id;
 		if (isFetching || typeof content.id === 'undefined') {
@@ -75,6 +76,7 @@ class Post extends Component { //eslint-disable-line
 							<RelatedPosts id={relatedProject[0].sys.id} postID={id} />
 						</aside>
 				}
+				<InnerNav {...innerNavContent} type="journal" />
 			</article>
 		);
 	}
@@ -85,18 +87,19 @@ const mapStateToProps = (state, ownProps) => {
 	const id = match.params.id;
 	return {
 		content: getPost(state, id),
+		innerNavContent: getNextPrev(state, id, 'journal'),
 		isFetching: isPostFetching(state),
 	};
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPost }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchPosts }, dispatch);
 
 Post.propTypes = {
 	content: PropTypes.shape({
 		id: PropTypes.string,
 	}),
 	isFetching: PropTypes.bool.isRequired,
-	fetchPost: PropTypes.func.isRequired,
+	fetchPosts: PropTypes.func.isRequired,
 };
 
 Post.defaultProps = {

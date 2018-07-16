@@ -17,6 +17,14 @@ var InnerNav = function InnerNav(_ref) {
 	    next = _ref.next,
 	    type = _ref.type;
 
+	var label = function label() {
+		switch (type) {
+			case 'journal':
+				return 'Post';
+			default:
+				return 'Project';
+		}
+	};
 	return _react2.default.createElement(
 		'aside',
 		{ className: 'inner__nav' },
@@ -24,12 +32,14 @@ var InnerNav = function InnerNav(_ref) {
 			_reactRouterDom.Link,
 			{ to: '/' + type + '/' + prev.id, className: 'inner__nav__item inner__nav__item--prev link' },
 			'<-',
-			'Prev Project'
+			'Prev ',
+			label()
 		),
 		next && _react2.default.createElement(
 			_reactRouterDom.Link,
 			{ to: '/' + type + '/' + next.id, className: 'inner__nav__item inner__nav__item--next link' },
-			'Next Project',
+			'Next ',
+			label(),
 			'->'
 		)
 	);

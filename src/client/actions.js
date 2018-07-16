@@ -64,15 +64,6 @@ const recievePosts = payload => ({
 	response: payload,
 });
 
-const requestPost = () => ({
-	type: 'REQUEST_POST'
-});
-
-const recievePost = payload => ({
-	type: 'RECIEVE_POST',
-	response: payload,
-});
-
 export const fetchPosts = () => (dispatch, getState) => {
 	const state = getState();
 	dispatch(requestPosts());
@@ -83,17 +74,6 @@ export const fetchPosts = () => (dispatch, getState) => {
 		return response;
 	}).then(response => {
 		dispatch(recievePosts(response));
-	});
-};
-
-export const fetchPost = (id) => (dispatch, getState) => {
-	const state = getState();
-	dispatch(requestPost());
-	if (isPostFetching(state)) {
-		return Promise.resolve();
-	}
-	return api.fetchPost(id).then((response) => {
-		dispatch(recievePost(response));
 	});
 };
 

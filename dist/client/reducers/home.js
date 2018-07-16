@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.getPost = exports.getAll = exports.getIsFetching = undefined;
+exports.getNextPrev = exports.getPost = exports.getAll = exports.getIsFetching = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -179,6 +179,20 @@ var getAll = exports.getAll = function getAll(state) {
 
 var getPost = exports.getPost = function getPost(state, id) {
 	return state.ById[id];
+};
+
+var getNextPrev = exports.getNextPrev = function getNextPrev(state, id) {
+	var content = state.All.content;
+	console.log(content);
+	var currentIndex = content.findIndex(function (item) {
+		return item === id;
+	});
+	var nextItemIndex = currentIndex === content.length - 1 ? 0 : currentIndex + 1;
+	var prevItemIndex = currentIndex === 0 ? content.length - 1 : currentIndex - 1;
+	return {
+		next: state.ById[content[nextItemIndex]],
+		prev: state.ById[content[prevItemIndex]]
+	};
 };
 
 exports.default = home;

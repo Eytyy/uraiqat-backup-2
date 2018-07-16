@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -48,6 +50,10 @@ var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
 var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
 
+var _InnerNav = require('../components/InnerNav');
+
+var _InnerNav2 = _interopRequireDefault(_InnerNav);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -90,17 +96,18 @@ var Post = function (_Component) {
 		key: 'fetchData',
 		value: function fetchData() {
 			var _props2 = this.props,
-			    fetchPost = _props2.fetchPost,
+			    fetchPosts = _props2.fetchPosts,
 			    match = _props2.match;
 
 			var id = match.params.id;
-			fetchPost(id);
+			fetchPosts(id);
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var _props3 = this.props,
 			    content = _props3.content,
+			    innerNavContent = _props3.innerNavContent,
 			    isFetching = _props3.isFetching,
 			    match = _props3.match;
 			var tags = content.tags,
@@ -172,14 +179,15 @@ var Post = function (_Component) {
 						type: relatedProject[0].sys.contentType.sys.id
 					}),
 					_react2.default.createElement(_RelatedPosts2.default, { id: relatedProject[0].sys.id, postID: id })
-				)
+				),
+				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'journal' }))
 			);
 		}
 	}], [{
 		key: 'fetchData',
 		//eslint-disable-line
-		value: function fetchData(store, id) {
-			return store.dispatch((0, _actions.fetchPost)(id));
+		value: function fetchData(store) {
+			return store.dispatch((0, _actions.fetchPosts)());
 		}
 	}]);
 
@@ -192,12 +200,13 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 	var id = match.params.id;
 	return {
 		content: (0, _reducers.getPost)(state, id),
+		innerNavContent: (0, _reducers.getNextPrev)(state, id, 'journal'),
 		isFetching: (0, _reducers.isPostFetching)(state)
 	};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchPost: _actions.fetchPost }, dispatch);
+	return (0, _redux.bindActionCreators)({ fetchPosts: _actions.fetchPosts }, dispatch);
 };
 
 Post.propTypes = {
@@ -205,7 +214,7 @@ Post.propTypes = {
 		id: _propTypes2.default.string
 	}),
 	isFetching: _propTypes2.default.bool.isRequired,
-	fetchPost: _propTypes2.default.func.isRequired
+	fetchPosts: _propTypes2.default.func.isRequired
 };
 
 Post.defaultProps = {

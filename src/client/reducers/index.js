@@ -90,6 +90,8 @@ export const getAtelierProject = (state, id) => {
 
 export const getNextPrev =(state, id, type) => {
 	switch(type) {
+	case 'journal':
+		return fromHome.getNextPrev(state.posts, id);
 	case 'atelier':
 		return fromAtelier.getNextPrev(state.atelier, id);
 	default:

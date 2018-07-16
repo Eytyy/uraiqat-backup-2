@@ -145,15 +145,15 @@
 
 .post__external-link {
 	width: 882px;
-	margin-top: $lh * 2;
+	margin-bottom: $lh * 2;
 	a {
 		color: blue;
 	}
 	@include respond-to(tablet) {
-		margin-top: $tablet-lh * 2;
+		margin-bottom: $tablet-lh * 2;
 	}
 	@include respond-to(desktop) {
-		margin: ($desktop-lh * 2) 0 0 ($desktop-char-width * 9);
+		margin: 0 0 ($desktop-lh * 2) ($desktop-char-width * 9);
 	}
 }
 
