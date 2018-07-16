@@ -183,7 +183,6 @@ var getPost = exports.getPost = function getPost(state, id) {
 
 var getNextPrev = exports.getNextPrev = function getNextPrev(state, id) {
 	var content = state.All.content;
-	console.log(content);
 	var currentIndex = content.findIndex(function (item) {
 		return item === id;
 	});
