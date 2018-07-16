@@ -25,15 +25,21 @@ var Filter = function Filter(_ref) {
 	    location = _ref.location,
 	    adjustForMobile = _ref.adjustForMobile,
 	    onToggle = _ref.onToggle,
+	    onClearFilters = _ref.onClearFilters,
 	    onFilterClick = _ref.onFilterClick,
 	    filtersAreVisible = _ref.filtersAreVisible;
 
 	var config = {
 		name: 'Filter',
-		glyph: { className: 'ind', content: '+' },
+		glyph: { className: 'ind', content: 'clear' },
 		spacesAfter: 4
 	};
 	var reservedFilterSize = location.pathname !== '/' ? 0 : config.name.length + config.spacesAfter;
+	var activeFiltersLength = content.filter(function (_ref2) {
+		var active = _ref2.active;
+		return active;
+	}).length;
+	var glyphSize = filtersAreVisible && activeFiltersLength ? config.glyph.content.length : 0;
 
 	return reservedFilterSize !== 0 && _react2.default.createElement(
 		'div',
@@ -58,11 +64,12 @@ var Filter = function Filter(_ref) {
 			{ className: 'ws' },
 			'-'
 		),
-		_react2.default.createElement(_PatternChunk2.default, { reserved: reservedFilterSize, adjust: adjustForMobile }),
-		filtersAreVisible ? _react2.default.createElement(
+		_react2.default.createElement(_PatternChunk2.default, { reserved: reservedFilterSize + glyphSize, adjust: adjustForMobile }),
+		filtersAreVisible && activeFiltersLength ? _react2.default.createElement(
 			'span',
-			{ onClick: onToggle, className: 'link' },
-			'x'
+			{ onClick: onClearFilters, className: 'link' },
+			' ',
+			config.glyph.content
 		) : '<',
 		filtersAreVisible && _react2.default.createElement(_FiltersList2.default, { onFilterClick: onFilterClick, content: content, adjust: adjustForMobile })
 	);

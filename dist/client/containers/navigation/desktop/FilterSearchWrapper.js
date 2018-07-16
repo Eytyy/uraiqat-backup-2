@@ -63,6 +63,7 @@ var FilterSearchWrapper = function (_Component) {
 		_this.onSearchClick = _this.onSearchClick.bind(_this);
 		_this.onSearchSubmit = _this.onSearchSubmit.bind(_this);
 		_this.clearSearch = _this.clearSearch.bind(_this);
+		_this.onClearFilters = _this.onClearFilters.bind(_this);
 		return _this;
 	}
 
@@ -131,6 +132,14 @@ var FilterSearchWrapper = function (_Component) {
 			return false;
 		}
 	}, {
+		key: 'onClearFilters',
+		value: function onClearFilters() {
+			var clearAllFilters = this.props.clearAllFilters;
+
+			clearAllFilters();
+			this.toggleFilter();
+		}
+	}, {
 		key: 'componentWillReceiveProps',
 		value: function componentWillReceiveProps(nextProps) {
 			if (nextProps.location.pathname !== this.props.location.pathname) {
@@ -179,6 +188,10 @@ var FilterSearchWrapper = function (_Component) {
 			var reservedEmptySpaces = isFront ? config.search.spacesAfter + config.search.spacesBefore + config.filter.spacesAfter + config.filter.spacesBefore : config.search.spacesAfter + config.search.spacesBefore;
 
 			var totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + fixedStart;
+			var activeFiltersLength = content.filter(function (_ref) {
+				var active = _ref.active;
+				return active;
+			}).length;
 
 			return _react2.default.createElement(
 				'div',
@@ -201,7 +214,43 @@ var FilterSearchWrapper = function (_Component) {
 					onFilterClick: this.onFilterClick,
 					content: content,
 					isVisible: this.state.filtersAreVisible
-				})
+				}),
+				activeFiltersLength && this.state.filtersAreVisible ? _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_PatternChunk2.default, { fixed: fixedStart }),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ onClick: this.onClearFilters, className: 'link' },
+						'clear'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'ws' },
+						'-'
+					),
+					_react2.default.createElement(_PatternChunk2.default, { reserved: fixedStart + 'clear'.length + 5 })
+				) : null
 			);
 		}
 	}]);

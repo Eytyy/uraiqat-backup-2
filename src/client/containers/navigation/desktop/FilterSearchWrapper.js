@@ -22,6 +22,7 @@ class FilterSearchWrapper extends Component {
 		this.onSearchClick = this.onSearchClick.bind(this);
 		this.onSearchSubmit = this.onSearchSubmit.bind(this);
 		this.clearSearch = this.clearSearch.bind(this);
+		this.onClearFilters = this.onClearFilters.bind(this);
 	}
 
 	toggleFilter() {
@@ -75,6 +76,12 @@ class FilterSearchWrapper extends Component {
 		return false;
 	}
 
+	onClearFilters() {
+		const { clearAllFilters } = this.props;
+		clearAllFilters();
+		this.toggleFilter();
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.location.pathname !== this.props.location.pathname) {
 			let filterState = this.state.filtersAreVisible;
@@ -121,6 +128,7 @@ class FilterSearchWrapper extends Component {
 
 
 		const totalReservedSpaces = reservedSearchSize + reservedFilterSize + reservedEmptySpaces + fixedStart;
+		const activeFiltersLength = content.filter(({ active }) => active ).length;
 
 		return (
 			<div className="header--desktop__main">
@@ -145,6 +153,19 @@ class FilterSearchWrapper extends Component {
 					content={content}
 					isVisible={this.state.filtersAreVisible}
 				/>
+				{ activeFiltersLength && this.state.filtersAreVisible ?
+					<div>
+						<PatternChunk fixed={fixedStart} />		
+						<span className="ws">-</span>
+						<span className="ws">-</span>
+						<span className="ws">-</span>
+						<span onClick={ this.onClearFilters } className="link">clear</span>
+						<span className="ws">-</span>
+						<span className="ws">-</span>
+						<PatternChunk reserved={fixedStart + 'clear'.length + 5} />
+					</div> : null
+				}
+		
 			</div>
 		);
 	}

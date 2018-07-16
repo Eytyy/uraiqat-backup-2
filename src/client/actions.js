@@ -240,7 +240,14 @@ const updateFilterState = (id) => ({
 	},
 });
 
+const clearFilters = () => ({
+	type: 'CLEAR_FILTERS',
+});
+
+
 export const updateFilter = id => (dispatch) => dispatch(updateFilterState(id));
+
+export const clearAllFilters = () => (dispatch) => dispatch(clearFilters());
 
 
 // Pratctice Action Creator 

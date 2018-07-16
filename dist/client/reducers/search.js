@@ -57,6 +57,16 @@ var All = function All() {
 			return _extends({}, state, {
 				filters: [].concat(_toConsumableArray(updatedFilters))
 			});
+		case 'CLEAR_FILTERS':
+			//eslint-disable-line
+			var newFilters = state.filters.map(function (filter) {
+				return _extends({}, filter, {
+					active: false
+				});
+			});
+			return _extends({}, state, {
+				filters: [].concat(_toConsumableArray(newFilters))
+			});
 		default:
 			return state;
 	}

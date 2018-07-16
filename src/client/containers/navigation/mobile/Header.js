@@ -20,6 +20,7 @@ class Header extends Component {
 		this.onMenuToggle = this.onMenuToggle.bind(this);
 		this.toggleFilter = this.toggleFilter.bind(this);
 		this.onToggleFilters = this.onToggleFilters.bind(this);
+		this.onClearFilters = this.onClearFilters.bind(this);
 		this.onFilterClick = this.onFilterClick.bind(this);
 		this.onSearchClick = this.onSearchClick.bind(this);
 		this.onSearchSubmit = this.onSearchSubmit.bind(this);
@@ -51,6 +52,12 @@ class Header extends Component {
 	onFilterClick(id) {
 		const { updateFilter } = this.props;
 		updateFilter(id);
+	}
+
+	onClearFilters() {
+		const { clearAllFilters } = this.props;
+		clearAllFilters();
+		this.onToggleFilters();
 	}
 
 
@@ -150,6 +157,7 @@ class Header extends Component {
 							<Filters
 								onFilterClick={this.onFilterClick}
 								onToggle={this.onToggleFilters}
+								onClearFilters={this.onClearFilters}
 								adjust={ adjustForMobile }
 								filtersAreVisible={ this.state.filtersAreVisible }
 								content={ content }

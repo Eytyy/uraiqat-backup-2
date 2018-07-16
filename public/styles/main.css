@@ -412,6 +412,15 @@ body {
     .practice-section__team-list {
       margin-left: -98px; } }
 
+.landing-section--main {
+  padding-bottom: 24px; }
+  @media (min-width: 768px) {
+    .landing-section--main {
+      padding-bottom: 26px; } }
+  @media (min-width: 1024px) {
+    .landing-section--main {
+      padding-bottom: 32px; } }
+
 .landing-page {
   -webkit-transition: height 300ms linear;
   transition: height 300ms linear; }

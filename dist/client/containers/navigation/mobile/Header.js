@@ -62,6 +62,7 @@ var Header = function (_Component) {
 		_this.onMenuToggle = _this.onMenuToggle.bind(_this);
 		_this.toggleFilter = _this.toggleFilter.bind(_this);
 		_this.onToggleFilters = _this.onToggleFilters.bind(_this);
+		_this.onClearFilters = _this.onClearFilters.bind(_this);
 		_this.onFilterClick = _this.onFilterClick.bind(_this);
 		_this.onSearchClick = _this.onSearchClick.bind(_this);
 		_this.onSearchSubmit = _this.onSearchSubmit.bind(_this);
@@ -104,6 +105,14 @@ var Header = function (_Component) {
 			var updateFilter = this.props.updateFilter;
 
 			updateFilter(id);
+		}
+	}, {
+		key: 'onClearFilters',
+		value: function onClearFilters() {
+			var clearAllFilters = this.props.clearAllFilters;
+
+			clearAllFilters();
+			this.onToggleFilters();
 		}
 	}, {
 		key: 'clearSearch',
@@ -223,6 +232,7 @@ var Header = function (_Component) {
 						_react2.default.createElement(_Filters2.default, {
 							onFilterClick: this.onFilterClick,
 							onToggle: this.onToggleFilters,
+							onClearFilters: this.onClearFilters,
 							adjust: adjustForMobile,
 							filtersAreVisible: this.state.filtersAreVisible,
 							content: content

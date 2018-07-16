@@ -40,6 +40,17 @@ const All = (state = {
 				...updatedFilters
 			]
 		};
+	case 'CLEAR_FILTERS':  //eslint-disable-line
+		const newFilters = state.filters.map(filter => ({
+			...filter,
+			active: false,
+		}));
+		return {
+			...state,
+			filters: [
+				...newFilters
+			]
+		};
 	default:
 		return state;
 	}

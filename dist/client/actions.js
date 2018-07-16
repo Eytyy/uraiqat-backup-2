@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPosts = exports.updateApp = exports.initClient = undefined;
+exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.clearAllFilters = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPosts = exports.updateApp = exports.initClient = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -295,9 +295,21 @@ var updateFilterState = function updateFilterState(id) {
 	};
 };
 
+var clearFilters = function clearFilters() {
+	return {
+		type: 'CLEAR_FILTERS'
+	};
+};
+
 var updateFilter = exports.updateFilter = function updateFilter(id) {
 	return function (dispatch) {
 		return dispatch(updateFilterState(id));
+	};
+};
+
+var clearAllFilters = exports.clearAllFilters = function clearAllFilters() {
+	return function (dispatch) {
+		return dispatch(clearFilters());
 	};
 };
 

@@ -67,7 +67,7 @@ var FiltersList = function FiltersList(_ref2) {
 	};
 
 	var maxNoOfChars = (0, _helpers.getNoOfChars)('navigation', config);
-	var fixedStart = window.innerWidth > 1280 ? 10 : 8;
+	var fixedStart = window.innerWidth > 1280 ? 11 : 8;
 	var fixedStatrExtraSpace = 3;
 	var fixedEnd = 4;
 	var availableSpace = maxNoOfChars.x - fixedStart - fixedEnd - fixedStatrExtraSpace;
