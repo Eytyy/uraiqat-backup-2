@@ -2435,7 +2435,7 @@ img {
       background-color: transparent; }
   @media (min-width: 375px) {
     .team-member__content .post-preview__image {
-      width: 310px;
+      width: 330px;
       height: 456px; } }
   @media (min-width: 768px) {
     .team-member__content {

@@ -155,43 +155,43 @@ var config = {
 			h: 192
 		},
 		'team-member-inner--portrait': {
-			w: 310,
+			w: 330,
 			h: 456
 		},
 		'default-post--portrait': {
-			w: 310,
+			w: 330,
 			h: 456
 		},
 		'default-post--landscape': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'featured-post--portrait': {
-			w: 310,
+			w: 330,
 			h: 456
 		},
 		'featured-post--landscape': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'featured-post--video': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'default-post--video': {
-			w: 310,
+			w: 330,
 			h: 240
 		},
 		'project-main-thumb': {
-			w: 310,
+			w: 330,
 			h: 168
 		},
 		'post-slider': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'post-media--video': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'project-drawing-thumb--portrait': {
@@ -199,7 +199,7 @@ var config = {
 			h: 192
 		},
 		'project-drawing-thumb--landscape': {
-			w: 310,
+			w: 330,
 			h: 96
 		},
 		'project-other-thumb': {
@@ -207,19 +207,19 @@ var config = {
 			h: 96
 		},
 		'project-main-slider': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'project-drawings-slider': {
-			w: 310,
+			w: 330,
 			h: 144
 		},
 		'related-project--landscape': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'atelier-main-thumb': {
-			w: 310,
+			w: 330,
 			h: 168
 		},
 		'atelier-main-thumb--portrait': {
@@ -227,15 +227,15 @@ var config = {
 			h: 288
 		},
 		'atelier-main-slider': {
-			w: 310,
+			w: 330,
 			h: 192
 		},
 		'atelier-landing-media-image': {
-			w: 310,
+			w: 330,
 			h: 216
 		},
 		'atelier-landing-media-video': {
-			w: 310,
+			w: 330,
 			h: 216
 		}
 	},
