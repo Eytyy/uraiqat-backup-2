@@ -54,6 +54,7 @@ $desktop-featured-lh: 64px;
 
 %paragraphsFonts {
 	color: #4A4A4A;
+	font-size: 12px;
   @include respond-to(tablet) {
 		font-size: 14px;
 		line-height: 26px;

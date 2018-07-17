@@ -104,7 +104,8 @@ body, h1, h2, h3, h4, h5, .search__input, .post-preview--default .post-preview__
 
 .toggle-project-about,
 .field-body {
-  color: #4A4A4A; }
+  color: #4A4A4A;
+  font-size: 12px; }
   @media (min-width: 768px) {
     .toggle-project-about,
     .field-body {
