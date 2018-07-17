@@ -62,7 +62,12 @@ class Post extends Component { //eslint-disable-line
 					{ author && <PostAuthors content={author} />}{' '}
 				</header>
 				{mainContent && <PostContent content={mainContent} />}
-				{ externalPostUrl && <div className="post__external-link">Read full article on <a href={externalPostUrl} target="_blank">{' ->'}{externalPostSource}</a></div>}
+				{ externalPostUrl && <div className="post__external-link">
+					<span>Read full article on </span>
+					<a href={externalPostUrl} target="_blank">
+						<span>{' ->'}</span>
+						<span>{externalPostSource}</span>
+					</a></div>}
 				{
 					!relatedProject ? null:
 						<aside className="related-content post__related">

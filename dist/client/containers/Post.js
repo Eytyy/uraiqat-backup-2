@@ -162,12 +162,24 @@ var Post = function (_Component) {
 				externalPostUrl && _react2.default.createElement(
 					'div',
 					{ className: 'post__external-link' },
-					'Read full article on ',
+					_react2.default.createElement(
+						'span',
+						null,
+						'Read full article on '
+					),
 					_react2.default.createElement(
 						'a',
 						{ href: externalPostUrl, target: '_blank' },
-						' ->',
-						externalPostSource
+						_react2.default.createElement(
+							'span',
+							null,
+							' ->'
+						),
+						_react2.default.createElement(
+							'span',
+							null,
+							externalPostSource
+						)
 					)
 				),
 				!relatedProject ? null : _react2.default.createElement(

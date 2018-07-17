@@ -1800,7 +1800,7 @@ img {
       margin-left: -70px; } }
 
 .post__external-link {
-  width: 882px;
+  max-width: 882px;
   margin-bottom: 48px; }
   .post__external-link a {
     color: blue; }

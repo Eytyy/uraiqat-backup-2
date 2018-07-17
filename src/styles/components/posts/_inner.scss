@@ -144,7 +144,7 @@
 }
 
 .post__external-link {
-	width: 882px;
+	max-width: 882px;
 	margin-bottom: $lh * 2;
 	a {
 		color: blue;
