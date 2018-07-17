@@ -270,6 +270,7 @@ body {
   @media (min-width: 375px) {
     .container,
     .wrapper {
+      width: 340px;
       padding: 0; } }
   @media (min-width: 480px) {
     .container,
@@ -306,7 +307,7 @@ body {
     max-width: 100%; }
   @media (min-width: 375px) {
     .main-section {
-      max-width: 310px; }
+      max-width: 340px; }
       .contact .main-section {
         max-width: 100%; } }
   @media (min-width: 480px) {
@@ -347,7 +348,7 @@ body {
     width: 100%; }
   @media (min-width: 375px) {
     .main-content {
-      width: 310px; }
+      width: 330px; }
       .contact .main-content {
         width: 100%; } }
   @media (min-width: 480px) {
@@ -2592,6 +2593,7 @@ img {
   background: #FFF; }
   @media (min-width: 375px) {
     .pattern--loading {
+      width: 340px;
       padding: 0; } }
   @media (min-width: 480px) {
     .pattern--loading {

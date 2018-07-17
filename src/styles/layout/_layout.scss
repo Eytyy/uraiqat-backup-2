@@ -30,7 +30,7 @@ body {
 		max-width: 100%;
 	}
 	@include respond-to(mobile-x2) {
-		max-width: 310px;
+		max-width: 340px;
 		.contact & {
 			max-width: 100%;
 		}
@@ -78,7 +78,7 @@ body {
 		width: 100%;
 	}
 	@include respond-to(mobile-x2) {
-		width: 310px;
+		width: 330px;
 		.contact & {
 			width: 100%;
 		}

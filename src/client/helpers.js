@@ -61,43 +61,43 @@ const config = {
 			h: 168,
 		},
 		'team-member-inner--portrait': {
-			w: 280,
+			w: 270,
 			h: 360,
 		},
 		'default-post--portrait': {
-			w: 280,
+			w: 270,
 			h: 360,
 		},
 		'default-post--landscape': {
-			w: 280,
+			w: 270,
 			h: 168,
 		},
 		'featured-post--portrait': {
-			w: 280,
+			w: 270,
 			h: 420,
 		},
 		'featured-post--landscape': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 		'featured-post--video': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 		'default-post--video': {
-			w: 280,
+			w: 270,
 			h: 168,
 		},
 		'project-main-thumb': {
-			w: 280,
+			w: 270,
 			h: 168,
 		},
 		'post-slider': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 		'post-media--video': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 		'project-drawing-thumb--portrait': {
@@ -105,7 +105,7 @@ const config = {
 			h: 192,
 		},
 		'project-drawing-thumb--landscape': {
-			w: 280,
+			w: 270,
 			h: 96,
 		},
 		'project-other-thumb': {
@@ -113,15 +113,15 @@ const config = {
 			h: 96,
 		},
 		'project-main-slider': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 		'project-drawings-slider': {
-			w: 280,
+			w: 270,
 			h: 144,
 		},
 		'related-project--landscape': {
-			w: 280,
+			w: 270,
 			h: 192
 		},
 		'atelier-main-thumb': {
@@ -137,11 +137,11 @@ const config = {
 			h: 192,
 		},
 		'atelier-landing-media-image': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 		'atelier-landing-media-video': {
-			w: 280,
+			w: 270,
 			h: 192,
 		},
 	},
@@ -841,7 +841,7 @@ export const getMaxWidth = () => {
 	} else if (windowSize.w >= 480) {
 		maxWidth = 440;
 	}  else if (windowSize.w >= 375) {
-		maxWidth = 320;
+		maxWidth = 340;
 	} else {
 		maxWidth = 280;
 	}
