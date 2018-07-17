@@ -158,6 +158,9 @@ h1, h2, h3, h4, h5 {
 
 .main-title {
   margin-bottom: 24px; }
+  .atelier .main-title,
+  .work .main-title {
+    margin-bottom: 48px; }
   @media (min-width: 768px) {
     .main-title {
       margin-bottom: 52px; } }
@@ -1538,8 +1541,6 @@ img {
 
 .atelier-preview {
   margin-bottom: 72px; }
-  .atelier-preview:last-child {
-    margin-bottom: 0; }
   @media (min-width: 768px) {
     .atelier-preview {
       margin-bottom: 78px; } }

@@ -43,9 +43,6 @@
 
 .atelier-preview {
 	margin-bottom: $lh * 3;
-	&:last-child {
-		margin-bottom: 0;
-	}
 	@include respond-to(tablet) {
 		margin-bottom: $tablet-lh * 3;
 	}

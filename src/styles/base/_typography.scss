@@ -121,6 +121,10 @@ h1, h2, h3, h4, h5 {
 
 .main-title {
 	margin-bottom: $lh;
+	.atelier &,
+	.work & {
+		margin-bottom: $lh * 2;
+	}
 	@include respond-to(tablet) {
 		margin-bottom: $tablet-lh * 2;
 	}
