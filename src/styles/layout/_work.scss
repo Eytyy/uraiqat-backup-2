@@ -64,11 +64,11 @@
 	@include respond-to(desktop-1280) {
 		&--main,
 		&--drawing {
-			height: 352px;
+			height: 384px;
 		}
 		&--craft,
 		&--diagram {
-			height: 176px;
+			height: 192px;
 		}
 	}
 	@include respond-to(desktop-1440) {
@@ -245,7 +245,7 @@
 		}
 	}
 	@include respond-to(desktop-1280) {
-		height: 352px;
+		height: 384px;
 		.project-preview__image--main {
 			width: 630px;
 		}		

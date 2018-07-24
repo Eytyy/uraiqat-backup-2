@@ -548,15 +548,15 @@ const config = {
 		},
 		'project-main-thumb': {
 			w: 630,
-			h: 352,
+			h: 384,
 		},
 		'project-drawing-thumb--portrait': {
 			w: 266,
-			h: 352,
+			h: 384,
 		},
 		'project-drawing-thumb--landscape': {
 			w: 532,
-			h: 176,
+			h: 192,
 		},
 		'project-other-thumb': {
 			w: 266,
