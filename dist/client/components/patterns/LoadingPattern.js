@@ -33,18 +33,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var LoadingPattern = function (_Component) {
 	_inherits(LoadingPattern, _Component);
 
-	function LoadingPattern() {
+	function LoadingPattern(props) {
 		_classCallCheck(this, LoadingPattern);
 
-		return _possibleConstructorReturn(this, (LoadingPattern.__proto__ || Object.getPrototypeOf(LoadingPattern)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (LoadingPattern.__proto__ || Object.getPrototypeOf(LoadingPattern)).call(this, props));
+
+		_this.to = null;
+		_this.state = {
+			tick: 0
+		};
+		_this.loadPattern = _this.loadPattern.bind(_this);
+		_this.reloadPattern = _this.reloadPattern.bind(_this);
+		return _this;
 	}
 
 	_createClass(LoadingPattern, [{
-		key: 'render',
-		value: function render() {
-			if (typeof window === 'undefined') {
-				return _react2.default.createElement('div', { className: 'pattern pattern--loading' });
-			}
+		key: 'loadPattern',
+		value: function loadPattern() {
 			var adjustForMobile = this.props.configs.adjustForMobile;
 
 			var windowSize = (0, _helpers.getWindowDimensions)();
@@ -56,11 +61,42 @@ var LoadingPattern = function (_Component) {
 			};
 			var numberOfLines = (0, _helpers.getNoOfChars)('loading', config, adjustForMobile);
 			var fakeArray = Array(numberOfLines.y).fill('pl');
+			return {
+				fakeArray: fakeArray,
+				numberOfLines: numberOfLines
+			};
+		}
+	}, {
+		key: 'reloadPattern',
+		value: function reloadPattern() {
+			this.setState({
+				tick: this.state.tick + 1
+			});
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.to = window.setInterval(this.reloadPattern, 250);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			window.clearInterval(this.to);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			if (typeof window === 'undefined') {
+				return _react2.default.createElement('div', { className: 'pattern pattern--loading' });
+			}
+
+			var pattern = this.loadPattern();
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'pattern pattern--loading' },
-				fakeArray.map(function (item, index) {
-					return _react2.default.createElement(_PatternLine2.default, { key: 'pl-' + index, noOfChars: numberOfLines.x });
+				pattern.fakeArray.map(function (item, index) {
+					return _react2.default.createElement(_PatternLine2.default, { key: 'pl-' + index, noOfChars: pattern.numberOfLines.x });
 				})
 			);
 		}

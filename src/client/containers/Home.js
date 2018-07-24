@@ -38,7 +38,7 @@ class Home extends Component {
 		return fetchPosts().then(() => {
 			setTimeout(() => {
 				this.hideLoader();
-			}, 300);
+			}, 500);
 		});
 	}
 	render() {

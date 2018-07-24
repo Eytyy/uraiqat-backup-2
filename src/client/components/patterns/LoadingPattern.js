@@ -8,10 +8,16 @@ import { getNoOfChars, getWindowDimensions, getFontValues, getMaxWidth } from '.
 
 
 class LoadingPattern extends Component {
-	render() {
-		if (typeof window === 'undefined') {
-			return <div className="pattern pattern--loading"></div>;
-		}
+	constructor(props) {
+		super(props);
+		this.to = null;
+		this.state = {
+			tick: 0,
+		};
+		this.loadPattern = this.loadPattern.bind(this);
+		this.reloadPattern = this.reloadPattern.bind(this);
+	}
+	loadPattern() {
 		const { adjustForMobile } = this.props.configs;
 		const windowSize = getWindowDimensions();
 		let maxWidth = getMaxWidth();
@@ -22,9 +28,32 @@ class LoadingPattern extends Component {
 		};
 		const numberOfLines = getNoOfChars('loading', config, adjustForMobile);
 		const fakeArray = Array(numberOfLines.y).fill('pl');
+		return {
+			fakeArray,
+			numberOfLines
+		};
+	}
+	reloadPattern() {
+		this.setState({
+			tick: this.state.tick + 1
+		});
+	}
+	componentDidMount() {
+		this.to = window.setInterval(this.reloadPattern, 250);
+	}
+	componentWillUnmount() {
+		window.clearInterval(this.to);
+	}
+	render() {
+		if (typeof window === 'undefined') {
+			return <div className="pattern pattern--loading"></div>;
+		}
+
+		const pattern = this.loadPattern();
+	
 		return (
 			<div className="pattern pattern--loading">
-				{ fakeArray.map((item, index) => <PatternLine key={`pl-${index}`} noOfChars={numberOfLines.x} />)}
+				{ pattern.fakeArray.map((item, index) => <PatternLine key={`pl-${index}`} noOfChars={pattern.numberOfLines.x} />)}
 			</div>
 		);
 	}

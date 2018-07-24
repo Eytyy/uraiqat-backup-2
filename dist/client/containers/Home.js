@@ -81,7 +81,7 @@ var Home = function (_Component) {
 			return fetchPosts().then(function () {
 				setTimeout(function () {
 					_this3.hideLoader();
-				}, 300);
+				}, 500);
 			});
 		}
 	}, {
