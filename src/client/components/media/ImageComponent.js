@@ -4,10 +4,18 @@ import Pattern from '../patterns/Pattern';
 class ImageComponent extends Component {
 	constructor() {
 		super();
+		this.to = null;
 		this.state = {
 			imageIsLoaded: false,
+			tick: 0,
 		};
 		this.isStillMounted = true;
+		this.reloadPattern = this.reloadPattern.bind(this);
+	}
+	reloadPattern() {
+		this.setState({
+			tick: this.state.tick + 1
+		});
 	}
 	checkImage() {
 		const { src, imagesQuery } = this.props;
@@ -23,10 +31,13 @@ class ImageComponent extends Component {
 		});
 	}
 	loadImage() {
+		this.to = window.setInterval(this.reloadPattern, 500);
 		this.checkImage().then(() => {
 			if (this.isStillMounted) {
+				window.clearInterval(this.to);
 				this.setState({
 					imageIsLoaded: true,
+					tick: 0,
 				});
 			}			
 		});
@@ -36,6 +47,7 @@ class ImageComponent extends Component {
 	}
 	componentWillUnmount() {
 		this.isStillMounted = false;
+		window.clearInterval(this.to);
 	}
 	render() {
 		const { src, classList, imagesQuery, patternId } = this.props;

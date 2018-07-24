@@ -30,14 +30,24 @@ var ImageComponent = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (ImageComponent.__proto__ || Object.getPrototypeOf(ImageComponent)).call(this));
 
+		_this.to = null;
 		_this.state = {
-			imageIsLoaded: false
+			imageIsLoaded: false,
+			tick: 0
 		};
 		_this.isStillMounted = true;
+		_this.reloadPattern = _this.reloadPattern.bind(_this);
 		return _this;
 	}
 
 	_createClass(ImageComponent, [{
+		key: 'reloadPattern',
+		value: function reloadPattern() {
+			this.setState({
+				tick: this.state.tick + 1
+			});
+		}
+	}, {
 		key: 'checkImage',
 		value: function checkImage() {
 			var _props = this.props,
@@ -62,10 +72,13 @@ var ImageComponent = function (_Component) {
 		value: function loadImage() {
 			var _this2 = this;
 
+			this.to = window.setInterval(this.reloadPattern, 500);
 			this.checkImage().then(function () {
 				if (_this2.isStillMounted) {
+					window.clearInterval(_this2.to);
 					_this2.setState({
-						imageIsLoaded: true
+						imageIsLoaded: true,
+						tick: 0
 					});
 				}
 			});
@@ -79,6 +92,7 @@ var ImageComponent = function (_Component) {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
 			this.isStillMounted = false;
+			window.clearInterval(this.to);
 		}
 	}, {
 		key: 'render',
