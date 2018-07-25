@@ -552,15 +552,15 @@ var config = {
 		},
 		'project-main-thumb': {
 			w: 630,
-			h: 384
+			h: 352
 		},
 		'project-drawing-thumb--portrait': {
 			w: 266,
-			h: 384
+			h: 352
 		},
 		'project-drawing-thumb--landscape': {
 			w: 532,
-			h: 192
+			h: 176
 		},
 		'project-other-thumb': {
 			w: 266,
