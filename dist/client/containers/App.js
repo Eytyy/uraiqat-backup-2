@@ -51,10 +51,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var App = function (_Component) {
 	_inherits(App, _Component);
 
-	function App() {
+	function App(props) {
 		_classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+		_this.status = {
+			blendMode: true
+		};
+		return _this;
 	}
 
 	_createClass(App, [{
@@ -62,6 +67,11 @@ var App = function (_Component) {
 		value: function componentDidMount() {
 			var updateApp = this.props.updateApp;
 
+			if (window.getComputedStyle(document.body).mixBlendMode !== undefined && this.status.blendMode) {
+				this.setState({
+					blendMode: false
+				});
+			}
 			if (document.querySelector('.uLink').offsetWidth === 12) {
 				updateApp({
 					adjustForMobile: true
@@ -79,7 +89,7 @@ var App = function (_Component) {
 			var pageName = location.pathname.split('/')[1] || 'front';
 			return _react2.default.createElement(
 				'div',
-				{ className: 'container__inner ' + pageName },
+				{ className: 'container__inner ' + pageName + ' ' + (this.status.blendMode ? 'blendMode' : 'no-blendMode') },
 				_react2.default.createElement(
 					'span',
 					{ className: 'fake' },
