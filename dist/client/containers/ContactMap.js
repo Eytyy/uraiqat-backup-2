@@ -67,5 +67,5 @@ var ContactMap = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _googleMapsReact.GoogleApiWrapper)({
-	api: 'AIzaSyCU1iC35hPcwTc5IBlJrcVpeYayJDE0BIc'
+	apiKey: 'AIzaSyCU1iC35hPcwTc5IBlJrcVpeYayJDE0BIc'
 })(ContactMap);

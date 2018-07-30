@@ -31,5 +31,5 @@ class ContactMap extends React.Component {
 	}
 }
 export default GoogleApiWrapper({
-	api: 'AIzaSyCU1iC35hPcwTc5IBlJrcVpeYayJDE0BIc'
+	apiKey: 'AIzaSyCU1iC35hPcwTc5IBlJrcVpeYayJDE0BIc'
 })(ContactMap);
