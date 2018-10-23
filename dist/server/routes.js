@@ -216,6 +216,7 @@ router.get('/work/:id', function (req, res) {
 		var description = obj.aboutTheProject;
 		res.render('index', {
 			title: 'Work | ' + obj.title,
+			desc: '<meta property="description" content="' + description + '" />',
 			ogTitle: '<meta property="og:title" content="Work | ' + obj.title + '" />',
 			ogURL: '<meta property="og:url" content="' + req.url + '" />',
 			ogImg: '<meta property="og:image" content="' + imageUrl + '" />',
@@ -296,6 +297,7 @@ router.get('/atelier/:id', function (req, res) {
 
 		res.render('index', {
 			title: 'Work | ' + obj.title,
+			desc: '<meta property="description" content="' + description + '" />',
 			ogTitle: '<meta property="og:title" content="Work | ' + obj.title + '" />',
 			ogURL: '<meta property="og:url" content="' + req.url + '" />',
 			ogImg: '<meta property="og:image" content="' + imageUrl + '" />',
@@ -376,6 +378,7 @@ router.get('/journal/:id', function (req, res) {
 		res.render('index', {
 			title: 'Post | ' + obj.title,
 			ogTitle: '<meta property="og:title" content="Work | ' + obj.title + '" />',
+			desc: '<meta property="description" content="' + description + '" />',
 			ogURL: '<meta property="og:url" content="' + req.url + '" />',
 			ogImg: '<meta property="og:image" content="' + imageUrl + '" />',
 			ogDesc: '<meta property="og:description" content="' + description + '" />',
@@ -417,6 +420,7 @@ router.get('/team/:id', function (req, res) {
 		var image = obj.profileImagevideo.fields.file.url;
 		res.render('index', {
 			title: 'Team Member | ' + obj.name,
+			desc: '<meta property="description" content="' + obj.about + '" />',
 			ogURL: '<meta property="og:url" content="' + req.url + '" />',
 			ogTitle: '<meta property="og:title" content="Team | ' + obj.name + '" />',
 			ogImg: '<meta property="og:image" content="' + image + '" />',
