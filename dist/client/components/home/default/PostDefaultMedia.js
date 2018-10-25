@@ -24,6 +24,10 @@ var _PostMediaVideo = require('../PostMediaVideo');
 
 var _PostMediaVideo2 = _interopRequireDefault(_PostMediaVideo);
 
+var _YoutubeComponent = require('../../media/YoutubeComponent');
+
+var _YoutubeComponent2 = _interopRequireDefault(_YoutubeComponent);
+
 var _helpers = require('../../../helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -48,6 +52,7 @@ var PostDefaultMedia = function (_Component) {
 		value: function render() {
 			var content = this.props.content;
 			var previewThumbnail = content.previewThumbnail,
+			    previewThumbnailYoutube = content.previewThumbnailYoutube,
 			    id = content.id,
 			    category = content.category,
 			    date = content.date,
@@ -56,7 +61,51 @@ var PostDefaultMedia = function (_Component) {
 			// determine whether the media content is a video or an image
 
 			var isMediaOfTypeImage = RegExp('image').test(previewThumbnail.fields.file.contentType);
-
+			if (previewThumbnailYoutube) {
+				return _react2.default.createElement(
+					_Preview2.default,
+					{ classList: 'post-preview post-preview--video post-preview--default post-preview--landscape' },
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ className: 'post-preview__link', to: '/journal/' + id },
+						(category || date) && _react2.default.createElement(
+							'div',
+							{ className: 'post-preview__meta' },
+							(0, _helpers.formatDate)(date),
+							' ',
+							_react2.default.createElement(
+								'span',
+								{ className: 'post-preview__meta__title' },
+								' -> ',
+								category.fields.title
+							)
+						)
+					),
+					_react2.default.createElement(_YoutubeComponent2.default, { videoId: previewThumbnailYoutube, controls: 0, classes: 'default-post--video' }),
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ className: 'post-preview__link', to: '/journal/' + id },
+						_react2.default.createElement(
+							'div',
+							{ className: 'post-preview__content' },
+							title && _react2.default.createElement(
+								'h2',
+								{ className: 'post-preview__title title' },
+								title
+							),
+							previewText && _react2.default.createElement(
+								'div',
+								{ className: 'post-preview__desc' },
+								_react2.default.createElement(
+									'p',
+									null,
+									previewText
+								)
+							)
+						)
+					)
+				);
+			}
 			if (!isMediaOfTypeImage) {
 				return _react2.default.createElement(
 					_Preview2.default,

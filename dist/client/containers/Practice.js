@@ -22,10 +22,6 @@ var _actions = require('../actions');
 
 var _reducers = require('../reducers');
 
-var _reactYoutube = require('react-youtube');
-
-var _reactYoutube2 = _interopRequireDefault(_reactYoutube);
-
 var _Basic = require('../components/practice/Basic');
 
 var _Basic2 = _interopRequireDefault(_Basic);
@@ -37,6 +33,10 @@ var _Careers2 = _interopRequireDefault(_Careers);
 var _Team = require('../components/practice/Team');
 
 var _Team2 = _interopRequireDefault(_Team);
+
+var _YoutubeComponent = require('../components/media/YoutubeComponent');
+
+var _YoutubeComponent2 = _interopRequireDefault(_YoutubeComponent);
 
 var _LoadingPattern = require('../components/patterns/LoadingPattern');
 
@@ -73,17 +73,6 @@ var Practice = function (_Component) {
 			    isFetching = _props.isFetching,
 			    content = _props.content;
 
-			var opts = {
-				height: '390',
-				width: '640',
-				playerVars: {
-					modestbranding: 1,
-					rel: 0,
-					showinfo: 0,
-					playsinline: 1,
-					autoplay: 1
-				}
-			};
 			if (isFetching && content.length === 0 || typeof content.fields === 'undefined') {
 				return _react2.default.createElement(
 					'div',
@@ -94,12 +83,11 @@ var Practice = function (_Component) {
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-page landing-page--practice main-section' },
-				content.fields.youtubeID && _react2.default.createElement(_reactYoutube2.default, {
+				content.fields.youtubeID && _react2.default.createElement(_YoutubeComponent2.default, {
 					videoId: content.fields.youtubeID,
-					id: content.fields.youtubeID,
-					className: 'video',
-					containerClassName: 'practice-video-wrapper',
-					opts: opts }),
+					autoplay: 1,
+					classes: 'practice-video-wrapper'
+				}),
 				content.fields.about && _react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
 				content.fields.philosophy && _react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
 				content.fields.team && _react2.default.createElement(_Team2.default, { content: content.fields.team }),

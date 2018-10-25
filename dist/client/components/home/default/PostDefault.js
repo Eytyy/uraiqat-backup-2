@@ -20,9 +20,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PostDefault = function PostDefault(_ref) {
 	var content = _ref.content;
-	var previewThumbnail = content.previewThumbnail;
+	var previewThumbnail = content.previewThumbnail,
+	    previewThumbnailYoutube = content.previewThumbnailYoutube;
 
-	return typeof previewThumbnail !== 'undefined' ? _react2.default.createElement(_PostDefaultMedia2.default, { content: content }) : _react2.default.createElement(_PostDefaultText2.default, { content: content });
+	return typeof previewThumbnail !== 'undefined' || previewThumbnailYoutube !== 'undefined' ? _react2.default.createElement(_PostDefaultMedia2.default, { content: content }) : _react2.default.createElement(_PostDefaultText2.default, { content: content });
 };
 
 exports.default = PostDefault;

@@ -39,9 +39,10 @@ var PostFeatured = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var content = this.props.content;
-			var previewThumbnail = content.previewThumbnail;
+			var previewThumbnail = content.previewThumbnail,
+			    previewThumbnailYoutube = content.previewThumbnailYoutube;
 
-			return typeof previewThumbnail !== 'undefined' ? _react2.default.createElement(_PostFeaturedMedia2.default, { content: content }) : _react2.default.createElement(_PostFeaturedText2.default, { content: content });
+			return typeof previewThumbnail !== 'undefined' || previewThumbnailYoutube !== 'undefined' ? _react2.default.createElement(_PostFeaturedMedia2.default, { content: content }) : _react2.default.createElement(_PostFeaturedText2.default, { content: content });
 		}
 	}]);
 

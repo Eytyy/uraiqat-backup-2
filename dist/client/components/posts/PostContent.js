@@ -16,6 +16,10 @@ var _PostContentMedia = require('./PostContentMedia');
 
 var _PostContentMedia2 = _interopRequireDefault(_PostContentMedia);
 
+var _PostContentYoutube = require('./PostContentYoutube');
+
+var _PostContentYoutube2 = _interopRequireDefault(_PostContentYoutube);
+
 var _PostContentSubtitle = require('./PostContentSubtitle');
 
 var _PostContentSubtitle2 = _interopRequireDefault(_PostContentSubtitle);
@@ -37,6 +41,8 @@ var PostContent = function PostContent(_ref) {
 					return _react2.default.createElement(_PostContentText2.default, { key: sys.id, content: fields });
 				case 'blockPostMedia':
 					return _react2.default.createElement(_PostContentMedia2.default, { key: sys.id, id: sys.id, content: fields });
+				case 'blockPostYoutubeEmbed':
+					return _react2.default.createElement(_PostContentYoutube2.default, { key: sys.id, id: sys.id, content: fields });
 				default:
 					return _react2.default.createElement(_PostContentSubtitle2.default, { key: sys.id, content: fields });
 			}

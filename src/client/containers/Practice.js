@@ -6,12 +6,12 @@ import { bindActionCreators } from 'redux';
 import { fetchPractice } from '../actions';
 import { isPracticeFetching, getPracticeContent } from '../reducers';
 
-import YouTube from 'react-youtube';
 
 import Basic from '../components/practice/Basic';
 import Careers from '../components/practice/Careers';
 import Team from '../components/practice/Team';
 
+import YoutubeComponent from '../components/media/YoutubeComponent';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class Practice extends Component {
@@ -24,29 +24,17 @@ class Practice extends Component {
 	}
 	render() {
 		const { isFetching, content } = this.props;
-		const opts = {
-			height: '390',
-			width: '640',
-			playerVars: {
-				modestbranding: 1,
-				rel: 0,
-				showinfo: 0,
-				playsinline: 1,
-				autoplay: 1
-			},
-		};
 		if (isFetching && content.length === 0 || typeof content.fields === 'undefined' ) {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
 		return (
 			<section className="landing-page landing-page--practice main-section" >
 				{ content.fields.youtubeID && 
-					<YouTube
+					<YoutubeComponent
 						videoId={content.fields.youtubeID}
-						id={content.fields.youtubeID}
-						className="video"
-						containerClassName="practice-video-wrapper"
-						opts={opts} />
+						autoplay={1} 
+						classes="practice-video-wrapper"
+					/>
 				}
 				{ content.fields.about && <Basic sectionTitle="about" content={content.fields.about} />}
 				{ content.fields.philosophy && <Basic sectionTitle="philosophy" content={content.fields.philosophy} /> }

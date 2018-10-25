@@ -9,8 +9,8 @@ class PostFeatured extends Component {
 	}
 	render() {
 		const { content } = this.props;
-		const { previewThumbnail } = content;
-		return typeof previewThumbnail !== 'undefined' ?
+		const { previewThumbnail, previewThumbnailYoutube } = content;
+		return typeof previewThumbnail !== 'undefined' ||  previewThumbnailYoutube !== 'undefined' ?
 			<PostFeaturedMedia content={content} /> :
 			<PostFeaturedText content={content} />;
 	}
