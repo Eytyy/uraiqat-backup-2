@@ -46,7 +46,6 @@
 		}
 	}
 	&.post-preview__video {
-		@extend %bw-filter;
 		&:before,
 		&:after {
 			z-index: 2;
