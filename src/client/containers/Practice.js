@@ -27,6 +27,8 @@ class Practice extends Component {
 		if (isFetching && content.length === 0 || typeof content.fields === 'undefined' ) {
 			return <div className="loader"><LoadingPattern /></div>;
 		}
+		const previousTeam = content.fields.team.filter(({ fields }) => fields.previousMember);
+		const currentTeam = content.fields.team.filter(({ fields }) => !fields.previousMember);
 		return (
 			<section className="landing-page landing-page--practice main-section" >
 				{ content.fields.youtubeID && 
@@ -38,7 +40,8 @@ class Practice extends Component {
 				}
 				{ content.fields.about && <Basic sectionTitle="about" content={content.fields.about} />}
 				{ content.fields.philosophy && <Basic sectionTitle="philosophy" content={content.fields.philosophy} /> }
-				{ content.fields.team && <Team content={content.fields.team} /> }
+				{ currentTeam && <Team content={currentTeam} type="current"/> }
+				{ previousTeam && <Team content={previousTeam} type="previous" /> }
 				{ content.fields.careersBody && <Careers desc={content.fields.careersBody} content={content.fields.careers} /> }
 			</section>
 		);

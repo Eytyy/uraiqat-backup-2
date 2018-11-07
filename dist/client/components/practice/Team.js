@@ -17,37 +17,29 @@ var _PostMediaImage2 = _interopRequireDefault(_PostMediaImage);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Team = function Team(_ref) {
-	var content = _ref.content;
+	var content = _ref.content,
+	    type = _ref.type;
 
 	if (!content) {
 		return null;
 	}
-	var current = content.filter(function (_ref2) {
-		var fields = _ref2.fields;
-		return !fields.previousMember;
-	});
-	var previous = content.filter(function (_ref3) {
-		var fields = _ref3.fields;
-		return fields.previousMember;
-	});
-	console.log(previous);
 	return _react2.default.createElement(
 		'section',
 		{ className: 'practice-section--team practice-section' },
 		_react2.default.createElement(
 			'h2',
 			{ className: 'practice-section__title' },
-			'Team'
+			type === 'current' ? 'Team' : 'Previous Team Members'
 		),
 		_react2.default.createElement(
 			'div',
 			{ className: 'practice-section__inner' },
-			_react2.default.createElement(
+			type === 'current' ? _react2.default.createElement(
 				'div',
 				{ className: 'practice-section__team-list' },
-				current.map(function (_ref4) {
-					var sys = _ref4.sys,
-					    fields = _ref4.fields;
+				content.map(function (_ref2) {
+					var sys = _ref2.sys,
+					    fields = _ref2.fields;
 					return _react2.default.createElement(
 						'article',
 						{ key: sys.id, className: 'team-member-preview' },
@@ -63,13 +55,12 @@ var Team = function Team(_ref) {
 						)
 					);
 				})
-			),
-			_react2.default.createElement(
+			) : _react2.default.createElement(
 				'div',
-				{ className: 'practice-section__team-list practice-section__team-list--previous' },
-				previous && previous.map(function (_ref5) {
-					var sys = _ref5.sys,
-					    fields = _ref5.fields;
+				{ className: 'practice-section__team-list' },
+				content.map(function (_ref3) {
+					var sys = _ref3.sys,
+					    fields = _ref3.fields;
 					return _react2.default.createElement(
 						'article',
 						{ key: sys.id, className: 'team-member-preview' },

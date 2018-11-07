@@ -80,6 +80,14 @@ var Practice = function (_Component) {
 					_react2.default.createElement(_LoadingPattern2.default, null)
 				);
 			}
+			var previousTeam = content.fields.team.filter(function (_ref) {
+				var fields = _ref.fields;
+				return fields.previousMember;
+			});
+			var currentTeam = content.fields.team.filter(function (_ref2) {
+				var fields = _ref2.fields;
+				return !fields.previousMember;
+			});
 			return _react2.default.createElement(
 				'section',
 				{ className: 'landing-page landing-page--practice main-section' },
@@ -90,7 +98,8 @@ var Practice = function (_Component) {
 				}),
 				content.fields.about && _react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
 				content.fields.philosophy && _react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
-				content.fields.team && _react2.default.createElement(_Team2.default, { content: content.fields.team }),
+				currentTeam && _react2.default.createElement(_Team2.default, { content: currentTeam, type: 'current' }),
+				previousTeam && _react2.default.createElement(_Team2.default, { content: previousTeam, type: 'previous' }),
 				content.fields.careersBody && _react2.default.createElement(_Careers2.default, { desc: content.fields.careersBody, content: content.fields.careers })
 			);
 		}
