@@ -22,6 +22,15 @@ var Team = function Team(_ref) {
 	if (!content) {
 		return null;
 	}
+	var current = content.filter(function (_ref2) {
+		var fields = _ref2.fields;
+		return !fields.previousMember;
+	});
+	var previous = content.filter(function (_ref3) {
+		var fields = _ref3.fields;
+		return fields.previousMember;
+	});
+	console.log(previous);
 	return _react2.default.createElement(
 		'section',
 		{ className: 'practice-section--team practice-section' },
@@ -36,9 +45,9 @@ var Team = function Team(_ref) {
 			_react2.default.createElement(
 				'div',
 				{ className: 'practice-section__team-list' },
-				content.map(function (_ref2) {
-					var sys = _ref2.sys,
-					    fields = _ref2.fields;
+				current.map(function (_ref4) {
+					var sys = _ref4.sys,
+					    fields = _ref4.fields;
 					return _react2.default.createElement(
 						'article',
 						{ key: sys.id, className: 'team-member-preview' },
@@ -51,6 +60,23 @@ var Team = function Team(_ref) {
 								{ className: 'team-member-preview__name' },
 								fields.name
 							)
+						)
+					);
+				})
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'practice-section__team-list practice-section__team-list--previous' },
+				previous && previous.map(function (_ref5) {
+					var sys = _ref5.sys,
+					    fields = _ref5.fields;
+					return _react2.default.createElement(
+						'article',
+						{ key: sys.id, className: 'team-member-preview' },
+						_react2.default.createElement(
+							'h3',
+							{ className: 'team-member-preview__name' },
+							fields.name
 						)
 					);
 				})
