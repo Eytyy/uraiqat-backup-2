@@ -39,35 +39,68 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Slider =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Slider, _Component);
 
   function Slider() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Slider);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Slider).call(this));
-    _this.state = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Slider)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       clientLoaded: false
-    };
-    _this.onSlideClick = _this.onSlideClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.updateSlide = _this.updateSlide.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleSwipe = _this.handleSwipe.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateSlide", function (direction) {
+      var _this$props = _this.props,
+          updateActiveSlide = _this$props.updateActiveSlide,
+          sliderId = _this$props.sliderId;
+      updateActiveSlide(sliderId, direction);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSlideClick", function () {
+      var _this$props2 = _this.props,
+          toggleGallery = _this$props2.toggleGallery,
+          sliderId = _this$props2.sliderId,
+          type = _this$props2.type;
+      var openGallery = true;
+      toggleGallery(sliderId, openGallery, type);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSwipe", function (event) {
+      //eslint-disable-line
+      // show previous
+      if (event.deltaX > 0) {
+        _this.updateSlide('prev');
+      } else {
+        _this.updateSlide('next');
+      }
+    });
+
     return _this;
   }
 
   _createClass(Slider, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this$props = this.props,
-          content = _this$props.content,
-          updateGallery = _this$props.updateGallery,
-          sliderId = _this$props.sliderId,
-          contentTitle = _this$props.contentTitle,
-          type = _this$props.type;
+      var _this$props3 = this.props,
+          content = _this$props3.content,
+          updateGallery = _this$props3.updateGallery,
+          sliderId = _this$props3.sliderId,
+          contentTitle = _this$props3.contentTitle,
+          type = _this$props3.type;
       this.setState({
         clientLoaded: true
       });
@@ -84,35 +117,6 @@ function (_Component) {
 
       if (sliderId !== this.props.sliderId) {
         updateGallery(sliderId, content, contentTitle, type);
-      }
-    }
-  }, {
-    key: "updateSlide",
-    value: function updateSlide(direction) {
-      var _this$props2 = this.props,
-          updateActiveSlide = _this$props2.updateActiveSlide,
-          sliderId = _this$props2.sliderId;
-      updateActiveSlide(sliderId, direction);
-    }
-  }, {
-    key: "onSlideClick",
-    value: function onSlideClick() {
-      var _this$props3 = this.props,
-          toggleGallery = _this$props3.toggleGallery,
-          sliderId = _this$props3.sliderId,
-          type = _this$props3.type;
-      var openGallery = true;
-      toggleGallery(sliderId, openGallery, type);
-    }
-  }, {
-    key: "handleSwipe",
-    value: function handleSwipe(event) {
-      //eslint-disable-line
-      // show previous
-      if (event.deltaX > 0) {
-        this.updateSlide('prev');
-      } else {
-        this.updateSlide('next');
       }
     }
   }, {

@@ -10,31 +10,20 @@ import Filters from './Filters';
 import PatternChunk from '../../../components/patterns/PatternChunk';
 
 class Header extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			isVisible: false,
-			filtersAreVisible: false,
-			searchIsVisible: false,
-		};
-		this.onMenuToggle = this.onMenuToggle.bind(this);
-		this.toggleFilter = this.toggleFilter.bind(this);
-		this.onToggleFilters = this.onToggleFilters.bind(this);
-		this.onClearFilters = this.onClearFilters.bind(this);
-		this.onFilterClick = this.onFilterClick.bind(this);
-		this.onSearchClick = this.onSearchClick.bind(this);
-		this.onSearchSubmit = this.onSearchSubmit.bind(this);
-		this.clearSearch = this.clearSearch.bind(this);
-	}
+	state = {
+		isVisible: false,
+		filtersAreVisible: false,
+		searchIsVisible: false,
+	};
 
-	toggleFilter() {
+	toggleFilter = () => {
 		this.setState({
 			filtersAreVisible: !this.state.filtersAreVisible,
 			searchIsVisible: this.state.searchIsVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
 		});
 	}
 
-	onToggleFilters() {
+	onToggleFilters = () => {
 		const { fetchFilters, content } = this.props;
 		if (!this.state.filtersAreVisible) {
 			if (content.length === 0) {
@@ -49,32 +38,31 @@ class Header extends Component {
 		}
 	}
 
-	onFilterClick(id) {
+	onFilterClick = id => {
 		const { updateFilter } = this.props;
 		updateFilter(id);
 	}
 
-	onClearFilters() {
+	onClearFilters = () => {
 		const { clearAllFilters } = this.props;
 		clearAllFilters();
 		this.onToggleFilters();
 	}
 
-
-	clearSearch() {
+	clearSearch = () => {
 		if (this.search) {
 			this.search.value = '';
 		}
 	}
 
-	onSearchClick() {
+	onSearchClick = () => {
 		this.setState({
 			searchIsVisible: !this.state.searchIsVisible,
 			filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 		});
 	}
 
-	onSearchSubmit(event) {
+	onSearchSubmit = event => {
 		const { fetchSearchResults } = this.props;
 		const keyword = new FormData(event.target).get('keyword');
 		fetchSearchResults(keyword);
@@ -85,8 +73,7 @@ class Header extends Component {
 		return false;
 	}
 
-
-	onMenuToggle() {
+	onMenuToggle = () => {
 		let isMenuvisible = this.state.isVisible;
 		if (!isMenuvisible) {
 			isMenuvisible = true;

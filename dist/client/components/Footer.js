@@ -11,6 +11,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _PatternChunk = _interopRequireDefault(require("../components/patterns/PatternChunk"));
 
+var _babelTypes = require("babel-types");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -33,36 +35,45 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Footer =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Footer, _Component);
 
   function Footer() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Footer);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Footer).call(this));
-    _this.state = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Footer)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       width: 0,
       height: 0
-    };
-    _this.updateDimensions = _this.updateDimensions.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateDimensions", function () {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+      _this.setState({
+        width: width,
+        height: height
+      });
+    });
+
     return _this;
   }
 
   _createClass(Footer, [{
-    key: "updateDimensions",
-    value: function updateDimensions() {
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-      this.setState({
-        width: width,
-        height: height
-      });
-    }
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updateDimensions();
@@ -72,6 +83,26 @@ function (_Component) {
     key: "render",
     value: function render() {
       var adjust = this.props.adjust;
+      var social = [{
+        name: 'instagram',
+        spaceBeforeSeparator: 3,
+        spaceAfterSeparator: 3,
+        separator: '/',
+        link: 'http://www.instagram.com'
+      }, {
+        name: 'facebook',
+        link: 'http://www.facebook.com',
+        separator: '',
+        spaceBeforeSeparator: 3,
+        spaceAfterSeparator: 3
+      }];
+      var reserved = 1 + social.reduce(function (curr, next) {
+        if (next.separator) {
+          return curr + next.name.length + next.separator.length + next.spaceBeforeSeparator + next.spaceAfterSeparator;
+        }
+
+        return curr + next.name.length + next.spaceBeforeSeparator;
+      }, 0);
       return typeof window === 'undefined' ? _react.default.createElement("footer", {
         className: "website-footer"
       }) : _react.default.createElement("footer", {
@@ -82,12 +113,32 @@ function (_Component) {
       })), _react.default.createElement("div", null, _react.default.createElement(_PatternChunk.default, {
         adjust: adjust,
         reserved: 0
-      })), _react.default.createElement("div", null, _react.default.createElement(_PatternChunk.default, {
+      })), _react.default.createElement("div", null, social.map(function (_ref) {
+        var name = _ref.name,
+            separator = _ref.separator,
+            link = _ref.link;
+        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.NavLink, {
+          className: "link",
+          to: link
+        }, name), _react.default.createElement("span", {
+          className: "ws"
+        }, "-"), _react.default.createElement("span", {
+          className: "ws"
+        }, "-"), _react.default.createElement("span", {
+          className: "ws"
+        }, "-"), separator && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", null, '/'), _react.default.createElement("span", {
+          className: "ws"
+        }, "-"), _react.default.createElement("span", {
+          className: "ws"
+        }, "-"), _react.default.createElement("span", {
+          className: "ws"
+        }, "-")));
+      }), _react.default.createElement(_PatternChunk.default, {
         adjust: adjust,
-        reserved: 1
-      }), _react.default.createElement(_reactRouterDom.NavLink, {
+        reserved: reserved
+      }), _react.default.createElement("a", {
         className: "link",
-        activeClassName: "active",
+        target: "_blank",
         to: "/"
       }, "A")));
     }

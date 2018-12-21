@@ -18,17 +18,15 @@ import InnerNav from '../components/InnerNav';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class Project extends Component { //eslint-disable-line
-	constructor() {
-		super();
-		this.state = {
-			isAboutVisible: false,
-			shouldAboutRetract: true,
-		};
-		this.toggleAbout = this.toggleAbout.bind(this);
+	state = {
+		isAboutVisible: false,
+		shouldAboutRetract: true,
 	}
+
 	static fetchData(store) {
 		return store.dispatch(fetchProjects());
 	}
+
 	componentDidMount() {
 		const { fetchProjects } = this.props;
 		fetchProjects().then(() => {
@@ -38,11 +36,13 @@ class Project extends Component { //eslint-disable-line
 			});
 		});
 	}
-	toggleAbout() {
+
+	toggleAbout = () => {
 		this.setState({
 			isAboutVisible: !this.state.isAboutVisible
 		});
 	}
+
 	render() {
 		const { content, innerNavContent, isFetching, match } = this.props;
 		if (isFetching || typeof content.id === 'undefined') {

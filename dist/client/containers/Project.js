@@ -55,23 +55,37 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Project =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Project, _Component);
 
-  //eslint-disable-line
   function Project() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Project);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Project).call(this));
-    _this.state = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Project)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       isAboutVisible: false,
       shouldAboutRetract: true
-    };
-    _this.toggleAbout = _this.toggleAbout.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggleAbout", function () {
+      _this.setState({
+        isAboutVisible: !_this.state.isAboutVisible
+      });
+    });
+
     return _this;
   }
 
@@ -87,13 +101,6 @@ function (_Component) {
         _this2.setState({
           shouldAboutRetract: shouldAboutRetract
         });
-      });
-    }
-  }, {
-    key: "toggleAbout",
-    value: function toggleAbout() {
-      this.setState({
-        isAboutVisible: !this.state.isAboutVisible
       });
     }
   }, {

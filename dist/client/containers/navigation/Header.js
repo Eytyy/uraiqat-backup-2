@@ -81,7 +81,7 @@ function (_Component) {
     value: function render() {
       return typeof window === 'undefined' ? _react.default.createElement("header", {
         className: "website-header"
-      }, _react.default.createElement("div", null)) : _react.default.createElement("header", {
+      }) : _react.default.createElement("header", {
         className: "website-header"
       }, this.state.width >= 1280 && _react.default.createElement(_Header.default, null) || _react.default.createElement(_Header2.default, null));
     }

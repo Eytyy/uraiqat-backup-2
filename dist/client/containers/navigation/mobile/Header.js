@@ -45,106 +45,99 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Header =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Header, _Component);
 
-  function Header(props) {
+  function Header() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Header);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
-    _this.state = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Header)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       isVisible: false,
       filtersAreVisible: false,
       searchIsVisible: false
-    };
-    _this.onMenuToggle = _this.onMenuToggle.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.toggleFilter = _this.toggleFilter.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.onToggleFilters = _this.onToggleFilters.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.onClearFilters = _this.onClearFilters.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.onFilterClick = _this.onFilterClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.onSearchClick = _this.onSearchClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.onSearchSubmit = _this.onSearchSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.clearSearch = _this.clearSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    return _this;
-  }
+    });
 
-  _createClass(Header, [{
-    key: "toggleFilter",
-    value: function toggleFilter() {
-      this.setState({
-        filtersAreVisible: !this.state.filtersAreVisible,
-        searchIsVisible: this.state.searchIsVisible ? !this.state.searchIsVisible : this.state.searchIsVisible
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggleFilter", function () {
+      _this.setState({
+        filtersAreVisible: !_this.state.filtersAreVisible,
+        searchIsVisible: _this.state.searchIsVisible ? !_this.state.searchIsVisible : _this.state.searchIsVisible
       });
-    }
-  }, {
-    key: "onToggleFilters",
-    value: function onToggleFilters() {
-      var _this2 = this;
+    });
 
-      var _this$props = this.props,
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggleFilters", function () {
+      var _this$props = _this.props,
           fetchFilters = _this$props.fetchFilters,
           content = _this$props.content;
 
-      if (!this.state.filtersAreVisible) {
+      if (!_this.state.filtersAreVisible) {
         if (content.length === 0) {
           fetchFilters().then(function () {
-            _this2.toggleFilter();
+            _this.toggleFilter();
           });
         } else {
-          this.toggleFilter();
+          _this.toggleFilter();
         }
       } else {
-        this.toggleFilter();
+        _this.toggleFilter();
       }
-    }
-  }, {
-    key: "onFilterClick",
-    value: function onFilterClick(id) {
-      var updateFilter = this.props.updateFilter;
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFilterClick", function (id) {
+      var updateFilter = _this.props.updateFilter;
       updateFilter(id);
-    }
-  }, {
-    key: "onClearFilters",
-    value: function onClearFilters() {
-      var clearAllFilters = this.props.clearAllFilters;
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClearFilters", function () {
+      var clearAllFilters = _this.props.clearAllFilters;
       clearAllFilters();
-      this.onToggleFilters();
-    }
-  }, {
-    key: "clearSearch",
-    value: function clearSearch() {
-      if (this.search) {
-        this.search.value = '';
+
+      _this.onToggleFilters();
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "clearSearch", function () {
+      if (_this.search) {
+        _this.search.value = '';
       }
-    }
-  }, {
-    key: "onSearchClick",
-    value: function onSearchClick() {
-      this.setState({
-        searchIsVisible: !this.state.searchIsVisible,
-        filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSearchClick", function () {
+      _this.setState({
+        searchIsVisible: !_this.state.searchIsVisible,
+        filtersAreVisible: _this.state.filtersAreVisible ? !_this.state.filtersAreVisible : _this.state.filtersAreVisible
       });
-    }
-  }, {
-    key: "onSearchSubmit",
-    value: function onSearchSubmit(event) {
-      var fetchSearchResults = this.props.fetchSearchResults;
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSearchSubmit", function (event) {
+      var fetchSearchResults = _this.props.fetchSearchResults;
       var keyword = new FormData(event.target).get('keyword');
       fetchSearchResults(keyword);
       event.preventDefault();
-      this.props.history.push("/search?keyword=".concat(keyword));
-      this.clearSearch();
-      this.onSearchClick();
+
+      _this.props.history.push("/search?keyword=".concat(keyword));
+
+      _this.clearSearch();
+
+      _this.onSearchClick();
+
       return false;
-    }
-  }, {
-    key: "onMenuToggle",
-    value: function onMenuToggle() {
-      var isMenuvisible = this.state.isVisible;
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onMenuToggle", function () {
+      var isMenuvisible = _this.state.isVisible;
 
       if (!isMenuvisible) {
         isMenuvisible = true;
@@ -154,11 +147,15 @@ function (_Component) {
         document.body.classList.remove('mobileMenu-isActive');
       }
 
-      this.setState({
+      _this.setState({
         isVisible: isMenuvisible
       });
-    }
-  }, {
+    });
+
+    return _this;
+  }
+
+  _createClass(Header, [{
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.location.pathname !== this.props.location.pathname) {

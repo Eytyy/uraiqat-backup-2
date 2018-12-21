@@ -7,15 +7,10 @@ import Hammer from 'react-hammerjs';
 import Slide from '../components/media/Slide';
 
 class Slider extends Component {
-	constructor() {
-		super();
-		this.state = {
-			clientLoaded: false,
-		};
-		this.onSlideClick = this.onSlideClick.bind(this);
-		this.updateSlide = this.updateSlide.bind(this);
-		this.handleSwipe = this.handleSwipe.bind(this);
-	}
+	state = {
+		clientLoaded: false,
+	};
+
 	componentDidMount() {
 		const { content, updateGallery, sliderId, contentTitle, type } = this.props;
 		this.setState({
@@ -23,21 +18,25 @@ class Slider extends Component {
 		});
 		updateGallery(sliderId, content, contentTitle, type);
 	}
+
 	componentWillReceiveProps({ sliderId, content, contentTitle, type, updateGallery }) {
 		if (sliderId !== this.props.sliderId) {
 			updateGallery(sliderId, content, contentTitle, type);
 		}
 	}
-	updateSlide(direction) {
+
+	updateSlide = direction => {
 		const { updateActiveSlide, sliderId } = this.props;
 		updateActiveSlide(sliderId, direction);
 	}
-	onSlideClick() {
+
+	onSlideClick = () => {
 		const {toggleGallery, sliderId, type} = this.props;
 		const openGallery = true;
 		toggleGallery(sliderId, openGallery, type);
 	}
-	handleSwipe(event) { //eslint-disable-line
+	
+	handleSwipe = event => { //eslint-disable-line
 		// show previous
 		if (event.deltaX > 0) {
 			this.updateSlide('prev');
@@ -45,6 +44,7 @@ class Slider extends Component {
 			this.updateSlide('next');
 		}
 	}
+	
 	render() {
 		const { content, classList, imagesQuery, activeSlideIndex, sliderName, type } = this.props;
 		const sliderRailStyle = { transform: `translateX(-${activeSlideIndex * 100}%)` };

@@ -10,14 +10,6 @@ import * as actions from '../actions';
 import GallerySlide from '../components/media/GallerySlide';
 
 class Gallery extends Component {
-	constructor() {
-		super();
-		this.updateSlide = this.updateSlide.bind(this);
-		this.closeGallery = this.closeGallery.bind(this);
-		this.handleSwipe = this.handleSwipe.bind(this);
-		this.handleKeyStrokes = this.handleKeyStrokes.bind(this);
-	}
-
 	componentDidMount() {
 		document.addEventListener('keydown', this.handleKeyStrokes);
 	}
@@ -41,19 +33,19 @@ class Gallery extends Component {
 	}
 	
 
-	updateSlide(direction) {
+	updateSlide = direction => {
 		const { updateActiveSlide, content } = this.props;
 		const { galleryId } = content;
 		updateActiveSlide(galleryId, direction);
 	}
 
-	closeGallery() {
+	closeGallery = () => {
 		const { toggleGallery } = this.props;
 		const openGallery = false;
 		toggleGallery(openGallery);
 	}
 
-	handleSwipe(event) {
+	handleSwipe = event => {
 		// show previous
 		if (event.deltaX > 0) {
 			this.updateSlide('prev');
@@ -62,7 +54,7 @@ class Gallery extends Component {
 		}
 	}
 
-	handleKeyStrokes(event) {
+	handleKeyStrokes = event => {
 		switch(event.keyCode) {
 		case 39:	
 			this.updateSlide('next');

@@ -10,21 +10,21 @@ import Landing from '../components/landing/Landing';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class Home extends Component {
-	constructor() {
-		super();
-		this.state = {
-			intro: false,
-		};
-		this.to = null;
+	state = {
+		intro: false,
 	}
+	to = null
+
 	static fetchData(store) {
 		return store.dispatch(fetchPosts());
 	}
+
 	hideLoader() {
 		this.setState({
 			intro: true
 		});
 	}
+	
 	fetchData() {
 		return fetchPosts().then(() => {
 			setTimeout(() => {

@@ -21,7 +21,7 @@ class Header extends Component {
 
 	render() {
 		return typeof window === 'undefined' ? 
-			<header className="website-header"><div></div></header> :
+			<header className="website-header" /> :
 			<header className="website-header">
 				{ this.state.width >= 1280 && <HeaderDT /> || <HeaderM /> }
 			</header>;

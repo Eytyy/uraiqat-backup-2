@@ -41,21 +41,68 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Gallery =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Gallery, _Component);
 
   function Gallery() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Gallery);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Gallery).call(this));
-    _this.updateSlide = _this.updateSlide.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.closeGallery = _this.closeGallery.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleSwipe = _this.handleSwipe.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleKeyStrokes = _this.handleKeyStrokes.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Gallery)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateSlide", function (direction) {
+      var _this$props = _this.props,
+          updateActiveSlide = _this$props.updateActiveSlide,
+          content = _this$props.content;
+      var galleryId = content.galleryId;
+      updateActiveSlide(galleryId, direction);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeGallery", function () {
+      var toggleGallery = _this.props.toggleGallery;
+      var openGallery = false;
+      toggleGallery(openGallery);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSwipe", function (event) {
+      // show previous
+      if (event.deltaX > 0) {
+        _this.updateSlide('prev');
+      } else {
+        _this.updateSlide('next');
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyStrokes", function (event) {
+      switch (event.keyCode) {
+        case 39:
+          _this.updateSlide('next');
+
+          break;
+
+        case 37:
+          _this.updateSlide('prev');
+
+          break;
+
+        case 27:
+          _this.closeGallery();
+
+          break;
+      }
+    });
+
     return _this;
   }
 
@@ -84,49 +131,6 @@ function (_Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       document.removeEventListener('keydown', this.handleKeyStrokes);
-    }
-  }, {
-    key: "updateSlide",
-    value: function updateSlide(direction) {
-      var _this$props = this.props,
-          updateActiveSlide = _this$props.updateActiveSlide,
-          content = _this$props.content;
-      var galleryId = content.galleryId;
-      updateActiveSlide(galleryId, direction);
-    }
-  }, {
-    key: "closeGallery",
-    value: function closeGallery() {
-      var toggleGallery = this.props.toggleGallery;
-      var openGallery = false;
-      toggleGallery(openGallery);
-    }
-  }, {
-    key: "handleSwipe",
-    value: function handleSwipe(event) {
-      // show previous
-      if (event.deltaX > 0) {
-        this.updateSlide('prev');
-      } else {
-        this.updateSlide('next');
-      }
-    }
-  }, {
-    key: "handleKeyStrokes",
-    value: function handleKeyStrokes(event) {
-      switch (event.keyCode) {
-        case 39:
-          this.updateSlide('next');
-          break;
-
-        case 37:
-          this.updateSlide('prev');
-          break;
-
-        case 27:
-          this.closeGallery();
-          break;
-      }
     }
   }, {
     key: "render",
