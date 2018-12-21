@@ -11,18 +11,9 @@ import Search from './Search';
 import FiltersList from './FiltersList';
 
 class FilterSearchWrapper extends Component {
-	constructor() {
-		super();
-		this.state = {
-			filtersAreVisible: false,
-			searchIsVisible: false,
-		};
-		this.onToggleClick = this.onToggleClick.bind(this);
-		this.onFilterClick = this.onFilterClick.bind(this);
-		this.onSearchClick = this.onSearchClick.bind(this);
-		this.onSearchSubmit = this.onSearchSubmit.bind(this);
-		this.clearSearch = this.clearSearch.bind(this);
-		this.onClearFilters = this.onClearFilters.bind(this);
+	state = {
+		filtersAreVisible: false,
+		searchIsVisible: false,
 	}
 
 	toggleFilter() {
@@ -32,7 +23,7 @@ class FilterSearchWrapper extends Component {
 		});
 	}
 
-	onToggleClick() {
+	onToggleClick = () => {
 		const { fetchFilters, content } = this.props;
 		if (!this.state.filtersAreVisible) {
 			if (content.length === 0) {
@@ -47,25 +38,25 @@ class FilterSearchWrapper extends Component {
 		}
 	}
 
-	onFilterClick(id) {
+	onFilterClick = id => {
 		const { updateFilter } = this.props;
 		updateFilter(id);
 	}
 
-	clearSearch() {
+	clearSearch = () => {
 		if (this.search) {
 			this.search.value = '';
 		}
 	}
 
-	onSearchClick() {
+	onSearchClick = () => {
 		this.setState({
 			searchIsVisible: !this.state.searchIsVisible,
 			filtersAreVisible: this.state.filtersAreVisible ? !this.state.filtersAreVisible : this.state.filtersAreVisible
 		});
 	}
 
-	onSearchSubmit(event) {
+	onSearchSubmit = event => {
 		const { fetchSearchResults } = this.props;
 		const keyword = new FormData(event.target).get('keyword');
 		fetchSearchResults(keyword);
@@ -76,7 +67,7 @@ class FilterSearchWrapper extends Component {
 		return false;
 	}
 
-	onClearFilters() {
+	onClearFilters = () => {
 		const { clearAllFilters } = this.props;
 		clearAllFilters();
 		this.toggleFilter();

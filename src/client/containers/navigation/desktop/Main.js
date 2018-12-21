@@ -18,12 +18,12 @@ const Main = () => {
 			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '->' }, size: 'Contact'.length },
 		]
 	};
-	const reservedNavSpaces = config.items.reduce((current, next) => {
-		return current + next.size + next.glyph.content.length;
-	}, 0);
+	const reservedNavSpaces = config.items.reduce((current, next) =>
+		current + next.size + next.glyph.content.length, 0);
 	const reservedNavEmptySpaces = config.items.length * (config.spacesBefore + config.spacesAfter);
 	const numberofNavSeparators = config.items.length - 1;
 	const totalReservedSpaces = reservedNavSpaces + reservedNavEmptySpaces + numberofNavSeparators + numberOfStaticItems + fixedStart;
+
 	return (
 		<div className="header--desktop__main">
 			<NavLink className="link" to="/">U</NavLink>

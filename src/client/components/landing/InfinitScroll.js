@@ -20,7 +20,6 @@ class InfinitScroll extends Component {
 			}
 		}, 500, { leading: false, trailing: true }
 	);
-	
 
 	updateUi = () => {
 		this.setState({

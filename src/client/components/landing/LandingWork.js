@@ -17,8 +17,8 @@ class LandingWork extends Component {
 							type="project"
 							category={post.typology}
 						/>
-					)}}>
-			</InfinitScroll>
+					)}}
+			/>
 		);
 	}
 }

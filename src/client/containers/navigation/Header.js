@@ -1,34 +1,31 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import HeaderDT from './desktop/Header';
 import HeaderM from './mobile/Header';
 
 class Header extends Component {
-	constructor() {
-		super();
-		this.state = {
-			width: 0,
-			height: 0
-		};
-		this.updateDimensions = this.updateDimensions.bind(this);
+	state = {
+		width: 0,
+		height: 0
 	}
-	updateDimensions() {
-		let width = window.innerWidth;
-		let height = window.innerHeight;
 
-		this.setState({width, height});
+	updateDimensions = () => {
+		this.setState({width: window.innerWidth, height: window.innerHeight});
 	}
+
 	componentDidMount() {
 		this.updateDimensions();
 		window.addEventListener('resize', this.updateDimensions);
 	}
+
 	render() {
 		return typeof window === 'undefined' ? 
-			<header className="website-header"></header> :
+			<header className="website-header"><div></div></header> :
 			<header className="website-header">
-				{ this.state.width >= 1024 && <HeaderDT /> || <HeaderM /> }
+				{ this.state.width >= 1280 && <HeaderDT /> || <HeaderM /> }
 			</header>;
 	}
 }
 
-export default Header;
+export default withRouter(Header);

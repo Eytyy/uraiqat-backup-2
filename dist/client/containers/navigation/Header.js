@@ -7,6 +7,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _Header = _interopRequireDefault(require("./desktop/Header"));
 
 var _Header2 = _interopRequireDefault(require("./mobile/Header"));
@@ -33,36 +35,42 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var Header =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Header, _Component);
 
   function Header() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Header);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this));
-    _this.state = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Header)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       width: 0,
       height: 0
-    };
-    _this.updateDimensions = _this.updateDimensions.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateDimensions", function () {
+      _this.setState({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    });
+
     return _this;
   }
 
   _createClass(Header, [{
-    key: "updateDimensions",
-    value: function updateDimensions() {
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-      this.setState({
-        width: width,
-        height: height
-      });
-    }
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updateDimensions();
@@ -73,14 +81,15 @@ function (_Component) {
     value: function render() {
       return typeof window === 'undefined' ? _react.default.createElement("header", {
         className: "website-header"
-      }) : _react.default.createElement("header", {
+      }, _react.default.createElement("div", null)) : _react.default.createElement("header", {
         className: "website-header"
-      }, this.state.width >= 1024 && _react.default.createElement(_Header.default, null) || _react.default.createElement(_Header2.default, null));
+      }, this.state.width >= 1280 && _react.default.createElement(_Header.default, null) || _react.default.createElement(_Header2.default, null));
     }
   }]);
 
   return Header;
 }(_react.Component);
 
-var _default = Header;
+var _default = (0, _reactRouterDom.withRouter)(Header);
+
 exports.default = _default;

@@ -17,8 +17,6 @@ var actions = _interopRequireWildcard(require("../actions"));
 
 var _reducers = require("../reducers");
 
-var _ScrollToTop = _interopRequireDefault(require("./ScrollToTop"));
-
 var _Gallery = _interopRequireDefault(require("./Gallery"));
 
 var _Header = _interopRequireDefault(require("./navigation/Header"));
@@ -39,28 +37,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var App =
 /*#__PURE__*/
 function (_Component) {
   _inherits(App, _Component);
 
-  function App(props) {
+  function App() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.status = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "status", {
       blendMode: true
-    };
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "uLink", _react.default.createRef());
+
     return _this;
   }
 
@@ -75,10 +85,24 @@ function (_Component) {
         });
       }
 
-      if (document.querySelector('.uLink').offsetWidth === 12) {
+      if (this.uLink.current.offsetWidth === 12) {
         updateApp({
           adjustForMobile: true
         });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.location !== prevProps.location) {
+        window.scrollTo(0, 0);
+      } // scroll to hash position - header height
+
+
+      if (this.props.location.hash && this.uLink.current) {
+        var target = document.getElementById(this.props.location.hash);
+        console.log(this.uLink.current.offsetHeight);
+        window.scrollTo(0, this.uLink.current.offsetWidth === 14 ? target.offsetTop - this.uLink.current.offsetHeight * 5 : target.offsetTop - this.uLink.current.offsetHeight * 4);
       }
     }
   }, {
@@ -92,13 +116,14 @@ function (_Component) {
       return _react.default.createElement("div", {
         className: "container__inner ".concat(pageName, " ").concat(this.status.blendMode ? 'blendMode' : 'no-blendMode')
       }, _react.default.createElement("span", {
+        ref: this.uLink,
         className: "fake"
-      }, "U"), _react.default.createElement(_Gallery.default, null), _react.default.createElement(_ScrollToTop.default, null, _react.default.createElement(_Header.default, null), _react.default.createElement("main", {
+      }, "U"), _react.default.createElement(_Gallery.default, null), _react.default.createElement(_Header.default, null), _react.default.createElement("main", {
         role: "main",
         className: "main-content"
       }, (0, _reactRouterConfig.renderRoutes)(route.routes)), _react.default.createElement(_Footer.default, {
         adjust: configs.adjustForMobile
-      })));
+      }));
     }
   }]);
 
