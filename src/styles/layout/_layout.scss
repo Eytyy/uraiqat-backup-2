@@ -36,7 +36,7 @@ body {
 		}
 	}	
 	@include respond-to(mobile-ls) {
-		max-width: 100%;
+		max-width: unset;
 	}
 }
 
@@ -73,12 +73,13 @@ body {
 	width: 270px;
 	min-height: calc(100vh -  (#{$lh} * 4) -  (#{$lh} * 2));
 	padding-top: $lh * 3;
+	overflow: hidden;
 	.contact & {
 		padding-top: $lh * 2;
 		width: 100%;
 	}
 	@include respond-to(mobile-x2) {
-		width: 330px;
+		width: 340px;
 		.contact & {
 			width: 100%;
 		}
@@ -89,14 +90,14 @@ body {
 	@include respond-to(tablet) {
 		width: 100%;
 		min-height: calc(100vh -  (#{$tablet-lh} * 5) -  (#{$tablet-lh} * 2));
-		padding-top: $tablet-lh * 5;
+		padding-top: $tablet-lh * 3;
 		.contact & {
 			padding-top: $tablet-lh * 2;
 		}
 	}
 	@include respond-to(desktop) {
 		min-height: calc(100vh -  (#{$desktop-lh} * 5) -  (#{$desktop-lh} * 2));
-		padding-top: $desktop-lh * 5;
+		padding-top: $desktop-lh * 4;
 		.contact & {
 			padding-top: $desktop-lh * 3;
 		}

@@ -1,268 +1,118 @@
 
 // Work Landing Layout
+.landing-page--work {
+	@include respond-to(tablet) {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -36px;
+	}
+	@include respond-to(desktop) {
+		margin-right: -42px;
+	}
 
+	@include respond-to(desktop-1440) {
+		margin-right: -56px;
+	}
+	@include respond-to(desktop-1600) {
+		margin-right: -42px;
+	}
+}
 .project-preview {
 	overflow: hidden;
-	margin-bottom: $lh * 2;
-	.landing-section--main & {
-		&:last-child {
-			margin-bottom: 0;
+	margin-bottom: $lh;
+	@include respond-to(tablet) {
+		margin-bottom: $tablet-lh;
+		padding-right: 36px;
+		flex: 0 0 50%;
+	}
+
+	@include respond-to(desktop) {
+		margin-bottom: $desktop-lh;
+		padding-right: 42px;
+	}
+
+	@include respond-to(desktop-1440) {
+		padding-right: 56px;
+	}
+
+	@include respond-to(desktop-1280) {
+		flex: 0 0 33.333%;
+		&--featured {
+			flex: 0 0 66.666%;
 		}
 	}
-	@include respond-to(tablet) {
-		margin-bottom: $tablet-lh * 3;
-	}
-	@include respond-to(desktop) {
-		margin-bottom: $desktop-lh * 3;
+	@include respond-to(desktop-1600) {
+		padding-right: 42px;
 	}
 }
 
-.project-preview__image {
-	position: relative;
-	&--main {
-		height: 168px;
-	}
-	&--drawing {
-		height: 192px;
-	}
-	&--craft,
-	&--diagram {
-		height: 72px;
-	}
-	@include respond-to(mobile-ls) {
-		&--main {
-			height: 144px;
-		}
-		&--drawing {
-			height: 144px;
-		}
-		&--craft,
-		&--diagram {
-			height: 72px;
-		}
-	}
+.project-preview--featured {
 	@include respond-to(tablet) {
-		&--main,
-		&--drawing {
-			height: 260px;
-		}
-		&--craft,
-		&--diagram {
-			height: 130px;
+		.project-preview__thumbs {
+			height: 234px;
 		}
 	}
 	@include respond-to(desktop) {
-		&--main,
-		&--drawing {
+		.project-preview__thumbs {
 			height: 320px;
 		}
-		&--craft,
-		&--diagram {
-			height: 160px;
-		}
 	}
 	@include respond-to(desktop-1280) {
-		&--main,
-		&--drawing {
-			height: 384px;
+		.project-preview__thumbs {
+			display: flex;
+			flex-wrap: wrap;
+			height: 288px;
 		}
-		&--craft,
-		&--diagram {
-			height: 192px;
+	
+		.project-preview__thumbs__right-col {
+			display: flex;
+			flex-direction: column;
+		}
+	
+		.project-preview__image--drawing,
+		.project-preview__thumbs__right-col  {
+			flex: 0 0 20%;
+		}
+		.project-preview__image--diagram,
+		.project-preview__image--craft {
+			flex: 0 0 50%;
+		}
+		.project-preview__image--main {
+			flex: 0 0 60%;
+		}
+	}
+	@include respond-to(desktop-1440) {
+		.project-preview__thumbs {
+			height: 288px;
 		}
 	}
 	@include respond-to(desktop-1600) {
-		&--main,
-		&--drawing {
-			height: 512px;
-		}
-		&--craft,
-		&--diagram {
-			height: 256px;
+		.project-preview__thumbs {
+			height: 352px;
 		}
 	}
 }
+
 .project-preview__thumbs {
-	margin-top: $lh;
-	@include respond-to(tablet) {
-		margin-top: $tablet-lh;
-	}
-	@include respond-to(desktop) {
-		margin-top: $desktop-lh;
-	}
-}
-
-.project-preview__thumbs--portrait {
-	display: flex;
-	flex-wrap: wrap;
-	.project-preview__image--main {
-		flex: 0 0 100%;
-	}	
-	.project-preview__image--drawing {
-		flex: 0 0 50%;
-	}
-	.project-preview__thumbs__right-col {
-		display: flex;
-		flex-wrap: wrap;
-		flex: 0 0 50%;
-		.project-preview__image {
-			flex: 0 0 100%;
-		}
-	}
+	position: relative;
+	height: 240px;
 	@include respond-to(mobile-ls) {
-		.project-preview__image--main {
-			flex: 0 0 260px;
-		}
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			flex: 0 0 90px;
-		}
+		height: 264px;
 	}
 	@include respond-to(tablet) {
-		.project-preview__image--main {
-			flex: 0 0 384px;
-		}
-		.project-preview__image--drawing {
-			flex: 0 0 168px;
-		}
-		.project-preview__thumbs__right-col {
-			flex: 0 0 168px;
-		}
+		height: 208px;
 	}
 	@include respond-to(desktop) {
-		.project-preview__image--main {
-			flex: 0 0 532px;
-		}
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			flex: 0 0 210px;
-		}
+		height: 288px;
 	}
 	@include respond-to(desktop-1280) {
-		.project-preview__image--main {
-			flex: 0 0 630px;
-		}
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			flex: 0 0 266px;
-		}
-	}
-	@include respond-to(desktop-1440) {
-		.project-preview__image--main {
-			flex: 0 0 700px;
-		}
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			flex: 0 0 322px;
-		}
+		height: 256px;
 	}
 	@include respond-to(desktop-1600) {
-		.project-preview__image--main {
-			flex: 0 0 784px;
-		}
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			flex: 0 0 364px;
-		}
+		height: 288px;
 	}
 }
 
-.project-preview__thumbs--landscape {
-	.project-preview__image--drawing {
-		height: 96px;
-	}
-	.project-preview__thumbs__right-col {
-		display: flex;
-		flex-wrap: wrap;
-		.project-preview__image {
-			flex: 0 0 50%;
-		}		
-	}
-	@include respond-to(mobile-ls) {
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: column;
-		height: 144px;
-		.project-preview__image--drawing {
-			height: 72px;
-			width: 180px;
-			flex: 0 0 50%;
-		}
-		.project-preview__image--craft,
-		.project-preview__image--diagram {
-				flex: 0 0 100%;
-		}
-		.project-preview__image--main {
-			flex: 0 0 100%;
-			width: 260px;
-		}
-		.project-preview__thumbs__right-col {
-			display: flex;
-			flex-wrap: wrap;
-			flex: 0 0 50%;
-			width: 180px;
-		}
-	}
-	@include respond-to(tablet) {
-		height: 260px;
-		.project-preview__image--drawing {
-			width: 336px;
-			flex: 0 0 50%;
-		}
-		.project-preview__image--craft,
-		.project-preview__image--diagram {
-				flex: 0 0 100%;
-		}
-		.project-preview__image--main {
-			flex: 0 0 100%;
-			width: 384px;
-		}
-		.project-preview__thumbs__right-col {
-			display: flex;
-			flex-wrap: wrap;
-			flex: 0 0 50%;
-			width: 336px;
-		}
-	}
-	@include respond-to(desktop) {
-		height: 320px;
-		.project-preview__image--main {
-			width: 532px;
-		}		
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			width: 420px;
-		}
-	}
-	@include respond-to(desktop-1280) {
-		height: 384px;
-		.project-preview__image--main {
-			width: 630px;
-		}		
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			width: 532px;
-		}
-	}
-	@include respond-to(desktop-1440) {
-		.project-preview__image--main {
-			width: 700px;
-		}		
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			width: 644px;
-		}
-	}
-	@include respond-to(desktop-1600) {
-		height: 512px;
-		.project-preview__image--main {
-			width: 784px;
-		}		
-		.project-preview__image--drawing,
-		.project-preview__thumbs__right-col {
-			width: 728px;
-		}
-	}
+.project-preview__image--main {
+	height: 100%;
 }
-
-// Work inner

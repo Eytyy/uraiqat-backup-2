@@ -1,86 +1,85 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _react = _interopRequireWildcard(require("react"));
 
-var _react = require('react');
+var _reactRouterDom = require("react-router-dom");
 
-var _react2 = _interopRequireDefault(_react);
+var _Preview = _interopRequireDefault(require("../../components/Preview"));
 
-var _reactRouterDom = require('react-router-dom');
+var _PostMediaImage = _interopRequireDefault(require("../home/PostMediaImage"));
 
-var _Preview = require('../../components/Preview');
-
-var _Preview2 = _interopRequireDefault(_Preview);
-
-var _PostMediaImage = require('../home/PostMediaImage');
-
-var _PostMediaImage2 = _interopRequireDefault(_PostMediaImage);
-
-var _helpers = require('../../helpers');
+var _helpers = require("../../helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var RelatedProject = function (_Component) {
-	_inherits(RelatedProject, _Component);
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	function RelatedProject() {
-		_classCallCheck(this, RelatedProject);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-		return _possibleConstructorReturn(this, (RelatedProject.__proto__ || Object.getPrototypeOf(RelatedProject)).apply(this, arguments));
-	}
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-	_createClass(RelatedProject, [{
-		key: 'render',
-		value: function render() {
-			var _props = this.props,
-			    content = _props.content,
-			    id = _props.id,
-			    type = _props.type;
-			var previewMainThumbnail = content.previewMainThumbnail,
-			    year = content.year,
-			    title = content.title;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-			return _react2.default.createElement(
-				_Preview2.default,
-				{ classList: 'post-preview post-preview--default post-preview--landscape related-item related-item--project' },
-				_react2.default.createElement(
-					_reactRouterDom.Link,
-					{ className: 'post-preview__link', to: '/' + (type === 'atelierProject' ? 'atelier' : 'work') + '/' + id },
-					year && _react2.default.createElement(
-						'div',
-						{ className: 'post-preview__meta' },
-						(0, _helpers.formatDate)(year),
-						' ',
-						_react2.default.createElement(
-							'span',
-							{ className: 'post-preview__meta__title' },
-							' -> ',
-							'Project'
-						)
-					),
-					_react2.default.createElement(_PostMediaImage2.default, { query: 'w=1020', orientation: 'landscape', patternId: 'related-project', content: previewMainThumbnail }),
-					title && _react2.default.createElement(
-						'h3',
-						{ className: 'post-preview__title title' },
-						title,
-						' -> '
-					)
-				)
-			);
-		}
-	}]);
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-	return RelatedProject;
+var RelatedProject =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(RelatedProject, _Component);
+
+  function RelatedProject() {
+    _classCallCheck(this, RelatedProject);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(RelatedProject).apply(this, arguments));
+  }
+
+  _createClass(RelatedProject, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          content = _this$props.content,
+          id = _this$props.id,
+          type = _this$props.type;
+      var previewMainThumbnail = content.previewMainThumbnail,
+          year = content.year,
+          title = content.title;
+      return _react.default.createElement(_Preview.default, {
+        classList: "post-preview post-preview--default post-preview--landscape related-item related-item--project"
+      }, _react.default.createElement(_reactRouterDom.Link, {
+        className: "post-preview__link",
+        to: "/".concat(type === 'atelierProject' ? 'atelier' : 'work', "/").concat(id)
+      }, year && _react.default.createElement("div", {
+        className: "post-preview__meta"
+      }, (0, _helpers.formatDate)(year), " ", _react.default.createElement("span", {
+        className: "post-preview__meta__title"
+      }, ' -> ', "Project")), _react.default.createElement(_PostMediaImage.default, {
+        query: 'w=1020',
+        orientation: "landscape",
+        patternId: "related-project",
+        content: previewMainThumbnail
+      }), title && _react.default.createElement("h3", {
+        className: "post-preview__title title"
+      }, title, ' -> ')));
+    }
+  }]);
+
+  return RelatedProject;
 }(_react.Component);
 
-exports.default = RelatedProject;
+var _default = RelatedProject;
+exports.default = _default;

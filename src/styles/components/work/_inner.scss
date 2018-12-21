@@ -207,7 +207,7 @@
 	}
 	@include respond-to(desktop-1440) {
 		.slide__image {
-			height: 512px;
+			height: 448px;
 		}
 	}
 	@include respond-to(desktop-1600) {

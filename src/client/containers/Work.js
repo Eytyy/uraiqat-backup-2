@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { fetchProjects } from '../actions';
 import { isProjectsFetching, getProjects } from '../reducers';
 
-import Landing from '../components/landing/Landing';
+import LandingWork from '../components/landing/LandingWork';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class Work extends Component {
@@ -20,10 +20,9 @@ class Work extends Component {
 	render() {
 		const { isFetching, content } = this.props;
 		if (isFetching && content.length === 0 || content.length === 0 ) {
-			// return <LoadingPattern />;
-			return <div></div>;
+			return <LoadingPattern />;
 		}
-		return <Landing content={content} page='work'></Landing>;
+		return <LandingWork content={content} />;
 	}
 }
 

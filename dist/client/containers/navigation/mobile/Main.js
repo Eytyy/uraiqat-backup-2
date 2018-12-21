@@ -1,43 +1,44 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _PatternChunk = _interopRequireDefault(require("../../../components/patterns/PatternChunk"));
 
-var _PatternChunk = require('../../../components/patterns/PatternChunk');
-
-var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
-
-var _NavItem = require('./NavItem');
-
-var _NavItem2 = _interopRequireDefault(_NavItem);
+var _NavItem = _interopRequireDefault(require("./NavItem"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Main = function Main(_ref) {
-	var navigation = _ref.navigation,
-	    adjust = _ref.adjust;
-
-	return _react2.default.createElement(
-		'div',
-		{ className: 'header--mobile__main' },
-		navigation.map(function (_ref2, index) {
-			var link = _ref2.link,
-			    glyph = _ref2.glyph,
-			    name = _ref2.name;
-			return _react2.default.createElement(
-				'div',
-				{ key: 'mobile-link--' + index, className: 'header-mobile__main__item' },
-				_react2.default.createElement(_NavItem2.default, { adjust: adjust, name: name, link: link, glyph: glyph }),
-				_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: name.length + glyph.content.length + 2 })
-			);
-		}),
-		_react2.default.createElement(_PatternChunk2.default, { adjust: adjust, reserved: 0 })
-	);
+  var navigation = _ref.navigation,
+      adjust = _ref.adjust;
+  return _react.default.createElement("div", {
+    className: "header--mobile__main"
+  }, navigation.map(function (_ref2, index) {
+    var link = _ref2.link,
+        glyph = _ref2.glyph,
+        name = _ref2.name;
+    return _react.default.createElement("div", {
+      key: "mobile-link--".concat(index),
+      className: "header-mobile__main__item"
+    }, _react.default.createElement(_NavItem.default, {
+      adjust: adjust,
+      name: name,
+      link: link,
+      glyph: glyph
+    }), _react.default.createElement(_PatternChunk.default, {
+      adjust: adjust,
+      reserved: name.length + glyph.content.length + 2
+    }));
+  }), _react.default.createElement(_PatternChunk.default, {
+    adjust: adjust,
+    reserved: 0
+  }));
 };
 
-exports.default = Main;
+var _default = Main;
+exports.default = _default;

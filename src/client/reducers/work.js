@@ -1,32 +1,5 @@
 import { combineReducers } from 'redux';
 
-const BySection = (state = {
-	main: [],
-	featured: [],
-	isFetching: false,
-}, action) => {
-	switch (action.type) {
-	case 'REQUEST_PROJECTS':
-		return {
-			...state,
-			isFetching: true,
-		};
-	case 'RECIEVE_PROJECTS': //eslint-disable-line
-		const main = action.response[0].fields.mainContent ?
-			action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
-		const featured = action.response[0].fields.featuredContent ?
-			action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
-		return {
-			...state,
-			isFetching: false,
-			main,
-			featured,
-		};
-	default:
-		return state;
-	}
-};
-
 const All = (state = {
 	content: [],
 	isFetching: false,
@@ -39,14 +12,11 @@ const All = (state = {
 			isFetching: true,
 		};
 	case 'RECIEVE_PROJECTS': //eslint-disable-line
-		const featured = action.response[0].fields.featuredContent ?
-			action.response[0].fields.featuredContent.map(({ sys }) => sys.id) : [];
 		const mainContent = action.response[0].fields.mainContent ? 
 			action.response[0].fields.mainContent.map(({ sys }) => sys.id) : [];
-		const ids = mainContent.concat(featured);
 		return {
 			...state,
-			content: ids,
+			content: mainContent,
 			isFetching: false,
 			fetchedAll: true,
 		};
@@ -86,15 +56,6 @@ const ById = (state = {
 				};
 			});
 		}
-		if (typeof action.response[0].fields.featuredContent !== 'undefined') {
-			action.response[0].fields.featuredContent.forEach(({ fields, sys }) => {
-				ids[sys.id] = {
-					id: sys.id,
-					...fields,
-				};
-			});
-		}
-
 		return {
 			...state,
 			...ids,
@@ -126,15 +87,11 @@ const ById = (state = {
 const work = combineReducers({
 	All,
 	ById,
-	BySection,
 });
 
 export const getIsFetching = state => state.All.isFetching;
 
-export const getAll = state => ({
-	mainContent: state.BySection.main.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10)),
-	featuredContent: state.BySection.featured.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10)),
-});
+export const getAll = state => state.All.content;
 
 export const getProject = (state, id) => state.ById[id];
 

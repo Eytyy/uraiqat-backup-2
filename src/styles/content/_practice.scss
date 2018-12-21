@@ -19,14 +19,14 @@
 
 .practice-section__inner {
 	padding: $lh 0 0 0;
-	margin-bottom: $lh * 2;
+	margin-bottom: $lh;
 	.practice-section--team & {
 		width: 100%;
 		margin-bottom: $lh;
 	}
 	@include respond-to(tablet) {
-		padding: ($tablet-lh * 2)  0 0 ($tablet-char-width * 5);
-		margin-bottom: $tablet-lh * 3;
+		padding: $tablet-lh  0 0 ($tablet-char-width * 5);
+		margin-bottom: $tablet-lh * 2;
 		.practice-section--team & {
 			width: 100%;
 			margin-bottom: $tablet-lh;
@@ -34,15 +34,15 @@
 	}
 	@include respond-to(desktop) {
 		width: 882px;
-		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 5);
-		margin-bottom: $desktop-lh * 3;
+		padding: $desktop-lh 0 0 ($desktop-char-width * 5);
+		margin-bottom: $desktop-lh * 2;
 		.practice-section--team & {
 			width: 100%;
 			margin-bottom: $desktop-lh;
 		}
 	}
 	@include respond-to(desktop-1600) {
-		padding: ($desktop-lh * 2) 0 0 ($desktop-char-width * 6);
+		padding: $desktop-lh 0 0 ($desktop-char-width * 6);
 		width: 1008px;
 	}
 }

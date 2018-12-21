@@ -89,8 +89,12 @@ const config = {
 			h: 168,
 		},
 		'project-main-thumb': {
+			w: 340,
+			h: 240,
+		},
+		'project-main-thumb--featured': {
 			w: 270,
-			h: 168,
+			h: 240,
 		},
 		'post-slider': {
 			w: 270,
@@ -179,8 +183,12 @@ const config = {
 			h: 240,
 		},
 		'project-main-thumb': {
-			w: 330,
-			h: 168,
+			w: 340,
+			h: 240,
+		},
+		'project-main-thumb--featured': {
+			w: 340,
+			h: 240,
 		},
 		'post-slider': {
 			w: 330,
@@ -269,8 +277,12 @@ const config = {
 			h: 120,
 		},
 		'project-main-thumb': {
-			w: 260,
-			h: 144,
+			w: 340,
+			h: 240,
+		},
+		'project-main-thumb--featured': {
+			w: 340,
+			h: 240,
 		},
 		'post-slider': {
 			w: 380,
@@ -367,16 +379,12 @@ const config = {
 			h: 416,
 		},
 		'project-main-thumb': {
-			w: 384,
-			h: 260,
+			w: 342,
+			h: 208,
 		},
-		'project-drawing-thumb--portrait': {
-			w: 168,
-			h: 260,
-		},
-		'project-drawing-thumb--landscape': {
-			w: 336,
-			h: 130,
+		'project-main-thumb--featured': {
+			w: 342,
+			h: 234,
 		},
 		'project-other-thumb': {
 			w: 168,
@@ -457,7 +465,11 @@ const config = {
 			h: 512,
 		},
 		'project-main-thumb': {
-			w: 532,
+			w: 455,
+			h: 288,
+		},
+		'project-main-thumb--featured': {
+			w: 342,
 			h: 320,
 		},
 		'project-drawing-thumb--portrait': {
@@ -547,16 +559,12 @@ const config = {
 			h: 512,
 		},
 		'project-main-thumb': {
-			w: 630,
-			h: 352,
+			w: 359,
+			h: 256,
 		},
-		'project-drawing-thumb--portrait': {
-			w: 266,
-			h: 352,
-		},
-		'project-drawing-thumb--landscape': {
-			w: 532,
-			h: 176,
+		'project-main-thumb--featured': {
+			w: 760,
+			h: 288,
 		},
 		'project-other-thumb': {
 			w: 266,
@@ -637,16 +645,12 @@ const config = {
 			h: 512,
 		},
 		'project-main-thumb': {
-			w: 700,
-			h: 416,
+			w: 410,
+			h: 256,
 		},
-		'project-drawing-thumb--portrait': {
-			w: 322,
-			h: 416,
-		},
-		'project-drawing-thumb--landscape': {
-			w: 644,
-			h: 208,
+		'project-main-thumb--featured': {
+			w: 878,
+			h: 288,
 		},
 		'project-other-thumb': {
 			w: 322,
@@ -727,16 +731,12 @@ const config = {
 			h: 512,
 		},
 		'project-main-thumb': {
-			w: 784,
-			h: 512,
+			w: 476,
+			h: 288,
 		},
-		'project-drawing-thumb--portrait': {
-			w: 364,
-			h: 512,
-		},
-		'project-drawing-thumb--landscape': {
-			w: 728,
-			h: 256,
+		'project-main-thumb--featured': {
+			w: 994,
+			h: 352,
 		},
 		'project-other-thumb': {
 			w: 364,

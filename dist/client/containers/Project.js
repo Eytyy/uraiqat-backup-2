@@ -1,281 +1,230 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _reactRouterDom = require("react-router-dom");
 
-var _react = require('react');
+var _reactRedux = require("react-redux");
 
-var _react2 = _interopRequireDefault(_react);
+var _redux = require("redux");
 
-var _reactRouterDom = require('react-router-dom');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactRedux = require('react-redux');
+var _actions = require("../actions");
 
-var _redux = require('redux');
+var _reducers = require("../reducers");
 
-var _propTypes = require('prop-types');
+var _CommaSeparatedList = _interopRequireDefault(require("../components/CommaSeparatedList"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _BodyText = _interopRequireDefault(require("../components/BodyText"));
 
-var _actions = require('../actions');
+var _Slider = _interopRequireDefault(require("./Slider"));
 
-var _reducers = require('../reducers');
+var _RelatedPosts = _interopRequireDefault(require("../components/related/RelatedPosts"));
 
-var _CommaSeparatedList = require('../components/CommaSeparatedList');
+var _InnerNav = _interopRequireDefault(require("../components/InnerNav"));
 
-var _CommaSeparatedList2 = _interopRequireDefault(_CommaSeparatedList);
-
-var _BodyText = require('../components/BodyText');
-
-var _BodyText2 = _interopRequireDefault(_BodyText);
-
-var _Slider = require('./Slider');
-
-var _Slider2 = _interopRequireDefault(_Slider);
-
-var _RelatedPosts = require('../components/related/RelatedPosts');
-
-var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
-
-var _InnerNav = require('../components/InnerNav');
-
-var _InnerNav2 = _interopRequireDefault(_InnerNav);
-
-var _LoadingPattern = require('../components/patterns/LoadingPattern');
-
-var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
+var _LoadingPattern = _interopRequireDefault(require("../components/patterns/LoadingPattern"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Project = function (_Component) {
-	_inherits(Project, _Component);
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	//eslint-disable-line
-	function Project() {
-		_classCallCheck(this, Project);
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-		var _this = _possibleConstructorReturn(this, (Project.__proto__ || Object.getPrototypeOf(Project)).call(this));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-		_this.state = {
-			isAboutVisible: false,
-			shouldAboutRetract: true
-		};
-		_this.toggleAbout = _this.toggleAbout.bind(_this);
-		return _this;
-	}
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-	_createClass(Project, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var _this2 = this;
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-			var fetchProjects = this.props.fetchProjects;
+var Project =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Project, _Component);
 
-			fetchProjects().then(function () {
-				var shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
-				_this2.setState({
-					shouldAboutRetract: shouldAboutRetract
-				});
-			});
-		}
-	}, {
-		key: 'toggleAbout',
-		value: function toggleAbout() {
-			this.setState({
-				isAboutVisible: !this.state.isAboutVisible
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _props = this.props,
-			    content = _props.content,
-			    innerNavContent = _props.innerNavContent,
-			    isFetching = _props.isFetching,
-			    match = _props.match;
+  //eslint-disable-line
+  function Project() {
+    var _this;
 
-			if (isFetching || typeof content.id === 'undefined') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loader' },
-					_react2.default.createElement(_LoadingPattern2.default, null)
-				);
-			}
-			var title = content.title,
-			    aboutTheProject = content.aboutTheProject,
-			    drawings = content.drawings,
-			    mainSlider = content.mainSlider,
-			    location = content.location,
-			    year = content.year,
-			    budget = content.budget,
-			    area = content.area,
-			    status = content.status,
-			    typology = content.typology;
+    _classCallCheck(this, Project);
 
-			return _react2.default.createElement(
-				'article',
-				{ className: 'project' },
-				_react2.default.createElement(
-					'header',
-					null,
-					_react2.default.createElement(
-						'h1',
-						{ className: 'main-title' },
-						title
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'project__top' },
-					mainSlider && _react2.default.createElement(
-						'div',
-						{ className: 'project__media' },
-						_react2.default.createElement(_Slider2.default, {
-							classList: 'slider--main',
-							sliderName: 'project-main-slider',
-							sliderId: content.id + 'm',
-							imagesQuery: '?fl=progressive&w=826',
-							contentTitle: title,
-							content: mainSlider
-						})
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'project__meta' },
-						typology && _react2.default.createElement(_CommaSeparatedList2.default, { classList: '', content: typology }),
-						location && _react2.default.createElement(
-							'div',
-							{ className: 'project__meta__item' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'label' },
-								'Location: '
-							),
-							location
-						),
-						year && _react2.default.createElement(
-							'div',
-							{ className: 'project__meta__item' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'label' },
-								'Year: '
-							),
-							year
-						),
-						area && _react2.default.createElement(
-							'div',
-							{ className: 'project__meta__item' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'label' },
-								'Area: '
-							),
-							area
-						),
-						budget && _react2.default.createElement(
-							'div',
-							{ className: 'project__meta__item' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'label' },
-								'Budget: '
-							),
-							budget
-						),
-						status && _react2.default.createElement(
-							'div',
-							{ className: 'project__meta__item' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'label' },
-								'Status: '
-							),
-							status
-						)
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'project__bottom' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'project__about ' + (this.state.isAboutVisible ? 'js-isExpanded' : '') },
-						_react2.default.createElement(_BodyText2.default, { content: aboutTheProject }),
-						this.state.shouldAboutRetract && _react2.default.createElement(
-							'span',
-							{ className: 'toggle-project-about', onClick: this.toggleAbout },
-							this.state.isAboutVisible ? '- read less' : '+ read more'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'project__drawings' },
-						drawings && _react2.default.createElement(_Slider2.default, {
-							type: 'drawings',
-							contentTitle: title,
-							sliderName: 'project-drawings-slider',
-							sliderId: content.id + 'd',
-							classList: 'slider--small',
-							imagesQuery: '?fl=progressive&w=668',
-							content: drawings
-						})
-					)
-				),
-				_react2.default.createElement(
-					'aside',
-					{ className: 'related-content project__related' },
-					_react2.default.createElement(_RelatedPosts2.default, { id: match.params.id })
-				),
-				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'work' }))
-			);
-		}
-	}], [{
-		key: 'fetchData',
-		value: function fetchData(store) {
-			return store.dispatch((0, _actions.fetchProjects)());
-		}
-	}]);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Project).call(this));
+    _this.state = {
+      isAboutVisible: false,
+      shouldAboutRetract: true
+    };
+    _this.toggleAbout = _this.toggleAbout.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
 
-	return Project;
+  _createClass(Project, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var fetchProjects = this.props.fetchProjects;
+      fetchProjects().then(function () {
+        var shouldAboutRetract = document.querySelectorAll('.project__about .field-body p').length > 1 ? true : false;
+
+        _this2.setState({
+          shouldAboutRetract: shouldAboutRetract
+        });
+      });
+    }
+  }, {
+    key: "toggleAbout",
+    value: function toggleAbout() {
+      this.setState({
+        isAboutVisible: !this.state.isAboutVisible
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          content = _this$props.content,
+          innerNavContent = _this$props.innerNavContent,
+          isFetching = _this$props.isFetching,
+          match = _this$props.match;
+
+      if (isFetching || typeof content.id === 'undefined') {
+        return _react.default.createElement("div", {
+          className: "loader"
+        }, _react.default.createElement(_LoadingPattern.default, null));
+      }
+
+      var title = content.title,
+          aboutTheProject = content.aboutTheProject,
+          drawings = content.drawings,
+          mainSlider = content.mainSlider,
+          location = content.location,
+          year = content.year,
+          budget = content.budget,
+          area = content.area,
+          status = content.status,
+          typology = content.typology;
+      return _react.default.createElement("article", {
+        className: "project"
+      }, _react.default.createElement("header", null, _react.default.createElement("h1", {
+        className: "main-title"
+      }, title)), _react.default.createElement("div", {
+        className: "project__top"
+      }, mainSlider && _react.default.createElement("div", {
+        className: "project__media"
+      }, _react.default.createElement(_Slider.default, {
+        classList: "slider--main",
+        sliderName: "project-main-slider",
+        sliderId: "".concat(content.id, "m"),
+        imagesQuery: '?fl=progressive&w=826',
+        contentTitle: title,
+        content: mainSlider
+      })), _react.default.createElement("div", {
+        className: "project__meta"
+      }, typology && _react.default.createElement(_CommaSeparatedList.default, {
+        classList: "",
+        content: typology
+      }), location && _react.default.createElement("div", {
+        className: "project__meta__item"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Location: "), location), year && _react.default.createElement("div", {
+        className: "project__meta__item"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Year: "), year), area && _react.default.createElement("div", {
+        className: "project__meta__item"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Area: "), area), budget && _react.default.createElement("div", {
+        className: "project__meta__item"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Budget: "), budget), status && _react.default.createElement("div", {
+        className: "project__meta__item"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Status: "), status))), _react.default.createElement("div", {
+        className: "project__bottom"
+      }, _react.default.createElement("div", {
+        className: "project__about ".concat(this.state.isAboutVisible ? 'js-isExpanded' : '')
+      }, _react.default.createElement(_BodyText.default, {
+        content: aboutTheProject
+      }), this.state.shouldAboutRetract && _react.default.createElement("span", {
+        className: "toggle-project-about",
+        onClick: this.toggleAbout
+      }, this.state.isAboutVisible ? '- read less' : '+ read more')), _react.default.createElement("div", {
+        className: "project__drawings"
+      }, drawings && _react.default.createElement(_Slider.default, {
+        type: "drawings",
+        contentTitle: title,
+        sliderName: "project-drawings-slider",
+        sliderId: "".concat(content.id, "d"),
+        classList: "slider--small",
+        imagesQuery: '?fl=progressive&w=668',
+        content: drawings
+      }))), _react.default.createElement("aside", {
+        className: "related-content project__related"
+      }, _react.default.createElement(_RelatedPosts.default, {
+        id: match.params.id
+      })), _react.default.createElement(_InnerNav.default, _extends({}, innerNavContent, {
+        type: "work"
+      })));
+    }
+  }], [{
+    key: "fetchData",
+    value: function fetchData(store) {
+      return store.dispatch((0, _actions.fetchProjects)());
+    }
+  }]);
+
+  return Project;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-	var match = ownProps.match;
-
-	var id = match.params.id;
-	return {
-		content: (0, _reducers.getProject)(state, id),
-		innerNavContent: (0, _reducers.getNextPrev)(state, id, 'work'),
-		isFetching: (0, _reducers.isProjectsFetching)(state)
-	};
+  var match = ownProps.match;
+  var id = match.params.id;
+  return {
+    content: (0, _reducers.getProject)(state, id),
+    innerNavContent: (0, _reducers.getNextPrev)(state, id, 'work'),
+    isFetching: (0, _reducers.isProjectsFetching)(state)
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchProjects: _actions.fetchProjects }, dispatch);
+  return (0, _redux.bindActionCreators)({
+    fetchProjects: _actions.fetchProjects
+  }, dispatch);
 };
 
 Project.propTypes = {
-	content: _propTypes2.default.shape({
-		id: _propTypes2.default.string
-	}),
-	isFetching: _propTypes2.default.bool.isRequired,
-	fetchProjects: _propTypes2.default.func.isRequired
+  content: _propTypes.default.shape({
+    id: _propTypes.default.string
+  }),
+  isFetching: _propTypes.default.bool.isRequired,
+  fetchProjects: _propTypes.default.func.isRequired
 };
-
 Project.defaultProps = {
-	content: {}
+  content: {}
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Project));
+var _default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Project));
+
+exports.default = _default;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LandingFeatured from './LandingFeatured';
 import LandingChrono from './LandingChrono';
-import BodyText from'../BodyText';
 import throttle from 'lodash/throttle';
 
 class Landing extends Component {
@@ -35,14 +34,12 @@ class Landing extends Component {
 	}
 
 	adjustContainerHeight() {
-		const { intro } = this.props.content;
 		const featured = document.querySelector('.landing-section--featured');
 		const main = document.querySelector('.landing-section--main');
-		const introHeight = intro ? this.intro.offsetHeight + parseInt(window.getComputedStyle(this.intro).getPropertyValue('margin-bottom'), 10) : 0;
 		const featuredHeight = featured ? featured.getBoundingClientRect().height : 0;
 		const mainHeight = main ? main.getBoundingClientRect().height : 0;
 		
-		const newHeight = `${featuredHeight + mainHeight + introHeight}px` ;
+		const newHeight = `${featuredHeight + mainHeight}px` ;
 		this.section.style.height = newHeight;
 	}
 
@@ -68,7 +65,6 @@ class Landing extends Component {
 	
 	render() {
 		const { page, content } = this.props;
-		const { intro } = content;
 		const { mainContent, featuredContent } = content;
 		const classList = `landing-page landing-page--${page} main-section`;
 		const numberOfVisibleItemsPerScroll = page === 'journal' ? 8 : 3;
@@ -81,12 +77,6 @@ class Landing extends Component {
 
 		return ( 
 			<section ref={(el) => {this.section = el;}} className={classList}>
-				{ page === 'atelier' && intro &&
-					(<div  ref={(el) => {this.intro = el;}} className="atelier-landing__top">
-						<div className="atelier-landing__top__desc">
-							{ intro.desc && <BodyText content={intro.desc} />}
-						</div>
-					</div>)}
 				{ featuredContent && <LandingFeatured page={page} content={this.visibleFeatured}></LandingFeatured>}
 				{ mainContent && <LandingChrono page={page} content={this.visibleMain}></LandingChrono>}
 			</section>

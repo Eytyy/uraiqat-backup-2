@@ -14,7 +14,7 @@ const Main = () => {
 		items : [
 			{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '->' }, size: 'Practice'.length },
 			{ name: 'Work', link: '/work', glyph: { className: 'ind', content: '->' }, size: 'Work'.length },
-			{ name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '->' }, size: 'Atelier'.length },
+			{ name: 'The Atelier', link: '/atelier', glyph: { className: 'ind', content: '->' }, size: 'The Atelier'.length },
 			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '->' }, size: 'Contact'.length },
 		]
 	};

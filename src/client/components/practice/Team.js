@@ -24,12 +24,10 @@ const Team = ({ content, type }) => {
 							)
 						}
 					</div> :
-					<div className="practice-section__team-list">
+					<div className="practice-section__team-previous-list">
 						{
-							content.map(({ sys, fields }) =>
-								<article key={sys.id} className="team-member-preview">
-									<h3 className="team-member-preview__name">{fields.name}</h3>
-								</article>
+							content.map(({ sys, fields }, index) =>
+								<span style={{display: 'inline-block'}} key={sys.id} className="previous-member">{fields.name}{ index === content.length - 1 ? '.' : ', '}</span>
 							)
 						}
 					</div>

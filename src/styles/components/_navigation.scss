@@ -63,6 +63,11 @@
 .website-header__inner--mobile {
 	position: relative;
 }
+
+.header__inner__wrapper {
+	display: flex;
+	justify-content: center;
+}
 .mobile-menu-toggle-overlay {
 	position: absolute;
 	top: -5px;

@@ -1,33 +1,29 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _reactRouterDom = require("react-router-dom");
 
-var _reactRouterDom = require('react-router-dom');
-
-var _PatternChunk = require('../../../components/patterns/PatternChunk');
-
-var _PatternChunk2 = _interopRequireDefault(_PatternChunk);
+var _PatternChunk = _interopRequireDefault(require("../../../components/patterns/PatternChunk"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Second = function Second() {
-	var numberOfStaticItems = 'Architects'.length;
-	return _react2.default.createElement(
-		'div',
-		{ className: 'header--desktop__main__second' },
-		_react2.default.createElement(_PatternChunk2.default, { reserved: numberOfStaticItems }),
-		_react2.default.createElement(
-			_reactRouterDom.NavLink,
-			{ className: 'link', to: '/' },
-			'Architects'
-		)
-	);
+  var numberOfStaticItems = 'Architects'.length;
+  return _react.default.createElement("div", {
+    className: "header--desktop__main__second"
+  }, _react.default.createElement(_PatternChunk.default, {
+    reserved: numberOfStaticItems
+  }), _react.default.createElement(_reactRouterDom.NavLink, {
+    className: "link",
+    to: "/"
+  }, "Architects"));
 };
 
-exports.default = Second;
+var _default = Second;
+exports.default = _default;

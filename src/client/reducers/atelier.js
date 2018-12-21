@@ -1,36 +1,5 @@
 import { combineReducers } from 'redux';
 
-const BySection = (state = {
-	main: [],
-	featured: [],
-	isFetching: false,
-}, action) => {
-	switch (action.type) {
-	case 'REQUEST_ATELIER_PROJECTS':
-		return {
-			...state,
-			isFetching: true,
-		};
-	case 'RECIEVE_ATELIER_PROJECTS': //eslint-disable-line
-		const main = typeof action.response[0].fields.mainContent !== 'undefined' ?
-			action.response[0].fields.mainContent
-				.filter(({ fields }) => typeof fields !== 'undefined')
-				.map(({ sys }) => sys.id) : [];
-		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? 
-			action.response[0].fields.featuredContent
-				.filter(({ fields }) => typeof fields !== 'undefined')
-				.map(({ sys }) => sys.id) : [];
-		return {
-			...state,
-			isFetching: false,
-			main,
-			featured,
-		};
-	default:
-		return state;
-	}
-};
-
 const All = (state = {
 	intro: {},
 	content: [],
@@ -49,12 +18,6 @@ const All = (state = {
 				.filter(({ fields }) => typeof fields !== 'undefined')
 				.map(({ sys }) => sys.id) :
 			[];
-		const featured = typeof action.response[0].fields.featuredContent !== 'undefined' ? 
-			action.response[0].fields.featuredContent
-				.filter(({ fields }) => typeof fields !== 'undefined')
-				.map(({ sys }) => sys.id) :
-			[];
-		const ids = main.concat(featured);
 		const intro = {
 			desc: action.response[0].fields.description,
 			mainMedia: action.response[0].fields.mainMedia,
@@ -62,7 +25,7 @@ const All = (state = {
 		return {
 			...state,
 			intro,
-			content: ids,
+			content: main,
 			isFetching: false,
 			fetchedAll: true,
 		};
@@ -100,12 +63,6 @@ const ById = (state = {
 				...fields,
 			};
 		});
-		action.response[0].fields.featuredContent && action.response[0].fields.featuredContent.forEach(({ fields, sys }) => {
-			ids[sys.id] = {
-				id: sys.id,
-				...fields,
-			};
-		});
 		return {
 			...state,
 			...ids,
@@ -137,20 +94,17 @@ const ById = (state = {
 const atelier = combineReducers({
 	All,
 	ById,
-	BySection,
 });
 
 export const getIsFetching = state => state.All.isFetching;
 
-export const getAll = state => ({
-	intro: state.All.intro,
-	mainContent: state.BySection.main.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10)),
-	featuredContent: state.BySection.featured.sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10)),
-});
+export const getAll = state =>state.All.content;
 
 export const getProject = (state, id) => {
 	return state.ById[id];
 };
+
+export const getIntro  = state => state.All.intro;
 
 export const getNextPrev = (state, id) => {
 	const content = state.All.content;

@@ -124,7 +124,7 @@ class Header extends Component {
 		const navigation = [
 			{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
 			{ name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length },
-			{ name: 'Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'Atelier'.length },
+			{ name: 'The Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'The Atelier'.length },
 			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
 		];
 		const { configs, content } = this.props;
@@ -132,7 +132,7 @@ class Header extends Component {
 		
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
-				<div>
+				<div className="header__inner__wrapper">
 					<NavLink className="link uLink" to="/">U</NavLink>
 					<PatternChunk adjust={adjustForMobile} reserved={2} />
 					<span className="mobile-menu-toggle-overlay" onClick={this.onMenuToggle}></span>
@@ -142,7 +142,7 @@ class Header extends Component {
 							<span className="mobile-menu-toggle link" onClick={this.onMenuToggle}>:</span>
 					}
 				</div>
-				<div><PatternChunk reserved={0} adjust={adjustForMobile} /></div>
+				<div className="header__inner__wrapper"><PatternChunk reserved={0} adjust={adjustForMobile} /></div>
 				{
 					this.state.isVisible && 
 					<div className="menu">

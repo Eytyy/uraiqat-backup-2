@@ -9,11 +9,11 @@
 	}
 	@include respond-to(tablet) {
 		padding-left: $tablet-block-gutter;
-		margin-bottom: $tablet-lh * 2;
+		margin-bottom: $tablet-lh;
 	}
 	@include respond-to(desktop) {
 		padding-left: $desktop-block-gutter;
-		margin-bottom: $desktop-lh * 2;
+		margin-bottom: $desktop-lh;
 	}
 	@include respond-to(desktop-1440) {
 		padding-left: $desktop-1440-block-gutter;

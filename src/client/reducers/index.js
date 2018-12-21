@@ -51,42 +51,33 @@ export const getPost = (state, id) => {
 // Work Selectors
 export const isProjectsFetching = state => fromWork.getIsFetching(state.projects);
 
-export const getProjects = state => {
-	const featuredContent = fromWork.getAll(state.projects).featuredContent ? 
-		fromWork.getAll(state.projects).featuredContent.map(id => fromWork.getProject(state.projects, id)) : [];
-	const mainContent = fromWork.getAll(state.projects).mainContent ?
-		fromWork.getAll(state.projects).mainContent.map(id => fromWork.getProject(state.projects, id)).sort((a, b) => new Date(b.year) - new Date(a.year)) : [];
-	return {
-		featuredContent,
-		mainContent
-	};
-};
-
-export const isProjectFetching = state => fromWork.getIsFetching(state.projects);
-
 export const getProject = (state, id) => {
 	return fromWork.getProject(state.projects, id);
 };
 
-// Atelier Selectors
-export const isAtelierProjectsFetching = state => fromAtelier.getIsFetching(state.atelier);
-
-export const getAtelierProjects = state => {
-	const ALL = fromAtelier.getAll(state.atelier);
-	const featuredContent = ALL.featuredContent.map(id => fromWork.getProject(state.atelier, id));
-	const mainContent = ALL.mainContent.map(id => fromAtelier.getProject(state.atelier, id));
-	return {
-		featuredContent,
-		mainContent,
-		intro: ALL.intro,
-	};
+export const getProjects = state => {
+	return fromWork.getAll(state.projects)
+		.map(id => getProject(state, id));
+	// .sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10));
 };
 
-export const isAtelierProjectFetching = state => fromAtelier.getIsFetching(state.atelier);
+export const isProjectFetching = state => fromWork.getIsFetching(state.projects);
+
+// Atelier Selectors
+export const isAtelierProjectsFetching = state => fromAtelier.getIsFetching(state.atelier);
 
 export const getAtelierProject = (state, id) => {
 	return fromAtelier.getProject(state.atelier, id);
 };
+
+export const getAtelierProjects = state => {
+	return fromAtelier.getAll(state.atelier)
+		.map(id => getAtelierProject(state, id));
+};
+
+export const getAtelierIntro = state => fromAtelier.getIntro(state.atelier);
+
+export const isAtelierProjectFetching = state => fromAtelier.getIsFetching(state.atelier);
 
 export const getNextPrev =(state, id, type) => {
 	switch(type) {

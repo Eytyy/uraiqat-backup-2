@@ -1,268 +1,312 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
-exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.getAtelierProject = exports.isAtelierProjectFetching = exports.getAtelierProjects = exports.isAtelierProjectsFetching = exports.getProject = exports.isProjectFetching = exports.getProjects = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = exports.getAppConfigs = undefined;
+exports.default = exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.isAtelierProjectFetching = exports.getAtelierIntro = exports.getAtelierProjects = exports.getAtelierProject = exports.isAtelierProjectsFetching = exports.isProjectFetching = exports.getProjects = exports.getProject = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = exports.getAppConfigs = void 0;
 
-var _redux = require('redux');
+var _redux = require("redux");
 
-var _app = require('./app');
+var fromApp = _interopRequireWildcard(require("./app"));
 
-var fromApp = _interopRequireWildcard(_app);
+var fromHome = _interopRequireWildcard(require("./home"));
 
-var _home = require('./home');
+var fromWork = _interopRequireWildcard(require("./work"));
 
-var fromHome = _interopRequireWildcard(_home);
+var fromAtelier = _interopRequireWildcard(require("./atelier"));
 
-var _work = require('./work');
+var fromRelated = _interopRequireWildcard(require("./related"));
 
-var fromWork = _interopRequireWildcard(_work);
+var fromGallery = _interopRequireWildcard(require("./gallery"));
 
-var _atelier = require('./atelier');
+var fromSearch = _interopRequireWildcard(require("./search"));
 
-var fromAtelier = _interopRequireWildcard(_atelier);
+var fromPractice = _interopRequireWildcard(require("./practice"));
 
-var _related = require('./related');
+var fromContact = _interopRequireWildcard(require("./contact"));
 
-var fromRelated = _interopRequireWildcard(_related);
-
-var _gallery = require('./gallery');
-
-var fromGallery = _interopRequireWildcard(_gallery);
-
-var _search = require('./search');
-
-var fromSearch = _interopRequireWildcard(_search);
-
-var _practice = require('./practice');
-
-var fromPractice = _interopRequireWildcard(_practice);
-
-var _contact = require('./contact');
-
-var fromContact = _interopRequireWildcard(_contact);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var RootReducer = (0, _redux.combineReducers)({
-	app: fromApp.default,
-	posts: fromHome.default,
-	projects: fromWork.default,
-	atelier: fromAtelier.default,
-	related: fromRelated.default,
-	gallery: fromGallery.default,
-	search: fromSearch.default,
-	practice: fromPractice.default,
-	contact: fromContact.default
-});
+  app: fromApp.default,
+  posts: fromHome.default,
+  projects: fromWork.default,
+  atelier: fromAtelier.default,
+  related: fromRelated.default,
+  gallery: fromGallery.default,
+  search: fromSearch.default,
+  practice: fromPractice.default,
+  contact: fromContact.default
+}); // App Selectors
 
-// App Selectors
+var getAppConfigs = function getAppConfigs(state) {
+  return fromApp.getConfigs(state.app);
+}; // Home Selectors
 
-var getAppConfigs = exports.getAppConfigs = function getAppConfigs(state) {
-	return fromApp.getConfigs(state.app);
-};
-// Home Selectors
-var isPostsFetching = exports.isPostsFetching = function isPostsFetching(state) {
-	return fromHome.getIsFetching(state.posts);
-};
 
-var getPosts = exports.getPosts = function getPosts(state) {
-	var featuredContent = fromHome.getAll(state.posts).featuredContent.map(function (id) {
-		return fromHome.getPost(state.posts, id);
-	});
-	var mainContent = fromHome.getAll(state.posts).mainContent.map(function (id) {
-		var post = fromHome.getPost(state.posts, id);
-		return post;
-	}).sort(function (a, b) {
-		return new Date(b.date) - new Date(a.date);
-	});
-	return {
-		featuredContent: featuredContent,
-		mainContent: mainContent
-	};
+exports.getAppConfigs = getAppConfigs;
+
+var isPostsFetching = function isPostsFetching(state) {
+  return fromHome.getIsFetching(state.posts);
 };
 
-var isPostFetching = exports.isPostFetching = function isPostFetching(state) {
-	return fromHome.getIsFetching(state.posts);
+exports.isPostsFetching = isPostsFetching;
+
+var getPosts = function getPosts(state) {
+  var featuredContent = fromHome.getAll(state.posts).featuredContent.map(function (id) {
+    return fromHome.getPost(state.posts, id);
+  });
+  var mainContent = fromHome.getAll(state.posts).mainContent.map(function (id) {
+    var post = fromHome.getPost(state.posts, id);
+    return post;
+  }).sort(function (a, b) {
+    return new Date(b.date) - new Date(a.date);
+  });
+  return {
+    featuredContent: featuredContent,
+    mainContent: mainContent
+  };
 };
 
-var getPost = exports.getPost = function getPost(state, id) {
-	return fromHome.getPost(state.posts, id);
+exports.getPosts = getPosts;
+
+var isPostFetching = function isPostFetching(state) {
+  return fromHome.getIsFetching(state.posts);
 };
 
-// Work Selectors
-var isProjectsFetching = exports.isProjectsFetching = function isProjectsFetching(state) {
-	return fromWork.getIsFetching(state.projects);
+exports.isPostFetching = isPostFetching;
+
+var getPost = function getPost(state, id) {
+  return fromHome.getPost(state.posts, id);
+}; // Work Selectors
+
+
+exports.getPost = getPost;
+
+var isProjectsFetching = function isProjectsFetching(state) {
+  return fromWork.getIsFetching(state.projects);
 };
 
-var getProjects = exports.getProjects = function getProjects(state) {
-	var featuredContent = fromWork.getAll(state.projects).featuredContent ? fromWork.getAll(state.projects).featuredContent.map(function (id) {
-		return fromWork.getProject(state.projects, id);
-	}) : [];
-	var mainContent = fromWork.getAll(state.projects).mainContent ? fromWork.getAll(state.projects).mainContent.map(function (id) {
-		return fromWork.getProject(state.projects, id);
-	}).sort(function (a, b) {
-		return new Date(b.year) - new Date(a.year);
-	}) : [];
-	return {
-		featuredContent: featuredContent,
-		mainContent: mainContent
-	};
+exports.isProjectsFetching = isProjectsFetching;
+
+var getProject = function getProject(state, id) {
+  return fromWork.getProject(state.projects, id);
 };
 
-var isProjectFetching = exports.isProjectFetching = function isProjectFetching(state) {
-	return fromWork.getIsFetching(state.projects);
+exports.getProject = getProject;
+
+var getProjects = function getProjects(state) {
+  return fromWork.getAll(state.projects).map(function (id) {
+    return getProject(state, id);
+  }); // .sort((a, b) => parseInt(b.year, 10) - parseInt(a.year, 10));
 };
 
-var getProject = exports.getProject = function getProject(state, id) {
-	return fromWork.getProject(state.projects, id);
+exports.getProjects = getProjects;
+
+var isProjectFetching = function isProjectFetching(state) {
+  return fromWork.getIsFetching(state.projects);
+}; // Atelier Selectors
+
+
+exports.isProjectFetching = isProjectFetching;
+
+var isAtelierProjectsFetching = function isAtelierProjectsFetching(state) {
+  return fromAtelier.getIsFetching(state.atelier);
 };
 
-// Atelier Selectors
-var isAtelierProjectsFetching = exports.isAtelierProjectsFetching = function isAtelierProjectsFetching(state) {
-	return fromAtelier.getIsFetching(state.atelier);
+exports.isAtelierProjectsFetching = isAtelierProjectsFetching;
+
+var getAtelierProject = function getAtelierProject(state, id) {
+  return fromAtelier.getProject(state.atelier, id);
 };
 
-var getAtelierProjects = exports.getAtelierProjects = function getAtelierProjects(state) {
-	var ALL = fromAtelier.getAll(state.atelier);
-	var featuredContent = ALL.featuredContent.map(function (id) {
-		return fromWork.getProject(state.atelier, id);
-	});
-	var mainContent = ALL.mainContent.map(function (id) {
-		return fromAtelier.getProject(state.atelier, id);
-	});
-	return {
-		featuredContent: featuredContent,
-		mainContent: mainContent,
-		intro: ALL.intro
-	};
+exports.getAtelierProject = getAtelierProject;
+
+var getAtelierProjects = function getAtelierProjects(state) {
+  return fromAtelier.getAll(state.atelier).map(function (id) {
+    return getAtelierProject(state, id);
+  });
 };
 
-var isAtelierProjectFetching = exports.isAtelierProjectFetching = function isAtelierProjectFetching(state) {
-	return fromAtelier.getIsFetching(state.atelier);
+exports.getAtelierProjects = getAtelierProjects;
+
+var getAtelierIntro = function getAtelierIntro(state) {
+  return fromAtelier.getIntro(state.atelier);
 };
 
-var getAtelierProject = exports.getAtelierProject = function getAtelierProject(state, id) {
-	return fromAtelier.getProject(state.atelier, id);
+exports.getAtelierIntro = getAtelierIntro;
+
+var isAtelierProjectFetching = function isAtelierProjectFetching(state) {
+  return fromAtelier.getIsFetching(state.atelier);
 };
 
-var getNextPrev = exports.getNextPrev = function getNextPrev(state, id, type) {
-	switch (type) {
-		case 'journal':
-			return fromHome.getNextPrev(state.posts, id);
-		case 'atelier':
-			return fromAtelier.getNextPrev(state.atelier, id);
-		default:
-			return fromWork.getNextPrev(state.projects, id);
-	}
+exports.isAtelierProjectFetching = isAtelierProjectFetching;
+
+var getNextPrev = function getNextPrev(state, id, type) {
+  switch (type) {
+    case 'journal':
+      return fromHome.getNextPrev(state.posts, id);
+
+    case 'atelier':
+      return fromAtelier.getNextPrev(state.atelier, id);
+
+    default:
+      return fromWork.getNextPrev(state.projects, id);
+  }
+}; // Related Selectors
+
+
+exports.getNextPrev = getNextPrev;
+
+var isRelatedFetching = function isRelatedFetching(state) {
+  return fromRelated.getIsFetching(state.related);
 };
 
-// Related Selectors
-var isRelatedFetching = exports.isRelatedFetching = function isRelatedFetching(state) {
-	return fromRelated.getIsFetching(state.related);
-};
-var getRelatedPosts = exports.getRelatedPosts = function getRelatedPosts(state, id, postID) {
-	var content = fromRelated.getPost(state.related, id);
-	if (typeof postID === 'undefined') {
-		var rval = typeof content === 'undefined' ? [] : content;
-		return rval;
-	}
-	return typeof content === 'undefined' ? [] : content.filter(function (_ref) {
-		var sys = _ref.sys;
-		return sys.id !== postID;
-	});
+exports.isRelatedFetching = isRelatedFetching;
+
+var getRelatedPosts = function getRelatedPosts(state, id, postID) {
+  var content = fromRelated.getPost(state.related, id);
+
+  if (typeof postID === 'undefined') {
+    var rval = typeof content === 'undefined' ? [] : content;
+    return rval;
+  }
+
+  return typeof content === 'undefined' ? [] : content.filter(function (_ref) {
+    var sys = _ref.sys;
+    return sys.id !== postID;
+  });
 };
 
-var isRelatedAuthorPostsFetching = exports.isRelatedAuthorPostsFetching = function isRelatedAuthorPostsFetching(state) {
-	return fromRelated.getIsAuthorFetching(state.related);
-};
-var getRelatedAuthorPosts = exports.getRelatedAuthorPosts = function getRelatedAuthorPosts(state, name) {
-	var content = fromRelated.getAuthorPost(state.related, name);
-	return typeof content === 'undefined' ? [] : content;
+exports.getRelatedPosts = getRelatedPosts;
+
+var isRelatedAuthorPostsFetching = function isRelatedAuthorPostsFetching(state) {
+  return fromRelated.getIsAuthorFetching(state.related);
 };
 
-// Gallery Selectors
-var getGalleryContent = exports.getGalleryContent = function getGalleryContent(state) {
-	return fromGallery.getGalleryContent(state.gallery);
+exports.isRelatedAuthorPostsFetching = isRelatedAuthorPostsFetching;
+
+var getRelatedAuthorPosts = function getRelatedAuthorPosts(state, name) {
+  var content = fromRelated.getAuthorPost(state.related, name);
+  return typeof content === 'undefined' ? [] : content;
+}; // Gallery Selectors
+
+
+exports.getRelatedAuthorPosts = getRelatedAuthorPosts;
+
+var getGalleryContent = function getGalleryContent(state) {
+  return fromGallery.getGalleryContent(state.gallery);
 };
 
-var getActiveSlide = exports.getActiveSlide = function getActiveSlide(state, id) {
-	return fromGallery.getActiveSlide(state.gallery, id);
+exports.getGalleryContent = getGalleryContent;
+
+var getActiveSlide = function getActiveSlide(state, id) {
+  return fromGallery.getActiveSlide(state.gallery, id);
+}; // Search Selectors
+
+
+exports.getActiveSlide = getActiveSlide;
+
+var isSearchFetching = function isSearchFetching(state) {
+  return fromSearch.getIsFetching(state.search);
 };
 
-// Search Selectors
-var isSearchFetching = exports.isSearchFetching = function isSearchFetching(state) {
-	return fromSearch.getIsFetching(state.search);
-};
-var getSearchResults = exports.getSearchResults = function getSearchResults(state, query) {
-	var content = fromSearch.getAll(state.search, query);
-	return typeof content === 'undefined' ? [] : content;
+exports.isSearchFetching = isSearchFetching;
+
+var getSearchResults = function getSearchResults(state, query) {
+  var content = fromSearch.getAll(state.search, query);
+  return typeof content === 'undefined' ? [] : content;
+}; // Filters Selectors
+
+
+exports.getSearchResults = getSearchResults;
+
+var getFilters = function getFilters(state) {
+  var content = fromSearch.getFilters(state.search);
+  return typeof content === 'undefined' ? [] : content;
 };
 
-// Filters Selectors
-var getFilters = exports.getFilters = function getFilters(state) {
-	var content = fromSearch.getFilters(state.search);
-	return typeof content === 'undefined' ? [] : content;
+exports.getFilters = getFilters;
+
+var getActiveFilters = function getActiveFilters(state) {
+  return fromSearch.getActiveFilters(state.search);
 };
 
-var getActiveFilters = exports.getActiveFilters = function getActiveFilters(state) {
-	return fromSearch.getActiveFilters(state.search);
+exports.getActiveFilters = getActiveFilters;
+
+var getFilteredContent = function getFilteredContent(state) {
+  var posts = getPosts(state);
+  var filters = getActiveFilters(state).map(function (_ref2) {
+    var title = _ref2.title;
+    return title;
+  });
+
+  if (filters.length > 0) {
+    var featuredContent = posts.featuredContent.filter(function (_ref3) {
+      var category = _ref3.category;
+      return filters.indexOf(category.fields.title) > -1;
+    });
+    var mainContent = posts.mainContent.filter(function (_ref4) {
+      var category = _ref4.category;
+      return filters.indexOf(category.fields.title) > -1;
+    });
+    return {
+      featuredContent: featuredContent,
+      mainContent: mainContent
+    };
+  }
+
+  return posts;
 };
 
-var getFilteredContent = exports.getFilteredContent = function getFilteredContent(state) {
-	var posts = getPosts(state);
-	var filters = getActiveFilters(state).map(function (_ref2) {
-		var title = _ref2.title;
-		return title;
-	});
-	if (filters.length > 0) {
-		var featuredContent = posts.featuredContent.filter(function (_ref3) {
-			var category = _ref3.category;
-			return filters.indexOf(category.fields.title) > -1;
-		});
-		var mainContent = posts.mainContent.filter(function (_ref4) {
-			var category = _ref4.category;
-			return filters.indexOf(category.fields.title) > -1;
-		});
-		return {
-			featuredContent: featuredContent,
-			mainContent: mainContent
-		};
-	}
-	return posts;
+exports.getFilteredContent = getFilteredContent;
+
+var isPracticeFetching = function isPracticeFetching(state) {
+  return fromPractice.getIsFetching(state.practice);
 };
 
-var isPracticeFetching = exports.isPracticeFetching = function isPracticeFetching(state) {
-	return fromPractice.getIsFetching(state.practice);
+exports.isPracticeFetching = isPracticeFetching;
+
+var getPracticeContent = function getPracticeContent(state) {
+  return fromPractice.getContent(state.practice);
 };
 
-var getPracticeContent = exports.getPracticeContent = function getPracticeContent(state) {
-	return fromPractice.getContent(state.practice);
+exports.getPracticeContent = getPracticeContent;
+
+var isTeamMemberFetching = function isTeamMemberFetching(state) {
+  return fromPractice.getIsTeamMemberFetching(state.practice);
 };
 
-var isTeamMemberFetching = exports.isTeamMemberFetching = function isTeamMemberFetching(state) {
-	return fromPractice.getIsTeamMemberFetching(state.practice);
+exports.isTeamMemberFetching = isTeamMemberFetching;
+
+var getTeamMember = function getTeamMember(state, id) {
+  return fromPractice.getTeamMember(state.practice, id);
 };
 
-var getTeamMember = exports.getTeamMember = function getTeamMember(state, id) {
-	return fromPractice.getTeamMember(state.practice, id);
+exports.getTeamMember = getTeamMember;
+
+var isCareerFetching = function isCareerFetching(state) {
+  return fromPractice.getIsCareerFetching(state.practice);
 };
 
-var isCareerFetching = exports.isCareerFetching = function isCareerFetching(state) {
-	return fromPractice.getIsCareerFetching(state.practice);
+exports.isCareerFetching = isCareerFetching;
+
+var getCareer = function getCareer(state, id) {
+  return fromPractice.getCareer(state.practice, id);
 };
 
-var getCareer = exports.getCareer = function getCareer(state, id) {
-	return fromPractice.getCareer(state.practice, id);
+exports.getCareer = getCareer;
+
+var isContactFetching = function isContactFetching(state) {
+  return fromPractice.getIsFetching(state.contact);
 };
 
-var isContactFetching = exports.isContactFetching = function isContactFetching(state) {
-	return fromPractice.getIsFetching(state.contact);
+exports.isContactFetching = isContactFetching;
+
+var getContactContent = function getContactContent(state) {
+  return fromContact.getContent(state.contact);
 };
 
-var getContactContent = exports.getContactContent = function getContactContent(state) {
-	return fromContact.getContent(state.contact);
-};
-
-exports.default = RootReducer;
+exports.getContactContent = getContactContent;
+var _default = RootReducer;
+exports.default = _default;

@@ -1,35 +1,25 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Main = _interopRequireDefault(require("./Main"));
 
-var _Main = require('./Main');
+var _Second = _interopRequireDefault(require("./Second"));
 
-var _Main2 = _interopRequireDefault(_Main);
-
-var _Second = require('./Second');
-
-var _Second2 = _interopRequireDefault(_Second);
-
-var _FilterSearchWrapper = require('./FilterSearchWrapper');
-
-var _FilterSearchWrapper2 = _interopRequireDefault(_FilterSearchWrapper);
+var _FilterSearchWrapper = _interopRequireDefault(require("./FilterSearchWrapper"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header() {
-	return _react2.default.createElement(
-		'div',
-		{ className: 'website-header__inner website-header__inner--desktop wrapper' },
-		_react2.default.createElement(_Main2.default, null),
-		_react2.default.createElement(_Second2.default, null),
-		_react2.default.createElement(_FilterSearchWrapper2.default, null)
-	);
+  return _react.default.createElement("div", {
+    className: "website-header__inner website-header__inner--desktop wrapper"
+  }, _react.default.createElement(_Main.default, null), _react.default.createElement(_Second.default, null), _react.default.createElement(_FilterSearchWrapper.default, null));
 };
 
-exports.default = Header;
+var _default = Header;
+exports.default = _default;

@@ -1,35 +1,34 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _helpers = require('../../helpers');
+var _helpers = require("../../helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PatternLine = function PatternLine(_ref) {
-	var noOfChars = _ref.noOfChars;
+  var noOfChars = _ref.noOfChars;
+  var count = 1;
 
-	var count = 1;
+  var generatePattern = function generatePattern() {
+    var pattern = '';
 
-	var generatePattern = function generatePattern() {
-		var pattern = '';
-		for (count; count <= noOfChars; count++) {
-			pattern += (0, _helpers.getRandomGlyph)();
-		}
-		return pattern;
-	};
+    for (count; count <= noOfChars; count++) {
+      pattern += (0, _helpers.getRandomGlyph)();
+    }
 
-	return _react2.default.createElement(
-		'div',
-		{ className: 'patternline' },
-		generatePattern()
-	);
+    return pattern;
+  };
+
+  return _react.default.createElement("div", {
+    className: "patternline"
+  }, generatePattern());
 };
 
-exports.default = PatternLine;
+var _default = PatternLine;
+exports.default = _default;

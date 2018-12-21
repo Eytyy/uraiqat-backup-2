@@ -1,30 +1,31 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _PostDefault = _interopRequireDefault(require("./default/PostDefault"));
 
-var _PostDefault = require('./default/PostDefault');
-
-var _PostDefault2 = _interopRequireDefault(_PostDefault);
-
-var _PostFeatured = require('./featured/PostFeatured');
-
-var _PostFeatured2 = _interopRequireDefault(_PostFeatured);
+var _PostFeatured = _interopRequireDefault(require("./featured/PostFeatured"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Post = function Post(content) {
-	var previewDisplaySize = content.previewDisplaySize;
+  var previewDisplaySize = content.previewDisplaySize;
 
-	if (typeof content.title === 'undefined') {
-		return null;
-	}
-	return previewDisplaySize === 'Featured' ? _react2.default.createElement(_PostFeatured2.default, { content: content }) : _react2.default.createElement(_PostDefault2.default, { content: content });
+  if (typeof content.title === 'undefined') {
+    return null;
+  }
+
+  return previewDisplaySize === 'Featured' ? _react.default.createElement(_PostFeatured.default, {
+    content: content
+  }) : _react.default.createElement(_PostDefault.default, {
+    content: content
+  });
 };
 
-exports.default = Post;
+var _default = Post;
+exports.default = _default;

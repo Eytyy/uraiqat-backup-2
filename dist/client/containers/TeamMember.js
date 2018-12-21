@@ -1,202 +1,188 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _react = _interopRequireWildcard(require("react"));
 
-var _react = require('react');
+var _reactRouterDom = require("react-router-dom");
 
-var _react2 = _interopRequireDefault(_react);
+var _reactRedux = require("react-redux");
 
-var _reactRouterDom = require('react-router-dom');
+var _redux = require("redux");
 
-var _reactRedux = require('react-redux');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _redux = require('redux');
+var _actions = require("../actions");
 
-var _propTypes = require('prop-types');
+var _reducers = require("../reducers");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _PostMediaImage = _interopRequireDefault(require("../components/home/PostMediaImage"));
 
-var _actions = require('../actions');
+var _BodyText = _interopRequireDefault(require("../components/BodyText"));
 
-var _reducers = require('../reducers');
+var _RelatedAuthorPosts = _interopRequireDefault(require("../components/related/RelatedAuthorPosts"));
 
-var _PostMediaImage = require('../components/home/PostMediaImage');
-
-var _PostMediaImage2 = _interopRequireDefault(_PostMediaImage);
-
-var _BodyText = require('../components/BodyText');
-
-var _BodyText2 = _interopRequireDefault(_BodyText);
-
-var _RelatedAuthorPosts = require('../components/related/RelatedAuthorPosts');
-
-var _RelatedAuthorPosts2 = _interopRequireDefault(_RelatedAuthorPosts);
-
-var _LoadingPattern = require('../components/patterns/LoadingPattern');
-
-var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
+var _LoadingPattern = _interopRequireDefault(require("../components/patterns/LoadingPattern"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var TeamMember = function (_Component) {
-	_inherits(TeamMember, _Component);
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	function TeamMember() {
-		_classCallCheck(this, TeamMember);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-		return _possibleConstructorReturn(this, (TeamMember.__proto__ || Object.getPrototypeOf(TeamMember)).apply(this, arguments));
-	}
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-	_createClass(TeamMember, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var _props = this.props,
-			    content = _props.content,
-			    isFetching = _props.isFetching;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-			if (!isFetching && typeof content.id === 'undefined') {
-				this.fetchData();
-			}
-		}
-	}, {
-		key: 'fetchData',
-		value: function fetchData() {
-			var _props2 = this.props,
-			    fetchTeamMember = _props2.fetchTeamMember,
-			    match = _props2.match;
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-			var id = match.params.id;
-			fetchTeamMember(id);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _props3 = this.props,
-			    content = _props3.content,
-			    isFetching = _props3.isFetching;
-			var name = content.name,
-			    profileImagevideo = content.profileImagevideo,
-			    role = content.role,
-			    about = content.about,
-			    instagramLink = content.instagramLink,
-			    facebookLink = content.facebookLink,
-			    personalWebsiteLink = content.personalWebsiteLink,
-			    twitterLink = content.twitterLink;
+var TeamMember =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TeamMember, _Component);
 
-			if (isFetching || typeof content.id === 'undefined') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loader' },
-					_react2.default.createElement(_LoadingPattern2.default, null)
-				);
-			}
-			return _react2.default.createElement(
-				'article',
-				{ className: 'team-member' },
-				_react2.default.createElement(
-					'header',
-					{ className: 'team-member__header' },
-					name && _react2.default.createElement(
-						'h1',
-						{ className: 'main-title team-member__title' },
-						name
-					),
-					role && _react2.default.createElement(
-						'h2',
-						{ className: 'team-member__role' },
-						role
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'team-member__content' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'team-member__content__col team-member__content__col--left' },
-						_react2.default.createElement(_PostMediaImage2.default, { orientation: 'portrait', patternId: 'team-member-inner', query: 'w=350', content: profileImagevideo }),
-						_react2.default.createElement(
-							'div',
-							{ className: 'team-member__links' },
-							personalWebsiteLink && _react2.default.createElement(
-								'a',
-								{ className: 'link', href: personalWebsiteLink, target: '_blank' },
-								'Website'
-							),
-							facebookLink && _react2.default.createElement(
-								'a',
-								{ className: 'link', href: facebookLink, target: '_blank' },
-								'Facebook'
-							),
-							instagramLink && _react2.default.createElement(
-								'a',
-								{ className: 'link', href: instagramLink, target: '_blank' },
-								'Instagram'
-							),
-							twitterLink && _react2.default.createElement(
-								'a',
-								{ className: 'link', href: twitterLink, target: '_blank' },
-								'Twitter'
-							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'team-member__content__col team-member__content__col--right' },
-						about && _react2.default.createElement(_BodyText2.default, { content: about })
-					)
-				),
-				_react2.default.createElement(
-					'aside',
-					{ className: 'related-content team-member__related' },
-					_react2.default.createElement(_RelatedAuthorPosts2.default, { name: name })
-				)
-			);
-		}
-	}], [{
-		key: 'fetchData',
-		//eslint-disable-line
-		value: function fetchData(store, id) {
-			return store.dispatch((0, _actions.fetchTeamMember)(id));
-		}
-	}]);
+  function TeamMember() {
+    _classCallCheck(this, TeamMember);
 
-	return TeamMember;
+    return _possibleConstructorReturn(this, _getPrototypeOf(TeamMember).apply(this, arguments));
+  }
+
+  _createClass(TeamMember, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = this.props,
+          content = _this$props.content,
+          isFetching = _this$props.isFetching;
+
+      if (!isFetching && typeof content.id === 'undefined') {
+        this.fetchData();
+      }
+    }
+  }, {
+    key: "fetchData",
+    value: function fetchData() {
+      var _this$props2 = this.props,
+          fetchTeamMember = _this$props2.fetchTeamMember,
+          match = _this$props2.match;
+      var id = match.params.id;
+      fetchTeamMember(id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          content = _this$props3.content,
+          isFetching = _this$props3.isFetching;
+      var name = content.name,
+          profileImagevideo = content.profileImagevideo,
+          role = content.role,
+          about = content.about,
+          instagramLink = content.instagramLink,
+          facebookLink = content.facebookLink,
+          personalWebsiteLink = content.personalWebsiteLink,
+          twitterLink = content.twitterLink;
+
+      if (isFetching || typeof content.id === 'undefined') {
+        return _react.default.createElement("div", {
+          className: "loader"
+        }, _react.default.createElement(_LoadingPattern.default, null));
+      }
+
+      return _react.default.createElement("article", {
+        className: "team-member"
+      }, _react.default.createElement("header", {
+        className: "team-member__header"
+      }, name && _react.default.createElement("h1", {
+        className: "main-title team-member__title"
+      }, name), role && _react.default.createElement("h2", {
+        className: "team-member__role"
+      }, role)), _react.default.createElement("div", {
+        className: "team-member__content"
+      }, _react.default.createElement("div", {
+        className: "team-member__content__col team-member__content__col--left"
+      }, _react.default.createElement(_PostMediaImage.default, {
+        orientation: "portrait",
+        patternId: "team-member-inner",
+        query: "w=350",
+        content: profileImagevideo
+      }), _react.default.createElement("div", {
+        className: "team-member__links"
+      }, personalWebsiteLink && _react.default.createElement("a", {
+        className: "link",
+        href: personalWebsiteLink,
+        target: "_blank"
+      }, "Website"), facebookLink && _react.default.createElement("a", {
+        className: "link",
+        href: facebookLink,
+        target: "_blank"
+      }, "Facebook"), instagramLink && _react.default.createElement("a", {
+        className: "link",
+        href: instagramLink,
+        target: "_blank"
+      }, "Instagram"), twitterLink && _react.default.createElement("a", {
+        className: "link",
+        href: twitterLink,
+        target: "_blank"
+      }, "Twitter"))), _react.default.createElement("div", {
+        className: "team-member__content__col team-member__content__col--right"
+      }, about && _react.default.createElement(_BodyText.default, {
+        content: about
+      }))), _react.default.createElement("aside", {
+        className: "related-content team-member__related"
+      }, _react.default.createElement(_RelatedAuthorPosts.default, {
+        name: name
+      })));
+    }
+  }], [{
+    key: "fetchData",
+    //eslint-disable-line
+    value: function fetchData(store, id) {
+      return store.dispatch((0, _actions.fetchTeamMember)(id));
+    }
+  }]);
+
+  return TeamMember;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-	var match = ownProps.match;
-
-	var id = match.params.id;
-	return {
-		content: (0, _reducers.getTeamMember)(state, id),
-		isFetching: (0, _reducers.isTeamMemberFetching)(state)
-	};
+  var match = ownProps.match;
+  var id = match.params.id;
+  return {
+    content: (0, _reducers.getTeamMember)(state, id),
+    isFetching: (0, _reducers.isTeamMemberFetching)(state)
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchTeamMember: _actions.fetchTeamMember }, dispatch);
+  return (0, _redux.bindActionCreators)({
+    fetchTeamMember: _actions.fetchTeamMember
+  }, dispatch);
 };
 
 TeamMember.propTypes = {
-	content: _propTypes2.default.shape({
-		id: _propTypes2.default.string
-	}),
-	isFetching: _propTypes2.default.bool.isRequired,
-	fetchTeamMember: _propTypes2.default.func.isRequired
+  content: _propTypes.default.shape({
+    id: _propTypes.default.string
+  }),
+  isFetching: _propTypes.default.bool.isRequired,
+  fetchTeamMember: _propTypes.default.func.isRequired
 };
-
 TeamMember.defaultProps = {
-	content: {}
+  content: {}
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TeamMember));
+var _default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TeamMember));
+
+exports.default = _default;

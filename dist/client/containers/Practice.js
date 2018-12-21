@@ -1,132 +1,143 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _react = _interopRequireWildcard(require("react"));
 
-var _react = require('react');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _react2 = _interopRequireDefault(_react);
+var _reactRedux = require("react-redux");
 
-var _propTypes = require('prop-types');
+var _redux = require("redux");
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _actions = require("../actions");
 
-var _reactRedux = require('react-redux');
+var _reducers = require("../reducers");
 
-var _redux = require('redux');
+var _Basic = _interopRequireDefault(require("../components/practice/Basic"));
 
-var _actions = require('../actions');
+var _Careers = _interopRequireDefault(require("../components/practice/Careers"));
 
-var _reducers = require('../reducers');
+var _Team = _interopRequireDefault(require("../components/practice/Team"));
 
-var _Basic = require('../components/practice/Basic');
+var _YoutubeComponent = _interopRequireDefault(require("../components/media/YoutubeComponent"));
 
-var _Basic2 = _interopRequireDefault(_Basic);
-
-var _Careers = require('../components/practice/Careers');
-
-var _Careers2 = _interopRequireDefault(_Careers);
-
-var _Team = require('../components/practice/Team');
-
-var _Team2 = _interopRequireDefault(_Team);
-
-var _YoutubeComponent = require('../components/media/YoutubeComponent');
-
-var _YoutubeComponent2 = _interopRequireDefault(_YoutubeComponent);
-
-var _LoadingPattern = require('../components/patterns/LoadingPattern');
-
-var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
+var _LoadingPattern = _interopRequireDefault(require("../components/patterns/LoadingPattern"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Practice = function (_Component) {
-	_inherits(Practice, _Component);
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	function Practice() {
-		_classCallCheck(this, Practice);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-		return _possibleConstructorReturn(this, (Practice.__proto__ || Object.getPrototypeOf(Practice)).apply(this, arguments));
-	}
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-	_createClass(Practice, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var fetchPractice = this.props.fetchPractice;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-			return fetchPractice();
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _props = this.props,
-			    isFetching = _props.isFetching,
-			    content = _props.content;
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-			if (isFetching && content.length === 0 || typeof content.fields === 'undefined') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loader' },
-					_react2.default.createElement(_LoadingPattern2.default, null)
-				);
-			}
-			var previousTeam = content.fields.team.filter(function (_ref) {
-				var fields = _ref.fields;
-				return fields.previousMember;
-			});
-			var currentTeam = content.fields.team.filter(function (_ref2) {
-				var fields = _ref2.fields;
-				return !fields.previousMember;
-			});
-			return _react2.default.createElement(
-				'section',
-				{ className: 'landing-page landing-page--practice main-section' },
-				content.fields.youtubeID && _react2.default.createElement(_YoutubeComponent2.default, {
-					videoId: content.fields.youtubeID,
-					autoplay: 1,
-					classes: 'practice-video-wrapper'
-				}),
-				content.fields.about && _react2.default.createElement(_Basic2.default, { sectionTitle: 'about', content: content.fields.about }),
-				content.fields.philosophy && _react2.default.createElement(_Basic2.default, { sectionTitle: 'philosophy', content: content.fields.philosophy }),
-				currentTeam && _react2.default.createElement(_Team2.default, { content: currentTeam, type: 'current' }),
-				previousTeam && _react2.default.createElement(_Team2.default, { content: previousTeam, type: 'previous' }),
-				content.fields.careersBody && _react2.default.createElement(_Careers2.default, { desc: content.fields.careersBody, content: content.fields.careers })
-			);
-		}
-	}], [{
-		key: 'fetchData',
-		value: function fetchData(store) {
-			return store.dispatch((0, _actions.fetchPractice)());
-		}
-	}]);
+var Practice =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Practice, _Component);
 
-	return Practice;
+  function Practice() {
+    _classCallCheck(this, Practice);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Practice).apply(this, arguments));
+  }
+
+  _createClass(Practice, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var fetchPractice = this.props.fetchPractice;
+      return fetchPractice();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          isFetching = _this$props.isFetching,
+          content = _this$props.content;
+
+      if (isFetching && content.length === 0 || typeof content.fields === 'undefined') {
+        return _react.default.createElement("div", {
+          className: "loader"
+        }, _react.default.createElement(_LoadingPattern.default, null));
+      }
+
+      var previousTeam = content.fields.team.filter(function (_ref) {
+        var fields = _ref.fields;
+        return fields.previousMember;
+      });
+      var currentTeam = content.fields.team.filter(function (_ref2) {
+        var fields = _ref2.fields;
+        return !fields.previousMember;
+      });
+      return _react.default.createElement("section", {
+        className: "landing-page landing-page--practice main-section"
+      }, content.fields.youtubeID && _react.default.createElement(_YoutubeComponent.default, {
+        videoId: content.fields.youtubeID,
+        autoplay: 1,
+        classes: "practice-video-wrapper"
+      }), content.fields.about && _react.default.createElement(_Basic.default, {
+        sectionTitle: "about",
+        content: content.fields.about
+      }), content.fields.philosophy && _react.default.createElement(_Basic.default, {
+        sectionTitle: "philosophy",
+        content: content.fields.philosophy
+      }), currentTeam && _react.default.createElement(_Team.default, {
+        content: currentTeam,
+        type: "current"
+      }), previousTeam && _react.default.createElement(_Team.default, {
+        content: previousTeam,
+        type: "previous"
+      }), content.fields.careersBody && _react.default.createElement(_Careers.default, {
+        desc: content.fields.careersBody,
+        content: content.fields.careers
+      }));
+    }
+  }], [{
+    key: "fetchData",
+    value: function fetchData(store) {
+      return store.dispatch((0, _actions.fetchPractice)());
+    }
+  }]);
+
+  return Practice;
 }(_react.Component);
 
 Practice.propTypes = {
-	isFetching: _propTypes2.default.bool.isRequired,
-	fetchPractice: _propTypes2.default.func.isRequired
+  isFetching: _propTypes.default.bool.isRequired,
+  fetchPractice: _propTypes.default.func.isRequired
 };
 
 var mapStateToProps = function mapStateToProps(state) {
-	return {
-		isFetching: (0, _reducers.isPracticeFetching)(state),
-		content: (0, _reducers.getPracticeContent)(state)
-	};
+  return {
+    isFetching: (0, _reducers.isPracticeFetching)(state),
+    content: (0, _reducers.getPracticeContent)(state)
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchPractice: _actions.fetchPractice }, dispatch);
+  return (0, _redux.bindActionCreators)({
+    fetchPractice: _actions.fetchPractice
+  }, dispatch);
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Practice);
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Practice);
+
+exports.default = _default;

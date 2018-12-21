@@ -1,35 +1,38 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _react = _interopRequireDefault(require("react"));
 
-var _react = require('react');
+var _PostDefault = _interopRequireDefault(require("./home/default/PostDefault"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _PostDefault = require('./home/default/PostDefault');
-
-var _PostDefault2 = _interopRequireDefault(_PostDefault);
-
-var _SearchPreviewProject = require('./SearchPreviewProject');
-
-var _SearchPreviewProject2 = _interopRequireDefault(_SearchPreviewProject);
+var _SearchPreviewProject = _interopRequireDefault(require("./SearchPreviewProject"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var SearchPreview = function SearchPreview(_ref) {
-	var content = _ref.content,
-	    type = _ref.type,
-	    id = _ref.id;
+  var content = _ref.content,
+      type = _ref.type,
+      id = _ref.id;
 
-	var contentWid = _extends({}, content, {
-		id: id
-	});
+  var contentWid = _objectSpread({}, content, {
+    id: id
+  });
 
-	return type === 'post' ? _react2.default.createElement(_PostDefault2.default, { content: contentWid }) : _react2.default.createElement(_SearchPreviewProject2.default, { type: type, content: contentWid });
+  return type === 'post' ? _react.default.createElement(_PostDefault.default, {
+    content: contentWid
+  }) : _react.default.createElement(_SearchPreviewProject.default, {
+    type: type,
+    content: contentWid
+  });
 };
 
-exports.default = SearchPreview;
+var _default = SearchPreview;
+exports.default = _default;

@@ -1,236 +1,200 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _reactRouterDom = require("react-router-dom");
 
-var _react = require('react');
+var _reactRedux = require("react-redux");
 
-var _react2 = _interopRequireDefault(_react);
+var _redux = require("redux");
 
-var _reactRouterDom = require('react-router-dom');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactRedux = require('react-redux');
+var _actions = require("../actions");
 
-var _redux = require('redux');
+var _reducers = require("../reducers");
 
-var _propTypes = require('prop-types');
+var _PostTags = _interopRequireDefault(require("../components/posts/PostTags"));
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _PostAuthors = _interopRequireDefault(require("../components/posts/PostAuthors"));
 
-var _actions = require('../actions');
+var _PostContent = _interopRequireDefault(require("../components/posts/PostContent"));
 
-var _reducers = require('../reducers');
+var _RelatedProject = _interopRequireDefault(require("../components/related/RelatedProject"));
 
-var _PostTags = require('../components/posts/PostTags');
+var _RelatedPosts = _interopRequireDefault(require("../components/related/RelatedPosts"));
 
-var _PostTags2 = _interopRequireDefault(_PostTags);
+var _LoadingPattern = _interopRequireDefault(require("../components/patterns/LoadingPattern"));
 
-var _PostAuthors = require('../components/posts/PostAuthors');
-
-var _PostAuthors2 = _interopRequireDefault(_PostAuthors);
-
-var _PostContent = require('../components/posts/PostContent');
-
-var _PostContent2 = _interopRequireDefault(_PostContent);
-
-var _RelatedProject = require('../components/related/RelatedProject');
-
-var _RelatedProject2 = _interopRequireDefault(_RelatedProject);
-
-var _RelatedPosts = require('../components/related/RelatedPosts');
-
-var _RelatedPosts2 = _interopRequireDefault(_RelatedPosts);
-
-var _LoadingPattern = require('../components/patterns/LoadingPattern');
-
-var _LoadingPattern2 = _interopRequireDefault(_LoadingPattern);
-
-var _InnerNav = require('../components/InnerNav');
-
-var _InnerNav2 = _interopRequireDefault(_InnerNav);
+var _InnerNav = _interopRequireDefault(require("../components/InnerNav"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Post = function (_Component) {
-	_inherits(Post, _Component);
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-	function Post() {
-		_classCallCheck(this, Post);
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-		return _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).apply(this, arguments));
-	}
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-	_createClass(Post, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var _props = this.props,
-			    content = _props.content,
-			    isFetching = _props.isFetching;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-			if (!isFetching && typeof content.id === 'undefined') {
-				this.fetchData();
-			}
-		}
-	}, {
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(nextProps) {
-			var content = nextProps.content,
-			    isFetching = nextProps.isFetching;
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-			if (!isFetching && typeof content.id === 'undefined') {
-				this.fetchData();
-			}
-		}
-	}, {
-		key: 'fetchData',
-		value: function fetchData() {
-			var _props2 = this.props,
-			    fetchPosts = _props2.fetchPosts,
-			    match = _props2.match;
+var Post =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Post, _Component);
 
-			var id = match.params.id;
-			fetchPosts(id);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _props3 = this.props,
-			    content = _props3.content,
-			    innerNavContent = _props3.innerNavContent,
-			    isFetching = _props3.isFetching,
-			    match = _props3.match;
-			var tags = content.tags,
-			    date = content.date,
-			    author = content.author,
-			    mainContent = content.mainContent,
-			    externalPostUrl = content.externalPostUrl,
-			    externalPostSource = content.externalPostSource,
-			    relatedProject = content.relatedProject;
+  function Post() {
+    _classCallCheck(this, Post);
 
-			var id = match.params.id;
-			if (isFetching || typeof content.id === 'undefined') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'loader' },
-					_react2.default.createElement(_LoadingPattern2.default, null)
-				);
-			}
-			return _react2.default.createElement(
-				'article',
-				{ className: 'post' },
-				_react2.default.createElement(
-					'header',
-					{ className: 'post__header' },
-					_react2.default.createElement(
-						'h1',
-						{ className: 'post__title main-title' },
-						content.title
-					),
-					tags && _react2.default.createElement(_PostTags2.default, { content: tags }),
-					' ',
-					' ',
-					date && _react2.default.createElement(
-						'div',
-						{ className: 'post__meta post__date' },
-						_react2.default.createElement(
-							'span',
-							{ className: 'label' },
-							'On '
-						),
-						_react2.default.createElement(
-							'span',
-							{ className: 'post__meta__item' },
-							date
-						)
-					),
-					' ',
-					author && _react2.default.createElement(_PostAuthors2.default, { content: author }),
-					' '
-				),
-				mainContent && _react2.default.createElement(_PostContent2.default, { content: mainContent }),
-				externalPostUrl && _react2.default.createElement(
-					'div',
-					{ className: 'post__external-link' },
-					_react2.default.createElement(
-						'span',
-						null,
-						'Read full article on '
-					),
-					_react2.default.createElement(
-						'a',
-						{ href: externalPostUrl, target: '_blank' },
-						_react2.default.createElement(
-							'span',
-							null,
-							' ->'
-						),
-						_react2.default.createElement(
-							'span',
-							null,
-							externalPostSource
-						)
-					)
-				),
-				!relatedProject ? null : _react2.default.createElement(
-					'aside',
-					{ className: 'related-content post__related' },
-					relatedProject && _react2.default.createElement(_RelatedProject2.default, {
-						id: relatedProject[0].sys.id,
-						content: relatedProject[0].fields,
-						type: relatedProject[0].sys.contentType.sys.id
-					}),
-					_react2.default.createElement(_RelatedPosts2.default, { id: relatedProject[0].sys.id, postID: id })
-				),
-				_react2.default.createElement(_InnerNav2.default, _extends({}, innerNavContent, { type: 'journal' }))
-			);
-		}
-	}], [{
-		key: 'fetchData',
-		//eslint-disable-line
-		value: function fetchData(store) {
-			return store.dispatch((0, _actions.fetchPosts)());
-		}
-	}]);
+    return _possibleConstructorReturn(this, _getPrototypeOf(Post).apply(this, arguments));
+  }
 
-	return Post;
+  _createClass(Post, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = this.props,
+          content = _this$props.content,
+          isFetching = _this$props.isFetching;
+
+      if (!isFetching && typeof content.id === 'undefined') {
+        this.fetchData();
+      }
+    }
+  }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      var content = nextProps.content,
+          isFetching = nextProps.isFetching;
+
+      if (!isFetching && typeof content.id === 'undefined') {
+        this.fetchData();
+      }
+    }
+  }, {
+    key: "fetchData",
+    value: function fetchData() {
+      var _this$props2 = this.props,
+          fetchPosts = _this$props2.fetchPosts,
+          match = _this$props2.match;
+      var id = match.params.id;
+      fetchPosts(id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          content = _this$props3.content,
+          innerNavContent = _this$props3.innerNavContent,
+          isFetching = _this$props3.isFetching,
+          match = _this$props3.match;
+      var tags = content.tags,
+          date = content.date,
+          author = content.author,
+          mainContent = content.mainContent,
+          externalPostUrl = content.externalPostUrl,
+          externalPostSource = content.externalPostSource,
+          relatedProject = content.relatedProject;
+      var id = match.params.id;
+
+      if (isFetching || typeof content.id === 'undefined') {
+        return _react.default.createElement("div", {
+          className: "loader"
+        }, _react.default.createElement(_LoadingPattern.default, null));
+      }
+
+      return _react.default.createElement("article", {
+        className: "post"
+      }, _react.default.createElement("header", {
+        className: "post__header"
+      }, _react.default.createElement("h1", {
+        className: "post__title main-title"
+      }, content.title), tags && _react.default.createElement(_PostTags.default, {
+        content: tags
+      }), " ", ' ', date && _react.default.createElement("div", {
+        className: "post__meta post__date"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "On "), _react.default.createElement("span", {
+        className: "post__meta__item"
+      }, date)), ' ', author && _react.default.createElement(_PostAuthors.default, {
+        content: author
+      }), ' '), mainContent && _react.default.createElement(_PostContent.default, {
+        content: mainContent
+      }), externalPostUrl && _react.default.createElement("div", {
+        className: "post__external-link"
+      }, _react.default.createElement("span", null, "Read full article on "), _react.default.createElement("a", {
+        href: externalPostUrl,
+        target: "_blank"
+      }, _react.default.createElement("span", null, ' ->'), _react.default.createElement("span", null, externalPostSource))), !relatedProject ? null : _react.default.createElement("aside", {
+        className: "related-content post__related"
+      }, relatedProject && _react.default.createElement(_RelatedProject.default, {
+        id: relatedProject[0].sys.id,
+        content: relatedProject[0].fields,
+        type: relatedProject[0].sys.contentType.sys.id
+      }), _react.default.createElement(_RelatedPosts.default, {
+        id: relatedProject[0].sys.id,
+        postID: id
+      })), _react.default.createElement(_InnerNav.default, _extends({}, innerNavContent, {
+        type: "journal"
+      })));
+    }
+  }], [{
+    key: "fetchData",
+    //eslint-disable-line
+    value: function fetchData(store) {
+      return store.dispatch((0, _actions.fetchPosts)());
+    }
+  }]);
+
+  return Post;
 }(_react.Component);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-	var match = ownProps.match;
-
-	var id = match.params.id;
-	return {
-		content: (0, _reducers.getPost)(state, id),
-		innerNavContent: (0, _reducers.getNextPrev)(state, id, 'journal'),
-		isFetching: (0, _reducers.isPostFetching)(state)
-	};
+  var match = ownProps.match;
+  var id = match.params.id;
+  return {
+    content: (0, _reducers.getPost)(state, id),
+    innerNavContent: (0, _reducers.getNextPrev)(state, id, 'journal'),
+    isFetching: (0, _reducers.isPostFetching)(state)
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ fetchPosts: _actions.fetchPosts }, dispatch);
+  return (0, _redux.bindActionCreators)({
+    fetchPosts: _actions.fetchPosts
+  }, dispatch);
 };
 
 Post.propTypes = {
-	content: _propTypes2.default.shape({
-		id: _propTypes2.default.string
-	}),
-	isFetching: _propTypes2.default.bool.isRequired,
-	fetchPosts: _propTypes2.default.func.isRequired
+  content: _propTypes.default.shape({
+    id: _propTypes.default.string
+  }),
+  isFetching: _propTypes.default.bool.isRequired,
+  fetchPosts: _propTypes.default.func.isRequired
 };
-
 Post.defaultProps = {
-	content: {}
+  content: {}
 };
 
-exports.default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Post));
+var _default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Post));
+
+exports.default = _default;

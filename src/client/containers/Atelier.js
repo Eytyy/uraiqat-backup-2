@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchAtelierProjects } from '../actions';
-import { isAtelierProjectsFetching, getAtelierProjects } from '../reducers';
+import { isAtelierProjectsFetching, getAtelierProjects, getAtelierIntro } from '../reducers';
 
-import Landing from '../components/landing/Landing';
+import LandingAtelier from '../components/landing/LandingAtelier';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
 class Atelier extends Component {
@@ -18,11 +18,11 @@ class Atelier extends Component {
 		return fetchAtelierProjects();
 	}
 	render() {
-		const { isFetching, content } = this.props;
-		if (isFetching && typeof content.mainContent === 'undefined'  || typeof content.mainContent === 'undefined' ) {
+		const { isFetching, content, intro } = this.props;
+		if (isFetching && typeof content === 'undefined'  || typeof content === 'undefined' ) {
 			return <LoadingPattern />;
 		}
-		return <Landing content={content} page="atelier"></Landing>;
+		return <LandingAtelier content={content} intro={intro}/>;
 	}
 }
 
@@ -34,6 +34,7 @@ Atelier.propTypes = {
 const mapStateToProps = state => ({
 	isFetching: isAtelierProjectsFetching(state),
 	content: getAtelierProjects(state),
+	intro: getAtelierIntro(state)
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchAtelierProjects }, dispatch);

@@ -1,74 +1,45 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports.default = void 0;
 
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Filter = function Filter(_ref) {
-	var content = _ref.content,
-	    active = _ref.active,
-	    onFilterClick = _ref.onFilterClick,
-	    id = _ref.id;
+  var content = _ref.content,
+      active = _ref.active,
+      onFilterClick = _ref.onFilterClick,
+      id = _ref.id;
 
-	var onClick = function onClick() {
-		onFilterClick(id);
-	};
-	return _react2.default.createElement(
-		"span",
-		{ onClick: onClick, className: "filter link" },
-		active && _react2.default.createElement(
-			"span",
-			{ className: "filterBox" },
-			"[",
-			_react2.default.createElement(
-				"span",
-				{ className: "filterBox__state" },
-				"x"
-			),
-			"]"
-		) || _react2.default.createElement(
-			"span",
-			{ className: "filterBox" },
-			"[",
-			_react2.default.createElement(
-				"span",
-				{ className: "filterBox__state" },
-				" "
-			),
-			"]"
-		),
-		_react2.default.createElement(
-			"span",
-			{ className: "ws" },
-			"-"
-		),
-		_react2.default.createElement(
-			"span",
-			null,
-			content
-		),
-		_react2.default.createElement(
-			"span",
-			{ className: "ws" },
-			"-"
-		),
-		_react2.default.createElement(
-			"span",
-			{ className: "ws" },
-			"-"
-		),
-		_react2.default.createElement(
-			"span",
-			{ className: "ws" },
-			"-"
-		)
-	);
+  var onClick = function onClick() {
+    onFilterClick(id);
+  };
+
+  return _react.default.createElement("span", {
+    onClick: onClick,
+    className: "filter link"
+  }, active && _react.default.createElement("span", {
+    className: "filterBox"
+  }, "[", _react.default.createElement("span", {
+    className: "filterBox__state"
+  }, "x"), "]") || _react.default.createElement("span", {
+    className: "filterBox"
+  }, "[", _react.default.createElement("span", {
+    className: "filterBox__state"
+  }, " "), "]"), _react.default.createElement("span", {
+    className: "ws"
+  }, "-"), _react.default.createElement("span", null, content), _react.default.createElement("span", {
+    className: "ws"
+  }, "-"), _react.default.createElement("span", {
+    className: "ws"
+  }, "-"), _react.default.createElement("span", {
+    className: "ws"
+  }, "-"));
 };
 
-exports.default = Filter;
+var _default = Filter;
+exports.default = _default;
