@@ -9,9 +9,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _InfinitScroll = _interopRequireDefault(require("./InfinitScroll"));
 
-var _CommonProjectPreview = _interopRequireDefault(require("../projects/CommonProjectPreview"));
-
-var _BodyText = _interopRequireDefault(require("../BodyText"));
+var _AtelierContent = _interopRequireDefault(require("./AtelierContent"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,38 +32,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var AtelierContent = function AtelierContent(visibleContent, intro) {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("section", {
-    id: "#about",
-    className: "atelier-sub-section"
-  }, _react.default.createElement("h2", {
-    className: "atelier-sub-section__title"
-  }, "About"), _react.default.createElement("div", {
-    className: "atelier-landing__top"
-  }, _react.default.createElement("div", {
-    className: "atelier-landing__top__desc"
-  }, intro.desc && _react.default.createElement(_BodyText.default, {
-    content: intro.desc
-  })))), _react.default.createElement("section", {
-    id: "#portfolio",
-    className: "atelier-sub-section"
-  }, _react.default.createElement("h2", {
-    className: "atelier-sub-section__title"
-  }, "Portfolio"), _react.default.createElement("div", {
-    className: "atelier-section__inner"
-  }, visibleContent.map(function (post) {
-    return _react.default.createElement(_CommonProjectPreview.default, _extends({
-      id: post.id,
-      key: post.id
-    }, post, {
-      type: "atelier",
-      category: post.category
-    }));
-  }))));
-};
 
 var LandingAtelier =
 /*#__PURE__*/
@@ -93,7 +59,10 @@ function (_Component) {
         classList: "landing-page landing-page--atelier main-section",
         content: content,
         render: function render(visibleContent) {
-          return AtelierContent(visibleContent, intro);
+          return _react.default.createElement(_AtelierContent.default, {
+            visibleContent: visibleContent,
+            intro: intro
+          });
         }
       });
     }

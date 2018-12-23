@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import PatternChunk from '../components/patterns/PatternChunk';
-import { newExpression } from 'babel-types';
 
 class Footer extends Component {
 	state = {
@@ -51,7 +50,7 @@ class Footer extends Component {
 					<div>
 						{
 							social.map(({name, separator, link}) => (
-								<>
+								<Fragment key={name}>
 									<NavLink className="link" to={link}>{name}</NavLink>
 									<span className="ws">-</span>
 									<span className="ws">-</span>
@@ -65,7 +64,7 @@ class Footer extends Component {
 											<span className="ws">-</span>
 										</>
 									}
-								</>
+								</Fragment>
 							))
 						}
 						<PatternChunk adjust={adjust} reserved={reserved} />

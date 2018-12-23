@@ -34,12 +34,6 @@ class App extends Component {
 		if (this.props.location !== prevProps.location) {
 			window.scrollTo(0, 0);
 		}
-		// scroll to hash position - header height
-		if (this.props.location.hash && this.uLink.current) {
-			const target = document.getElementById(this.props.location.hash);
-			console.log(this.uLink.current.offsetHeight);
-			window.scrollTo(0, this.uLink.current.offsetWidth === 14 ? target.offsetTop - (this.uLink.current.offsetHeight * 5) : target.offsetTop - (this.uLink.current.offsetHeight * 4));
-		}
 	}
 	
 	render() {

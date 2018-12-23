@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.isAtelierProjectFetching = exports.getAtelierIntro = exports.getAtelierProjects = exports.getAtelierProject = exports.isAtelierProjectsFetching = exports.isProjectFetching = exports.getProjects = exports.getProject = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = exports.getAppConfigs = void 0;
+exports.default = exports.getContactContent = exports.isContactFetching = exports.getCareer = exports.isCareerFetching = exports.getTeamMember = exports.isTeamMemberFetching = exports.getPracticeContent = exports.isPracticeFetching = exports.getFilteredContent = exports.getActiveFilters = exports.getFilters = exports.getSearchResults = exports.isSearchFetching = exports.getActiveSlide = exports.getGalleryContent = exports.getRelatedAuthorPosts = exports.isRelatedAuthorPostsFetching = exports.getRelatedPosts = exports.isRelatedFetching = exports.getNextPrev = exports.isAtelierProjectFetching = exports.getAtelierIntro = exports.getAtelierProjects = exports.getAtelierProject = exports.isAtelierProjectsFetching = exports.isProjectFetching = exports.getProjects = exports.getProject = exports.isProjectsFetching = exports.getPost = exports.isPostFetching = exports.getPosts = exports.isPostsFetching = exports.getActiveAtelier = exports.getAppConfigs = void 0;
 
 var _redux = require("redux");
 
@@ -41,10 +41,16 @@ var RootReducer = (0, _redux.combineReducers)({
 
 var getAppConfigs = function getAppConfigs(state) {
   return fromApp.getConfigs(state.app);
+};
+
+exports.getAppConfigs = getAppConfigs;
+
+var getActiveAtelier = function getActiveAtelier(state) {
+  return fromApp.getActiveAtelier(state.app);
 }; // Home Selectors
 
 
-exports.getAppConfigs = getAppConfigs;
+exports.getActiveAtelier = getActiveAtelier;
 
 var isPostsFetching = function isPostsFetching(state) {
   return fromHome.getIsFetching(state.posts);
