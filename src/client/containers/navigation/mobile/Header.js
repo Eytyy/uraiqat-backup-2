@@ -109,10 +109,10 @@ class Header extends Component {
 
 	render() {
 		const navigation = [
-			{ name: 'Practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
-			{ name: 'Work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length },
-			{ name: 'The Atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'The Atelier'.length },
-			{ name: 'Contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
+			{ name: 'Practice', id: 'practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
+			{ name: 'Work', id: 'work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length },
+			{ name: 'The Atelier', id: 'atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'The Atelier'.length },
+			{ name: 'Contact', id: 'contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
 		];
 		const { configs, content } = this.props;
 		const { adjustForMobile } = configs;

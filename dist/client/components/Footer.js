@@ -86,10 +86,10 @@ function (_Component) {
         spaceBeforeSeparator: 3,
         spaceAfterSeparator: 3,
         separator: '/',
-        link: 'http://www.instagram.com'
+        link: 'https://www.instagram.com/uraiqatarchitects/'
       }, {
         name: 'facebook',
-        link: 'http://www.facebook.com',
+        link: 'https://web.facebook.com/uraiqatarchitects',
         separator: '',
         spaceBeforeSeparator: 3,
         spaceAfterSeparator: 3
@@ -117,9 +117,10 @@ function (_Component) {
             link = _ref.link;
         return _react.default.createElement(_react.Fragment, {
           key: name
-        }, _react.default.createElement(_reactRouterDom.NavLink, {
+        }, _react.default.createElement("a", {
           className: "link",
-          to: link
+          target: "_blank",
+          href: link
         }, name), _react.default.createElement("span", {
           className: "ws"
         }, "-"), _react.default.createElement("span", {

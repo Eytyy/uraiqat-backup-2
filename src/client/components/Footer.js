@@ -27,10 +27,10 @@ class Footer extends Component {
 			spaceBeforeSeparator: 3,
 			spaceAfterSeparator: 3,
 			separator: '/',
-			link: 'http://www.instagram.com'
+			link: 'https://www.instagram.com/uraiqatarchitects/'
 		}, {
 			name: 'facebook',
-			link: 'http://www.facebook.com',
+			link: 'https://web.facebook.com/uraiqatarchitects',
 			separator: '',
 			spaceBeforeSeparator: 3,
 			spaceAfterSeparator: 3,
@@ -51,7 +51,7 @@ class Footer extends Component {
 						{
 							social.map(({name, separator, link}) => (
 								<Fragment key={name}>
-									<NavLink className="link" to={link}>{name}</NavLink>
+									<a className="link" target="_blank" href={link}>{name}</a>
 									<span className="ws">-</span>
 									<span className="ws">-</span>
 									<span className="ws">-</span>

@@ -185,6 +185,7 @@ function (_Component) {
     value: function render() {
       var navigation = [{
         name: 'Practice',
+        id: 'practice',
         link: '/practice',
         glyph: {
           className: 'ind',
@@ -193,6 +194,7 @@ function (_Component) {
         size: 'Practice'.length
       }, {
         name: 'Work',
+        id: 'work',
         link: '/work',
         glyph: {
           className: 'ind',
@@ -201,6 +203,7 @@ function (_Component) {
         size: 'Work'.length
       }, {
         name: 'The Atelier',
+        id: 'atelier',
         link: '/atelier',
         glyph: {
           className: 'ind',
@@ -209,6 +212,7 @@ function (_Component) {
         size: 'The Atelier'.length
       }, {
         name: 'Contact',
+        id: 'contact',
         link: '/contact',
         glyph: {
           className: 'ind',

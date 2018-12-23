@@ -18,11 +18,8 @@ class Second extends Component {
 		const { updateAtelierNav } = this.props;
 		const targetPosition = document.getElementById(`${target}`).offsetTop;
 		const headerSize = this.getHeaderSize();
-		console.log(targetPosition);
-		console.log(headerSize);
 
 		window.scrollTo(0, targetPosition - headerSize);
-
 		updateAtelierNav(target);
 	}
 
@@ -81,6 +78,7 @@ class Second extends Component {
 					)
 				}
 				<PatternChunk reserved={totalReservedSpaces} />
+				<NavLink className="link" to="/">Architects</NavLink>
 			</div>
 		);
 		

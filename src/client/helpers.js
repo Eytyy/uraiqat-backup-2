@@ -128,13 +128,9 @@ const config = {
 			w: 270,
 			h: 192
 		},
-		'atelier-main-thumb': {
-			w: 310,
-			h: 168,
-		},
-		'atelier-main-thumb--portrait': {
-			w: 200,
-			h: 288,
+		'atelier-main-thumb--featured': {
+			w: 270,
+			h: 192,
 		},
 		'atelier-main-slider' : {
 			w: 310,
@@ -222,13 +218,9 @@ const config = {
 			w: 330,
 			h: 192
 		},
-		'atelier-main-thumb': {
-			w: 330,
-			h: 168,
-		},
-		'atelier-main-thumb--portrait': {
-			w: 200,
-			h: 288,
+		'atelier-main-thumb--featured': {
+			w: 340,
+			h: 192,
 		},
 		'atelier-main-slider' : {
 			w: 330,
@@ -318,10 +310,10 @@ const config = {
 		},
 		'atelier-main-thumb': {
 			w: 430,
-			h: 192,
+			h: 264,
 		},
-		'atelier-main-thumb--portrait': {
-			w: 230,
+		'atelier-main-thumb--featured': {
+			w: 440,
 			h: 384,
 		},
 		'atelier-main-slider' : {
@@ -402,13 +394,9 @@ const config = {
 			w: 712,
 			h: 416
 		},
-		'atelier-main-thumb': {
-			w: 588,
-			h: 288,
-		},
-		'atelier-main-thumb--portrait': {
-			w: 322,
-			h: 576,
+		'atelier-main-thumb--featured': {
+			w: 342,
+			h: 234,
 		},
 		'atelier-main-slider' : {
 			w: 590,
@@ -496,9 +484,9 @@ const config = {
 			w: 546,
 			h: 384
 		},
-		'atelier-main-thumb': {
-			w: 700,
-			h: 384,
+		'atelier-main-thumb--featured': {
+			w: 455,
+			h: 320,
 		},
 		'atelier-main-thumb--portrait': {
 			w: 378,
@@ -582,13 +570,9 @@ const config = {
 			w: 560,
 			h: 384
 		},
-		'atelier-main-thumb': {
-			w: 812,
-			h: 416,
-		},
-		'atelier-main-thumb--portrait': {
-			w: 378,
-			h: 576,
+		'atelier-main-thumb--featured': {
+			w: 760,
+			h: 320,
 		},
 		'atelier-main-slider' : {
 			w: 854,
@@ -668,13 +652,9 @@ const config = {
 			w: 532,
 			h: 384
 		},
-		'atelier-main-thumb': {
-			w: 812,
+		'atelier-main-thumb--featured': {
+			w: 877,
 			h: 416,
-		},
-		'atelier-main-thumb--portrait': {
-			w: 378,
-			h: 576,
 		},
 		'atelier-main-slider' : {
 			w: 1022,
@@ -754,13 +734,9 @@ const config = {
 			w: 518,
 			h: 384
 		},
-		'atelier-main-thumb': {
-			w: 980,
-			h: 480,
-		},
-		'atelier-main-thumb--portrait': {
-			w: 462,
-			h: 672,
+		'atelier-main-thumb--featured': {
+			w: 994,
+			h: 384,
 		},
 		'atelier-main-slider' : {
 			w: 1022,

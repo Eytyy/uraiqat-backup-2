@@ -17,6 +17,8 @@ var actions = _interopRequireWildcard(require("../../../actions"));
 
 var _reducers = require("../../../reducers");
 
+var _NavItem = _interopRequireDefault(require("./NavItem"));
+
 var _PatternChunk = _interopRequireDefault(require("../../../components/patterns/PatternChunk"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -43,23 +45,48 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Second =
+var AtelierNavigation =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Second, _Component);
+  _inherits(AtelierNavigation, _Component);
 
-  function Second() {
+  function AtelierNavigation() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Second);
+    _classCallCheck(this, AtelierNavigation);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Second)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AtelierNavigation)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "config", {
+      spacesBefore: 1,
+      spacesAfter: 3,
+      separator: '/',
+      items: [{
+        name: 'About',
+        id: 'about',
+        link: '/atelier#about',
+        glyph: {
+          className: 'ind',
+          content: '->'
+        },
+        size: 'About'.length
+      }, {
+        name: 'Portfolio',
+        id: 'portfolio',
+        link: '/atelier#portfolio',
+        glyph: {
+          className: 'ind',
+          content: '->'
+        },
+        size: 'Portfolio'.length
+      }]
+    });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getHeaderSize", function () {
       return window.innerWidth >= 1280 ? 32 * 5 : 24 * 4;
@@ -78,70 +105,38 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Second, [{
+  _createClass(AtelierNavigation, [{
     key: "render",
     value: function render() {
       var _this2 = this;
 
       var _this$props = this.props,
-          location = _this$props.location,
-          activeSection = _this$props.activeSection;
-      var numberOfStaticItems = 'Architects'.length; // if not atelier, we don't have secondary navigation
-      // just return the pattern with the reserved "Architects" work
-
-      if (location.pathname !== '/atelier') {
-        return _react.default.createElement("div", {
-          className: "header--desktop__main__second"
-        }, _react.default.createElement(_PatternChunk.default, {
-          reserved: numberOfStaticItems
-        }), _react.default.createElement(_reactRouterDom.NavLink, {
-          className: "link",
-          to: "/"
-        }, "Architects"));
-      } // otherwise, render the atelier sub-navigation
-
-
-      var atelierConfig = {
-        spacesBefore: 1,
-        spacesAfter: 3,
-        separator: '/',
-        items: [{
-          name: 'About',
-          id: 'about',
-          link: '/atelier#about',
-          glyph: {
-            className: 'ind',
-            content: '->'
-          },
-          size: 'About'.length
-        }, {
-          name: 'Portfolio',
-          id: 'portfolio',
-          link: '/atelier#portfolio',
-          glyph: {
-            className: 'ind',
-            content: '->'
-          },
-          size: 'Portfolio'.length
-        }]
-      };
-      var fixedStart = window.innerWidth >= 1280 ? 11 : 8;
-      var reservedNavSpaces = atelierConfig.items.reduce(function (current, next) {
+          adjust = _this$props.adjust,
+          activeSection = _this$props.activeSection,
+          link = _this$props.link,
+          glyph = _this$props.glyph,
+          name = _this$props.name,
+          id = _this$props.id;
+      var reservedNavSpaces = this.config.items.reduce(function (current, next) {
         return current + next.size + next.glyph.content.length;
       }, 0);
-      var reservedNavEmptySpaces = atelierConfig.items.length * (atelierConfig.spacesBefore + atelierConfig.spacesAfter);
-      var numberofNavSeparators = atelierConfig.items.length - 1;
-      var totalReservedSpaces = reservedNavSpaces + reservedNavEmptySpaces + numberofNavSeparators + numberOfStaticItems + fixedStart;
+      var reservedNavEmptySpaces = this.config.items.length * (this.config.spacesBefore + this.config.spacesAfter);
+      var numberofNavSeparators = this.config.items.length - 1;
+      var totalReservedSpaces = name.length + glyph.content.length + 2 + reservedNavSpaces + reservedNavEmptySpaces + numberofNavSeparators;
       return _react.default.createElement("div", {
-        className: "header--desktop__main__second"
-      }, _react.default.createElement(_PatternChunk.default, {
-        fixed: fixedStart
-      }), atelierConfig.items.map(function (_ref, index) {
+        className: "header-mobile__main__item"
+      }, _react.default.createElement(_NavItem.default, {
+        adjust: adjust,
+        name: name,
+        link: link,
+        glyph: glyph
+      }), this.config.items.map(function (_ref, index) {
         var name = _ref.name,
             glyph = _ref.glyph,
-            id = _ref.id,
-            link = _ref.link;
-        return _react.default.createElement("span", {
+            id = _ref.id;
+        return _react.default.createElement(_react.Fragment, {
+          key: id
+        }, _react.default.createElement("span", {
           key: "header__link-chunk--".concat(index + 1),
           className: "header__link-chunk"
         }, _react.default.createElement("span", {
@@ -159,22 +154,20 @@ function (_Component) {
           className: "ws"
         }, "-"), _react.default.createElement("span", {
           className: "ws"
-        }, "-"), index < atelierConfig.items.length - 1 && _react.default.createElement("span", {
+        }, "-"), index < _this2.config.items.length - 1 && _react.default.createElement("span", {
           className: "separator"
-        }, '/'));
+        }, '/')));
       }), _react.default.createElement(_PatternChunk.default, {
+        adjust: adjust,
         reserved: totalReservedSpaces
-      }), _react.default.createElement(_reactRouterDom.NavLink, {
-        className: "link",
-        to: "/"
-      }, "Architects"));
+      }));
     }
   }]);
 
-  return Second;
+  return AtelierNavigation;
 }(_react.Component);
 
-Second.propTypes = {
+AtelierNavigation.propTypes = {
   activeSection: _propTypes.default.string
 };
 
@@ -184,6 +177,6 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var _default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(Second));
+var _default = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, actions)(AtelierNavigation));
 
 exports.default = _default;

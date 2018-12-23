@@ -11,6 +11,8 @@ var _PatternChunk = _interopRequireDefault(require("../../../components/patterns
 
 var _NavItem = _interopRequireDefault(require("./NavItem"));
 
+var _AtelierNavigation = _interopRequireDefault(require("./AtelierNavigation"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Main = function Main(_ref) {
@@ -21,8 +23,16 @@ var Main = function Main(_ref) {
   }, navigation.map(function (_ref2, index) {
     var link = _ref2.link,
         glyph = _ref2.glyph,
-        name = _ref2.name;
-    return _react.default.createElement("div", {
+        name = _ref2.name,
+        id = _ref2.id;
+    return id === 'atelier' ? _react.default.createElement(_AtelierNavigation.default, {
+      key: "mobile-link--".concat(index),
+      adjust: adjust,
+      link: link,
+      glyph: glyph,
+      name: name,
+      id: id
+    }) : _react.default.createElement("div", {
       key: "mobile-link--".concat(index),
       className: "header-mobile__main__item"
     }, _react.default.createElement(_NavItem.default, {

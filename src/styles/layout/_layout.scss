@@ -48,8 +48,10 @@ body {
 	.website-header__inner--mobile {
 		max-height: 100vh;
 		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 }
+
 .website-header {
 	position: fixed;
 	padding: $lh 0 ($lh/4);
