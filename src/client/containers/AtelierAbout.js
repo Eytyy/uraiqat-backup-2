@@ -9,7 +9,7 @@ import { isAtelierProjectsFetching, getAtelierProjects, getAtelierIntro } from '
 import LandingAtelier from '../components/landing/LandingAtelier';
 import LoadingPattern from '../components/patterns/LoadingPattern';
 
-class Atelier extends Component {
+class AtelierAbout extends Component {
 	static fetchData(store) {
 		return store.dispatch(fetchAtelierProjects());
 	}
@@ -18,22 +18,22 @@ class Atelier extends Component {
 		return fetchAtelierProjects();
 	}
 	render() {
-		const { isFetching, content } = this.props;
-		if (isFetching && typeof content === 'undefined'  || typeof content === 'undefined' ) {
+		const { isFetching, intro } = this.props;
+		if (isFetching && typeof intro === 'undefined'  || typeof intro === 'undefined' ) {
 			return <LoadingPattern />;
 		}
-		return <LandingAtelier content={content} />;
+		return <LandingAtelier intro={intro}/>;
 	}
 }
 
-Atelier.propTypes = {
+AtelierAbout.propTypes = {
 	isFetching:  PropTypes.bool.isRequired,
 	fetchAtelierProjects: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
 	isFetching: isAtelierProjectsFetching(state),
-	content: getAtelierProjects(state),
+	intro: getAtelierIntro(state)
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchAtelierProjects }, dispatch);
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({ fetchAtelierProjec
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Atelier);
+)(AtelierAbout);

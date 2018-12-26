@@ -186,7 +186,7 @@ router.get('/work/:id', (req, res) => {
 	});
 });
 
-router.get('/atelier', (req, res) => {
+const AtelierPage = (req, res) => {
 	const branch = matchRoutes(routes, req.url);
 	const promises = branch.map(({route}) => {
 		let fetchData = route.component.fetchData;
@@ -216,7 +216,10 @@ router.get('/atelier', (req, res) => {
 			content
 		});
 	});
-});
+}
+router.get('/atelier', AtelierPage);
+router.get('/atelier/about', AtelierPage);
+
 
 router.get('/atelier/:id', (req, res) => {
 	const branch = matchRoutes(routes, req.url);

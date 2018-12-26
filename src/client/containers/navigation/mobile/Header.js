@@ -108,15 +108,15 @@ class Header extends Component {
 	}
 
 	render() {
+		const { configs, content, location } = this.props;
+		const { adjustForMobile } = configs;
+		
 		const navigation = [
 			{ name: 'Practice', id: 'practice', link: '/practice', glyph: { className: 'ind', content: '<-' }, size: 'Practice'.length },
 			{ name: 'Work', id: 'work', link: '/work', glyph: { className: 'ind', content: '<-' }, size: 'Work'.length },
-			{ name: 'The Atelier', id: 'atelier', link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'The Atelier'.length },
+			{ name: 'The Atelier', id: location.pathname, link: '/atelier', glyph: { className: 'ind', content: '<-' }, size: 'The Atelier'.length },
 			{ name: 'Contact', id: 'contact', link: '/contact', glyph: { className: 'ind', content: '<-' }, size: 'Contact'.length },
 		];
-		const { configs, content } = this.props;
-		const { adjustForMobile } = configs;
-		
 		return (
 			<div className="website-header__inner website-header__inner--mobile wrapper">
 				<div className="header__inner__wrapper">
@@ -134,7 +134,7 @@ class Header extends Component {
 					this.state.isVisible && 
 					<div className="menu">
 						<div className="menu__inner">
-							<Main adjust={adjustForMobile} navigation={navigation} />
+							<Main path={location.pathname} adjust={adjustForMobile} navigation={navigation} />
 							<Search
 								adjust={adjustForMobile}
 								searchIsVisible={this.state.searchIsVisible}

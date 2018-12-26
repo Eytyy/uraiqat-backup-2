@@ -5,9 +5,6 @@ import AtelierContent from './AtelierContent';
 class LandingAtelier extends Component {
 	render() {
 		const { content, intro } = this.props;
-		if (typeof content === 'undefined') {
-			return null;
-		}
 		return ( 
 			<InfinitScroll
 				classList="landing-page landing-page--atelier main-section"

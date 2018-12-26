@@ -43,18 +43,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var Atelier =
+var AtelierAbout =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Atelier, _Component);
+  _inherits(AtelierAbout, _Component);
 
-  function Atelier() {
-    _classCallCheck(this, Atelier);
+  function AtelierAbout() {
+    _classCallCheck(this, AtelierAbout);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Atelier).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(AtelierAbout).apply(this, arguments));
   }
 
-  _createClass(Atelier, [{
+  _createClass(AtelierAbout, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var fetchAtelierProjects = this.props.fetchAtelierProjects;
@@ -65,14 +65,14 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           isFetching = _this$props.isFetching,
-          content = _this$props.content;
+          intro = _this$props.intro;
 
-      if (isFetching && typeof content === 'undefined' || typeof content === 'undefined') {
+      if (isFetching && typeof intro === 'undefined' || typeof intro === 'undefined') {
         return _react.default.createElement(_LoadingPattern.default, null);
       }
 
       return _react.default.createElement(_LandingAtelier.default, {
-        content: content
+        intro: intro
       });
     }
   }], [{
@@ -82,10 +82,10 @@ function (_Component) {
     }
   }]);
 
-  return Atelier;
+  return AtelierAbout;
 }(_react.Component);
 
-Atelier.propTypes = {
+AtelierAbout.propTypes = {
   isFetching: _propTypes.default.bool.isRequired,
   fetchAtelierProjects: _propTypes.default.func.isRequired
 };
@@ -93,7 +93,7 @@ Atelier.propTypes = {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     isFetching: (0, _reducers.isAtelierProjectsFetching)(state),
-    content: (0, _reducers.getAtelierProjects)(state)
+    intro: (0, _reducers.getAtelierIntro)(state)
   };
 };
 
@@ -103,6 +103,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   }, dispatch);
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Atelier);
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AtelierAbout);
 
 exports.default = _default;

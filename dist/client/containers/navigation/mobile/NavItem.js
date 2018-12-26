@@ -14,10 +14,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var NavItem = function NavItem(_ref) {
   var link = _ref.link,
       glyph = _ref.glyph,
-      name = _ref.name;
+      name = _ref.name,
+      exact = _ref.exact;
   return _react.default.createElement(_reactRouterDom.NavLink, {
     activeClassName: "active",
-    className: "link menu-link",
+    className: "link menu-link ".concat(typeof exact !== 'undefined' && exact ? '' : 'not-exact'),
     to: link
   }, name, _react.default.createElement("span", {
     className: "ws"

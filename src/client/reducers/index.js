@@ -24,7 +24,6 @@ const RootReducer = combineReducers({
 // App Selectors
 
 export const getAppConfigs = state => fromApp.getConfigs(state.app);
-export const getActiveAtelier = state => fromApp.getActiveAtelier(state.app);
 // Home Selectors
 export const isPostsFetching = state => fromHome.getIsFetching(state.posts);
 

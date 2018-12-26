@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.clearAllFilters = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPosts = exports.updateAtelierNav = exports.updateApp = exports.initClient = void 0;
+exports.fetchContact = exports.fetchAuthorRelated = exports.fetchTeamMember = exports.fetchCareer = exports.fetchPractice = exports.clearAllFilters = exports.updateFilter = exports.fetchFilters = exports.fetchSearchResults = exports.toggleGallery = exports.updateActiveSlide = exports.updateGallery = exports.fetchRelated = exports.fetchAtelierProjects = exports.fetchProjects = exports.fetchPosts = exports.updateApp = exports.initClient = void 0;
 
 var _reducers = require("./reducers");
 
@@ -59,25 +59,10 @@ var updateApp = function updateApp(configs) {
   return function (dispatch) {
     dispatch(updateAppConfigs(configs));
   };
-};
-
-exports.updateApp = updateApp;
-
-var updateAtelierActiveSection = function updateAtelierActiveSection(target) {
-  return {
-    type: 'UPDATE_ATELIER_ACTIVE_SECTION',
-    response: target
-  };
-};
-
-var updateAtelierNav = function updateAtelierNav(target) {
-  return function (dispatch) {
-    dispatch(updateAtelierActiveSection(target));
-  };
 }; // Journal Action Creators
 
 
-exports.updateAtelierNav = updateAtelierNav;
+exports.updateApp = updateApp;
 
 var requestPosts = function requestPosts() {
   return {

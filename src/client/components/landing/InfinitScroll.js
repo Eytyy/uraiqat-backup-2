@@ -12,6 +12,9 @@ class InfinitScroll extends Component {
 	onScroll = throttle(
 		(e) => {
 			const { content } = this.props;
+			if (typeof content === 'undefined') {
+				return;
+			}
 			if (this.visibleContent.length === content.length) {
 				return;
 			}
@@ -39,10 +42,7 @@ class InfinitScroll extends Component {
 	render() {
 		const numberOfVisibleItemsPerScroll = 8;
 		const { render, content, classList } = this.props;
-		if (typeof content === 'undefined') {
-			return null;
-		}
-		this.visibleContent = typeof this.state.skip !== 'undefined' ?
+		this.visibleContent = typeof content !== 'undefined' && typeof this.state.skip !== 'undefined' ?
 			content.slice(0, (this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll)) : content;
 		return (
 			<section ref={this.section} className={classList}>

@@ -6,6 +6,7 @@ import Work from './containers/Work';
 import Project from './containers/Project';
 
 import Atelier from './containers/Atelier';
+import AtelierAbout from './containers/AtelierAbout';
 import AtelierProject from './containers/AtelierProject';
 
 import Practice from './containers/Practice';
@@ -32,6 +33,10 @@ const routes = [
 			{ path: '/atelier',
 				exact: true,
 				component: Atelier,
+			},
+			{ path: '/atelier/about',
+				exact: true,
+				component: AtelierAbout,
 			},
 			{ path: '/atelier/:id',
 				exact: true,

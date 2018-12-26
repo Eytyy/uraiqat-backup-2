@@ -7,14 +7,6 @@ const app = (state = {
 	}
 }, action) => {
 	switch (action.type) {
-	case 'UPDATE_ATELIER_ACTIVE_SECTION': //eslint-disable-line
-		return {
-			...state,
-			activePageSection: {
-				...state.activePageSection,
-				atelier: action.response,
-			}
-		}
 	case 'UPDATE_APP_CONFIGS': //eslint-disable-line
 		return {
 			...state,
@@ -31,5 +23,3 @@ const app = (state = {
 export default app;
 
 export const getConfigs = state => state.configs;
-
-export const getActiveAtelier = state => state.activePageSection.atelier;

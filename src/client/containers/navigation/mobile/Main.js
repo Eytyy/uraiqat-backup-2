@@ -4,12 +4,12 @@ import PatternChunk from '../../../components/patterns/PatternChunk';
 import NavItem from './NavItem';
 import AtelierNavigation from './AtelierNavigation';
 
-const Main = ({ navigation, adjust }) => {
+const Main = ({ navigation, adjust, path }) => {
 	return (
 		<div className="header--mobile__main">
 			{
 				navigation.map(({ link, glyph, name, id }, index) =>
-					id === 'atelier' ?
+					id === '/atelier' ||  id === '/atelier/about' ?
 					<AtelierNavigation
 						key={`mobile-link--${index}`}
 						adjust={adjust}
@@ -17,6 +17,7 @@ const Main = ({ navigation, adjust }) => {
 						glyph={glyph}
 						name={name}
 						id={id}
+						path={path}
 					/> :
 					<div key={`mobile-link--${index}`} className="header-mobile__main__item">
 						<NavItem adjust={adjust} name={name} link={link} glyph={glyph} />

@@ -27,6 +27,11 @@
 		.ind {
 			opacity: 1;
 		}
+		&.not-exact {
+			.ind {
+				opacity: 0;
+			}
+		}
 	}
 }
 

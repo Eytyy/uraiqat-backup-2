@@ -50,11 +50,6 @@ function (_Component) {
       var _this$props = this.props,
           content = _this$props.content,
           intro = _this$props.intro;
-
-      if (typeof content === 'undefined') {
-        return null;
-      }
-
       return _react.default.createElement(_InfinitScroll.default, {
         classList: "landing-page landing-page--atelier main-section",
         content: content,

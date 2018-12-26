@@ -17,6 +17,8 @@ var _Project = _interopRequireDefault(require("./containers/Project"));
 
 var _Atelier = _interopRequireDefault(require("./containers/Atelier"));
 
+var _AtelierAbout = _interopRequireDefault(require("./containers/AtelierAbout"));
+
 var _AtelierProject = _interopRequireDefault(require("./containers/AtelierProject"));
 
 var _Practice = _interopRequireDefault(require("./containers/Practice"));
@@ -49,6 +51,10 @@ var routes = [{
     path: '/atelier',
     exact: true,
     component: _Atelier.default
+  }, {
+    path: '/atelier/about',
+    exact: true,
+    component: _AtelierAbout.default
   }, {
     path: '/atelier/:id',
     exact: true,

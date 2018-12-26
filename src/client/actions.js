@@ -53,16 +53,6 @@ export const updateApp = configs => (dispatch) => {
 	dispatch(updateAppConfigs(configs));
 };
 
-const updateAtelierActiveSection = target => ({
-	type: 'UPDATE_ATELIER_ACTIVE_SECTION',
-	response: target
-});
-
-export const updateAtelierNav = target => (dispatch) => {
-	dispatch(updateAtelierActiveSection(target));
-};
-
-
 // Journal Action Creators
 const requestPosts = () => ({
 	type: 'REQUEST_POSTS'

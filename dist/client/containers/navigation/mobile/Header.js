@@ -183,6 +183,11 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this$props2 = this.props,
+          configs = _this$props2.configs,
+          content = _this$props2.content,
+          location = _this$props2.location;
+      var adjustForMobile = configs.adjustForMobile;
       var navigation = [{
         name: 'Practice',
         id: 'practice',
@@ -203,7 +208,7 @@ function (_Component) {
         size: 'Work'.length
       }, {
         name: 'The Atelier',
-        id: 'atelier',
+        id: location.pathname,
         link: '/atelier',
         glyph: {
           className: 'ind',
@@ -220,10 +225,6 @@ function (_Component) {
         },
         size: 'Contact'.length
       }];
-      var _this$props2 = this.props,
-          configs = _this$props2.configs,
-          content = _this$props2.content;
-      var adjustForMobile = configs.adjustForMobile;
       return _react.default.createElement("div", {
         className: "website-header__inner website-header__inner--mobile wrapper"
       }, _react.default.createElement("div", {
@@ -253,6 +254,7 @@ function (_Component) {
       }, _react.default.createElement("div", {
         className: "menu__inner"
       }, _react.default.createElement(_Main.default, {
+        path: location.pathname,
         adjust: adjustForMobile,
         navigation: navigation
       }), _react.default.createElement(_Search.default, {

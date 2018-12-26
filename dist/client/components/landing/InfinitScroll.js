@@ -63,6 +63,10 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onScroll", (0, _throttle.default)(function (e) {
       var content = _this.props.content;
 
+      if (typeof content === 'undefined') {
+        return;
+      }
+
       if (_this.visibleContent.length === content.length) {
         return;
       }
@@ -103,12 +107,7 @@ function (_Component) {
           render = _this$props.render,
           content = _this$props.content,
           classList = _this$props.classList;
-
-      if (typeof content === 'undefined') {
-        return null;
-      }
-
-      this.visibleContent = typeof this.state.skip !== 'undefined' ? content.slice(0, this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll) : content;
+      this.visibleContent = typeof content !== 'undefined' && typeof this.state.skip !== 'undefined' ? content.slice(0, this.state.skip * numberOfVisibleItemsPerScroll + numberOfVisibleItemsPerScroll) : content;
       return _react.default.createElement("section", {
         ref: this.section,
         className: classList
