@@ -241,7 +241,7 @@ var AtelierPage = function AtelierPage(req, res) {
 };
 
 router.get('/atelier', AtelierPage);
-router.get('/atelier/about', AtelierPage);
+router.get('/atelier/portfolio', AtelierPage);
 router.get('/atelier/:id', function (req, res) {
   var branch = (0, _reactRouterConfig.matchRoutes)(_routes.default, req.url);
   var promises = branch.map(function (_ref7) {

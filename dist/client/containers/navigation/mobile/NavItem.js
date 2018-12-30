@@ -16,9 +16,10 @@ var NavItem = function NavItem(_ref) {
       glyph = _ref.glyph,
       name = _ref.name,
       exact = _ref.exact;
+  var extraClass = typeof exact === 'undefined' ? null : exact ? 'exact' : 'not-exact';
   return _react.default.createElement(_reactRouterDom.NavLink, {
     activeClassName: "active",
-    className: "link menu-link ".concat(typeof exact !== 'undefined' && exact ? '' : 'not-exact'),
+    className: "link menu-link ".concat(extraClass),
     to: link
   }, name, _react.default.createElement("span", {
     className: "ws"

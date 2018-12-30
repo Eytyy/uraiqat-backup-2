@@ -9,7 +9,7 @@ const Main = ({ navigation, adjust, path }) => {
 		<div className="header--mobile__main">
 			{
 				navigation.map(({ link, glyph, name, id }, index) =>
-					id === '/atelier' ||  id === '/atelier/about' ?
+					id === '/atelier' ||  id === '/atelier/portfolio' ?
 					<AtelierNavigation
 						key={`mobile-link--${index}`}
 						adjust={adjust}

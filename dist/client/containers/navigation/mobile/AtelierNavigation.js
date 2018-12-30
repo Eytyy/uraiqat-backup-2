@@ -26,52 +26,51 @@ var AtelierNavigation = function AtelierNavigation(props) {
     spacesAfter: 3,
     separator: '/',
     items: [{
-      name: 'Portfolio',
+      name: 'About',
       exact: path === '/atelier',
-      id: 'portfolio',
+      id: 'about',
       link: '/atelier',
       glyph: {
         className: 'ind',
         content: '<-'
       },
-      size: 'Portfolio'.length
+      size: 'About'.length
     }, {
-      name: 'About',
-      exact: path === '/atelier/about',
-      id: 'about',
-      link: '/atelier/about',
+      name: 'Portfolio',
+      exact: path === '/atelier/portfolio',
+      id: 'portfolio',
+      link: '/atelier/portfolio',
       glyph: {
         className: 'ind',
         content: '<-'
       },
-      size: 'About'.length
+      size: 'Portfolio'.length
     }]
   };
-  var reservedNavSpaces = config.items.reduce(function (current, next) {
-    return current + next.size + next.glyph.content.length;
-  }, 0);
-  var reservedNavEmptySpaces = config.items.length * (config.spacesBefore + config.spacesAfter);
-  var numberofNavSeparators = config.items.length - 1;
-  var totalReservedSpaces = name.length + glyph.content.length + 2 + reservedNavSpaces + reservedNavEmptySpaces + numberofNavSeparators;
-  return _react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "header-mobile__main__item"
   }, _react.default.createElement(_NavItem.default, {
     adjust: adjust,
     name: name,
     link: link,
     glyph: glyph
-  }), config.items.map(function (_ref, index) {
+  }), _react.default.createElement(_PatternChunk.default, {
+    adjust: adjust,
+    reserved: name.length + glyph.content.length + 2
+  })), config.items.map(function (_ref) {
     var name = _ref.name,
         glyph = _ref.glyph,
         id = _ref.id,
         link = _ref.link,
         exact = _ref.exact;
-    return _react.default.createElement(_react.Fragment, {
-      key: id
+    return _react.default.createElement("div", {
+      key: "header__link-chunk--".concat(id),
+      className: "header-mobile__main__item"
     }, _react.default.createElement("span", {
-      key: "header__link-chunk--".concat(index + 1),
       className: "header__link-chunk"
     }, _react.default.createElement("span", {
+      className: "ch"
+    }, "-"), _react.default.createElement("span", {
       className: "ws"
     }, "-"), _react.default.createElement(_NavItem.default, {
       exact: exact,
@@ -79,18 +78,13 @@ var AtelierNavigation = function AtelierNavigation(props) {
       name: name,
       link: link,
       glyph: glyph
-    }), _react.default.createElement("span", {
-      className: "ws"
-    }, "-"), _react.default.createElement("span", {
-      className: "ws"
-    }, "-"), _react.default.createElement("span", {
-      className: "ws"
-    }, "-"), index < config.items.length - 1 && _react.default.createElement("span", {
-      className: "separator"
-    }, '/')));
+    })), _react.default.createElement(_PatternChunk.default, {
+      adjust: adjust,
+      reserved: name.length + glyph.content.length + 2 + 2
+    }));
   }), _react.default.createElement(_PatternChunk.default, {
     adjust: adjust,
-    reserved: totalReservedSpaces
+    reserved: 0
   }));
 };
 

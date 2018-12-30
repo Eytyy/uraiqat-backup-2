@@ -26,7 +26,7 @@ var Main = function Main(_ref) {
         glyph = _ref2.glyph,
         name = _ref2.name,
         id = _ref2.id;
-    return id === '/atelier' || id === '/atelier/about' ? _react.default.createElement(_AtelierNavigation.default, {
+    return id === '/atelier' || id === '/atelier/portfolio' ? _react.default.createElement(_AtelierNavigation.default, {
       key: "mobile-link--".concat(index),
       adjust: adjust,
       link: link,

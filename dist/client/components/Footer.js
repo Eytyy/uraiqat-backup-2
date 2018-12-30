@@ -9,6 +9,12 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _instagram = _interopRequireDefault(require("../icons/instagram"));
+
+var _facebook = _interopRequireDefault(require("../icons/facebook"));
+
+var _linkedin = _interopRequireDefault(require("../icons/linkedin"));
+
 var _PatternChunk = _interopRequireDefault(require("../components/patterns/PatternChunk"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -83,27 +89,81 @@ function (_Component) {
       var adjust = this.props.adjust;
       var social = [{
         name: 'instagram',
-        spaceBeforeSeparator: 3,
-        spaceAfterSeparator: 3,
+        spaceBeforeSeparator: 2,
+        spaceAfterSeparator: 2,
         separator: '/',
-        link: 'https://www.instagram.com/uraiqatarchitects/'
+        link: 'https://www.instagram.com/uraiqatarchitects/',
+        IconUrl: _instagram.default
       }, {
         name: 'facebook',
         link: 'https://web.facebook.com/uraiqatarchitects',
+        separator: '/',
+        spaceBeforeSeparator: 2,
+        spaceAfterSeparator: 2,
+        IconUrl: _facebook.default
+      }, {
+        name: 'linkedin',
+        link: 'https://ae.linkedin.com/company/uraiqat-architects',
         separator: '',
-        spaceBeforeSeparator: 3,
-        spaceAfterSeparator: 3
+        spaceBeforeSeparator: 2,
+        spaceAfterSeparator: 2,
+        IconUrl: _linkedin.default
       }];
-      var reserved = 1 + social.reduce(function (curr, next) {
+      var reserved = 0;
+
+      if (typeof window === 'undefined') {
+        return _react.default.createElement("footer", {
+          className: "website-footer"
+        });
+      }
+
+      if (window.innerWidth < 769) {
+        reserved = 1;
+        return _react.default.createElement("footer", {
+          className: "website-footer"
+        }, _react.default.createElement("div", null, _react.default.createElement(_PatternChunk.default, {
+          adjust: adjust,
+          reserved: 0
+        })), _react.default.createElement("div", null, _react.default.createElement(_PatternChunk.default, {
+          adjust: adjust,
+          reserved: 0
+        })), _react.default.createElement("div", {
+          className: "website-footer__icons-holder"
+        }, social.map(function (_ref) {
+          var name = _ref.name,
+              IconUrl = _ref.IconUrl,
+              link = _ref.link;
+          return _react.default.createElement(_react.Fragment, {
+            key: name
+          }, _react.default.createElement("a", {
+            className: "link footer-icon footer-icon--".concat(name),
+            target: "_blank",
+            href: link,
+            style: {
+              display: 'block',
+              position: 'absolute',
+              top: '0px'
+            }
+          }, _react.default.createElement(IconUrl, {
+            className: "icon"
+          })));
+        }), _react.default.createElement(_PatternChunk.default, {
+          adjust: adjust,
+          reserved: reserved
+        }), _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "/",
+          className: "link"
+        }, "A")));
+      }
+
+      reserved = 1 + social.reduce(function (curr, next) {
         if (next.separator) {
           return curr + next.name.length + next.separator.length + next.spaceBeforeSeparator + next.spaceAfterSeparator;
         }
 
         return curr + next.name.length + next.spaceBeforeSeparator;
       }, 0);
-      return typeof window === 'undefined' ? _react.default.createElement("footer", {
-        className: "website-footer"
-      }) : _react.default.createElement("footer", {
+      return _react.default.createElement("footer", {
         className: "website-footer"
       }, _react.default.createElement("div", null, _react.default.createElement(_PatternChunk.default, {
         adjust: adjust,
@@ -111,10 +171,10 @@ function (_Component) {
       })), _react.default.createElement("div", null, _react.default.createElement(_PatternChunk.default, {
         adjust: adjust,
         reserved: 0
-      })), _react.default.createElement("div", null, social.map(function (_ref) {
-        var name = _ref.name,
-            separator = _ref.separator,
-            link = _ref.link;
+      })), _react.default.createElement("div", null, social.map(function (_ref2) {
+        var name = _ref2.name,
+            separator = _ref2.separator,
+            link = _ref2.link;
         return _react.default.createElement(_react.Fragment, {
           key: name
         }, _react.default.createElement("a", {
@@ -125,11 +185,7 @@ function (_Component) {
           className: "ws"
         }, "-"), _react.default.createElement("span", {
           className: "ws"
-        }, "-"), _react.default.createElement("span", {
-          className: "ws"
         }, "-"), separator && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", null, '/'), _react.default.createElement("span", {
-          className: "ws"
-        }, "-"), _react.default.createElement("span", {
           className: "ws"
         }, "-"), _react.default.createElement("span", {
           className: "ws"
@@ -137,10 +193,9 @@ function (_Component) {
       }), _react.default.createElement(_PatternChunk.default, {
         adjust: adjust,
         reserved: reserved
-      }), _react.default.createElement("a", {
-        className: "link",
-        target: "_blank",
-        to: "/"
+      }), _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/",
+        className: "link"
       }, "A")));
     }
   }]);

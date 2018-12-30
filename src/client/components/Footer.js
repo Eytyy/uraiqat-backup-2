@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import instagram from '../icons/instagram';
+import facebook from '../icons/facebook';
+import linkedin from '../icons/linkedin';
 
 import PatternChunk from '../components/patterns/PatternChunk';
 
@@ -24,54 +27,97 @@ class Footer extends Component {
 		const { adjust } = this.props;
 		const social = [{
 			name: 'instagram',
-			spaceBeforeSeparator: 3,
-			spaceAfterSeparator: 3,
+			spaceBeforeSeparator: 2,
+			spaceAfterSeparator: 2,
 			separator: '/',
-			link: 'https://www.instagram.com/uraiqatarchitects/'
+			link: 'https://www.instagram.com/uraiqatarchitects/',
+			IconUrl: instagram,
 		}, {
 			name: 'facebook',
 			link: 'https://web.facebook.com/uraiqatarchitects',
+			separator: '/',
+			spaceBeforeSeparator: 2,
+			spaceAfterSeparator: 2,
+			IconUrl: facebook,
+		},
+		{
+			name: 'linkedin',
+			link: 'https://ae.linkedin.com/company/uraiqat-architects',
 			separator: '',
-			spaceBeforeSeparator: 3,
-			spaceAfterSeparator: 3,
+			spaceBeforeSeparator: 2,
+			spaceAfterSeparator: 2,
+			IconUrl: linkedin,
 		}];
-		const reserved = 1 + social.reduce((curr, next) => {
+		let reserved = 0;
+	
+		if (typeof window === 'undefined') {
+			return <footer className="website-footer" />;
+		}
+		if (window.innerWidth < 769) {
+			reserved = 1;
+	
+			return (
+				<footer className="website-footer">
+					<div><PatternChunk adjust={adjust} reserved={0} /></div>
+					<div><PatternChunk adjust={adjust} reserved={0} /></div>
+					<div className="website-footer__icons-holder">
+						{
+							social.map(({name, IconUrl, link}) => (
+								<Fragment key={name}>
+									<a
+										className={`link footer-icon footer-icon--${name}`}
+										target="_blank" href={link}
+										style={{
+											display: 'block',
+											position: 'absolute',
+											top: '0px',
+										}}
+									>
+										<IconUrl className="icon"/>
+									</a>
+								</Fragment>
+							))
+						}
+						<PatternChunk adjust={adjust} reserved={reserved} />
+						<NavLink to="/" className="link">A</NavLink>
+					</div>
+				</footer>
+			);
+		}
+		reserved = 1 + social.reduce((curr, next) => {
 			if (next.separator) {
 				return curr + next.name.length + next.separator.length + next.spaceBeforeSeparator + next.spaceAfterSeparator;
 			}
 			return curr + next.name.length + next.spaceBeforeSeparator;
 		}, 0);
-		return typeof window === 'undefined' ?
-			<footer className="website-footer" />:
-			(
-				<footer className="website-footer">
-					<div><PatternChunk adjust={adjust} reserved={0} /></div>
-					<div><PatternChunk adjust={adjust} reserved={0} /></div>
-					<div>
-						{
-							social.map(({name, separator, link}) => (
-								<Fragment key={name}>
-									<a className="link" target="_blank" href={link}>{name}</a>
-									<span className="ws">-</span>
-									<span className="ws">-</span>
-									<span className="ws">-</span>
-									{
-										separator &&
-										<>
-											<span>{'/'}</span>
-											<span className="ws">-</span>
-											<span className="ws">-</span>
-											<span className="ws">-</span>
-										</>
-									}
-								</Fragment>
-							))
-						}
-						<PatternChunk adjust={adjust} reserved={reserved} />
-						<a className="link" target="_blank" to="/">A</a>
-					</div>
-				</footer>
-			);
+
+		return (
+			<footer className="website-footer">
+				<div><PatternChunk adjust={adjust} reserved={0} /></div>
+				<div><PatternChunk adjust={adjust} reserved={0} /></div>
+				<div>
+					{
+						social.map(({name, separator, link}) => (
+							<Fragment key={name}>
+								<a className="link" target="_blank" href={link}>{name}</a>
+								<span className="ws">-</span>
+								<span className="ws">-</span>
+								{
+									separator &&
+									<>
+										<span>{'/'}</span>
+										<span className="ws">-</span>
+										<span className="ws">-</span>
+									</>
+								}
+							</Fragment>
+						))
+					}
+					<PatternChunk adjust={adjust} reserved={reserved} />
+					<NavLink to="/" className="link">A</NavLink>
+				</div>
+			</footer>
+		);
 	}
 }
 

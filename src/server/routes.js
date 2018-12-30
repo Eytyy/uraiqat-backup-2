@@ -218,7 +218,7 @@ const AtelierPage = (req, res) => {
 	});
 }
 router.get('/atelier', AtelierPage);
-router.get('/atelier/about', AtelierPage);
+router.get('/atelier/portfolio', AtelierPage);
 
 
 router.get('/atelier/:id', (req, res) => {

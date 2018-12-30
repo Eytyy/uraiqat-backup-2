@@ -575,3 +575,24 @@ img {
 	}
 }
 
+
+.website-footer__icons-holder {
+	position: relative;
+}
+
+.footer-icon {
+	display: block;
+	height: 100%;
+	padding: 0 3px;
+	background-color: #FFF;
+	svg {
+		height: 100%;
+		width: auto;
+	}
+	&--facebook{
+    left: 24px * 2;
+	}
+	&--linkedin {
+    left: 24px * 4;
+	}
+}

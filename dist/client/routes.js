@@ -50,11 +50,11 @@ var routes = [{
   }, {
     path: '/atelier',
     exact: true,
-    component: _Atelier.default
-  }, {
-    path: '/atelier/about',
-    exact: true,
     component: _AtelierAbout.default
+  }, {
+    path: '/atelier/portfolio',
+    exact: true,
+    component: _Atelier.default
   }, {
     path: '/atelier/:id',
     exact: true,

@@ -20,7 +20,7 @@ var Second = function Second(props) {
   var numberOfStaticItems = 'Architects'.length; // if not atelier, we don't have secondary navigation
   // just return the pattern with the reserved "Architects" work
 
-  if (location.pathname !== '/atelier' && location.pathname !== '/atelier/about') {
+  if (location.pathname !== '/atelier' && location.pathname !== '/atelier/portfolio') {
     return _react.default.createElement("div", {
       className: "header--desktop__main__second"
     }, _react.default.createElement(_PatternChunk.default, {
@@ -37,25 +37,25 @@ var Second = function Second(props) {
     spacesAfter: 3,
     separator: '/',
     items: [{
-      name: 'Portfolio',
+      name: 'About',
+      id: 'about',
       exact: location.pathname === '/atelier',
-      id: 'portfolio',
       link: '/atelier',
       glyph: {
         className: 'ind',
         content: '->'
       },
-      size: 'Portfolio'.length
+      size: 'About'.length
     }, {
-      name: 'About',
-      id: 'about',
-      exact: location.pathname === '/atelier/about',
-      link: '/atelier/about',
+      name: 'Portfolio',
+      exact: location.pathname === '/atelier/portfolio',
+      id: 'portfolio',
+      link: '/atelier/portfolio',
       glyph: {
         className: 'ind',
         content: '->'
       },
-      size: 'About'.length
+      size: 'Portfolio'.length
     }]
   };
   var fixedStart = window.innerWidth >= 1280 ? 11 : 8;
