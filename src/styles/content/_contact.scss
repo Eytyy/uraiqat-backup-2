@@ -1,3 +1,14 @@
+.contact {
+	position: relative;
+	&:after {
+		content: 'built with contentful';
+		position: absolute;
+		font-size: 12px;
+		bottom: 0;
+		left: 0;
+		opacity: 0.8;
+	}
+}
 .landing-page--contact {
 	font-family: $font--bold;
 	position: relative;

@@ -10,9 +10,9 @@ const Category = ({ content }) => {
 			{
 				content.map(({fields, sys}, index) => {
 					if (index === content.length - 1) {
-						return <span key={sys.id}>{fields.title}.</span>;
+						return <span key={sys.id}>{fields.title || fields.name}.</span>;
 					} else {
-						return <span key={sys.id}>{fields.title}, </span>;
+						return <span key={sys.id}>{fields.title || fields.name}, </span>;
 					}
 				})
 			}
@@ -22,6 +22,7 @@ const Category = ({ content }) => {
 
 const CommonProjectPreview = (props) => {
 	const { id, title, year, category, featured, type } = props;
+	console.log(category);
 	const featuredClass = typeof featured !== 'undefined' && featured ? 'featured' : 'default';
 	return (
 		<article className={`${type}-preview ${type}-preview--${featuredClass}`}>

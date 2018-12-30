@@ -26,11 +26,11 @@ var Category = function Category(_ref) {
     if (index === content.length - 1) {
       return _react.default.createElement("span", {
         key: sys.id
-      }, fields.title, ".");
+      }, fields.title || fields.name, ".");
     } else {
       return _react.default.createElement("span", {
         key: sys.id
-      }, fields.title, ", ");
+      }, fields.title || fields.name, ", ");
     }
   }));
 };
@@ -42,6 +42,7 @@ var CommonProjectPreview = function CommonProjectPreview(props) {
       category = props.category,
       featured = props.featured,
       type = props.type;
+  console.log(category);
   var featuredClass = typeof featured !== 'undefined' && featured ? 'featured' : 'default';
   return _react.default.createElement("article", {
     className: "".concat(type, "-preview ").concat(type, "-preview--").concat(featuredClass)

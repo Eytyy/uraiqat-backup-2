@@ -72,20 +72,42 @@
 	}
 }
 
+.atelier-sub-section h2 {
+	padding-bottom: $lh;
+	margin-top: $lh * 2;
+	&:first-child {
+		margin-top: 0;
+	}
+	@include respond-to(tablet) {
+		padding-bottom: $tablet-lh;
+		margin-top: $tablet-lh * 2;
+	}
+	@include respond-to(desktop) {
+		padding-bottom: $desktop-lh;
+		margin-top: $desktop-lh * 2;
+	}
+}
+
 .atelier-landing__top__desc {
 	margin-bottom: $lh * 2;
 	@include respond-to(tablet) {
-		padding: 0  0 0 ($tablet-char-width * 5);
+		p {
+			padding: 0  0 0 ($tablet-char-width * 5);
+		}
 		margin-bottom: $tablet-lh * 2;
 	}
 	@include respond-to(desktop) {
-		width: 882px;
-		padding: 0 0 0 ($desktop-char-width * 5);
+		p {
+			padding: 0 0 0 ($desktop-char-width * 5);
+			width: 882px;
+		}
 		margin-bottom: $desktop-lh * 2;
 	}
 	@include respond-to(desktop-1600) {
-		padding: 0 0 0 ($desktop-char-width * 6);
-		width: 1008px;
+		p {
+			padding: 0 0 0 ($desktop-char-width * 6);
+			width: 1008px;
+		}
 	}
 }
 
