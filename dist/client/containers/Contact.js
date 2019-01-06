@@ -104,12 +104,12 @@ function (_Component) {
         content: telephone,
         label: 'T:',
         totalLength: telephone.length + spaceBeforeAfter + 3
-      };
-      var mobileConfig = {
-        content: mobile,
-        label: 'M:',
-        totalLength: mobile.length + spaceBeforeAfter + 3
-      };
+      }; // const mobileConfig = {
+      // 	content: mobile,
+      // 	label: 'M:',
+      // 	totalLength: mobile.length + spaceBeforeAfter + 3,
+      // };
+
       var faxConfig = {
         content: fax,
         label: 'F:',
@@ -159,9 +159,6 @@ function (_Component) {
       }), _react.default.createElement(_ContactAddressLine.default, {
         type: "tel",
         config: faxConfig
-      }), _react.default.createElement(_ContactAddressLine.default, {
-        type: "tel",
-        config: mobileConfig
       }), _react.default.createElement("div", {
         className: "contact-line"
       }, _react.default.createElement(_PatternChunk.default, {
@@ -210,3 +207,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Contact);
 
 exports.default = _default;
+{
+  /* <ContactAddressLine type="tel" config={mobileConfig} /> */
+}

@@ -20,11 +20,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ContactMobile = function ContactMobile(_ref) {
   var content = _ref.content,
       adjust = _ref.adjust;
-  var coordinates = content.fields.googleMap;
+  var coordinates = content.fields.googleMap; // const { addressLine1, addressLine2, mobile, telephone, fax, email } = content.fields;
+
   var _content$fields = content.fields,
       addressLine1 = _content$fields.addressLine1,
       addressLine2 = _content$fields.addressLine2,
-      mobile = _content$fields.mobile,
       telephone = _content$fields.telephone,
       fax = _content$fields.fax,
       email = _content$fields.email;
@@ -42,12 +42,12 @@ var ContactMobile = function ContactMobile(_ref) {
     content: telephone,
     label: 'T:',
     totalLength: telephone.length + fixedLabelSize + fixedWhiteSpace
-  };
-  var mobileConfig = {
-    content: mobile,
-    label: 'M:',
-    totalLength: mobile.length + fixedLabelSize + fixedWhiteSpace
-  };
+  }; // const mobileConfig = {
+  // 	content: mobile,
+  // 	label: 'M:',
+  // 	totalLength: mobile.length + fixedLabelSize + fixedWhiteSpace,
+  // };
+
   var faxConfig = {
     content: fax,
     label: 'F:',
@@ -110,10 +110,6 @@ var ContactMobile = function ContactMobile(_ref) {
     adjust: adjust,
     type: "tel",
     config: faxConfig
-  }), _react.default.createElement(_ContactAddressLineMobile.default, {
-    adjust: adjust,
-    type: "tel",
-    config: mobileConfig
   }), _react.default.createElement("div", {
     className: "contact-line"
   }, _react.default.createElement(_PatternChunk.default, {
@@ -141,3 +137,6 @@ var ContactMobile = function ContactMobile(_ref) {
 
 var _default = ContactMobile;
 exports.default = _default;
+{
+  /* <ContactAddressLineMobile adjust={adjust} type="tel" config={mobileConfig} /> */
+}

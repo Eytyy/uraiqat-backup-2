@@ -6,7 +6,8 @@ import { getNoOfChars, getWindowDimensions, getFontValues, getMaxWidth } from '.
 
 const ContactMobile = ({ content, adjust }) => {
 	const coordinates = content.fields.googleMap;
-	const { addressLine1, addressLine2, mobile, telephone, fax, email } = content.fields;
+	// const { addressLine1, addressLine2, mobile, telephone, fax, email } = content.fields;
+	const { addressLine1, addressLine2, telephone, fax, email } = content.fields;
 	const fixedWhiteSpace = 1;
 	const fixedLabelSize = 3;
 	const addressLine1Config = {
@@ -22,11 +23,11 @@ const ContactMobile = ({ content, adjust }) => {
 		label: 'T:',
 		totalLength: telephone.length + fixedLabelSize + fixedWhiteSpace,
 	};
-	const mobileConfig = {
-		content: mobile,
-		label: 'M:',
-		totalLength: mobile.length + fixedLabelSize + fixedWhiteSpace,
-	};
+	// const mobileConfig = {
+	// 	content: mobile,
+	// 	label: 'M:',
+	// 	totalLength: mobile.length + fixedLabelSize + fixedWhiteSpace,
+	// };
 	const faxConfig = {
 		content: fax,
 		label: 'F:',
@@ -77,7 +78,6 @@ const ContactMobile = ({ content, adjust }) => {
 			<div className="contact-line"><PatternChunk adjust={adjust} reserved={0} /></div>
 			<ContactAddressLineMobile adjust={adjust} type="tel" config={telephoneConfig} />
 			<ContactAddressLineMobile adjust={adjust} type="tel" config={faxConfig} />
-			<ContactAddressLineMobile adjust={adjust} type="tel" config={mobileConfig} />
 			<div className="contact-line"><PatternChunk adjust={adjust} reserved={0} /></div>
 			<ContactAddressLineMobile adjust={adjust} type="email" config={emailConfig} />
 
@@ -98,3 +98,5 @@ const ContactMobile = ({ content, adjust }) => {
 };
 
 export default ContactMobile;
+
+{/* <ContactAddressLineMobile adjust={adjust} type="tel" config={mobileConfig} /> */}

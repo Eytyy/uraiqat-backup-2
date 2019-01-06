@@ -45,11 +45,11 @@ class Contact extends Component {
 			label: 'T:',
 			totalLength: telephone.length + spaceBeforeAfter + 3,
 		};
-		const mobileConfig = {
-			content: mobile,
-			label: 'M:',
-			totalLength: mobile.length + spaceBeforeAfter + 3,
-		};
+		// const mobileConfig = {
+		// 	content: mobile,
+		// 	label: 'M:',
+		// 	totalLength: mobile.length + spaceBeforeAfter + 3,
+		// };
 		const faxConfig = {
 			content: fax,
 			label: 'F:',
@@ -74,7 +74,6 @@ class Contact extends Component {
 				<div className="contact-line"><PatternChunk reserved={0} /></div>
 				<ContactAddressLine type="tel" config={telephoneConfig} />
 				<ContactAddressLine type="tel" config={faxConfig} />
-				<ContactAddressLine type="tel" config={mobileConfig} />
 				<div className="contact-line"><PatternChunk reserved={0} /></div>
 				<ContactAddressLine type="email" config={emailConfig} />
 				<PatternBlock reservedContent={10} />
@@ -103,3 +102,5 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(Contact);
+
+{/* <ContactAddressLine type="tel" config={mobileConfig} /> */}
